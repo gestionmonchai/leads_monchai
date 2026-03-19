@@ -89,7 +89,14 @@
     var consentCheckbox = document.getElementById('consent');
     var submitBtn = document.getElementById('submit-btn');
     var messageEl = document.getElementById('form-message');
+    var formStartField = document.getElementById('form_start');
+    var honeypotField = document.getElementById('website');
     var originalBtnText = submitBtn.textContent;
+
+    // Initialize form_start timestamp (anti-bot: forms submitted too fast are suspicious)
+    if (formStartField) {
+      formStartField.value = Date.now().toString();
+    }
 
     function showMessage(type, text) {
       messageEl.textContent = text;
@@ -104,6 +111,21 @@
 
     form.addEventListener('submit', function (e) {
       hideMessage();
+
+      // Anti-bot: check honeypot (should be empty)
+      if (honeypotField && honeypotField.value) {
+        e.preventDefault();
+        return; // Silent fail for bots
+      }
+
+      // Anti-bot: check form_start (reject if submitted in < 2 seconds)
+      if (formStartField && formStartField.value) {
+        var elapsed = Date.now() - parseInt(formStartField.value, 10);
+        if (elapsed < 2000) {
+          e.preventDefault();
+          return; // Silent fail for bots
+        }
+      }
 
       // Validate email
       var email = emailInput.value.trim();
@@ -132,7 +154,11 @@
         form.reset();
         submitBtn.disabled = false;
         submitBtn.textContent = originalBtnText;
-      }, 1200);
+        // Reset form_start for potential re-submission
+        if (formStartField) {
+          formStartField.value = Date.now().toString();
+        }
+      }, 1500);
     });
   }
 

@@ -142,10 +142,21 @@
 
       <form
         id="waitlist-form"
+        class="form-wrap"
         action="https://script.google.com/macros/s/AKfycbyc-Bo7-NGQsO_BCpIOPRIx4R0uwW2CyNmcfjciWlUcQd2HXN-LRrnijl-7Yh5Irs1m/exec"
         method="POST"
         target="hidden_iframe"
       >
+        <!-- Champs cachés -->
+        <input type="hidden" name="source" value="monchai-coming-soon">
+        <input type="hidden" name="form_start" id="form_start" value="">
+
+        <!-- Honeypot anti-bot (invisible) -->
+        <div class="hp-field" aria-hidden="true">
+          <label for="website">Site web</label>
+          <input type="text" name="website" id="website" tabindex="-1" autocomplete="off">
+        </div>
+
         <div class="input-wrap">
           <input
             type="email"
@@ -168,8 +179,6 @@
             <a href="mailto:info@monchai.fr">info@monchai.fr</a>.
           </span>
         </label>
-
-        <input type="hidden" name="source" value="monchai-coming-soon">
 
         <p class="micro-copy" data-i18n="micro_copy">
           Les données collectées sont utilisées uniquement pour vous informer du lancement de Mon Chai.
@@ -222,9 +231,9 @@
 
         <h3>Hébergement</h3>
         <p>
-          Le site est hébergé par : <strong>[à compléter avec le nom de l'hébergeur]</strong>,
-          <strong>[adresse de l'hébergeur]</strong>,
-          <strong>[téléphone ou contact]</strong>.
+          Le site est hébergé par <strong>Hostinger International Ltd</strong>,
+          dont le siège social est situé au <strong>Švitrigailos str. 34, Vilnius 03230, Lituanie</strong>.<br>
+          Contact : <strong>support@hostinger.com</strong>
         </p>
 
         <h3>Propriété intellectuelle</h3>

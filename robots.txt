@@ -1,0 +1,32 @@
+# robots.txt — Mon Chai (monchai.fr)
+# Logiciel SaaS de gestion viticole
+
+User-agent: *
+Allow: /
+Disallow:
+
+# Sitemap
+Sitemap: https://monchai.fr/sitemap.xml
+
+# Crawl-delay (optional, for polite bots)
+Crawl-delay: 1
+
+# Google specific
+User-agent: Googlebot
+Allow: /
+Disallow:
+
+# Bing specific
+User-agent: Bingbot
+Allow: /
+Disallow:
+
+# Baidu (Chinese search engine)
+User-agent: Baiduspider
+Allow: /
+Disallow:
+
+# Yandex
+User-agent: Yandex
+Allow: /
+Disallow:

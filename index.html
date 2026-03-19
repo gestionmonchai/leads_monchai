@@ -140,10 +140,17 @@
         Toutes vos données, centralisées, de la vigne à la vente. Inscrivez-vous pour découvrir gratuitement Mon Chai en avant-première.
       </p>
 
-      <form class="form-wrap" method="post" action="#" novalidate>
+      <form
+        id="waitlist-form"
+        class="form-wrap"
+        action="https://script.google.com/a/macros/monchai.fr/s/AKfycbyc-Bo7-NGQsO_BCpIOPRIx4R0uwW2CyNmcfjciWlUcQd2HXN-LRrnijl-7Yh5Irs1m/exec"
+        method="POST"
+        target="hidden_iframe"
+      >
         <div class="input-wrap">
           <input
             type="email"
+            id="email"
             name="email"
             placeholder="Votre adresse e-mail"
             autocomplete="email"
@@ -155,7 +162,7 @@
         </div>
 
         <label class="consent">
-          <input type="checkbox" name="consent" required>
+          <input type="checkbox" id="consent" name="consentement" value="true" required>
           <span data-i18n="consent">
             J'accepte que mon adresse e-mail soit utilisée par Mon Chai pour me recontacter au sujet du lancement.
             Je peux demander l'accès, la rectification ou la suppression de mes données à tout moment à
@@ -163,13 +170,19 @@
           </span>
         </label>
 
+        <input type="hidden" name="source" value="monchai-coming-soon">
+
         <p class="micro-copy" data-i18n="micro_copy">
           Les données collectées sont utilisées uniquement pour vous informer du lancement de Mon Chai.
           Pour en savoir plus, consultez notre politique de confidentialité.
         </p>
 
-        <button type="submit" class="btn" data-i18n="btn_submit">Me prévenir du lancement</button>
+        <p id="form-message" class="form-feedback" style="display:none;" role="alert"></p>
+
+        <button type="submit" id="submit-btn" class="btn" data-i18n="btn_submit">Me prévenir du lancement</button>
       </form>
+
+      <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"></iframe>
 
       <div class="closing" data-i18n="closing">À très bientôt.</div>
 

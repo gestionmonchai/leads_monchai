@@ -1,14 +1,10 @@
 /**
  * Mon Chai - Landing Page Scripts
- * Handles modals, form submission to Google Apps Script, and language switcher
+ * Handles modals, form submission via iframe, and language switcher
  */
 
 (function () {
   'use strict';
-
-  // Google Apps Script Web App URL
-  var WEBAPP_URL = 'https://script.googleusercontent.com/a/macros/monchai.fr/echo?user_content_key=AWDtjMViYjNJ8n5EHTESViOB3IIztXN0_GzUOysHf5vkkKYp6iL0wVTyhOdtMsjvXdOkaDrhRGgnxWX7vlokApxE3n_RtBQU9tTFPz6JQjXiralPr_AV-1NklhC17JQw_81dUzpZJKaQ-02n6haq32aBsHzDIp1UQpyu2lYqA5fPuNcUwoPHdaqhrNtlvviuFN2-iKmaOnUpguh8PnGTyCWGVN1KyiIBpVCBGuKXbF201bSwvdcjDqjQLpgFVYWdSYfIXZzt0BF-hTkoLFANtWVtVCTF4kCUycms_W-txd4XO73OC4rUxs8&lib=MorG0R2f9YHO_jRYuzf9Mg4dJM3AxR5R6';
-  var FORM_SOURCE = 'monchai-coming-soon';
 
   /* ------------------------------------------------------------------
      Modal System
@@ -83,122 +79,61 @@
   }
 
   /* ------------------------------------------------------------------
-     Form Feedback
-     ------------------------------------------------------------------ */
-  function showFeedback(form, type, message) {
-    // Remove existing feedback
-    var existing = form.querySelector('.form-feedback');
-    if (existing) existing.remove();
-
-    // Create feedback element
-    var feedback = document.createElement('div');
-    feedback.className = 'form-feedback form-feedback--' + type;
-    feedback.setAttribute('role', 'alert');
-    feedback.textContent = message;
-
-    // Insert before button
-    var btn = form.querySelector('.btn');
-    if (btn) {
-      btn.parentNode.insertBefore(feedback, btn);
-    } else {
-      form.appendChild(feedback);
-    }
-
-    // Auto-hide success after 5s
-    if (type === 'success') {
-      setTimeout(function () {
-        feedback.classList.add('form-feedback--fade');
-        setTimeout(function () { feedback.remove(); }, 300);
-      }, 5000);
-    }
-  }
-
-  function clearFeedback(form) {
-    var existing = form.querySelector('.form-feedback');
-    if (existing) existing.remove();
-  }
-
-  /* ------------------------------------------------------------------
-     Form Submission
+     Form Submission (iframe method - no CORS issues)
      ------------------------------------------------------------------ */
   function initForm() {
-    var form = document.querySelector('.form-wrap');
+    var form = document.getElementById('waitlist-form');
     if (!form) return;
 
-    var emailInput = form.querySelector('input[type="email"]');
-    var consentCheckbox = form.querySelector('input[type="checkbox"]');
-    var submitBtn = form.querySelector('.btn');
-    var originalBtnText = '';
+    var emailInput = document.getElementById('email');
+    var consentCheckbox = document.getElementById('consent');
+    var submitBtn = document.getElementById('submit-btn');
+    var messageEl = document.getElementById('form-message');
+    var originalBtnText = submitBtn.textContent;
 
-    form.addEventListener('submit', function (event) {
-      event.preventDefault();
-      clearFeedback(form);
+    function showMessage(type, text) {
+      messageEl.textContent = text;
+      messageEl.className = 'form-feedback form-feedback--' + type;
+      messageEl.style.display = 'block';
+    }
+
+    function hideMessage() {
+      messageEl.style.display = 'none';
+      messageEl.textContent = '';
+    }
+
+    form.addEventListener('submit', function (e) {
+      hideMessage();
 
       // Validate email
-      var email = emailInput.value.trim().toLowerCase();
-      if (!email || !isValidEmail(email)) {
-        showFeedback(form, 'error', MonChaiI18n.t('msg_email_invalid'));
+      var email = emailInput.value.trim();
+      if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+        e.preventDefault();
+        showMessage('error', MonChaiI18n.t('msg_email_invalid'));
         emailInput.focus();
         return;
       }
 
       // Validate consent
       if (!consentCheckbox.checked) {
-        showFeedback(form, 'error', MonChaiI18n.t('msg_consent_required'));
+        e.preventDefault();
+        showMessage('error', MonChaiI18n.t('msg_consent_required'));
         consentCheckbox.focus();
         return;
       }
 
-      // Disable button and show loading
-      originalBtnText = submitBtn.textContent;
+      // Form is valid - let it submit to iframe
       submitBtn.disabled = true;
       submitBtn.textContent = MonChaiI18n.t('btn_sending');
 
-      // Prepare payload
-      var payload = {
-        email: email,
-        consentement: true,
-        source: FORM_SOURCE
-      };
-
-      // Send to Google Apps Script
-      fetch(WEBAPP_URL, {
-        method: 'POST',
-        mode: 'cors',
-        headers: {
-          'Content-Type': 'text/plain'
-        },
-        body: JSON.stringify(payload)
-      })
-      .then(function (response) {
-        return response.json();
-      })
-      .then(function (data) {
+      // Show success after delay (iframe submission is fire-and-forget)
+      setTimeout(function () {
+        showMessage('success', MonChaiI18n.t('msg_success'));
+        form.reset();
         submitBtn.disabled = false;
         submitBtn.textContent = originalBtnText;
-
-        if (data.ok) {
-          if (data.duplicate) {
-            showFeedback(form, 'info', MonChaiI18n.t('msg_duplicate'));
-          } else {
-            showFeedback(form, 'success', MonChaiI18n.t('msg_success'));
-            form.reset();
-          }
-        } else {
-          showFeedback(form, 'error', data.error || MonChaiI18n.t('msg_error'));
-        }
-      })
-      .catch(function (err) {
-        console.error('Form submission error:', err);
-        submitBtn.disabled = false;
-        submitBtn.textContent = originalBtnText;
-        showFeedback(form, 'error', MonChaiI18n.t('msg_error'));
-      });
+      }, 1200);
     });
-  }
-
-  function isValidEmail(email) {
-    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
   }
 
   /* ------------------------------------------------------------------

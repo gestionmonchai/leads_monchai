@@ -1,10 +1,117 @@
 /**
  * Mon Chai - Landing Page Scripts
- * Handles modals, form submission via iframe, and language switcher
+ * Handles modals, form submission via EmailJS, and language switcher
  */
 
 (function () {
   'use strict';
+
+  /* ------------------------------------------------------------------
+     EmailJS Configuration
+     ------------------------------------------------------------------ */
+  var EMAILJS_PUBLIC_KEY = 'SW76TlsTwVd5Z8v8y';
+  var EMAILJS_SERVICE_ID = 'service_dmflavl';
+  var EMAILJS_TEMPLATE_ID = 'template_yajlaes';
+
+  /* ------------------------------------------------------------------
+     Rate Limiting (localStorage)
+     ------------------------------------------------------------------ */
+  var RATE_LIMIT_KEY = 'monchai_form_submissions';
+  var RATE_LIMIT_COOLDOWN = 30000; // 30 seconds between submissions
+  var RATE_LIMIT_MAX_ATTEMPTS = 5; // Max attempts in window
+  var RATE_LIMIT_WINDOW = 300000; // 5 minutes window
+
+  function getRateLimitData() {
+    try {
+      var data = localStorage.getItem(RATE_LIMIT_KEY);
+      return data ? JSON.parse(data) : { attempts: [], blocked_until: 0 };
+    } catch (e) {
+      return { attempts: [], blocked_until: 0 };
+    }
+  }
+
+  function saveRateLimitData(data) {
+    try {
+      localStorage.setItem(RATE_LIMIT_KEY, JSON.stringify(data));
+    } catch (e) {
+      // localStorage not available, continue without rate limiting
+    }
+  }
+
+  function checkRateLimit() {
+    var data = getRateLimitData();
+    var now = Date.now();
+
+    // Check if blocked
+    if (data.blocked_until > now) {
+      return { allowed: false, reason: 'blocked', wait: Math.ceil((data.blocked_until - now) / 1000) };
+    }
+
+    // Clean old attempts
+    data.attempts = data.attempts.filter(function (t) { return now - t < RATE_LIMIT_WINDOW; });
+
+    // Check cooldown (last submission)
+    if (data.attempts.length > 0) {
+      var lastAttempt = data.attempts[data.attempts.length - 1];
+      if (now - lastAttempt < RATE_LIMIT_COOLDOWN) {
+        return { allowed: false, reason: 'cooldown', wait: Math.ceil((RATE_LIMIT_COOLDOWN - (now - lastAttempt)) / 1000) };
+      }
+    }
+
+    // Check max attempts
+    if (data.attempts.length >= RATE_LIMIT_MAX_ATTEMPTS) {
+      data.blocked_until = now + RATE_LIMIT_WINDOW;
+      saveRateLimitData(data);
+      return { allowed: false, reason: 'too_many', wait: Math.ceil(RATE_LIMIT_WINDOW / 1000) };
+    }
+
+    return { allowed: true };
+  }
+
+  function recordSubmission() {
+    var data = getRateLimitData();
+    data.attempts.push(Date.now());
+    saveRateLimitData(data);
+  }
+
+  /* ------------------------------------------------------------------
+     Anti-Abuse: Basic Geographic Filter (best-effort, NOT security)
+     
+     NOTE: This is NOT a reliable security measure. It only uses browser
+     timezone and language hints to discourage some non-targeted traffic.
+     Determined attackers can easily bypass this. It's a soft filter only.
+     ------------------------------------------------------------------ */
+  function checkGeographicHints() {
+    // Target: Western Europe (FR, EN, IT, ES, DE, PT, etc.)
+    // Also allow Chinese (zh) as it's a supported language
+    var validTimezones = [
+      'Europe/', 'Atlantic/', 'Africa/Casablanca', 'Africa/Algiers',
+      'America/New_York', 'America/Chicago', 'America/Los_Angeles', // US visitors OK
+      'Asia/Shanghai', 'Asia/Hong_Kong' // Chinese visitors OK
+    ];
+
+    var validLangPrefixes = ['fr', 'en', 'it', 'es', 'de', 'pt', 'nl', 'zh'];
+
+    var tz = '';
+    try {
+      tz = Intl.DateTimeFormat().resolvedOptions().timeZone || '';
+    } catch (e) {
+      return true; // If can't detect, allow
+    }
+
+    var lang = (navigator.language || navigator.userLanguage || '').toLowerCase().substring(0, 2);
+
+    // Check timezone
+    var tzOk = validTimezones.some(function (prefix) {
+      return tz.indexOf(prefix) === 0;
+    });
+
+    // Check language
+    var langOk = validLangPrefixes.indexOf(lang) !== -1;
+
+    // Allow if either timezone OR language matches (lenient)
+    return tzOk || langOk;
+  }
 
   /* ------------------------------------------------------------------
      Modal System
@@ -79,7 +186,7 @@
   }
 
   /* ------------------------------------------------------------------
-     Form Submission (iframe method - no CORS issues)
+     Form Submission via EmailJS
      ------------------------------------------------------------------ */
   function initForm() {
     var form = document.getElementById('waitlist-form');
@@ -89,13 +196,17 @@
     var consentCheckbox = document.getElementById('consent');
     var submitBtn = document.getElementById('submit-btn');
     var messageEl = document.getElementById('form-message');
-    var formStartField = document.getElementById('form_start');
     var honeypotField = document.getElementById('website');
     var originalBtnText = submitBtn.textContent;
 
-    // Initialize form_start timestamp (anti-bot: forms submitted too fast are suspicious)
-    if (formStartField) {
-      formStartField.value = Date.now().toString();
+    // Record page load time for timing check
+    var pageLoadTime = Date.now();
+
+    // Initialize EmailJS
+    if (typeof emailjs !== 'undefined') {
+      emailjs.init(EMAILJS_PUBLIC_KEY);
+    } else {
+      console.error('[MonChai] EmailJS SDK not loaded');
     }
 
     function showMessage(type, text) {
@@ -109,56 +220,107 @@
       messageEl.textContent = '';
     }
 
+    function setButtonState(disabled, text) {
+      submitBtn.disabled = disabled;
+      submitBtn.textContent = text || originalBtnText;
+    }
+
     form.addEventListener('submit', function (e) {
+      e.preventDefault();
       hideMessage();
 
-      // Anti-bot: check honeypot (should be empty)
+      // 1. Honeypot check (silent fail)
       if (honeypotField && honeypotField.value) {
-        e.preventDefault();
-        return; // Silent fail for bots
+        console.error('[MonChai] Honeypot triggered');
+        return;
       }
 
-      // Anti-bot: check form_start (reject if submitted in < 2 seconds)
-      if (formStartField && formStartField.value) {
-        var elapsed = Date.now() - parseInt(formStartField.value, 10);
-        if (elapsed < 2000) {
-          e.preventDefault();
-          return; // Silent fail for bots
+      // 2. Timing check: reject if < 2 seconds since page load (silent fail)
+      if (Date.now() - pageLoadTime < 2000) {
+        console.error('[MonChai] Submission too fast');
+        return;
+      }
+
+      // 3. Geographic hints check (soft filter, silent fail)
+      if (!checkGeographicHints()) {
+        console.error('[MonChai] Geographic filter triggered');
+        return;
+      }
+
+      // 4. Rate limit check
+      var rateCheck = checkRateLimit();
+      if (!rateCheck.allowed) {
+        if (rateCheck.reason === 'cooldown') {
+          showMessage('error', MonChaiI18n.t('msg_rate_limit').replace('{seconds}', rateCheck.wait));
+        } else {
+          showMessage('error', MonChaiI18n.t('msg_too_many_attempts'));
         }
+        console.error('[MonChai] Rate limit: ' + rateCheck.reason);
+        return;
       }
 
-      // Validate email
-      var email = emailInput.value.trim();
-      if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-        e.preventDefault();
+      // 5. Get and validate email
+      var email = emailInput.value.trim().toLowerCase();
+
+      if (!email) {
         showMessage('error', MonChaiI18n.t('msg_email_invalid'));
         emailInput.focus();
         return;
       }
 
-      // Validate consent
+      if (email.length > 100) {
+        showMessage('error', MonChaiI18n.t('msg_email_invalid'));
+        emailInput.focus();
+        return;
+      }
+
+      // Strict email regex
+      var emailRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)+$/;
+      if (!emailRegex.test(email)) {
+        showMessage('error', MonChaiI18n.t('msg_email_invalid'));
+        emailInput.focus();
+        return;
+      }
+
+      // 6. Validate consent
       if (!consentCheckbox.checked) {
-        e.preventDefault();
         showMessage('error', MonChaiI18n.t('msg_consent_required'));
         consentCheckbox.focus();
         return;
       }
 
-      // Form is valid - let it submit to iframe
-      submitBtn.disabled = true;
-      submitBtn.textContent = MonChaiI18n.t('btn_sending');
+      // 7. Check EmailJS is available
+      if (typeof emailjs === 'undefined') {
+        showMessage('error', MonChaiI18n.t('msg_error'));
+        console.error('[MonChai] EmailJS not available');
+        return;
+      }
 
-      // Show success after delay (iframe submission is fire-and-forget)
-      setTimeout(function () {
-        showMessage('success', MonChaiI18n.t('msg_success'));
-        form.reset();
-        submitBtn.disabled = false;
-        submitBtn.textContent = originalBtnText;
-        // Reset form_start for potential re-submission
-        if (formStartField) {
-          formStartField.value = Date.now().toString();
-        }
-      }, 1500);
+      // 8. Disable button, show sending state
+      setButtonState(true, MonChaiI18n.t('btn_sending'));
+
+      // 9. Prepare template parameters
+      var templateParams = {
+        from_email: email,
+        consentement: 'oui',
+        source: 'monchai-coming-soon',
+        sent_at: new Date().toISOString()
+      };
+
+      // 10. Send via EmailJS
+      emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, templateParams)
+        .then(function (response) {
+          console.log('[MonChai] Email sent:', response.status);
+          recordSubmission();
+          showMessage('success', MonChaiI18n.t('msg_success'));
+          form.reset();
+          setButtonState(false);
+        })
+        .catch(function (error) {
+          console.error('[MonChai] EmailJS error:', error);
+          showMessage('error', MonChaiI18n.t('msg_error'));
+          setButtonState(false);
+        });
     });
   }
 

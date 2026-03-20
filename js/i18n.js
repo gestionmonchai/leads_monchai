@@ -27,6 +27,8 @@ var MonChaiI18n = (function () {
       msg_error: 'Une erreur est survenue. Veuillez réessayer.',
       msg_consent_required: 'Veuillez accepter les conditions.',
       msg_email_invalid: 'Veuillez entrer une adresse e-mail valide.',
+      msg_rate_limit: 'Veuillez patienter {seconds} secondes avant de réessayer.',
+      msg_too_many_attempts: 'Trop de tentatives. Veuillez réessayer dans quelques minutes.',
       closing: 'À très bientôt.',
       link_legal: 'Mentions légales',
       link_privacy: 'Politique de confidentialité'
@@ -48,6 +50,8 @@ var MonChaiI18n = (function () {
       msg_error: 'An error occurred. Please try again.',
       msg_consent_required: 'Please accept the terms.',
       msg_email_invalid: 'Please enter a valid email address.',
+      msg_rate_limit: 'Please wait {seconds} seconds before trying again.',
+      msg_too_many_attempts: 'Too many attempts. Please try again in a few minutes.',
       closing: 'See you soon.',
       link_legal: 'Legal notice',
       link_privacy: 'Privacy policy'
@@ -69,6 +73,8 @@ var MonChaiI18n = (function () {
       msg_error: 'Si è verificato un errore. Riprova.',
       msg_consent_required: 'Si prega di accettare i termini.',
       msg_email_invalid: 'Inserisci un indirizzo e-mail valido.',
+      msg_rate_limit: 'Attendere {seconds} secondi prima di riprovare.',
+      msg_too_many_attempts: 'Troppi tentativi. Riprova tra qualche minuto.',
       closing: 'A presto.',
       link_legal: 'Note legali',
       link_privacy: 'Politica sulla privacy'
@@ -90,6 +96,8 @@ var MonChaiI18n = (function () {
       msg_error: 'Se produjo un error. Inténtelo de nuevo.',
       msg_consent_required: 'Por favor, acepte los términos.',
       msg_email_invalid: 'Introduzca una dirección de correo válida.',
+      msg_rate_limit: 'Espere {seconds} segundos antes de volver a intentarlo.',
+      msg_too_many_attempts: 'Demasiados intentos. Inténtelo de nuevo en unos minutos.',
       closing: 'Hasta pronto.',
       link_legal: 'Aviso legal',
       link_privacy: 'Política de privacidad'
@@ -111,6 +119,8 @@ var MonChaiI18n = (function () {
       msg_error: '发生错误，请重试。',
       msg_consent_required: '请接受条款。',
       msg_email_invalid: '请输入有效的电子邮件地址。',
+      msg_rate_limit: '请等待 {seconds} 秒后再试。',
+      msg_too_many_attempts: '尝试次数过多。请稍后再试。',
       closing: '期待与您相见。',
       link_legal: '法律声明',
       link_privacy: '隐私政策'

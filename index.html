@@ -140,16 +140,7 @@
         Toutes vos données, centralisées, de la vigne à la vente. Inscrivez-vous pour découvrir gratuitement Mon Chai en avant-première.
       </p>
 
-      <form
-        id="waitlist-form"
-        action="https://script.google.com/macros/s/AKfycbzdAF4IhkC9b5HgIKCbCMiDgsX7bvXgmVaXxzepPFE9J2nBRXbjyxdLXFR7tSOoIfvjAKfycby7W4Cw8kYze2CJeMmukLexRQTMLR8aJ9jIbyPNpM41uxe_nGOuIrGdpblpL_0NCYfZ/exec"
-        method="POST"
-        target="hidden_iframe"
-      >
-        <!-- Champs cachés -->
-        <input type="hidden" name="source" value="monchai-coming-soon">
-        <input type="hidden" name="form_start" id="form_start" value="">
-
+      <form id="waitlist-form" class="form-wrap" novalidate>
         <!-- Honeypot anti-bot (invisible) -->
         <div class="hp-field" aria-hidden="true">
           <label for="website">Site web</label>
@@ -164,6 +155,7 @@
             placeholder="Votre adresse e-mail"
             autocomplete="email"
             inputmode="email"
+            maxlength="100"
             required
             aria-label="Adresse e-mail"
             data-i18n="email_placeholder"
@@ -171,7 +163,7 @@
         </div>
 
         <label class="consent">
-          <input type="checkbox" id="consent" name="consentement" value="true" required>
+          <input type="checkbox" id="consent" name="consentement" required>
           <span data-i18n="consent">
             J'accepte que mon adresse e-mail soit utilisée par Mon Chai pour me recontacter au sujet du lancement.
             Je peux demander l'accès, la rectification ou la suppression de mes données à tout moment à
@@ -188,8 +180,6 @@
 
         <button type="submit" id="submit-btn" class="btn" data-i18n="btn_submit">Me prévenir du lancement</button>
       </form>
-
-      <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"></iframe>
 
       <div class="closing" data-i18n="closing">À très bientôt.</div>
 
@@ -341,6 +331,9 @@
       </div>
     </div>
   </div>
+
+  <!-- EmailJS SDK -->
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 
   <!-- Scripts -->
   <script src="js/i18n.js"></script>

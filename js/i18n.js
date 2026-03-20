@@ -13,7 +13,7 @@ var MonChaiI18n = (function () {
     fr: {
       lang_label: 'FR',
       lang_name: 'Français',
-      page_title: 'Mon Chai — Ouverture prochaine',
+      page_title: 'Mon Chai - Ouverture prochaine',
       meta_description: 'Mon Chai, le futur de la gestion viticole. Logiciel SaaS pour la gestion de chai, DRM, intrants, appellations. Inscrivez-vous pour le lancement.',
       h1: 'Le futur de votre gestion viticole arrive.',
       lead: 'Toutes vos données, centralisées, de la vigne à la vente. Inscrivez-vous pour découvrir gratuitement Mon Chai en avant-première.',
@@ -36,7 +36,7 @@ var MonChaiI18n = (function () {
     en: {
       lang_label: 'EN',
       lang_name: 'English',
-      page_title: 'Mon Chai — Coming Soon',
+      page_title: 'Mon Chai - Coming Soon',
       meta_description: 'Mon Chai, the future of wine cellar management. SaaS software for cellar management, DRM, inputs, appellations. Sign up for launch.',
       h1: 'The future of wine cellar management is coming.',
       lead: 'All your data, centralized, from vine to sale. Sign up to discover Mon Chai for free before anyone else.',
@@ -59,7 +59,7 @@ var MonChaiI18n = (function () {
     it: {
       lang_label: 'IT',
       lang_name: 'Italiano',
-      page_title: 'Mon Chai — Apertura imminente',
+      page_title: 'Mon Chai - Apertura imminente',
       meta_description: 'Mon Chai, il futuro della gestione vinicola. Software SaaS per la gestione della cantina, DRM, input, denominazioni. Iscriviti per il lancio.',
       h1: 'Il futuro della gestione vinicola sta arrivando.',
       lead: 'Tutti i vostri dati, centralizzati, dalla vigna alla vendita. Iscrivetevi per scoprire gratuitamente Mon Chai in anteprima.',
@@ -82,7 +82,7 @@ var MonChaiI18n = (function () {
     es: {
       lang_label: 'ES',
       lang_name: 'Español',
-      page_title: 'Mon Chai — Próxima apertura',
+      page_title: 'Mon Chai - Próxima apertura',
       meta_description: 'Mon Chai, el futuro de la gestión vitícola. Software SaaS para gestión de bodega, DRM, insumos, denominaciones. Regístrate para el lanzamiento.',
       h1: 'El futuro de la gestión vitícola está llegando.',
       lead: 'Todos sus datos, centralizados, de la viña a la venta. Regístrese para descubrir Mon Chai gratis en primicia.',
@@ -105,7 +105,7 @@ var MonChaiI18n = (function () {
     zh: {
       lang_label: 'ZH',
       lang_name: '中文',
-      page_title: 'Mon Chai — 即将开业',
+      page_title: 'Mon Chai - 即将开业',
       meta_description: 'Mon Chai，葡萄酒管理的未来。用于酒窖管理、DRM、投入品、产区的SaaS软件。注册获取发布信息。',
       h1: '葡萄酒管理的未来即将到来。',
       lead: '所有数据集中管理，从葡萄园到销售。免费注册，抢先体验 Mon Chai。',

@@ -6,7 +6,6 @@
 var MonChaiI18n = (function () {
   'use strict';
 
-  var STORAGE_KEY = 'monchai_lang';
   var DEFAULT_LANG = 'fr';
 
   var translations = {
@@ -14,11 +13,11 @@ var MonChaiI18n = (function () {
       lang_label: 'FR',
       lang_name: 'Français',
       page_title: 'Mon Chai - Ouverture prochaine',
-      meta_description: 'Mon Chai, le futur de la gestion viticole. Logiciel SaaS pour la gestion de chai, DRM, intrants, appellations. Inscrivez-vous pour le lancement.',
+      meta_description: 'Mon Chai centralise vos données viticoles du registre phytosanitaire à la DRM. Données douanières pré-intégrées, zéro saisie manuelle. De la vigne à la vente.',
       h1: 'Le futur de votre gestion viticole arrive.',
       lead: 'Toutes vos données, centralisées, de la vigne à la vente. Inscrivez-vous pour découvrir gratuitement Mon Chai en avant-première.',
       email_placeholder: 'Votre adresse e-mail',
-      consent: 'J\'accepte que mon adresse e-mail soit utilisée par Mon Chai pour me recontacter au sujet du lancement. Je peux demander l\'accès, la rectification ou la suppression de mes données à tout moment à <a href="mailto:info@monchai.fr">info@monchai.fr</a>.',
+      consent: 'J\'accepte que mon adresse e-mail soit utilisée par Mon Chai pour me recontacter au sujet du lancement. Je peux demander l\'accès, la rectification ou la suppression de mes données à tout moment à <a href="mailto:contact@monchai.fr">contact@monchai.fr</a>.',
       micro_copy: 'Les données collectées sont utilisées uniquement pour vous informer du lancement de Mon Chai. Pour en savoir plus, consultez notre politique de confidentialité.',
       btn_submit: 'Me prévenir du lancement',
       btn_sending: 'Envoi en cours...',
@@ -37,11 +36,11 @@ var MonChaiI18n = (function () {
       lang_label: 'EN',
       lang_name: 'English',
       page_title: 'Mon Chai - Coming Soon',
-      meta_description: 'Mon Chai, the future of wine cellar management. SaaS software for cellar management, DRM, inputs, appellations. Sign up for launch.',
+      meta_description: 'Mon Chai centralizes your wine data from phytosanitary records to customs declarations (DRM). Pre-loaded regulatory data, zero manual entry. From vineyard to sale.',
       h1: 'The future of wine cellar management is coming.',
       lead: 'All your data, centralized, from vine to sale. Sign up to discover Mon Chai for free before anyone else.',
       email_placeholder: 'Your email address',
-      consent: 'I agree that my email address may be used by Mon Chai to contact me about the launch. I can request access, rectification or deletion of my data at any time at <a href="mailto:info@monchai.fr">info@monchai.fr</a>.',
+      consent: 'I agree that my email address may be used by Mon Chai to contact me about the launch. I can request access, rectification or deletion of my data at any time at <a href="mailto:contact@monchai.fr">contact@monchai.fr</a>.',
       micro_copy: 'The data collected is used solely to inform you of the launch of Mon Chai. For more information, see our privacy policy.',
       btn_submit: 'Notify me at launch',
       btn_sending: 'Sending...',
@@ -60,11 +59,11 @@ var MonChaiI18n = (function () {
       lang_label: 'IT',
       lang_name: 'Italiano',
       page_title: 'Mon Chai - Apertura imminente',
-      meta_description: 'Mon Chai, il futuro della gestione vinicola. Software SaaS per la gestione della cantina, DRM, input, denominazioni. Iscriviti per il lancio.',
+      meta_description: 'Mon Chai centralizza i dati viticoli dal registro fitosanitario alla DRM. Dati doganali pre-integrati, nessun inserimento manuale. Dalla vigna alla vendita.',
       h1: 'Il futuro della gestione vinicola sta arrivando.',
       lead: 'Tutti i vostri dati, centralizzati, dalla vigna alla vendita. Iscrivetevi per scoprire gratuitamente Mon Chai in anteprima.',
       email_placeholder: 'Il vostro indirizzo e-mail',
-      consent: 'Accetto che il mio indirizzo e-mail venga utilizzato da Mon Chai per ricontattarmi in merito al lancio. Posso richiedere l\'accesso, la rettifica o la cancellazione dei miei dati in qualsiasi momento a <a href="mailto:info@monchai.fr">info@monchai.fr</a>.',
+      consent: 'Accetto che il mio indirizzo e-mail venga utilizzato da Mon Chai per ricontattarmi in merito al lancio. Posso richiedere l\'accesso, la rettifica o la cancellazione dei miei dati in qualsiasi momento a <a href="mailto:contact@monchai.fr">contact@monchai.fr</a>.',
       micro_copy: 'I dati raccolti vengono utilizzati esclusivamente per informarvi del lancio di Mon Chai. Per saperne di più, consultate la nostra politica sulla privacy.',
       btn_submit: 'Avvisami al lancio',
       btn_sending: 'Invio in corso...',
@@ -83,11 +82,11 @@ var MonChaiI18n = (function () {
       lang_label: 'ES',
       lang_name: 'Español',
       page_title: 'Mon Chai - Próxima apertura',
-      meta_description: 'Mon Chai, el futuro de la gestión vitícola. Software SaaS para gestión de bodega, DRM, insumos, denominaciones. Regístrate para el lanzamiento.',
+      meta_description: 'Mon Chai centraliza sus datos vitivinícolas del registro fitosanitario a la DRM. Datos aduaneros precargados, sin entrada manual. De la viña a la venta.',
       h1: 'El futuro de la gestión vitícola está llegando.',
       lead: 'Todos sus datos, centralizados, de la viña a la venta. Regístrese para descubrir Mon Chai gratis en primicia.',
       email_placeholder: 'Su dirección de correo electrónico',
-      consent: 'Acepto que Mon Chai utilice mi dirección de correo electrónico para contactarme sobre el lanzamiento. Puedo solicitar el acceso, la rectificación o la supresión de mis datos en cualquier momento en <a href="mailto:info@monchai.fr">info@monchai.fr</a>.',
+      consent: 'Acepto que Mon Chai utilice mi dirección de correo electrónico para contactarme sobre el lanzamiento. Puedo solicitar el acceso, la rectificación o la supresión de mis datos en cualquier momento en <a href="mailto:contact@monchai.fr">contact@monchai.fr</a>.',
       micro_copy: 'Los datos recopilados se utilizan únicamente para informarle del lanzamiento de Mon Chai. Para más información, consulte nuestra política de privacidad.',
       btn_submit: 'Avisarme del lanzamiento',
       btn_sending: 'Enviando...',
@@ -106,11 +105,11 @@ var MonChaiI18n = (function () {
       lang_label: 'ZH',
       lang_name: '中文',
       page_title: 'Mon Chai - 即将开业',
-      meta_description: 'Mon Chai，葡萄酒管理的未来。用于酒窖管理、DRM、投入品、产区的SaaS软件。注册获取发布信息。',
+      meta_description: 'Mon Chai 集中管理葡萄酒数据，从植保记录到海关申报（DRM）。监管数据预导入，无需手动输入。从葡萄园到销售。',
       h1: '葡萄酒管理的未来即将到来。',
       lead: '所有数据集中管理，从葡萄园到销售。免费注册，抢先体验 Mon Chai。',
       email_placeholder: '您的电子邮件地址',
-      consent: '我同意 Mon Chai 使用我的电子邮件地址就产品上线事宜与我联系。我可以随时通过 <a href="mailto:info@monchai.fr">info@monchai.fr</a> 请求访问、更正或删除我的数据。',
+      consent: '我同意 Mon Chai 使用我的电子邮件地址就产品上线事宜与我联系。我可以随时通过 <a href="mailto:contact@monchai.fr">contact@monchai.fr</a> 请求访问、更正或删除我的数据。',
       micro_copy: '所收集的数据仅用于通知您 Mon Chai 的上线信息。如需了解更多，请查阅我们的隐私政策。',
       btn_submit: '通知我上线',
       btn_sending: '发送中...',
@@ -133,17 +132,13 @@ var MonChaiI18n = (function () {
    * Detect best language from browser
    */
   function detectLanguage() {
-    // Check localStorage first
-    var stored = localStorage.getItem(STORAGE_KEY);
-    if (stored && translations[stored]) return stored;
-
-    // Check browser language
-    var navLangs = navigator.languages || [navigator.language || navigator.userLanguage || ''];
-    for (var i = 0; i < navLangs.length; i++) {
-      var code = navLangs[i].toLowerCase().split('-')[0];
-      if (translations[code]) return code;
-    }
-
+    // URL parameter is authoritative (matches sitemap structure)
+    // FR = monchai.fr/ (no param), other = monchai.fr/?lang=xx
+    try {
+      var urlParams = new URLSearchParams(window.location.search);
+      var urlLang = urlParams.get('lang');
+      if (urlLang && translations[urlLang]) return urlLang;
+    } catch (e) {}
     return DEFAULT_LANG;
   }
 
@@ -154,8 +149,16 @@ var MonChaiI18n = (function () {
     if (!translations[lang]) lang = DEFAULT_LANG;
     var t = translations[lang];
 
-    // Save preference
-    localStorage.setItem(STORAGE_KEY, lang);
+    // Update URL to match language (sync with sitemap)
+    try {
+      var url = new URL(window.location);
+      if (lang === DEFAULT_LANG) {
+        url.searchParams.delete('lang');
+      } else {
+        url.searchParams.set('lang', lang);
+      }
+      history.replaceState(null, '', url);
+    } catch (e) {}
 
     // Update html lang attribute
     document.documentElement.lang = lang;
@@ -214,7 +217,7 @@ var MonChaiI18n = (function () {
    * Get current language
    */
   function getCurrentLang() {
-    return localStorage.getItem(STORAGE_KEY) || detectLanguage();
+    return detectLanguage();
   }
 
   /**

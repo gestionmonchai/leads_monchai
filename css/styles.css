@@ -97,7 +97,7 @@ body {
    -------------------------------------------------------------------------- */
 .card {
   position: relative;
-  padding: 18px 28px 14px;
+  padding: 14px 28px 14px;
   border-radius: var(--radius-xl);
   background-color: var(--card-bg);
   border: 1px solid var(--card-border);
@@ -116,13 +116,13 @@ body {
 .logo-wrap {
   display: flex;
   justify-content: center;
-  margin-bottom: 8px;
+  margin-bottom: 20px;
   flex-shrink: 0;
 }
 
 .logo {
-  width: 200px;
-  height: 200px;
+  width: 300px;
+  height: auto;
   object-fit: contain;
   display: block;
   filter: drop-shadow(0 6px 18px rgba(75, 15, 26, 0.18));
@@ -570,16 +570,16 @@ h1 {
   }
 
   .card {
-    padding: 20px 32px 18px;
+    padding: 16px 32px 16px;
   }
 
   .logo {
-    width: 220px;
-    height: 220px;
+    width: 300px;
+    height: auto;
   }
 
   .logo-wrap {
-    margin-bottom: 6px;
+    margin-bottom: 4px;
   }
 }
 
@@ -600,12 +600,12 @@ h1 {
   }
 
   .logo {
-    width: 160px;
-    height: 160px;
+    width: 220px;
+    height: auto;
   }
 
   .logo-wrap {
-    margin-bottom: 6px;
+    margin-bottom: 4px;
   }
 }
 
@@ -629,12 +629,12 @@ h1 {
   }
 
   .logo-wrap {
-    margin-bottom: 6px;
+    margin-bottom: 4px;
   }
 
   .logo {
-    width: 120px;
-    height: 120px;
+    width: 180px;
+    height: auto;
   }
 
   h1 {
@@ -730,8 +730,8 @@ h1 {
   }
 
   .logo {
-    width: 90px;
-    height: 90px;
+    width: 140px;
+    height: auto;
   }
 
   h1 {
@@ -837,8 +837,8 @@ h1 {
   }
 
   .logo {
-    width: 60px;
-    height: 60px;
+    width: 100px;
+    height: auto;
   }
 
   h1 {

@@ -76,18 +76,12 @@
 
   /* ------------------------------------------------------------------
      Anti-Abuse: Basic Geographic Filter (best-effort, NOT security)
-     
-     NOTE: This is NOT a reliable security measure. It only uses browser
-     timezone and language hints to discourage some non-targeted traffic.
-     Determined attackers can easily bypass this. It's a soft filter only.
      ------------------------------------------------------------------ */
   function checkGeographicHints() {
-    // Target: Western Europe (FR, EN, IT, ES, DE, PT, etc.)
-    // Also allow Chinese (zh) as it's a supported language
     var validTimezones = [
       'Europe/', 'Atlantic/', 'Africa/Casablanca', 'Africa/Algiers',
-      'America/New_York', 'America/Chicago', 'America/Los_Angeles', // US visitors OK
-      'Asia/Shanghai', 'Asia/Hong_Kong' // Chinese visitors OK
+      'America/New_York', 'America/Chicago', 'America/Los_Angeles',
+      'Asia/Shanghai', 'Asia/Hong_Kong'
     ];
 
     var validLangPrefixes = ['fr', 'en', 'it', 'es', 'de', 'pt', 'nl', 'zh'];
@@ -96,20 +90,17 @@
     try {
       tz = Intl.DateTimeFormat().resolvedOptions().timeZone || '';
     } catch (e) {
-      return true; // If can't detect, allow
+      return true;
     }
 
     var lang = (navigator.language || navigator.userLanguage || '').toLowerCase().substring(0, 2);
 
-    // Check timezone
     var tzOk = validTimezones.some(function (prefix) {
       return tz.indexOf(prefix) === 0;
     });
 
-    // Check language
     var langOk = validLangPrefixes.indexOf(lang) !== -1;
 
-    // Allow if either timezone OR language matches (lenient)
     return tzOk || langOk;
   }
 
@@ -303,7 +294,7 @@
       var templateParams = {
         from_email: email,
         consentement: 'oui',
-        source: 'monchai-coming-soon',
+        source: 'monchai-landing-v2',
         sent_at: new Date().toISOString()
       };
 

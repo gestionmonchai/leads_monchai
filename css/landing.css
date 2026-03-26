@@ -664,7 +664,7 @@ body {
 
 @media (min-width: 1500px) {
   .lead {
-    font-size: clamp(1.2rem, 1.8vw, 1.6rem);
+    font-size: clamp(0.2rem, 1.2vw, 1.6rem);
   }
 }
 

@@ -151,6 +151,12 @@ body {
   overflow-y: auto;
   overflow-x: hidden;
   z-index: 1;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.card::-webkit-scrollbar {
+  display: none;
 }
 
 /* ================================================================
@@ -198,8 +204,7 @@ body {
    ================================================================ */
 .hero {
   margin: 0 auto 16px;
-  width: 85%;
-  max-width: 100%;
+  width: 85.3%;
   text-align: center;
   font-family: var(--font);
   font-size: clamp(1.8rem, 3.35vw, 2.86rem);
@@ -208,8 +213,6 @@ body {
   font-weight: 400;
   color: var(--color-text);
   justify-self: center;
-  padding-left: 0;
-  padding-right: 0;
 }
 
 .hero-line {
@@ -223,8 +226,8 @@ body {
    "un mois offert" = underline
    ================================================================ */
 .lead {
-  margin: 0 0 22px;
-  width: 85%;
+  margin: 0 auto 22px;
+  width: 85.3%;
   text-align: center;
   color: var(--color-text);
   font-family: var(--font);
@@ -651,6 +654,7 @@ body {
 
   .hero {
     font-size: clamp(2.2rem, 3.35vw, 2.86rem);
+    transform: translateX(-20px)
   }
 
   .lead {

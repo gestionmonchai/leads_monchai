@@ -53,13 +53,13 @@
   <link rel="preconnect" href="https://fonts.bunny.net" crossorigin>
   <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
   <link rel="preload" href="vignes_2.jpg" as="image">
-  <link rel="preload" href="logo_mon_chai.png" as="image">
+  <link rel="preload" href="logo_monchai.png" as="image">
 
-  <!-- Fonts -->
-  <link href="https://fonts.bunny.net/css?family=inter:400,500,600,700,800&display=swap" rel="stylesheet">
+  <!-- Fonts: Poppins (the EXACT font from the Canva reference) -->
+  <link href="https://fonts.bunny.net/css?family=poppins:400,500,600,700,800&display=swap" rel="stylesheet">
 
   <!-- Styles -->
-  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/landing.css">
 
   <!-- Structured Data: Organization + WebSite + SoftwareApplication -->
   <script type="application/ld+json">
@@ -132,24 +132,39 @@
     </ul>
   </div>
 
-  <main class="page">
+  <!-- Main Landing Page -->
+  <main class="landing">
+    <!-- Background Image -->
+    <div class="bg-wrapper">
+      <img src="vignes_2.jpg" alt="" class="bg-image" aria-hidden="true">
+      <div class="bg-overlay"></div>
+    </div>
+
+    <!-- Card Container -->
     <section class="card" aria-label="Inscription au lancement de Mon Chai">
-      <div class="brand">
-        <img src="logo_mon_chai.png" alt="Mon Chai" width="280" height="154" loading="eager" fetchpriority="high">
+      <!-- Logo -->
+      <div class="logo-wrapper">
+        <img src="logo_monchai.png" alt="Mon Chai" class="logo" width="280" height="140">
       </div>
 
-      <div class="divider" aria-hidden="true"></div>
+      <!-- Divider -->
+      <div class="divider" aria-hidden="true">
+        <img src="trait_entre_logo_et_traca.svg" alt="">
+      </div>
 
+      <!-- Hero Title -->
       <h1 class="hero">
         <span class="hero-line" data-i18n="h1_line1">De la vigne à la vente,</span>
         <span class="hero-line" data-i18n="h1_line2">un seul outil.</span>
       </h1>
 
+      <!-- Lead Text -->
       <p class="lead" data-i18n="lead">
-        Traçabilité, production, stock, ventes et registres au même endroit.
+        Traçabilité, production, stock, ventes et registres au même endroit.<br>
         Découvrez Mon Chai en avant-première et bénéficiez d'<strong>un mois offert</strong> au lancement.
       </p>
 
+      <!-- Form -->
       <form id="waitlist-form" class="form" novalidate>
         <!-- Honeypot anti-bot (invisible) -->
         <div class="hp-field" aria-hidden="true">
@@ -176,6 +191,7 @@
         <button type="submit" id="submit-btn" class="cta" data-i18n="btn_submit">Me prévenir du lancement</button>
       </form>
 
+      <!-- Consent -->
       <label class="consent">
         <input type="checkbox" id="consent" name="consentement" required>
         <span data-i18n="consent">
@@ -184,9 +200,11 @@
           <a href="mailto:contact@monchai.fr">contact@monchai.fr</a>.
         </span>
       </label>
+
+      <!-- Footer Links -->
       <nav class="footer-links" aria-label="Liens légaux">
-        <button type="button" data-open="modal-legal" data-i18n="link_legal">Mentions légales</button>
         <button type="button" data-open="modal-privacy" data-i18n="link_privacy">Politique de confidentialité</button>
+        <button type="button" data-open="modal-legal" data-i18n="link_legal">Mentions légales</button>
       </nav>
     </section>
   </main>

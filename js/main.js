@@ -10,7 +10,7 @@
      EmailJS Configuration
      ------------------------------------------------------------------ */
   var EMAILJS_PUBLIC_KEY = 'SW76TlsTwVd5Z8v8y';
-  var EMAILJS_SERVICE_ID = 'service_dmflavl';
+  var EMAILJS_SERVICE_ID = 'service_fjuir5i';
   var EMAILJS_TEMPLATE_ID = 'template_yajlaes';
 
   /* ------------------------------------------------------------------

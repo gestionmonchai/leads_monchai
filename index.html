@@ -1,358 +1,538 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 
-  <!-- SEO -->
-  <title>Mon Chai - Logiciel de gestion viticole | De la vigne à la vente</title>
-  <meta name="description" content="Mon Chai simplifie votre gestion viticole : traçabilité, production, stocks, ventes et registres réglementaires centralisés. Inscrivez-vous pour un accès anticipé.">
-  <meta name="keywords" content="chai, gestion viticole, SaaS, logiciel, DRM, registre phytosanitaire, intrants, appellation, données douanières, bordeaux, beaujolais, vin, viticulture, logiciel viticole, Mon Chai, traçabilité, production viticole">
-  <meta name="author" content="Hallais & Berthelot">
-  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
-  <link rel="canonical" href="https://monchai.fr/">
+<!-- SEO -->
+<title>Mon Chai — Logiciel de gestion viticole | De la vigne à la vente</title>
+<meta name="description" content="Mon Chai centralise parcelles, vendanges, cuverie, stocks, ventes, clients et documents dans un seul outil pensé avec les vignerons. Rejoignez le programme bêta-test.">
+<meta name="keywords" content="gestion viticole, logiciel viticole, chai, vin, viticulture, parcelles, vendanges, cuverie, stocks, DRM, traçabilité, Mon Chai">
+<meta name="author" content="Berthelot &amp; Hallais">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<link rel="canonical" href="https://monchai.fr/">
 
-  <!-- Hreflang for multilingual SEO -->
-  <link rel="alternate" hreflang="fr" href="https://monchai.fr/">
-  <link rel="alternate" hreflang="en" href="https://monchai.fr/?lang=en">
-  <link rel="alternate" hreflang="es" href="https://monchai.fr/?lang=es">
-  <link rel="alternate" hreflang="it" href="https://monchai.fr/?lang=it">
-  <link rel="alternate" hreflang="de" href="https://monchai.fr/?lang=de">
-  <link rel="alternate" hreflang="zh" href="https://monchai.fr/?lang=zh">
-  <link rel="alternate" hreflang="x-default" href="https://monchai.fr/">
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://monchai.fr/">
+<meta property="og:title" content="Mon Chai — Logiciel de gestion viticole">
+<meta property="og:description" content="De la vigne à la vente : centralisez la gestion de votre domaine. Rejoignez le programme bêta-test.">
+<meta property="og:image" content="https://monchai.fr/assets/img/vignes_2.jpg">
+<meta property="og:locale" content="fr_FR">
+<meta property="og:site_name" content="Mon Chai">
 
-  <!-- Open Graph / Facebook -->
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://monchai.fr/">
-  <meta property="og:title" content="Mon Chai - Logiciel de gestion viticole">
-  <meta property="og:description" content="Mon Chai simplifie votre gestion viticole : traçabilité, production, stocks, ventes et registres centralisés. De la vigne à la vente.">
-  <meta property="og:image" content="https://monchai.fr/og-image.jpg">
-  <meta property="og:locale" content="fr_FR">
-  <meta property="og:locale:alternate" content="en_GB">
-  <meta property="og:locale:alternate" content="es_ES">
-  <meta property="og:locale:alternate" content="it_IT">
-  <meta property="og:locale:alternate" content="de_DE">
-  <meta property="og:locale:alternate" content="zh_CN">
-  <meta property="og:site_name" content="Mon Chai">
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Mon Chai — Logiciel de gestion viticole">
+<meta name="twitter:description" content="De la vigne à la vente : centralisez la gestion de votre domaine.">
+<meta name="twitter:image" content="https://monchai.fr/assets/img/vignes_2.jpg">
 
-  <!-- Twitter -->
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:url" content="https://monchai.fr/">
-  <meta name="twitter:title" content="Mon Chai - Logiciel de gestion viticole">
-  <meta name="twitter:description" content="Mon Chai simplifie votre gestion viticole : traçabilité, production, stocks, ventes et registres centralisés.">
-  <meta name="twitter:image" content="https://monchai.fr/og-image.jpg">
+<!-- Favicon -->
+<link rel="icon" type="image/png" href="assets/img/logo_mon_chai.png">
+<link rel="apple-touch-icon" href="assets/img/logo_mon_chai.png">
+<meta name="theme-color" content="#7B1E22">
 
-  <!-- Favicon -->
-  <link rel="icon" type="image/png" sizes="32x32" href="logo_mon_chai.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="logo_mon_chai.png">
-  <link rel="apple-touch-icon" sizes="180x180" href="logo_mon_chai.png">
-  <meta name="theme-color" content="#f6eddc">
-  <meta name="msapplication-TileColor" content="#4b0f1a">
-
-  <!-- Preconnect & Preload -->
-  <link rel="preconnect" href="https://fonts.bunny.net" crossorigin>
-  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
-  <link rel="preload" href="vignes_2.jpg" as="image">
-  <link rel="preload" href="logo_monchai.png" as="image">
-
-  <!-- Fonts: Poppins (the EXACT font from the Canva reference) -->
-  <link href="https://fonts.bunny.net/css?family=poppins:400,500,600,700,800&display=swap" rel="stylesheet">
-
-  <!-- Styles -->
-  <link rel="stylesheet" href="css/landing.css">
-
-  <!-- Structured Data: Organization + WebSite + SoftwareApplication -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@graph": [
-      {
-        "@type": "Organization",
-        "@id": "https://monchai.fr/#organization",
-        "name": "Hallais & Berthelot",
-        "url": "https://monchai.fr",
-        "logo": "https://monchai.fr/logo_mon_chai.png",
-        "contactPoint": {
-          "@type": "ContactPoint",
-          "email": "contact@monchai.fr",
-          "contactType": "customer service",
-          "availableLanguage": ["French", "English", "Spanish", "Italian", "German", "Chinese"]
-        },
-        "address": {
-          "@type": "PostalAddress",
-          "streetAddress": "5 rue Pierre-Joseph Colin",
-          "addressLocality": "Rennes",
-          "postalCode": "35000",
-          "addressCountry": "FR"
-        }
-      },
-      {
-        "@type": "WebSite",
-        "@id": "https://monchai.fr/#website",
-        "url": "https://monchai.fr",
-        "name": "Mon Chai",
-        "description": "Logiciel SaaS de gestion viticole. Centralisez traçabilité, production, stocks, ventes et registres réglementaires.",
-        "publisher": { "@id": "https://monchai.fr/#organization" },
-        "inLanguage": ["fr", "en", "es", "it", "de", "zh"]
-      },
-      {
-        "@type": "SoftwareApplication",
-        "name": "Mon Chai",
-        "applicationCategory": "BusinessApplication",
-        "operatingSystem": "Web",
-        "description": "Logiciel SaaS de gestion viticole. De la vigne à la vente, centralisez traçabilité, production, stocks, ventes et registres réglementaires.",
-        "offers": {
-          "@type": "Offer",
-          "availability": "https://schema.org/PreOrder",
-          "price": "0",
-          "priceCurrency": "EUR"
-        },
-        "creator": { "@id": "https://monchai.fr/#organization" },
-        "keywords": "chai, gestion viticole, SaaS, logiciel, DRM, registre phytosanitaire, intrants, appellation, traçabilité, production viticole"
-      }
-    ]
-  }
-  </script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500&family=Inter:wght@400;500;600;700&family=Manrope:wght@600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
-  <!-- Language Switcher -->
-  <div class="lang-switcher">
-    <button class="lang-btn" type="button" aria-haspopup="true" aria-expanded="false">
-      <span class="lang-label">FR</span>
-      <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 5l3 3 3-3"/></svg>
-    </button>
-    <ul class="lang-dropdown" role="menu">
-      <li role="none"><button role="menuitem" data-lang="fr" class="active">Français</button></li>
-      <li role="none"><button role="menuitem" data-lang="en">English</button></li>
-      <li role="none"><button role="menuitem" data-lang="es">Español</button></li>
-      <li role="none"><button role="menuitem" data-lang="it">Italiano</button></li>
-      <li role="none"><button role="menuitem" data-lang="de">Deutsch</button></li>
-      <li role="none"><button role="menuitem" data-lang="zh">中文</button></li>
-    </ul>
-  </div>
 
-  <!-- Main Landing Page -->
-  <main class="landing">
-    <!-- Background Image -->
-    <div class="bg-wrapper">
-      <img src="vignes_2.jpg" alt="" class="bg-image" aria-hidden="true">
-      <div class="bg-overlay"></div>
+<!-- ================================================================
+     HEADER PROVISOIRE
+     Asset vectoriel exact du Figma (Group 110 : logo + menu + boutons + FR).
+     Comportement : disparaît au scroll vers le bas, réapparaît au scroll
+     vers le haut. Aucune règle de changement de couleur pour l'instant.
+     ================================================================ -->
+<header class="site-header" id="siteHeader">
+  <div class="site-header__img"></div>
+  <!-- Zones cliquables posées sur le SVG (positions mesurées au pixel dans HEADER.svg) -->
+  <nav class="site-header__liens" aria-label="Navigation principale">
+    <a href="#pourquoi"  style="--x:364px;  --w:119px">Fonctionnalités</a>
+    <a href="#assistant" style="--x:524px;  --w:90px">Assistant IA</a>
+    <a href="#tarifs"    style="--x:656px;  --w:131px">Bêta-test &amp; Tarifs</a>
+    <a href="#apropos"   style="--x:828px;  --w:67px">À propos</a>
+    <a href="#faq"       style="--x:937px;  --w:30px">FAQ</a>
+    <a href="#actualite" style="--x:1008px; --w:70px">Actualité</a>
+    <a href="#connexion" style="--x:1366px; --w:105px">Me connecter</a>
+    <a href="#tarifs"    style="--x:1520px; --w:292px" class="cta" data-beta>Testez Mon Chai gratuitement</a>
+    <a href="#langue"    style="--x:1856px; --w:33px">FR</a>
+  </nav>
+</header>
+
+<!-- Barre de lecture (progression du scroll) -->
+<div class="reading-bar"><span id="readingBar"></span></div>
+
+<!-- Navigation latérale en tirets -->
+<nav class="dot-nav" id="dotNav" aria-label="Navigation par section">
+  <a href="#accueil"   data-cible="accueil"><span class="tiret"></span><span class="etiquette">Accueil</span></a>
+  <a href="#pourquoi"  data-cible="pourquoi"><span class="tiret"></span><span class="etiquette">Pourquoi Mon Chai</span></a>
+  <a href="#assistant" data-cible="assistant"><span class="tiret"></span><span class="etiquette">Assistant IA</span></a>
+  <a href="#tarifs"    data-cible="tarifs"><span class="tiret"></span><span class="etiquette">Bêta-test &amp; Tarifs</span></a>
+  <a href="#apropos"   data-cible="apropos"><span class="tiret"></span><span class="etiquette">À propos</span></a>
+  <a href="#faq"       data-cible="faq"><span class="tiret"></span><span class="etiquette">FAQ</span></a>
+  <a href="#actualite" data-cible="actualite"><span class="tiret"></span><span class="etiquette">Actualité</span></a>
+</nav>
+
+<div class="page" id="page">
+
+  <!-- ================================================================
+       ÉCRAN 1 — frame Figma "ACCUEIL" (24:1834) · 1920 × 1200
+       ================================================================ -->
+  <section class="stage" id="accueil">
+
+    <div class="hero-photo"></div>
+
+    <div class="hero-card">
+      <h1 class="hero-title">Le logiciel viticole<br>qui simplifie la gestion<br>du domaine.</h1>
+      <div class="ornement"></div>
+      <p class="hero-lead">Mon Chai <strong>centralise</strong> vos parcelles, vendanges,<br>cuverie, stocks, ventes, clients et documents<br>dans un outil pensé avec les vignerons.</p>
+      <a class="btn btn-gold"  href="#beta" data-beta>Rejoindre le programme<br>de bêta-tests gratuitement</a>
+      <a class="btn btn-light" href="#fonctionnalites">Découvrir les fonctionnalités</a>
     </div>
 
-    <!-- Card Container -->
-    <section class="card" aria-label="Inscription au lancement de Mon Chai">
-      <!-- Logo -->
-      <div class="logo-wrapper">
-        <img src="logo_monchai.png" alt="Mon Chai" class="logo" width="280" height="140">
+    <div class="apercu" aria-label="Aperçu produit illustratif">
+      <div class="dots"><i></i><i></i><i></i></div>
+      <span class="screen-title">Tableau de bord domaine</span>
+
+      <article class="dash-card c1">
+        <p class="kicker">Volume disponible</p>
+        <p class="number">18 420</p>
+        <p class="kicker">bouteilles</p>
+        <div class="bar"><span style="width:72%"></span></div>
+      </article>
+      <article class="dash-card c2">
+        <p class="kicker">Vendanges</p>
+        <p class="number">7</p>
+        <p class="kicker">lots suivis</p>
+        <div class="bar"><span style="width:58%"></span></div>
+      </article>
+      <article class="dash-card cw">
+        <p class="kicker">Prochaine action recommandée</p>
+        <p class="number">Mise 75cl</p>
+        <p class="kicker">Vérifier matières sèches, volumes disponibles et commandes en attente.</p>
+      </article>
+      <article class="dash-card c3">
+        <p class="kicker">Clients actifs</p>
+        <p class="number">248</p>
+        <p class="kicker">fiches</p>
+      </article>
+      <article class="dash-card c4">
+        <p class="kicker">Documents</p>
+        <p class="number">12</p>
+        <p class="kicker">à préparer</p>
+      </article>
+    </div>
+
+  </section>
+
+
+  <!-- ================================================================
+       ÉCRAN 2 — frame Figma "Frame 1" · 1920 × 3705
+       Les trois sections (Pourquoi Mon Chai + Assistant IA + Bêta-test &
+       Tarifs) sont désormais UNE SEULE frame. Les transitions entre elles
+       sont gérées dans Figma (photo à 74 % + dégradé de fondu), plus en CSS.
+
+       Le fond est la frame entière MOINS les 9 vignettes, qui sont posées
+       par-dessus en SVG indépendants pour rester animables.
+       Recomposition vérifiée contre la frame d'origine : 0,00/255.
+       ================================================================ -->
+  <section class="stage" id="parcours">
+
+    <div class="frame1-fond"></div>
+    <div class="parcours-bas"></div>
+
+    <!-- Ancres pour la nav latérale et les liens du header -->
+    <div class="ancre" id="pourquoi"  style="top:150px"></div>
+    <div class="ancre" id="assistant" style="top:1300px"></div>
+    <div class="ancre" id="tarifs"    style="top:2700px"></div>
+
+    <!-- Les 9 modules : survol -> voile beige + flèche qui devient un trait
+         + encadré. Clic -> figé. Clic ailleurs -> fermé. -->
+    <div class="pq-modules">
+
+      <div class="pq-slot" style="--i:0; --fx:93.92px; --fy:213.3px">
+        <button class="pq-module" data-module="parcelles" aria-expanded="false">
+          <span class="sr">Parcelles</span>
+          <span class="pq-fleche"></span>
+          <span class="pq-trait"></span>
+        </button>
+        <div class="pq-panneau">
+          <ul>
+            <li>Parcelles</li>
+            <li>interventions</li>
+            <li>informations clés du vignoble</li>
+          </ul>
+        </div>
       </div>
 
-      <!-- Divider -->
-      <div class="divider" aria-hidden="true">
-        <img src="trait_entre_logo_et_traca.svg" alt="">
+      <div class="pq-slot" style="--i:1; --fx:90.91px; --fy:214.3px">
+        <button class="pq-module" data-module="vendanges" aria-expanded="false">
+          <span class="sr">Vendanges</span>
+          <span class="pq-fleche"></span>
+          <span class="pq-trait"></span>
+        </button>
+        <div class="pq-panneau">
+          <ul>
+            <li>Encuvages</li>
+            <li>pressurages</li>
+            <li>rendements</li>
+          </ul>
+        </div>
       </div>
 
-      <!-- Hero Title -->
-      <h1 class="hero">
-        <span class="hero-line" data-i18n="h1_line1">De la vigne à la vente</span>
-        <span class="hero-line" data-i18n="h1_line2">un seul outil.</span>
-      </h1>
+      <div class="pq-slot" style="--i:2; --fx:91.91px; --fy:214.3px">
+        <button class="pq-module" data-module="cuverie" aria-expanded="false">
+          <span class="sr">Cuverie</span>
+          <span class="pq-fleche"></span>
+          <span class="pq-trait"></span>
+        </button>
+        <div class="pq-panneau">
+          <ul>
+            <li>Assemblages</li>
+            <li>soutirages</li>
+            <li>élevage, analyses</li>
+          </ul>
+        </div>
+      </div>
 
-      <!-- Lead Text -->
-      <p class="lead" data-i18n="lead">
-        Traçabilité, production, stock, ventes et registres au même endroit.<br>
-        Découvrez Mon Chai en avant-première et bénéficiez d'<strong>un mois offert</strong> au lancement.
-      </p>
+      <div class="pq-slot" style="--i:3; --fx:90.91px; --fy:214.3px">
+        <button class="pq-module" data-module="mises" aria-expanded="false">
+          <span class="sr">Mises</span>
+          <span class="pq-fleche"></span>
+          <span class="pq-trait"></span>
+        </button>
+        <div class="pq-panneau">
+          <ul>
+            <li>Planificateur</li>
+            <li>embouteillage</li>
+            <li>matières sèches</li>
+          </ul>
+        </div>
+      </div>
 
-      <!-- Form -->
-      <form id="waitlist-form" class="form" novalidate>
-        <!-- Honeypot anti-bot (invisible) -->
+      <div class="pq-slot" style="--i:4; --fx:89.9px; --fy:214.3px">
+        <button class="pq-module" data-module="stocks" aria-expanded="false">
+          <span class="sr">Stocks</span>
+          <span class="pq-fleche"></span>
+          <span class="pq-trait"></span>
+        </button>
+        <div class="pq-panneau">
+          <ul>
+            <li>Lots commerciaux</li>
+            <li>inventaires</li>
+            <li>valorisation</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="pq-slot" style="--i:5; --fx:90.9px; --fy:214.3px">
+        <button class="pq-module" data-module="ventes" aria-expanded="false">
+          <span class="sr">Ventes</span>
+          <span class="pq-fleche"></span>
+          <span class="pq-trait"></span>
+        </button>
+        <div class="pq-panneau">
+          <ul>
+            <li>Devis, factures</li>
+            <li>livraisons</li>
+            <li>caisse</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="pq-slot" style="--i:6; --fx:90.91px; --fy:214.3px">
+        <button class="pq-module" data-module="clients" aria-expanded="false">
+          <span class="sr">Clients</span>
+          <span class="pq-fleche"></span>
+          <span class="pq-trait"></span>
+        </button>
+        <div class="pq-panneau">
+          <ul>
+            <li>Segmentation</li>
+            <li>historique achats</li>
+            <li>prospection</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="pq-slot" style="--i:7; --fx:90.91px; --fy:214.3px">
+        <button class="pq-module" data-module="administratif" aria-expanded="false">
+          <span class="sr">Administratif</span>
+          <span class="pq-fleche"></span>
+          <span class="pq-trait"></span>
+        </button>
+        <div class="pq-panneau">
+          <ul>
+            <li>Déclarations</li>
+            <li>douane, capsules</li>
+            <li>registres</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="pq-slot" style="--i:8; --fx:90.9px; --fy:218.33px">
+        <button class="pq-module" data-module="tableaux-de-bord" aria-expanded="false">
+          <span class="sr">Tableaux de bord</span>
+          <span class="pq-fleche"></span>
+          <span class="pq-trait"></span>
+        </button>
+        <div class="pq-panneau">
+          <ul>
+            <li>Indicateurs</li>
+            <li>coûts, marges</li>
+            <li>vue globale</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- ================================================================
+       ÉCRAN 3 — frame Figma "À propos et FAQ" · 1920 × 2481
+       À propos et FAQ fusionnés en une seule frame : la photo de raisins est
+       continue de l'un à l'autre, la transition est gérée dans Figma (fondu
+       vers le crème en bas). Bande de header retirée (coupe y=119), cadre noir
+       de l'export supprimé.
+       ⚠️ Les « + » de la FAQ sont dessinés dans le SVG : l'accordéon n'est pas
+       encore interactif.
+       ================================================================ -->
+  <section class="stage" id="apropos-faq" aria-label="À propos et questions fréquentes">
+    <div class="apfaq-fond"></div>
+    <!-- Ancres pour la nav latérale et les liens du header -->
+    <div class="ancre" id="apropos" style="top:0"></div>
+    <div class="ancre" id="faq"     style="top:1500px"></div>
+
+    <!-- FAQ interactive : recouvre les cartes figées du SVG (fond crème)
+         et les remplace par un vrai accordéon. Clic sur une question ->
+         réponse ; clic ailleurs -> referme celle ouverte. -->
+    <div class="faq">
+      <div class="faq-col">
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false"><span>À qui s’adresse Mon Chai ?</span><span class="faq-plus" aria-hidden="true"></span></button>
+          <div class="faq-a"><p>Tout d’abord aux domaines viticoles qui souhaitent centraliser leur gestion et mieux suivre leurs données, de la vigne à la vente. Mon Chai proposera également par la suite des modules pour cavistes et négociants.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false"><span>Comment fonctionne le programme de bêta-testeurs ?</span><span class="faq-plus" aria-hidden="true"></span></button>
+          <div class="faq-a"><p>Vous testez gratuitement le logiciel du 15 juillet au 1ᵉʳ octobre. En échange, vous partagez vos retours pour nous aider à construire un outil vraiment adapté au terrain. Un accompagnement personnalisé est inclus : transfert de données, formation et webinaire de prise en main.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false"><span>Peut-on importer nos données ?</span><span class="faq-plus" aria-hidden="true"></span></button>
+          <div class="faq-a"><p>Oui. Nous vous accompagnons pour importer vos données existantes — parcelles, clients, stocks — depuis vos fichiers ou vos outils actuels. Le transfert est offert pendant le programme bêta-test.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false"><span>Est-ce que Mon Chai est sécurisé ?</span><span class="faq-plus" aria-hidden="true"></span></button>
+          <div class="faq-a"><p>Oui. Vos données sont hébergées en France sur des serveurs sécurisés, avec des sauvegardes régulières et un accès protégé. Vous restez seul propriétaire de vos informations.</p></div>
+        </div>
+      </div>
+      <div class="faq-col">
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false"><span>Quels seront vos tarifs à la fin du programme bêta-testeurs ?</span><span class="faq-plus" aria-hidden="true"></span></button>
+          <div class="faq-a"><p>À partir du 1ᵉʳ octobre 2026 : 49 € HT / mois pendant un an, puis 59 € HT / mois, sans engagement. Les bêta-testeurs bénéficient d’une offre Primeurs qui leur est réservée.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false"><span>Quel accompagnement proposez-vous pour les domaines qui veulent tester le logiciel ?</span><span class="faq-plus" aria-hidden="true"></span></button>
+          <div class="faq-a"><p>Selon votre domaine : transfert de vos données, une heure de formation individuelle, un webinaire de prise en main et une assistance dédiée et réactive pour bien démarrer.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false"><span>Qu’est-ce qui sera inclus dans l’abonnement ?</span><span class="faq-plus" aria-hidden="true"></span></button>
+          <div class="faq-a"><p>L’accès complet au logiciel et à toutes ses fonctionnalités, les mises à jour et l’assistance incluses. Jusqu’à 2 utilisateurs, puis +15 € HT par utilisateur supplémentaire.</p></div>
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+
+  <!-- ÉCRAN 4 — Notre actualité · 1920 × 1081 -->
+  <section class="stage" id="actualite" aria-label="Notre actualité"></section>
+
+
+  <!-- FOOTER · 1920 × 520 -->
+  <footer class="site-footer" aria-label="Pied de page">
+    <!-- Liens posés sur le SVG du footer (positions mesurées au pixel) -->
+    <nav class="footer-liens" aria-label="Liens légaux">
+      <a href="cgu.html" style="--y:110px; --w:90px">CGUV</a>
+      <a href="mailto:contact@monchai.fr" style="--y:178px; --w:200px">Nous contacter</a>
+      <a href="mentions-legales.html" style="--y:246px; --w:210px">Mentions légales</a>
+      <button type="button" class="footer-lien-btn" style="--y:311px; --w:240px" data-cookies>Gérer mes cookies</button>
+      <a href="politique-confidentialite.html" style="--y:380px; --w:350px">Politique de confidentialité</a>
+    </nav>
+  </footer>
+
+</div>
+
+
+<!-- ================================================================
+     POP-UP — inscription au programme bêta-test.
+     Ouverte par les boutons [data-beta] ; fermée par la croix, le fond ou Échap.
+     Le formulaire envoie l'e-mail via EmailJS (mécanisme repris de l'ancienne
+     landing : honeypot, timing, validation, limitation de fréquence).
+     ================================================================ -->
+<div class="modal" id="modalBeta" hidden>
+  <div class="modal__fond" data-fermer></div>
+  <div class="modal__boite" role="dialog" aria-modal="true" aria-labelledby="modalTitre">
+    <button class="modal__fermer" data-fermer aria-label="Fermer">&times;</button>
+
+    <!-- Colonne gauche : argumentaire -->
+    <aside class="modal__aside">
+      <h2 class="modal__titre" id="modalTitre">Rejoignez le programme <span>bêta-test.</span></h2>
+      <p class="modal__soustitre">Testez Mon Chai gratuitement et participez directement à la construction d’un outil pensé pour votre quotidien.</p>
+
+      <ul class="modal__avantages">
+        <li><span class="modal__check" aria-hidden="true"></span><div><strong>Accès gratuit</strong>Jusqu’au 1ᵉʳ octobre, sans moyen de paiement.</div></li>
+        <li><span class="modal__check" aria-hidden="true"></span><div><strong>Formation offerte</strong>Une heure avec l’équipe Mon Chai pour bien démarrer.</div></li>
+        <li><span class="modal__check" aria-hidden="true"></span><div><strong>Transfert accompagné</strong>Nous vous aidons à préparer vos premières données.</div></li>
+      </ul>
+
+      <p class="modal__note">Le programme est réservé aux professionnels de la filière vitivinicole. Le SIRET est utilisé pour vérifier votre éligibilité.</p>
+      <p class="modal__france"><span aria-hidden="true">🇫🇷</span> Logiciel développé et hébergé en France.</p>
+    </aside>
+
+    <!-- Colonne droite : formulaire -->
+    <div class="modal__form-wrap">
+      <h3 class="modal__form-titre">Parlez-nous de votre domaine.</h3>
+      <p class="modal__form-aide">Les champs marqués d’un astérisque sont nécessaires pour étudier votre demande.</p>
+
+      <form id="waitlist-form" class="modal__form" novalidate>
         <div class="hp-field" aria-hidden="true">
           <label for="website">Site web</label>
           <input type="text" name="website" id="website" tabindex="-1" autocomplete="off">
         </div>
 
-        <input
-          type="email"
-          id="email"
-          name="email"
-          class="email-input"
-          placeholder="Votre adresse e-mail"
-          autocomplete="email"
-          inputmode="email"
-          maxlength="100"
-          required
-          aria-label="Adresse e-mail"
-          data-i18n="email_placeholder"
-        >
+        <div class="modal__grid">
+          <div class="champ">
+            <label for="prenom">Prénom <b>*</b></label>
+            <input type="text" id="prenom" name="prenom" maxlength="60" required autocomplete="given-name">
+          </div>
+          <div class="champ">
+            <label for="nom">Nom <b>*</b></label>
+            <input type="text" id="nom" name="nom" maxlength="60" required autocomplete="family-name">
+          </div>
 
-        <p id="form-message" class="form-feedback" style="display:none;" role="alert"></p>
+          <div class="champ">
+            <label for="email">E-mail professionnel <b>*</b></label>
+            <input type="email" id="email" name="email" placeholder="vous@domaine.fr" maxlength="100" required autocomplete="email" inputmode="email">
+          </div>
+          <div class="champ">
+            <label for="telephone">Téléphone</label>
+            <input type="tel" id="telephone" name="telephone" placeholder="06 00 00 00 00" maxlength="20" autocomplete="tel" inputmode="tel">
+          </div>
 
-        <button type="submit" id="submit-btn" class="cta" data-i18n="btn_submit">Me prévenir du lancement</button>
+          <div class="champ">
+            <label for="domaine">Nom du domaine ou de la structure <b>*</b></label>
+            <input type="text" id="domaine" name="domaine" maxlength="120" required autocomplete="organization">
+          </div>
+          <div class="champ">
+            <label for="siret">SIRET <b>*</b></label>
+            <input type="text" id="siret" name="siret" placeholder="14 chiffres" inputmode="numeric" maxlength="17" required>
+            <small>Il sert uniquement à vérifier votre activité professionnelle.</small>
+          </div>
+
+          <div class="champ">
+            <label for="activite">Votre activité <b>*</b></label>
+            <select id="activite" name="activite" required>
+              <option value="" selected disabled>Sélectionnez une activité</option>
+              <option>Vigneron / Domaine viticole</option>
+              <option>Cave coopérative</option>
+              <option>Négociant</option>
+              <option>Caviste</option>
+              <option>Autre</option>
+            </select>
+          </div>
+          <div class="champ">
+            <label for="outil">Votre outil actuel</label>
+            <select id="outil" name="outil">
+              <option selected>Aucun ou plusieurs outils</option>
+              <option>Excel / papier</option>
+              <option>Un logiciel viticole</option>
+              <option>Autre</option>
+            </select>
+          </div>
+
+          <div class="champ champ--full">
+            <label for="priorite">Que souhaitez-vous tester en priorité ?</label>
+            <textarea id="priorite" name="priorite" rows="3" maxlength="500" placeholder="Parcelles, vendanges, stocks, facturation, DRM, suivi clients…"></textarea>
+          </div>
+        </div>
+
+        <label class="modal__consent">
+          <input type="checkbox" id="consent" name="consentement" required>
+          <span>J’accepte que HALLAIS &amp; BERTHELOT utilise ces informations pour étudier ma demande, vérifier mon éligibilité, créer mon accès et organiser mon accompagnement. <a href="mailto:contact@monchai.fr">Consulter la politique de confidentialité</a>.</span>
+        </label>
+
+        <p id="form-message" class="modal__message" style="display:none;" role="alert"></p>
+
+        <div class="modal__pied">
+          <span class="modal__lock">🔒 Aucun moyen de paiement demandé</span>
+          <button type="submit" id="submit-btn" class="modal__submit">Envoyer ma demande&nbsp;→</button>
+        </div>
       </form>
 
-      <!-- Consent -->
-      <label class="consent">
-        <input type="checkbox" id="consent" name="consentement" required>
-        <span data-i18n="consent">
-          J'accepte que mon adresse e-mail soit utilisée par Mon Chai pour être recontacté.
-          Je peux demander l'accès, la rectification ou la suppression de mes données à tout moment à
-          <a href="mailto:contact@monchai.fr">contact@monchai.fr</a>.
-        </span>
-      </label>
-
-      <!-- Footer Links -->
-      <nav class="footer-links" aria-label="Liens légaux">
-        <button type="button" data-open="modal-privacy" data-i18n="link_privacy">Politique de confidentialité</button>
-        <button type="button" data-open="modal-legal" data-i18n="link_legal">Mentions légales</button>
-      </nav>
-    </section>
-  </main>
-
-  <!-- Modal: Mentions légales -->
-  <div class="modal" id="modal-legal" aria-hidden="true">
-    <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="legal-title">
-      <div class="modal-head">
-        <h2 id="legal-title">Mentions légales</h2>
-        <button class="close-btn" type="button" data-close aria-label="Fermer">&times;</button>
+      <!-- Message de confirmation (affiché après envoi) -->
+      <div class="modal__succes" id="modalSucces" hidden>
+        <div class="modal__succes-check" aria-hidden="true"></div>
+        <p>Votre demande a bien été prise en compte.<br>L’équipe Mon Chai reviendra rapidement vers vous par mail avec votre lien d’activation et les prochaines étapes.<br><strong>À très vite !</strong></p>
       </div>
-      <div class="legal-content">
-        <h3>Éditeur du site</h3>
-        <p>
-          Le présent site est édité par <strong>Hallais &amp; Berthelot</strong>,
-          <strong>SAS</strong> au capital de <strong>1 000 €</strong>,
-          immatriculée au <strong>RCS de Rennes</strong> sous le numéro <strong>100858547</strong>,
-          dont le siège social est situé au <strong>5 rue Pierre-Joseph Colin, 35000 Rennes, France</strong>.
-        </p>
 
-        <p>
-          Numéro de TVA intracommunautaire : <strong>FR61100858547</strong><br>
-          Code APE / NAF : <strong>6201Z – Programmation informatique</strong><br>
-          Adresse e-mail : <strong>contact@monchai.fr</strong>
-        </p>
-
-        <h3>Direction de la publication</h3>
-        <p>
-          Directeur de la publication : <strong>Denis Berthelot</strong>, président de Hallais &amp; Berthelot.
-        </p>
-
-        <h3>Hébergement</h3>
-        <p>
-          Le site est hébergé par <strong>Hostinger International Ltd</strong>,
-          dont le siège social est situé au <strong>Švitrigailos str. 34, Vilnius 03230, Lituanie</strong>.<br>
-          Contact : <strong>support@hostinger.com</strong>
-        </p>
-
-        <h3>Propriété intellectuelle</h3>
-        <p>
-          L'ensemble des contenus présents sur ce site, notamment les textes, visuels, illustrations,
-          logos, éléments graphiques et signes distinctifs relatifs à Mon Chai, est protégé par le droit
-          de la propriété intellectuelle. Toute reproduction, représentation, adaptation ou exploitation,
-          totale ou partielle, sans autorisation écrite préalable, est interdite.
-        </p>
-
-        <h3>Responsabilité</h3>
-        <p>
-          Hallais &amp; Berthelot s'efforce d'assurer l'exactitude des informations diffusées sur ce site.
-          Toutefois, la société ne saurait être tenue responsable d'éventuelles erreurs, omissions
-          ou indisponibilités temporaires du site.
-        </p>
-
-        <h3>Contact</h3>
-        <p>
-          Pour toute question relative au site ou à son contenu, vous pouvez nous écrire à :
-          <strong>contact@monchai.fr</strong>
-        </p>
-      </div>
+      <noscript><p class="modal__noscript">Le formulaire nécessite JavaScript. Écrivez-nous à <a href="mailto:contact@monchai.fr">contact@monchai.fr</a>.</p></noscript>
     </div>
   </div>
+</div>
 
-  <!-- Modal: Politique de confidentialité -->
-  <div class="modal" id="modal-privacy" aria-hidden="true">
-    <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="privacy-title">
-      <div class="modal-head">
-        <h2 id="privacy-title">Politique de confidentialité</h2>
-        <button class="close-btn" type="button" data-close aria-label="Fermer">&times;</button>
-      </div>
-      <div class="legal-content">
-        <p>
-          La présente politique de confidentialité décrit la manière dont <strong>Hallais &amp; Berthelot</strong>
-          traite les données personnelles collectées via cette page d'information du projet <strong>Mon Chai</strong>.
-        </p>
 
-        <h3>Responsable du traitement</h3>
-        <p>
-          Le responsable du traitement est <strong>Hallais &amp; Berthelot</strong>,
-          SAS au capital de 1 000 €, immatriculée au RCS de Rennes sous le numéro 100858547,
-          dont le siège social est situé au 5 rue Pierre-Joseph Colin, 35000 Rennes, France.
-        </p>
+<!-- ================================================================
+     COOKIES — bandeau de consentement (conforme CNIL)
+     Cookies strictement nécessaires : toujours actifs, sans consentement.
+     Mesure d'audience + tiers : soumis au consentement. Choix conservé 6 mois,
+     réouvrable via « Gérer mes cookies » (footer / pages légales).
+     ================================================================ -->
+<div class="cookie" id="cookieBanner" hidden>
+  <div class="cookie__texte">
+    <strong>Cookies &amp; vie privée</strong>
+    <p>Nous utilisons des cookies strictement nécessaires au fonctionnement du site. Avec votre accord, nous utilisons aussi des cookies de mesure d’audience pour améliorer Mon Chai. <a href="politique-confidentialite.html">En savoir plus</a>.</p>
+  </div>
+  <div class="cookie__actions">
+    <button type="button" class="cookie__btn cookie__btn--ghost" id="cookieRefus">Refuser</button>
+    <button type="button" class="cookie__btn cookie__btn--ghost" id="cookieRegler">Personnaliser</button>
+    <button type="button" class="cookie__btn cookie__btn--plein" id="cookieAccept">Tout accepter</button>
+  </div>
+</div>
 
-        <p>
-          Pour toute question relative à vos données personnelles, vous pouvez écrire à :
-          <strong>contact@monchai.fr</strong>
-        </p>
+<div class="cookie-modal" id="cookieModal" hidden>
+  <div class="cookie-modal__fond" data-cookies-fermer></div>
+  <div class="cookie-modal__boite" role="dialog" aria-modal="true" aria-label="Réglages des cookies">
+    <button class="cookie-modal__fermer" data-cookies-fermer aria-label="Fermer">&times;</button>
+    <h2>Réglages des cookies</h2>
+    <p class="cookie-modal__intro">Choisissez les cookies que vous acceptez. Vos choix sont conservés six mois.</p>
 
-        <h3>Données collectées</h3>
-        <p>
-          Lorsque vous utilisez le formulaire présent sur cette page, nous collectons votre
-          <strong>adresse e-mail</strong>. Nous pouvons également conserver la date de votre inscription
-          et la preuve de votre consentement.
-        </p>
+    <label class="cookie-opt">
+      <span><strong>Strictement nécessaires</strong><br>Indispensables au fonctionnement et à la sécurité du site. Toujours actifs.</span>
+      <input type="checkbox" checked disabled>
+    </label>
+    <label class="cookie-opt">
+      <span><strong>Mesure d’audience</strong><br>Nous aident à comprendre l’usage du site pour l’améliorer.</span>
+      <input type="checkbox" id="optAudience">
+    </label>
+    <label class="cookie-opt">
+      <span><strong>Services tiers</strong><br>Contenus et outils externes (formulaires, vidéos, suivi de campagne).</span>
+      <input type="checkbox" id="optTiers">
+    </label>
 
-        <h3>Finalité du traitement</h3>
-        <p>
-          Ces données sont utilisées uniquement pour vous informer du lancement de Mon Chai
-          et, le cas échéant, vous adresser des informations liées à l'ouverture du service.
-        </p>
-
-        <h3>Base légale</h3>
-        <p>
-          Le traitement repose sur votre <strong>consentement</strong>, manifesté par l'envoi du formulaire
-          et la case à cocher dédiée.
-        </p>
-
-        <h3>Destinataires</h3>
-        <p>
-          Les données sont destinées exclusivement à Hallais &amp; Berthelot et, le cas échéant,
-          à ses prestataires techniques strictement nécessaires à l'hébergement du site ou à la gestion
-          de la collecte des inscriptions.
-        </p>
-
-        <h3>Durée de conservation</h3>
-        <p>
-          Les données sont conservées pendant une durée maximale de <strong>24 mois</strong>
-          à compter de leur collecte, sauf demande de suppression anticipée ou obligation légale contraire.
-        </p>
-
-        <h3>Vos droits</h3>
-        <p>
-          Conformément à la réglementation applicable, vous disposez d'un droit d'accès,
-          de rectification, d'effacement, de limitation du traitement et, lorsque cela s'applique,
-          d'un droit d'opposition et d'un droit à la portabilité de vos données.
-        </p>
-
-        <p>
-          Vous pouvez exercer vos droits à tout moment en écrivant à :
-          <strong>contact@monchai.fr</strong>
-        </p>
-
-        <p>
-          Vous disposez également du droit d'introduire une réclamation auprès de la <strong>CNIL</strong>
-          si vous estimez que vos droits ne sont pas respectés.
-        </p>
-
-        <h3>Cookies</h3>
-        <p>
-          Cette page a vocation à fonctionner sans cookies non essentiels. Si des services tiers
-          ou outils de mesure d'audience sont ajoutés ultérieurement, la présente politique pourra être mise à jour.
-        </p>
-      </div>
+    <div class="cookie-modal__pied">
+      <button type="button" class="cookie__btn cookie__btn--ghost" id="cookieToutRefus">Tout refuser</button>
+      <button type="button" class="cookie__btn cookie__btn--plein" id="cookieEnregistrer">Enregistrer mes choix</button>
     </div>
   </div>
+</div>
 
-  <!-- Scripts (all deferred to avoid render-blocking) -->
-  <script defer src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
-  <script defer src="js/i18n.js"></script>
-  <script defer src="js/main.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+<script src="script.js"></script>
 </body>
 </html>
+           

@@ -75,10 +75,25 @@
     <section class="mobile-reference__screen" id="mobile-reference-benefices">
       <img src="assets/mobile/appli-benefices.svg" alt="Moins de ressaisie, plus de clarté sur votre domaine">
     </section>
-    <section class="mobile-reference__screen" id="mobile-reference-assistant">
+    <section class="mobile-reference__screen mobile-reference__modules" aria-label="Modules Mon Chai interactifs">
       <img src="assets/mobile/appli-modules.svg" alt="Les modules Mon Chai : parcelles, vendanges, cuverie, mises, stocks, ventes, clients, administratif et tableaux de bord">
+      <button class="mobile-module-card" data-mobile-module="parcelles" style="--col:0;--row:0" aria-pressed="false"><span class="sr-only">Parcelles</span><i></i></button>
+      <button class="mobile-module-card" data-mobile-module="vendanges" style="--col:1;--row:0" aria-pressed="false"><span class="sr-only">Vendanges</span><i></i></button>
+      <button class="mobile-module-card" data-mobile-module="cuverie" style="--col:0;--row:1" aria-pressed="false"><span class="sr-only">Cuverie</span><i></i></button>
+      <button class="mobile-module-card" data-mobile-module="mises" style="--col:1;--row:1" aria-pressed="false"><span class="sr-only">Mises</span><i></i></button>
+      <button class="mobile-module-card" data-mobile-module="stocks" style="--col:0;--row:2" aria-pressed="false"><span class="sr-only">Stocks</span><i></i></button>
+      <button class="mobile-module-card" data-mobile-module="ventes" style="--col:1;--row:2" aria-pressed="false"><span class="sr-only">Ventes</span><i></i></button>
+      <button class="mobile-module-card" data-mobile-module="clients" style="--col:0;--row:3" aria-pressed="false"><span class="sr-only">Clients</span><i></i></button>
+      <button class="mobile-module-card" data-mobile-module="administratif" style="--col:1;--row:3" aria-pressed="false"><span class="sr-only">Administratif</span><i></i></button>
+      <button class="mobile-module-card" data-mobile-module="tableaux-de-bord" style="--col:0;--row:4" aria-pressed="false"><span class="sr-only">Tableaux de bord</span><i></i></button>
+      <aside class="mobile-module-panel" id="mobileModulePanel" role="dialog" aria-modal="false" aria-labelledby="mobileModuleTitle" hidden>
+        <button type="button" class="mobile-module-panel__close" aria-label="Fermer l’encart">&times;</button>
+        <span>Module Mon Chai</span>
+        <h3 id="mobileModuleTitle"></h3>
+        <ul id="mobileModuleList"></ul>
+      </aside>
     </section>
-    <section class="mobile-reference__screen">
+    <section class="mobile-reference__screen" id="mobile-reference-assistant">
       <img src="assets/mobile/appli-assistant.svg" alt="Un assistant IA pensé pour les métiers du vin">
     </section>
     <section class="mobile-reference__screen mobile-reference__offer" id="mobile-reference-offre">
@@ -90,6 +105,16 @@
     </section>
     <footer class="mobile-reference__footer">
       <a href="mailto:contact@monchai.fr">contact@monchai.fr</a>
+      <div class="social-links" aria-label="Réseaux sociaux Mon Chai">
+        <a href="https://www.instagram.com/monchai.fr/" target="_blank" rel="noopener noreferrer" aria-label="Mon Chai sur Instagram">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"></rect><circle cx="12" cy="12" r="4.2"></circle><circle class="social-dot" cx="17.4" cy="6.7" r="1.15"></circle></svg>
+          <span>Instagram</span>
+        </a>
+        <a href="https://www.linkedin.com/company/monchai" target="_blank" rel="noopener noreferrer" aria-label="Mon Chai sur LinkedIn">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5.4 8.1H2.2V21h3.2V8.1ZM3.8 2.8A1.9 1.9 0 1 0 3.8 6.6 1.9 1.9 0 0 0 3.8 2.8ZM21.8 13.6c0-3.9-2.1-5.8-4.9-5.8-2.3 0-3.3 1.2-3.8 2.1V8.1H9.9V21h3.2v-6.4c0-1.7.3-3.4 2.5-3.4 2.1 0 2.2 2 2.2 3.5V21H21v-7.4h.8Z"></path></svg>
+          <span>LinkedIn</span>
+        </a>
+      </div>
       <nav aria-label="Liens légaux mobiles">
         <a href="mentions-legales.html">Mentions légales</a>
         <a href="politique-confidentialite.html">Confidentialité</a>
@@ -267,6 +292,7 @@
     <div class="frame1-fond"></div>
     <div class="parcours-bas"></div>
     <div class="offre-detail-cover" aria-hidden="true"></div>
+    <button type="button" class="tarif-beta-hotspot" data-beta aria-label="Rejoindre le programme bêta-test"></button>
 
     <!-- Ancres pour la nav latérale et les liens du header -->
     <div class="ancre" id="pourquoi"  style="top:150px"></div>
@@ -426,6 +452,16 @@
 
   <!-- FOOTER · 1920 × 520 -->
   <footer class="site-footer" aria-label="Pied de page">
+    <div class="social-links" aria-label="Réseaux sociaux Mon Chai">
+      <a href="https://www.instagram.com/monchai.fr/" target="_blank" rel="noopener noreferrer" aria-label="Mon Chai sur Instagram">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"></rect><circle cx="12" cy="12" r="4.2"></circle><circle class="social-dot" cx="17.4" cy="6.7" r="1.15"></circle></svg>
+        <span>Instagram</span>
+      </a>
+      <a href="https://www.linkedin.com/company/monchai" target="_blank" rel="noopener noreferrer" aria-label="Mon Chai sur LinkedIn">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5.4 8.1H2.2V21h3.2V8.1ZM3.8 2.8A1.9 1.9 0 1 0 3.8 6.6 1.9 1.9 0 0 0 3.8 2.8ZM21.8 13.6c0-3.9-2.1-5.8-4.9-5.8-2.3 0-3.3 1.2-3.8 2.1V8.1H9.9V21h3.2v-6.4c0-1.7.3-3.4 2.5-3.4 2.1 0 2.2 2 2.2 3.5V21H21v-7.4h.8Z"></path></svg>
+        <span>LinkedIn</span>
+      </a>
+    </div>
     <!-- Liens posés sur le SVG du footer (positions mesurées au pixel) -->
     <nav class="footer-liens" aria-label="Liens légaux">
       <a href="cgu.html" style="--y:110px; --w:90px">CGUV</a>

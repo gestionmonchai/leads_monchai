@@ -54,6 +54,70 @@ if (mobileMenuBtn && mobileNav) {
   });
 }
 
+// Cartes modules mobiles : un toucher fige l'état animé, comme sur desktop.
+const mobileModuleCards = Array.prototype.slice.call(document.querySelectorAll('.mobile-module-card'));
+const mobileModulePanel = document.getElementById('mobileModulePanel');
+const mobileModuleTitle = document.getElementById('mobileModuleTitle');
+const mobileModuleList = document.getElementById('mobileModuleList');
+const mobileModuleContent = {
+  parcelles: ['Parcelles', 'Suivi des parcelles', 'Interventions', 'Informations clés du vignoble'],
+  vendanges: ['Vendanges', 'Encuvages', 'Pressurages', 'Rendements'],
+  cuverie: ['Cuverie', 'Assemblages', 'Soutirages', 'Élevage et analyses'],
+  mises: ['Mises', 'Planificateur', 'Embouteillage', 'Matières sèches'],
+  stocks: ['Stocks', 'Lots commerciaux', 'Inventaires', 'Valorisation'],
+  ventes: ['Ventes', 'Devis et factures', 'Livraisons', 'Caisse'],
+  clients: ['Clients', 'Segmentation', 'Historique des achats', 'Prospection'],
+  administratif: ['Administratif', 'Déclarations', 'Douane et capsules', 'Registres'],
+  'tableaux-de-bord': ['Tableaux de bord', 'Indicateurs', 'Coûts et marges', 'Vue globale']
+};
+function cacherPanneauModuleMobile() {
+  if (mobileModulePanel) mobileModulePanel.hidden = true;
+}
+function afficherPanneauModuleMobile(card) {
+  if (!mobileModulePanel || !mobileModuleTitle || !mobileModuleList) return;
+  const contenu = mobileModuleContent[card.dataset.mobileModule];
+  if (!contenu) return;
+  mobileModuleTitle.textContent = contenu[0];
+  mobileModuleList.replaceChildren();
+  contenu.slice(1).forEach(function (texte) {
+    const item = document.createElement('li');
+    item.textContent = texte;
+    mobileModuleList.appendChild(item);
+  });
+  mobileModulePanel.hidden = false;
+}
+function fermerModulesMobiles(exception) {
+  mobileModuleCards.forEach(function (card) {
+    if (card === exception) return;
+    card.classList.remove('est-actif');
+    card.setAttribute('aria-pressed', 'false');
+    card.setAttribute('aria-expanded', 'false');
+  });
+  if (!exception) cacherPanneauModuleMobile();
+}
+mobileModuleCards.forEach(function (card) {
+  card.setAttribute('aria-controls', 'mobileModulePanel');
+  card.setAttribute('aria-expanded', 'false');
+  card.addEventListener('click', function (event) {
+    event.stopPropagation();
+    const activer = !card.classList.contains('est-actif');
+    fermerModulesMobiles();
+    card.classList.toggle('est-actif', activer);
+    card.setAttribute('aria-pressed', String(activer));
+    card.setAttribute('aria-expanded', String(activer));
+    if (activer) afficherPanneauModuleMobile(card);
+  });
+});
+if (mobileModulePanel) {
+  mobileModulePanel.addEventListener('click', function (event) { event.stopPropagation(); });
+  const fermerPanneau = mobileModulePanel.querySelector('.mobile-module-panel__close');
+  if (fermerPanneau) fermerPanneau.addEventListener('click', function () { fermerModulesMobiles(); });
+}
+document.addEventListener('click', function () { fermerModulesMobiles(); });
+document.addEventListener('keydown', function (event) {
+  if (event.key === 'Escape') fermerModulesMobiles();
+});
+
 
 /* =========================================================
    2. Modules « De la vigne à la vente »
@@ -201,6 +265,9 @@ function fermerModal() {
   document.body.style.overflow = '';
   if (elementAvantModal && typeof elementAvantModal.focus === 'function') elementAvantModal.focus();
 }
+
+// API publique légère : permet à n’importe quel CTA futur d’ouvrir le formulaire.
+window.declencherFormulaireBeta = ouvrirModal;
 
 document.querySelectorAll('[data-beta]').forEach(function (b) {
   b.addEventListener('click', ouvrirModal);

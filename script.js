@@ -7,6 +7,12 @@ const W = 1920, H = 1200;
 const liensHeader = document.querySelector('.site-header__liens');
 
 function fit() {
+  if (window.innerWidth <= 820) {
+    page.style.transform = '';
+    document.body.style.height = '';
+    if (liensHeader) liensHeader.style.transform = '';
+    return;
+  }
   const scale = window.innerWidth / W;
   page.style.transform = 'scale(' + scale + ')';
 
@@ -20,6 +26,33 @@ function fit() {
 }
 window.addEventListener('resize', fit);
 fit();
+
+
+/* =========================================================
+   1 bis. Navigation mobile
+   ========================================================= */
+const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+const mobileNav = document.getElementById('mobileNav');
+
+function fermerMenuMobile() {
+  if (!mobileMenuBtn || !mobileNav) return;
+  mobileMenuBtn.setAttribute('aria-expanded', 'false');
+  mobileNav.classList.remove('est-ouvert');
+}
+
+if (mobileMenuBtn && mobileNav) {
+  mobileMenuBtn.addEventListener('click', function () {
+    const ouvert = mobileMenuBtn.getAttribute('aria-expanded') === 'true';
+    mobileMenuBtn.setAttribute('aria-expanded', String(!ouvert));
+    mobileNav.classList.toggle('est-ouvert', !ouvert);
+  });
+  mobileNav.querySelectorAll('a, button').forEach(function (element) {
+    element.addEventListener('click', fermerMenuMobile);
+  });
+  document.addEventListener('click', function (event) {
+    if (!mobileNav.contains(event.target) && !mobileMenuBtn.contains(event.target)) fermerMenuMobile();
+  });
+}
 
 
 /* =========================================================
@@ -153,9 +186,11 @@ majNav();
       sombre ou la touche Échap.
    ========================================================= */
 const modal = document.getElementById('modalBeta');
+let elementAvantModal = null;
 
 function ouvrirModal(e) {
   if (e) e.preventDefault();
+  elementAvantModal = document.activeElement;
   modal.hidden = false;
   document.body.style.overflow = 'hidden';      // fige le scroll de fond
   const fermer = modal.querySelector('.modal__fermer');
@@ -164,6 +199,7 @@ function ouvrirModal(e) {
 function fermerModal() {
   modal.hidden = true;
   document.body.style.overflow = '';
+  if (elementAvantModal && typeof elementAvantModal.focus === 'function') elementAvantModal.focus();
 }
 
 document.querySelectorAll('[data-beta]').forEach(function (b) {
@@ -178,39 +214,6 @@ document.addEventListener('keydown', function (e) {
 
 
 /* =========================================================
-   9. FAQ — accordéon
-      Clic sur une question -> ouvre sa réponse (et referme les autres).
-      Clic ailleurs -> referme celle qui est ouverte.
-   ========================================================= */
-const faqItems = document.querySelectorAll('#apropos-faq .faq-item');
-
-function fermerFaq() {
-  faqItems.forEach(function (it) {
-    it.classList.remove('ouvert');
-    it.querySelector('.faq-q').setAttribute('aria-expanded', 'false');
-  });
-}
-
-faqItems.forEach(function (it) {
-  const q = it.querySelector('.faq-q');
-  q.addEventListener('click', function (e) {
-    e.stopPropagation();
-    const dejaOuvert = it.classList.contains('ouvert');
-    fermerFaq();
-    if (!dejaOuvert) {
-      it.classList.add('ouvert');
-      q.setAttribute('aria-expanded', 'true');
-    }
-  });
-});
-
-document.addEventListener('click', fermerFaq);
-document.addEventListener('keydown', function (e) {
-  if (e.key === 'Escape') fermerFaq();
-});
-
-
-/* =========================================================
    10. Formulaire d'inscription bêta-test -> envoi du mail (EmailJS)
        Formulaire complet (prénom, nom, e-mail pro, tél, domaine, SIRET,
        activité, outil, priorité, consentement). Anti-spam : honeypot +
@@ -218,7 +221,7 @@ document.addEventListener('keydown', function (e) {
    ========================================================= */
 (function () {
   var CLE_PUBLIQUE = 'SW76TlsTwVd5Z8v8y';
-  var SERVICE_ID   = 'service_dmflavl';
+  var SERVICE_ID   = 'service_fjuir5i';
   var TEMPLATE_ID  = 'template_yajlaes';
 
   var form = document.getElementById('waitlist-form');
@@ -229,11 +232,20 @@ document.addEventListener('keydown', function (e) {
   var message = g('form-message'), honeypot = g('website'), succes = g('modalSucces');
   var siret = g('siret');
   var libelleBtn = submit.textContent;
-  var chargePage = Date.now();
+  // Horloge monotone : insensible aux changements manuels de date/heure.
+  var chargePage = performance.now();
   var ejsPret = false;
 
   var CLE_RL = 'monchai_form_submissions';
-  function lireRL(){ try { return JSON.parse(localStorage.getItem(CLE_RL)) || {a:[],b:0}; } catch(e){ return {a:[],b:0}; } }
+  function lireRL(){
+    try {
+      var d = JSON.parse(localStorage.getItem(CLE_RL));
+      if (!d || typeof d !== 'object') return {a:[], b:0};
+      if (!Array.isArray(d.a)) d.a = [];            // format ancien / corrompu
+      if (typeof d.b !== 'number') d.b = 0;
+      return d;
+    } catch(e){ return {a:[], b:0}; }
+  }
   function ecrireRL(d){ try { localStorage.setItem(CLE_RL, JSON.stringify(d)); } catch(e){} }
   function verifRL(){
     var d=lireRL(), now=Date.now();
@@ -257,7 +269,7 @@ document.addEventListener('keydown', function (e) {
     ['prenom','nom','email','domaine','siret','activite'].forEach(function(id){ g(id).removeAttribute('aria-invalid'); });
 
     if (honeypot && honeypot.value) return;
-    if (Date.now() - chargePage < 2000) return;
+    if (performance.now() - chargePage < 2000) return;
 
     var rl = verifRL();
     if (!rl.ok) { afficher('err', rl.trop ? 'Trop de tentatives. Réessayez dans quelques minutes.' : 'Merci de patienter ' + rl.attendre + ' s avant un nouvel envoi.'); return; }
@@ -281,7 +293,27 @@ document.addEventListener('keydown', function (e) {
     if (!ejsPret){ emailjs.init(CLE_PUBLIQUE); ejsPret=true; }
 
     etatBouton(true, 'Envoi…');
+    var nomComplet = net(g('prenom')) + ' ' + net(g('nom'));
+    var resume = [
+      'Nouvelle demande d’inscription au programme bêta Mon Chai',
+      '',
+      'Nom : ' + nomComplet,
+      'E-mail : ' + mail,
+      'Téléphone : ' + (net(g('telephone')) || 'Non renseigné'),
+      'Domaine : ' + net(g('domaine')),
+      'SIRET : ' + sir,
+      'Activité : ' + net(g('activite')),
+      'Outil actuel : ' + net(g('outil')),
+      'Priorité : ' + (net(g('priorite')) || 'Non renseignée')
+    ].join('\n');
     emailjs.send(SERVICE_ID, TEMPLATE_ID, {
+      // Noms standards utilisés par les templates EmailJS « Contact Us ».
+      to_email: 'contact@monchai.fr',
+      reply_to: mail,
+      email: mail,
+      name: nomComplet,
+      title: 'Nouvelle inscription bêta — ' + net(g('domaine')),
+      message: resume,
       from_email: mail,
       prenom: net(g('prenom')),
       nom: net(g('nom')),
@@ -390,5 +422,7 @@ document.addEventListener('keydown', function (e) {
   document.querySelectorAll('[data-cookies-fermer]').forEach(function (el) {
     el.addEventListener('click', fermerReglages);
   });
-  document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && modalC && !modalC.hidden) fermerReglages(); });
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && modalC && !modalC.hidden) fermerReglages();
+  });
 })();

@@ -54,8 +54,6 @@
     <a href="#assistant" style="--x:524px;  --w:90px">Assistant IA</a>
     <a href="#tarifs"    style="--x:656px;  --w:131px">Bêta-test &amp; Tarifs</a>
     <a href="#apropos"   style="--x:828px;  --w:67px">À propos</a>
-    <a href="#faq"       style="--x:937px;  --w:30px">FAQ</a>
-    <a href="#actualite" style="--x:1008px; --w:70px">Actualité</a>
     <a href="#connexion" style="--x:1366px; --w:105px">Me connecter</a>
     <a href="#tarifs"    style="--x:1520px; --w:292px" class="cta" data-beta>Testez Mon Chai gratuitement</a>
     <a href="#langue"    style="--x:1856px; --w:33px">FR</a>
@@ -65,6 +63,133 @@
 <!-- Barre de lecture (progression du scroll) -->
 <div class="reading-bar"><span id="readingBar"></span></div>
 
+<!-- Version mobile/tablette : contenu natif, lisible et tactile. La maquette
+     desktop Figma reste intacte et prend le relais au-dessus de 820 px. -->
+<div class="mobile-site" id="mobileSite">
+  <div class="mobile-reference">
+    <section class="mobile-reference__screen mobile-reference__hero" id="mobile-reference-accueil">
+      <img src="assets/mobile/appli-accueil.svg" alt="Mon Chai, le logiciel viticole qui simplifie la gestion du domaine">
+      <button type="button" class="mobile-reference__hotspot mobile-reference__hotspot--beta-hero" data-beta><span class="sr-only">Rejoindre le programme de bêta-tests gratuitement</span></button>
+      <a class="mobile-reference__hotspot mobile-reference__hotspot--features" href="#mobile-reference-benefices"><span class="sr-only">Découvrir les fonctionnalités</span></a>
+    </section>
+    <section class="mobile-reference__screen" id="mobile-reference-benefices">
+      <img src="assets/mobile/appli-benefices.svg" alt="Moins de ressaisie, plus de clarté sur votre domaine">
+    </section>
+    <section class="mobile-reference__screen" id="mobile-reference-assistant">
+      <img src="assets/mobile/appli-modules.svg" alt="Les modules Mon Chai : parcelles, vendanges, cuverie, mises, stocks, ventes, clients, administratif et tableaux de bord">
+    </section>
+    <section class="mobile-reference__screen">
+      <img src="assets/mobile/appli-assistant.svg" alt="Un assistant IA pensé pour les métiers du vin">
+    </section>
+    <section class="mobile-reference__screen mobile-reference__offer" id="mobile-reference-offre">
+      <img src="assets/mobile/appli-offre.svg" alt="Programme bêta-test et offre Primeurs Mon Chai">
+      <button type="button" class="mobile-reference__hotspot mobile-reference__hotspot--beta-offer" data-beta><span class="sr-only">Rejoindre le programme bêta-test</span></button>
+    </section>
+    <section class="mobile-reference__screen">
+      <img src="assets/mobile/appli-apropos.svg" alt="À propos de Mon Chai et de ses fondateurs">
+    </section>
+    <footer class="mobile-reference__footer">
+      <a href="mailto:contact@monchai.fr">contact@monchai.fr</a>
+      <nav aria-label="Liens légaux mobiles">
+        <a href="mentions-legales.html">Mentions légales</a>
+        <a href="politique-confidentialite.html">Confidentialité</a>
+        <button type="button" data-cookies>Cookies</button>
+      </nav>
+      <p>© 2026 Mon Chai</p>
+    </footer>
+  </div>
+  <header class="mobile-header">
+    <a class="mobile-brand" href="#mobile-reference-accueil" aria-label="Mon Chai — accueil">
+      <img src="assets/img/logo_mon_chai.png" alt="Mon Chai">
+    </a>
+    <button class="mobile-menu-btn" type="button" aria-expanded="false" aria-controls="mobileNav">
+      <span></span><span></span><span></span><span class="sr-only">Ouvrir le menu</span>
+    </button>
+    <nav class="mobile-nav" id="mobileNav" aria-label="Navigation mobile">
+      <a href="#mobile-reference-benefices">Fonctionnalités</a>
+      <a href="#mobile-reference-assistant">Assistant IA</a>
+      <a href="#mobile-reference-offre">Bêta-test &amp; tarifs</a>
+      <button type="button" data-cookies>Gérer mes cookies</button>
+      <button type="button" class="mobile-nav-cta" data-beta>Tester gratuitement</button>
+    </nav>
+  </header>
+
+  <main>
+    <section class="mobile-hero" id="mobile-accueil">
+      <div class="mobile-hero__veil"></div>
+      <div class="mobile-hero__content">
+        <span class="mobile-eyebrow">Le domaine, enfin réuni</span>
+        <h1>Le logiciel viticole qui simplifie la gestion du domaine.</h1>
+        <p>Parcelles, vendanges, cuverie, stocks, ventes et clients dans un seul outil pensé avec les vignerons.</p>
+        <div class="mobile-actions">
+          <button type="button" class="mobile-button mobile-button--gold" data-beta>Rejoindre la bêta gratuitement</button>
+          <a class="mobile-button mobile-button--light" href="#mobile-fonctions">Découvrir Mon Chai</a>
+        </div>
+        <p class="mobile-proof"><span>✓</span> Sans carte bancaire <span>✓</span> Formation offerte</p>
+      </div>
+    </section>
+
+    <section class="mobile-section mobile-intro" id="mobile-fonctions">
+      <span class="mobile-kicker">De la vigne à la vente</span>
+      <h2>Une seule vue pour piloter tout votre domaine.</h2>
+      <p>Moins de doubles saisies, moins de fichiers éparpillés. Mon Chai relie chaque étape de votre activité.</p>
+      <div class="mobile-feature-grid">
+        <article><span>01</span><h3>Parcelles</h3><p>Suivez vos îlots, interventions et travaux au même endroit.</p></article>
+        <article><span>02</span><h3>Vendanges</h3><p>Centralisez les apports, lots et volumes dès la récolte.</p></article>
+        <article><span>03</span><h3>Cuverie &amp; stocks</h3><p>Gardez une vision fiable des mouvements et disponibilités.</p></article>
+        <article><span>04</span><h3>Ventes &amp; clients</h3><p>Retrouvez commandes, documents et historique commercial.</p></article>
+      </div>
+    </section>
+
+    <section class="mobile-section mobile-ai" id="mobile-assistant">
+      <div class="mobile-ai__visual" aria-hidden="true">
+        <span class="mobile-ai__spark">✦</span>
+        <div class="mobile-ai__bubble">Que dois-je préparer cette semaine&nbsp;?</div>
+        <div class="mobile-ai__answer">3 actions prioritaires détectées dans votre domaine.</div>
+      </div>
+      <div>
+        <span class="mobile-kicker">Assistant IA</span>
+        <h2>Posez une question. Avancez avec vos propres données.</h2>
+        <p>Mon Chai vous aide à retrouver l’information utile et à anticiper les prochaines étapes, sans remplacer votre savoir-faire.</p>
+        <ul class="mobile-list">
+          <li>Une réponse contextualisée à votre domaine</li>
+          <li>Des tâches et alertes faciles à prioriser</li>
+          <li>Vos données hébergées en France</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="mobile-section mobile-offer" id="mobile-offre">
+      <span class="mobile-kicker">Programme bêta</span>
+      <h2>Testez maintenant.<br>Construisons la suite ensemble.</h2>
+      <div class="mobile-offer__card">
+        <div class="mobile-offer__price"><strong>0 €</strong><span>jusqu’au 1<sup>er</sup> octobre 2026</span></div>
+        <ul class="mobile-list">
+          <li>Accès au logiciel sans moyen de paiement</li>
+          <li>Formation individuelle d’une heure offerte</li>
+          <li>Aide au transfert de vos premières données</li>
+          <li>Offre Primeurs réservée aux bêta-testeurs</li>
+        </ul>
+        <button type="button" class="mobile-button mobile-button--gold" data-beta>Demander mon accès bêta</button>
+        <small>Réservé aux professionnels de la filière vitivinicole.</small>
+      </div>
+    </section>
+
+    <section class="mobile-final">
+      <span class="mobile-kicker">Une question ?</span>
+      <h2>Votre domaine mérite un outil aussi vivant que lui.</h2>
+      <button type="button" class="mobile-button mobile-button--gold" data-beta>Rejoindre le programme bêta</button>
+      <a href="mailto:contact@monchai.fr">contact@monchai.fr</a>
+    </section>
+  </main>
+
+  <footer class="mobile-footer">
+    <img src="assets/img/logo_mon_chai.png" alt="Mon Chai">
+    <div><a href="mentions-legales.html">Mentions légales</a><a href="politique-confidentialite.html">Confidentialité</a><button type="button" data-cookies>Cookies</button></div>
+    <p>© 2026 Mon Chai — Développé en France.</p>
+  </footer>
+</div>
+
 <!-- Navigation latérale en tirets -->
 <nav class="dot-nav" id="dotNav" aria-label="Navigation par section">
   <a href="#accueil"   data-cible="accueil"><span class="tiret"></span><span class="etiquette">Accueil</span></a>
@@ -72,8 +197,6 @@
   <a href="#assistant" data-cible="assistant"><span class="tiret"></span><span class="etiquette">Assistant IA</span></a>
   <a href="#tarifs"    data-cible="tarifs"><span class="tiret"></span><span class="etiquette">Bêta-test &amp; Tarifs</span></a>
   <a href="#apropos"   data-cible="apropos"><span class="tiret"></span><span class="etiquette">À propos</span></a>
-  <a href="#faq"       data-cible="faq"><span class="tiret"></span><span class="etiquette">FAQ</span></a>
-  <a href="#actualite" data-cible="actualite"><span class="tiret"></span><span class="etiquette">Actualité</span></a>
 </nav>
 
 <div class="page" id="page">
@@ -143,6 +266,7 @@
 
     <div class="frame1-fond"></div>
     <div class="parcours-bas"></div>
+    <div class="offre-detail-cover" aria-hidden="true"></div>
 
     <!-- Ancres pour la nav latérale et les liens du header -->
     <div class="ancre" id="pourquoi"  style="top:150px"></div>
@@ -293,64 +417,11 @@
   </section>
 
 
-  <!-- ================================================================
-       ÉCRAN 3 — frame Figma "À propos et FAQ" · 1920 × 2481
-       À propos et FAQ fusionnés en une seule frame : la photo de raisins est
-       continue de l'un à l'autre, la transition est gérée dans Figma (fondu
-       vers le crème en bas). Bande de header retirée (coupe y=119), cadre noir
-       de l'export supprimé.
-       ⚠️ Les « + » de la FAQ sont dessinés dans le SVG : l'accordéon n'est pas
-       encore interactif.
-       ================================================================ -->
-  <section class="stage" id="apropos-faq" aria-label="À propos et questions fréquentes">
+  <!-- ÉCRAN 3 — À propos (la partie FAQ du visuel source est recadrée) -->
+  <section class="stage" id="apropos-faq" aria-label="À propos">
     <div class="apfaq-fond"></div>
-    <!-- Ancres pour la nav latérale et les liens du header -->
     <div class="ancre" id="apropos" style="top:0"></div>
-    <div class="ancre" id="faq"     style="top:1500px"></div>
-
-    <!-- FAQ interactive : recouvre les cartes figées du SVG (fond crème)
-         et les remplace par un vrai accordéon. Clic sur une question ->
-         réponse ; clic ailleurs -> referme celle ouverte. -->
-    <div class="faq">
-      <div class="faq-col">
-        <div class="faq-item">
-          <button class="faq-q" aria-expanded="false"><span>À qui s’adresse Mon Chai ?</span><span class="faq-plus" aria-hidden="true"></span></button>
-          <div class="faq-a"><p>Tout d’abord aux domaines viticoles qui souhaitent centraliser leur gestion et mieux suivre leurs données, de la vigne à la vente. Mon Chai proposera également par la suite des modules pour cavistes et négociants.</p></div>
-        </div>
-        <div class="faq-item">
-          <button class="faq-q" aria-expanded="false"><span>Comment fonctionne le programme de bêta-testeurs ?</span><span class="faq-plus" aria-hidden="true"></span></button>
-          <div class="faq-a"><p>Vous testez gratuitement le logiciel du 15 juillet au 1ᵉʳ octobre. En échange, vous partagez vos retours pour nous aider à construire un outil vraiment adapté au terrain. Un accompagnement personnalisé est inclus : transfert de données, formation et webinaire de prise en main.</p></div>
-        </div>
-        <div class="faq-item">
-          <button class="faq-q" aria-expanded="false"><span>Peut-on importer nos données ?</span><span class="faq-plus" aria-hidden="true"></span></button>
-          <div class="faq-a"><p>Oui. Nous vous accompagnons pour importer vos données existantes — parcelles, clients, stocks — depuis vos fichiers ou vos outils actuels. Le transfert est offert pendant le programme bêta-test.</p></div>
-        </div>
-        <div class="faq-item">
-          <button class="faq-q" aria-expanded="false"><span>Est-ce que Mon Chai est sécurisé ?</span><span class="faq-plus" aria-hidden="true"></span></button>
-          <div class="faq-a"><p>Oui. Vos données sont hébergées en France sur des serveurs sécurisés, avec des sauvegardes régulières et un accès protégé. Vous restez seul propriétaire de vos informations.</p></div>
-        </div>
-      </div>
-      <div class="faq-col">
-        <div class="faq-item">
-          <button class="faq-q" aria-expanded="false"><span>Quels seront vos tarifs à la fin du programme bêta-testeurs ?</span><span class="faq-plus" aria-hidden="true"></span></button>
-          <div class="faq-a"><p>À partir du 1ᵉʳ octobre 2026 : 49 € HT / mois pendant un an, puis 59 € HT / mois, sans engagement. Les bêta-testeurs bénéficient d’une offre Primeurs qui leur est réservée.</p></div>
-        </div>
-        <div class="faq-item">
-          <button class="faq-q" aria-expanded="false"><span>Quel accompagnement proposez-vous pour les domaines qui veulent tester le logiciel ?</span><span class="faq-plus" aria-hidden="true"></span></button>
-          <div class="faq-a"><p>Selon votre domaine : transfert de vos données, une heure de formation individuelle, un webinaire de prise en main et une assistance dédiée et réactive pour bien démarrer.</p></div>
-        </div>
-        <div class="faq-item">
-          <button class="faq-q" aria-expanded="false"><span>Qu’est-ce qui sera inclus dans l’abonnement ?</span><span class="faq-plus" aria-hidden="true"></span></button>
-          <div class="faq-a"><p>L’accès complet au logiciel et à toutes ses fonctionnalités, les mises à jour et l’assistance incluses. Jusqu’à 2 utilisateurs, puis +15 € HT par utilisateur supplémentaire.</p></div>
-        </div>
-      </div>
-    </div>
-
   </section>
-
-
-  <!-- ÉCRAN 4 — Notre actualité · 1920 × 1081 -->
-  <section class="stage" id="actualite" aria-label="Notre actualité"></section>
 
 
   <!-- FOOTER · 1920 × 520 -->
@@ -463,10 +534,10 @@
 
         <label class="modal__consent">
           <input type="checkbox" id="consent" name="consentement" required>
-          <span>J’accepte que HALLAIS &amp; BERTHELOT utilise ces informations pour étudier ma demande, vérifier mon éligibilité, créer mon accès et organiser mon accompagnement. <a href="mailto:contact@monchai.fr">Consulter la politique de confidentialité</a>.</span>
+          <span>J’accepte que HALLAIS &amp; BERTHELOT utilise ces informations pour étudier ma demande, vérifier mon éligibilité, créer mon accès et organiser mon accompagnement. <a href="politique-confidentialite.html">Consulter la politique de confidentialité</a>.</span>
         </label>
 
-        <p id="form-message" class="modal__message" style="display:none;" role="alert"></p>
+        <p id="form-message" class="modal__message" style="display:none;" role="alert" aria-live="polite"></p>
 
         <div class="modal__pied">
           <span class="modal__lock">🔒 Aucun moyen de paiement demandé</span>

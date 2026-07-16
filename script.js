@@ -442,11 +442,45 @@ document.addEventListener('keydown', function (e) {
     appliquer(audience, tiers);
   }
 
-  // point d'accroche pour activer plus tard les scripts tiers selon le choix
+  function chargerHubSpot() {
+    var scriptExistant = document.getElementById('hs-script-loader');
+
+    // Le bandeau maison reste l'unique interface de consentement.
+    window.disableHubSpotCookieBanner = true;
+
+    // Réactive le suivi si le consentement avait été retiré dans cette page.
+    window._hsq = window._hsq || [];
+    window._hsq.push(['doNotTrack', { track: true }]);
+
+    if (scriptExistant) return;
+
+    var script = document.createElement('script');
+    script.type = 'text/javascript';
+    script.id = 'hs-script-loader';
+    script.async = true;
+    script.defer = true;
+    script.src = 'https://js-eu1.hs-scripts.com/147891073.js';
+    document.body.appendChild(script);
+  }
+
+  function arreterHubSpot() {
+    // Si HubSpot a déjà été chargé dans cette page, bloque les nouveaux envois
+    // et retire ses cookies de consentement lors d'un retrait de l'accord.
+    if (!document.getElementById('hs-script-loader')) return;
+
+    window._hsq = window._hsq || [];
+    window._hsq.push(['doNotTrack']);
+    window._hsp = window._hsp || [];
+    window._hsp.push(['revokeCookieConsent']);
+  }
+
+  // Active les scripts de mesure uniquement selon le choix enregistré.
   function appliquer(audience, tiers) {
     window.monchaiConsent = { audience: !!audience, tiers: !!tiers };
     document.documentElement.dataset.consentAudience = audience ? '1' : '0';
     document.documentElement.dataset.consentTiers = tiers ? '1' : '0';
+    if (audience) chargerHubSpot();
+    else arreterHubSpot();
   }
 
   function montrerBanniere() { if (banniere) banniere.hidden = false; }

@@ -21,15 +21,15 @@
 
 .mm__toggle[data-module] .mobile-icone{ background-color:transparent; background-position:center; background-repeat:no-repeat; background-size:contain; }
 .mm__toggle[data-module] .mobile-icone svg{ display:none; }
-.mm__toggle[data-module="parcelles"] .mobile-icone{ background-image:url("assets/img/icone-parcelles.png"); }
-.mm__toggle[data-module="vendanges"] .mobile-icone{ background-image:url("assets/img/icone-vendanges.png"); }
-.mm__toggle[data-module="cuverie"] .mobile-icone{ background-image:url("assets/img/icone-cuverie.png"); }
-.mm__toggle[data-module="mises"] .mobile-icone{ background-image:url("assets/img/icone-mises.png"); }
-.mm__toggle[data-module="stocks"] .mobile-icone{ background-image:url("assets/img/icone-stocks.png"); }
-.mm__toggle[data-module="ventes"] .mobile-icone{ background-image:url("assets/img/icone-ventes.png"); }
-.mm__toggle[data-module="clients"] .mobile-icone{ background-image:url("assets/img/icone-clients.png"); }
-.mm__toggle[data-module="administratif"] .mobile-icone{ background-image:url("assets/img/icone-administratif.png"); }
-.mm__toggle[data-module="tableaux-de-bord"] .mobile-icone{ background-image:url("assets/img/icone-tableaux-de-bord.png"); }
+.mm__toggle[data-module="parcelles"] .mobile-icone{ background-image:url("assets/img/icone-parcelles-20260720.webp"); }
+.mm__toggle[data-module="vendanges"] .mobile-icone{ background-image:url("assets/img/icone-vendanges-20260720.webp"); }
+.mm__toggle[data-module="cuverie"] .mobile-icone{ background-image:url("assets/img/icone-cuverie-20260720.webp"); }
+.mm__toggle[data-module="mises"] .mobile-icone{ background-image:url("assets/img/icone-mises-20260720.webp"); }
+.mm__toggle[data-module="stocks"] .mobile-icone{ background-image:url("assets/img/icone-stocks-20260720.webp"); }
+.mm__toggle[data-module="ventes"] .mobile-icone{ background-image:url("assets/img/icone-ventes-20260720.webp"); }
+.mm__toggle[data-module="clients"] .mobile-icone{ background-image:url("assets/img/icone-clients-20260720.webp"); }
+.mm__toggle[data-module="administratif"] .mobile-icone{ background-image:url("assets/img/icone-administratif-20260720.webp"); }
+.mm__toggle[data-module="tableaux-de-bord"] .mobile-icone{ background-image:url("assets/img/icone-tableaux-de-bord-20260720.webp"); }
 .mm__fleche,
 .mm__trait{ display:none; }
 
@@ -57,6 +57,7 @@
 .mobile-news__photo img,
 .mobile-news__card > img,
 .mobile-news__instagram-link{ width:100%; }
+.mobile-news__photo picture{ display:block; width:100%; height:100%; }
 .mobile-news .mobile-news__card h3{ margin:0; color:var(--bordeaux); font:500 23px/1.18 var(--serif); }
 .mobile-news .mobile-news__card p{ margin-top:9px; color:var(--gris); font-size:13px; line-height:1.5; }
 .mobile-news .mobile-news__date{ color:var(--or); font-weight:700; }
@@ -223,7 +224,7 @@
     width:30px;
     height:31px;
     transform:translateX(-50%);
-    background:url("assets/img/feuille-tarifs.png") center/contain no-repeat;
+    background:url("assets/img/feuille-tarifs-60-20260720.webp") center/contain no-repeat;
   }
   .mobile-primeurs > h3,
   .mobile-primeurs__suite{ text-align:center; }
@@ -312,7 +313,7 @@
     width:30px;
     height:31px;
     transform:translateX(-50%);
-    background:url("assets/img/feuille-tarifs.png") center/contain no-repeat;
+    background:url("assets/img/feuille-tarifs-60-20260720.webp") center/contain no-repeat;
   }
   .mobile-primeurs > h3,
   .mobile-primeurs__suite{
@@ -433,7 +434,7 @@
     width:30px;
     height:31px;
     color:transparent;
-    background:url("assets/img/feuille-tarifs.png") center/contain no-repeat;
+    background:url("assets/img/feuille-tarifs-60-20260720.webp") center/contain no-repeat;
     font-size:0;
     line-height:0;
   }
@@ -511,7 +512,7 @@
   /* Hero : véritable canvas HTML 1920 × 1200, scalé sans déformer le DOM. */
   .mobile-hero{ position:relative; height:calc(100vw * 1200 / 1920); min-height:0; padding:0; display:block; overflow:hidden; background:none; }
   .hero-desktop-canvas{ position:absolute; top:0; left:0; display:block; width:1920px; height:1200px; transform-origin:top left; }
-  .mobile-hero__veil{ position:absolute; left:0; top:0; z-index:1; width:2141px; height:1428px; background:url("assets/img/moritz-knoringer-UP6orFljGaY-unsplash.jpg") center/100% 100% no-repeat; transform:scaleX(-1); }
+  .mobile-hero__veil{ position:absolute; left:0; top:0; z-index:1; width:2141px; height:1428px; background:url("assets/img/hero-desktop-20260720.webp") center/100% 100% no-repeat; transform:scaleX(-1); }
   .mobile-hero__content{ position:absolute; inset:0; z-index:2; display:block; width:1920px; max-width:none; height:1200px; color:var(--encre); }
   .hero-copy{ position:absolute; left:136px; top:273px; width:824px; height:775px; padding:0; border:0; border-radius:22px; background:rgba(255,253,252,.94); box-shadow:0 4px 4px rgba(0,0,0,.13); backdrop-filter:none; transform:scale(.95); transform-origin:top left; }
   .mobile-eyebrow,
@@ -690,7 +691,7 @@
   .mobile-ai{ position:relative; height:1400px; min-height:0; padding:0; display:block; overflow:visible; background:none; }
   .mobile-ai::before{
     content:""; position:absolute; left:0; top:-100px; z-index:0; width:100%; height:1500px;
-    background:linear-gradient(to bottom,rgba(255,255,255,.24) 0%,rgba(255,255,255,.16) 68%,#fffdfc 100%),url("assets/img/assistant-fond.jpg") center/cover no-repeat;
+    background:linear-gradient(to bottom,rgba(255,255,255,.24) 0%,rgba(255,255,255,.16) 68%,#fffdfc 100%),url("assets/img/assistant-fond-20260720.webp") center/cover no-repeat;
     pointer-events:none;
   }
   .mobile-ai > *{ position:relative; z-index:1; }
@@ -758,7 +759,7 @@
   .mobile-primeurs__details{ grid-column:3; grid-row:1 / 4; justify-self:stretch; align-self:center; margin:0; font-size:18px; }
 
   /* À propos + FAQ = frame de 2481 px. */
-  .mobile-apropos{ position:relative; height:1500px; min-height:0; padding:0; display:block; background:linear-gradient(to bottom,rgba(16,20,14,.02) 82%,#fffbf6 100%),url("assets/img/apropos-fond.jpg") center/cover no-repeat; }
+  .mobile-apropos{ position:relative; height:1500px; min-height:0; padding:0; display:block; background:linear-gradient(to bottom,rgba(16,20,14,.02) 82%,#fffbf6 100%),url("assets/img/apropos-fond-20260720.webp") center/cover no-repeat; }
   .mobile-apropos__carte{ position:absolute; left:136px; top:40px; width:824px; min-height:1020px; padding:72px 92px 58px; border-radius:0; background:rgba(186,187,170,.72); box-shadow:0 4px 12px rgba(0,0,0,.2); }
   .mobile-apropos__carte::before{ content:""; position:absolute; z-index:0; inset:27px; border:1px solid var(--or); background:rgba(255,250,241,.93); }
   .mobile-apropos__carte > *{ position:relative; z-index:1; }
@@ -925,7 +926,7 @@
     width:30px;
     height:31px;
     color:transparent;
-    background:transparent url("assets/img/feuille-tarifs.png") center/contain no-repeat;
+    background:transparent url("assets/img/feuille-tarifs-60-20260720.webp") center/contain no-repeat;
     font-size:0;
     line-height:0;
   }

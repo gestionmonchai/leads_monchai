@@ -29,13 +29,15 @@ function mettreAJourContrasteNavigation() {
     document.querySelectorAll('[data-nav-contrast="light"]'),
     function (zone) { return zone.getBoundingClientRect(); }
   );
-  dotLinks.forEach(function (lien) {
+  const contrastes = dotLinks.map(function (lien) {
     const repere = lien.getBoundingClientRect();
     const y = repere.top + repere.height / 2;
-    const surFondSombre = zones.some(function (cadre) {
+    return zones.some(function (cadre) {
       return cadre.top <= y && cadre.bottom >= y;
     });
-    lien.classList.toggle('sur-fond-sombre', surFondSombre);
+  });
+  dotLinks.forEach(function (lien, index) {
+    lien.classList.toggle('sur-fond-sombre', contrastes[index]);
   });
 }
 

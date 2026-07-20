@@ -32,11 +32,13 @@
 <link rel="apple-touch-icon" href="assets/img/logo_mon_chai.png">
 <meta name="theme-color" content="#7B1E22">
 
-<link rel="stylesheet" href="fonts.css">
-<link rel="stylesheet" href="styles.css">
-<link rel="stylesheet" href="native-desktop.css">
-<link rel="stylesheet" href="reference-fidelity.css">
-<link rel="stylesheet" href="responsive-fidelity.css">
+<!-- Ressources du premier écran : une image adaptée à chaque viewport et
+     uniquement les deux fontes visibles au-dessus de la ligne de flottaison. -->
+<link rel="preload" as="image" href="assets/img/hero-mobile-20260720.webp" type="image/webp" media="(max-width:1199px)" fetchpriority="high">
+<link rel="preload" as="image" href="assets/img/hero-desktop-20260720.webp" type="image/webp" media="(min-width:1200px)" fetchpriority="high">
+<link rel="preload" as="font" href="assets/fonts/Inter-Latin-20260720.woff2" type="font/woff2" crossorigin>
+<link rel="preload" as="font" href="assets/fonts/PlayfairDisplay-Latin-20260720.woff2" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="site-20260720.css">
 </head>
 <body>
 
@@ -75,7 +77,7 @@
 <div class="mobile-site" id="mobileSite">
   <header class="mobile-header">
     <a class="mobile-brand" href="#mobile-accueil" aria-label="Mon Chai — accueil">
-      <img src="assets/img/logo_mon_chai.png" alt="Mon Chai">
+      <img src="assets/img/logo-mon-chai-400-20260720.webp" alt="Mon Chai" width="400" height="219" decoding="async">
     </a>
     <button class="mobile-menu-btn" type="button" aria-expanded="false" aria-controls="mobileNav">
       <span></span><span></span><span></span><span class="sr-only">Ouvrir le menu</span>
@@ -327,8 +329,8 @@
       <div class="mobile-apropos__carte">
         <h2>À propos</h2>
         <div class="mobile-fondateurs" aria-hidden="true">
-          <img src="assets/img/portrait-denis.jpg" alt="">
-          <img src="assets/img/portrait-laura.jpg" alt="">
+          <img src="assets/img/portrait-denis-160-20260720.webp" srcset="assets/img/portrait-denis-160-20260720.webp 160w, assets/img/portrait-denis.jpg 300w" sizes="(min-width:1200px) 148px, 74px" alt="" width="160" height="160" loading="lazy" decoding="async">
+          <img src="assets/img/portrait-laura-160-20260720.webp" srcset="assets/img/portrait-laura-160-20260720.webp 160w, assets/img/portrait-laura.jpg 300w" sizes="(min-width:1200px) 148px, 74px" alt="" width="160" height="160" loading="lazy" decoding="async">
         </div>
         <p>Mon Chai est né d’un constat simple : les domaines viticoles jonglent encore trop souvent entre des outils qui ne communiquent pas, avec beaucoup de ressaisie et peu de visibilité d’ensemble.</p>
         <p>Après plusieurs années dans les logiciels de gestion viticole, Denis a conçu Mon Chai pour relier les principales activités d’un domaine au sein d’un même outil, de la vigne à la vente.</p>
@@ -367,7 +369,7 @@
       <div class="mobile-news__layout">
         <div class="mobile-news__principal">
           <article class="mobile-news__card mobile-news__card--beta">
-            <div class="mobile-news__photo"><img src="assets/img/actu-2.jpg" alt="Vignoble au soleil couchant" width="900" height="600"></div>
+            <div class="mobile-news__photo"><picture><source media="(max-width:1199px)" srcset="assets/img/actu-2-480-20260720.webp" type="image/webp"><img src="assets/img/actu-2.jpg" alt="Vignoble au soleil couchant" width="900" height="600" loading="lazy" decoding="async"></picture></div>
             <div><h3>Ouverture du programme bêta-test Mon Chai</h3><p class="mobile-news__date">15 juillet – 1<sup>er</sup> septembre 2026</p><p>Rejoignez l’aventure Mon Chai : testez gratuitement le logiciel et partagez vos retours pour construire, ensemble, un outil vraiment adapté au quotidien des domaines viticoles.</p></div>
           </article>
           <div class="mobile-news__social"><strong>Suivez l’aventure Mon Chai</strong><div>
@@ -380,8 +382,8 @@
           </div></div>
         </div>
         <div class="mobile-news__secondaires">
-          <article class="mobile-news__card mobile-news__card--coffee"><div><span>À venir</span><h3>Interview de Mon Chai au Winetech Coffee</h3><p class="mobile-news__date">Date à venir sur LinkedIn · Replay disponible ensuite sur YouTube</p><p>Découvrez l’histoire de Mon Chai, les convictions qui nous animent et les coulisses de l’ouverture de notre programme bêta-test.</p></div><img src="assets/img/actu-4.jpg" alt="Chai avec des fûts" width="900" height="506"></article>
-          <article class="mobile-news__card mobile-news__card--salon"><div><span>À venir</span><h3>Mon Chai au salon Vinitech-Sifel à Bordeaux</h3><p class="mobile-news__date">1<sup>er</sup> – 3 décembre 2026</p><p>Venez échanger avec notre équipe, découvrir le logiciel et assister à une démonstration de Mon Chai.</p></div><img src="assets/img/actu-3.jpg" alt="Grappes de raisin" width="900" height="600"></article>
+          <article class="mobile-news__card mobile-news__card--coffee"><div><span>À venir</span><h3>Interview de Mon Chai au Winetech Coffee</h3><p class="mobile-news__date">Date à venir sur LinkedIn · Replay disponible ensuite sur YouTube</p><p>Découvrez l’histoire de Mon Chai, les convictions qui nous animent et les coulisses de l’ouverture de notre programme bêta-test.</p></div><img src="assets/img/actu-4-480-20260720.webp" alt="Chai avec des fûts" width="480" height="270" loading="lazy" decoding="async"></article>
+          <article class="mobile-news__card mobile-news__card--salon"><div><span>À venir</span><h3>Mon Chai au salon Vinitech-Sifel à Bordeaux</h3><p class="mobile-news__date">1<sup>er</sup> – 3 décembre 2026</p><p>Venez échanger avec notre équipe, découvrir le logiciel et assister à une démonstration de Mon Chai.</p></div><img src="assets/img/actu-3-480-20260720.webp" alt="Grappes de raisin" width="480" height="320" loading="lazy" decoding="async"></article>
         </div>
       </div>
 
@@ -431,10 +433,10 @@
           <feMerge><feMergeNode in="logoIvoryShape"/><feMergeNode in="logoGoldShape"/></feMerge>
         </filter>
       </svg>
-      <img src="assets/img/logo_mon_chai.png" alt="Mon Chai" width="1326" height="727">
+      <img src="assets/img/logo-mon-chai-400-20260720.webp" alt="Mon Chai" width="400" height="219" loading="lazy" decoding="async">
       <p>Le logiciel de gestion viticole pensé pour relier votre domaine, de la vigne à la vente, avec moins de ressaisie et plus de clarté.</p>
       <p>Mon Chai est membre de LA WINE TECH<br>&amp; DU POOOL x La French Tech Rennes Saint-Malo</p>
-      <div class="mobile-footer__badges"><img src="assets/img/badge-frenchtech.png" alt="La WineTech" width="220" height="250"><img src="assets/img/badge-winetech.png" alt="La French Tech" width="220" height="183"></div>
+      <div class="mobile-footer__badges"><img src="assets/img/badge-frenchtech-20260720.webp" alt="La WineTech" width="220" height="250" loading="lazy" decoding="async"><img src="assets/img/badge-winetech-20260720.webp" alt="La French Tech" width="220" height="183" loading="lazy" decoding="async"></div>
     </div>
     <nav class="mobile-footer__liens" aria-label="Liens du pied de page">
       <a class="mobile-footer__heading" href="cgu.html" data-legal>CGUV</a>
@@ -581,7 +583,7 @@
   <div class="legal-modal__fond" data-legal-fermer></div>
   <section class="legal-modal__boite" role="dialog" aria-modal="true" aria-labelledby="legalModalTitre">
     <header class="legal-modal__entete">
-      <img src="assets/img/logo_mon_chai.png" alt="" width="1326" height="727">
+      <img src="assets/img/logo-mon-chai-400-20260720.webp" alt="" width="400" height="219" loading="lazy" decoding="async">
       <div class="legal-modal__titres">
         <span>Informations légales</span>
         <h2 id="legalModalTitre">Mon Chai</h2>

@@ -302,7 +302,7 @@ body{
   .mobile-hero{
     position:relative; min-height:calc(100svh - 72px); padding:clamp(96px,16vh,150px) 22px 42px;
     display:flex; align-items:flex-end; overflow:hidden;
-    background:url("assets/img/hero-mobile.jpg") 61% center/cover no-repeat;
+    background:url("assets/img/hero-mobile-20260720.webp") 61% center/cover no-repeat;
   }
   .mobile-hero__veil{ position:absolute; inset:0; background:linear-gradient(180deg,rgba(31,16,12,.42) 0%,rgba(42,18,17,.34) 38%,rgba(42,18,17,.88) 100%); }
   .mobile-hero__content{ position:relative; z-index:1; max-width:560px; color:#fff; }

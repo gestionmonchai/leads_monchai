@@ -43,7 +43,7 @@
     display:grid !important;
     align-items:center !important;
     overflow:hidden;
-    background:url("assets/img/moritz-knoringer-UP6orFljGaY-unsplash.jpg") center/cover no-repeat;
+    background:url("assets/img/hero-mobile-20260720.webp") center/cover no-repeat;
   }
   .hero-desktop-canvas,
   .mobile-hero__content{
@@ -433,7 +433,7 @@
     grid-template-columns:1fr !important;
     gap:20px !important;
     overflow:hidden !important;
-    background:linear-gradient(180deg,rgba(255,255,255,.12),rgba(255,255,255,.3)),url("assets/img/assistant-fond.jpg") center/cover no-repeat !important;
+    background:linear-gradient(180deg,rgba(255,255,255,.12),rgba(255,255,255,.3)),url("assets/img/assistant-fond-20260720.webp") center/cover no-repeat !important;
   }
   .mobile-ai::before{ content:none !important; }
   .mobile-ai > *{ position:relative !important; inset:auto !important; width:min(100%,680px) !important; height:auto !important; margin:0 auto !important; }
@@ -516,7 +516,7 @@
   .mobile-offer__card small{ display:none !important; }
   .mobile-primeurs{ order:5; margin-top:18px !important; padding:54px 0 0 !important; border:0 !important; border-radius:0 !important; background:transparent !important; text-align:center !important; }
   .mobile-primeurs::before{ content:"" !important; position:absolute !important; top:14px !important; left:0 !important; width:100% !important; height:1px !important; background:linear-gradient(to right,var(--or) 0 43%,transparent 43% 57%,var(--or) 57% 100%) !important; }
-  .mobile-primeurs::after{ content:"" !important; position:absolute !important; top:0 !important; left:50% !important; width:30px !important; height:31px !important; transform:translateX(-50%) !important; background:#fffdfc url("assets/img/feuille-tarifs.png") center/contain no-repeat !important; }
+  .mobile-primeurs::after{ content:"" !important; position:absolute !important; top:0 !important; left:50% !important; width:30px !important; height:31px !important; transform:translateX(-50%) !important; background:#fffdfc url("assets/img/feuille-tarifs-60-20260720.webp") center/contain no-repeat !important; }
   .mobile-primeurs > h3{ font:500 25px/1.1 var(--serif) !important; }
   .mobile-primeurs__suite{ margin-top:5px !important; font-size:13px !important; }
   .mobile-primeurs__card{
@@ -594,7 +594,7 @@
     grid-template-columns:1fr !important;
     gap:34px !important;
     overflow:hidden !important;
-    background:linear-gradient(180deg,rgba(20,12,8,.08),rgba(20,12,8,.32)),url("assets/img/apropos-fond.jpg") center/cover no-repeat !important;
+    background:linear-gradient(180deg,rgba(20,12,8,.08),rgba(20,12,8,.32)),url("assets/img/apropos-fond-20260720.webp") center/cover no-repeat !important;
   }
   .mobile-apropos::after{ content:none !important; }
   .mobile-apropos__carte{

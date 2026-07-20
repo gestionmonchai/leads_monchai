@@ -378,3 +378,67 @@ contrôle complet avec `_verification/verif_landing.py`.
 À déployer en plus du lot 6 : `fonts.css`, `assets/fonts/`, `assets/svg/`, puis
 les versions mises à jour de `index.html`, `reference-fidelity.css`,
 `script.js`, `consent.js` et des trois pages légales.
+
+## Lot 8 — livré le 2026-07-20 (performance sans changement d'interface)
+
+Lot lancé après le diagnostic Lighthouse mobile (performance 75, LCP 5,3 s).
+Les corrections de contraste, nécessairement visibles, sont volontairement
+hors de ce lot.
+
+- Les cinq feuilles de style bloquantes sont regroupées dans le bundle
+  versionné `site-20260720.css`, en conservant strictement leur ordre de
+  cascade. Les fichiers sources restent éditables ; après chaque modification
+  CSS, régénérer le bundle avec
+  `powershell -ExecutionPolicy Bypass -File _verification/build_site_css.ps1`.
+- Le hero est préchargé en WebP avec une variante mobile 1100 px et une
+  variante desktop 2200 px ; le mobile ne télécharge plus la source 2400 px.
+- Inter, Manrope et Playfair Display utilisent des sous-ensembles WOFF2
+  couvrant tous les caractères présents dans HTML, CSS et JavaScript.
+- Les pictogrammes mobiles, logos, portraits, badges, feuille décorative et
+  photos d'actualité disposent de variantes WebP. Les ressources sous la
+  ligne de flottaison utilisent `loading="lazy"` et `decoding="async"`.
+- `.htaccess` définit cache long pour images/fontes versionnées, cache mensuel
+  pour CSS/JS, revalidation HTML et compression lorsque les modules Apache ou
+  LiteSpeed correspondants sont actifs.
+- La détection de contraste de la navigation latérale regroupe désormais ses
+  lectures géométriques avant les écritures de classes afin de limiter les
+  recalculs forcés.
+
+### Volet UX/UI
+
+- **Point d'entrée** : page entière, avec priorité au hero et chargement
+  différé des contenus qui ne sont pas encore dans le viewport.
+- **Hiérarchie** : aucune modification ; ordre, dimensions, typographies,
+  cadrages, CTA et ancres restent identiques.
+- **États** : premier chargement, visite avec cache, image différée chargée ou
+  en attente, polices disponibles ou fallback système.
+- **Feedback** : aucun nouvel indicateur visible ; l'observabilité attendue est
+  la réduction des requêtes bloquantes, du poids initial et du LCP.
+- **Données affichées** : aucun texte, tarif, date ou contenu éditorial modifié.
+- **Responsive** : ressources adaptées de 320 à 1199 px et à partir de 1200 px,
+  sans débordement et sans changement de hauteur document.
+- **Accessibilité** : dimensions explicites des images, textes alternatifs
+  conservés, H1 unique et consentement tiers inchangé.
+- **Cohérence** : mêmes composants et mêmes assets sources ; seules leurs
+  représentations réseau sont optimisées.
+- **Impact UI direct** : aucun ; contrôlé par captures de chaque section et
+  matrice Playwright multi-largeurs.
+
+### Critères d'acceptation UX/UI rejoués
+
+| Critère | Résultat |
+|---|---|
+| CSS bloquants | **5 → 1** |
+| Poids initial local mobile | **1,76 Mo → 0,94 Mo (-46 %)** |
+| Poids initial local desktop 1440 | **3,05 Mo → 2,38 Mo (-22 %)** |
+| Hauteur document mobile / desktop | **inchangée : 9631 / 7222 px** |
+| Débordement 320, 390, 768, 1024, 1200, 1440, 1920 | **aucun** |
+| H1 visible / erreurs JavaScript / images cassées | **1 / 0 / 0** |
+| Menu, module, FAQ et modale légale | **validés** |
+| Requêtes tierces avant consentement | **0** |
+
+À déployer : `index.html`, `site-20260720.css`, `script.js`, `.htaccess`, les
+trois pages légales, `assets/img/*-20260720.webp` et
+`assets/fonts/*-Latin-20260720.woff2`. Après mise en ligne, contrôler que
+Hostinger applique bien les en-têtes de `.htaccess`, puis lancer trois mesures
+PageSpeed Mobile et Bureau ; la médiane fait foi.

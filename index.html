@@ -243,7 +243,7 @@
       </div>
     </section>
 
-    <section class="mobile-section mobile-ai" id="mobile-assistant">
+    <section class="mobile-section mobile-ai" id="mobile-assistant" data-nav-contrast="light">
       <div class="mobile-ai__visual" aria-hidden="true">
         <div class="mobile-ai__entete"><span>MC</span> Assistant Mon Chai</div>
         <div class="mobile-ai__bubble">Combien me reste-t-il de bouteilles sur la cuvée Tradition&nbsp;?</div>
@@ -323,7 +323,7 @@
       </div>
     </section>
 
-    <section class="mobile-section mobile-apropos" id="mobile-apropos">
+    <section class="mobile-section mobile-apropos" id="mobile-apropos" data-nav-contrast="light">
       <div class="mobile-apropos__carte">
         <h2>À propos</h2>
         <div class="mobile-fondateurs" aria-hidden="true">
@@ -370,18 +370,51 @@
             <div class="mobile-news__photo"><img src="assets/img/actu-2.jpg" alt="Vignoble au soleil couchant" width="900" height="600"></div>
             <div><h3>Ouverture du programme bêta-test Mon Chai</h3><p class="mobile-news__date">15 juillet – 1<sup>er</sup> septembre 2026</p><p>Rejoignez l’aventure Mon Chai : testez gratuitement le logiciel et partagez vos retours pour construire, ensemble, un outil vraiment adapté au quotidien des domaines viticoles.</p></div>
           </article>
-          <div class="mobile-news__social"><strong>Suivez l’aventure Mon Chai</strong><div><a href="https://www.instagram.com/monchai.fr/" aria-label="Instagram">IG</a><a href="https://www.linkedin.com/company/monchai" aria-label="LinkedIn">in</a><span class="mobile-news__social-placeholder" aria-hidden="true">f</span></div></div>
+          <div class="mobile-news__social"><strong>Suivez l’aventure Mon Chai</strong><div>
+            <a href="https://www.instagram.com/monchai.fr/" target="_blank" rel="noopener noreferrer" aria-label="Suivre Mon Chai sur Instagram">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle class="social-dot" cx="17.4" cy="6.7" r="1.1"/></svg>
+            </a>
+            <a href="https://www.linkedin.com/company/monchai" target="_blank" rel="noopener noreferrer" aria-label="Suivre Mon Chai sur LinkedIn">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5.2 8.2H2.1V22h3.1V8.2ZM3.7 2A1.8 1.8 0 1 0 3.7 5.6 1.8 1.8 0 0 0 3.7 2ZM22 14.1c0-4.2-2.2-6.2-5.2-6.2-2.4 0-3.5 1.3-4.1 2.2V8.2H9.6V22h3.1v-6.8c0-1.8.3-3.6 2.6-3.6 2.2 0 2.3 2.1 2.3 3.7V22H22v-7.9Z"/></svg>
+            </a>
+          </div></div>
         </div>
         <div class="mobile-news__secondaires">
-          <article class="mobile-news__card mobile-news__card--coffee"><div><h3>Interview de Mon Chai au Winetech Coffee</h3><p class="mobile-news__date">15 juillet 2026 sur LinkedIn · Replay disponible sur YouTube</p><p>Découvrez l’histoire de Mon Chai, les convictions qui nous animent et les coulisses de l’ouverture de notre programme bêta-test.</p></div><img src="assets/img/actu-4.jpg" alt="Chai avec des fûts" width="900" height="506"></article>
-          <article class="mobile-news__card mobile-news__card--salon"><div><h3>Mon Chai au salon Vinitech-Sifel à Bordeaux</h3><p class="mobile-news__date">1<sup>er</sup> – 3 décembre 2026</p><p>Venez échanger avec notre équipe, découvrir le logiciel et assister à une démonstration de Mon Chai.</p></div><img src="assets/img/actu-3.jpg" alt="Grappes de raisin" width="900" height="600"></article>
-          <img class="mobile-news__instagram" src="assets/img/actu-1.jpg" alt="Aperçu du flux Instagram Mon Chai" width="900" height="555">
+          <article class="mobile-news__card mobile-news__card--coffee"><div><span>À venir</span><h3>Interview de Mon Chai au Winetech Coffee</h3><p class="mobile-news__date">Date à venir sur LinkedIn · Replay disponible ensuite sur YouTube</p><p>Découvrez l’histoire de Mon Chai, les convictions qui nous animent et les coulisses de l’ouverture de notre programme bêta-test.</p></div><img src="assets/img/actu-4.jpg" alt="Chai avec des fûts" width="900" height="506"></article>
+          <article class="mobile-news__card mobile-news__card--salon"><div><span>À venir</span><h3>Mon Chai au salon Vinitech-Sifel à Bordeaux</h3><p class="mobile-news__date">1<sup>er</sup> – 3 décembre 2026</p><p>Venez échanger avec notre équipe, découvrir le logiciel et assister à une démonstration de Mon Chai.</p></div><img src="assets/img/actu-3.jpg" alt="Grappes de raisin" width="900" height="600"></article>
+        </div>
+      </div>
+
+      <div class="instagram-feed" aria-labelledby="instagramFeedTitle">
+        <div class="instagram-feed__heading">
+          <span>Suivez-nous sur Instagram</span>
+          <h3 id="instagramFeedTitle">Nos dernières publications</h3>
+        </div>
+        <div class="instagram-feed__grid">
+          <article class="instagram-embed-shell" data-instagram-embed data-permalink="https://www.instagram.com/p/Dau-f-GDIgO/">
+            <div class="instagram-placeholder">
+              <span class="instagram-placeholder__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle class="social-dot" cx="17.4" cy="6.7" r="1.1"/></svg></span>
+              <strong>Publication Instagram</strong>
+              <p>Autorisez les services tiers pour afficher la publication complète.</p>
+              <button type="button" data-cookies>Choisir mes réglages</button>
+              <a href="https://www.instagram.com/p/Dau-f-GDIgO/" target="_blank" rel="noopener noreferrer">Voir sur Instagram</a>
+            </div>
+          </article>
+          <article class="instagram-embed-shell" data-instagram-embed data-permalink="https://www.instagram.com/p/DXEz3a9DNxf/">
+            <div class="instagram-placeholder">
+              <span class="instagram-placeholder__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle class="social-dot" cx="17.4" cy="6.7" r="1.1"/></svg></span>
+              <strong>Publication Instagram</strong>
+              <p>Autorisez les services tiers pour afficher la publication complète.</p>
+              <button type="button" data-cookies>Choisir mes réglages</button>
+              <a href="https://www.instagram.com/p/DXEz3a9DNxf/" target="_blank" rel="noopener noreferrer">Voir sur Instagram</a>
+            </div>
+          </article>
         </div>
       </div>
     </section>
   </main>
 
-  <footer class="mobile-footer" aria-label="Pied de page">
+  <footer class="mobile-footer" aria-label="Pied de page" data-nav-contrast="light">
     <div class="mobile-footer__marque">
       <svg class="mobile-footer__filters" width="0" height="0" aria-hidden="true" focusable="false">
         <filter id="footer-logo-gold" color-interpolation-filters="sRGB">
@@ -404,15 +437,22 @@
       <div class="mobile-footer__badges"><img src="assets/img/badge-frenchtech.png" alt="La WineTech" width="220" height="250"><img src="assets/img/badge-winetech.png" alt="La French Tech" width="220" height="183"></div>
     </div>
     <nav class="mobile-footer__liens" aria-label="Liens du pied de page">
-      <a class="mobile-footer__heading" href="cgu.html">CGUV</a>
+      <a class="mobile-footer__heading" href="cgu.html" data-legal>CGUV</a>
       <a href="mailto:contact@monchai.fr">Nous contacter</a>
-      <a href="mentions-legales.html">Mentions légales</a>
+      <a href="mentions-legales.html" data-legal>Mentions légales</a>
       <button type="button" data-cookies>Gérer mes cookies</button>
-      <a href="politique-confidentialite.html">Politique de confidentialité</a>
+      <a href="politique-confidentialite.html" data-legal>Politique de confidentialité</a>
     </nav>
     <div class="mobile-footer__suivre">
       <strong>Nous suivre</strong>
-      <div class="mobile-footer__social"><a href="https://www.instagram.com/monchai.fr/" target="_blank" rel="noopener noreferrer">Instagram</a><a href="https://www.linkedin.com/company/monchai" target="_blank" rel="noopener noreferrer">LinkedIn</a></div>
+      <div class="mobile-footer__social">
+        <a href="https://www.instagram.com/monchai.fr/" target="_blank" rel="noopener noreferrer" aria-label="Suivre Mon Chai sur Instagram">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle class="social-dot" cx="17.4" cy="6.7" r="1.1"/></svg>
+        </a>
+        <a href="https://www.linkedin.com/company/monchai" target="_blank" rel="noopener noreferrer" aria-label="Suivre Mon Chai sur LinkedIn">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5.2 8.2H2.1V22h3.1V8.2ZM3.7 2A1.8 1.8 0 1 0 3.7 5.6 1.8 1.8 0 0 0 3.7 2ZM22 14.1c0-4.2-2.2-6.2-5.2-6.2-2.4 0-3.5 1.3-4.1 2.2V8.2H9.6V22h3.1v-6.8c0-1.8.3-3.6 2.6-3.6 2.2 0 2.3 2.1 2.3 3.7V22H22v-7.9Z"/></svg>
+        </a>
+      </div>
     </div>
     <p class="mobile-footer__credit">Imaginé et développé à Rennes</p>
   </footer>
@@ -513,7 +553,7 @@
 
         <label class="modal__consent">
           <input type="checkbox" id="consent" name="consentement" required>
-          <span>J’accepte que HALLAIS &amp; BERTHELOT utilise ces informations pour étudier ma demande, vérifier mon éligibilité, créer mon accès et organiser mon accompagnement. <a href="politique-confidentialite.html">Consulter la politique de confidentialité</a>.</span>
+          <span>J’accepte que HALLAIS &amp; BERTHELOT utilise ces informations pour étudier ma demande, vérifier mon éligibilité, créer mon accès et organiser mon accompagnement. <a href="politique-confidentialite.html" data-legal>Consulter la politique de confidentialité</a>.</span>
         </label>
 
         <p id="form-message" class="modal__message" style="display:none;" role="alert" aria-live="polite"></p>
@@ -533,6 +573,26 @@
       <noscript><p class="modal__noscript">Le formulaire nécessite JavaScript. Écrivez-nous à <a href="mailto:contact@monchai.fr">contact@monchai.fr</a>.</p></noscript>
     </div>
   </div>
+</div>
+
+<!-- Les pages légales restent accessibles par leur URL propre, mais s’ouvrent
+     dans cette modale depuis la landing afin de préserver le parcours. -->
+<div class="legal-modal" id="modalLegal" hidden>
+  <div class="legal-modal__fond" data-legal-fermer></div>
+  <section class="legal-modal__boite" role="dialog" aria-modal="true" aria-labelledby="legalModalTitre">
+    <header class="legal-modal__entete">
+      <img src="assets/img/logo_mon_chai.png" alt="" width="1326" height="727">
+      <div class="legal-modal__titres">
+        <span>Informations légales</span>
+        <h2 id="legalModalTitre">Mon Chai</h2>
+      </div>
+      <div class="legal-modal__actions">
+        <a id="legalModalPage" href="mentions-legales.html" target="_blank" rel="noopener" data-legal-page>Page complète</a>
+        <button type="button" class="legal-modal__fermer" data-legal-fermer aria-label="Fermer la fenêtre légale">&times;</button>
+      </div>
+    </header>
+    <iframe id="legalModalFrame" title="Informations légales Mon Chai"></iframe>
+  </section>
 </div>
 
 

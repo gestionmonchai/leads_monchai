@@ -17,6 +17,10 @@
    6 mois, réouvrable via « Gérer mes cookies ».
    ========================================================= */
 (function () {
+  // Une page légale affichée dans la modale de la landing réutilise le choix
+  // du document parent et ne doit injecter ni second bandeau ni second traceur.
+  if (window.self !== window.top) return;
+
   var CLE = 'monchai_cookie_consent';
   var SIX_MOIS = 1000 * 60 * 60 * 24 * 182;
 
@@ -77,7 +81,7 @@
 
   var HTML_BANNIERE =
     '<div class="cookie__texte">' +
-      '<p><strong>Cookies&nbsp;:</strong> nécessaires au fonctionnement du site et, avec votre accord, de mesure d’audience. ' +
+      '<p><strong>Cookies&nbsp;:</strong> nécessaires au site et, avec votre accord, pour la mesure d’audience et les contenus Instagram. ' +
       '<a href="politique-confidentialite.html">En savoir plus</a> · ' +
       '<button type="button" class="cookie__perso" id="cookieRegler">Personnaliser</button></p>' +
     '</div>' +
@@ -148,6 +152,11 @@
     document.documentElement.dataset.consentTiers = tiers ? '1' : '0';
     if (audience) chargerHubSpot();
     else arreterHubSpot();
+    try {
+      window.dispatchEvent(new CustomEvent('monchai:consent', {
+        detail: { audience: !!audience, tiers: !!tiers }
+      }));
+    } catch (e) {}
   }
 
   if (initial) appliquer(initial.audience, initial.tiers);
@@ -203,9 +212,12 @@
       fermerReglages(); cacherBanniere();
     });
 
-    // « Gérer mes cookies » (footer, nav mobile, pages légales) rouvre les réglages
-    document.querySelectorAll('[data-cookies]').forEach(function (el) {
-      el.addEventListener('click', function (e) { e.preventDefault(); ouvrirReglages(); });
+    // Délégation : couvre aussi les boutons recréés quand un contenu tiers est retiré.
+    document.addEventListener('click', function (e) {
+      var el = e.target.closest && e.target.closest('[data-cookies]');
+      if (!el) return;
+      e.preventDefault();
+      ouvrirReglages();
     });
     modalC.querySelectorAll('[data-cookies-fermer]').forEach(function (el) {
       el.addEventListener('click', fermerReglages);

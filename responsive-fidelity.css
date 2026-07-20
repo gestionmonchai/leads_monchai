@@ -654,9 +654,20 @@
   .mobile-news .mobile-news__card h3{ font-size:18px !important; white-space:normal !important; }
   .mobile-news .mobile-news__card p{ font-size:12px !important; }
   .mobile-news .mobile-news__date{ font-size:12px !important; }
-  .mobile-news__secondaires .mobile-news__card{ grid-template-columns:1fr 96px !important; }
-  .mobile-news__secondaires .mobile-news__card > img{ width:96px !important; height:100% !important; min-height:140px !important; }
-  .mobile-news__instagram{ width:100% !important; height:auto !important; transform:none !important; }
+  .mobile-news__secondaires .mobile-news__card{
+    grid-template-columns:1fr !important;
+    grid-template-rows:170px auto !important;
+  }
+  .mobile-news__secondaires .mobile-news__card > div{
+    grid-column:1 !important; grid-row:2 !important;
+  }
+  .mobile-news__secondaires .mobile-news__card > img{
+    grid-column:1 !important; grid-row:1 !important;
+    width:100% !important; height:170px !important; min-height:0 !important;
+  }
+  .mobile-news__instagram-link{ width:100% !important; height:auto !important; min-height:132px !important; transform:none !important; }
+  .mobile-news__instagram-link{ grid-template-columns:auto 1fr !important; }
+  .mobile-news__instagram-handle{ grid-column:2; }
 
   /* Footer : même logo bichrome, même dégradé et mêmes familles de liens. */
   .mobile-footer{
@@ -775,4 +786,37 @@
     grid-row:auto !important;
   }
   .mobile-primeurs .mobile-list{ margin-top:6px !important; }
+}
+
+/* Les publications restent secondaires et compactes par rapport aux actualités éditoriales. */
+@media (max-width:1199px){
+  .mobile-news__secondaires{ grid-template-rows:auto !important; align-content:start !important; }
+}
+
+@media (min-width:1200px){
+  .mobile-news{
+    height:auto; min-height:1081px; padding:70px 0 80px;
+  }
+  .mobile-news > h2{
+    position:relative; top:auto; left:auto; width:100%;
+  }
+  .mobile-news__layout{
+    position:relative; left:auto; top:auto; width:1664px; height:auto;
+    margin:110px auto 0; grid-template-columns:767px minmax(0,1fr); align-items:start;
+  }
+  .mobile-news__secondaires{
+    grid-template-columns:1fr; grid-template-rows:260px 260px; align-items:start;
+  }
+  .mobile-news__secondaires .mobile-news__card{
+    grid-template-columns:minmax(0,1fr) 120px;
+  }
+  .mobile-news__secondaires .mobile-news__card > img{
+    width:120px; height:100%;
+  }
+  .mobile-news__secondaires .mobile-news__card h3{
+    white-space:normal;
+  }
+  .mobile-news__instagram-link{
+    grid-column:auto; width:100%; height:234px; min-height:0; transform:translateY(8px);
+  }
 }

@@ -16,7 +16,28 @@ const siteHeader = document.getElementById('siteHeader');
 const liensHeader = document.querySelector('.site-header__liens');
 const heroCanvas = document.getElementById('heroDesktopCanvas');
 const readingBar = document.getElementById('readingBar');
+const dotNav = document.getElementById('dotNav');
 const dotLinks = Array.prototype.slice.call(document.querySelectorAll('.dot-nav a'));
+
+function mettreAJourContrasteNavigation() {
+  if (!dotNav || !window.matchMedia('(min-width:1200px)').matches) {
+    dotLinks.forEach(function (lien) { lien.classList.remove('sur-fond-sombre'); });
+    return;
+  }
+
+  const zones = Array.prototype.map.call(
+    document.querySelectorAll('[data-nav-contrast="light"]'),
+    function (zone) { return zone.getBoundingClientRect(); }
+  );
+  dotLinks.forEach(function (lien) {
+    const repere = lien.getBoundingClientRect();
+    const y = repere.top + repere.height / 2;
+    const surFondSombre = zones.some(function (cadre) {
+      return cadre.top <= y && cadre.bottom >= y;
+    });
+    lien.classList.toggle('sur-fond-sombre', surFondSombre);
+  });
+}
 
 function ajusterCanvasDesktop() {
   const desktop = window.matchMedia('(min-width:1200px)').matches;
@@ -37,6 +58,7 @@ let chromeEnAttente = false;
 function majChromeDesktop() {
   if (!window.matchMedia('(min-width:1200px)').matches) {
     if (siteHeader) siteHeader.classList.remove('est-masque');
+    mettreAJourContrasteNavigation();
     dernierYChrome = window.scrollY;
     return;
   }
@@ -67,6 +89,7 @@ function majChromeDesktop() {
     if (index === actif) lien.setAttribute('aria-current', 'true');
     else lien.removeAttribute('aria-current');
   });
+  mettreAJourContrasteNavigation();
 }
 
 dotLinks.forEach(function (lien) {
@@ -185,6 +208,61 @@ function chargerEmailJS() {
   return promesseEmailJS;
 }
 
+/* Publications Instagram : aucun appel à Meta avant l'accord « Services tiers ». */
+(function () {
+  var publications = Array.prototype.slice.call(document.querySelectorAll('[data-instagram-embed]'));
+  if (!publications.length) return;
+
+  var contenusAttente = publications.map(function (publication) { return publication.innerHTML; });
+
+  function remettreAttente() {
+    publications.forEach(function (publication, index) {
+      publication.innerHTML = contenusAttente[index];
+      publication.classList.remove('instagram-embed-shell--charge');
+    });
+    var scriptInstagram = document.getElementById('instagram-embed-script');
+    if (scriptInstagram) scriptInstagram.remove();
+  }
+
+  function traiterInstagram() {
+    if (window.instgrm && window.instgrm.Embeds) window.instgrm.Embeds.process();
+  }
+
+  function chargerInstagram() {
+    publications.forEach(function (publication) {
+      var url = publication.getAttribute('data-permalink');
+      publication.classList.add('instagram-embed-shell--charge');
+      publication.innerHTML =
+        '<blockquote class="instagram-media" data-instgrm-permalink="' + url + '" data-instgrm-version="14">' +
+          '<a href="' + url + '" target="_blank" rel="noopener noreferrer">Voir cette publication sur Instagram</a>' +
+        '</blockquote>';
+    });
+
+    if (window.instgrm && window.instgrm.Embeds) {
+      traiterInstagram();
+      return;
+    }
+    if (document.getElementById('instagram-embed-script')) return;
+    var script = document.createElement('script');
+    script.id = 'instagram-embed-script';
+    script.async = true;
+    script.src = 'https://www.instagram.com/embed.js';
+    script.onload = traiterInstagram;
+    document.body.appendChild(script);
+  }
+
+  function appliquerInstagram(choix) {
+    var consentement = choix || window.monchaiConsent || { tiers: false };
+    if (consentement.tiers) chargerInstagram();
+    else remettreAttente();
+  }
+
+  window.addEventListener('monchai:consent', function (event) {
+    appliquerInstagram(event.detail);
+  });
+  appliquerInstagram();
+})();
+
 
 /* =========================================================
    2. Pop-up « M'inscrire au programme bêta-test »
@@ -220,7 +298,8 @@ modal.querySelectorAll('[data-fermer]').forEach(function (el) {
   el.addEventListener('click', fermerModal);
 });
 document.addEventListener('keydown', function (e) {
-  if (e.key === 'Escape' && !modal.hidden) fermerModal();
+  const legalOuverte = document.getElementById('modalLegal');
+  if (e.key === 'Escape' && !modal.hidden && (!legalOuverte || legalOuverte.hidden)) fermerModal();
 });
 modal.addEventListener('keydown', function (e) {
   if (e.key !== 'Tab' || modal.hidden) return;
@@ -241,7 +320,137 @@ modal.addEventListener('keydown', function (e) {
 
 
 /* =========================================================
-   3. Formulaire d'inscription bêta-test -> envoi du mail (EmailJS)
+   3. Pop-up des pages légales
+      Les documents conservent leurs URLs autonomes ; depuis la landing,
+      leurs liens sont affichés dans un cadre interne habillé Mon Chai.
+   ========================================================= */
+const modalLegal = document.getElementById('modalLegal');
+const cadreLegal = document.getElementById('legalModalFrame');
+const titreLegal = document.getElementById('legalModalTitre');
+const pageLegalComplete = document.getElementById('legalModalPage');
+let elementAvantLegal = null;
+let overflowAvantLegal = '';
+
+const pagesLegales = {
+  'cgu.html': 'Conditions générales d’utilisation',
+  'mentions-legales.html': 'Mentions légales',
+  'politique-confidentialite.html': 'Politique de confidentialité'
+};
+
+function fichierLegal(url) {
+  try {
+    const chemin = new URL(url, window.location.href).pathname;
+    return decodeURIComponent(chemin.split('/').pop() || '').toLowerCase();
+  } catch (e) { return ''; }
+}
+
+function urlIntegree(url) {
+  try {
+    const cible = new URL(url, window.location.href);
+    cible.searchParams.set('embed', '1');
+    if (fichierLegal(cible.href) === 'politique-confidentialite.html') {
+      cible.searchParams.set('version', '20260720-2');
+    }
+    return cible.href;
+  } catch (e) { return url; }
+}
+
+function ouvrirLegal(url, libelle, declencheur) {
+  if (!modalLegal || !cadreLegal) return;
+  elementAvantLegal = declencheur || document.activeElement;
+  overflowAvantLegal = document.body.style.overflow;
+  const fichier = fichierLegal(url);
+  const titre = libelle || pagesLegales[fichier] || 'Informations légales';
+  titreLegal.textContent = titre;
+  cadreLegal.title = titre + ' — Mon Chai';
+  pageLegalComplete.href = new URL(url, window.location.href).href;
+  cadreLegal.src = urlIntegree(url);
+  modalLegal.hidden = false;
+  document.body.style.overflow = 'hidden';
+  if (modal && !modal.hidden) modal.setAttribute('aria-hidden', 'true');
+  const fermer = modalLegal.querySelector('.legal-modal__fermer');
+  if (fermer) fermer.focus();
+}
+
+function fermerLegal() {
+  if (!modalLegal || modalLegal.hidden) return;
+  modalLegal.hidden = true;
+  if (cadreLegal) cadreLegal.src = 'about:blank';
+  document.body.style.overflow = overflowAvantLegal;
+  if (modal) modal.removeAttribute('aria-hidden');
+  if (elementAvantLegal && elementAvantLegal.isConnected && typeof elementAvantLegal.focus === 'function') {
+    elementAvantLegal.focus();
+  }
+}
+
+if (modalLegal && cadreLegal) {
+  // Délégation : couvre aussi le lien injecté plus tard dans le bandeau cookies.
+  document.addEventListener('click', function (event) {
+    const lien = event.target.closest && event.target.closest('a[href]');
+    if (!lien || lien.hasAttribute('data-legal-page')) return;
+    const fichier = fichierLegal(lien.href);
+    if (!pagesLegales[fichier]) return;
+    event.preventDefault();
+    fermerMenuMobile();
+    ouvrirLegal(lien.href, pagesLegales[fichier], lien);
+  });
+
+  modalLegal.querySelectorAll('[data-legal-fermer]').forEach(function (element) {
+    element.addEventListener('click', fermerLegal);
+  });
+
+  document.addEventListener('keydown', function (event) {
+    if (event.key === 'Escape' && !modalLegal.hidden) {
+      event.preventDefault();
+      fermerLegal();
+    }
+  });
+
+  cadreLegal.addEventListener('load', function () {
+    if (cadreLegal.src === 'about:blank') return;
+    try {
+      const doc = cadreLegal.contentDocument;
+      if (!doc) return;
+      doc.documentElement.classList.add('legal-embed');
+      const h1 = doc.querySelector('h1');
+      if (h1) {
+        titreLegal.textContent = h1.textContent.trim();
+        cadreLegal.title = h1.textContent.trim() + ' — Mon Chai';
+      }
+      const urlCadre = cadreLegal.contentWindow.location.href;
+      const cibleComplete = new URL(urlCadre);
+      cibleComplete.searchParams.delete('embed');
+      pageLegalComplete.href = cibleComplete.href;
+
+      doc.querySelectorAll('.legal-retour, a[href$="index.html"]').forEach(function (lien) {
+        lien.addEventListener('click', function (event) {
+          event.preventDefault();
+          fermerLegal();
+        });
+      });
+      doc.querySelectorAll('[data-cookies]').forEach(function (bouton) {
+        bouton.addEventListener('click', function (event) {
+          event.preventDefault();
+          const boutonParent = document.querySelector('.mobile-footer [data-cookies]') || document.querySelector('[data-cookies]');
+          if (boutonParent) boutonParent.click();
+        });
+      });
+      doc.addEventListener('keydown', function (event) {
+        if (event.key === 'Escape') {
+          event.preventDefault();
+          fermerLegal();
+        }
+      });
+    } catch (e) {
+      // Le document reste lisible même si un navigateur restreint l’accès
+      // au contenu d’un iframe local ouvert via file://.
+    }
+  });
+}
+
+
+/* =========================================================
+   4. Formulaire d'inscription bêta-test -> envoi du mail (EmailJS)
        Formulaire complet (prénom, nom, e-mail pro, tél, domaine, SIRET,
        activité, outil, priorité, consentement). Anti-spam : honeypot +
        timing + limitation de fréquence. Succès -> message de confirmation.

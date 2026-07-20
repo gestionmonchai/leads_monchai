@@ -1,10 +1,7 @@
 /* =========================================================
-   Mon Chai — écran ACCUEIL
-   Reproduction 1:1 de la frame Figma "ACCUEIL" (24:1834) — 1920 × 1200
-   Toutes les valeurs (coordonnées, rayons, ombres, opacités, couleurs)
-   sont extraites de Accueil/ACCUEIL.svg. Rien n'est estimé.
-   Polices identifiées par comparaison de forme sur le rendu Figma :
-   Playfair Display 500 (titre) · Inter (texte).
+   Mon Chai — styles de la landing (base native mobile-first).
+   Palette et typographies de la charte ; les adaptations >= 821 px
+   vivent dans native-desktop.css.
    ========================================================= */
 
 :root{
@@ -20,7 +17,6 @@
   --sans:  "Inter", system-ui, -apple-system, sans-serif;
 }
 
-.mobile-site, .mobile-reference{ display:none; }
 .sr-only{
   position:absolute; width:1px; height:1px; padding:0; margin:-1px;
   overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0;
@@ -33,575 +29,6 @@ body{
   font-family:var(--sans);
   -webkit-font-smoothing:antialiased;
   overflow-x:hidden;
-}
-
-/* Les écrans sont empilés dans .page, mise à l'échelle globale par script.js */
-.page{
-  width:1920px;
-  transform-origin:top left;
-}
-
-/* Une scène = une frame Figma, à la taille exacte.
-   Fond TRANSPARENT et non blanc : la scène est mise à l'échelle par un
-   transform, sa hauteur tombe donc sur une fraction de pixel (1081 × 0,66 =
-   713,46). Le navigateur arrondit, l'image de fond ne couvre pas tout à fait
-   la dernière rangée, et le blanc de la scène affleurait — c'était le liseré
-   entre À propos et la FAQ. */
-.stage{
-  position:relative;
-  width:1920px; height:1200px;
-  overflow:hidden;
-  background:transparent;
-}
-/* Les écrans se chevauchent de 2px : plus aucun joint possible, quelle que
-   soit l'échelle. */
-.stage + .stage{ margin-top:-2px; }
-
-/* ---------- Photo de fond ----------
-   SVG : <rect width="2141" height="1428" transform="matrix(-1 0 0 1 2141 120)">
-   → 2141×1428, retournée horizontalement.
-   Remontée en y=0 (au lieu de 120) : plus de header par écran, la photo
-   récupère la bande libérée. */
-.hero-photo{
-  position:absolute; left:0; top:0;
-  width:2141px; height:1428px;
-  background:url("assets/img/moritz-knoringer-UP6orFljGaY-unsplash.jpg") center/100% 100% no-repeat;
-  transform:scaleX(-1);
-  z-index:1;
-}
-
-/* ---------- Carte hero — 136,273 · 824×775 · r22 · opacité 94 % ----------
-   Réduction de 5 % demandée par le client (scale depuis le coin haut-gauche).
-   Tout l'intérieur suit à l'identique : proportions, textes, boutons, ornement.
-   Rendu : 782,8 × 736,25 px, toujours ancrée en 136,273.
-   Pour revenir au Figma strict : --hero-scale: 1 */
-.hero-card{
-  --hero-scale:.95;
-  position:absolute; left:136px; top:273px;
-  width:824px; height:775px;
-  transform:scale(var(--hero-scale));
-  transform-origin:top left;
-  background:rgba(255,253,252,.94);
-  border-radius:22px;
-  box-shadow:0 4px 4px rgba(0,0,0,.13);
-  z-index:2;
-}
-
-/* Titre — 175,303 · 763×348 (3 lignes, interligne 116)
-   top calculé pour que le haut du « L » tombe à y=343 (rendu Figma). */
-.hero-title{
-  position:absolute; left:39px; top:32.48px;
-  width:763px;
-  font-family:var(--serif);
-  font-weight:500;
-  font-size:70px;
-  line-height:116px;
-  color:var(--bordeaux);
-}
-
-/* Filet — remplace l'ornement calligraphique du Figma (choix client).
-   Aligné à gauche sur le titre et le lead (left:39px, comme eux).
-   Longueur et épaisseur = les deux seules valeurs à ajuster. */
-.ornement{
-  position:absolute; left:39px; top:405px;
-  width:160px; height:5px;
-  border-radius:3px;
-  background:var(--or);
-}
-
-/* Lead — 3 lignes forcées par <br>, police réduite (choix produit, hors Figma).
-   28px / interligne 40px. Bloc : 480 + 3×40 = 600
-   → 75px de respiration avant les boutons (675), pour les faire ressortir.
-   Conséquence assumée : la ligne 1 finit à x=734 (contre 874 à 35px),
-   donc une marge droite plus large que dans le Figma. */
-.hero-lead{
-  position:absolute; left:39px; top:480px;
-  width:730px;
-  font-size:29px;
-  line-height:40px;
-  color:var(--gris);
-}
-.hero-lead strong{ font-weight:700; color:var(--gris); }
-
-/* Boutons — 164,948 et 543,948 · 352×57
-   Le texte n'est pas centré verticalement dans le Figma : les padding-top
-   ci-dessous reproduisent exactement la position des lettres du rendu. */
-.btn{
-  position:absolute; top:675px;
-  width:352px; height:57px;
-  text-align:center;
-  border-radius:28.5px;
-  border:1px solid rgba(111,29,45,.18);
-  text-decoration:none;
-}
-.btn-gold{
-  left:28px;
-  padding-top:4px;
-  background:var(--or);
-  color:#fff;
-  font-size:22px; font-weight:600; line-height:26px;
-  box-shadow:0 12px 26px rgba(0,0,0,.13), 0 4px 10px rgba(0,0,0,.13);
-}
-.btn-light{
-  left:407px;
-  padding-top:13.37px;
-  background:var(--carte);
-  color:var(--bordeaux);
-  font-size:23px; font-weight:700; line-height:28px;
-  box-shadow:0 6px 10px rgba(0,0,0,.13);
-}
-
-/* ---------- Aperçu produit — 1054,415 · 730.1×490 · r32 ----------
-   Verre dépoli : blanc 78 % + flou d'arrière-plan 9px + liseré blanc 90 %. */
-.apercu{
-  position:absolute; left:1054px; top:415px;
-  width:730.1px; height:490px;
-  border-radius:32px;
-  background:rgba(255,255,255,.78);
-  border:1px solid rgba(255,255,255,.9);
-  backdrop-filter:blur(9px);
-  -webkit-backdrop-filter:blur(9px);
-  box-shadow:0 20px 56px rgba(0,0,0,.13);
-  z-index:2;
-}
-
-/* Pastilles — 1072.74, 434.363 · 10px, pas de 16.99 */
-.dots{ position:absolute; left:18.74px; top:19.36px; display:flex; gap:6.99px; }
-.dots i{ width:10px; height:10px; border-radius:50%; }
-.dots i:nth-child(1){ background:#E8C58A; }
-.dots i:nth-child(2){ background:#DDE4C2; }
-.dots i:nth-child(3){ background:rgba(111,29,45,.25); }
-
-.screen-title{
-  position:absolute; right:18.73px; top:15.3px;
-  font-size:13px; font-weight:700; line-height:19px;
-  color:var(--gris);
-}
-
-/* Cartes du tableau de bord — r20, liseré interne #211B18 à 12 % */
-.dash-card{
-  position:absolute;
-  background:#fff;
-  border:1px solid rgba(33,27,24,.12);
-  border-radius:20px;
-}
-.c1{ left:18.74px;  top:66.74px;  width:339.32px; height:127.64px; }
-.c2{ left:372.05px; top:66.74px;  width:339.32px; height:127.64px; }
-.cw{ left:18.74px;  top:208.37px; width:692.63px; height:128px;
-     background:url("assets/img/dash-card-bg.png") center/100% 100% no-repeat; }
-.c3{ left:18.74px;  top:350.36px; width:339.32px; height:114.64px; }
-.c4{ left:372.05px; top:350.36px; width:339.32px; height:114.64px; }
-
-/* Offsets internes des cartes, repris tels quels du Figma :
-   légende 17.73 · chiffre 42.12 · légende 72.52 (depuis le haut de la carte) */
-.dash-card .kicker,
-.dash-card .number{ position:absolute; left:17.73px; }
-.dash-card .kicker:first-child{ top:17.73px; }
-.dash-card .number{ top:42.12px; }
-.dash-card .kicker:last-of-type{ top:72.52px; }
-
-.kicker{ font-size:13px; line-height:18px; color:var(--gris); white-space:nowrap; }
-.number{ font-size:31px; line-height:31px; font-weight:700; color:var(--bordeaux-f); }
-
-/* Jauge — 303.854 × 7.998 · r4 */
-.bar{
-  position:absolute; left:17.73px; top:101.91px;
-  width:303.854px; height:7.998px;
-  border-radius:3.999px;
-  background:rgba(111,29,45,.1);
-  overflow:hidden;
-}
-.bar span{ display:block; height:100%; border-radius:3.999px; background:var(--bordeaux-f); }
-
-
-/* =========================================================
-   ÉCRAN 2 — "Frame 1" · 1920 × 3705
-   Pourquoi Mon Chai + Assistant IA + Bêta-test & Tarifs, fusionnés en une
-   seule frame Figma. Les transitions entre les trois sont dans le SVG
-   (photo à 74 % d'opacité + dégradé de fondu vers le crème) : plus aucun
-   masque ni fondu CSS.
-
-   Le fond est la frame MOINS les 9 vignettes. Celles-ci sont posées par-dessus
-   en SVG indépendants pour rester animables.
-   La frame a un décalage de +7px en x et 15px morts à droite : le viewBox est
-   recadré sur "7 0 1920 3705", ce qui ramène les coordonnées à l'échelle 1920.
-   ========================================================= */
-#parcours{ height:3800px; }
-
-/* Deux couches de fond, jointes en plein crème à y=1150 (écart 0/255) :
-   - le HAUT (Fonctionnalités) vient de frame1-fond : titre, lead, 3 cartes,
-     "De la vigne à la vente" et la bande de vignettes SANS les icônes.
-   - le BAS (Assistant IA + Tarifs) vient de la nouvelle frame
-     "FONCTIONNALITE IA TARIFS", aux transitions retravaillées dans Figma.
-   Les 9 vignettes animées sont posées par-dessus (y=799). */
-#parcours .frame1-fond{
-  position:absolute; top:0; left:0;
-  width:1920px; height:1152px;
-  background:url("assets/svg/frame1-fond.svg") top center no-repeat;
-  background-size:1920px auto;
-  z-index:1;
-}
-#parcours .parcours-bas{
-  position:absolute; top:1150px; left:0;
-  width:1920px; height:2650px;
-  background:url("assets/svg/parcours-bas.svg") top center no-repeat;
-  background-size:100% calc(100% + 3px);
-  z-index:1;
-}
-/* Le CTA « Voir l’offre détaillée » est dessiné dans le SVG source.
-   Cet aplat reprend exactement le fond de la carte pour le retirer sans
-   dégrader les autres tracés du visuel. */
-#parcours .offre-detail-cover{
-  position:absolute;
-  left:1228px; top:3590px;
-  width:300px; height:82px;
-  background:#FFFDFC;
-  z-index:2;
-  pointer-events:none;
-}
-#parcours .tarif-beta-hotspot{
-  position:absolute; left:1075px; top:3310px; z-index:3;
-  width:400px; height:80px; padding:0; border:0; border-radius:999px;
-  background:transparent; cursor:pointer;
-}
-#parcours .tarif-beta-hotspot:focus-visible{ outline:4px solid var(--bordeaux); outline-offset:4px; }
-
-/* Ancres invisibles : la nav latérale et les liens du header visent toujours
-   #pourquoi, #assistant et #tarifs, qui sont maintenant DANS la même section. */
-#parcours .ancre{
-  position:absolute; left:0;
-  width:1px; height:1px;
-  pointer-events:none;
-}
-
-/* ---------- Les 9 modules ----------
-   Bande Figma (Group 108) découpée en 9 SVG indépendants.
-   Carte : 167,013 × 248,508 · r19 · pas de 185,1235 · premier x = 136.
-   Le SVG inclut le débord de l'ombre (7,4 px sur les côtés, 29,4 en bas). */
-#parcours .pq-slot{
-  position:absolute;
-  top:799.434px;                                 /* y de la carte dans Frame 1 */
-  left:calc(128.6px + var(--i) * 185.1235px);    /* x = 143 + 185.1235·i, moins le décalage de 7px et le débord d'ombre de 7.4px */
-  width:181.814px;
-  z-index:4;
-}
-#parcours .pq-slot:hover,
-#parcours .pq-slot.est-fige{ z-index:6; }
-
-#parcours .pq-module{
-  position:relative;
-  display:block;
-  width:181.814px; height:277.908px;
-  padding:0; border:0; background:transparent;
-  background-repeat:no-repeat;
-  background-size:100% 100%;
-  cursor:pointer;
-  outline:none;
-  -webkit-tap-highlight-color:transparent;
-}
-.sr{
-  position:absolute; width:1px; height:1px;
-  padding:0; margin:-1px; overflow:hidden;
-  clip:rect(0 0 0 0); white-space:nowrap; border:0;
-}
-#parcours [data-module="parcelles"]        { background-image:url("assets/svg/modules/parcelles.svg"); }
-#parcours [data-module="vendanges"]        { background-image:url("assets/svg/modules/vendanges.svg"); }
-#parcours [data-module="cuverie"]          { background-image:url("assets/svg/modules/cuverie.svg"); }
-#parcours [data-module="mises"]            { background-image:url("assets/svg/modules/mises.svg"); }
-#parcours [data-module="stocks"]           { background-image:url("assets/svg/modules/stocks.svg"); }
-#parcours [data-module="ventes"]           { background-image:url("assets/svg/modules/ventes.svg"); }
-#parcours [data-module="clients"]          { background-image:url("assets/svg/modules/clients.svg"); }
-#parcours [data-module="administratif"]    { background-image:url("assets/svg/modules/administratif.svg"); }
-#parcours [data-module="tableaux-de-bord"] { background-image:url("assets/svg/modules/tableaux-de-bord.svg"); }
-
-/* ---------- État survolé ----------
-   Group 109.svg = carte normale + voile #DFB780 à 50 %, posé SOUS l'icône.
-   Voile injecté au bon niveau dans chacun des 9 SVG -> <module>-survol.svg */
-#parcours .pq-module::after{
-  content:"";
-  position:absolute; inset:0;
-  background-repeat:no-repeat;
-  background-size:100% 100%;
-  opacity:0;
-  transition:opacity .2s ease;
-  pointer-events:none;
-}
-#parcours .pq-slot:hover .pq-module::after,
-#parcours .pq-slot:focus-within .pq-module::after,
-#parcours .pq-slot.est-fige .pq-module::after{ opacity:1; }
-
-#parcours [data-module="parcelles"]::after       { background-image:url("assets/svg/modules/parcelles-survol.svg"); }
-#parcours [data-module="vendanges"]::after       { background-image:url("assets/svg/modules/vendanges-survol.svg"); }
-#parcours [data-module="cuverie"]::after         { background-image:url("assets/svg/modules/cuverie-survol.svg"); }
-#parcours [data-module="mises"]::after           { background-image:url("assets/svg/modules/mises-survol.svg"); }
-#parcours [data-module="stocks"]::after          { background-image:url("assets/svg/modules/stocks-survol.svg"); }
-#parcours [data-module="ventes"]::after          { background-image:url("assets/svg/modules/ventes-survol.svg"); }
-#parcours [data-module="clients"]::after         { background-image:url("assets/svg/modules/clients-survol.svg"); }
-#parcours [data-module="administratif"]::after   { background-image:url("assets/svg/modules/administratif-survol.svg"); }
-#parcours [data-module="tableaux-de-bord"]::after{ background-image:url("assets/svg/modules/tableaux-de-bord-survol.svg"); }
-
-/* ---------- Flèche → trait plein ----------
-   La flèche a été SORTIE des 9 SVG pour devenir animable. Sa position exacte
-   varie d'une vignette à l'autre : passée en --fx / --fy dans le HTML. */
-#parcours .pq-fleche,
-#parcours .pq-trait{
-  position:absolute;
-  z-index:1;
-  pointer-events:none;
-}
-#parcours .pq-fleche{
-  left:calc(var(--fx) - 11.5px);
-  top:calc(var(--fy) - 11.5px);
-  width:23px; height:23px;
-  background:url("assets/svg/fleche.svg") center/contain no-repeat;
-  opacity:1; transform:scale(1);
-  transition:opacity .22s ease, transform .28s cubic-bezier(.2,.8,.2,1);
-}
-/* Le trait est remonté de 9px : il se cale sous le titre de la vignette. */
-#parcours .pq-trait{
-  left:var(--fx);
-  top:calc(var(--fy) - 10.5px);
-  width:0; height:3px;
-  border-radius:2px;
-  background:var(--bordeaux);
-  transform:translateX(-50%);
-  transition:width .32s cubic-bezier(.2,.8,.2,1);
-}
-#parcours .pq-slot:hover .pq-fleche,
-#parcours .pq-slot:focus-within .pq-fleche,
-#parcours .pq-slot.est-fige .pq-fleche{ opacity:0; transform:scale(.35); }
-
-#parcours .pq-slot:hover .pq-trait,
-#parcours .pq-slot:focus-within .pq-trait,
-#parcours .pq-slot.est-fige .pq-trait{ width:58px; }
-
-/* Le clic ne fait que FIGER l'état atteint au survol : aucune animation rejouée. */
-#parcours .pq-slot.est-fige .pq-module,
-#parcours .pq-slot.est-fige .pq-module::after,
-#parcours .pq-slot.est-fige .pq-fleche,
-#parcours .pq-slot.est-fige .pq-trait,
-#parcours .pq-slot.est-fige .pq-panneau{ transition:none; }
-
-/* ---------- Encadré de détail ----------
-   Asset exact du Figma : Vector.svg (235 × 175, ergot en haut à x=117,
-   pointe à y=4). La pointe tombe à y=1028, soit 5px sous le bas de la flèche. */
-#parcours .pq-panneau{
-  position:absolute;
-  left:-23.1px;                 /* aligne l'ergot (x=117) sur la flèche */
-  top:224.57px;                 /* 1024 (pointe à 1028) - 799.434 */
-  width:235px; height:175px;
-  background:url("assets/svg/encadre.svg") center/100% 100% no-repeat;
-  opacity:0; visibility:hidden; pointer-events:none;
-  transform:translateY(-6px);
-  transition:opacity .2s ease, transform .2s cubic-bezier(.2,.8,.2,1), visibility .2s;
-}
-#parcours .pq-slot:hover .pq-panneau,
-#parcours .pq-slot:focus-within .pq-panneau,
-#parcours .pq-slot.est-fige .pq-panneau{
-  opacity:1; visibility:visible; pointer-events:auto;
-  transform:translateY(0);
-}
-
-/* Typo relevée sur p.svg rendu en 4x : Manrope 700 à 21px, interligne 21,5px,
-   puce pleine de 6,5px à x=0, texte à x=18,25. (IoU 0,829 ; 2ᵉ à 0,707.) */
-#parcours .pq-panneau ul{
-  position:absolute; left:38.5px; top:36px;
-  width:158px;
-  list-style:none;
-}
-#parcours .pq-panneau li{
-  position:relative;
-  padding-left:18.25px;
-  font-family:"Manrope", var(--sans);
-  font-size:21px; line-height:21.5px; font-weight:700;
-  color:var(--bordeaux);
-  text-align:left;
-}
-#parcours .pq-panneau li + li{ margin-top:.5px; }
-#parcours .pq-panneau li::before{
-  content:"";
-  position:absolute; left:0; top:8px;
-  width:6.5px; height:6.5px;
-  border-radius:50%;
-  background:var(--bordeaux);
-}
-/* Marqueur visible pour les 8 modules dont le texte n'a pas été fourni */
-#parcours .pq-panneau .a-fournir li{ color:#8A6A43; font-style:italic; font-weight:600; }
-#parcours .pq-panneau .a-fournir li::before{ background:#8A6A43; }
-/* =========================================================
-   HEADER PROVISOIRE · BARRE DE LECTURE · NAV LATÉRALE
-   (en attendant le header définitif)
-   ========================================================= */
-
-/* ---------- Header ----------
-   Asset Figma Group 110 (1920 × 119). Sa hauteur suit la largeur de la
-   fenêtre, exactement comme les écrans : 119/1920 = 6,198 % de la largeur. */
-.site-header{
-  position:fixed; top:0; left:0; right:0;
-  height:calc(100vw * 119 / 1920);
-  z-index:100;
-  transform:translateY(0);
-  transition:transform .35s cubic-bezier(.2,.8,.2,1);
-  will-change:transform;
-}
-/* masqué : on remonte le header d'exactement sa hauteur */
-.site-header.est-masque{ transform:translateY(-100%); }
-
-.site-header__img{
-  width:100%; height:100%;
-  background:url("assets/svg/header.svg") center/100% 100% no-repeat;
-}
-/* Le libellé FAQ fait partie du SVG du header : on le masque puisque la
-   section n’existe plus. */
-.site-header::after{
-  content:"";
-  position:absolute;
-  left:48.15%; top:31%;
-  width:8.65%; height:42%;
-  background:#F4E7D5;
-  pointer-events:none;
-}
-
-/* ---------- Barre de lecture ---------- */
-.reading-bar{
-  position:fixed; top:0; left:0; right:0;
-  height:3px;
-  z-index:101;
-  background:rgba(111,29,45,.08);
-}
-.reading-bar span{
-  display:block; height:100%; width:0;
-  background:var(--or);
-  transition:width .08s linear;
-}
-
-/* ---------- Navigation latérale en tirets ----------
-   ⚠️ Tu proposais des tirets blancs à 30 % : invisibles sur nos fonds clairs
-   (crème et blanc cassé). J'ai pris le bordeaux à 28 %, qui tient sur les deux
-   écrans. Une seule variable à changer si tu veux revenir au blanc. */
-.dot-nav{
-  --tiret-inactif: rgba(111,29,45,.28);
-  --tiret-actif:   var(--or);
-
-  position:fixed; right:34px; top:50%;
-  transform:translateY(-50%);
-  z-index:99;
-  display:flex; flex-direction:column; align-items:flex-end; gap:14px;
-}
-.dot-nav a{
-  display:flex; align-items:center; justify-content:flex-end;
-  gap:12px;
-  text-decoration:none;
-  padding:6px 0;
-}
-.dot-nav .tiret{
-  display:block;
-  width:18px; height:2px;
-  border-radius:2px;
-  background:var(--tiret-inactif);
-  transition:width .3s cubic-bezier(.2,.8,.2,1),
-             background-color .3s ease;
-}
-/* l'élément actif s'allonge et passe en ocre */
-.dot-nav a.est-actif .tiret{
-  width:38px;
-  background:var(--tiret-actif);
-}
-/* le nom de la section n'apparaît qu'au survol */
-.dot-nav .etiquette{
-  order:-1;                      /* le libellé se place à gauche du tiret */
-  font-family:var(--sans);
-  font-size:13px; font-weight:600; letter-spacing:.01em;
-  color:var(--bordeaux);
-  white-space:nowrap;
-  opacity:0;
-  transform:translateX(6px);
-  transition:opacity .25s ease, transform .25s cubic-bezier(.2,.8,.2,1);
-  pointer-events:none;
-}
-.dot-nav a:hover .etiquette,
-.dot-nav a:focus-visible .etiquette{
-  opacity:1;
-  transform:translateX(0);
-}
-.dot-nav a:hover .tiret{
-  width:38px;
-  background:var(--tiret-actif);
-}
-
-
-/* =========================================================
-   Liens cliquables du header
-   Le header est un SVG : les libellés ne sont pas des liens. On pose des
-   zones transparentes par-dessus, aux positions mesurées au pixel dans
-   HEADER.svg. Le texte est masqué (le SVG l'affiche déjà) mais reste lu
-   par les lecteurs d'écran et les moteurs de recherche.
-   ========================================================= */
-.site-header__liens{
-  position:absolute; inset:0;
-  width:1920px; height:119px;
-  transform-origin:top left;
-  /* la mise à l'échelle est appliquée par script.js, comme pour .page */
-}
-.site-header__liens a{
-  position:absolute;
-  left:var(--x);
-  top:44px;
-  width:var(--w);
-  height:30px;
-  display:block;
-  font-size:0;              /* le libellé est déjà dessiné dans le SVG */
-  color:transparent;
-  text-decoration:none;
-  cursor:pointer;
-  border-radius:4px;
-}
-/* le gros bouton doré : zone plus haute */
-.site-header__liens a.cta{
-  top:31px;
-  height:61px;
-  border-radius:31px;
-}
-/* léger retour visuel au survol, sans changer la couleur du header */
-.site-header__liens a:not(.cta):hover{
-  box-shadow:0 2px 0 0 var(--or);
-}
-.site-header__liens a:focus-visible{
-  outline:2px solid var(--bordeaux);
-  outline-offset:2px;
-}
-
-
-
-/* ---------- Écran 3 — À propos et FAQ ----------
-   Une seule frame : la photo de raisins traverse les deux sections sans
-   coupure (transition faite dans Figma). Coupe y=119 (bande de header
-   retirée), cadre noir supprimé. Débord de 3px en bas contre le liseré. */
-#apropos-faq{ height:1500px; }
-#apropos-faq .apfaq-fond{
-  position:absolute; inset:0;
-  background:url("assets/svg/a-propos-faq.svg") top center no-repeat;
-  background-size:100% auto;
-  z-index:1;
-}
-#apropos-faq .ancre{
-  position:absolute; left:0; width:1px; height:1px; pointer-events:none;
-}
-
-
-/* ---------- Écran 4 — Notre actualité ---------- */
-#actualite{
-  height:1081px;
-  background:url("assets/svg/actualite.svg") top center no-repeat;
-  background-size:100% calc(100% + 3px);
-}
-
-/* ---------- Footer (1920×520) ---------- */
-.site-footer{
-  position:relative;
-  width:1920px; height:520px;
-  background:url("assets/svg/footer.svg") top center no-repeat;
-  background-size:100% 100%;
 }
 
 /* =========================================================
@@ -761,146 +188,13 @@ body{
 
 [data-beta]{ cursor:pointer; }
 
-/* sur écran étroit : une seule colonne */
-@media (max-width:820px){
+/* Base native commune à toutes les tailles ; les améliorations desktop sont
+   regroupées dans native-desktop.css. */
+@media (min-width:0px){
   body{ min-width:0; height:auto !important; overflow-x:hidden; }
-  .site-header, .dot-nav, .page, .reading-bar{ display:none !important; }
   .mobile-site{ display:block; color:var(--encre); background:#fffdfa; }
-  .mobile-site > main,
-  .mobile-site > .mobile-footer{ display:none; }
-  .mobile-reference{
-    display:block;
-    width:100%; max-width:500px; margin:0 auto;
-    background:#FFFEFC;
-    box-shadow:0 0 40px rgba(33,27,24,.06);
-  }
-  .mobile-reference__screen{ position:relative; width:100%; }
-  .mobile-reference__screen img{ display:block; width:100%; height:auto; }
-  .mobile-module-card{
-    position:absolute; z-index:3;
-    left:calc(10.25% + var(--col) * 41.55%);
-    top:calc(3.08% + var(--row) * 19.08%);
-    width:39.75%; height:19.75%;
-    padding:0; border:0; background-color:transparent;
-    background-repeat:no-repeat; background-size:100% 100%;
-    cursor:pointer; outline:none; -webkit-tap-highlight-color:transparent;
-    transition:transform .28s cubic-bezier(.2,.8,.2,1), filter .28s ease;
-  }
-  .mobile-module-card::after{
-    content:""; position:absolute; inset:0;
-    background-repeat:no-repeat; background-size:100% 100%;
-    opacity:0; transition:opacity .22s ease; pointer-events:none;
-  }
-  .mobile-module-card i{
-    position:absolute; z-index:2; left:50%; top:76.5%;
-    width:20px; height:20px; border-radius:50%;
-    background:url("assets/svg/fleche.svg") center/contain no-repeat;
-    opacity:0;
-    transform:translate(-50%,-50%) scale(1);
-    transition:transform .28s ease, width .3s ease, height .3s ease, background-color .3s ease;
-    pointer-events:none;
-  }
-  .mobile-module-card:hover,
-  .mobile-module-card:focus-visible,
-  .mobile-module-card.est-actif{ transform:translateY(-2px); filter:none; z-index:5; }
-  .mobile-module-card:hover::after,
-  .mobile-module-card:focus-visible::after,
-  .mobile-module-card.est-actif::after{ opacity:1; }
-  .mobile-module-card:hover i,
-  .mobile-module-card:focus-visible i,
-  .mobile-module-card.est-actif i{
-    width:52px; height:24px; border-radius:12px;
-    background:rgba(239,211,177,.96); opacity:1;
-    transform:translate(-50%,-50%);
-  }
-  .mobile-module-card:hover i::after,
-  .mobile-module-card:focus-visible i::after,
-  .mobile-module-card.est-actif i::after{
-    content:""; position:absolute; left:50%; top:50%;
-    width:34px; height:3px; border-radius:2px;
-    background:var(--bordeaux); transform:translate(-50%,-50%);
-  }
-  .mobile-module-card:focus-visible{ outline:3px solid var(--bordeaux); outline-offset:2px; }
-  .mobile-module-card[data-mobile-module="parcelles"]{background-image:url("assets/svg/modules/parcelles.svg")}
-  .mobile-module-card[data-mobile-module="vendanges"]{background-image:url("assets/svg/modules/vendanges.svg")}
-  .mobile-module-card[data-mobile-module="cuverie"]{background-image:url("assets/svg/modules/cuverie.svg")}
-  .mobile-module-card[data-mobile-module="mises"]{background-image:url("assets/svg/modules/mises.svg")}
-  .mobile-module-card[data-mobile-module="stocks"]{background-image:url("assets/svg/modules/stocks.svg")}
-  .mobile-module-card[data-mobile-module="ventes"]{background-image:url("assets/svg/modules/ventes.svg")}
-  .mobile-module-card[data-mobile-module="clients"]{background-image:url("assets/svg/modules/clients.svg")}
-  .mobile-module-card[data-mobile-module="administratif"]{background-image:url("assets/svg/modules/administratif.svg")}
-  .mobile-module-card[data-mobile-module="tableaux-de-bord"]{background-image:url("assets/svg/modules/tableaux-de-bord.svg")}
-  .mobile-module-card[data-mobile-module="parcelles"]::after{background-image:url("assets/svg/modules/parcelles-survol.svg")}
-  .mobile-module-card[data-mobile-module="vendanges"]::after{background-image:url("assets/svg/modules/vendanges-survol.svg")}
-  .mobile-module-card[data-mobile-module="cuverie"]::after{background-image:url("assets/svg/modules/cuverie-survol.svg")}
-  .mobile-module-card[data-mobile-module="mises"]::after{background-image:url("assets/svg/modules/mises-survol.svg")}
-  .mobile-module-card[data-mobile-module="stocks"]::after{background-image:url("assets/svg/modules/stocks-survol.svg")}
-  .mobile-module-card[data-mobile-module="ventes"]::after{background-image:url("assets/svg/modules/ventes-survol.svg")}
-  .mobile-module-card[data-mobile-module="clients"]::after{background-image:url("assets/svg/modules/clients-survol.svg")}
-  .mobile-module-card[data-mobile-module="administratif"]::after{background-image:url("assets/svg/modules/administratif-survol.svg")}
-  .mobile-module-card[data-mobile-module="tableaux-de-bord"]::after{background-image:url("assets/svg/modules/tableaux-de-bord-survol.svg")}
-  /* Les cartes sont déjà dessinées dans la maquette mobile : aucun voile ni
-     changement de contour, seul l'encart de détail s'ouvre au clic. */
-  .mobile-module-card{ background-image:none !important; }
-  .mobile-module-card::after{
-    display:none !important;
-    background-image:none !important;
-  }
-  .mobile-module-card i{ display:none !important; }
-  .mobile-module-panel{
-    position:fixed; left:50%; bottom:18px; z-index:260;
-    width:min(360px,calc(100vw - 28px));
-    padding:24px 24px 22px;
-    transform:translateX(-50%);
-    color:var(--encre); background:#FFFEFC;
-    border:1.5px solid var(--or); border-radius:20px;
-    box-shadow:0 24px 60px rgba(33,27,24,.28);
-    animation:mobile-panel-in .26s cubic-bezier(.2,.85,.25,1) both;
-  }
-  .mobile-module-panel[hidden]{ display:none; }
-  @keyframes mobile-panel-in{
-    from{ opacity:0; transform:translate(-50%,18px) scale(.97); }
-    to{ opacity:1; transform:translate(-50%,0) scale(1); }
-  }
-  .mobile-module-panel > span{
-    display:block; margin-bottom:5px;
-    color:var(--or); font:700 10px/1.2 var(--sans);
-    letter-spacing:.14em; text-transform:uppercase;
-  }
-  .mobile-module-panel h3{
-    padding-right:34px; color:var(--bordeaux);
-    font:600 27px/1.15 var(--serif);
-  }
-  .mobile-module-panel ul{ margin-top:15px; list-style:none; display:grid; gap:9px; }
-  .mobile-module-panel li{ position:relative; padding-left:20px; color:var(--gris); font-size:14px; line-height:1.35; }
-  .mobile-module-panel li::before{ content:""; position:absolute; left:0; top:.48em; width:6px; height:6px; border-radius:50%; background:var(--or); }
-  .mobile-module-panel__close{
-    position:absolute; top:12px; right:12px;
-    width:36px; height:36px; padding:0; border:0; border-radius:50%;
-    color:var(--bordeaux); background:rgba(123,30,34,.07);
-    font:400 25px/1 var(--sans); cursor:pointer;
-  }
-  .mobile-reference__hotspot{
-    position:absolute; z-index:2; display:block;
-    padding:0; border:0; border-radius:999px;
-    background:transparent; cursor:pointer;
-  }
-  .mobile-reference__hotspot:focus-visible{ outline:3px solid var(--bordeaux); outline-offset:3px; }
-  .mobile-reference__hotspot--beta-hero{ left:8.5%; top:49%; width:40%; height:4.2%; }
-  .mobile-reference__hotspot--features{ left:50.5%; top:49%; width:40%; height:4.2%; }
-  .mobile-reference__hotspot--beta-offer{ left:18.5%; top:56.5%; width:63%; height:4.2%; }
-  .mobile-reference__footer{
-    padding:34px 24px 28px; text-align:center;
-    color:#fff; background:#4d1419;
-  }
-  .mobile-reference__footer > a{ color:#fff; font:600 15px var(--sans); }
-  .mobile-reference__footer .social-links{ position:static; justify-content:center; margin-top:22px; }
-  .mobile-reference__footer .social-links a{ width:auto; min-width:128px; height:46px; padding:0 17px; gap:9px; border-radius:999px; }
-  .mobile-reference__footer .social-links span{ display:inline; font-size:13px; }
-  .mobile-reference__footer nav{ display:flex; justify-content:center; flex-wrap:wrap; gap:12px 18px; margin-top:22px; }
-  .mobile-reference__footer nav a,
-  .mobile-reference__footer nav button{ padding:0; border:0; color:rgba(255,255,255,.74); background:none; font:12px var(--sans); }
-  .mobile-reference__footer p{ margin-top:24px; color:rgba(255,255,255,.42); font-size:11px; }
+  /* les ancres de section s'arrêtent sous le header fixe (72px) */
+  .mobile-site main [id]{ scroll-margin-top:84px; }
 
   .mobile-header{
     position:fixed; top:0; left:50%; z-index:100;
@@ -916,6 +210,7 @@ body{
   .mobile-menu-btn{
     width:44px; height:44px; padding:11px 9px; border:0; border-radius:50%;
     background:var(--bordeaux); display:flex; flex-direction:column; justify-content:center; gap:5px;
+    font:inherit;
   }
   .mobile-menu-btn > span:not(.sr-only){ width:22px; height:2px; margin:auto; border-radius:2px; background:#fff; transition:.25s ease; }
   .mobile-menu-btn[aria-expanded="true"] > span:nth-child(1){ transform:translateY(7px) rotate(45deg); }
@@ -933,11 +228,11 @@ body{
   .mobile-nav .mobile-nav-cta{ margin-top:5px; color:#fff; text-align:center; background:var(--bordeaux); }
 
   .mobile-hero{
-    position:relative; min-height:calc(100svh - 72px); padding:clamp(72px,18vh,150px) 22px 42px;
+    position:relative; min-height:calc(100svh - 72px); padding:clamp(96px,16vh,150px) 22px 42px;
     display:flex; align-items:flex-end; overflow:hidden;
-    background:url("assets/img/moritz-knoringer-UP6orFljGaY-unsplash.jpg") 61% center/cover no-repeat;
+    background:url("assets/img/hero-mobile.jpg") 61% center/cover no-repeat;
   }
-  .mobile-hero__veil{ position:absolute; inset:0; background:linear-gradient(180deg,rgba(31,16,12,.08) 4%,rgba(42,18,17,.18) 38%,rgba(42,18,17,.88) 100%); }
+  .mobile-hero__veil{ position:absolute; inset:0; background:linear-gradient(180deg,rgba(31,16,12,.42) 0%,rgba(42,18,17,.34) 38%,rgba(42,18,17,.88) 100%); }
   .mobile-hero__content{ position:relative; z-index:1; max-width:560px; color:#fff; }
   .mobile-eyebrow, .mobile-kicker{ display:block; margin-bottom:13px; color:var(--or); font:700 12px/1.2 var(--sans); letter-spacing:.14em; text-transform:uppercase; }
   .mobile-hero h1{ max-width:520px; font:500 clamp(38px,10.5vw,58px)/1.02 var(--serif); letter-spacing:-.035em; }
@@ -953,21 +248,92 @@ body{
   .mobile-hero .mobile-proof{ display:flex; flex-wrap:wrap; gap:5px 9px; margin-top:16px; font-size:11px; color:rgba(255,255,255,.72); }
   .mobile-proof span{ color:var(--or); }
 
+  /* Aperçu produit : mini tableau de bord en verre dépoli, comme la maquette */
+  .mobile-apercu{
+    margin-top:30px; padding:14px;
+    background:rgba(255,255,255,.82); border:1px solid rgba(255,255,255,.9);
+    border-radius:20px; backdrop-filter:blur(9px); -webkit-backdrop-filter:blur(9px);
+    box-shadow:0 20px 56px rgba(0,0,0,.13);
+  }
+  .mobile-apercu__barre{ display:flex; align-items:center; gap:6px; margin-bottom:11px; }
+  .mobile-apercu__barre i{ width:9px; height:9px; border-radius:50%; }
+  .mobile-apercu__barre i:nth-child(1){ background:#E8C58A; }
+  .mobile-apercu__barre i:nth-child(2){ background:#DDE4C2; }
+  .mobile-apercu__barre i:nth-child(3){ background:rgba(111,29,45,.25); }
+  .mobile-apercu__barre span{ margin-left:auto; color:var(--gris); font:700 10.5px/1 var(--sans); }
+  .mobile-apercu__grid{ display:grid; grid-template-columns:1fr 1fr; gap:9px; }
+  .mobile-apercu__grid article{
+    padding:11px 13px; background:#fff;
+    border:1px solid rgba(33,27,24,.12); border-radius:14px;
+  }
+  .mobile-apercu__grid .large{ grid-column:1 / -1; }
+  .mobile-apercu__grid .k{ display:block; color:var(--gris); font-size:11px; line-height:1.35; }
+  .mobile-apercu__grid strong{ display:block; margin:2px 0; color:var(--bordeaux-f); font-size:21px; line-height:1.1; font-weight:700; }
+  .mobile-apercu .jauge{ display:block; height:6px; margin-top:8px; border-radius:3px; background:rgba(111,29,45,.1); overflow:hidden; }
+  .mobile-apercu .jauge span{ display:block; height:100%; border-radius:3px; background:var(--bordeaux-f); }
+
   .mobile-section{ padding:76px 22px; }
   .mobile-section h2, .mobile-final h2{ font:500 clamp(34px,9vw,48px)/1.08 var(--serif); letter-spacing:-.025em; color:var(--bordeaux); }
   .mobile-section > p{ margin-top:17px; color:var(--gris); font-size:16px; line-height:1.65; }
   .mobile-intro{ background:#fffdfa; }
-  .mobile-feature-grid{ display:grid; grid-template-columns:1fr; gap:12px; margin-top:34px; }
-  .mobile-feature-grid article{ position:relative; min-height:174px; padding:26px 24px; overflow:hidden; background:#fff; border:1px solid rgba(223,183,128,.42); border-radius:20px; box-shadow:0 12px 30px rgba(75,35,31,.05); }
-  .mobile-feature-grid article > span{ position:absolute; right:18px; top:7px; color:rgba(223,183,128,.24); font:500 60px/1 var(--serif); }
-  .mobile-feature-grid h3{ position:relative; margin:30px 0 8px; color:var(--bordeaux); font:600 22px/1.2 var(--serif); }
-  .mobile-feature-grid p{ position:relative; color:var(--gris); font-size:14px; line-height:1.55; }
+
+  /* Icône : pastille crème + pictogramme trait bordeaux (esprit maquette) */
+  .mobile-icone{
+    flex:0 0 auto; display:flex; align-items:center; justify-content:center;
+    width:52px; height:52px; border-radius:50%;
+    background:#F4E7D5; color:var(--bordeaux);
+  }
+  .mobile-icone svg{ width:27px; height:27px; fill:none; stroke:currentColor; stroke-width:1.7; stroke-linecap:round; stroke-linejoin:round; }
+
+  /* Bénéfices : Centraliser / Suivre / Gagner du temps */
+  .mobile-benefices{ display:grid; grid-template-columns:1fr; gap:12px; margin-top:34px; }
+  .mobile-benefices article{
+    display:flex; gap:16px; align-items:center;
+    padding:20px; background:#fff;
+    border:1px solid rgba(223,183,128,.42); border-radius:20px;
+    box-shadow:0 12px 30px rgba(75,35,31,.05);
+  }
+  .mobile-benefices .mobile-icone{ background:var(--bordeaux-f); color:#F4E7D5; }
+  .mobile-benefices h3{ color:var(--encre); font:700 16px/1.2 var(--sans); }
+  .mobile-benefices p{ margin-top:5px; color:var(--gris); font-size:14px; line-height:1.45; }
+
+  /* Modules : 9 accordéons, taxonomie de la maquette */
+  .mobile-modules__liste{ margin-top:30px; display:grid; gap:9px; }
+  .mm{
+    background:#fff; border:1px solid rgba(223,183,128,.42); border-radius:18px;
+    box-shadow:0 10px 26px rgba(75,35,31,.045);
+    overflow:hidden;
+  }
+  .mm__toggle{
+    width:100%; display:flex; align-items:center; gap:14px;
+    padding:12px 16px; border:0; background:none; cursor:pointer;
+    text-align:left;
+    -webkit-tap-highlight-color:transparent;
+  }
+  .mm__toggle .mobile-icone{ width:46px; height:46px; }
+  .mm__toggle .mobile-icone svg{ width:24px; height:24px; }
+  .mm__nom{ flex:1; color:var(--bordeaux); font:700 16px/1.25 var(--sans); }
+  /* chevron : trait bordeaux qui pivote à l'ouverture */
+  .mm__toggle::after{
+    content:""; flex:0 0 auto; width:9px; height:9px; margin-right:4px;
+    border-right:2.2px solid var(--or); border-bottom:2.2px solid var(--or);
+    transform:rotate(45deg) translateY(-2px);
+    transition:transform .25s ease;
+  }
+  .mm__toggle[aria-expanded="true"]::after{ transform:rotate(225deg) translateY(-2px); }
+  .mm__toggle:focus-visible{ outline:3px solid var(--bordeaux); outline-offset:-3px; border-radius:18px; }
+  .mm__panneau{ padding:0 16px 16px 76px; }
+  .mm__panneau[hidden]{ display:none; }
+  .mm__panneau ul{ list-style:none; display:grid; gap:7px; }
+  .mm__panneau li{ position:relative; padding-left:17px; color:var(--gris); font-size:14px; line-height:1.4; }
+  .mm__panneau li::before{ content:""; position:absolute; left:0; top:.5em; width:6px; height:6px; border-radius:50%; background:var(--or); }
 
   .mobile-ai{ padding-top:72px; color:#fff; background:var(--bordeaux); }
   .mobile-ai h2{ color:#fff; }
   .mobile-ai > div:last-child > p{ margin-top:18px; color:rgba(255,255,255,.72); line-height:1.65; }
-  .mobile-ai__visual{ position:relative; height:300px; margin-bottom:52px; padding:68px 17px 20px; border:1px solid rgba(255,255,255,.14); border-radius:28px; background:radial-gradient(circle at 90% 0%,rgba(223,183,128,.24),transparent 45%),#681c24; box-shadow:0 24px 55px rgba(31,8,11,.28); }
-  .mobile-ai__spark{ position:absolute; top:20px; left:22px; color:var(--or); font-size:30px; }
+  .mobile-ai__visual{ position:relative; margin-bottom:52px; padding:20px 17px; border:1px solid rgba(255,255,255,.14); border-radius:28px; background:radial-gradient(circle at 90% 0%,rgba(223,183,128,.24),transparent 45%),#681c24; box-shadow:0 24px 55px rgba(31,8,11,.28); }
+  .mobile-ai__entete{ display:flex; align-items:center; gap:9px; margin-bottom:20px; color:#fff; font:700 13px/1 var(--sans); }
+  .mobile-ai__entete span{ display:flex; align-items:center; justify-content:center; width:30px; height:30px; border-radius:50%; background:var(--or); color:#fff; font-size:11px; }
   .mobile-ai__bubble, .mobile-ai__answer{ max-width:88%; padding:16px 18px; border-radius:17px; font-size:14px; line-height:1.45; }
   .mobile-ai__bubble{ margin-left:auto; color:var(--bordeaux); background:#fff; border-bottom-right-radius:5px; }
   .mobile-ai__answer{ margin-top:14px; color:#fff; background:rgba(255,255,255,.11); border:1px solid rgba(255,255,255,.13); border-bottom-left-radius:5px; }
@@ -976,25 +342,60 @@ body{
   .mobile-list li::before{ content:"✓"; position:absolute; left:0; top:-1px; width:20px; height:20px; border-radius:50%; color:var(--bordeaux); background:var(--or); text-align:center; font:bold 12px/20px var(--sans); }
 
   .mobile-offer{ background:#faf3e8; }
-  .mobile-offer__card{ margin-top:32px; padding:28px 22px; border-radius:24px; background:#fff; box-shadow:0 18px 55px rgba(72,27,30,.09); }
-  .mobile-offer__price{ padding-bottom:24px; border-bottom:1px solid rgba(123,30,34,.1); }
+  .mobile-offer__dates{ margin-top:14px !important; color:var(--bordeaux) !important; font:500 15px/1.3 var(--serif) !important; }
+
+  /* Bandeau doré « Testez, contribuez, avancez avec nous » + 3 étapes */
+  .mobile-offer__pitch{ margin-top:26px; padding:24px 20px; border-radius:24px; background:var(--or); color:#fff; box-shadow:0 18px 46px rgba(148,102,42,.22); }
+  .mobile-offer__pitch h3{ font:700 22px/1.15 var(--sans); }
+  .mobile-offer__pitch > p{ margin-top:10px; font-size:13.5px; line-height:1.5; color:rgba(255,255,255,.94); }
+  .mobile-offer__pitch ol{ list-style:none; counter-reset:etape; display:grid; gap:9px; margin-top:18px; }
+  .mobile-offer__pitch li{
+    counter-increment:etape;
+    position:relative; padding:13px 15px 13px 52px;
+    background:#fff; border-radius:12px;
+    color:var(--gris); font-size:13px; line-height:1.4;
+  }
+  .mobile-offer__pitch li::before{
+    content:counter(etape);
+    position:absolute; left:14px; top:50%; transform:translateY(-50%);
+    width:26px; height:26px; border-radius:50%;
+    background:var(--bordeaux); color:#fff;
+    font:700 13px/26px var(--sans); text-align:center;
+  }
+  .mobile-offer__pitch li strong{ display:block; margin-bottom:2px; color:var(--encre); font-size:14px; }
+
+  .mobile-offer__card{ margin-top:18px; padding:28px 22px; border-radius:24px; background:#fff; box-shadow:0 18px 55px rgba(72,27,30,.09); }
+  .mobile-offer__price{ position:relative; padding-bottom:20px; border-bottom:1px solid rgba(123,30,34,.1); }
   .mobile-offer__price strong{ display:block; color:var(--bordeaux); font:500 58px/1 var(--serif); }
-  .mobile-offer__price span{ display:block; margin-top:7px; color:var(--gris); font-size:13px; }
-  .mobile-offer .mobile-list{ color:var(--encre); }
+  .mobile-offer__badge{ position:absolute; right:0; top:4px; padding:5px 11px; border-radius:999px; background:#F4E7D5; color:var(--bordeaux); font:700 11px/1 var(--sans); }
+  .mobile-offer__mention{ display:block; margin-top:9px; color:var(--gris); font-size:12.5px; font-weight:600; }
+  .mobile-offer__inclus{ margin-top:20px; color:var(--encre); font:700 14px/1.3 var(--sans); }
+  .mobile-offer .mobile-list{ margin-top:15px; color:var(--encre); }
   .mobile-offer .mobile-button{ width:100%; margin-top:28px; }
   .mobile-offer small{ display:block; margin-top:13px; color:var(--gris); text-align:center; line-height:1.45; }
 
-  .mobile-faq{ background:#fffdfa; }
-  .mobile-faq h2{ margin-bottom:28px; }
-  .mobile-faq details{ border-top:1px solid rgba(123,30,34,.16); }
-  .mobile-faq details:last-child{ border-bottom:1px solid rgba(123,30,34,.16); }
-  .mobile-faq summary{ position:relative; padding:21px 38px 21px 0; list-style:none; color:var(--bordeaux); font:600 17px/1.35 var(--serif); cursor:pointer; }
-  .mobile-faq summary::-webkit-details-marker{ display:none; }
-  .mobile-faq summary::after{ content:"+"; position:absolute; right:3px; top:17px; color:var(--or); font:400 28px/1 var(--sans); }
-  .mobile-faq details[open] summary::after{ content:"−"; }
-  .mobile-faq details p{ padding:0 34px 21px 0; color:var(--gris); font-size:14px; line-height:1.6; }
+  /* Et après le 1er octobre ? — offre Primeurs */
+  .mobile-primeurs{ margin-top:34px; padding:26px 22px; border:1.5px solid rgba(223,183,128,.55); border-radius:24px; background:#fffdfa; }
+  .mobile-primeurs h3{ color:var(--bordeaux); font:500 21px/1.2 var(--serif); }
+  .mobile-primeurs__nom{ position:relative; display:inline-block; margin-top:18px; padding-bottom:8px; color:var(--bordeaux); font:500 24px/1.1 var(--serif); }
+  .mobile-primeurs__nom::after{ content:""; position:absolute; left:0; bottom:0; width:100%; height:3px; border-radius:2px; background:var(--or); }
+  .mobile-primeurs__prix{ margin-top:12px; color:var(--bordeaux-f); font:700 34px/1 var(--sans); }
+  .mobile-primeurs__note{ margin-top:6px; color:var(--gris); font-size:13px; }
+  .mobile-primeurs .mobile-list{ margin-top:18px; color:var(--encre); }
 
-  .mobile-final{ padding:76px 22px; text-align:center; color:#fff; background:linear-gradient(rgba(65,19,22,.86),rgba(65,19,22,.93)),url("assets/img/vignes_2.jpg") center/cover; }
+  /* À propos : fondateurs + citation */
+  .mobile-apropos{ background:#fffdfa; }
+  .mobile-apropos > p{ margin-top:17px; color:var(--gris); font-size:15px; line-height:1.65; }
+  .mobile-fondateurs{ display:flex; gap:14px; margin-top:26px; }
+  .mobile-fondateurs img{ width:74px; height:74px; border-radius:50%; border:2.5px solid var(--or); object-fit:cover; }
+  .mobile-france{ color:var(--bordeaux) !important; font-size:13.5px !important; font-weight:600; }
+  .mobile-france strong{ color:inherit; font-weight:700; }
+  .mobile-signature{ margin-top:22px !important; color:var(--bordeaux) !important; font:500 19px/1.3 var(--serif) !important; }
+  .mobile-signature span{ display:block; margin-top:4px; color:var(--gris); font:400 13px/1.3 var(--sans); }
+  .mobile-citation{ margin:30px -22px -76px; padding:64px 30px 70px; background:linear-gradient(rgba(40,12,14,.55),rgba(40,12,14,.72)),url("assets/img/vignes-mobile.jpg") center/cover; }
+  .mobile-citation blockquote{ position:relative; padding-left:18px; border-left:3px solid var(--or); color:#fff; font:500 italic clamp(22px,6vw,30px)/1.35 var(--serif); }
+
+  .mobile-final{ padding:76px 22px; text-align:center; color:#fff; background:linear-gradient(rgba(65,19,22,.86),rgba(65,19,22,.93)),url("assets/img/vignes-mobile.jpg") center/cover; }
   .mobile-final h2{ color:#fff; }
   .mobile-final .mobile-button{ width:100%; margin-top:28px; }
   .mobile-final > a{ display:inline-block; margin-top:18px; color:rgba(255,255,255,.8); font-size:14px; }
@@ -1002,7 +403,16 @@ body{
   .mobile-footer img{ width:145px; height:84px; object-fit:contain; filter:brightness(0) invert(1); opacity:.9; }
   .mobile-footer div{ display:flex; justify-content:center; flex-wrap:wrap; gap:10px 20px; margin-top:12px; }
   .mobile-footer a, .mobile-footer button{ padding:0; border:0; color:rgba(255,255,255,.72); background:none; font:13px var(--sans); }
-  .mobile-footer p{ margin-top:28px; color:rgba(255,255,255,.42); font-size:11px; }
+  .mobile-footer__social{ gap:12px !important; }
+  .mobile-footer__social a{
+    display:flex; align-items:center; justify-content:center;
+    width:46px; height:46px; border-radius:50%;
+    border:1px solid rgba(255,255,255,.5); color:#fff;
+  }
+  .mobile-footer__social svg{ width:22px; height:22px; fill:none; stroke:currentColor; stroke-width:1.8; }
+  .mobile-footer__social svg path, .mobile-footer__social .social-dot{ fill:currentColor; stroke:none; }
+  .mobile-footer__mail{ display:inline-block; margin-top:18px; color:#fff !important; font:600 14px var(--sans) !important; }
+  .mobile-footer p{ margin-top:22px; color:rgba(255,255,255,.42); font-size:11px; }
 
   .modal{ padding:10px; align-items:flex-end; }
   .modal__boite{ grid-template-columns:1fr; width:100%; max-height:calc(100svh - 20px); border-radius:22px 22px 14px 14px; }
@@ -1020,10 +430,6 @@ body{
   .modal__pied{ align-items:stretch; flex-direction:column-reverse; }
   .modal__submit{ width:100%; min-height:52px; }
   .modal__lock{ text-align:center; }
-  .cookie{ padding:18px; gap:14px; }
-  .cookie__actions{ width:100%; display:grid; grid-template-columns:1fr 1fr; }
-  .cookie__actions .cookie__btn:last-child{ grid-column:1/-1; grid-row:1; }
-  .cookie__btn{ padding:11px 12px; }
 }
 
 @media (max-width:360px){
@@ -1039,189 +445,50 @@ body{
   .mobile-hero, .mobile-section, .mobile-final{ padding-left:48px; padding-right:48px; }
   .mobile-actions{ flex-direction:row; }
   .mobile-actions .mobile-button{ flex:1; }
-  .mobile-feature-grid{ grid-template-columns:1fr 1fr; }
+  .mobile-benefices{ grid-template-columns:repeat(3,1fr); }
+  .mobile-benefices article{ flex-direction:column; align-items:flex-start; gap:14px; }
+  .mobile-modules__liste{ grid-template-columns:1fr 1fr; align-items:start; }
+  .mobile-apercu__grid{ grid-template-columns:1fr 1fr 2fr; }
+  .mobile-apercu__grid .large{ grid-column:3; }
   .mobile-ai{ display:grid; grid-template-columns:1fr 1fr; align-items:center; gap:42px; }
   .mobile-ai__visual{ margin-bottom:0; }
+  .mobile-citation{ margin-left:-48px; margin-right:-48px; }
 }
 
 
-/* =========================================================
-   FAQ INTERACTIVE (recouvre les cartes figées du SVG)
-   Zone mesurée dans a-propos-faq.svg : cartes x 214..1706, y 1726..2315,
-   sur fond crème #FFFAF5. On couvre toute la zone en crème puis on pose
-   un accordéon HTML par-dessus.
-   ========================================================= */
-#apropos-faq .faq{
-  position:absolute;
-  left:214px; top:1690px;
-  width:1492px;
-  min-height:660px;
-  z-index:3;
-  display:flex; gap:74px;
-  padding-bottom:40px;
-}
-/* Couverture crème LARGEMENT débordante pour masquer tout le contenu figé de
-   la FAQ (cartes, filets, restes à gauche et en dessous). La section
-   #apropos-faq est en overflow:hidden : ce débord est proprement coupé. */
-#apropos-faq .faq::before{
-  content:"";
-  position:absolute;
-  left:-160px; right:-160px;
-  top:0; bottom:-600px;            /* démarre au haut du bloc (y=1690), SOUS le
-                                      titre « Vos questions fréquentes » qui est
-                                      plus haut : on ne rogne plus ses jambages */
-  background:#FFFAF5;
-  z-index:-1;
-}
-#apropos-faq .faq-col{ flex:1; display:flex; flex-direction:column; gap:22px; }
-
-.faq-item{
-  background:#fff;
-  border:1px solid rgba(223,183,128,.55);
-  border-radius:16px;
-  box-shadow:0 6px 18px rgba(111,29,45,.05);
-  overflow:hidden;
-}
-.faq-q{
-  width:100%;
-  display:flex; align-items:flex-start; justify-content:space-between; gap:16px;
-  padding:20px 22px;
-  background:none; border:0; cursor:pointer; text-align:left;
-  font-family:var(--serif);
-  font-size:22px; line-height:1.25; font-weight:500;
-  color:var(--bordeaux);
-}
-/* le petit filet doré sous la question, comme dans le Figma */
-.faq-q > span:first-child{
-  position:relative; padding-bottom:10px;
-}
-.faq-q > span:first-child::after{
-  content:""; position:absolute; left:0; bottom:0;
-  width:120px; height:2px; border-radius:2px; background:var(--or);
-}
-
-/* le « + » : cercle doré, se transforme en « – » à l'ouverture */
-.faq-plus{
-  flex:0 0 auto;
-  position:relative;
-  width:34px; height:34px; margin-top:2px;
-  border-radius:50%;
-  background:rgba(223,183,128,.22);
-  transition:background-color .25s ease, transform .3s ease;
-}
-.faq-plus::before,
-.faq-plus::after{
-  content:""; position:absolute; top:50%; left:50%;
-  width:14px; height:2.4px; border-radius:2px;
-  background:var(--bordeaux);
-  transform:translate(-50%,-50%);
-  transition:transform .3s ease, opacity .25s ease;
-}
-.faq-plus::after{ transform:translate(-50%,-50%) rotate(90deg); }
-
-/* réponse : repliée par défaut (grid 0fr -> 1fr = animation de hauteur fluide) */
-.faq-a{
-  display:grid;
-  grid-template-rows:0fr;
-  transition:grid-template-rows .32s cubic-bezier(.2,.8,.2,1);
-}
-.faq-a > p{
-  overflow:hidden;
-  margin:0 22px;
-  font-family:var(--sans);
-  font-size:16px; line-height:1.55; color:var(--gris);
-  opacity:0;
-  transition:opacity .25s ease, padding .32s ease;
-}
-
-/* état ouvert */
-.faq-item.ouvert{ border-color:var(--or); }
-.faq-item.ouvert .faq-plus{ background:rgba(223,183,128,.4); }
-.faq-item.ouvert .faq-plus::aft
 /* ligne de réassurance « France » dans la pop-up */
 .modal__france{ margin-top:12px; font-size:13px; font-weight:600; color:var(--bordeaux); }
-.modal__france span{ margin-right:4px; }
+/* petit drapeau tricolore inline (l'emoji 🇫🇷 s'affiche « FR » sous Windows) */
+.drapeau-fr{ width:19px; height:13px; margin-right:5px; vertical-align:-1.5px; border-radius:2px; }
 
+/* Lot 5 — compléments natifs issus de la direction artistique Figma. */
+.hero-copy > p{ max-width:520px; margin-top:20px; color:rgba(255,255,255,.88); font-size:16px; line-height:1.6; }
+.hero-ornament{ display:block; width:86px; height:12px; margin-top:20px; border-top:2px solid var(--or); position:relative; }
+.hero-ornament::after{ content:""; position:absolute; left:36px; top:-6px; width:10px; height:10px; border:2px solid var(--or); background:transparent; transform:rotate(45deg); }
 
-/* =========================================================
-   FOOTER — liens cliquables posés sur le SVG
-   ========================================================= */
-.site-footer{ position:relative; }
-.social-links{ display:flex; gap:14px; }
-.site-footer .social-links{ position:absolute; left:1645px; top:140px; z-index:2; }
-.social-links a{
-  width:54px; height:54px;
-  display:flex; align-items:center; justify-content:center;
-  color:#fff; background:rgba(255,255,255,.08);
-  border:1px solid rgba(255,255,255,.55); border-radius:50%;
-  text-decoration:none;
-  transition:transform .2s ease, background-color .2s ease, border-color .2s ease;
-}
-.social-links a:hover{ transform:translateY(-3px); background:rgba(223,183,128,.2); border-color:var(--or); }
-.social-links a:focus-visible{ outline:3px solid var(--or); outline-offset:3px; }
-.social-links svg{ width:26px; height:26px; fill:none; stroke:currentColor; stroke-width:1.8; }
-.social-links svg path{ fill:currentColor; stroke:none; }
-.social-links .social-dot{ fill:currentColor; stroke:none; }
-.social-links span{ display:none; }
-.footer-liens a,
-.footer-liens .footer-lien-btn{
-  position:absolute; left:840px; top:var(--y);
-  width:var(--w); height:38px;
-  display:block; padding:0; margin:0;
-  background:none; border:0;
-  font:inherit; color:transparent; font-size:0;   /* libellé déjà dans le SVG */
-  text-decoration:none; cursor:pointer;
-}
-.footer-liens a:focus-visible,
-.footer-liens .footer-lien-btn:focus-visible{ outline:2px solid var(--or); outline-offset:2px; }
+.mobile-apropos__carte > p{ margin-top:17px; color:var(--gris); font-size:15px; line-height:1.65; }
 
-/* =========================================================
-   COOKIES — bandeau + réglages
-   ========================================================= */
-.cookie{
-  position:fixed; left:0; right:0; bottom:0; z-index:300;
-  display:flex; align-items:center; gap:24px; flex-wrap:wrap;
-  padding:20px 28px;
-  background:#fff;
-  box-shadow:0 -12px 40px rgba(33,27,24,.16);
-  border-top:2px solid var(--or);
-}
-.cookie[hidden]{ display:none; }
-.cookie__texte{ flex:1 1 380px; }
-.cookie__texte strong{ display:block; color:var(--bordeaux); font-size:15px; margin-bottom:4px; }
-.cookie__texte p{ font-size:13.5px; line-height:1.5; color:var(--gris); margin:0; }
-.cookie__texte a{ color:var(--bordeaux); }
-.cookie__actions{ display:flex; gap:10px; flex-wrap:wrap; }
+.mobile-faq{ background:#fbf4e9; }
+.mobile-faq > h2,
+.mobile-news > h2{ text-align:center; }
+.mobile-faq > .mobile-kicker,
+.mobile-news > .mobile-kicker{ text-align:center; }
+.mobile-faq__grid{ display:grid; gap:12px; margin-top:34px; }
+.mobile-faq details{ border:1px solid rgba(123,30,34,.14); border-radius:16px; background:#fff; overflow:hidden; }
+.mobile-faq summary{ position:relative; padding:20px 52px 20px 20px; color:var(--bordeaux); font:700 15px/1.35 var(--sans); cursor:pointer; list-style:none; }
+.mobile-faq summary::-webkit-details-marker{ display:none; }
+.mobile-faq summary::after{ content:"+"; position:absolute; right:18px; top:50%; width:26px; height:26px; margin-top:-13px; border-radius:50%; color:#fff; background:var(--bordeaux); text-align:center; font:400 20px/25px var(--sans); }
+.mobile-faq details[open] summary::after{ content:"−"; }
+.mobile-faq details p{ padding:0 20px 20px; color:var(--gris); font-size:14px; line-height:1.6; }
 
-.cookie__btn{
-  padding:12px 20px; border-radius:999px; font:inherit; font-size:14px; font-weight:700;
-  cursor:pointer; border:1.5px solid var(--bordeaux); transition:background-color .2s ease;
-}
-.cookie__btn--ghost{ background:#fff; color:var(--bordeaux); }
-.cookie__btn--ghost:hover{ background:rgba(123,30,34,.06); }
-.cookie__btn--plein{ background:var(--bordeaux); color:#fff; }
-.cookie__btn--plein:hover{ background:#671519; }
-
-.cookie-modal{ position:fixed; inset:0; z-index:310; display:flex; align-items:center; justify-content:center; padding:24px; }
-.cookie-modal[hidden]{ display:none; }
-.cookie-modal__fond{ position:absolute; inset:0; background:rgba(33,27,24,.55); }
-.cookie-modal__boite{
-  position:relative; width:min(560px,94vw); max-height:90vh; overflow:auto;
-  background:#fff; border-radius:22px; padding:36px 34px;
-  box-shadow:0 40px 90px rgba(33,27,24,.35);
-}
-.cookie-modal__boite h2{ font-family:var(--sans); font-size:24px; font-weight:700; color:var(--bordeaux); margin-bottom:8px; }
-.cookie-modal__intro{ font-size:14px; color:var(--gris); margin-bottom:22px; }
-.cookie-opt{
-  display:flex; align-items:flex-start; justify-content:space-between; gap:18px;
-  padding:16px 0; border-top:1px solid rgba(223,183,128,.4);
-  font-size:13.5px; line-height:1.5; color:var(--gris);
-}
-.cookie-opt strong{ color:var(--encre); }
-.cookie-opt input{ margin-top:3px; flex:0 0 auto; width:20px; height:20px; accent-color:var(--bordeaux); }
-.cookie-modal__pied{ display:flex; justify-content:space-between; gap:12px; margin-top:24px; flex-wrap:wrap; }
-.cookie-modal__fermer{
-  position:absolute; top:14px; right:16px; width:40px; height:40px; border:0; border-radius:50%;
-  background:rgba(33,27,24,.06); color:var(--bordeaux); font-size:26px; line-height:1; cursor:pointer;
-}
-.cookie-modal__fermer:hover{ background:rgba(33,27,24,.12); }
+.mobile-news{ background:#fffdfa; }
+.mobile-news__grid{ display:grid; gap:16px; margin-top:34px; }
+.mobile-news__card{ min-height:260px; padding:26px; display:flex; flex-direction:column; justify-content:flex-end; border-radius:22px; overflow:hidden; color:#fff; box-shadow:0 18px 45px rgba(65,22,24,.12); }
+.mobile-news__card--beta{ background:linear-gradient(155deg,rgba(91,23,30,.1),rgba(91,23,30,.94)),url("assets/img/vignes-mobile.jpg") center/cover; }
+.mobile-news__card--coffee{ background:linear-gradient(155deg,rgba(102,72,38,.12),rgba(69,28,27,.93)),url("assets/img/hero-mobile.jpg") center/cover; }
+.mobile-news__card--salon{ background:linear-gradient(155deg,rgba(91,23,30,.08),rgba(91,23,30,.94)),url("assets/img/vignes_2.webp") center/cover; }
+.mobile-news__card span{ color:var(--or); font:700 11px/1 var(--sans); letter-spacing:.12em; text-transform:uppercase; }
+.mobile-news__card h3{ max-width:390px; margin-top:10px; font:500 25px/1.15 var(--serif); }
+.mobile-news__card p{ margin-top:10px; color:rgba(255,255,255,.8); font-size:13px; }
+.mobile-news__actions{ display:flex; flex-wrap:wrap; justify-content:center; gap:12px; margin-top:28px; }
+.mobile-news__actions a{ padding:13px 20px; border:1px solid rgba(123,30,34,.25); border-radius:999px; color:var(--bordeaux); font:700 13px/1 var(--sans); text-decoration:none; }

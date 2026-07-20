@@ -1,38 +1,92 @@
 /* =========================================================
-   1. Mise à l'échelle des écrans 1920×1200
+   Landing Mon Chai — interactions du contenu natif.
+   Chaque bloc est gardé par l'existence de son élément : le script ne
+   présume jamais du DOM de la page qui le charge.
    ========================================================= */
-const page = document.getElementById('page');
-const W = 1920, H = 1200;
-
-const liensHeader = document.querySelector('.site-header__liens');
-
-function fit() {
-  if (window.innerWidth <= 820) {
-    page.style.transform = '';
-    document.body.style.height = '';
-    if (liensHeader) liensHeader.style.transform = '';
-    return;
-  }
-  const scale = window.innerWidth / W;
-  page.style.transform = 'scale(' + scale + ')';
-
-  // les écrans n'ont pas tous la même hauteur (1200 pour Accueil/Pourquoi,
-  // 1081 pour les autres, recadrés de leur bande de header) et se chevauchent
-  // d'1px : on lit donc la hauteur réelle de .page plutôt que de l'additionner.
-  document.body.style.height = (page.offsetHeight * scale) + 'px';
-
-  // les zones cliquables du header suivent la même échelle
-  if (liensHeader) liensHeader.style.transform = 'scale(' + scale + ')';
-}
-window.addEventListener('resize', fit);
-fit();
-
 
 /* =========================================================
-   1 bis. Navigation mobile
+   1. Navigation (burger sous 1200 px, menu horizontal au-delà)
    ========================================================= */
 const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
 const mobileNav = document.getElementById('mobileNav');
+
+/* Chrome desktop 1920 px : seul le header et le hero sont mis à l'échelle.
+   Le reste de la page demeure un flux HTML natif. */
+const siteHeader = document.getElementById('siteHeader');
+const liensHeader = document.querySelector('.site-header__liens');
+const heroCanvas = document.getElementById('heroDesktopCanvas');
+const readingBar = document.getElementById('readingBar');
+const dotLinks = Array.prototype.slice.call(document.querySelectorAll('.dot-nav a'));
+
+function ajusterCanvasDesktop() {
+  const desktop = window.matchMedia('(min-width:1200px)').matches;
+  const scale = window.innerWidth / 1920;
+  document.documentElement.style.setProperty('--desktop-scale', desktop ? String(scale) : '1');
+  if (liensHeader) liensHeader.style.transform = desktop ? 'scale(' + scale + ')' : '';
+  if (heroCanvas) heroCanvas.style.transform = desktop ? 'scale(' + scale + ')' : '';
+}
+window.addEventListener('resize', function () {
+  ajusterCanvasDesktop();
+  majChromeDesktop();
+});
+ajusterCanvasDesktop();
+
+let dernierYChrome = window.scrollY;
+let chromeEnAttente = false;
+
+function majChromeDesktop() {
+  if (!window.matchMedia('(min-width:1200px)').matches) {
+    if (siteHeader) siteHeader.classList.remove('est-masque');
+    dernierYChrome = window.scrollY;
+    return;
+  }
+  const y = window.scrollY;
+  const delta = y - dernierYChrome;
+  if (siteHeader && Math.abs(delta) > 6) {
+    siteHeader.classList.toggle('est-masque', delta > 0 && y > 80);
+    dernierYChrome = y;
+  }
+  if (siteHeader && y <= 80) siteHeader.classList.remove('est-masque');
+
+  if (readingBar) {
+    const total = document.documentElement.scrollHeight - window.innerHeight;
+    const pct = total > 0 ? Math.min(100, Math.max(0, y / total * 100)) : 0;
+    readingBar.style.width = pct + '%';
+  }
+
+  const milieu = y + window.innerHeight / 2;
+  let actif = 0;
+  dotLinks.forEach(function (lien, index) {
+    const section = document.getElementById(lien.dataset.cible);
+    if (!section) return;
+    const haut = section.getBoundingClientRect().top + y;
+    if (milieu >= haut) actif = index;
+  });
+  dotLinks.forEach(function (lien, index) {
+    lien.classList.toggle('est-actif', index === actif);
+    if (index === actif) lien.setAttribute('aria-current', 'true');
+    else lien.removeAttribute('aria-current');
+  });
+}
+
+dotLinks.forEach(function (lien) {
+  lien.addEventListener('click', function (event) {
+    const cible = document.getElementById(lien.dataset.cible);
+    if (!cible) return;
+    event.preventDefault();
+    cible.scrollIntoView({behavior:'smooth', block:'start'});
+  });
+});
+
+window.addEventListener('scroll', function () {
+  if (chromeEnAttente) return;
+  chromeEnAttente = true;
+  requestAnimationFrame(function () {
+    majChromeDesktop();
+    chromeEnAttente = false;
+  });
+}, {passive:true});
+majChromeDesktop();
 
 function fermerMenuMobile() {
   if (!mobileMenuBtn || !mobileNav) return;
@@ -54,203 +108,93 @@ if (mobileMenuBtn && mobileNav) {
   });
 }
 
-// Cartes modules mobiles : un toucher fige l'état animé, comme sur desktop.
-const mobileModuleCards = Array.prototype.slice.call(document.querySelectorAll('.mobile-module-card'));
-const mobileModulePanel = document.getElementById('mobileModulePanel');
-const mobileModuleTitle = document.getElementById('mobileModuleTitle');
-const mobileModuleList = document.getElementById('mobileModuleList');
-const mobileModuleContent = {
-  parcelles: ['Parcelles', 'Suivi des parcelles', 'Interventions', 'Informations clés du vignoble'],
-  vendanges: ['Vendanges', 'Encuvages', 'Pressurages', 'Rendements'],
-  cuverie: ['Cuverie', 'Assemblages', 'Soutirages', 'Élevage et analyses'],
-  mises: ['Mises', 'Planificateur', 'Embouteillage', 'Matières sèches'],
-  stocks: ['Stocks', 'Lots commerciaux', 'Inventaires', 'Valorisation'],
-  ventes: ['Ventes', 'Devis et factures', 'Livraisons', 'Caisse'],
-  clients: ['Clients', 'Segmentation', 'Historique des achats', 'Prospection'],
-  administratif: ['Administratif', 'Déclarations', 'Douane et capsules', 'Registres'],
-  'tableaux-de-bord': ['Tableaux de bord', 'Indicateurs', 'Coûts et marges', 'Vue globale']
-};
-function cacherPanneauModuleMobile() {
-  if (mobileModulePanel) mobileModulePanel.hidden = true;
-}
-function afficherPanneauModuleMobile(card) {
-  if (!mobileModulePanel || !mobileModuleTitle || !mobileModuleList) return;
-  const contenu = mobileModuleContent[card.dataset.mobileModule];
-  if (!contenu) return;
-  mobileModuleTitle.textContent = contenu[0];
-  mobileModuleList.replaceChildren();
-  contenu.slice(1).forEach(function (texte) {
-    const item = document.createElement('li');
-    item.textContent = texte;
-    mobileModuleList.appendChild(item);
-  });
-  mobileModulePanel.hidden = false;
-}
+// Modules : accordéons tactiles sous 1200 px ; interaction Figma exacte sur
+// desktop (survol/focus, clic figé, clic extérieur et Échap).
+// Le contenu (taxonomie des 9 modules) vit dans le HTML, pas ici.
+const modulesMobiles = Array.prototype.slice.call(document.querySelectorAll('.mm__toggle'));
+const mediaModulesDesktop = window.matchMedia('(min-width:1200px)');
+
 function fermerModulesMobiles(exception) {
-  mobileModuleCards.forEach(function (card) {
-    if (card === exception) return;
-    card.classList.remove('est-actif');
-    card.setAttribute('aria-pressed', 'false');
-    card.setAttribute('aria-expanded', 'false');
+  modulesMobiles.forEach(function (bouton) {
+    if (bouton === exception) return;
+    const module = bouton.closest('.mm');
+    if (module) module.classList.remove('est-fige');
+    bouton.setAttribute('aria-expanded', 'false');
+    const panneau = document.getElementById(bouton.getAttribute('aria-controls'));
+    if (panneau) panneau.hidden = true;
   });
-  if (!exception) cacherPanneauModuleMobile();
 }
-mobileModuleCards.forEach(function (card) {
-  card.setAttribute('aria-controls', 'mobileModulePanel');
-  card.setAttribute('aria-expanded', 'false');
-  card.addEventListener('click', function (event) {
+
+modulesMobiles.forEach(function (bouton) {
+  const module = bouton.closest('.mm');
+  const panneau = document.getElementById(bouton.getAttribute('aria-controls'));
+  bouton.addEventListener('click', function (event) {
     event.stopPropagation();
-    const activer = !card.classList.contains('est-actif');
-    fermerModulesMobiles();
-    card.classList.toggle('est-actif', activer);
-    card.setAttribute('aria-pressed', String(activer));
-    card.setAttribute('aria-expanded', String(activer));
-    if (activer) afficherPanneauModuleMobile(card);
-  });
-});
-if (mobileModulePanel) {
-  mobileModulePanel.addEventListener('click', function (event) { event.stopPropagation(); });
-  const fermerPanneau = mobileModulePanel.querySelector('.mobile-module-panel__close');
-  if (fermerPanneau) fermerPanneau.addEventListener('click', function () { fermerModulesMobiles(); });
-}
-document.addEventListener('click', function () { fermerModulesMobiles(); });
-document.addEventListener('keydown', function (event) {
-  if (event.key === 'Escape') fermerModulesMobiles();
-});
+    if (!module || !panneau) return;
 
-
-/* =========================================================
-   2. Modules « De la vigne à la vente »
-      survol -> encadré · clic -> figé · clic ailleurs -> fermé
-   ========================================================= */
-const slots = document.querySelectorAll('#parcours .pq-slot');
-
-function defiger() {
-  slots.forEach(function (s) {
-    s.classList.remove('est-fige');
-    s.querySelector('.pq-module').setAttribute('aria-expanded', 'false');
-  });
-}
-
-slots.forEach(function (slot) {
-  const bouton = slot.querySelector('.pq-module');
-  bouton.addEventListener('click', function (e) {
-    e.stopPropagation();
-    const dejaFige = slot.classList.contains('est-fige');
-    defiger();
-    if (!dejaFige) {
-      slot.classList.add('est-fige');
-      bouton.setAttribute('aria-expanded', 'true');
+    if (mediaModulesDesktop.matches) {
+      const dejaFige = module.classList.contains('est-fige');
+      fermerModulesMobiles();
+      if (!dejaFige) {
+        module.classList.add('est-fige');
+        bouton.setAttribute('aria-expanded', 'true');
+      }
+      return;
     }
+
+    const ouvrir = panneau.hidden;
+    fermerModulesMobiles(bouton);
+    bouton.setAttribute('aria-expanded', String(ouvrir));
+    panneau.hidden = !ouvrir;
   });
-  slot.querySelector('.pq-panneau').addEventListener('click', function (e) {
-    e.stopPropagation();
-  });
+  if (panneau) panneau.addEventListener('click', function (event) { event.stopPropagation(); });
 });
-
-document.addEventListener('click', defiger);
-document.addEventListener('keydown', function (e) {
-  if (e.key === 'Escape') defiger();
+document.addEventListener('click', function () {
+  if (mediaModulesDesktop.matches) fermerModulesMobiles();
 });
-
-
-/* =========================================================
-   3. Header : disparaît vers le bas, réapparaît vers le haut
-      - seuil de 6px : ignore les micro-mouvements du trackpad
-      - reste visible dans les 80 premiers pixels
-   ========================================================= */
-const header = document.getElementById('siteHeader');
-const SEUIL = 6;
-const HAUT = 80;
-
-let dernierY = window.scrollY;
-let enAttente = false;
-
-function majHeader() {
-  const y = window.scrollY;
-  const delta = y - dernierY;
-
-  if (Math.abs(delta) > SEUIL) {
-    if (delta > 0 && y > HAUT) header.classList.add('est-masque');
-    else header.classList.remove('est-masque');
-    dernierY = y;
+mediaModulesDesktop.addEventListener('change', function () { fermerModulesMobiles(); });
+document.addEventListener('keydown', function (event) {
+  if (event.key === 'Escape') {
+    fermerModulesMobiles();
+    fermerMenuMobile();
   }
-  if (y <= HAUT) header.classList.remove('est-masque');
+});
+
+// FAQ native : conserve l'accessibilité de <details> et un seul état ouvert.
+const questionsFaq = Array.prototype.slice.call(document.querySelectorAll('.mobile-faq details'));
+questionsFaq.forEach(function (question) {
+  question.addEventListener('toggle', function () {
+    if (!question.open) return;
+    questionsFaq.forEach(function (autre) { if (autre !== question) autre.open = false; });
+  });
+});
+
+// EmailJS n'est demandé qu'après une action explicite sur le formulaire.
+let promesseEmailJS = null;
+function chargerEmailJS() {
+  if (window.emailjs) return Promise.resolve(window.emailjs);
+  if (promesseEmailJS) return promesseEmailJS;
+  promesseEmailJS = new Promise(function (resolve, reject) {
+    const script = document.createElement('script');
+    script.src = 'https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js';
+    script.async = true;
+    script.onload = function () { resolve(window.emailjs); };
+    script.onerror = function () { promesseEmailJS = null; reject(new Error('EmailJS indisponible')); };
+    document.head.appendChild(script);
+  });
+  return promesseEmailJS;
 }
 
 
 /* =========================================================
-   4. Barre de lecture
-   ========================================================= */
-const barre = document.getElementById('readingBar');
-
-function majBarre() {
-  const total = document.documentElement.scrollHeight - window.innerHeight;
-  const pct = total > 0 ? (window.scrollY / total) * 100 : 0;
-  barre.style.width = Math.min(100, Math.max(0, pct)) + '%';
-}
-
-
-/* =========================================================
-   5. Navigation latérale en tirets
-   ========================================================= */
-const liens = Array.prototype.slice.call(document.querySelectorAll('.dot-nav a'));
-const sections = liens.map(function (a) {
-  return document.getElementById(a.dataset.cible);
-});
-
-function majNav() {
-  const milieu = window.scrollY + window.innerHeight / 2;
-  let actif = 0;
-  sections.forEach(function (sec, i) {
-    const haut = sec.getBoundingClientRect().top + window.scrollY;
-    if (milieu >= haut) actif = i;
-  });
-  liens.forEach(function (a, i) {
-    a.classList.toggle('est-actif', i === actif);
-  });
-}
-
-liens.forEach(function (a) {
-  a.addEventListener('click', function (e) {
-    e.preventDefault();
-    const cible = document.getElementById(a.dataset.cible);
-    const haut = cible.getBoundingClientRect().top + window.scrollY;
-    window.scrollTo({ top: haut, behavior: 'smooth' });
-  });
-});
-
-
-/* =========================================================
-   6. Un seul écouteur de scroll pour les trois comportements
-   ========================================================= */
-window.addEventListener('scroll', function () {
-  if (enAttente) return;
-  enAttente = true;
-  requestAnimationFrame(function () {
-    majHeader();
-    majBarre();
-    majNav();
-    enAttente = false;
-  });
-}, { passive: true });
-
-window.addEventListener('resize', function () {
-  majBarre();
-  majNav();
-});
-
-majBarre();
-majNav();
-
-
-/* =========================================================
-   8. Pop-up « M'inscrire au programme bêta-test »
+   2. Pop-up « M'inscrire au programme bêta-test »
       Ouverte par tout élément [data-beta], fermée par la croix, le fond
       sombre ou la touche Échap.
    ========================================================= */
 const modal = document.getElementById('modalBeta');
 let elementAvantModal = null;
+
+if (modal) {
 
 function ouvrirModal(e) {
   if (e) e.preventDefault();
@@ -278,10 +222,26 @@ modal.querySelectorAll('[data-fermer]').forEach(function (el) {
 document.addEventListener('keydown', function (e) {
   if (e.key === 'Escape' && !modal.hidden) fermerModal();
 });
+modal.addEventListener('keydown', function (e) {
+  if (e.key !== 'Tab' || modal.hidden) return;
+  const focusables = Array.prototype.slice.call(modal.querySelectorAll(
+    'a[href], button:not([disabled]), input:not([disabled]):not([type="hidden"]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])'
+  )).filter(function (element) { return element.offsetParent !== null; });
+  if (!focusables.length) return;
+  const premier = focusables[0];
+  const dernier = focusables[focusables.length - 1];
+  if (e.shiftKey && document.activeElement === premier) {
+    e.preventDefault(); dernier.focus();
+  } else if (!e.shiftKey && document.activeElement === dernier) {
+    e.preventDefault(); premier.focus();
+  }
+});
+
+}
 
 
 /* =========================================================
-   10. Formulaire d'inscription bêta-test -> envoi du mail (EmailJS)
+   3. Formulaire d'inscription bêta-test -> envoi du mail (EmailJS)
        Formulaire complet (prénom, nom, e-mail pro, tél, domaine, SIRET,
        activité, outil, priorité, consentement). Anti-spam : honeypot +
        timing + limitation de fréquence. Succès -> message de confirmation.
@@ -330,7 +290,7 @@ document.addEventListener('keydown', function (e) {
   function invalide(el){ el.setAttribute('aria-invalid','true'); el.focus(); }
   function net(el){ return (el && el.value ? el.value.trim() : ''); }
 
-  form.addEventListener('submit', function (e) {
+  form.addEventListener('submit', async function (e) {
     e.preventDefault();
     cacher();
     ['prenom','nom','email','domaine','siret','activite'].forEach(function(id){ g(id).removeAttribute('aria-invalid'); });
@@ -356,7 +316,8 @@ document.addEventListener('keydown', function (e) {
 
     if (!consent.checked){ afficher('err','Merci d’accepter la réutilisation de vos informations pour continuer.'); consent.focus(); return; }
 
-    if (typeof emailjs === 'undefined'){ afficher('err','Service momentanément indisponible. Réessayez dans un instant.'); return; }
+    try { await chargerEmailJS(); }
+    catch (erreur) { afficher('err','Service momentanément indisponible. Réessayez dans un instant.'); return; }
     if (!ejsPret){ emailjs.init(CLE_PUBLIQUE); ejsPret=true; }
 
     etatBouton(true, 'Envoi…');
@@ -415,115 +376,5 @@ document.addEventListener('keydown', function (e) {
 })();
 
 
-/* =========================================================
-   11. Cookies — consentement (conforme CNIL)
-       Nécessaires : toujours actifs. Audience / tiers : soumis au choix.
-       Choix conservé 6 mois, puis nouvelle sollicitation. Réouvrable via
-       tout élément [data-cookies] (footer, pages légales).
-   ========================================================= */
-(function () {
-  var CLE = 'monchai_cookie_consent';
-  var SIX_MOIS = 1000 * 60 * 60 * 24 * 182;
-
-  var banniere = document.getElementById('cookieBanner');
-  var modalC   = document.getElementById('cookieModal');
-  var optAud   = document.getElementById('optAudience');
-  var optTiers = document.getElementById('optTiers');
-
-  function lire() {
-    try {
-      var d = JSON.parse(localStorage.getItem(CLE));
-      if (!d || !d.ts || Date.now() - d.ts > SIX_MOIS) return null;   // expiré
-      return d;
-    } catch (e) { return null; }
-  }
-  function ecrire(audience, tiers) {
-    try { localStorage.setItem(CLE, JSON.stringify({ audience: audience, tiers: tiers, ts: Date.now() })); } catch (e) {}
-    appliquer(audience, tiers);
-  }
-
-  function chargerHubSpot() {
-    var scriptExistant = document.getElementById('hs-script-loader');
-
-    // Le bandeau maison reste l'unique interface de consentement.
-    window.disableHubSpotCookieBanner = true;
-
-    // Réactive le suivi si le consentement avait été retiré dans cette page.
-    window._hsq = window._hsq || [];
-    window._hsq.push(['doNotTrack', { track: true }]);
-
-    if (scriptExistant) return;
-
-    var script = document.createElement('script');
-    script.type = 'text/javascript';
-    script.id = 'hs-script-loader';
-    script.async = true;
-    script.defer = true;
-    script.src = 'https://js-eu1.hs-scripts.com/147891073.js';
-    document.body.appendChild(script);
-  }
-
-  function arreterHubSpot() {
-    // Si HubSpot a déjà été chargé dans cette page, bloque les nouveaux envois
-    // et retire ses cookies de consentement lors d'un retrait de l'accord.
-    if (!document.getElementById('hs-script-loader')) return;
-
-    window._hsq = window._hsq || [];
-    window._hsq.push(['doNotTrack']);
-    window._hsp = window._hsp || [];
-    window._hsp.push(['revokeCookieConsent']);
-  }
-
-  // Active les scripts de mesure uniquement selon le choix enregistré.
-  function appliquer(audience, tiers) {
-    window.monchaiConsent = { audience: !!audience, tiers: !!tiers };
-    document.documentElement.dataset.consentAudience = audience ? '1' : '0';
-    document.documentElement.dataset.consentTiers = tiers ? '1' : '0';
-    if (audience) chargerHubSpot();
-    else arreterHubSpot();
-  }
-
-  function montrerBanniere() { if (banniere) banniere.hidden = false; }
-  function cacherBanniere()  { if (banniere) banniere.hidden = true; }
-  function ouvrirReglages() {
-    if (!modalC) return;
-    var d = lire();
-    if (optAud)   optAud.checked   = d ? !!d.audience : false;
-    if (optTiers) optTiers.checked = d ? !!d.tiers    : false;
-    modalC.hidden = false;
-  }
-  function fermerReglages() { if (modalC) modalC.hidden = true; }
-
-  // état initial
-  var actuel = lire();
-  if (actuel) appliquer(actuel.audience, actuel.tiers);
-  else montrerBanniere();
-
-  // bandeau
-  var bA = document.getElementById('cookieAccept');
-  var bR = document.getElementById('cookieRefus');
-  var bP = document.getElementById('cookieRegler');
-  if (bA) bA.addEventListener('click', function () { ecrire(true, true);  cacherBanniere(); });
-  if (bR) bR.addEventListener('click', function () { ecrire(false, false); cacherBanniere(); });
-  if (bP) bP.addEventListener('click', function () { ouvrirReglages(); });
-
-  // panneau de réglages
-  var bTout  = document.getElementById('cookieToutRefus');
-  var bSave  = document.getElementById('cookieEnregistrer');
-  if (bTout) bTout.addEventListener('click', function () { ecrire(false, false); fermerReglages(); cacherBanniere(); });
-  if (bSave) bSave.addEventListener('click', function () {
-    ecrire(optAud && optAud.checked, optTiers && optTiers.checked);
-    fermerReglages(); cacherBanniere();
-  });
-
-  // « Gérer mes cookies » (footer, pages légales) rouvre les réglages
-  document.querySelectorAll('[data-cookies]').forEach(function (el) {
-    el.addEventListener('click', function (e) { e.preventDefault(); ouvrirReglages(); });
-  });
-  document.querySelectorAll('[data-cookies-fermer]').forEach(function (el) {
-    el.addEventListener('click', fermerReglages);
-  });
-  document.addEventListener('keydown', function (e) {
-    if (e.key === 'Escape' && modalC && !modalC.hidden) fermerReglages();
-  });
-})();
+/* La gestion du consentement cookies (bandeau, réglages, doNotTrack HubSpot)
+   vit dans consent.js — source unique partagée avec les pages légales. */

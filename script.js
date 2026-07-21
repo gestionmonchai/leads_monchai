@@ -364,7 +364,7 @@ function ouvrirLegal(url, libelle, declencheur) {
   const fichier = fichierLegal(url);
   const titre = libelle || pagesLegales[fichier] || 'Informations légales';
   titreLegal.textContent = titre;
-  cadreLegal.title = titre + ' — Mon Chai';
+  cadreLegal.title = titre + ' | Mon Chai';
   pageLegalComplete.href = new URL(url, window.location.href).href;
   cadreLegal.src = urlIntegree(url);
   modalLegal.hidden = false;
@@ -417,7 +417,7 @@ if (modalLegal && cadreLegal) {
       const h1 = doc.querySelector('h1');
       if (h1) {
         titreLegal.textContent = h1.textContent.trim();
-        cadreLegal.title = h1.textContent.trim() + ' — Mon Chai';
+        cadreLegal.title = h1.textContent.trim() + ' | Mon Chai';
       }
       const urlCadre = cadreLegal.contentWindow.location.href;
       const cibleComplete = new URL(urlCadre);
@@ -551,7 +551,7 @@ if (modalLegal && cadreLegal) {
       reply_to: mail,
       email: mail,
       name: nomComplet,
-      title: 'Nouvelle inscription bêta — ' + net(g('domaine')),
+      title: 'Nouvelle inscription bêta : ' + net(g('domaine')),
       message: resume,
       from_email: mail,
       prenom: net(g('prenom')),

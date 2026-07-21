@@ -71,6 +71,7 @@
   color:#fff;
   background:linear-gradient(to bottom,#711c24 0%,#6b1b23 20%,#651920 40%,#5d171e 60%,#54151b 80%,#481217 100%);
 }
+
 .mobile-footer__marque{ position:relative; }
 .mobile-footer__filters{ position:absolute; width:0; height:0; overflow:hidden; }
 .mobile-footer__marque > img{
@@ -450,6 +451,7 @@
     color:var(--bordeaux);
     font:400 20px/1 var(--sans);
   }
+
 }
 
 @media (min-width:700px) and (max-width:1199px){
@@ -953,5 +955,26 @@
     background:rgba(223,183,128,.59);
     box-shadow:0 4px 4px rgba(0,0,0,.25);
     font:400 20px/1 var(--sans);
+  }
+}
+
+/* Alignement final desktop : mêmes bords externes que la rangée des deux cartes. */
+@media (min-width:1200px){
+  .mobile-offer > .mobile-offer__dates::before{ left:-10px; }
+  .mobile-offer > .mobile-offer__dates::after{ right:12px; }
+  .mobile-intro h2{ width:max-content; }
+  .mobile-intro h2::after{
+    left:0;
+    width:100%;
+    transform:none;
+  }
+  .mobile-ai__entete{ transform:none; }
+  .mobile-news .mobile-news__card h3{
+    max-width:none;
+    white-space:nowrap;
+  }
+  .mobile-primeurs::before{
+    width:calc(100% - 22px);
+    background:linear-gradient(to right,var(--or) 0 607px,transparent 607px 713px,var(--or) 713px 100%);
   }
 }

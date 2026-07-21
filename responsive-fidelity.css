@@ -793,6 +793,15 @@
   .mobile-news__secondaires{ grid-template-rows:auto !important; align-content:start !important; }
 }
 
+@media (max-width:699px){
+  .mobile-news .mobile-news__card h3{
+    max-width:none !important;
+    font-size:clamp(13px,4.1vw,16px) !important;
+    letter-spacing:-.04em !important;
+    white-space:nowrap !important;
+  }
+}
+
 @media (min-width:1200px){
   .mobile-news{
     height:auto; min-height:1081px; padding:70px 0 80px;
@@ -818,5 +827,41 @@
   }
   .mobile-news__instagram-link{
     grid-column:auto; width:100%; height:234px; min-height:0; transform:translateY(8px);
+  }
+}
+
+/* Tablette : les filets de dates couvrent toute la rangée des deux encadrés. */
+@media (min-width:821px) and (max-width:1199px){
+  .mobile-offer > .mobile-offer__dates{ max-width:none !important; }
+}
+
+/* Mobile et tablette : même retrait horizontal que les filets de dates. */
+@media (max-width:1199px){
+  .mobile-primeurs::before{
+    left:16px !important;
+    width:calc(100% - 32px) !important;
+  }
+  .mobile-intro h2::after{
+    position:relative !important;
+    left:50% !important;
+    width:calc(100vw - 32px) !important;
+    margin:18px 0 0 !important;
+    transform:translateX(-50%) !important;
+  }
+}
+
+@media (min-width:700px) and (max-width:1199px){
+  .mobile-news .mobile-news__card h3{
+    max-width:none !important;
+    font-size:16px !important;
+    letter-spacing:-.035em !important;
+    white-space:nowrap !important;
+  }
+}
+
+@media (min-width:1200px){
+  .mobile-news .mobile-news__card h3{
+    max-width:none;
+    white-space:nowrap;
   }
 }

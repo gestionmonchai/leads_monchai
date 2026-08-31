@@ -251,6 +251,22 @@ body{
   pointer-events:none;
 }
 
+/* Boutons dessinés dans parcours-bas.svg (écran offre) : le fond ne porte
+   que le dessin, ces liens posés aux coordonnées du SVG les rendent
+   cliquables (mêmes conventions que les pastilles de l'écran actualité). */
+#parcours .parcours__lien{
+  position:absolute;
+  height:52px; border-radius:26px;
+  z-index:2;
+}
+#parcours .parcours__lien--rejoindre{ left:1087px; top:3331px; width:386px; }
+#parcours .parcours__lien--offre    { left:1252px; top:3616px; width:253px; }
+#parcours .parcours__lien:hover,
+#parcours .parcours__lien:focus-visible{
+  box-shadow:0 0 0 3px #531217;
+  outline:none;
+}
+
 /* ---------- Les 9 modules ----------
    Bande Figma (Group 108) découpée en 9 SVG indépendants.
    Carte : 167,013 × 248,508 · r19 · pas de 185,1235 · premier x = 136.
@@ -646,170 +662,6 @@ body{
 .instagram-embed-shell iframe{ max-width:100% !important; margin:0 auto !important; }
 
 /* =========================================================
-   POP-UP inscription bêta-test
-   ========================================================= */
-.modal{
-  position:fixed; inset:0;
-  z-index:200;
-  display:flex; align-items:center; justify-content:center;
-  padding:24px;
-}
-.modal[hidden]{ display:none; }
-
-.modal__fond{
-  position:absolute; inset:0;
-  background:rgba(33,27,24,.55);
-  backdrop-filter:blur(2px);
-  -webkit-backdrop-filter:blur(2px);
-  animation:modal-fond .25s ease both;
-}
-@keyframes modal-fond{ from{opacity:0} to{opacity:1} }
-
-.modal__boite{
-  position:relative;
-  display:grid;
-  grid-template-columns:38% 62%;
-  width:min(1140px, 96vw);
-  max-height:94vh;
-  overflow:auto;
-  background:#fff;
-  border-radius:26px;
-  box-shadow:0 40px 90px rgba(33,27,24,.35);
-  animation:modal-boite .3s cubic-bezier(.2,.9,.3,1) both;
-}
-@keyframes modal-boite{
-  from{ opacity:0; transform:translateY(24px) scale(.97); }
-  to  { opacity:1; transform:none; }
-}
-
-/* ---- Colonne gauche (beige) ---- */
-.modal__aside{
-  background:#FAF6EE;
-  padding:48px 40px;
-  display:flex; flex-direction:column;
-}
-.modal__titre{
-  font-family:var(--sans);
-  font-size:34px; line-height:1.12; font-weight:700;
-  color:var(--bordeaux); margin-bottom:18px;
-}
-.modal__titre span{ color:var(--or); }
-.modal__soustitre{
-  font-family:var(--sans); font-size:16px; line-height:1.55;
-  color:var(--bordeaux); opacity:.9; margin-bottom:30px;
-}
-.modal__avantages{ list-style:none; display:flex; flex-direction:column; gap:20px; }
-.modal__avantages li{ display:flex; gap:14px; align-items:flex-start; }
-.modal__avantages strong{ display:block; font-size:16px; color:var(--encre); margin-bottom:3px; }
-.modal__avantages div{ font-size:14px; line-height:1.45; color:var(--gris); }
-.modal__check{
-  flex:0 0 auto; position:relative;
-  width:34px; height:34px; border-radius:50%;
-  background:var(--bordeaux);
-}
-.modal__check::after{
-  content:""; position:absolute; left:11px; top:9px;
-  width:8px; height:14px;
-  border:solid #fff; border-width:0 2.6px 2.6px 0;
-  transform:rotate(42deg);
-}
-.modal__note{
-  margin-top:auto; padding-top:26px;
-  font-size:13px; line-height:1.5; color:var(--gris);
-}
-
-/* ---- Colonne droite (formulaire) ---- */
-.modal__form-wrap{ padding:44px 44px 40px; }
-.modal__form-titre{
-  font-family:var(--sans); font-size:28px; font-weight:700;
-  color:var(--bordeaux); margin-bottom:8px;
-}
-.modal__form-aide{ font-size:14px; color:var(--gris); margin-bottom:26px; }
-
-.hp-field{ position:absolute; left:-9999px; width:1px; height:1px; overflow:hidden; }
-
-.modal__grid{ display:grid; grid-template-columns:1fr 1fr; gap:18px 22px; }
-.champ{ display:flex; flex-direction:column; gap:7px; }
-.champ--full{ grid-column:1 / -1; }
-.champ label{ font-size:14px; font-weight:600; color:var(--encre); }
-.champ label b{ color:var(--bordeaux); font-weight:700; }
-.champ small{ font-size:11.5px; color:var(--gris); }
-
-.champ input,
-.champ select,
-.champ textarea{
-  width:100%; padding:13px 15px;
-  font-family:var(--sans); font-size:15px; color:var(--encre);
-  border:1.5px solid rgba(111,29,45,.22); border-radius:12px; background:#fff;
-  transition:border-color .2s ease;
-}
-.champ textarea{ resize:vertical; min-height:88px; }
-.champ input:focus,
-.champ select:focus,
-.champ textarea:focus{ outline:none; border-color:var(--bordeaux); }
-.champ input[aria-invalid="true"],
-.champ select[aria-invalid="true"]{ border-color:#c0392b; }
-
-.modal__consent{
-  display:flex; gap:10px; align-items:flex-start;
-  margin-top:22px; font-size:12.5px; line-height:1.5; color:var(--gris); cursor:pointer;
-}
-.modal__consent input{ margin-top:2px; flex:0 0 auto; accent-color:var(--bordeaux); }
-.modal__consent a{ color:var(--bordeaux); font-weight:600; }
-
-.modal__message{ font-size:14px; line-height:1.4; margin:14px 0 0; }
-.modal__message.ok{ color:#2e7d32; }
-.modal__message.err{ color:#c0392b; }
-
-.modal__pied{
-  display:flex; align-items:center; justify-content:space-between; gap:16px;
-  margin-top:22px; flex-wrap:wrap;
-}
-.modal__lock{ font-size:13px; color:var(--gris); }
-.modal__submit{
-  padding:15px 26px; border:0; border-radius:999px;
-  background:var(--bordeaux); color:#fff;
-  font-family:var(--sans); font-size:16px; font-weight:700; cursor:pointer;
-  transition:background-color .2s ease, opacity .2s ease;
-}
-.modal__submit:hover{ background:#671519; }
-.modal__submit:disabled{ opacity:.6; cursor:default; }
-
-/* message de confirmation */
-.modal__succes{ text-align:center; padding:40px 10px; }
-.modal__succes[hidden]{ display:none; }
-.modal__succes-check{
-  width:66px; height:66px; margin:0 auto 22px; border-radius:50%;
-  background:var(--bordeaux); position:relative;
-}
-.modal__succes-check::after{
-  content:""; position:absolute; left:24px; top:19px;
-  width:14px; height:26px; border:solid #fff; border-width:0 3.4px 3.4px 0;
-  transform:rotate(42deg);
-}
-.modal__succes p{ font-size:18px; line-height:1.55; color:var(--bordeaux); }
-.modal__noscript{ margin-top:16px; font-size:14px; color:var(--gris); }
-.modal__noscript a{ color:var(--bordeaux); }
-
-.modal__fermer{
-  position:absolute; top:14px; right:18px; z-index:2;
-  width:42px; height:42px; border:0; border-radius:50%;
-  background:rgba(33,27,24,.06); color:var(--bordeaux);
-  font-size:28px; line-height:1; cursor:pointer;
-  transition:background-color .2s ease;
-}
-.modal__fermer:hover{ background:rgba(33,27,24,.12); }
-
-[data-beta]{ cursor:pointer; }
-
-/* sur écran étroit : une seule colonne */
-@media (max-width:820px){
-  .modal__boite{ grid-template-columns:1fr; }
-  .modal__grid{ grid-template-columns:1fr; }
-}
-
-
-/* =========================================================
    FAQ INTERACTIVE (recouvre les cartes figées du SVG)
    Zone mesurée dans a-propos-faq.svg : cartes x 214..1706, y 1726..2315,
    sur fond crème #FFFAF5. On couvre toute la zone en crème puis on pose
@@ -901,10 +753,7 @@ body{
 /* état ouvert */
 .faq-item.ouvert{ border-color:var(--or); }
 .faq-item.ouvert .faq-plus{ background:rgba(223,183,128,.4); }
-.faq-item.ouvert .faq-plus::aft
-/* ligne de réassurance « France » dans la pop-up */
-.modal__france{ margin-top:12px; font-size:13px; font-weight:600; color:var(--bordeaux); }
-.modal__france span{ margin-right:4px; }
+.faq-item.ouvert .faq-plus::after{ transform:translate(-50%,-50%) rotate(0deg); opacity:0; }
 
 
 /* =========================================================

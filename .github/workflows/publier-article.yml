@@ -1,0 +1,153 @@
+# Publication automatique des articles « Actualités réglementaires ».
+# Chaque lundi matin, prend le premier article en attente dont la date
+# prévue est atteinte sur la branche file-attente, le date, l'insère dans
+# le site (page + carte + sitemap) et déploie GitHub Pages.
+# La branche file-attente porte la file (articles/, manifest.json) et la
+# documentation (README, LIGNE-EDITORIALE, MOTS-CLES).
+name: Publier le prochain article
+
+on:
+  schedule:
+    - cron: '30 6 * * 1'   # lundi 06:30 UTC (07:30/08:30 Paris)
+  workflow_dispatch:
+    inputs:
+      test:
+        description: "Test à blanc : tout faire sauf pousser et déployer"
+        type: boolean
+        default: false
+      forcer:
+        description: "Slug à publier même si sa date n'est pas atteinte (laisser vide en usage normal)"
+        type: string
+        default: ""
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+  publier:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Récupérer le site (main)
+        uses: actions/checkout@v4
+        with:
+          path: site
+
+      - name: Récupérer la file d'attente
+        uses: actions/checkout@v4
+        with:
+          ref: file-attente
+          path: file
+
+      - name: Choisir l'article dû
+        id: choix
+        env:
+          FORCER: ${{ inputs.forcer }}
+        run: |
+          AUJOURDHUI=$(date -u +%F)
+          if [ -n "$FORCER" ]; then
+            FILTRE='[.articles[] | select(.statut=="en_attente" and .slug==$f)]'
+          else
+            FILTRE='[.articles[] | select(.statut=="en_attente" and .prevu <= $d)] | sort_by(.ordre)'
+          fi
+          SLUG=$(jq -r --arg d "$AUJOURDHUI" --arg f "$FORCER" "$FILTRE | .[0].slug // empty" file/manifest.json)
+          FICHIER=$(jq -r --arg d "$AUJOURDHUI" --arg f "$FORCER" "$FILTRE | .[0].fichier // empty" file/manifest.json)
+          if [ -z "$SLUG" ]; then
+            echo "::notice::File d'attente vide ou aucun article dû aujourd'hui ($AUJOURDHUI). Rien à publier."
+            RESTANTS=$(jq -r '[.articles[] | select(.statut=="en_attente")] | length' file/manifest.json)
+            if [ "$RESTANTS" = "0" ]; then
+              echo "::warning::La file d'attente est VIDE : écrire de nouveaux articles (voir README de la branche file-attente)."
+            fi
+            echo "publier=non" >> "$GITHUB_OUTPUT"
+          else
+            echo "Article à publier : $SLUG (fichier $FICHIER)"
+            echo "publier=oui" >> "$GITHUB_OUTPUT"
+            echo "slug=$SLUG" >> "$GITHUB_OUTPUT"
+            echo "fichier=$FICHIER" >> "$GITHUB_OUTPUT"
+            echo "date=$AUJOURDHUI" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Dater et insérer l'article
+        if: steps.choix.outputs.publier == 'oui'
+        run: |
+          SLUG="${{ steps.choix.outputs.slug }}"
+          FICHIER="${{ steps.choix.outputs.fichier }}"
+          DATE_ISO="${{ steps.choix.outputs.date }}"
+          MOIS=(janvier février mars avril mai juin juillet août septembre octobre novembre décembre)
+          JOUR=$((10#$(date -u +%d)))
+          if [ "$JOUR" = "1" ]; then JOUR_FR="1ᵉʳ"; else JOUR_FR="$JOUR"; fi
+          DATE_FR="$JOUR_FR ${MOIS[$((10#$(date -u +%m)-1))]} $(date -u +%Y)"
+          echo "Date de publication : $DATE_FR ($DATE_ISO)"
+
+          sed -i "s/{{DATE_ISO}}/$DATE_ISO/g; s/{{DATE_FR}}/$DATE_FR/g" \
+            "file/articles/$FICHIER.html" "file/articles/$FICHIER.carte.html"
+
+          cp "file/articles/$FICHIER.html" "site/$SLUG.html"
+          sed -i "/FILE-ATTENTE : les nouvelles cartes/r file/articles/$FICHIER.carte.html" \
+            site/actualites-reglementaires.html
+
+          cat > /tmp/sitemap-bloc.xml <<FIN
+  <url>
+    <loc>https://monchai.fr/$SLUG.html</loc>
+    <lastmod>$DATE_ISO</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+FIN
+          sed -i "/FILE-ATTENTE : nouvelles URL/r /tmp/sitemap-bloc.xml" site/sitemap.xml
+
+          jq --arg s "$SLUG" --arg d "$DATE_ISO" \
+            '(.articles[] | select(.slug==$s) | .statut) = ("publie_" + $d)' \
+            file/manifest.json > /tmp/manifest.json
+          mv /tmp/manifest.json file/manifest.json
+
+          echo "--- Contrôles ---"
+          grep -c "actu-fiche" site/actualites-reglementaires.html
+          grep -q "$SLUG.html" site/sitemap.xml && echo "sitemap OK"
+          ! grep -q "{{DATE" "site/$SLUG.html" && echo "dates OK"
+
+      - name: Test à blanc — montrer le diff sans pousser
+        if: steps.choix.outputs.publier == 'oui' && inputs.test == true
+        run: |
+          echo "=== Diff site (main) ==="
+          cd site && git add -A && git diff --cached --stat && git diff --cached -- actualites-reglementaires.html sitemap.xml | head -80
+          echo "=== Diff file-attente ==="
+          cd ../file && git add -A && git diff --cached --stat
+
+      - name: Pousser les deux branches
+        if: steps.choix.outputs.publier == 'oui' && inputs.test != true
+        run: |
+          SLUG="${{ steps.choix.outputs.slug }}"
+          for d in site file; do
+            git -C "$d" config user.name "publication-automatique"
+            git -C "$d" config user.email "gestion.mon.chai@gmail.com"
+          done
+          git -C site add -A
+          git -C site commit -m "Publication automatique : $SLUG"
+          git -C site push
+          git -C file add -A
+          git -C file commit -m "File d'attente : $SLUG publié"
+          git -C file push
+
+      - name: Configurer Pages
+        if: steps.choix.outputs.publier == 'oui' && inputs.test != true
+        uses: actions/configure-pages@v5
+
+      - name: Construire l'artefact
+        if: steps.choix.outputs.publier == 'oui' && inputs.test != true
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: 'site'
+
+      - name: Déployer GitHub Pages
+        if: steps.choix.outputs.publier == 'oui' && inputs.test != true
+        id: deployment
+        uses: actions/deploy-pages@v4

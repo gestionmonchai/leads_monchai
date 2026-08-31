@@ -72,6 +72,7 @@
   </url>
 
   <!-- Actualités réglementaires -->
+  <!-- FILE-ATTENTE : nouvelles URL insérées sous cette ligne (workflow publier-article.yml). Ne pas supprimer ce repère. -->
   <url>
     <loc>https://monchai.fr/actualites-reglementaires.html</loc>
     <lastmod>2026-08-31</lastmod>

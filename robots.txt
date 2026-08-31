@@ -1,4 +1,4 @@
-# robots.txt — Mon Chai (monchai.fr)
+# robots.txt Mon Chai (monchai.fr)
 # Logiciel de gestion viticole
 
 User-agent: *
@@ -6,9 +6,3 @@ Allow: /
 
 Sitemap: https://monchai.fr/sitemap.xml
 Crawl-delay: 1
-
-User-agent: Googlebot
-Allow: /
-
-User-agent: Bingbot
-Allow: /

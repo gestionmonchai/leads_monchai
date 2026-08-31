@@ -1,0 +1,198 @@
+/* =========================================================
+   MOSAÏQUE + CARROUSEL
+   =========================================================
+
+   Le problème d'origine. Les cartes du Figma font 732 × 704, presque un
+   carré. Un écran d'application fait 16/10. Y loger une capture entière
+   obligeait à rogner un tiers de la largeur, et la coupe tombait au hasard :
+   au milieu d'une colonne, sur un bouton. Le logiciel s'y présentait mal.
+
+   Ce qui remplace. Quatre tuiles de 360 × 346 dans le même encombrement.
+   Chacune ne montre plus un écran écrasé mais un détail cadré à l'échelle 1:1
+   sur un élément réel de l'interface : un plan, une barre d'étapes, une
+   rangée de relevés. Le clic ouvre le carrousel, qui montre les écrans
+   entiers dans leur format naturel.
+
+   Les tuiles sont des <a> vers l'image pleine : sans JavaScript le lien
+   fonctionne, avec JavaScript il ouvre le carrousel.
+
+   Dépend de pages.css pour --cx / --cy et le décor de .mod__capture.
+   ========================================================= */
+
+:root{
+  --mos-gouttiere: 12px;
+  /* Presque opaque : à .93 le titre de la page restait lisible derrière et
+     tirait l'œil hors de la capture qu'on vient d'ouvrir. */
+  --mos-voile: rgba(30, 20, 18, .975);
+}
+
+
+/* ---------- La mosaïque dans la scène 1920 ---------- */
+
+.mos{
+  position:absolute; z-index:4;
+  left:var(--cx); top:var(--cy);
+  width:var(--cw, 732px); height:var(--ch, 704px);
+  display:grid;
+  grid-template-columns:repeat(2, 1fr);
+  grid-template-rows:repeat(2, 1fr);
+  gap:var(--mos-gouttiere);
+}
+
+.mos__t{
+  position:relative; display:block; overflow:hidden;
+  background:#fff; border:1px solid #E7DED6; border-radius:11px;
+  box-shadow:0 18px 44px rgba(46,40,38,.10);
+  /* Le lien ne doit pas hériter du soulignement des liens de la page. */
+  text-decoration:none;
+  transition:transform .22s ease, box-shadow .22s ease;
+}
+.mos__t img{ display:block; width:100%; height:100%; object-fit:cover; }
+
+.mos__t:hover,
+.mos__t:focus-visible{
+  transform:translateY(-3px);
+  box-shadow:0 24px 54px rgba(46,40,38,.18);
+}
+.mos__t:focus-visible{ outline:3px solid #C99159; outline-offset:3px; }
+
+/* Loupe au survol. Masquée aux lecteurs d'écran : le texte du lien le dit
+   déjà, et l'annoncer deux fois alourdit la navigation. */
+.mos__t::after{
+  content:""; position:absolute; inset:0;
+  background:rgba(71,19,24,.28)
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='34' height='34' viewBox='0 0 24 24' fill='none' stroke='%23fff' stroke-width='2' stroke-linecap='round'%3E%3Ccircle cx='11' cy='11' r='7'/%3E%3Cpath d='M20 20l-4.3-4.3M11 8v6M8 11h6'/%3E%3C/svg%3E")
+    center / 34px no-repeat;
+  opacity:0; transition:opacity .22s ease;
+}
+.mos__t:hover::after, .mos__t:focus-visible::after{ opacity:1; }
+
+/* Compteur : dit qu'il y a plus à voir. Toujours visible (au survol
+   seulement, il resterait invisible sur écran tactile). */
+.mos__compte{
+  position:absolute; right:10px; bottom:10px; z-index:2;
+  display:inline-flex; align-items:center; gap:6px;
+  padding:7px 12px; border-radius:999px;
+  background:rgba(38,26,24,.86); color:#fff;
+  font-family:var(--corps, Inter, system-ui, sans-serif);
+  font-size:13px; font-weight:600; letter-spacing:.02em;
+  pointer-events:none;
+}
+.mos__compte::before{
+  content:""; width:13px; height:13px; flex:none;
+  background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23fff' stroke-width='2.4' stroke-linecap='round'%3E%3Cpath d='M3 9V3h6M21 15v6h-6M21 9V3h-6M3 15v6h6'/%3E%3C/svg%3E") center/contain no-repeat;
+}
+
+/* Liens vers les vues qui ne sont pas en tuile : présents dans le document
+   pour que les moteurs les atteignent, retirés de l'affichage. */
+.mos__reste{ position:absolute; width:1px; height:1px; overflow:hidden;
+  clip-path:inset(50%); white-space:nowrap; }
+
+
+/* ---------- Le carrousel ---------- */
+
+.car{
+  position:fixed; inset:0; z-index:1000;
+  display:flex; flex-direction:column;
+  background:var(--mos-voile);
+  opacity:0; visibility:hidden;
+  transition:opacity .2s ease, visibility .2s;
+}
+.car.est-ouvert{ opacity:1; visibility:visible; }
+
+.car__barre{
+  flex:none; display:flex; align-items:center; justify-content:space-between;
+  gap:16px; padding:14px 18px; color:#fff;
+  font-family:var(--corps, Inter, system-ui, sans-serif);
+}
+.car__compteur{ font-size:14px; font-variant-numeric:tabular-nums; opacity:.72; }
+
+.car__fermer{
+  width:42px; height:42px; flex:none;
+  display:grid; place-items:center;
+  border:0; border-radius:50%; cursor:pointer;
+  background:rgba(255,255,255,.12); color:#fff; font-size:22px; line-height:1;
+  transition:background .18s ease;
+}
+.car__fermer:hover{ background:rgba(255,255,255,.24); }
+.car__fermer:focus-visible{ outline:3px solid #C99159; outline-offset:2px; }
+
+.car__scene{
+  flex:1; min-height:0;
+  display:flex; align-items:center; justify-content:center;
+  gap:12px; padding:0 12px;
+}
+
+.car__fleche{
+  width:52px; height:52px; flex:none;
+  display:grid; place-items:center;
+  border:0; border-radius:50%; cursor:pointer;
+  background:rgba(255,255,255,.12); color:#fff;
+  transition:background .18s ease;
+}
+.car__fleche:hover{ background:rgba(255,255,255,.24); }
+.car__fleche:focus-visible{ outline:3px solid #C99159; outline-offset:2px; }
+.car__fleche svg{ width:22px; height:22px; }
+
+.car__cadre{
+  flex:1; min-width:0; height:100%;
+  display:flex; flex-direction:column; align-items:center;
+  justify-content:center; gap:14px;
+}
+.car__cadre img{
+  max-width:100%; max-height:calc(100% - 54px);
+  object-fit:contain;
+  border-radius:10px; background:#fff;
+  box-shadow:0 30px 80px rgba(0,0,0,.45);
+}
+.car__legende{
+  flex:none; max-width:70ch; margin:0; text-align:center;
+  color:#F3E9E2; font-family:var(--corps, Inter, system-ui, sans-serif);
+  font-size:15px; line-height:1.5;
+}
+
+.car__pastilles{
+  flex:none; display:flex; justify-content:center; gap:9px;
+  padding:16px 18px 24px;
+}
+.car__pastille{
+  width:9px; height:9px; padding:0; border:0; border-radius:50%;
+  background:rgba(255,255,255,.34); cursor:pointer;
+  transition:background .18s ease, transform .18s ease;
+}
+.car__pastille[aria-current="true"]{ background:#C99159; transform:scale(1.3); }
+.car__pastille:focus-visible{ outline:2px solid #C99159; outline-offset:3px; }
+
+/* Quelqu'un qui a demandé moins d'animation n'en reçoit aucune. */
+@media (prefers-reduced-motion: reduce){
+  .car, .mos__t, .mos__t::after, .car__pastille{ transition:none; }
+  .mos__t:hover, .mos__t:focus-visible{ transform:none; }
+}
+
+
+/* ---------- Sous 1200px : la scène passe en flux ---------- */
+/* pages.css range alors .mod__captures en grille ; la mosaïque y devient un
+   bloc ordinaire et rend ses coordonnées Figma. */
+
+@media (max-width:1199px){
+  .mos{
+    position:static; width:100%; height:auto;
+    aspect-ratio:732 / 704;
+  }
+}
+
+@media (max-width:900px){
+  .car__fleche{ width:44px; height:44px; }
+  .car__scene{ gap:6px; padding:0 6px; }
+  .car__legende{ font-size:14px; }
+}
+
+@media (max-width:640px){
+  :root{ --mos-gouttiere:8px; }
+  .mos__compte{ font-size:11px; padding:5px 9px; right:7px; bottom:7px; }
+  /* Les flèches passent sous l'image : à cette largeur, elles mordaient
+     dessus et il ne restait plus rien à regarder. */
+  .car__scene{ flex-wrap:wrap; align-content:center; }
+  .car__cadre{ order:-1; flex:1 0 100%; height:auto; }
+  .car__cadre img{ max-height:62vh; }
+}

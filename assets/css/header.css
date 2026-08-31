@@ -1,0 +1,342 @@
+/* =========================================================
+   Mon Chai, header partagé
+   Utilisé par index.html et par les 8 pages « Le logiciel ».
+
+   Coordonnées relevées au pixel dans les SVG du sprint Figma
+   « Work 24 08 2026 sprint 2 » : bande 1920 × 93, filet 1px #A85D35,
+   logo x136 y4, Le logiciel x468, Solutions x650, Tarifs x819,
+   À propos x946, Me Connecter x1262, bouton x1440 (252 × 48),
+   pastille FR x1718 (66 × 48).
+
+   Variables préfixées --hd- : index.html et pages.css définissent chacun
+   leur propre --creme et --encre, avec des valeurs différentes. Un jeu
+   nommé évite que le header change de couleur selon la page qui le charge.
+   ========================================================= */
+
+:root{
+  --hd-blanc:     #FFFDFC;
+  --hd-creme:     #FFF9F4;
+  --hd-encre:     #2E2826;
+  --hd-texte:     #000000;
+  --hd-cuivre:    #C99159;
+  --hd-cuivre-f:  #A85D35;
+  --hd-bord:      #EFE2E2;
+  --hd-bord-doux: #F3EAE1;
+  --hd-titre:     "Poppins", "Inter", system-ui, sans-serif;
+  --hd-sans:      "Inter", system-ui, -apple-system, sans-serif;
+}
+
+.hd{
+  position:absolute; left:0; top:0; z-index:60;
+  /* 94 et non 93 : le fond Figma couvre 0→92 et Line 44 occupe le pixel 93.
+     Avec box-sizing:border-box, 94px placent la bordure exactement sur 93. */
+  width:1920px; height:94px;
+  background:var(--hd-blanc);
+  border-bottom:1px solid var(--hd-cuivre-f);
+  box-sizing:border-box;
+}
+.hd *{ box-sizing:border-box; }
+
+.hd__logo{ position:absolute; left:136px; top:4px; display:block; }
+.hd__logo img{ display:block; width:263px; height:85px; }
+
+/* Conteneur de la navigation. Sur grand écran il recouvre exactement le
+   header, si bien que ses enfants gardent les coordonnées relevées dans
+   Figma ; il ne capte pas les clics pour ne pas masquer le logo dessous.
+   Sous 1200px, il devient le tiroir ouvert par le bouton menu. */
+.hd__barre{ position:absolute; inset:0; pointer-events:none; }
+.hd__barre > *{ pointer-events:auto; }
+
+/* Bouton menu, affiché seulement sous 900px */
+.hd__burger{
+  display:none; position:absolute; right:16px; top:50%;
+  transform:translateY(-50%);
+  width:44px; height:44px; padding:0;
+  border:0; background:transparent; cursor:pointer;
+  flex-direction:column; align-items:center; justify-content:center; gap:5px;
+}
+.hd__burger span{
+  display:block; width:24px; height:2px; border-radius:1px;
+  background:var(--hd-encre);
+  transition:transform .22s ease, opacity .16s ease;
+}
+.hd.est-deploye .hd__burger span:nth-child(1){ transform:translateY(7px) rotate(45deg); }
+.hd.est-deploye .hd__burger span:nth-child(2){ opacity:0; }
+.hd.est-deploye .hd__burger span:nth-child(3){ transform:translateY(-7px) rotate(-45deg); }
+
+/* 21,3px : taille calibrée sur la largeur d'encre de « Solutions » dans la
+   référence Figma (97px). L'entrée active est au même corps, en 600 avec un
+   léger resserrement : « Le logiciel » y mesure 100px, soit 4 % de moins que
+   ce que donne un 600 non resserré. */
+.hd__lien{
+  position:absolute; top:40px;
+  font-family:var(--hd-titre); font-weight:500; font-size:21.3px; line-height:25px;
+  color:var(--hd-encre); text-decoration:none; white-space:nowrap;
+  transition:color .18s ease;
+}
+.hd__lien:hover{ color:var(--hd-cuivre-f); }
+
+.hd__lien--solutions{ left:650px; }
+.hd__lien--tarifs{ left:819px; }
+
+.hd__lien.est-actif{ color:var(--hd-texte); font-weight:600; letter-spacing:-.02em; }
+
+/* Soulignement de l'entrée active, Line 41 : x 471,5→566,5 · y 67,5 · 3px
+   arrondi. Exprimé en pourcentage du lien plutôt qu'en 96px fixes, pour
+   suivre aussi bien « Le logiciel » que « À propos ». */
+.hd__lien.est-actif::after{
+  content:""; position:absolute; left:3px; top:26px;
+  width:calc(100% - 6px); height:3px; border-radius:1.5px;
+  background:var(--hd-cuivre-f);
+}
+
+/* Me Connecter : x 1262 y 40, filet 1px dessous (Line 31 : x 1266, y 64, l 131) */
+.hd__connexion{
+  position:absolute; left:1262px; top:40px;
+  font-family:var(--hd-titre); font-weight:500; font-size:19px; line-height:24px;
+  color:var(--hd-encre); text-decoration:none; white-space:nowrap;
+}
+.hd__connexion::after{
+  content:""; position:absolute; left:4px; top:24px;
+  width:131px; height:1px; background:currentColor;
+}
+.hd__connexion:hover{ color:var(--hd-cuivre-f); }
+
+/* Bouton : x 1440 y 30 · 252 × 48 · #C99159 */
+.hd__cta{
+  position:absolute; left:1440px; top:30px;
+  display:flex; align-items:center; justify-content:center;
+  width:252px; height:48px; border-radius:24px;
+  background:var(--hd-cuivre); color:var(--hd-blanc); text-decoration:none;
+  font-family:var(--hd-titre); font-weight:600; font-size:19px; line-height:1;
+  white-space:nowrap; transition:background .18s ease;
+  border:0; cursor:pointer;
+}
+.hd__cta:hover{ background:#b87f4a; }
+
+/* Pastille FR : x 1718 y 30 · 66 × 48 */
+.hd__langue{
+  position:absolute; left:1718px; top:30px;
+  display:flex; align-items:center; justify-content:center; gap:3px;
+  width:66px; height:48px; border-radius:24px;
+  background:var(--hd-blanc); border:1px solid var(--hd-bord);
+  font-family:var(--hd-titre); font-weight:600; font-size:19px; color:var(--hd-encre);
+  cursor:pointer;
+}
+.hd__chev{
+  width:7px; height:7px; margin-top:-3px;
+  border-right:1.5px solid currentColor; border-bottom:1.5px solid currentColor;
+  transform:rotate(45deg);
+}
+
+
+/* ---------- Menus déroulants ----------
+   Composant Figma « Menu déroulant » : panneau 243 × 348.
+   Deux menus l'utilisent : « Le logiciel » (les 8 pages + l'assistant IA) et
+   « À propos » (à propos, FAQ, actualité). D'où le paramétrage par variables
+   plutôt que des coordonnées en dur : --hd-x place l'entrée, --hd-dx et
+   --hd-dw le panneau sous elle.
+   Le panneau est posé SOUS le filet du header et non à cheval dessus comme
+   dans la maquette : à cheval, il coupait le filet en deux. */
+.hd__menu{ position:absolute; left:var(--hd-x); top:40px; }
+.hd__menu .hd__lien{ position:relative; left:auto; top:auto; display:inline-block; }
+
+/* Passerelle invisible entre le lien et le panneau : sans elle, la souris
+   traverse 12px de vide et le menu se referme. */
+.hd__menu::after{
+  content:""; position:absolute;
+  left:var(--hd-dx); top:25px; width:var(--hd-dw); height:82px;
+  display:none;
+}
+.hd__menu:hover::after{ display:block; }
+
+.hd__panneau{
+  position:absolute; left:var(--hd-dx); top:65px;
+  width:var(--hd-dw); padding:16px 0;
+  background:var(--hd-blanc);
+  border:1px solid var(--hd-bord); border-radius:10px;
+  box-shadow:0 14px 34px rgba(71,19,24,.13);
+  opacity:0; visibility:hidden; transform:translateY(-6px);
+  transition:opacity .18s ease, transform .18s ease, visibility .18s;
+}
+.hd__menu.est-ouvert .hd__panneau{ opacity:1; visibility:visible; transform:none; }
+
+/* 15px et 20px de marge : dans le Figma le bloc de texte du panneau fait
+   203px de large pour 243px de panneau, et « Ventes, clients & facturation »
+   doit y tenir sur une seule ligne. */
+.hd__panneau a{
+  display:block; padding:0 20px;
+  font-family:var(--hd-sans); font-size:15px; line-height:42px;
+  color:var(--hd-encre); text-decoration:none; white-space:nowrap;
+  transition:color .15s ease, background .15s ease;
+}
+.hd__panneau a:hover{ color:var(--hd-cuivre-f); background:var(--hd-creme); }
+.hd__panneau a[aria-current="page"]{ color:var(--hd-cuivre-f); font-weight:600; }
+
+
+/* =========================================================
+   ENVELOPPE FIXE : index.html uniquement
+
+   Sur les 8 pages « Le logiciel », le header vit à l'intérieur de la scène
+   1920 et suit sa mise à l'échelle. Sur index.html il est fixe au-dessus du
+   défilement : il porte donc lui-même le facteur d'échelle, publié par
+   script.js dans --echelle. Il se masque au défilement vers le bas et
+   revient au défilement vers le haut, comme l'ancien header.
+   ========================================================= */
+.site-header{
+  position:fixed; top:0; left:0; right:0; z-index:100;
+  height:calc(100vw * 94 / 1920);
+  transform:translateY(0);
+  transition:transform .35s cubic-bezier(.2,.8,.2,1);
+  will-change:transform;
+}
+.site-header.est-masque{ transform:translateY(-100%); }
+.site-header .hd{
+  transform:scale(var(--echelle, 1));
+  transform-origin:top left;
+}
+
+
+/* =========================================================
+   PALIER INTERMÉDIAIRE  900 → 1199
+   Navigation horizontale compacte : un bouton menu n'a pas de sens sur un
+   écran de portable. Calibré sur le cas le plus serré, 900px : logo 168 et
+   24px de marge laissent 684px, la rangée en occupe 628.
+   ========================================================= */
+@media (max-width:1199px){
+  /* sticky et non fixed : sous 1200px le contenu d'index.html repasse en flux
+     et démarre à y=0. Resté fixe, le header recouvrait le haut de la page,
+     l'enveloppe passe en hauteur automatique, donc à zéro, et plus rien ne
+     poussait le contenu vers le bas. En sticky il occupe sa place ET reste
+     visible au défilement. */
+  .site-header{ position:sticky; top:0; height:auto; }
+  .site-header .hd{ transform:none; position:relative; width:100%; }
+}
+
+@media (min-width:900px) and (max-width:1199px){
+  /* position:relative et non absolute : sur les pages module, ce palier place
+     le header dans une grille (grid-area:entete). Resté absolu, il sortait du
+     flux, la rangée se réduisait à zéro hauteur et le header recouvrait le
+     titre. */
+  .hd{
+    position:relative; left:auto; top:auto;
+    height:76px; width:100%; display:flex; align-items:center; padding:0 24px;
+  }
+  .hd__logo{ position:static; }
+  .hd__logo img{ width:168px; height:54px; }
+  .hd__burger{ display:none; }
+
+  .hd__barre{
+    position:static; inset:auto;
+    display:flex; flex-direction:row; flex-wrap:nowrap;
+    align-items:center; gap:14px;
+    margin-left:auto; padding:0; max-height:none; overflow:visible;
+    background:none; border:0; box-shadow:none;
+  }
+  .hd__lien,
+  .hd__connexion{
+    position:static; font-size:14px; line-height:1;
+    padding:0; border:0;
+  }
+  .hd__lien.est-actif{ color:var(--hd-texte); }
+  .hd__lien.est-actif::after{
+    display:block; left:0; top:calc(100% + 5px); width:100%; height:2px;
+  }
+  .hd__connexion::after{ display:block; left:0; top:calc(100% + 4px); width:100%; }
+
+  /* left/top remis à auto : en position:relative, les offsets du desktop
+     décalaient encore l'entrée hors de la rangée. */
+  .hd__menu{ position:relative; left:auto; top:auto; }
+  .hd__panneau{
+    left:-18px; top:calc(100% + 16px);
+    width:236px; padding:12px 0; margin:0;
+    border-left-width:1px; border-radius:10px;
+    background:var(--hd-blanc); box-shadow:0 14px 34px rgba(71,19,24,.13);
+    opacity:0; visibility:hidden; transform:translateY(-6px);
+  }
+  .hd__panneau a{ padding:0 18px; font-size:14px; line-height:34px; }
+  .hd__panneau a:hover{ background:var(--hd-creme); }
+
+  .hd__cta{
+    position:static; width:auto; height:42px; padding:0 16px; margin:0;
+    font-size:13.5px; border-radius:21px;
+  }
+  .hd__langue{
+    position:static; width:52px; height:42px; margin:0;
+    font-size:13.5px; border-radius:21px;
+  }
+}
+
+
+/* =========================================================
+   TIROIR : sous 900px
+   ========================================================= */
+@media (max-width:899px){
+  .hd{
+    position:sticky; top:0;
+    width:100%; height:64px;
+    display:flex; align-items:center;
+    padding:0 16px;
+  }
+  .hd__logo{ position:static; }
+  .hd__logo img{ width:172px; height:56px; }
+
+  .hd__burger{ display:flex; }
+
+  .hd__barre{
+    position:absolute; inset:auto 0 auto 0; top:64px;
+    display:none; flex-direction:column;
+    padding:6px 16px 22px;
+    background:var(--hd-blanc);
+    border-bottom:1px solid var(--hd-cuivre-f);
+    box-shadow:0 20px 34px rgba(71,19,24,.12);
+    max-height:calc(100vh - 64px); overflow-y:auto;
+    pointer-events:auto;
+  }
+  .hd.est-deploye .hd__barre{ display:flex; }
+
+  .hd__lien,
+  .hd__connexion{
+    position:static;
+    font-size:18px; line-height:1;
+    padding:15px 0;
+    border-bottom:1px solid var(--hd-bord-doux);
+  }
+  .hd__lien.est-actif{ color:var(--hd-cuivre-f); letter-spacing:0; }
+  .hd__lien.est-actif::after,
+  .hd__connexion::after,
+  .hd__menu::after{ display:none; }
+
+  /* Les sous-menus sont dépliés en permanence dans le tiroir : un second
+     niveau à ouvrir ne vaut pas les lignes qu'il masque. */
+  .hd__menu{ position:static; }
+  .hd__menu .hd__lien{ display:block; }
+  .hd__panneau{
+    position:static; width:auto; padding:6px 0 12px 14px; margin:0 0 4px;
+    opacity:1; visibility:visible; transform:none;
+    background:transparent; border:0;
+    border-left:2px solid var(--hd-cuivre); border-radius:0;
+    box-shadow:none;
+  }
+  .hd__panneau a{ padding:0; font-size:16px; line-height:34px; }
+  .hd__panneau a:hover{ background:transparent; }
+
+  .hd__cta{
+    position:static; width:100%; height:52px; margin-top:18px;
+    font-size:17px;
+  }
+  .hd__langue{ position:static; margin-top:12px; align-self:flex-start; }
+}
+
+/* Tablette : le header respire un peu plus que sur téléphone. */
+@media (min-width:640px) and (max-width:899px){
+  .hd{ height:76px; padding:0 28px; }
+  .hd__logo img{ width:208px; height:67px; }
+  .hd__burger{ right:26px; }
+  .hd__barre{ top:76px; padding:10px 28px 26px; max-height:calc(100vh - 76px); }
+  .hd__lien, .hd__connexion{ font-size:19px; }
+}
+
+@media (prefers-reduced-motion:reduce){
+  .hd__panneau, .hd__burger span, .hd__lien, .hd__cta, .site-header{ transition:none; }
+}

@@ -1,0 +1,160 @@
+/* =========================================================
+   Mon Chai, page Contact
+   Chargée après assets/css/pages.css, dont elle reprend les variables, la
+   scène de 1920 et le passage en flux sous 1200px.
+
+   Même gabarit que les pages module (panneau coloré, photo, H1 Playfair,
+   filet, lead, ancres). Le formulaire prend la place de la capture, dans une
+   carte plus large (900 au lieu de 732 : deux colonnes de champs) et posée
+   plus haut (y 200) pour tenir dans la scène de 1200.
+   Les champs reprennent les conventions du formulaire bêta d'index.html
+   (styles.css : .champ, honeypot, messages), aux couleurs de pages.css.
+   ========================================================= */
+
+/* ---------- Coordonnées, sous les ancres du panneau ---------- */
+.coord{
+  position:absolute; left:139px; top:1010px; width:640px;
+  font-style:normal; font-size:17px; line-height:28px; color:var(--texte);
+}
+.coord a{ color:var(--cuivre-f); font-weight:600; text-decoration:none; }
+.coord a:hover{ text-decoration:underline; text-underline-offset:4px; }
+
+/* ---------- Carte du formulaire, dans .mod__captures ---------- */
+.ct{
+  position:absolute; z-index:4;
+  left:819px; top:200px; width:900px;
+  background:#fff; border:1px solid #E7DED6; border-radius:11px;
+  box-shadow:0 18px 44px rgba(46,40,38,.10);
+  padding:42px 48px 40px;
+}
+.ct__titre{
+  font-family:var(--titre); font-weight:700; font-size:30px; line-height:1.2;
+  color:var(--encre);
+}
+.ct__aide{ margin-top:8px; font-size:15px; line-height:24px; color:#6F625C; }
+
+.ct__grille{
+  display:grid; grid-template-columns:1fr 1fr; gap:20px 24px;
+  margin-top:28px;
+}
+.champ{ display:flex; flex-direction:column; gap:7px; }
+.champ--full{ grid-column:1 / -1; }
+.champ label{ font-size:14.5px; font-weight:600; color:var(--encre); }
+.champ label b{ color:var(--bordeaux); font-weight:700; }
+.champ label span{ font-weight:400; color:#6F625C; }
+.champ small{ font-size:13px; line-height:1.45; color:#6F625C; }
+.champ small[hidden]{ display:none; }
+
+.champ input,
+.champ select,
+.champ textarea{
+  width:100%; padding:13px 15px;
+  font-family:var(--sans); font-size:15.5px; line-height:1.3; color:var(--encre);
+  border:1.5px solid #DCCFC3; border-radius:12px; background:#fff;
+  transition:border-color .2s ease, box-shadow .2s ease;
+}
+.champ select{
+  appearance:none; -webkit-appearance:none;
+  padding-right:44px; cursor:pointer;
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='14' height='9' viewBox='0 0 14 9'><path d='M1 1l6 6 6-6' fill='none' stroke='%23A85D35' stroke-width='2' stroke-linecap='round'/></svg>");
+  background-repeat:no-repeat; background-position:right 16px center;
+}
+.champ select:invalid{ color:#6F625C; }
+.champ textarea{ resize:vertical; min-height:130px; }
+.champ input:focus,
+.champ select:focus,
+.champ textarea:focus{
+  outline:none; border-color:var(--cuivre-f);
+  box-shadow:0 0 0 3px rgba(201,145,89,.18);
+}
+.champ [aria-invalid="true"]{ border-color:#B3261E; }
+.champ input::placeholder,
+.champ textarea::placeholder{ color:#A39890; }
+
+.ct__cases{ margin-top:24px; }
+.ct__case{
+  display:flex; gap:12px; align-items:flex-start;
+  font-size:14.5px; line-height:1.5; color:#4E4440; cursor:pointer;
+}
+.ct__case + .ct__case{ margin-top:14px; }
+.ct__case input{
+  flex:0 0 auto; margin-top:3px; width:17px; height:17px;
+  accent-color:var(--cuivre-f);
+}
+.ct__case a{ color:var(--cuivre-f); font-weight:600; text-decoration:none; }
+.ct__case a:hover{ text-decoration:underline; text-underline-offset:3px; }
+
+.ct__message{ margin:16px 0 0; font-size:14.5px; line-height:1.45; }
+.ct__message.ok{ color:#2E7D32; }
+.ct__message.err{ color:#B3261E; }
+
+.ct__pied{
+  display:flex; align-items:center; justify-content:space-between; gap:16px;
+  flex-wrap:wrap; margin-top:26px;
+}
+.ct__rgpd{ font-size:13.5px; line-height:1.4; color:#6F625C; }
+.ct__bouton{
+  display:inline-flex; align-items:center; justify-content:center;
+  height:60px; padding:0 44px; border:0; border-radius:30px;
+  background:var(--cuivre); color:var(--blanc);
+  font-family:var(--titre); font-weight:600; font-size:19px; cursor:pointer;
+  transition:background .18s ease, opacity .18s ease;
+}
+.ct__bouton:hover{ background:#b87f4a; }
+.ct__bouton:disabled{ opacity:.6; cursor:default; }
+
+.hp-field{ position:absolute; left:-9999px; width:1px; height:1px; overflow:hidden; }
+
+/* Confirmation d'envoi */
+.ct__succes{ text-align:center; padding:48px 10px 40px; }
+.ct__succes[hidden]{ display:none; }
+.ct__coche{
+  position:relative; width:66px; height:66px; margin:0 auto 22px;
+  border-radius:50%; background:var(--cuivre);
+}
+.ct__coche::after{
+  content:""; position:absolute; left:24px; top:19px;
+  width:14px; height:26px; border:solid #fff; border-width:0 3.4px 3.4px 0;
+  transform:rotate(42deg);
+}
+.ct__succes h2{
+  font-family:var(--titre); font-weight:700; font-size:26px; line-height:1.25;
+  color:var(--encre);
+}
+.ct__succes p{ margin-top:12px; font-size:17.5px; line-height:1.55; color:var(--texte); }
+.ct__noscript{ margin-top:16px; font-size:14px; color:#6F625C; }
+.ct__noscript a{ color:var(--cuivre-f); }
+
+
+/* =========================================================
+   RESPONSIVE : même bascule que pages.css, à 1200px
+   ========================================================= */
+@media (max-width:1199px){
+  .coord{
+    position:static; width:auto;
+    margin-top:clamp(22px,5vw,34px);
+    font-size:clamp(15px,3.2vw,17px); line-height:1.6;
+  }
+  .ct{
+    position:static; flex:1 1 100%; width:auto;
+    padding:clamp(24px,5vw,40px) clamp(18px,4.5vw,44px);
+  }
+  .ct__titre{ font-size:clamp(22px,4.6vw,28px); }
+  .ct__aide{ font-size:14px; line-height:1.5; }
+  .ct__grille{ gap:16px 18px; margin-top:22px; }
+  .champ input,
+  .champ select,
+  .champ textarea{ font-size:16px; } /* 16px : évite le zoom automatique d'iOS à la saisie */
+  .ct__pied{ margin-top:22px; }
+  .ct__bouton{ width:100%; height:56px; font-size:17px; }
+  .ct__succes h2{ font-size:clamp(20px,4.4vw,26px); }
+  .ct__succes p{ font-size:clamp(15px,3.2vw,17px); }
+}
+
+@media (max-width:640px){
+  .ct__grille{ grid-template-columns:1fr; }
+}
+
+@media (prefers-reduced-motion:reduce){
+  .ct__bouton, .champ input, .champ select, .champ textarea{ transition:none; }
+}

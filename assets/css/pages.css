@@ -1,0 +1,525 @@
+/* =========================================================
+   Mon Chai, pages « Le logiciel »
+   Sprint Figma « Work 24 08 2026 sprint 2 ».
+
+   Toutes les valeurs viennent des SVG déposés dans `from figma`
+   (assets/svg/pages/*.svg) : coordonnées lues dans les <rect>/<line>,
+   couleurs lues dans les fill/stroke, tailles de texte calibrées sur
+   l'encre des rendus de référence (assets/ref-figma/*.png).
+
+   Polices identifiées par mesure, pas par supposition :
+   Poppins 700 pour le H1 « Toutes les fonctionnalités »
+                         (ratio largeur/hauteur d'encre 15,350 = cible ;
+                          Outfit/Urbanist/Jost à 14,3 ou moins)
+   Playfair Display pour les H1 des pages module, esperluette en italique
+   Inter pour les leads et les listes
+   ========================================================= */
+
+:root{
+  /* palette relevée dans les SVG */
+  --or:         #DFB780;  /* doré clair : filets Stocks/Ventes, logo */
+  --cuivre:     #C99159;  /* doré cuivré : filets, ancres, boutons */
+  --cuivre-f:   #A85D35;  /* cuivre foncé : filet du header, soulignement */
+  --bordeaux:   #7B1E22;
+  --bordeaux-n: #471318;  /* bordeaux nuit */
+  --sable:      #F2E9DE;
+  --creme:      #FFF9F4;
+  --blanc:      #FFFDFC;
+  --encre:      #2E2826;
+  --texte:      #000000;
+  --gris-bord:  #EFE2E2;
+
+  --serif:  "Playfair Display", Georgia, serif;
+  --sans:   "Inter", system-ui, -apple-system, sans-serif;
+  --titre:  "Poppins", "Inter", system-ui, sans-serif;
+}
+
+*{ margin:0; padding:0; box-sizing:border-box; }
+
+body{
+  background:#fff;
+  font-family:var(--sans);
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+
+/* Même système que index.html : une scène de 1920 de large, mise à
+   l'échelle de la fenêtre par assets/js/pages.js. */
+.page{ width:1920px; transform-origin:top left; }
+
+.stage{
+  position:relative;
+  width:1920px;
+  overflow:hidden;
+  background:#fff;
+}
+.stage--1200{ height:1200px; }
+
+/* =========================================================
+   PAGE MODULE : panneau coloré à gauche, photo à droite
+   ========================================================= */
+
+/* La photo est posée en `background-image` DANS l'attribut style de la page,
+   pas via une variable CSS : Chrome résout une url() de custom property
+   relativement à la feuille de style qui l'utilise (assets/css/), et non
+   relativement au document, et le chemin cassait silencieusement.
+   Le cadrage n'est PAS `cover center` : les <pattern> des SVG portent la
+   transformation exacte posée dans Figma, et la plupart des photos sont
+   ancrées à gauche, pas centrées. background-size / background-position sont
+   donc calculés page par page depuis cette matrice, et posés en ligne. */
+.mod__photo{
+  position:absolute; z-index:1;
+  left:var(--px); top:var(--py); width:var(--pw); height:var(--ph);
+  background-repeat:no-repeat;
+}
+.mod__photo--miroir{ transform:scaleX(-1); }
+
+/* Rectangle 71/72 : 913 × 1108 à partir de y 94 */
+.mod__panneau{
+  position:absolute; left:0; top:94px; z-index:2;
+  width:913px; height:1108px;
+  background:var(--fond);
+}
+
+.mod__texte{ position:absolute; left:0; top:0; z-index:3; width:913px; height:1200px; }
+
+/* H1, ancré par le bas : le titre tient sur 1 ou 2 lignes selon la page et la
+   dernière ligne de base tombe presque au même endroit partout. « Presque » :
+   d'une frame à l'autre le titre bouge de ±3px dans le Figma, d'où le réglage
+   fin par page via --h1-bottom. */
+.mod__titre{
+  position:absolute; left:136px; bottom:var(--h1-bottom, 748px);
+  font-family:var(--serif); font-weight:500; font-size:81px; line-height:99px;
+  color:var(--titre-c); letter-spacing:0;
+}
+/* line-height:1 sur l'esperluette : sans elle, son demi-interligne positif
+   (elle est plus petite que le titre, donc son interligne de 99px lui est
+   trop large) repoussait le bas de la première ligne et écartait les deux
+   lignes de 105px au lieu de 99. */
+.mod__titre em{
+  font-style:italic; font-size:.94em; line-height:1; color:var(--esper);
+}
+
+/* Line 45 : filet sous le titre.
+   Les coordonnées passées incluent les bouts arrondis : dans le SVG le trait
+   porte stroke-linecap:round, qui déborde de 3px à chaque extrémité et de 3px
+   de part et d'autre de l'axe. --filet-x = x1−3, --filet-y = y−3, --filet-w
+   = (x2−x1)+6. */
+.mod__filet{
+  position:absolute; left:var(--filet-x); top:var(--filet-y);
+  width:var(--filet-w); height:6px; border-radius:3px;
+  background:var(--filet-c);
+}
+
+.mod__lead{
+  position:absolute; left:136px; top:var(--lead-y);
+  width:var(--lead-w);
+  font-size:23.95px; line-height:38px; font-weight:400;
+  color:var(--lead-c);
+}
+.mod__lead strong{ font-weight:700; }
+
+/* Les 4 mots-clés du module : x 135, y 825, interligne 38.
+   Dans le Figma ce sont de simples calques de texte (id « lead_2 »), pas des
+   liens : aucune section ne leur correspond encore. Rendus en liste ; il
+   suffira d'y glisser des <a> quand les sections existeront : le style suit. */
+.mod__ancres{
+  position:absolute; left:139px; top:825px;
+  list-style:none;
+}
+.mod__ancres li,
+.mod__ancres a{
+  font-family:var(--titre); font-weight:600; font-size:22.5px; line-height:38px;
+  color:var(--ancre-c); text-decoration:none; white-space:nowrap;
+}
+.mod__ancres a{ transition:opacity .15s ease; }
+.mod__ancres a:hover{ opacity:.72; text-decoration:underline; text-underline-offset:4px; }
+
+/* ---------- Cartes de capture (placeholders) ----------
+   Dans le Figma ce sont des rectangles blancs vides, bordés de noir 1px,
+   qui portent les mentions « CAPTURE TABLEAU BORD PARCELLES » et
+   « Parcelle 1 et 2 détourées / cf chatgpt ». Aucune capture réelle du
+   logiciel n'existe encore. Bordure noire remplacée par une bordure douce
+   et une ombre : un liseré noir pur lisait comme un bug, pas comme une image.
+   Retirer la classe .est-vide et poser un <img> quand les captures arrivent. */
+/* Conteneur des cartes : transparent et sans effet sur grand écran (les
+   cartes gardent leurs coordonnées Figma), il devient une grille sous 1200px. */
+/* ---------- Fil de lecture entre modules ----------
+   La chaîne de production, de la vigne à la vente : le lecteur passe au
+   module suivant sans remonter au menu. Posé dans l'espace laissé libre sous
+   les ancres, qui s'arrêtent à y=977 quand le panneau descend jusqu'à 1200.
+
+   Le chevron est dessiné plutôt qu'écrit : il prend la couleur du thème et
+   garde son épaisseur quelle que soit la fonte chargée. */
+.mod__suite{
+  position:absolute; z-index:3;
+  left:136px; top:1043px; width:717px;
+  display:flex; align-items:center; justify-content:space-between; gap:28px;
+}
+.mod__suite a{
+  display:inline-flex; align-items:center; gap:14px;
+  font-family:var(--titre); font-weight:600; font-size:19px; line-height:26px;
+  color:var(--ancre-c); text-decoration:none;
+  opacity:.9; transition:opacity .15s ease;
+}
+.mod__suite a:hover{ opacity:1; text-decoration:underline; text-underline-offset:6px; }
+.mod__suite a::after{
+  content:""; flex:none; width:9px; height:9px;
+  border-top:2px solid currentColor; border-right:2px solid currentColor;
+  transform:rotate(45deg);
+}
+.mod__suite .mod__suite--prec::after{ content:none; }
+.mod__suite .mod__suite--prec::before{
+  content:""; flex:none; width:9px; height:9px;
+  border-top:2px solid currentColor; border-right:2px solid currentColor;
+  transform:rotate(-135deg);
+}
+/* Aux deux bouts de la chaîne un seul lien existe : il reste de son côté
+   plutôt que de se centrer. */
+.mod__suite--fin{ justify-content:flex-end; }
+
+.mod__captures{ position:absolute; inset:0; z-index:4; pointer-events:none; }
+.mod__captures > *{ pointer-events:auto; }
+
+.mod__capture{
+  position:absolute; z-index:4;
+  left:var(--cx); top:var(--cy);
+  width:var(--cw, 732px); height:var(--ch, 704px);
+  background:#fff; border:1px solid #E7DED6; border-radius:11px;
+  box-shadow:0 18px 44px rgba(46,40,38,.10);
+  overflow:hidden;
+}
+.mod__capture img{ display:block; width:100%; height:100%; object-fit:cover; }
+
+.mod__capture.est-vide{
+  display:flex; align-items:center; justify-content:center;
+  padding:24px; text-align:center;
+}
+.mod__capture.est-vide span{
+  font-family:var(--titre); font-weight:500; font-size:15px; line-height:1.5;
+  letter-spacing:.06em; text-transform:uppercase; color:#B9ADA4;
+}
+
+
+/* =========================================================
+   PAGE « TOUTES LES FONCTIONNALITÉS »
+   4 colonnes à x 138 · 585 · 1030 · 1474 (pas relevé : ~446)
+   ========================================================= */
+
+.fonc{ position:relative; width:1920px; padding:0 0 130px; background:#fff; }
+
+.fonc__titre{
+  position:absolute; left:138px; top:137px;
+  font-family:var(--titre); font-weight:700; font-size:46.8px; line-height:56px;
+  color:var(--encre);
+}
+
+.fonc__colonnes{
+  position:relative; padding:228px 0 0 0;
+  /* Colonnes de 320px, pas de 445,3 (départs relevés : 138 · 583 · 1029 · 1474).
+     La largeur de 320 est déduite des retours à la ligne de la référence :
+     « Consultation chronologique des lots » (316px) tient sur une ligne,
+     « Suivi des produits phytosanitaire, doses appliquées et IFT » passe à la
+     ligne après la virgule. */
+  display:grid; grid-template-columns:repeat(4, 320px);
+  column-gap:125.3px; justify-content:start;
+  margin-left:138px;
+}
+
+.fonc__bloc + .fonc__bloc{ margin-top:44px; }
+
+/* Cette marge sépare deux blocs empilés dans une même colonne, comme sur la
+   page annuaire. Quand il n'y a qu'une rangée, un bloc par colonne, elle
+   décale au contraire les colonnes 2 à 4 de 44px vers le bas : les blocs sont
+   alors des frères adjacents dans la grille. */
+.fonc__colonnes--rangee .fonc__bloc + .fonc__bloc{ margin-top:0; }
+
+.fonc__bloc h2{
+  font-family:var(--titre); font-weight:600; font-size:25.5px; line-height:34px;
+  color:var(--encre); margin-bottom:20px;
+}
+/* Dans le Figma les titres de colonne sont du texte simple. Ils mènent ici
+   vers la page du module correspondant : la page annuaire devient le point
+   d'entrée naturel vers les 7 pages détaillées. */
+.fonc__bloc h2 a{
+  color:inherit; text-decoration:none;
+  transition:color .15s ease;
+}
+.fonc__bloc h2 a:hover{ color:var(--cuivre-f); text-decoration:underline; text-underline-offset:5px; }
+
+.fonc__bloc ul{ list-style:none; }
+.fonc__bloc li{
+  position:relative; padding-left:17px;
+  font-size:15.9px; line-height:24px; color:var(--texte);
+}
+.fonc__bloc li::before{
+  content:"✓"; position:absolute; left:0; top:0;
+  font-size:15.9px; line-height:24px;
+}
+
+/* Fonctionnalités annoncées mais pas encore livrées. La coche du bloc normal
+   vaudrait promesse : elle devient un point, et le titre porte la mention.
+   CONTENU_FONCTIONNALITES.md relève que le Figma les mélange aux disponibles
+   sans les distinguer, et laisse la question ouverte. On tranche ici pour le
+   plus prudent : rien ne doit se lire comme disponible s'il ne l'est pas. */
+.fonc__bloc--avenir li::before{ content:"·"; }
+.fonc__avenir{
+  display:inline-block; margin-left:10px; padding:1px 10px;
+  border:1px solid var(--cuivre); border-radius:11px;
+  font-family:var(--titre); font-weight:600; font-size:13px; line-height:19px;
+  color:var(--cuivre-f); vertical-align:middle; white-space:nowrap;
+}
+
+/* Bloc de clôture : texte centré + pastille dorée 652 × 101 (r 50,5) */
+.fonc__cloture{ margin-top:104px; text-align:center; }
+.fonc__cloture h2{
+  font-family:var(--titre); font-weight:700; font-size:40px; line-height:54px;
+  color:var(--encre);
+}
+.fonc__cloture p{
+  max-width:900px; margin:14px auto 0;
+  font-size:21px; line-height:34px; color:var(--texte);
+}
+.fonc__bouton{
+  display:inline-flex; align-items:center; justify-content:center;
+  margin-top:44px; width:652px; height:101px; border-radius:50.5px;
+  background:var(--cuivre); color:var(--blanc); text-decoration:none;
+  font-family:var(--titre); font-weight:600; font-size:24px;
+  transition:background .18s ease;
+}
+.fonc__bouton:hover{ background:#b87f4a; }
+
+
+/* Le pied de page est dans assets/css/pied.css, partagé avec index.html. */
+
+/* =========================================================
+   THÈMES DE PAGE
+   Un jeu de couleurs par module, relevé dans chaque SVG.
+   ========================================================= */
+
+/* Vigne & Vendanges · DRM & Conformité */
+.t-creme{
+  --fond:var(--creme); --titre-c:var(--encre); --esper:var(--cuivre);
+  --filet-c:var(--cuivre); --lead-c:var(--texte); --ancre-c:var(--cuivre);
+}
+/* Caves & Vinifications */
+.t-terracotta{
+  --fond:var(--cuivre-f); --titre-c:var(--blanc); --esper:var(--bordeaux);
+  --filet-c:var(--bordeaux); --lead-c:#fff; --ancre-c:#fff;
+}
+/* Stocks & Traçabilité */
+.t-bordeaux{
+  --fond:var(--bordeaux); --titre-c:var(--blanc); --esper:var(--or);
+  --filet-c:var(--or); --lead-c:var(--creme); --ancre-c:var(--or);
+}
+/* Ventes, Clients & Facturation */
+.t-sable{
+  --fond:var(--sable); --titre-c:var(--encre); --esper:var(--cuivre);
+  --filet-c:var(--or); --lead-c:var(--texte); --ancre-c:var(--cuivre);
+}
+/* Mises & Conditionnement */
+.t-nuit{
+  --fond:var(--bordeaux-n); --titre-c:var(--blanc); --esper:var(--cuivre);
+  --filet-c:var(--cuivre); --lead-c:#fff; --ancre-c:var(--cuivre);
+}
+/* Œnotourisme */
+.t-or{
+  --fond:var(--cuivre); --titre-c:var(--encre); --esper:#fff;
+  --filet-c:#fff; --lead-c:var(--texte); --ancre-c:#fff;
+}
+
+
+/* =========================================================
+   RESPONSIVE : bascule à 1200px
+
+   Au-dessus : la scène de 1920 est mise à l'échelle par transform, le rendu
+   est celui du Figma au pixel près. À 1200px l'échelle vaut 0,625, le lead
+   tombe à 15px : c'est le plancher lisible.
+
+   En dessous, le transform est coupé (dans pages.js) et tout repasse en flux
+   normal : la photo devient une bande en tête, le panneau coloré prend toute
+   la largeur, les cartes de capture s'empilent. Les tailles sont en clamp()
+   pour couvrir 320 → 1199 sans nouvelle rupture.
+
+   Aucune maquette mobile n'existe : les proportions, les respirations et la
+   hiérarchie sont reprises du desktop, les valeurs sont posées ici.
+   ========================================================= */
+
+@media (max-width:1199px){
+
+  /* ---------- Scène ---------- */
+  .page{ width:100%; transform:none; }
+  .stage{ width:100%; height:auto; overflow:visible; }
+  .stage--1200{ height:auto; }
+  /* ---------- Page module ---------- */
+  .mod__photo{
+    position:static;
+    width:100%; height:clamp(210px, 46vw, 380px);
+    transform:none;
+    /* !important : le cadrage Figma est posé en style en ligne sur la page */
+    background-size:cover !important;
+    background-position:center !important;
+  }
+  .mod__panneau{ display:none; }   /* le fond passe sur le bloc de texte */
+
+  .mod__texte{
+    position:static; width:100%; height:auto;
+    background:var(--fond);
+    padding:clamp(30px,7vw,58px) clamp(20px,5.5vw,52px) clamp(34px,8vw,62px);
+  }
+  .mod__titre{
+    position:static;
+    font-size:clamp(36px, 9.5vw, 66px); line-height:1.1;
+  }
+  .mod__titre em{ line-height:1; }
+  .mod__filet{
+    position:static;
+    width:clamp(88px, 24vw, 170px); height:5px;
+    margin:clamp(16px,4vw,26px) 0 0;
+  }
+  /* 62ch : au-delà, la ligne dépasse 75 caractères et devient pénible à lire.
+     Sans ce plafond, le lead courait sur 110 caractères à 1199px. */
+  .mod__lead{
+    position:static; width:auto; max-width:62ch;
+    font-size:clamp(15px, 4vw, 20px); line-height:1.62;
+    margin-top:clamp(20px,5vw,32px);
+  }
+  .mod__ancres{
+    position:static; margin-top:clamp(22px,5.5vw,36px);
+  }
+  .mod__ancres li,
+  .mod__ancres a{
+    font-size:clamp(16px, 4.2vw, 21px); line-height:1.95;
+  }
+
+  /* Le fil de lecture repasse en flux comme le reste. Il enveloppe plutôt que
+     de comprimer : sur un téléphone les deux libellés ne tiennent pas côte à
+     côte, ils se placent alors l'un sous l'autre. */
+  .mod__suite{
+    position:static; width:auto;
+    margin-top:clamp(28px,6.5vw,44px);
+    flex-wrap:wrap; gap:clamp(12px,3.5vw,26px) clamp(20px,5vw,32px);
+  }
+  .mod__suite a{ font-size:clamp(15px, 3.9vw, 19px); }
+
+  .mod__captures{
+    position:static; inset:auto;
+    display:flex; flex-wrap:wrap; gap:12px;
+    padding:clamp(22px,5.5vw,44px) clamp(20px,5.5vw,52px) clamp(34px,8vw,60px);
+    background:#fff;
+  }
+  /* On garde les proportions du Figma (732 × 704 et 241 × 210) plutôt qu'un
+     ratio arbitraire : les vraies captures s'y logeront sans recadrage. */
+  .mod__capture{
+    position:static; flex:1 1 100%;
+    width:auto; height:auto; aspect-ratio:732/704;
+    box-shadow:0 12px 30px rgba(46,40,38,.09);
+  }
+  /* Les vignettes de détail se rangent côte à côte plutôt que d'ajouter
+     deux écrans de défilement. */
+  .mod__capture--petite{ flex:1 1 calc(50% - 6px); aspect-ratio:241/210; }
+  .mod__capture.est-vide span{ font-size:clamp(11px,2.9vw,14px); }
+
+  /* ---------- Toutes les fonctionnalités ---------- */
+  .fonc{ padding:0 0 clamp(48px,10vw,92px); }
+  .fonc__titre{
+    position:static;
+    font-size:clamp(28px, 6.4vw, 46px); line-height:1.16;
+    padding:clamp(30px,7vw,58px) clamp(20px,5.5vw,52px) 0;
+  }
+  .fonc__colonnes{
+    margin:0; padding:clamp(26px,6vw,50px) clamp(20px,5.5vw,52px) 0;
+    grid-template-columns:repeat(2, minmax(0,1fr));
+    column-gap:clamp(24px,4.5vw,52px); row-gap:clamp(34px,6vw,54px);
+    align-items:start;
+  }
+  .fonc__bloc + .fonc__bloc{ margin-top:clamp(28px,5vw,44px); }
+  .fonc__bloc h2{ font-size:clamp(18px,3.2vw,25px); line-height:1.3; margin-bottom:14px; }
+  .fonc__bloc li{ font-size:clamp(14px,2.3vw,16px); line-height:1.6; padding-left:16px; }
+  .fonc__bloc li::before{ font-size:inherit; line-height:inherit; }
+
+  .fonc__cloture{
+    margin-top:clamp(48px,9vw,92px);
+    padding:0 clamp(20px,5.5vw,52px);
+  }
+  .fonc__cloture h2{ font-size:clamp(23px,5.2vw,40px); line-height:1.24; }
+  .fonc__cloture p{ font-size:clamp(15px,3vw,21px); line-height:1.6; margin-top:12px; }
+  .fonc__bouton{
+    width:100%; max-width:480px; height:60px;
+    font-size:clamp(16px,3.4vw,22px);
+    margin-top:clamp(26px,5vw,44px);
+  }
+
+}
+
+/* Une seule colonne : à deux, les intitulés les plus longs
+   (« Entrée automatique des produits en stock ») cassent sur trois lignes. */
+@media (max-width:640px){
+  .fonc__colonnes{ grid-template-columns:1fr; row-gap:34px; }
+  .fonc__bloc li{ font-size:15px; }
+  .fonc__bloc h2{ font-size:21px; }
+}
+
+/* =========================================================
+   PALIER INTERMÉDIAIRE  900 → 1199
+   Trop étroit pour la scène de 1920 (à 1000px l'échelle tomberait à 0,52 et
+   le lead à 12px), trop large pour l'empilement du téléphone : la page y
+   retrouve la composition du Figma (texte à gauche, photo à droite) et une
+   navigation horizontale compacte plutôt qu'un bouton menu, qui n'a pas de
+   sens sur un écran de portable.
+   ========================================================= */
+@media (min-width:900px) and (max-width:1199px){
+
+  /* ---------- Page module : deux colonnes ----------
+     La navigation horizontale de ce palier est dans assets/css/header.css. */
+  .stage--1200{
+    display:grid;
+    grid-template-columns:minmax(0,1fr) minmax(0,1fr);
+    grid-template-areas:
+      "entete  entete"
+      "texte   photo"
+      "cartes  cartes";
+  }
+  .hd{ grid-area:entete; }
+  .mod__texte{
+    grid-area:texte;
+    display:flex; flex-direction:column; justify-content:center;
+    padding:clamp(40px,5vw,64px) clamp(28px,4vw,48px);
+  }
+  .mod__photo{
+    grid-area:photo;
+    width:100%; height:100%; min-height:520px;
+  }
+  /* Sans plafond, la carte de capture ferait 1000px de large pour 960 de haut :
+     un pavé vide qui occuperait tout l'écran. */
+  .mod__captures{ grid-area:cartes; max-width:880px; margin-inline:auto; }
+
+  .mod__titre{ font-size:clamp(38px, 5vw, 60px); }
+  .mod__lead{ font-size:19px; max-width:none; }
+  .mod__ancres li,
+  .mod__ancres a{ font-size:19px; line-height:1.9; }
+
+  /* Œnotourisme n'a aucune carte : sans hauteur minimale sa colonne photo
+     se réduirait à la hauteur du texte. */
+  .mod__captures:empty{ display:none; }
+
+  /* ---------- Toutes les fonctionnalités ----------
+     On reste à 2 colonnes : la page compte 4 blocs de colonne, et à 3 le
+     quatrième se retrouvait seul sur une deuxième rangée avec deux tiers de
+     vide à sa droite. Largeur plafonnée et bloc centré pour que les colonnes
+     ne s'étirent pas au-delà d'une longueur de ligne lisible. */
+  .fonc__colonnes{ max-width:880px; margin-inline:auto; }
+  .fonc__titre,
+  .fonc__cloture{ max-width:880px; margin-inline:auto; }
+  .fonc__titre{ padding-left:0; padding-right:0; }
+}
+
+/* Très petits écrans : la vignette de détail à mi-largeur devient illisible. */
+@media (max-width:359px){
+  .mod__capture--petite{ flex:1 1 100%; aspect-ratio:241/210; }
+}
+
+/* Confort de lecture : pas d'animation pour qui n'en veut pas. */
+@media (prefers-reduced-motion:reduce){
+  .mod__ancres a, .fonc__bloc h2 a, .fonc__bouton, .pied a{ transition:none; }
+}

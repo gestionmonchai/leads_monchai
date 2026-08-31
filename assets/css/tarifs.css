@@ -1,0 +1,324 @@
+/* =========================================================
+   Mon Chai, page Tarifs
+   Chargée après assets/css/pages.css, dont elle reprend les variables, la
+   scène de 1920 et le passage en flux sous 1200px.
+
+   Aucune frame Figma n'existe pour cette page dans le sprint 2. Elle reprend
+   donc le gabarit des pages module : panneau crème à gauche, photo à droite,
+   H1 Playfair avec esperluette cuivre, filet, lead Inter, ancres Poppins.
+   La carte d'abonnement est posée là où les pages module posent leur
+   capture (x 819 · y 273 · l 732), avec la même bordure et la même ombre.
+   Les sections suivantes reprennent la page « Toutes les fonctionnalités » :
+   titres Poppins 700, listes à coche, pastille dorée 652 × 101 de clôture.
+   ========================================================= */
+
+/* ---------- Carte d'abonnement, dans .mod__captures ----------
+   Pas la classe .mod__capture : elle fixe une hauteur de 704 et coupe ce qui
+   dépasse (overflow:hidden), ce qu'une carte de texte ne supporte pas. */
+.offre{
+  position:absolute; z-index:4;
+  left:819px; top:273px; width:732px;
+  background:#fff; border:1px solid #E7DED6; border-radius:11px;
+  box-shadow:0 18px 44px rgba(46,40,38,.10);
+  padding:42px 48px 40px;
+}
+.offre__sur{
+  font-family:var(--titre); font-weight:600; font-size:14px; line-height:1;
+  letter-spacing:.14em; text-transform:uppercase; color:var(--cuivre-f);
+}
+.offre__prix{
+  display:flex; align-items:baseline; gap:14px; flex-wrap:wrap;
+  margin-top:18px;
+}
+.offre__montant{
+  font-family:var(--titre); font-weight:700; font-size:84px; line-height:1;
+  letter-spacing:-.02em; color:var(--encre); white-space:nowrap;
+}
+.offre__unite{
+  font-family:var(--titre); font-weight:500; font-size:24px; line-height:1.2;
+  color:var(--encre);
+}
+.offre__essai{
+  margin-top:26px; padding:16px 20px;
+  background:var(--creme); border-left:4px solid var(--cuivre);
+  border-radius:0 8px 8px 0;
+  font-size:17px; line-height:26px; color:var(--texte);
+}
+.offre__essai strong{ font-weight:700; }
+
+.offre__liste{ list-style:none; margin-top:26px; }
+.offre__liste li{
+  position:relative; padding-left:28px;
+  font-size:17px; line-height:26px; color:var(--texte);
+}
+.offre__liste li + li{ margin-top:10px; }
+.offre__liste li::before{
+  content:"✓"; position:absolute; left:0; top:0;
+  font-weight:700; color:var(--cuivre);
+}
+.offre__liste strong{ font-weight:700; }
+
+.offre__bouton{
+  display:flex; align-items:center; justify-content:center;
+  margin-top:32px; width:100%; height:66px; border-radius:33px;
+  background:var(--cuivre); color:var(--blanc); text-decoration:none;
+  font-family:var(--titre); font-weight:600; font-size:21px;
+  transition:background .18s ease;
+}
+.offre__bouton:hover{ background:#b87f4a; }
+.offre__note{
+  margin-top:16px; text-align:center;
+  font-size:14px; line-height:22px; color:#6F625C;
+}
+/* Calendrier : le programme bêta-test précède l'offre commerciale. */
+.offre__calendrier{
+  margin-top:18px; padding-top:16px; border-top:1px solid var(--gris-bord);
+  font-size:14.5px; line-height:23px; color:var(--texte);
+}
+.offre__calendrier strong{ font-weight:700; }
+.offre__calendrier sup,
+.qf sup{ font-size:.7em; line-height:0; vertical-align:super; }
+
+
+/* ---------- Sections sous la scène ---------- */
+.tar{
+  position:relative; width:1920px; background:#fff;
+  padding:0 138px 130px;
+}
+.tar__sec{ padding-top:112px; }
+/* Bande sable pleine largeur : elle annule les marges latérales du conteneur. */
+.tar__sec--fond{
+  margin:112px -138px 0; padding:96px 138px;
+  background:var(--sable);
+}
+.tar__h2{
+  font-family:var(--titre); font-weight:700; font-size:40px; line-height:54px;
+  color:var(--encre);
+}
+.tar__intro{
+  max-width:1000px; margin-top:14px;
+  font-size:21px; line-height:34px; color:var(--texte);
+}
+.tar__intro strong{ font-weight:700; }
+
+/* Accompagnement : 4 cartes */
+.acc__grille{
+  display:grid; grid-template-columns:repeat(4, minmax(0,1fr)); gap:28px;
+  margin-top:52px; align-items:stretch;
+}
+.acc__carte{
+  position:relative; display:flex; flex-direction:column;
+  background:#fff; border:1px solid #E7DED6; border-radius:11px;
+  box-shadow:0 18px 44px rgba(46,40,38,.08);
+  padding:40px 34px 36px;
+}
+.acc__carte--pack{
+  border-color:var(--cuivre);
+  box-shadow:0 18px 44px rgba(201,145,89,.22);
+}
+.acc__badge{
+  position:absolute; top:-15px; left:34px;
+  display:inline-flex; align-items:center; height:30px; padding:0 14px;
+  border-radius:15px; background:var(--cuivre); color:var(--blanc);
+  font-family:var(--titre); font-weight:600; font-size:12.5px; line-height:1;
+  letter-spacing:.1em; text-transform:uppercase; white-space:nowrap;
+}
+.acc__nom{
+  font-family:var(--titre); font-weight:600; font-size:25.5px; line-height:34px;
+  color:var(--encre);
+}
+.acc__prix{
+  display:flex; align-items:baseline; gap:8px; flex-wrap:wrap;
+  margin-top:18px;
+  font-family:var(--titre); font-weight:700; font-size:40px; line-height:1;
+  color:var(--bordeaux);
+}
+.acc__prix--devis{ font-size:30px; }
+.acc__unite{ font-weight:500; font-size:17px; color:var(--cuivre-f); }
+.acc__desc{ margin-top:18px; font-size:16.5px; line-height:26px; color:var(--texte); }
+.acc__desc + .acc__desc{ margin-top:10px; }
+.acc__desc strong{ font-weight:700; }
+.acc__lien{
+  margin-top:auto; padding-top:22px;
+  font-family:var(--titre); font-weight:600; font-size:16px;
+  color:var(--cuivre-f); text-decoration:none;
+}
+.acc__lien:hover{ text-decoration:underline; text-underline-offset:4px; }
+
+/* Ce qu'est un fichier */
+.fich__grille{
+  display:grid; grid-template-columns:repeat(3, minmax(0,1fr)); gap:22px 28px;
+  margin-top:40px;
+}
+.fich__ex{
+  background:#fff; border:1px solid #E7DED6; border-radius:11px;
+  padding:24px 26px;
+}
+.fich__ex strong{
+  display:block;
+  font-family:var(--titre); font-weight:600; font-size:19px; line-height:1.3;
+  color:var(--encre);
+}
+.fich__ex span{
+  display:block; margin-top:6px;
+  font-size:15.5px; line-height:24px; color:#4E4440;
+}
+.fich__etapes{
+  list-style:none; counter-reset:etape;
+  display:grid; grid-template-columns:repeat(3, minmax(0,1fr)); gap:28px;
+  margin-top:44px;
+}
+.fich__etapes li{
+  position:relative; padding-left:58px;
+  font-size:17px; line-height:27px; color:var(--texte);
+}
+.fich__etapes li::before{
+  counter-increment:etape; content:counter(etape);
+  position:absolute; left:0; top:0;
+  display:flex; align-items:center; justify-content:center;
+  width:42px; height:42px; border-radius:50%;
+  background:var(--bordeaux); color:var(--blanc);
+  font-family:var(--titre); font-weight:700; font-size:19px;
+}
+.fich__etapes strong{
+  display:block;
+  font-family:var(--titre); font-weight:600; font-size:18px; line-height:1.3;
+  color:var(--encre); margin-bottom:4px;
+}
+.fich__note{
+  margin-top:40px; max-width:1000px;
+  font-size:17px; line-height:28px; color:var(--texte);
+}
+.fich__note a{ color:var(--cuivre-f); font-weight:600; text-decoration:none; }
+.fich__note a:hover{ text-decoration:underline; text-underline-offset:4px; }
+
+/* Ce que comprend l'abonnement : 3 colonnes à coche */
+.inclus__cols{
+  display:grid; grid-template-columns:repeat(3, minmax(0,1fr)); gap:40px 60px;
+  margin-top:44px;
+}
+.inclus__cols h3{
+  font-family:var(--titre); font-weight:600; font-size:22px; line-height:1.3;
+  color:var(--encre); margin-bottom:16px;
+}
+.inclus__cols ul{ list-style:none; }
+.inclus__cols li{
+  position:relative; padding-left:22px;
+  font-size:17px; line-height:30px; color:var(--texte);
+}
+.inclus__cols li::before{
+  content:"✓"; position:absolute; left:0; top:0;
+  font-weight:700; color:var(--cuivre);
+}
+.inclus__cols a{ color:inherit; text-decoration:none; }
+.inclus__cols a:hover{ color:var(--cuivre-f); text-decoration:underline; text-underline-offset:4px; }
+
+/* Questions fréquentes : accordéon natif */
+.faq-t__liste{ margin-top:36px; }
+.qf{ border-bottom:1px solid var(--gris-bord); }
+.qf:first-of-type{ border-top:1px solid var(--gris-bord); }
+.qf summary{
+  list-style:none; cursor:pointer; position:relative;
+  padding:24px 70px 24px 0;
+  font-family:var(--titre); font-weight:600; font-size:22px; line-height:1.3;
+  color:var(--encre);
+}
+.qf summary::-webkit-details-marker{ display:none; }
+.qf summary::after{
+  content:"+"; position:absolute; right:6px; top:50%; transform:translateY(-50%);
+  width:36px; height:36px; border-radius:50%;
+  border:1.5px solid var(--cuivre); color:var(--cuivre-f);
+  font-family:var(--sans); font-weight:400; font-size:26px; line-height:33px;
+  text-align:center;
+}
+.qf[open] summary::after{ content:"\2212"; } /* signe moins */
+.qf summary:hover{ color:var(--cuivre-f); }
+.qf p{
+  padding:0 80px 26px 0; max-width:1100px;
+  font-size:17.5px; line-height:29px; color:var(--texte);
+}
+
+/* Clôture : reprend .fonc__cloture et .fonc__bouton de pages.css */
+.fonc__cloture .tar__secondaire{
+  margin-top:26px;
+  font-size:17px; line-height:1.5; color:#4E4440;
+}
+.tar__secondaire a{ color:var(--cuivre-f); font-weight:600; text-decoration:none; }
+.tar__secondaire a:hover{ text-decoration:underline; text-underline-offset:4px; }
+
+
+/* =========================================================
+   RESPONSIVE : même bascule que pages.css, à 1200px
+   ========================================================= */
+@media (max-width:1199px){
+  .offre{
+    position:static; flex:1 1 100%; width:auto;
+    padding:clamp(24px,5vw,40px) clamp(20px,4.5vw,44px);
+  }
+  .offre__montant{ font-size:clamp(56px,12vw,80px); }
+  .offre__unite{ font-size:clamp(18px,3.6vw,24px); }
+  .offre__essai,
+  .offre__liste li{ font-size:clamp(15px,3.2vw,17px); line-height:1.55; }
+  .offre__bouton{ height:58px; font-size:clamp(16px,3.4vw,20px); }
+  .offre__note{ font-size:13.5px; line-height:1.5; }
+
+  .tar{ width:100%; padding:0 clamp(20px,5.5vw,52px) clamp(48px,10vw,92px); }
+  .tar__sec{ padding-top:clamp(48px,9vw,88px); }
+  .tar__sec--fond{
+    margin:clamp(48px,9vw,88px) calc(-1 * clamp(20px,5.5vw,52px)) 0;
+    padding:clamp(40px,8vw,72px) clamp(20px,5.5vw,52px);
+  }
+  .tar__h2{ font-size:clamp(24px,5.2vw,38px); line-height:1.24; }
+  .tar__intro{ font-size:clamp(15px,3vw,20px); line-height:1.6; margin-top:12px; }
+
+  .acc__grille{
+    grid-template-columns:repeat(2, minmax(0,1fr));
+    gap:clamp(18px,3vw,28px); margin-top:clamp(28px,5vw,44px);
+  }
+  .acc__carte{ padding:clamp(28px,5vw,36px) clamp(20px,4vw,30px) clamp(24px,4vw,30px); }
+  .acc__badge{ left:clamp(20px,4vw,30px); }
+  .acc__nom{ font-size:clamp(19px,3.4vw,24px); line-height:1.3; }
+  .acc__prix{ font-size:clamp(30px,5.5vw,38px); margin-top:14px; }
+  .acc__prix--devis{ font-size:clamp(22px,4.2vw,28px); }
+  .acc__desc{ font-size:clamp(14.5px,2.6vw,16px); line-height:1.55; margin-top:14px; }
+  .acc__lien{ font-size:15px; padding-top:18px; }
+
+  .fich__grille,
+  .fich__etapes,
+  .inclus__cols{
+    grid-template-columns:repeat(2, minmax(0,1fr));
+    gap:clamp(16px,3vw,24px); margin-top:clamp(26px,5vw,40px);
+  }
+  .fich__ex{ padding:clamp(18px,3.5vw,24px) clamp(18px,3.5vw,26px); }
+  .fich__ex strong{ font-size:clamp(16px,3vw,19px); }
+  .fich__ex span{ font-size:clamp(14px,2.6vw,15.5px); line-height:1.5; }
+  .fich__etapes li{ font-size:clamp(15px,2.8vw,17px); line-height:1.55; padding-left:52px; }
+  .fich__etapes li::before{ width:38px; height:38px; font-size:17px; }
+  .fich__note{ font-size:clamp(15px,2.9vw,17px); line-height:1.6; margin-top:clamp(26px,5vw,40px); }
+
+  .inclus__cols h3{ font-size:clamp(18px,3.4vw,21px); margin-bottom:10px; }
+  .inclus__cols li{ font-size:clamp(15px,2.9vw,17px); line-height:1.7; }
+
+  .qf summary{ font-size:clamp(17px,3.4vw,21px); padding:18px 54px 18px 0; }
+  .qf summary::after{ width:32px; height:32px; font-size:22px; line-height:29px; right:2px; }
+  .qf p{ padding-right:0; font-size:clamp(15px,3vw,17px); line-height:1.6; padding-bottom:20px; }
+}
+
+@media (max-width:640px){
+  .acc__grille,
+  .fich__grille,
+  .fich__etapes,
+  .inclus__cols{ grid-template-columns:1fr; }
+  .offre__prix{ gap:8px; }
+}
+
+/* Palier 900 → 1199 : mêmes plafonds de largeur que la page annuaire, pour
+   que les colonnes ne s'étirent pas au-delà d'une ligne lisible. */
+@media (min-width:900px) and (max-width:1199px){
+  .tar__sec > *{ max-width:880px; margin-inline:auto; }
+  .tar__sec--fond > *{ max-width:880px; margin-inline:auto; }
+}
+
+@media (prefers-reduced-motion:reduce){
+  .offre__bouton, .acc__lien, .tar__secondaire a{ transition:none; }
+}

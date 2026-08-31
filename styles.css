@@ -22,6 +22,13 @@
 
 *{ margin:0; padding:0; box-sizing:border-box; }
 
+/* html porte explicitement le défilement : sans cela, le overflow-y posé
+   sur <body> par script.js (rognage du débord de mise en page de .page,
+   voir la section 1) se propagerait à la fenêtre et bloquerait tout
+   défilement. Le overflow-x coupe aussi les débords horizontaux sur
+   iOS Safari, qui ignore celui posé sur <body> seul. */
+html{ overflow-x:hidden; overflow-y:auto; }
+
 body{
   background:#FFFDFC;
   font-family:var(--sans);

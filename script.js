@@ -22,6 +22,7 @@ function fit() {
     // être mise à l'échelle d'un bloc. On retire ce que ce mode avait posé.
     page.style.transform = '';
     document.body.style.height = '';
+    document.body.style.overflowY = '';
     return;
   }
 
@@ -31,12 +32,24 @@ function fit() {
   // 1081 pour les autres, recadrés de leur bande de header) et se chevauchent
   // d'1px : on lit donc la hauteur réelle de .page plutôt que de l'additionner.
   document.body.style.height = (page.offsetHeight * scale) + 'px';
+
+  // Un transform ne change pas la géométrie : la boîte de mise en page de
+  // .page garde sa hauteur NON réduite et déborde du body raccourci. Chrome
+  // n'en tient pas compte, mais Firefox et Safari l'ajoutent à la zone de
+  // défilement : on pouvait défiler dans du blanc sous le pied de page. On
+  // rogne ce débord au niveau du body ; html reste le défileur (styles.css).
+  document.body.style.overflowY = 'hidden';
 }
 window.addEventListener('resize', fit);
 if (GRAND_ECRAN.addEventListener) GRAND_ECRAN.addEventListener('change', fit);
 else if (GRAND_ECRAN.addListener) GRAND_ECRAN.addListener(fit);
 window.addEventListener('load', fit);
 fit();
+
+// La hauteur de .page bouge après coup (bascule des polices, publications
+// Instagram chargées ou repliées) : la hauteur du body posée par fit()
+// deviendrait fausse, laissant un blanc ou coupant le pied de page.
+if (window.ResizeObserver) new ResizeObserver(fit).observe(page);
 
 
 /* =========================================================

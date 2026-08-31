@@ -165,6 +165,35 @@ majNav();
 
 
 /* =========================================================
+   7. Fonds d'écran différés
+      Les trois plus gros SVG de fond (parcours-bas, a-propos-faq,
+      actualite) ne sont chargés qu'à l'approche du viewport : la classe
+      .bg-pret déclenche le background-image (styles.css). Marge large
+      (2400 px) pour que l'image soit là avant que l'écran n'arrive.
+      Sans IntersectionObserver : tout est chargé immédiatement.
+   ========================================================= */
+(function () {
+  var fonds = Array.prototype.slice.call(document.querySelectorAll('[data-fond]'));
+  if (!fonds.length) return;
+
+  function activer(el) { el.classList.add('bg-pret'); }
+
+  if (!('IntersectionObserver' in window)) { fonds.forEach(activer); return; }
+
+  var observateur = new IntersectionObserver(function (entrees) {
+    entrees.forEach(function (entree) {
+      if (entree.isIntersecting) {
+        activer(entree.target);
+        observateur.unobserve(entree.target);
+      }
+    });
+  }, { rootMargin: '2400px 0px' });
+
+  fonds.forEach(function (el) { observateur.observe(el); });
+})();
+
+
+/* =========================================================
    9. FAQ : accordéon
       Clic sur une question -> ouvre sa réponse (et referme les autres).
       Clic ailleurs -> referme celle qui est ouverte.

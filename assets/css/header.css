@@ -174,6 +174,20 @@
 .hd__panneau a[aria-current="page"]{ color:var(--hd-cuivre-f); font-weight:600; }
 
 
+/* ---------- Entrée « Actualités » ----------
+   Troisième menu déroulant : sur grand écran il vit à x946 et « À propos »
+   glisse à x1122. Le palier 900→1199 est calibré au plus serré (à 900px la
+   rangée occupait déjà 628px sur 684 disponibles) : une entrée de plus y
+   déborde. À ce palier, le menu disparaît donc de la rangée et ses deux
+   liens réapparaissent dans le panneau « À propos », où ils sont dupliqués
+   dans le balisage avec la classe .hd__actu-repli. */
+.hd__actu-repli{ display:none; }
+@media (min-width:900px) and (max-width:1199px){
+  .hd__menu--actus{ display:none; }
+  .hd__actu-repli{ display:block; }
+}
+
+
 /* =========================================================
    ENVELOPPE FIXE : index.html uniquement
 

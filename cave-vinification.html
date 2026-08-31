@@ -31,6 +31,7 @@
 <body>
 
 <div class="page" id="page">
+<main>
   <section class="stage stage--1200 t-terracotta">
 
     <!-- ============ HEADER (identique sur les 8 pages) ============ -->
@@ -61,13 +62,22 @@
         <a class="hd__lien hd__lien--solutions" href="index.html#parcours">Solutions</a>
         <a class="hd__lien hd__lien--tarifs" href="tarifs.html">Tarifs</a>
 
-        <nav class="hd__menu" style="--hd-x:946px; --hd-dx:-55px; --hd-dw:200px" aria-label="À propos">
+        <nav class="hd__menu hd__menu--actus" style="--hd-x:946px; --hd-dx:-68px; --hd-dw:243px" aria-label="Actualités">
+          <a class="hd__lien" href="actualites-reglementaires.html" aria-haspopup="true" aria-expanded="false">Actualités</a>
+          <div class="hd__panneau">
+            <a href="index.html#actualite">Notre actualité</a>
+            <a href="actualites-reglementaires.html">Actualités réglementaires</a>
+          </div>
+        </nav>
+
+        <nav class="hd__menu" style="--hd-x:1122px; --hd-dx:-55px; --hd-dw:200px" aria-label="À propos">
           <a class="hd__lien" href="index.html#apropos-faq" aria-haspopup="true" aria-expanded="false">À propos</a>
           <div class="hd__panneau">
             <a href="index.html#apropos">À propos</a>
             <a href="index.html#faq">FAQ</a>
-            <a href="index.html#actualite">Notre actualité</a>
-          <a href="contact.html">Nous contacter</a>
+            <a href="index.html#actualite" class="hd__actu-repli">Notre actualité</a>
+            <a href="actualites-reglementaires.html" class="hd__actu-repli">Actualités réglementaires</a>
+            <a href="contact.html">Nous contacter</a>
           </div>
         </nav>
 
@@ -162,6 +172,8 @@
        Absent des frames Figma. Ajouté pour que les mentions légales, la
        politique de confidentialité et les CGUV soient atteignables depuis
        chaque page, et pas seulement depuis index.html. -->
+</main>
+
   <footer class="pied">
     <div class="pied__haut">
       <div class="pied__marque">
@@ -200,6 +212,7 @@
           <li><a href="index.html#apropos">À propos</a></li>
           <li><a href="index.html#faq">FAQ</a></li>
           <li><a href="index.html#actualite">Notre actualité</a></li>
+          <li><a href="actualites-reglementaires.html">Actualités réglementaires</a></li>
         <li><a href="contact.html">Nous contacter</a></li>
         </ul>
       </nav>

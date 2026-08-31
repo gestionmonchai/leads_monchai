@@ -182,7 +182,7 @@ body{
 .c1{ left:18.74px;  top:66.74px;  width:339.32px; height:127.64px; }
 .c2{ left:372.05px; top:66.74px;  width:339.32px; height:127.64px; }
 .cw{ left:18.74px;  top:208.37px; width:692.63px; height:128px;
-     background:url("assets/img/dash-card-bg.png") center/100% 100% no-repeat; }
+     background:url("assets/img/dash-card-bg.jpg") center/100% 100% no-repeat; }
 .c3{ left:18.74px;  top:350.36px; width:339.32px; height:114.64px; }
 .c4{ left:372.05px; top:350.36px; width:339.32px; height:114.64px; }
 
@@ -235,12 +235,20 @@ body{
   background-size:1920px auto;
   z-index:1;
 }
+/* Les trois plus gros fonds (parcours-bas, a-propos-faq, actualite :
+   ~1,3 Mo de transfert à eux trois) sont chargés en différé : l'image
+   n'est posée que quand .bg-pret arrive (script.js, section 7, à
+   l'approche du viewport), pour libérer la bande passante du premier
+   écran. Repli sans JavaScript : <noscript> dans le <head>. */
 #parcours .parcours-bas{
   position:absolute; top:1150px; left:0;
   width:1920px; height:2650px;
-  background:url("assets/svg/parcours-bas.svg") top center no-repeat;
+  background-position:top center; background-repeat:no-repeat;
   background-size:100% calc(100% + 3px);
   z-index:1;
+}
+#parcours .parcours-bas.bg-pret{
+  background-image:url("assets/svg/parcours-bas.svg");
 }
 
 /* Ancres invisibles : la nav latérale et les liens du header visent toujours
@@ -510,9 +518,12 @@ body{
 #apropos-faq{ height:2481px; }
 #apropos-faq .apfaq-fond{
   position:absolute; inset:0;
-  background:url("assets/svg/a-propos-faq.svg") top center no-repeat;
+  background-position:top center; background-repeat:no-repeat;
   background-size:100% calc(100% + 3px);
   z-index:1;
+}
+#apropos-faq .apfaq-fond.bg-pret{
+  background-image:url("assets/svg/a-propos-faq.svg");
 }
 #apropos-faq .ancre{
   position:absolute; left:0; width:1px; height:1px; pointer-events:none;
@@ -526,10 +537,14 @@ body{
    sous les éléments positionnés en absolu. */
 #actualite{
   height:auto;
-  background:#FFFAF5 url("assets/svg/actualite.svg") top center no-repeat;
+  background-color:#FFFAF5;
+  background-position:top center; background-repeat:no-repeat;
   background-size:100% 1084px;
   padding:960px 0 88px;
   box-sizing:border-box;
+}
+#actualite.bg-pret{
+  background-image:url("assets/svg/actualite.svg");
 }
 
 /* ---------- Texte de l'écran actualité ----------

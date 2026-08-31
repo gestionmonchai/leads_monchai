@@ -74,11 +74,22 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;700&family=Inter:wght@400;500;600;700&family=Manrope:wght@600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+<!-- Graisses limitées à celles réellement employées sur cette page :
+     Playfair 500 (titres) et 700 (cartes actualité), Inter 400-700,
+     Manrope 700 (chiffres de l'aperçu produit), Poppins 500-600 (header
+     et pied). -->
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Inter:wght@400;500;600;700&family=Manrope:wght@700&family=Poppins:wght@500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
 <link rel="stylesheet" href="assets/css/header.css">
 <link rel="stylesheet" href="assets/css/pied.css">
 <link rel="stylesheet" href="assets/css/index-responsive.css">
+<!-- Repli sans JavaScript : les fonds différés (script.js, section 7)
+     sont posés directement. -->
+<noscript><style>
+  #parcours .parcours-bas{ background-image:url("assets/svg/parcours-bas.svg"); }
+  #apropos-faq .apfaq-fond{ background-image:url("assets/svg/a-propos-faq.svg"); }
+  #actualite{ background-image:url("assets/svg/actualite.svg"); }
+</style></noscript>
 </head>
 <body>
 
@@ -124,13 +135,22 @@
       <a class="hd__lien hd__lien--solutions" href="#parcours">Solutions</a>
       <a class="hd__lien hd__lien--tarifs" href="tarifs.html">Tarifs</a>
 
-      <nav class="hd__menu" style="--hd-x:946px; --hd-dx:-55px; --hd-dw:200px" aria-label="À propos">
+      <nav class="hd__menu hd__menu--actus" style="--hd-x:946px; --hd-dx:-68px; --hd-dw:243px" aria-label="Actualités">
+        <a class="hd__lien" href="actualites-reglementaires.html" aria-haspopup="true" aria-expanded="false">Actualités</a>
+        <div class="hd__panneau">
+          <a href="#actualite">Notre actualité</a>
+          <a href="actualites-reglementaires.html">Actualités réglementaires</a>
+        </div>
+      </nav>
+
+      <nav class="hd__menu" style="--hd-x:1122px; --hd-dx:-55px; --hd-dw:200px" aria-label="À propos">
         <a class="hd__lien" href="#apropos-faq" aria-haspopup="true" aria-expanded="false">À propos</a>
         <div class="hd__panneau">
           <a href="#apropos">À propos</a>
           <a href="#faq">FAQ</a>
-          <a href="#actualite">Notre actualité</a>
-        <a href="contact.html">Nous contacter</a>
+          <a href="#actualite" class="hd__actu-repli">Notre actualité</a>
+          <a href="actualites-reglementaires.html" class="hd__actu-repli">Actualités réglementaires</a>
+          <a href="contact.html">Nous contacter</a>
         </div>
       </nav>
 
@@ -158,6 +178,7 @@
 </nav>
 
 <div class="page" id="page">
+<main>
 
   <!-- ================================================================
        ÉCRAN 1 : frame Figma "ACCUEIL" (24:1834) · 1920 × 1200
@@ -225,7 +246,7 @@
   <section class="stage" id="parcours">
 
     <div class="frame1-fond"></div>
-    <div class="parcours-bas"></div>
+    <div class="parcours-bas" data-fond></div>
 
     <!-- Ancres pour la nav latérale et les liens du header -->
     <div class="ancre" id="pourquoi"  style="top:150px"></div>
@@ -393,7 +414,7 @@
        encore interactif.
        ================================================================ -->
   <section class="stage" id="apropos-faq" aria-label="À propos et questions fréquentes">
-    <div class="apfaq-fond"></div>
+    <div class="apfaq-fond" data-fond></div>
     <!-- Ancres pour la nav latérale et les liens du header -->
     <div class="ancre" id="apropos" style="top:0"></div>
     <div class="ancre" id="faq"     style="top:1500px"></div>
@@ -454,7 +475,7 @@
        (encore « à venir » sur le site), et le salon s'écrit « au salon
        Vinitech-Sifel », sans « de ».
        ================================================================ -->
-  <section class="stage" id="actualite" aria-label="Notre actualité">
+  <section class="stage" id="actualite" aria-label="Notre actualité" data-fond>
 
     <h2 class="actu__titre">Notre actualité</h2>
 
@@ -528,6 +549,8 @@
        d'écran, et impossible à faire refluer. Reconstruit en vrai texte,
        identique à celui des 8 pages « Le logiciel ».
        ================================================================ -->
+</main>
+
   <footer class="pied" aria-label="Pied de page">
     <div class="pied__haut">
       <div class="pied__marque">
@@ -566,6 +589,7 @@
           <li><a href="#apropos">À propos</a></li>
           <li><a href="#faq">FAQ</a></li>
           <li><a href="#actualite">Notre actualité</a></li>
+          <li><a href="actualites-reglementaires.html">Actualités réglementaires</a></li>
           <li><a href="contact.html">Nous contacter</a></li>
         </ul>
       </nav>

@@ -1,0 +1,293 @@
+/* =========================================================
+   Mon Chai, section « Actualités réglementaires »
+   Utilisé par actualites-reglementaires.html et les articles.
+
+   Contrairement aux pages « Le logiciel » (scène 1920 mise à
+   l'échelle par pages.js), ces pages sont en flux normal : un
+   article doit refluer avec la taille d'écran et rester lisible.
+   Le header partagé (header.css) est donc repassé en flux au-dessus
+   de 1200px, en reprenant le palier 900→1199 déjà éprouvé ; les
+   surcharges sont scoppées sur body.corps-actus pour ne rien
+   changer aux autres pages. Le pied de page (pied.css) est déjà
+   fluide et se réutilise tel quel.
+
+   Palette et typographies reprises de la charte du site :
+   crème #FFFDFC / #FFF9F4, bordeaux #7B1E22, pied #471318,
+   or #DFB780, cuivre #C99159 / #A85D35, encre #211B18.
+   Titres en Playfair Display, texte en Inter, étiquettes en Poppins.
+   ========================================================= */
+
+:root{
+  --ac-creme:      #FFFDFC;
+  --ac-creme-2:    #FFF9F4;
+  --ac-bordeaux:   #7B1E22;
+  --ac-lie:        #471318;
+  --ac-encre:      #211B18;
+  --ac-gris:       #4a423d;
+  --ac-gris-doux:  #8a7f78;
+  --ac-or:         #DFB780;
+  --ac-cuivre:     #C99159;
+  --ac-cuivre-f:   #A85D35;
+  --ac-bord:       #F3EAE1;
+  --ac-serif:      "Playfair Display", Georgia, serif;
+  --ac-sans:       "Inter", system-ui, -apple-system, sans-serif;
+  --ac-titre:      "Poppins", "Inter", system-ui, sans-serif;
+}
+
+body.corps-actus{
+  margin:0;
+  background:var(--ac-creme);
+  color:var(--ac-encre);
+  font-family:var(--ac-sans);
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+}
+body.corps-actus *{ box-sizing:border-box; }
+
+
+/* ---------- Header partagé, repassé en flux au-dessus de 1200px ---------- */
+@media (min-width:1200px){
+  body.corps-actus .hd{
+    position:sticky; left:auto; top:0; z-index:100;
+    width:100%; height:88px;
+    display:flex; align-items:center;
+    padding:0 clamp(32px,4.5vw,88px);
+  }
+  body.corps-actus .hd__logo{ position:static; }
+  body.corps-actus .hd__logo img{ width:208px; height:67px; }
+  body.corps-actus .hd__burger{ display:none; }
+
+  body.corps-actus .hd__barre{
+    position:static; inset:auto;
+    display:flex; flex-direction:row; flex-wrap:nowrap;
+    align-items:center; gap:clamp(16px,1.8vw,30px);
+    margin-left:auto; padding:0; max-height:none; overflow:visible;
+    background:none; border:0; box-shadow:none;
+  }
+
+  /* position:relative et non static : le soulignement ::after des liens
+     actifs est en absolu et doit s'ancrer sur le lien lui-même. */
+  body.corps-actus .hd__lien,
+  body.corps-actus .hd__connexion{
+    position:relative; left:auto; top:auto;
+    font-size:16.5px; line-height:1; padding:0; border:0;
+  }
+  body.corps-actus .hd__lien.est-actif{ color:var(--hd-texte, #000); }
+  body.corps-actus .hd__lien.est-actif::after{
+    display:block; left:0; top:calc(100% + 6px); width:100%; height:3px;
+  }
+  body.corps-actus .hd__connexion::after{
+    display:block; left:0; top:calc(100% + 5px); width:100%; height:1px;
+  }
+
+  body.corps-actus .hd__menu{ position:relative; left:auto; top:auto; }
+  body.corps-actus .hd__menu::after{ left:-18px; top:100%; width:243px; height:18px; }
+  body.corps-actus .hd__panneau{
+    left:-18px; top:calc(100% + 14px);
+    width:243px; padding:14px 0; margin:0; border-radius:10px;
+  }
+  body.corps-actus .hd__panneau a{ padding:0 20px; font-size:15px; line-height:40px; }
+
+  body.corps-actus .hd__cta{
+    position:static; width:auto; height:46px; padding:0 24px; margin:0;
+    font-size:15.5px; border-radius:23px;
+  }
+  body.corps-actus .hd__langue{
+    position:static; width:58px; height:46px; margin:0;
+    font-size:15px; border-radius:23px;
+  }
+}
+
+
+/* ---------- Bandeau de tête de la section ---------- */
+.actus-hero{
+  background:var(--ac-creme-2);
+  border-bottom:1px solid var(--ac-bord);
+  padding:clamp(44px,6vw,72px) 24px clamp(38px,5vw,60px);
+  text-align:center;
+}
+.actus-hero__kicker{
+  font-family:var(--ac-titre); font-weight:600; font-size:13px; line-height:1;
+  letter-spacing:.22em; text-transform:uppercase;
+  color:var(--ac-cuivre-f); margin:0 0 16px;
+}
+.actus-hero h1{
+  font-family:var(--ac-serif); font-weight:500;
+  font-size:clamp(34px,4.6vw,52px); line-height:1.12;
+  color:var(--ac-encre); margin:0;
+}
+.actus-hero__filet{
+  width:84px; height:3px; border-radius:1.5px;
+  background:var(--ac-or); margin:22px auto;
+}
+.actus-hero__lead{
+  max-width:64ch; margin:0 auto;
+  font-size:clamp(15.5px,1.8vw,17.5px); line-height:1.65;
+  color:var(--ac-gris);
+}
+
+/* ---------- Grille des articles ---------- */
+.actus-grille{
+  max-width:1180px; margin:0 auto;
+  padding:clamp(36px,5vw,60px) 24px 16px;
+  display:grid; grid-template-columns:repeat(3, minmax(0,1fr));
+  gap:clamp(20px,2.6vw,30px);
+}
+@media (max-width:1023px){ .actus-grille{ grid-template-columns:1fr; max-width:640px; } }
+
+.actu-fiche{
+  display:flex; flex-direction:column;
+  background:#fff; border:1px solid var(--ac-bord); border-radius:16px;
+  overflow:hidden;
+  box-shadow:0 10px 28px rgba(71,19,24,.06);
+  transition:transform .18s ease, box-shadow .18s ease;
+}
+.actu-fiche:hover{ transform:translateY(-4px); box-shadow:0 18px 40px rgba(71,19,24,.11); }
+.actu-fiche__img{ display:block; width:100%; height:186px; object-fit:cover; }
+.actu-fiche__corps{ flex:1; display:flex; flex-direction:column; gap:10px; padding:22px 24px 26px; }
+.actu-fiche__titre{
+  font-family:var(--ac-serif); font-weight:500; font-size:22.5px; line-height:1.25;
+  margin:2px 0 0;
+}
+.actu-fiche__titre a{ color:inherit; text-decoration:none; }
+.actu-fiche__titre a:hover{ color:var(--ac-bordeaux); }
+.actu-fiche__resume{ font-size:15px; line-height:1.62; color:var(--ac-gris); margin:0; }
+.actu-fiche__lire{
+  margin-top:auto; padding-top:10px;
+  font-weight:600; font-size:15px; color:var(--ac-cuivre-f); text-decoration:none;
+}
+.actu-fiche__lire:hover{ text-decoration:underline; text-underline-offset:4px; }
+
+/* Étiquette thématique + date, partagées fiches et articles */
+.actu-tag{
+  align-self:flex-start; display:inline-block;
+  font-family:var(--ac-titre); font-weight:600; font-size:11.5px; line-height:1;
+  letter-spacing:.14em; text-transform:uppercase;
+  color:var(--ac-bordeaux); background:rgba(223,183,128,.22);
+  border-radius:999px; padding:7px 13px;
+}
+.actu-date{ font-size:13.5px; color:var(--ac-gris-doux); }
+
+
+/* ---------- Article ---------- */
+.article{
+  max-width:820px; margin:0 auto;
+  padding:clamp(32px,4.5vw,52px) 24px clamp(48px,6vw,72px);
+}
+.article__ariane{ font-size:14px; color:var(--ac-gris-doux); margin:0 0 26px; }
+.article__ariane a{ color:var(--ac-cuivre-f); text-decoration:none; }
+.article__ariane a:hover{ text-decoration:underline; }
+
+.article__meta{
+  display:flex; flex-wrap:wrap; align-items:center; gap:14px;
+  margin-bottom:18px;
+}
+.article h1{
+  font-family:var(--ac-serif); font-weight:500;
+  font-size:clamp(31px,4vw,44px); line-height:1.16;
+  color:var(--ac-encre); margin:0 0 18px;
+}
+.article__chapo{
+  font-size:clamp(17px,2vw,18.5px); line-height:1.65;
+  color:var(--ac-gris); margin:0 0 10px;
+}
+.article__chapo strong{ color:var(--ac-encre); }
+
+.article h2{
+  font-family:var(--ac-serif); font-weight:500; font-size:clamp(24px,2.8vw,29px);
+  line-height:1.25; color:var(--ac-bordeaux);
+  margin:44px 0 14px; padding-top:20px;
+  border-top:1px solid rgba(223,183,128,.5);
+}
+.article h3{ font-size:18px; font-weight:700; color:var(--ac-encre); margin:24px 0 8px; }
+.article p{ font-size:16.5px; line-height:1.7; color:var(--ac-gris); margin:0 0 15px; }
+.article p strong, .article li strong{ color:var(--ac-encre); }
+.article ul, .article ol{ margin:0 0 16px; padding-left:24px; color:var(--ac-gris); }
+.article li{ margin:7px 0; font-size:16.5px; line-height:1.65; }
+.article a{ color:var(--ac-bordeaux); }
+
+/* Encadré « L'essentiel » */
+.essentiel{
+  background:var(--ac-creme-2);
+  border:1px solid rgba(223,183,128,.55); border-left:4px solid var(--ac-or);
+  border-radius:12px;
+  padding:22px 26px 16px; margin:26px 0 8px;
+}
+.essentiel__titre{
+  font-family:var(--ac-titre); font-weight:600; font-size:12.5px; line-height:1;
+  letter-spacing:.18em; text-transform:uppercase;
+  color:var(--ac-cuivre-f); margin:0 0 12px;
+}
+.essentiel ul{ margin-bottom:6px; }
+.essentiel li{ font-size:15.5px; }
+
+/* Tableau d'échéances : défile horizontalement plutôt que de casser la page */
+.table-defile{ overflow-x:auto; margin:18px 0 22px; }
+.article table{ width:100%; border-collapse:collapse; min-width:480px; }
+.article thead th{
+  background:var(--ac-bordeaux); color:var(--ac-creme-2);
+  font-family:var(--ac-titre); font-weight:600; font-size:14px;
+  text-align:left; padding:12px 16px;
+}
+.article thead th:first-child{ border-radius:10px 0 0 0; }
+.article thead th:last-child{ border-radius:0 10px 0 0; }
+.article tbody td{
+  padding:13px 16px; font-size:15.5px; line-height:1.55; color:var(--ac-gris);
+  border-bottom:1px solid var(--ac-bord); vertical-align:top;
+}
+.article tbody td:first-child{ white-space:nowrap; font-weight:600; color:var(--ac-encre); }
+
+/* Bloc de fin : passerelle vers le logiciel */
+.article-cta{
+  background:var(--ac-lie); color:var(--ac-creme-2);
+  border-radius:18px;
+  padding:clamp(26px,4vw,36px) clamp(24px,4vw,38px);
+  margin:48px 0 8px;
+}
+.article-cta h2, .article-cta .article-cta__titre{
+  font-family:var(--ac-serif); font-weight:500; font-size:clamp(23px,2.6vw,27px);
+  line-height:1.25; color:#FFFDFC;
+  margin:0 0 10px; padding:0; border:0;
+}
+.article-cta p{ color:rgba(255,249,244,.85); font-size:16px; margin:0 0 20px; }
+.article-cta__actions{ display:flex; flex-wrap:wrap; align-items:center; gap:18px; }
+.article-cta__btn{
+  display:inline-flex; align-items:center; justify-content:center;
+  background:var(--ac-cuivre); color:#FFFDFC !important; text-decoration:none;
+  font-family:var(--ac-titre); font-weight:600; font-size:15.5px;
+  border-radius:24px; padding:13px 26px;
+  transition:background .18s ease;
+}
+.article-cta__btn:hover{ background:#b87f4a; }
+.article-cta__lien{ color:var(--ac-or) !important; font-weight:600; font-size:15px; }
+
+/* Sources et suite de lecture */
+.article__sources{ margin-top:38px; }
+.article__sources h2{
+  font-family:var(--ac-titre); font-weight:600; font-size:12.5px; line-height:1;
+  letter-spacing:.18em; text-transform:uppercase;
+  color:var(--ac-gris-doux); border:0; padding:0; margin:0 0 10px;
+}
+.article__sources ul{ list-style:none; padding:0; margin:0; }
+.article__sources li{ font-size:13.5px; color:var(--ac-gris-doux); margin:4px 0; }
+.article__sources a{ color:var(--ac-cuivre-f); }
+
+.article__suite{ margin-top:36px; padding-top:20px; border-top:1px solid rgba(223,183,128,.5); }
+.article__suite h2{
+  font-family:var(--ac-titre); font-weight:600; font-size:12.5px; line-height:1;
+  letter-spacing:.18em; text-transform:uppercase;
+  color:var(--ac-cuivre-f); border:0; padding:0; margin:0 0 12px;
+}
+.article__suite ul{ list-style:none; padding:0; margin:0; }
+.article__suite li{ margin:8px 0; }
+.article__suite a{
+  font-family:var(--ac-serif); font-size:18.5px; color:var(--ac-encre); text-decoration:none;
+}
+.article__suite a:hover{ color:var(--ac-bordeaux); text-decoration:underline; text-underline-offset:4px; }
+
+/* Bandeau CTA de la page d'index de la section */
+.actus-cta{
+  max-width:1180px; margin:0 auto;
+  padding:clamp(28px,4vw,44px) 24px clamp(56px,6vw,72px);
+}
+.actus-cta .article-cta{ margin:0; }

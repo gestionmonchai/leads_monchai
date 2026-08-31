@@ -94,14 +94,8 @@ jobs:
           sed -i "/FILE-ATTENTE : les nouvelles cartes/r file/articles/$FICHIER.carte.html" \
             site/actualites-reglementaires.html
 
-          cat > /tmp/sitemap-bloc.xml <<FIN
-  <url>
-    <loc>https://monchai.fr/$SLUG.html</loc>
-    <lastmod>$DATE_ISO</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-FIN
+          printf '  <url>\n    <loc>https://monchai.fr/%s.html</loc>\n    <lastmod>%s</lastmod>\n    <changefreq>monthly</changefreq>\n    <priority>0.7</priority>\n  </url>\n' \
+            "$SLUG" "$DATE_ISO" > /tmp/sitemap-bloc.xml
           sed -i "/FILE-ATTENTE : nouvelles URL/r /tmp/sitemap-bloc.xml" site/sitemap.xml
 
           jq --arg s "$SLUG" --arg d "$DATE_ISO" \

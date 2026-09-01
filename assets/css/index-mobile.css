@@ -27,9 +27,13 @@
 
   /* =====================================================
      ÉCRAN 1 · Accueil — déjà en flux (index-responsive.css).
-     L'aperçu produit perd ses deux cartes basses sur les
-     écrans étroits : le premier écran reste un écran.
+     La photo de fond passe sur la déclinaison 960 px (50 Ko
+     au lieu de 126) et l'aperçu produit perd ses deux cartes
+     basses sur les écrans étroits.
      ===================================================== */
+  #accueil .hero-photo{
+    background-image:url("../img/hero-fond-960.webp");
+  }
   @media (max-width:639px){
     .apercu .c3, .apercu .c4{ display:none; }
   }
@@ -65,11 +69,14 @@
   .m-bloc{
     padding:clamp(44px,11vw,64px) clamp(20px,5.5vw,32px);
   }
+  /* Bronze foncé et non doré : à cette taille, le doré #C99159 ne
+     tient pas le contraste AA (4,5:1) sur fond clair. Les blocs
+     sombres (assistant, à propos) le repassent en doré clair. */
   .m-kicker{
     display:block;
     font:600 11.5px/1 "Poppins","Inter",system-ui,sans-serif;
     letter-spacing:.18em; text-transform:uppercase;
-    color:#C99159;
+    color:#8C5A2B;
     margin-bottom:10px;
   }
   .m-titre{
@@ -247,7 +254,7 @@
 
   /* ---------- 2d · Offre & bêta-test ---------- */
   .m-offre .m-dates{
-    font:700 14px/1 var(--sans); color:#C99159;
+    font:700 14px/1 var(--sans); color:#8C5A2B;
     margin:-14px 0 24px;
   }
   .m-carte-offre{
@@ -280,17 +287,19 @@
   .m-primeurs .m-liste li{ color:#2A2224; }
   .m-carte-offre .m-liste li::after,
   .m-primeurs .m-liste li::after{ border-color:#FFF9F4; }
+  /* Texte bordeaux sur or : c'est le dessin des boutons de l'écran
+     offre bureau, et le blanc sur or ne tenait pas le contraste. */
   .m-cta{
     display:flex; align-items:center; justify-content:center;
     width:100%; min-height:50px;
     margin-top:20px;
-    background:#C99159; color:#fff;
+    background:#DFB780; color:#471318;
     border-radius:999px;
     font:700 16px/1.2 var(--sans);
     text-decoration:none;
     transition:background-color .15s ease;
   }
-  .m-cta:hover{ background:#B37F49; }
+  .m-cta:hover{ background:#D0A468; }
   .m-carte-offre small{
     display:block; text-align:center;
     font-size:12.5px; color:#77666B; margin-top:10px;
@@ -407,6 +416,7 @@
   #actualite .actu-carte__date{
     font-size:13.5px;
     padding:6px 18px 0;
+    color:#8C5A2B;   /* le doré du bureau ne tient pas le contraste AA */
   }
   #actualite .actu-carte__texte{
     font-size:14.5px; line-height:1.55;
@@ -440,6 +450,7 @@
     width:100%;
     margin-top:36px; padding-top:32px;
   }
+  .instagram-feed__heading > span{ color:#8C5A2B; }
   .instagram-feed__heading h3{ font-size:27px; }
   .instagram-feed__grid{ grid-template-columns:1fr; gap:16px; }
   .instagram-embed-shell{ max-width:540px; margin:0 auto; }

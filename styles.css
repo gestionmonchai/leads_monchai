@@ -66,7 +66,7 @@ body{
 .hero-photo{
   position:absolute; left:0; top:0;
   width:2141px; height:1428px;
-  background:url("assets/img/moritz-knoringer-UP6orFljGaY-unsplash.jpg") center/100% 100% no-repeat;
+  background:url("assets/img/hero-fond-1920.webp") center/100% 100% no-repeat;
   transform:scaleX(-1);
   z-index:1;
 }

@@ -98,44 +98,6 @@
     <priority>0.7</priority>
   </url>
 
-  <!-- Hubs de catégorie -->
-  <url>
-    <loc>https://monchai.fr/actualites-vigne-phyto.html</loc>
-    <lastmod>2026-09-01</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://monchai.fr/actualites-cave-registres.html</loc>
-    <lastmod>2026-09-01</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://monchai.fr/actualites-douane-declarations.html</loc>
-    <lastmod>2026-09-01</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://monchai.fr/actualites-etiquetage-mises.html</loc>
-    <lastmod>2026-09-01</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://monchai.fr/actualites-ventes-facturation.html</loc>
-    <lastmod>2026-09-01</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://monchai.fr/actualites-oenotourisme-vente-directe.html</loc>
-    <lastmod>2026-09-01</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
-  </url>
-
   <!-- Pages légales -->
   <url>
     <loc>https://monchai.fr/mentions-legales.html</loc>

@@ -45,9 +45,7 @@
 }
 </script>
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400;1,500&family=Inter:wght@400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/polices.css">
 <link rel="stylesheet" href="assets/css/header.css">
 <link rel="stylesheet" href="assets/css/actus.css">
 <link rel="stylesheet" href="assets/css/pied.css">
@@ -56,7 +54,7 @@
 
 <!-- ============ HEADER (composant partagé, repassé en flux par actus.css) ============ -->
 <header class="hd">
-  <a class="hd__logo" href="index.html"><img src="assets/img/logo-header.png" alt="Mon Chai, logiciel viticole" width="263" height="85"></a>
+  <a class="hd__logo" href="index.html"><img src="assets/img/logo-header.webp" alt="Mon Chai, logiciel viticole" width="263" height="85"></a>
 
   <button class="hd__burger" type="button" aria-label="Ouvrir le menu"
           aria-expanded="false" aria-controls="nav-principale">
@@ -87,12 +85,6 @@
       <div class="hd__panneau">
         <a href="index.html#actualite">Notre actualité</a>
         <a href="actualites-reglementaires.html" aria-current="page">Actualités réglementaires</a>
-        <a href="actualites-vigne-phyto.html">Vigne &amp; phyto</a>
-        <a href="actualites-cave-registres.html">Cave &amp; registres</a>
-        <a href="actualites-douane-declarations.html">Douane &amp; déclarations</a>
-        <a href="actualites-etiquetage-mises.html">Étiquetage &amp; mises</a>
-        <a href="actualites-ventes-facturation.html">Ventes &amp; facturation</a>
-        <a href="actualites-oenotourisme-vente-directe.html">Œnotourisme &amp; vente directe</a>
       </div>
     </nav>
 
@@ -122,27 +114,14 @@
     <p class="actus-hero__lead">Registre phytosanitaire numérique, facturation électronique, réforme européenne : le calendrier réglementaire du vigneron évolue vite. Nous suivons ces échéances pour vous et les expliquons simplement, avec ce qu'il faut faire et pour quand.</p>
   </section>
 
-  <!-- Filtres par catégorie : masquage côté client (actus-filtres.js).
-       Les pages hubs actualites-<categorie>.html restent les vraies pages
-       de catégorie pour les moteurs de recherche. -->
-  <div class="actus-filtres" id="actusFiltres" role="group" aria-label="Filtrer par catégorie">
-    <button type="button" class="actus-filtre est-actif" data-categorie="tout" aria-pressed="true">Tout</button>
-    <button type="button" class="actus-filtre" data-categorie="vigne-phyto" aria-pressed="false">Vigne &amp; phyto</button>
-    <button type="button" class="actus-filtre" data-categorie="cave-registres" aria-pressed="false">Cave &amp; registres</button>
-    <button type="button" class="actus-filtre" data-categorie="douane-declarations" aria-pressed="false">Douane &amp; déclarations</button>
-    <button type="button" class="actus-filtre" data-categorie="etiquetage-mises" aria-pressed="false">Étiquetage &amp; mises</button>
-    <button type="button" class="actus-filtre" data-categorie="ventes-facturation" aria-pressed="false">Ventes &amp; facturation</button>
-    <button type="button" class="actus-filtre" data-categorie="oenotourisme-vente-directe" aria-pressed="false">Œnotourisme &amp; vente directe</button>
-  </div>
-
   <!-- ============ LES ARTICLES ============ -->
   <section class="actus-grille" aria-label="Articles">
     <!-- FILE-ATTENTE : les nouvelles cartes s'insèrent sous cette ligne (workflow publier-article.yml), la plus récente en premier. Ne pas supprimer ce repère. -->
 
-    <article class="actu-fiche" data-categorie="vigne-phyto">
+    <article class="actu-fiche">
       <a href="registre-phyto-numerique-2027.html" aria-hidden="true" tabindex="-1"><img class="actu-fiche__img" src="assets/img/pages/vigne-vendanges.jpg" alt="" loading="lazy"></a>
       <div class="actu-fiche__corps">
-        <a class="actu-tag" href="actualites-vigne-phyto.html">Vigne &amp; phyto</a>
+        <span class="actu-tag">Phytosanitaire</span>
         <span class="actu-date">Publié le 31 août 2026</span>
         <h2 class="actu-fiche__titre"><a href="registre-phyto-numerique-2027.html">Registre phytosanitaire numérique&nbsp;: obligatoire au 1ᵉʳ&nbsp;janvier 2027</a></h2>
         <p class="actu-fiche__resume">Le registre papier vit sa dernière campagne&nbsp;: à partir de 2027, chaque traitement devra être enregistré dans un format numérique lisible par machine. Qui est concerné, quels formats, quel calendrier de transition.</p>
@@ -150,10 +129,10 @@
       </div>
     </article>
 
-    <article class="actu-fiche" data-categorie="ventes-facturation">
+    <article class="actu-fiche">
       <a href="facturation-electronique-viticulture.html" aria-hidden="true" tabindex="-1"><img class="actu-fiche__img" src="assets/img/pages/ventes-clients.jpg" alt="" loading="lazy"></a>
       <div class="actu-fiche__corps">
-        <a class="actu-tag" href="actualites-ventes-facturation.html">Ventes &amp; facturation</a>
+        <span class="actu-tag">Facturation</span>
         <span class="actu-date">Publié le 31 août 2026</span>
         <h2 class="actu-fiche__titre"><a href="facturation-electronique-viticulture.html">Facturation électronique&nbsp;: le calendrier 2026-2027 des domaines</a></h2>
         <p class="actu-fiche__resume">Depuis le 1ᵉʳ&nbsp;septembre 2026, toute entreprise doit pouvoir recevoir des factures électroniques. Au 1ᵉʳ&nbsp;septembre 2027, les TPE et PME devront aussi en émettre. Ce que cela change pour vos ventes aux professionnels.</p>
@@ -161,10 +140,10 @@
       </div>
     </article>
 
-    <article class="actu-fiche" data-categorie="etiquetage-mises">
+    <article class="actu-fiche">
       <a href="paquet-vin-europeen-2027.html" aria-hidden="true" tabindex="-1"><img class="actu-fiche__img" src="assets/img/pages/conditionnement-mises.jpg" alt="" loading="lazy"></a>
       <div class="actu-fiche__corps">
-        <a class="actu-tag" href="actualites-etiquetage-mises.html">Étiquetage &amp; mises</a>
+        <span class="actu-tag">Europe &amp; étiquetage</span>
         <span class="actu-date">Publié le 31 août 2026</span>
         <h2 class="actu-fiche__titre"><a href="paquet-vin-europeen-2027.html">Paquet vin européen&nbsp;: ce qui change pour les vignerons</a></h2>
         <p class="actu-fiche__resume">Autorisations de replantation portées à 8&nbsp;ans, catégories «&nbsp;sans alcool&nbsp;» harmonisées, mentions d'étiquetage simplifiées&nbsp;: la réforme adoptée fin 2025 s'applique, avec une échéance au 31&nbsp;décembre 2026.</p>
@@ -248,6 +227,5 @@
 </footer>
 
 <script src="assets/js/header.js"></script>
-<script src="assets/js/actus-filtres.js"></script>
 </body>
 </html>

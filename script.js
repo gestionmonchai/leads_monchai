@@ -207,6 +207,58 @@ majNav();
 
 
 /* =========================================================
+   8. Modules mobiles : carrousel + panneau de détail
+      (< 900 px, bloc .m-modules d'index.html). Tap sur une carte ->
+      son panneau s'ouvre sous le carrousel (et referme l'autre).
+      Les pastilles suivent la position de défilement. Sans JS, les
+      cartes restent une rangée défilable et les listes, bien que
+      repliées, restent dans le document.
+   ========================================================= */
+(function () {
+  var bloc = document.querySelector('.m-modules');
+  if (!bloc) return;
+
+  var boutons  = Array.prototype.slice.call(bloc.querySelectorAll('.m-carte__btn'));
+  var panneaux = Array.prototype.slice.call(bloc.querySelectorAll('.m-panneau'));
+
+  function toutFermer() {
+    boutons.forEach(function (b) { b.setAttribute('aria-expanded', 'false'); });
+    panneaux.forEach(function (p) { p.hidden = true; });
+  }
+
+  boutons.forEach(function (b) {
+    b.addEventListener('click', function () {
+      var dejaOuvert = b.getAttribute('aria-expanded') === 'true';
+      toutFermer();
+      if (!dejaOuvert) {
+        var cible = document.getElementById('mm-' + b.getAttribute('data-mm'));
+        b.setAttribute('aria-expanded', 'true');
+        if (cible) cible.hidden = false;
+      }
+    });
+  });
+
+  // Premier module ouvert d'office : le panneau ne démarre pas vide.
+  if (boutons[0]) boutons[0].click();
+
+  // Pastilles de progression : proportionnelles au défilement.
+  var rail = bloc.querySelector('.m-carrousel');
+  var points = Array.prototype.slice.call(bloc.querySelectorAll('.m-points i'));
+  function majPoints() {
+    var etendue = rail.scrollWidth - rail.clientWidth;
+    var idx = etendue > 0
+      ? Math.round(rail.scrollLeft / etendue * (points.length - 1))
+      : 0;
+    points.forEach(function (p, i) { p.classList.toggle('actif', i === idx); });
+  }
+  if (rail && points.length) {
+    rail.addEventListener('scroll', function () { requestAnimationFrame(majPoints); }, { passive: true });
+    majPoints();
+  }
+})();
+
+
+/* =========================================================
    9. FAQ : accordéon
       Clic sur une question -> ouvre sa réponse (et referme les autres).
       Clic ailleurs -> referme celle qui est ouverte.

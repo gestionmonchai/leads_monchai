@@ -238,9 +238,15 @@ body{
 #parcours .frame1-fond{
   position:absolute; top:0; left:0;
   width:1920px; height:1152px;
-  background:url("assets/svg/frame1-fond.svg") top center no-repeat;
+  background-position:top center; background-repeat:no-repeat;
   background-size:1920px auto;
   z-index:1;
+}
+/* L'image seulement à partir de 900 px : sous ce seuil l'élément est
+   masqué (index-mobile.css) et certains navigateurs téléchargeraient
+   quand même un fond posé sans garde. */
+@media (min-width:900px){
+  #parcours .frame1-fond{ background-image:url("assets/svg/frame1-fond.svg"); }
 }
 /* Les trois plus gros fonds (parcours-bas, a-propos-faq, actualite :
    ~1,3 Mo de transfert à eux trois) sont chargés en différé : l'image
@@ -254,8 +260,10 @@ body{
   background-size:100% calc(100% + 3px);
   z-index:1;
 }
-#parcours .parcours-bas.bg-pret{
-  background-image:url("assets/svg/parcours-bas.svg");
+@media (min-width:900px){
+  #parcours .parcours-bas.bg-pret{
+    background-image:url("assets/svg/parcours-bas.svg");
+  }
 }
 
 /* Ancres invisibles : la nav latérale et les liens du header visent toujours
@@ -312,6 +320,9 @@ body{
   padding:0; margin:-1px; overflow:hidden;
   clip:rect(0 0 0 0); white-space:nowrap; border:0;
 }
+/* Vignettes chargées seulement ≥ 900 px : sous ce seuil les modules
+   dessinés sont masqués et remplacés par le carrousel mobile. */
+@media (min-width:900px){
 #parcours [data-module="parcelles"]        { background-image:url("assets/svg/modules/parcelles.svg"); }
 #parcours [data-module="vendanges"]        { background-image:url("assets/svg/modules/vendanges.svg"); }
 #parcours [data-module="cuverie"]          { background-image:url("assets/svg/modules/cuverie.svg"); }
@@ -321,6 +332,7 @@ body{
 #parcours [data-module="clients"]          { background-image:url("assets/svg/modules/clients.svg"); }
 #parcours [data-module="administratif"]    { background-image:url("assets/svg/modules/administratif.svg"); }
 #parcours [data-module="tableaux-de-bord"] { background-image:url("assets/svg/modules/tableaux-de-bord.svg"); }
+}
 
 /* ---------- État survolé ----------
    Group 109.svg = carte normale + voile #DFB780 à 50 %, posé SOUS l'icône.
@@ -338,6 +350,7 @@ body{
 #parcours .pq-slot:focus-within .pq-module::after,
 #parcours .pq-slot.est-fige .pq-module::after{ opacity:1; }
 
+@media (min-width:900px){
 #parcours [data-module="parcelles"]::after       { background-image:url("assets/svg/modules/parcelles-survol.svg"); }
 #parcours [data-module="vendanges"]::after       { background-image:url("assets/svg/modules/vendanges-survol.svg"); }
 #parcours [data-module="cuverie"]::after         { background-image:url("assets/svg/modules/cuverie-survol.svg"); }
@@ -347,6 +360,7 @@ body{
 #parcours [data-module="clients"]::after         { background-image:url("assets/svg/modules/clients-survol.svg"); }
 #parcours [data-module="administratif"]::after   { background-image:url("assets/svg/modules/administratif-survol.svg"); }
 #parcours [data-module="tableaux-de-bord"]::after{ background-image:url("assets/svg/modules/tableaux-de-bord-survol.svg"); }
+}
 
 /* ---------- Flèche → trait plein ----------
    La flèche a été SORTIE des 9 SVG pour devenir animable. Sa position exacte
@@ -529,8 +543,10 @@ body{
   background-size:100% calc(100% + 3px);
   z-index:1;
 }
-#apropos-faq .apfaq-fond.bg-pret{
-  background-image:url("assets/svg/a-propos-faq.svg");
+@media (min-width:900px){
+  #apropos-faq .apfaq-fond.bg-pret{
+    background-image:url("assets/svg/a-propos-faq.svg");
+  }
 }
 #apropos-faq .ancre{
   position:absolute; left:0; width:1px; height:1px; pointer-events:none;
@@ -550,8 +566,10 @@ body{
   padding:960px 0 88px;
   box-sizing:border-box;
 }
-#actualite.bg-pret{
-  background-image:url("assets/svg/actualite.svg");
+@media (min-width:900px){
+  #actualite.bg-pret{
+    background-image:url("assets/svg/actualite.svg");
+  }
 }
 
 /* ---------- Texte de l'écran actualité ----------

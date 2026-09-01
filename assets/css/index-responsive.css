@@ -130,13 +130,16 @@
      l'échelle la mise en page elle-même : positions, tailles et hauteur de la
      section suivent, sans rien changer au balisage.
 
-     Ces trois écrans restent petits sur téléphone : leur texte est vectorisé
-     dans les SVG, aucune règle CSS ne peut l'agrandir. Ils attendent d'être
-     reconstruits en HTML. */
-  #parcours,
-  #apropos-faq,
-  #actualite{
-    zoom:var(--echelle, 1);
+     Sous 900 px, ils ne sont PLUS réduits : leurs couches dessinées sont
+     masquées et des blocs mobiles en vrai HTML les remplacent
+     (index-mobile.css). Le zoom ne subsiste qu'entre 900 et 1199 px, où
+     l'échelle (≥ 0,47) reste lisible. */
+  @media (min-width:900px){
+    #parcours,
+    #apropos-faq,
+    #actualite{
+      zoom:var(--echelle, 1);
+    }
   }
 }
 

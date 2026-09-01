@@ -90,10 +90,11 @@
     margin:0 0 26px;
     max-width:56ch;
   }
+  /* Rond, comme les disques d'icônes des cartes bénéfices du bureau. */
   .m-icone{
     width:46px; height:46px; flex:none;
     display:grid; place-items:center;
-    border-radius:13px;
+    border-radius:50%;
     background:#531217; color:#FFF9F4;
   }
   .m-icone svg{
@@ -148,12 +149,13 @@
     text-align:center;
     transition:border-color .15s ease, background-color .15s ease;
   }
-  .m-carte__btn .m-icone{ width:42px; height:42px; }
+  /* Les icônes du carrousel sont celles des vignettes bureau, extraites
+     avec leur disque crème (assets/svg/icones/*.svg). */
+  .m-carte__btn .m-ico{ width:54px; height:54px; }
   .m-carte__btn[aria-expanded="true"]{
     background:#531217; color:#FFF9F4;
     border-color:#531217;
   }
-  .m-carte__btn[aria-expanded="true"] .m-icone{ background:#C99159; }
   .m-points{
     display:flex; justify-content:center; gap:6px;
     margin:2px 0 14px;

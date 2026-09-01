@@ -60,6 +60,7 @@ jobs:
           fi
           SLUG=$(jq -r --arg d "$AUJOURDHUI" --arg f "$FORCER" "$FILTRE | .[0].slug // empty" file/manifest.json)
           FICHIER=$(jq -r --arg d "$AUJOURDHUI" --arg f "$FORCER" "$FILTRE | .[0].fichier // empty" file/manifest.json)
+          CATEGORIE=$(jq -r --arg d "$AUJOURDHUI" --arg f "$FORCER" "$FILTRE | .[0].categorie // empty" file/manifest.json)
           if [ -z "$SLUG" ]; then
             echo "::notice::File d'attente vide ou aucun article dû aujourd'hui ($AUJOURDHUI). Rien à publier."
             RESTANTS=$(jq -r '[.articles[] | select(.statut=="en_attente")] | length' file/manifest.json)
@@ -72,6 +73,7 @@ jobs:
             echo "publier=oui" >> "$GITHUB_OUTPUT"
             echo "slug=$SLUG" >> "$GITHUB_OUTPUT"
             echo "fichier=$FICHIER" >> "$GITHUB_OUTPUT"
+            echo "categorie=$CATEGORIE" >> "$GITHUB_OUTPUT"
             echo "date=$AUJOURDHUI" >> "$GITHUB_OUTPUT"
           fi
 
@@ -93,6 +95,15 @@ jobs:
           cp "file/articles/$FICHIER.html" "site/$SLUG.html"
           sed -i "/FILE-ATTENTE : les nouvelles cartes/r file/articles/$FICHIER.carte.html" \
             site/actualites-reglementaires.html
+
+          CATEGORIE="${{ steps.choix.outputs.categorie }}"
+          HUB="site/actualites-$CATEGORIE.html"
+          if [ -n "$CATEGORIE" ] && [ -f "$HUB" ]; then
+            sed -i "/FILE-ATTENTE : cartes de la catégorie/r file/articles/$FICHIER.carte.html" "$HUB"
+            echo "Carte insérée dans le hub $HUB"
+          else
+            echo "::warning::Hub introuvable pour la catégorie $CATEGORIE : carte non insérée dans un hub."
+          fi
 
           printf '  <url>\n    <loc>https://monchai.fr/%s.html</loc>\n    <lastmod>%s</lastmod>\n    <changefreq>monthly</changefreq>\n    <priority>0.7</priority>\n  </url>\n' \
             "$SLUG" "$DATE_ISO" > /tmp/sitemap-bloc.xml

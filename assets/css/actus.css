@@ -291,3 +291,40 @@ body.corps-actus *{ box-sizing:border-box; }
   padding:clamp(28px,4vw,44px) 24px clamp(56px,6vw,72px);
 }
 .actus-cta .article-cta{ margin:0; }
+
+
+/* ---------- Catégories : étiquettes-liens, filtres, hubs ---------- */
+/* L'étiquette de carte est devenue un lien vers la page hub de sa catégorie */
+a.actu-tag{ text-decoration:none; transition:background .15s ease, color .15s ease; }
+a.actu-tag:hover{ background:var(--ac-bordeaux); color:var(--ac-creme-2); }
+
+/* Lien de retour dans le bandeau des pages hubs */
+.actus-hero__retour{ color:inherit; text-decoration:none; }
+.actus-hero__retour:hover{ text-decoration:underline; text-underline-offset:4px; }
+
+/* Barre de filtres de l'index (masquage côté client, actus-filtres.js) */
+.actus-filtres{
+  max-width:1180px; margin:0 auto;
+  padding:clamp(24px,3.5vw,36px) 24px 0;
+  display:flex; flex-wrap:wrap; gap:10px; justify-content:center;
+}
+.actus-filtre{
+  font-family:var(--ac-titre); font-weight:600; font-size:13px; line-height:1;
+  letter-spacing:.05em;
+  color:var(--ac-gris); background:#fff;
+  border:1px solid var(--ac-bord); border-radius:999px;
+  padding:10px 16px; cursor:pointer;
+  transition:color .15s ease, border-color .15s ease, background .15s ease;
+}
+.actus-filtre:hover{ color:var(--ac-cuivre-f); border-color:var(--ac-cuivre); }
+.actus-filtre.est-actif{
+  color:var(--ac-creme-2); background:var(--ac-bordeaux); border-color:var(--ac-bordeaux);
+}
+.actu-fiche.est-masquee{ display:none; }
+
+/* Note sous la grille des hubs */
+.actus-note{
+  max-width:1180px; margin:0 auto; padding:14px 24px 0;
+  text-align:center; font-size:14.5px; color:var(--ac-gris-doux);
+}
+.actus-note a{ color:var(--ac-cuivre-f); }

@@ -814,10 +814,15 @@ body{
   font-family:var(--sans); font-size:18px;
 }
 
-/* état ouvert */
+/* état ouvert. Les deux règles qui déplient réellement la réponse
+   (grid-template-rows et l'opacité du paragraphe) avaient été détruites
+   par l'insertion accidentelle des styles .modal__france au milieu de ce
+   bloc : l'accordéon marquait « ouvert » sans jamais s'ouvrir. */
 .faq-item.ouvert{ border-color:var(--or); }
 .faq-item.ouvert .faq-plus{ background:rgba(223,183,128,.4); }
 .faq-item.ouvert .faq-plus::after{ transform:translate(-50%,-50%) rotate(0deg); opacity:0; }
+.faq-item.ouvert .faq-a{ grid-template-rows:1fr; }
+.faq-item.ouvert .faq-a > p{ opacity:1; padding-bottom:20px; }
 
 
 /* =========================================================

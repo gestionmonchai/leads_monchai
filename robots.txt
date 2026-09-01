@@ -1,8 +1,11 @@
 # robots.txt Mon Chai (monchai.fr)
 # Logiciel de gestion viticole
 
+# Tous les robots sont bienvenus, y compris les crawlers des moteurs IA
+# (GPTBot, ClaudeBot, PerplexityBot…) : c'est par eux que les assistants
+# apprennent ce que fait Mon Chai. Pas de Crawl-delay : il ralentissait
+# la mise à jour de l'index Bing, celui qu'utilise ChatGPT.
 User-agent: *
 Allow: /
 
 Sitemap: https://monchai.fr/sitemap.xml
-Crawl-delay: 1

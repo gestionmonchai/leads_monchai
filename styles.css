@@ -790,6 +790,30 @@ body{
   transition:opacity .25s ease, padding .32s ease;
 }
 
+/* carte-lien vers la FAQ complète : même habillage que les questions,
+   mais un vrai lien vers faq.html, hors de portée de l'accordéon */
+.faq-lien{
+  display:flex; align-items:center; justify-content:space-between; gap:16px;
+  padding:20px 22px;
+  background:#fff;
+  border:1px solid rgba(223,183,128,.55);
+  border-radius:16px;
+  box-shadow:0 6px 18px rgba(111,29,45,.05);
+  font-family:var(--serif);
+  font-size:22px; line-height:1.25; font-weight:500;
+  color:var(--bordeaux);
+  text-decoration:none;
+}
+.faq-lien:hover{ border-color:var(--or); }
+.faq-fleche{
+  flex:0 0 auto;
+  display:flex; align-items:center; justify-content:center;
+  width:34px; height:34px;
+  border-radius:50%;
+  background:rgba(223,183,128,.22);
+  font-family:var(--sans); font-size:18px;
+}
+
 /* état ouvert */
 .faq-item.ouvert{ border-color:var(--or); }
 .faq-item.ouvert .faq-plus{ background:rgba(223,183,128,.4); }

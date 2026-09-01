@@ -46,6 +46,7 @@
   "operatingSystem": "Web",
   "inLanguage": "fr",
   "description": "Logiciel de gestion viticole : suivi parcellaire, vendanges, cave et vinification, stocks et traçabilité, DRM et registre phytosanitaire, ventes et facturation, œnotourisme et dégustations au caveau.",
+  "disambiguatingDescription": "Logiciel professionnel de gestion de domaine viticole (monchai.fr), sans lien avec les applications mobiles de cave personnelle homonymes.",
   "featureList": [
     "Vigne et vendanges : parcelles, journal des travaux, registre phytosanitaire numérique conforme 2027",
     "Cave et vinification : cuverie, lots techniques, opérations, analyses œnologiques",
@@ -67,7 +68,20 @@
     "@type": "Organization",
     "name": "Mon Chai",
     "url": "https://monchai.fr/",
-    "logo": "https://monchai.fr/assets/img/logo_mon_chai.png"
+    "logo": "https://monchai.fr/assets/img/logo_mon_chai.png",
+    "foundingLocation": { "@type": "Place", "name": "Rennes, France" },
+    "founder": [
+      { "@type": "Person", "name": "Denis Berthelot" },
+      { "@type": "Person", "name": "Laura Hallais" }
+    ],
+    "memberOf": [
+      { "@type": "Organization", "name": "La WineTech" },
+      { "@type": "Organization", "name": "Le Poool" }
+    ],
+    "sameAs": [
+      "https://www.instagram.com/monchai.fr/",
+      "https://www.linkedin.com/company/monchai"
+    ]
   }
 }
 </script>
@@ -601,6 +615,9 @@
           <button class="faq-q" aria-expanded="false"><span>Qu’est-ce qui sera inclus dans l’abonnement ?</span><span class="faq-plus" aria-hidden="true"></span></button>
           <div class="faq-a"><p>L’accès complet au logiciel et à toutes ses fonctionnalités, les mises à jour et l’assistance incluses. Jusqu’à 2 utilisateurs, puis +15 € HT par utilisateur supplémentaire.</p></div>
         </div>
+        <!-- Carte-lien vers la FAQ complète (faq.html) : pas de classe
+             .faq-item pour que l'accordéon de script.js l'ignore. -->
+        <a class="faq-lien" href="faq.html"><span>DRM, registre phyto 2027, traçabilité, vos données… Consultez la FAQ complète</span><span class="faq-fleche" aria-hidden="true">→</span></a>
       </div>
     </div>
 

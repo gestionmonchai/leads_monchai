@@ -12,7 +12,8 @@ Chaque **lundi à 06:30 UTC**, le workflow `publier-article.yml` (sur `main`) :
 2. remplace `{{DATE_FR}}` / `{{DATE_ISO}}` par la date du jour dans la page
    et la carte ;
 3. copie la page à la racine de `main`, insère la carte en tête de
-   `actualites-reglementaires.html` (repère `FILE-ATTENTE`) et l'URL dans
+   `actualites-reglementaires.html` ET du hub de sa catégorie
+   `actualites-<categorie>.html` (repères `FILE-ATTENTE`), puis l'URL dans
    `sitemap.xml` ;
 4. marque l'article `publie_<date>` dans le manifeste, pousse les deux
    branches et déploie GitHub Pages.
@@ -39,7 +40,9 @@ Déclenchement manuel possible depuis l'onglet Actions (avec un mode
 1. Lire `LIGNE-EDITORIALE.md`.
 2. Écrire `fragments/NN-slug.html` (structure identique aux existants).
 3. Ajouter l'entrée dans `manifest.json` (ordre suivant, `prevu` au lundi
-   voulu, `statut: "en_attente"`).
+   voulu, `statut: "en_attente"`, `categorie` + `categorie_nom` parmi les six
+   catégories existantes — le hub `actualites-<categorie>.html` doit exister
+   sur `main`).
 4. `pwsh outils/assembler.ps1`, vérifier le rendu, committer sur cette
    branche. C'est tout : la publication suivra le calendrier.
 

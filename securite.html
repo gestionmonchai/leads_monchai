@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+
+<title>Sécurité &amp; protection de vos données | Mon Chai</title>
+<meta name="description" content="Où sont vos données, qui peut y accéder, comment elles sont chiffrées, sauvegardées et exportables : la transparence de Mon Chai sur la sécurité et la réversibilité, pour votre domaine viticole.">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<link rel="canonical" href="https://monchai.fr/securite.html">
+
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://monchai.fr/securite.html">
+<meta property="og:title" content="Sécurité &amp; protection de vos données | Mon Chai">
+<meta property="og:description" content="Hébergement en France, chiffrement en transit, 2FA, sauvegardes quotidiennes, export complet de vos données et audit de sécurité indépendant.">
+<meta property="og:image" content="https://monchai.fr/assets/img/vignes_2.jpg">
+<meta property="og:locale" content="fr_FR">
+<meta property="og:site_name" content="Mon Chai">
+
+<link rel="icon" type="image/png" href="assets/img/logo_mon_chai.png">
+<meta name="theme-color" content="#7B1E22">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": "Sécurité et protection des données — Mon Chai",
+  "url": "https://monchai.fr/securite.html",
+  "inLanguage": "fr",
+  "description": "Hébergement en France, chiffrement en transit, authentification à deux facteurs, sauvegardes quotidiennes, export complet des données et audit de sécurité indépendant.",
+  "publisher": {
+    "@type": "Organization",
+    "name": "Mon Chai",
+    "url": "https://monchai.fr/",
+    "logo": "https://monchai.fr/assets/img/logo_mon_chai.png"
+  }
+}
+</script>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="legal.css">
+<style>
+  /* Compléments propres à la page sécurité, dans la charte legal.css */
+  .sec-intro{ font-size:17px; color:var(--gris); margin-bottom:8px; }
+  .sec-grille{ display:grid; gap:14px; margin:22px 0 8px; }
+  .sec-item{
+    border:1px solid rgba(223,183,128,.5); border-left:3px solid var(--or);
+    border-radius:10px; padding:16px 18px; background:#fff;
+  }
+  .sec-item h3{ margin:0 0 6px; font-size:16px; color:var(--bordeaux); }
+  .sec-item p{ margin:0; font-size:15px; }
+  .sec-phare{
+    background:#FFF9F4; border:1px solid rgba(223,183,128,.6);
+    border-radius:12px; padding:20px 22px; margin:26px 0;
+  }
+  .sec-phare strong{ color:var(--bordeaux); }
+  .sec-maj{ font-size:13px; color:#8a7f78; }
+</style>
+</head>
+<body>
+<header class="legal-head">
+  <a class="legal-retour" href="index.html">← Retour au site</a>
+  <img src="assets/img/logo_mon_chai.png" alt="Mon Chai" class="legal-logo">
+</header>
+<main class="legal">
+  <h1>Sécurité &amp; protection de vos données</h1>
+  <p class="maj">Dernière mise à jour : 1ᵉʳ septembre 2026</p>
+
+  <p class="sec-intro">Mon Chai contient la mémoire de votre domaine : parcelles, traitements phytosanitaires, volumes, cuves, stocks, prix, clients, historique des opérations et registres réglementaires. Vous avez le droit de savoir précisément où sont ces données, qui peut y accéder, et comment vous pouvez les récupérer. Cette page répond aux vraies questions, sans langue de bois.</p>
+
+  <h2>Où sont vos données</h2>
+  <p>Le logiciel et vos données sont hébergés en <strong>France</strong>, chez <strong>OVHcloud</strong> (SAS française, datacenters en Union européenne). La base de données est une base <strong>PostgreSQL</strong> gérée sur cette infrastructure. Aucune donnée métier de votre domaine n'est stockée en dehors de l'Union européenne.</p>
+
+  <h2>Chiffrement</h2>
+  <p>Tous les échanges entre votre navigateur et Mon Chai sont chiffrés par <strong>HTTPS (TLS 1.2 et 1.3)</strong>, avec redirection automatique de HTTP vers HTTPS et en-tête <strong>HSTS</strong> (le navigateur refuse toute connexion non chiffrée). Les secrets sensibles d'authentification, comme les clés de double authentification, sont <strong>chiffrés au repos</strong>.</p>
+
+  <h2>Accès et authentification</h2>
+  <div class="sec-grille">
+    <div class="sec-item">
+      <h3>Mots de passe</h3>
+      <p>Jamais stockés en clair : ils sont hachés avec <strong>PBKDF2-SHA256</strong> (algorithme standard, salé et itéré). Personne, pas même nous, ne peut lire votre mot de passe.</p>
+    </div>
+    <div class="sec-item">
+      <h3>Double authentification (2FA)</h3>
+      <p>Vous pouvez activer un <strong>second facteur TOTP</strong> (application d'authentification). Une fois activé, il est exigé à chaque connexion, y compris via l'interface et l'API.</p>
+    </div>
+    <div class="sec-item">
+      <h3>Protection contre les intrusions</h3>
+      <p>Les tentatives de connexion sont <strong>limitées en fréquence</strong> (blocage temporaire après plusieurs échecs) pour contrer les attaques par force brute. Vos adresses e-mail n'apparaissent jamais en clair dans nos journaux techniques.</p>
+    </div>
+    <div class="sec-item">
+      <h3>Comptes de votre équipe</h3>
+      <p>Vous gérez les membres de votre domaine avec des <strong>rôles</strong> (propriétaire, administrateur, collaborateur). L'accès d'un collaborateur peut être <strong>révoqué</strong> à tout moment.</p>
+    </div>
+  </div>
+
+  <h2>Isolation entre domaines</h2>
+  <p>Chaque domaine ne voit que ses propres données. L'isolation est appliquée au niveau de l'application : par défaut, les requêtes sont <strong>restreintes à votre organisation</strong>, et une requête qui ne précise pas d'organisation ne renvoie rien plutôt que de risquer une fuite. Ce comportement est couvert par des tests automatisés dédiés.</p>
+
+  <h2>Sauvegardes</h2>
+  <p>La base de données fait l'objet de <strong>sauvegardes automatiques quotidiennes</strong> (export complet PostgreSQL), avec <strong>rotation sur 14 jours</strong>. En cas de suppression accidentelle ou d'incident, vos données peuvent être restaurées à partir de ces sauvegardes.</p>
+
+  <h2>Vos données vous appartiennent : l'export</h2>
+  <p>Vous n'êtes jamais prisonnier du logiciel. Mon Chai vous permet d'exporter vos données dans des formats ouverts et réutilisables :</p>
+  <ul>
+    <li><strong>Export CSV</strong> depuis les écrans de l'application (parcelles, stocks, cuves, mouvements, clients, tarifs…) — lisibles dans n'importe quel tableur ;</li>
+    <li><strong>Exports réglementaires</strong> aux formats attendus par l'administration et les interprofessions (CIEL, BIVB, Interloire, GIILDA…) ;</li>
+    <li><strong>Sauvegarde complète</strong> de votre base sur demande, pour une reprise intégrale de votre historique.</li>
+  </ul>
+
+  <div class="sec-phare">
+    <p style="margin:0 0 8px"><strong>Réversibilité : que se passe-t-il si vous partez ?</strong></p>
+    <p style="margin:0; font-size:15px; color:var(--gris)">À la résiliation, vous récupérez l'intégralité de votre historique métier dans des formats structurés (CSV et sauvegarde complète). Vos données sont ensuite supprimées de nos systèmes actifs, sauf obligation légale de conservation. <span class="sec-maj">[Modalités et délais précisés dans nos CGU — à finaliser avec Denis.]</span></p>
+  </div>
+
+  <h2>Un audit de sécurité indépendant</h2>
+  <p>Parce qu'un logiciel jeune doit faire ses preuves plutôt que de les affirmer, Mon Chai a fait l'objet d'un <strong>audit de sécurité technique contradictoire</strong> (revue de code, tests d'intrusion adversariaux, contrôles sur la base de données). Les points identifiés font l'objet de correctifs suivis et vérifiés. Cette démarche de test permanent, rare pour un outil à ce stade, est au cœur de notre manière de travailler.</p>
+
+  <h2>Conformité RGPD</h2>
+  <p>Le traitement de vos données personnelles est décrit dans notre <a href="politique-confidentialite.html">politique de confidentialité</a>. Vous disposez de droits d'accès, de rectification, d'effacement et de portabilité, exerçables à <a href="mailto:contact@monchai.fr">contact@monchai.fr</a>.</p>
+  <p class="sec-maj">Sous-traitants techniques : OVHcloud (hébergement, France). ⚠ À COMPLÉTER avec Denis : fournisseur SMTP e-mail, outils de mesure d'audience et leur localisation, avant mise en ligne.</p>
+
+  <h2>Une question sur la sécurité ?</h2>
+  <p>Nous répondons volontiers à un questionnaire sécurité détaillé avant tout engagement. Écrivez-nous à <a href="mailto:contact@monchai.fr">contact@monchai.fr</a>.</p>
+</main>
+<footer class="legal-foot">
+  <a href="politique-confidentialite.html">Politique de confidentialité</a> ·
+  <a href="mentions-legales.html">Mentions légales</a> ·
+  <a href="index.html">Accueil</a>
+</footer>
+</body>
+</html>

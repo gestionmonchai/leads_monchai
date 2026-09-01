@@ -1,7 +1,7 @@
-    <article class="actu-fiche">
+    <article class="actu-fiche" data-categorie="{{CAT_SLUG}}">
       <a href="{{SLUG}}.html" aria-hidden="true" tabindex="-1"><img class="actu-fiche__img" src="{{IMAGE}}" alt="" loading="lazy"></a>
       <div class="actu-fiche__corps">
-        <span class="actu-tag">{{TAG}}</span>
+        <a class="actu-tag" href="actualites-{{CAT_SLUG}}.html">{{CAT_NOM}}</a>
         <span class="actu-date">Publié le {{DATE_FR}}</span>
         <h2 class="actu-fiche__titre"><a href="{{SLUG}}.html">{{CARTE_TITRE}}</a></h2>
         <p class="actu-fiche__resume">{{CARTE_RESUME}}</p>

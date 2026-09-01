@@ -24,6 +24,8 @@ foreach ($a in $manifest.articles) {
     Replace('{{OG_DESC}}',     $a.description).
     Replace('{{SLUG}}',        $a.slug).
     Replace('{{IMAGE}}',       $a.image).
+    Replace('{{CAT_SLUG}}',     $a.categorie).
+    Replace('{{CAT_NOM_JSON}}', $a.categorie_nom).
     Replace('{{CONTENU}}',     $frag)
   Set-Content (Join-Path $Racine "articles/$($a.fichier).html") $page -NoNewline -Encoding UTF8
 
@@ -32,7 +34,9 @@ foreach ($a in $manifest.articles) {
     Replace('{{IMAGE}}',        $a.image).
     Replace('{{TAG}}',          $a.tag).
     Replace('{{CARTE_TITRE}}',  $a.carte_titre).
-    Replace('{{CARTE_RESUME}}', $a.carte_resume)
+    Replace('{{CARTE_RESUME}}', $a.carte_resume).
+    Replace('{{CAT_SLUG}}',     $a.categorie).
+    Replace('{{CAT_NOM}}',      $a.categorie_nom.Replace('&','&amp;'))
   Set-Content (Join-Path $Racine "articles/$($a.fichier).carte.html") $carte -NoNewline -Encoding UTF8
 
   Write-Host "Assemblé : $($a.fichier)"

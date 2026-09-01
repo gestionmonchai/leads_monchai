@@ -4,6 +4,8 @@
     {
       "ordre": 1,
       "slug": "drm-vin-guide",
+      "categorie": "douane-declarations",
+      "categorie_nom": "Douane & déclarations",
       "fichier": "01-drm-vin-guide",
       "prevu": "2026-09-07",
       "statut": "en_attente",
@@ -20,6 +22,8 @@
     {
       "ordre": 2,
       "slug": "registre-de-cave-vigneron",
+      "categorie": "cave-registres",
+      "categorie_nom": "Cave & registres",
       "fichier": "02-registre-de-cave-vigneron",
       "prevu": "2026-09-14",
       "statut": "en_attente",
@@ -36,6 +40,8 @@
     {
       "ordre": 3,
       "slug": "tracabilite-lots-vin",
+      "categorie": "cave-registres",
+      "categorie_nom": "Cave & registres",
       "fichier": "03-tracabilite-lots-vin",
       "prevu": "2026-09-21",
       "statut": "en_attente",
@@ -52,6 +58,8 @@
     {
       "ordre": 4,
       "slug": "ift-viticulture-calcul",
+      "categorie": "vigne-phyto",
+      "categorie_nom": "Vigne & phyto",
       "fichier": "04-ift-viticulture-calcul",
       "prevu": "2026-09-28",
       "statut": "en_attente",
@@ -68,6 +76,8 @@
     {
       "ordre": 5,
       "slug": "cahier-de-culture-vigne",
+      "categorie": "vigne-phyto",
+      "categorie_nom": "Vigne & phyto",
       "fichier": "05-cahier-de-culture-vigne",
       "prevu": "2026-10-05",
       "statut": "en_attente",
@@ -84,6 +94,8 @@
     {
       "ordre": 6,
       "slug": "declaration-recolte-2026",
+      "categorie": "douane-declarations",
+      "categorie_nom": "Douane & déclarations",
       "fichier": "06-declaration-recolte-2026",
       "prevu": "2026-10-12",
       "statut": "en_attente",
@@ -100,6 +112,8 @@
     {
       "ordre": 7,
       "slug": "dae-daes-gamma2-vin",
+      "categorie": "douane-declarations",
+      "categorie_nom": "Douane & déclarations",
       "fichier": "07-dae-daes-gamma2-vin",
       "prevu": "2026-10-19",
       "statut": "en_attente",
@@ -116,6 +130,8 @@
     {
       "ordre": 8,
       "slug": "capsule-crd-vin",
+      "categorie": "douane-declarations",
+      "categorie_nom": "Douane & déclarations",
       "fichier": "08-capsule-crd-vin",
       "prevu": "2026-10-26",
       "statut": "en_attente",
@@ -132,6 +148,8 @@
     {
       "ordre": 9,
       "slug": "etiquette-vin-mentions-obligatoires",
+      "categorie": "etiquetage-mises",
+      "categorie_nom": "Étiquetage & mises",
       "fichier": "09-etiquette-vin-mentions-obligatoires",
       "prevu": "2026-11-02",
       "statut": "en_attente",
@@ -148,6 +166,8 @@
     {
       "ordre": 10,
       "slug": "qr-code-vin-e-label",
+      "categorie": "etiquetage-mises",
+      "categorie_nom": "Étiquetage & mises",
       "fichier": "10-qr-code-vin-e-label",
       "prevu": "2026-11-09",
       "statut": "en_attente",
@@ -164,6 +184,8 @@
     {
       "ordre": 11,
       "slug": "certiphyto-2027",
+      "categorie": "vigne-phyto",
+      "categorie_nom": "Vigne & phyto",
       "fichier": "11-certiphyto-2027",
       "prevu": "2026-11-16",
       "statut": "en_attente",
@@ -180,6 +202,8 @@
     {
       "ordre": 12,
       "slug": "hve-viticulture",
+      "categorie": "vigne-phyto",
+      "categorie_nom": "Vigne & phyto",
       "fichier": "12-hve-viticulture",
       "prevu": "2026-11-23",
       "statut": "en_attente",
@@ -196,6 +220,8 @@
     {
       "ordre": 13,
       "slug": "vente-au-caveau-regles",
+      "categorie": "oenotourisme-vente-directe",
+      "categorie_nom": "Œnotourisme & vente directe",
       "fichier": "13-vente-au-caveau-regles",
       "prevu": "2026-11-30",
       "statut": "en_attente",
@@ -212,6 +238,8 @@
     {
       "ordre": 14,
       "slug": "choisir-plateforme-agreee-facturation",
+      "categorie": "ventes-facturation",
+      "categorie_nom": "Ventes & facturation",
       "fichier": "14-choisir-plateforme-agreee-facturation",
       "prevu": "2026-12-07",
       "statut": "en_attente",
@@ -228,6 +256,8 @@
     {
       "ordre": 15,
       "slug": "calendrier-declarations-vigneron-2027",
+      "categorie": "douane-declarations",
+      "categorie_nom": "Douane & déclarations",
       "fichier": "15-calendrier-declarations-vigneron-2027",
       "prevu": "2026-12-14",
       "statut": "en_attente",

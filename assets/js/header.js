@@ -16,12 +16,39 @@
   var hd     = document.querySelector('.hd');
   var burger = document.querySelector('.hd__burger');
   if (!hd) return;
+  var menus = [].slice.call(document.querySelectorAll('.hd__menu'));
+
+  function boutonDe(menu) {
+    return menu && menu.querySelector('.hd__declencheur');
+  }
+
+  function fermerMenu(menu) {
+    if (!menu) return;
+    menu.classList.remove('est-ouvert');
+    var bouton = boutonDe(menu);
+    if (bouton) bouton.setAttribute('aria-expanded', 'false');
+  }
+
+  function toutFermer(sauf) {
+    menus.forEach(function (menu) {
+      if (menu !== sauf) fermerMenu(menu);
+    });
+  }
+
+  function ouvrirMenu(menu) {
+    if (!menu) return;
+    toutFermer(menu);
+    menu.classList.add('est-ouvert');
+    var bouton = boutonDe(menu);
+    if (bouton) bouton.setAttribute('aria-expanded', 'true');
+  }
 
 
   /* ---------- 1. Tiroir (petit écran) ---------- */
   function fermerTiroir() {
     hd.classList.remove('est-deploye');
     if (burger) burger.setAttribute('aria-expanded', 'false');
+    toutFermer(null);
   }
 
   if (burger) {
@@ -29,6 +56,15 @@
       e.stopPropagation();
       var ouvert = hd.classList.toggle('est-deploye');
       burger.setAttribute('aria-expanded', ouvert ? 'true' : 'false');
+      if (ouvert) {
+        var menuActif = menus.filter(function (menu) {
+          var bouton = boutonDe(menu);
+          return bouton && bouton.classList.contains('est-actif');
+        })[0];
+        if (menuActif) ouvrirMenu(menuActif);
+      } else {
+        toutFermer(null);
+      }
     });
   }
 
@@ -44,48 +80,43 @@
 
 
   /* ---------- 2. Menus déroulants ---------- */
-  var menus = [].slice.call(document.querySelectorAll('.hd__menu'));
-
-  function toutFermer(sauf) {
-    menus.forEach(function (m) {
-      if (m === sauf) return;
-      m.classList.remove('est-ouvert');
-      var b = m.querySelector('.hd__lien');
-      if (b) b.setAttribute('aria-expanded', 'false');
-    });
-  }
-
   menus.forEach(function (menu) {
-    var bouton = menu.querySelector('.hd__lien');
+    var bouton = boutonDe(menu);
     if (!bouton) return;
     var timer = null;
 
     function ouvrir() {
-      if (!NAV_HORIZ.matches) return;   // sous 900px le sous-menu est déjà déplié
+      if (!NAV_HORIZ.matches) return;   // sous 900px, l'ouverture se fait au clic (accordéon)
       clearTimeout(timer);
-      toutFermer(menu);
-      menu.classList.add('est-ouvert');
-      bouton.setAttribute('aria-expanded', 'true');
-    }
-    function fermer() {
-      menu.classList.remove('est-ouvert');
-      bouton.setAttribute('aria-expanded', 'false');
+      ouvrirMenu(menu);
     }
     // 160 ms : le temps de traverser l'espace entre le lien et le panneau
-    function fermerDiffere() { timer = setTimeout(fermer, 160); }
+    function fermerDiffere() {
+      if (NAV_HORIZ.matches) timer = setTimeout(function () { fermerMenu(menu); }, 160);
+    }
 
     menu.addEventListener('mouseenter', ouvrir);
     menu.addEventListener('mouseleave', fermerDiffere);
 
+    bouton.addEventListener('click', function (e) {
+      e.stopPropagation();
+      menu.classList.contains('est-ouvert') ? fermerMenu(menu) : ouvrirMenu(menu);
+    });
+
     bouton.addEventListener('keydown', function (e) {
-      if (!NAV_HORIZ.matches) return;
-      if (e.key === 'Enter' || e.key === ' ') {
+      if (e.key === 'ArrowDown') {
         e.preventDefault();
-        menu.classList.contains('est-ouvert') ? fermer() : ouvrir();
+        ouvrirMenu(menu);
+        var premierLien = menu.querySelector('.hd__panneau a');
+        if (premierLien) premierLien.focus();
       }
     });
 
-    menu.__fermer = fermer;
+    menu.querySelectorAll('.hd__panneau a').forEach(function (lien) {
+      lien.addEventListener('click', function () {
+        if (!NAV_HORIZ.matches) fermerTiroir();
+      });
+    });
   });
 
   document.addEventListener('keydown', function (e) {

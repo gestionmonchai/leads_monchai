@@ -83,8 +83,8 @@ body.corps-actus *{ box-sizing:border-box; }
   body.corps-actus .hd__menu{ position:relative; left:auto; top:auto; }
   body.corps-actus .hd__menu::after{ left:-18px; top:100%; width:243px; height:18px; }
   body.corps-actus .hd__panneau{
-    left:-18px; top:calc(100% + 14px);
-    width:243px; padding:14px 0; margin:0; border-radius:10px;
+    left:var(--hd-dx); top:calc(100% + 14px);
+    width:var(--hd-dw); padding:14px 0; margin:0; border-radius:10px;
   }
   body.corps-actus .hd__panneau a{ padding:0 20px; font-size:15px; line-height:40px; }
 

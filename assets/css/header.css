@@ -77,7 +77,6 @@
 .hd__lien:hover{ color:var(--hd-cuivre-f); }
 
 .hd__lien--solutions{ left:650px; }
-.hd__lien--tarifs{ left:819px; }
 
 .hd__lien.est-actif{ color:var(--hd-texte); font-weight:600; letter-spacing:-.02em; }
 
@@ -132,8 +131,8 @@
 
 /* ---------- Menus déroulants ----------
    Composant Figma « Menu déroulant » : panneau 243 × 348.
-   Deux menus l'utilisent : « Le logiciel » (les 8 pages + l'assistant IA) et
-   « À propos » (à propos, FAQ, actualité). D'où le paramétrage par variables
+   Quatre menus l'utilisent : « Le logiciel », « Tarifs », « Actualités »
+   et « À propos ». D'où le paramétrage par variables
    plutôt que des coordonnées en dur : --hd-x place l'entrée, --hd-dx et
    --hd-dw le panneau sous elle.
    Le panneau est posé SOUS le filet du header et non à cheval dessus comme
@@ -173,13 +172,16 @@
 .hd__panneau a:hover{ color:var(--hd-cuivre-f); background:var(--hd-creme); }
 .hd__panneau a[aria-current="page"]{ color:var(--hd-cuivre-f); font-weight:600; }
 
+/* Filet de regroupement dans les panneaux */
+.hd__sep{ height:1px; margin:8px 18px; background:var(--hd-bord-doux); }
+
 
 /* ---------- Entrée « Actualités » ----------
    Troisième menu déroulant : sur grand écran il vit à x946 et « À propos »
    glisse à x1122. Le palier 900→1199 est calibré au plus serré (à 900px la
    rangée occupait déjà 628px sur 684 disponibles) : une entrée de plus y
-   déborde. À ce palier, le menu disparaît donc de la rangée et ses deux
-   liens réapparaissent dans le panneau « À propos », où ils sont dupliqués
+   déborde. À ce palier, le menu disparaît donc de la rangée et son lien
+   d'index réapparaît dans le panneau « À propos », où il est dupliqué
    dans le balisage avec la classe .hd__actu-repli. */
 .hd__actu-repli{ display:none; }
 @media (min-width:900px) and (max-width:1199px){

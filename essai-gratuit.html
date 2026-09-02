@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+
+<title>Essayer gratuitement Mon Chai : 30 jours, sans carte bancaire</title>
+<meta name="description" content="Essayez gratuitement le logiciel viticole Mon Chai : gratuit jusqu'au 31 octobre 2026 avec le programme bêta-test, puis 30 jours d'essai sans carte bancaire ni engagement.">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<link rel="canonical" href="https://monchai.fr/essai-gratuit.html">
+
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://monchai.fr/essai-gratuit.html">
+<meta property="og:title" content="Essayer gratuitement Mon Chai : 30 jours, sans carte bancaire">
+<meta property="og:description" content="Testez le logiciel viticole sur vos propres données. Sans carte bancaire, sans engagement, avec vos données exportables à tout moment.">
+<meta property="og:image" content="https://monchai.fr/assets/img/vignes_2.jpg">
+<meta property="og:locale" content="fr_FR">
+<meta property="og:site_name" content="Mon Chai">
+
+<link rel="icon" type="image/png" href="assets/img/logo_mon_chai.png">
+<meta name="theme-color" content="#7B1E22">
+
+<!-- Les questions reprennent mot pour mot celles de faq.html et tarifs.html
+     quand elles existent déjà : une réponse, une formulation. -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "inLanguage": "fr",
+  "mainEntity": [
+    { "@type": "Question", "name": "Mon Chai est-il gratuit ?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Jusqu'au 31 octobre 2026, oui : le programme bêta-test donne accès à tout le logiciel sans payer et sans moyen de paiement. Ensuite, Mon Chai est un logiciel payant, 49 € HT par mois, avec 30 jours d'essai gratuit pour le tester sur vos propres données." } },
+    { "@type": "Question", "name": "Faut-il une carte bancaire pour essayer Mon Chai ?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Non. La création du compte ne demande aucun moyen de paiement. Vous entrez votre nom, votre domaine et votre adresse e-mail, et vous commencez à travailler." } },
+    { "@type": "Question", "name": "Que se passe-t-il à la fin de l'essai gratuit ?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Rien d'automatique. Aucune carte bancaire ne vous a été demandée, donc rien ne peut être prélevé. Vous choisissez librement de continuer ou d'arrêter, et vous repartez avec vos données." } },
+    { "@type": "Question", "name": "Y a-t-il un engagement ou des frais cachés ?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Non. L'abonnement est mensuel et résiliable à tout moment. Seules la formation et la reprise de données sont facturées à part, en option, et toujours annoncées avant." } },
+    { "@type": "Question", "name": "Peut-on récupérer ses données si on arrête ?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Oui. Vos données vous appartiennent et s'exportent à tout moment en CSV et en PDF, gratuitement, sans avoir à le demander." } },
+    { "@type": "Question", "name": "Existe-t-il un logiciel viticole gratuit ?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Il existe des outils gratuits, à commencer par le tableur, et des versions limitées de logiciels payants. Ils tiennent tant que le domaine reste petit et que les obligations restent simples. Le registre phytosanitaire numérique exigible au 1er janvier 2027, la comptabilité matière et la traçabilité des lots demandent des données reliées entre elles, ce qu'un tableur ne garantit pas. Mon Chai n'est pas gratuit, mais il s'essaie gratuitement, sur vos données, avant toute décision." } }
+  ]
+}
+</script>
+
+<link rel="stylesheet" href="assets/css/polices.css">
+<link rel="stylesheet" href="assets/css/header.css">
+<link rel="stylesheet" href="assets/css/actus.css">
+<link rel="stylesheet" href="assets/css/pied.css">
+<style>
+/* Mêmes dépliants que faq.html : natifs (details/summary), aucun script. */
+.faq-page details{
+  background:#fff;
+  border:1px solid rgba(223,183,128,.55);
+  border-radius:16px;
+  box-shadow:0 6px 18px rgba(111,29,45,.05);
+  margin:12px 0;
+}
+.faq-page summary{
+  list-style:none;
+  display:flex; align-items:center; justify-content:space-between; gap:16px;
+  padding:18px 20px;
+  cursor:pointer;
+  font-family:"Playfair Display",Georgia,serif;
+  font-size:20px; line-height:1.3; font-weight:500;
+  color:#7B1E22;
+}
+.faq-page summary::-webkit-details-marker{ display:none; }
+.faq-page summary::after{
+  content:"+";
+  flex:0 0 auto;
+  display:flex; align-items:center; justify-content:center;
+  width:32px; height:32px;
+  border-radius:50%;
+  background:rgba(223,183,128,.22);
+  font-family:Inter,system-ui,sans-serif; font-size:20px; font-weight:400;
+}
+.faq-page details[open] summary::after{ content:"–"; background:rgba(223,183,128,.4); }
+.faq-page details > div{ padding:0 20px 18px; }
+.faq-page details > div p{ margin:0 0 10px; }
+.faq-page details > div p:last-child{ margin-bottom:0; }
+.faq-page h2{ margin-top:40px; }
+
+/* Les trois promesses de l'essai, en tête de page. */
+.essai-points{
+  display:grid; gap:14px;
+  grid-template-columns:repeat(3, 1fr);
+  margin:28px 0 8px;
+  padding:0; list-style:none;
+}
+.essai-points li{
+  background:#fff;
+  border:1px solid rgba(223,183,128,.55);
+  border-radius:16px;
+  box-shadow:0 6px 18px rgba(111,29,45,.05);
+  padding:18px 20px;
+}
+.essai-points strong{
+  display:block;
+  font-family:"Playfair Display",Georgia,serif;
+  font-size:19px; font-weight:500; color:#7B1E22;
+  margin-bottom:6px;
+}
+@media (max-width:760px){
+  .essai-points{ grid-template-columns:1fr; }
+}
+</style>
+</head>
+<body class="corps-actus">
+
+<!-- ============ HEADER (composant partagé, repassé en flux par actus.css) ============ -->
+<header class="hd">
+  <a class="hd__logo" href="index.html"><img src="assets/img/logo-header.webp" alt="Mon Chai, logiciel viticole" width="263" height="85"></a>
+
+  <button class="hd__burger" type="button" aria-label="Ouvrir le menu"
+          aria-expanded="false" aria-controls="nav-principale">
+    <span></span><span></span><span></span>
+  </button>
+
+  <div class="hd__barre" id="nav-principale">
+    <nav class="hd__menu" style="--hd-x:468px; --hd-dx:-71px; --hd-dw:243px" aria-label="Le logiciel">
+      <a class="hd__lien" href="fonctionnalites.html" aria-haspopup="true" aria-expanded="false">Le logiciel</a>
+      <div class="hd__panneau">
+        <a href="fonctionnalites.html">Toutes les fonctionnalités</a>
+        <div class="hd__sep"></div>
+        <a href="vigne-vendanges.html">Vigne &amp; vendanges</a>
+        <a href="cave-vinification.html">Cave &amp; vinification</a>
+        <a href="mises-conditionnement.html">Conditionnement &amp; mises</a>
+        <a href="stocks-tracabilite.html">Stocks &amp; traçabilité</a>
+        <a href="ventes-clients.html">Ventes, clients &amp; facturation</a>
+        <a href="drm-conformite.html">DRM &amp; conformité</a>
+        <a href="oenotourisme.html">Œnotourisme</a>
+        <div class="hd__sep"></div>
+        <a href="index.html#assistant">Assistant IA</a>
+      </div>
+    </nav>
+
+    <a class="hd__lien hd__lien--solutions" href="index.html#parcours">Solutions</a>
+
+    <nav class="hd__menu" style="--hd-x:819px; --hd-dx:-90px; --hd-dw:243px" aria-label="Tarifs et essai gratuit">
+      <a class="hd__lien est-actif" href="tarifs.html" aria-haspopup="true" aria-expanded="false">Tarifs</a>
+      <div class="hd__panneau">
+        <a href="tarifs.html">Nos tarifs</a>
+        <a href="essai-gratuit.html" aria-current="page">Lessai gratuit</a>
+        <a href="choisir-logiciel-viticole.html">Bien choisir son logiciel</a>
+      </div>
+    </nav>
+
+    <nav class="hd__menu hd__menu--actus" style="--hd-x:946px; --hd-dx:-68px; --hd-dw:243px" aria-label="Actualités">
+      <a class="hd__lien" href="actualites-reglementaires.html" aria-haspopup="true" aria-expanded="false">Actualités</a>
+      <div class="hd__panneau">
+        <a href="actualites-reglementaires.html">Toutes les actualités</a>
+        <div class="hd__sep"></div>
+        <a href="actualites-vigne-phyto.html">Vigne &amp; phyto</a>
+        <a href="actualites-cave-registres.html">Cave &amp; registres</a>
+        <a href="actualites-etiquetage-mises.html">Étiquetage &amp; mises</a>
+        <a href="actualites-ventes-facturation.html">Ventes &amp; facturation</a>
+        <a href="actualites-douane-declarations.html">Douane &amp; déclarations</a>
+        <a href="actualites-oenotourisme-vente-directe.html">Œnotourisme &amp; vente directe</a>
+      </div>
+    </nav>
+
+    <nav class="hd__menu" style="--hd-x:1122px; --hd-dx:-55px; --hd-dw:200px" aria-label="À propos">
+      <a class="hd__lien" href="index.html#apropos-faq" aria-haspopup="true" aria-expanded="false">À propos</a>
+      <div class="hd__panneau">
+        <a href="index.html#apropos">Qui sommes-nous</a>
+        <a href="index.html#actualite">Notre actualité</a>
+        <a href="faq.html">FAQ</a>
+        <a href="actualites-reglementaires.html" class="hd__actu-repli">Actualités réglementaires</a>
+        <a href="contact.html">Nous contacter</a>
+      </div>
+    </nav>
+
+    <a class="hd__connexion" href="https://tester.monchai.fr">Me Connecter</a>
+    <a class="hd__cta" href="https://tester.monchai.fr">Essayer gratuitement</a>
+    <button class="hd__langue" type="button">FR<span class="hd__chev"></span></button>
+  </div>
+</header>
+
+<!-- ============ ESSAI GRATUIT ============ -->
+<main class="article faq-page">
+  <p class="article__ariane"><a href="index.html">Accueil</a> › <a href="tarifs.html">Tarifs</a> › Essai gratuit</p>
+
+  <h1>Essayer Mon Chai gratuitement</h1>
+
+  <p class="article__chapo">Vous créez votre compte, vous testez le logiciel viticole sur les données de votre domaine, et vous décidez ensuite. Sans carte bancaire, sans engagement, sans relance automatique.</p>
+
+  <ul class="essai-points">
+    <li><strong>Sans carte bancaire</strong>Aucun moyen de paiement demandé à la création du compte.</li>
+    <li><strong>Sans engagement</strong>L'abonnement est mensuel et s'arrête quand vous le décidez.</li>
+    <li><strong>Vos données restent à vous</strong>Export en CSV et en PDF à tout moment, gratuitement.</li>
+  </ul>
+
+  <h2>Gratuit jusqu'au 31 octobre 2026</h2>
+
+  <p>Mon Chai est en programme bêta-test jusqu'au 31 octobre 2026. Pendant cette période, l'accès au logiciel est gratuit, sans moyen de paiement, et le transfert de vos données comme la formation sont compris. En contrepartie, nous vous demandons vos retours : ce sont eux qui décident de ce que nous construisons ensuite.</p>
+
+  <p>Les domaines qui rejoignent le bêta-test conservent le tarif de lancement à 49 € HT par mois pendant un an. Le détail est sur la page <a href="tarifs.html">Tarifs</a>.</p>
+
+  <h2>Puis 30 jours d'essai gratuit, sans carte bancaire</h2>
+
+  <p>À partir du 1<sup>er</sup> novembre 2026, la création d'un compte ouvre 30 jours d'essai gratuit. Aucun moyen de paiement n'est demandé pour démarrer. À la fin des 30 jours, rien ne se déclenche tout seul : puisque aucune carte n'a été enregistrée, rien ne peut être prélevé. Vous choisissez de continuer ou d'arrêter.</p>
+
+  <h2>Ce que comprend l'essai</h2>
+
+  <p>L'essai donne accès au logiciel complet, pas à une version réduite :</p>
+
+  <ul>
+    <li>Vigne et vendanges : parcelles, journal des travaux, registre phytosanitaire numérique conforme 2027, intrants synchronisés avec les autorisations de mise sur le marché de l'Anses.</li>
+    <li>Cave et vinification : cuverie, lots techniques, opérations, analyses.</li>
+    <li>Stocks et traçabilité, conditionnement et mises.</li>
+    <li>Ventes, clients et facturation.</li>
+    <li>DRM et conformité : registre de cave, comptabilité matière, données prêtes pour le portail DTI+.</li>
+    <li>Œnotourisme et ventes au caveau.</li>
+    <li>L'assistant IA en français, opéré sur nos serveurs en France.</li>
+  </ul>
+
+  <p>La liste complète est sur la page <a href="fonctionnalites.html">Toutes les fonctionnalités</a>.</p>
+
+  <h2>Un logiciel viticole gratuit, est-ce que ça existe ?</h2>
+
+  <p>Oui, à condition de savoir ce qu'on y gagne et ce qu'on y perd. Le tableur est gratuit, et il rend de vrais services tant que le domaine reste petit. Certains logiciels payants proposent aussi une version gratuite limitée en volumes ou en modules.</p>
+
+  <p>La difficulté arrive avec les obligations. Le registre phytosanitaire devient numérique au 1<sup>er</sup> janvier 2027 et doit s'exporter dans un format précis. La comptabilité matière qui alimente la DRM suppose que les entrées, les sorties et les pertes soient reliées aux mêmes lots. La traçabilité demande de retrouver une bouteille jusqu'à sa parcelle. Ce sont des données liées entre elles, et un classeur les tient rarement longtemps sans double saisie.</p>
+
+  <p>Mon Chai n'est pas un logiciel gratuit. Il est gratuit à essayer, sur vos propres données, aussi longtemps que dure le bêta-test, puis 30 jours. C'est la seule façon honnête de savoir s'il vous fait gagner du temps.</p>
+
+  <h2>Comment démarrer</h2>
+
+  <ol>
+    <li>Vous créez votre compte sur <a href="https://tester.monchai.fr">tester.monchai.fr</a>, sans moyen de paiement.</li>
+    <li>Vous nous envoyez vos fichiers existants si vous en avez : nous reprenons vos parcelles, vos contenants et vos clients pour que vous testiez sur du réel.</li>
+    <li>Vous travaillez dans le logiciel, et vous nous dites ce qui va et ce qui ne va pas.</li>
+  </ol>
+
+  <div class="article-cta">
+    <p class="article-cta__titre">Essayez sur vos propres données</p>
+    <p>Le bêta-test est gratuit jusqu'au 31 octobre 2026, transfert de données et formation inclus, sans moyen de paiement.</p>
+    <div class="article-cta__actions">
+      <a class="article-cta__btn" href="https://tester.monchai.fr">Créer mon compte gratuitement</a>
+      <a class="article-cta__lien" href="contact.html">Poser une question avant de commencer</a>
+    </div>
+  </div>
+
+  <h2>Questions fréquentes sur l'essai gratuit</h2>
+
+  <details>
+    <summary>Mon Chai est-il gratuit ?</summary>
+    <div><p>Jusqu'au 31 octobre 2026, oui : le programme bêta-test donne accès à tout le logiciel sans payer et sans moyen de paiement. Ensuite, Mon Chai est un logiciel payant, 49 € HT par mois, avec 30 jours d'essai gratuit pour le tester sur vos propres données.</p></div>
+  </details>
+  <details>
+    <summary>Faut-il une carte bancaire pour essayer Mon Chai ?</summary>
+    <div><p>Non. La création du compte ne demande aucun moyen de paiement. Vous entrez votre nom, votre domaine et votre adresse e-mail, et vous commencez à travailler.</p></div>
+  </details>
+  <details>
+    <summary>Que se passe-t-il à la fin de l'essai gratuit ?</summary>
+    <div><p>Rien d'automatique. Aucune carte bancaire ne vous a été demandée, donc rien ne peut être prélevé. Vous choisissez librement de continuer ou d'arrêter, et vous repartez avec vos données.</p></div>
+  </details>
+  <details>
+    <summary>Y a-t-il un engagement ou des frais cachés ?</summary>
+    <div><p>Non. L'abonnement est mensuel et résiliable à tout moment. Seules la formation et la reprise de données sont facturées à part, en option, et toujours annoncées avant. Le détail figure sur la page <a href="tarifs.html">Tarifs</a>.</p></div>
+  </details>
+  <details>
+    <summary>Peut-on récupérer ses données si on arrête ?</summary>
+    <div><p>Oui. Vos données vous appartiennent et s'exportent à tout moment en CSV et en PDF, gratuitement, sans avoir à le demander.</p></div>
+  </details>
+  <details>
+    <summary>Existe-t-il un logiciel viticole gratuit ?</summary>
+    <div><p>Il existe des outils gratuits, à commencer par le tableur, et des versions limitées de logiciels payants. Ils tiennent tant que le domaine reste petit et que les obligations restent simples. Le registre phytosanitaire numérique exigible au 1<sup>er</sup> janvier 2027, la comptabilité matière et la traçabilité des lots demandent des données reliées entre elles, ce qu'un tableur ne garantit pas. Mon Chai n'est pas gratuit, mais il s'essaie gratuitement, sur vos données, avant toute décision.</p></div>
+  </details>
+
+  <section class="article__suite">
+    <h2>Pour aller plus loin</h2>
+    <ul>
+      <li><a href="tarifs.html">Tarifs et programme bêta-test</a></li>
+      <li><a href="fonctionnalites.html">Toutes les fonctionnalités de Mon Chai</a></li>
+      <li><a href="faq.html">Toutes les questions fréquentes</a></li>
+      <li><a href="registre-phyto-numerique-2027.html">Registre phytosanitaire numérique : obligatoire au 1<sup>er</sup> janvier 2027</a></li>
+    </ul>
+  </section>
+</main>
+
+<!-- ============ PIED DE PAGE (composant partagé) ============ -->
+<footer class="pied">
+  <div class="pied__haut">
+    <div class="pied__marque">
+      <p class="pied__nom">Mon Chai</p>
+      <p class="pied__sous">Logiciel viticole</p>
+      <p class="pied__phrase">La gestion du domaine, de la vigne à la vente.</p>
+      <p class="pied__fr">Développé et hébergé en France</p>
+      <div class="pied__suivre">
+        <p class="pied__suivre-titre">Nous suivre</p>
+        <div class="pied__reseaux">
+          <a href="https://www.instagram.com/monchai.fr/" target="_blank" rel="noopener noreferrer" aria-label="Suivre Mon Chai sur Instagram"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle class="pied__reseau-point" cx="17.4" cy="6.7" r="1.1"/></svg></a>
+          <a href="https://www.linkedin.com/company/monchai" target="_blank" rel="noopener noreferrer" aria-label="Suivre Mon Chai sur LinkedIn"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5.2 8.2H2.1V22h3.1V8.2ZM3.7 2A1.8 1.8 0 1 0 3.7 5.6 1.8 1.8 0 0 0 3.7 2ZM22 14.1c0-4.2-2.2-6.2-5.2-6.2-2.4 0-3.5 1.3-4.1 2.2V8.2H9.6V22h3.1v-6.8c0-1.8.3-3.6 2.6-3.6 2.2 0 2.3 2.1 2.3 3.7V22H22v-7.9Z"/></svg></a>
+        </div>
+      </div>
+    </div>
+
+    <nav class="pied__col" aria-label="Le logiciel">
+      <h2>Le logiciel</h2>
+      <ul>
+        <li><a href="fonctionnalites.html">Toutes les fonctionnalités</a></li>
+        <li><a href="vigne-vendanges.html">Vigne &amp; vendanges</a></li>         <li><a href="cave-vinification.html">Cave &amp; vinification</a></li>         <li><a href="mises-conditionnement.html">Conditionnement &amp; mises</a></li>         <li><a href="stocks-tracabilite.html">Stocks &amp; traçabilité</a></li>         <li><a href="ventes-clients.html">Ventes, clients &amp; facturation</a></li>         <li><a href="drm-conformite.html">DRM &amp; conformité</a></li>         <li><a href="oenotourisme.html">Œnotourisme</a></li>
+        <li><a href="index.html#assistant">Assistant IA</a></li>
+      </ul>
+    </nav>
+
+    <nav class="pied__col" aria-label="Société">
+      <h2>Société</h2>
+      <ul>
+        <li><a href="tarifs.html">Tarifs</a></li>
+        <li><a href="essai-gratuit.html">Essai gratuit</a></li>
+        <li><a href="choisir-logiciel-viticole.html">Bien choisir son logiciel</a></li>
+        <li><a href="essai-gratuit.html" aria-current="page">Essai gratuit</a></li>
+        <li><a href="choisir-logiciel-viticole.html">Bien choisir son logiciel</a></li>
+        <li><a href="index.html#apropos">À propos</a></li>
+        <li><a href="faq.html">FAQ</a></li>
+        <li><a href="index.html#actualite">Notre actualité</a></li>
+        <li><a href="actualites-reglementaires.html">Actualités réglementaires</a></li>
+        <li><a href="contact.html">Nous contacter</a></li>
+      </ul>
+    </nav>
+
+    <nav class="pied__col" aria-label="Légal">
+      <h2>Légal</h2>
+      <ul>
+        <li><a href="mentions-legales.html">Mentions légales</a></li>
+        <li><a href="politique-confidentialite.html">Politique de confidentialité</a></li>
+        <li><a href="cgu.html">CGUV</a></li>
+      </ul>
+    </nav>
+  </div>
+
+  <div class="pied__bas">
+    <p>© 2026 Mon Chai. Tous droits réservés.</p>
+    <p>Membre de <a href="https://www.lawinetech.com/" target="_blank" rel="noopener">La WineTech</a> et du <a href="https://lepoool.tech/" target="_blank" rel="noopener">Poool</a>. Imaginé et développé à Rennes.</p>
+  </div>
+</footer>
+
+<script src="assets/js/header.js"></script>
+</body>
+</html>

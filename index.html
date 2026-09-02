@@ -6,7 +6,7 @@
 
 <!-- SEO -->
 <title>Mon Chai, logiciel de gestion viticole | De la vigne à la vente</title>
-<meta name="description" content="Mon Chai, logiciel viticole : DRM prête pour le DTI+, registre de cave, registre phytosanitaire 2027 avec les AMM de l'Anses à jour, stocks, ventes et clients.">
+<meta name="description" content="Mon Chai, logiciel viticole : DRM prête pour le DTI+, registre de cave, registre phyto 2027, AMM de l'Anses à jour. Essai gratuit, sans carte bancaire.">
 <meta name="keywords" content="gestion viticole, logiciel viticole, chai, vin, viticulture, parcelles, vendanges, cuverie, stocks, DRM, traçabilité, Mon Chai">
 <meta name="author" content="Berthelot &amp; Hallais">
 <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
@@ -118,9 +118,9 @@
      défilement vers le bas et revient au défilement vers le haut.
 
      L'ancien header était une image SVG surmontée de zones cliquables. Il
-     comptait 6 entrées à plat ; le nouveau en compte 4, dont deux ouvrent un
-     sous-menu : c'est là que sont reprises Assistant IA, FAQ et Actualité,
-     qui n'ont plus d'entrée propre dans la maquette.
+     comptait 6 entrées à plat ; le nouveau en compte 5, dont quatre ouvrent
+     un sous-menu : Le logiciel, Tarifs (essai gratuit, guide d'achat),
+     Actualités et À propos regroupent chacun les pages de leur univers.
      ================================================================ -->
 <div class="site-header" id="siteHeader">
   <header class="hd">
@@ -136,30 +136,40 @@
         <a class="hd__lien" href="fonctionnalites.html" aria-haspopup="true" aria-expanded="false">Le logiciel</a>
         <div class="hd__panneau">
           <a href="fonctionnalites.html">Toutes les fonctionnalités</a>
+          <div class="hd__sep"></div>
           <a href="vigne-vendanges.html">Vigne &amp; vendanges</a>
           <a href="cave-vinification.html">Cave &amp; vinification</a>
+          <a href="mises-conditionnement.html">Conditionnement &amp; mises</a>
           <a href="stocks-tracabilite.html">Stocks &amp; traçabilité</a>
           <a href="ventes-clients.html">Ventes, clients &amp; facturation</a>
           <a href="drm-conformite.html">DRM &amp; conformité</a>
-          <a href="mises-conditionnement.html">Conditionnement &amp; mises</a>
           <a href="oenotourisme.html">Œnotourisme</a>
+          <div class="hd__sep"></div>
           <a href="#assistant">Assistant IA</a>
         </div>
       </nav>
 
       <a class="hd__lien hd__lien--solutions" href="#parcours">Solutions</a>
-      <a class="hd__lien hd__lien--tarifs" href="tarifs.html">Tarifs</a>
+
+      <nav class="hd__menu" style="--hd-x:819px; --hd-dx:-90px; --hd-dw:243px" aria-label="Tarifs et essai gratuit">
+        <a class="hd__lien" href="tarifs.html" aria-haspopup="true" aria-expanded="false">Tarifs</a>
+        <div class="hd__panneau">
+          <a href="tarifs.html">Nos tarifs</a>
+          <a href="essai-gratuit.html">Lessai gratuit</a>
+          <a href="choisir-logiciel-viticole.html">Bien choisir son logiciel</a>
+        </div>
+      </nav>
 
       <nav class="hd__menu hd__menu--actus" style="--hd-x:946px; --hd-dx:-68px; --hd-dw:243px" aria-label="Actualités">
         <a class="hd__lien" href="actualites-reglementaires.html" aria-haspopup="true" aria-expanded="false">Actualités</a>
         <div class="hd__panneau">
-          <a href="#actualite">Notre actualité</a>
-          <a href="actualites-reglementaires.html">Actualités réglementaires</a>
+          <a href="actualites-reglementaires.html">Toutes les actualités</a>
+          <div class="hd__sep"></div>
           <a href="actualites-vigne-phyto.html">Vigne &amp; phyto</a>
           <a href="actualites-cave-registres.html">Cave &amp; registres</a>
-          <a href="actualites-douane-declarations.html">Douane &amp; déclarations</a>
           <a href="actualites-etiquetage-mises.html">Étiquetage &amp; mises</a>
           <a href="actualites-ventes-facturation.html">Ventes &amp; facturation</a>
+          <a href="actualites-douane-declarations.html">Douane &amp; déclarations</a>
           <a href="actualites-oenotourisme-vente-directe.html">Œnotourisme &amp; vente directe</a>
         </div>
       </nav>
@@ -167,16 +177,14 @@
       <nav class="hd__menu" style="--hd-x:1122px; --hd-dx:-55px; --hd-dw:200px" aria-label="À propos">
         <a class="hd__lien" href="#apropos-faq" aria-haspopup="true" aria-expanded="false">À propos</a>
         <div class="hd__panneau">
-          <a href="#apropos">À propos</a>
-          <a href="#faq">FAQ</a>
-          <a href="#actualite" class="hd__actu-repli">Notre actualité</a>
+          <a href="#apropos">Qui sommes-nous</a>
+          <a href="#actualite">Notre actualité</a>
+          <a href="faq.html">FAQ</a>
           <a href="actualites-reglementaires.html" class="hd__actu-repli">Actualités réglementaires</a>
           <a href="contact.html">Nous contacter</a>
         </div>
       </nav>
 
-      <!-- Pas encore d'espace de connexion : lien volontairement inerte,
-           comme sur les 8 pages « Le logiciel ». -->
       <a class="hd__connexion" href="https://tester.monchai.fr">Me Connecter</a>
       <a class="hd__cta" href="https://tester.monchai.fr">Essayer gratuitement</a>
       <button class="hd__langue" type="button">FR<span class="hd__chev"></span></button>
@@ -532,6 +540,7 @@
           <li>+15&nbsp;€ HT par utilisateur supplémentaire</li>
         </ul>
         <a class="m-lien" href="tarifs.html">Voir l’offre détaillée</a>
+        <a class="m-lien" href="essai-gratuit.html">Comment se passe l’essai gratuit</a>
       </div>
     </div>
 
@@ -745,13 +754,7 @@
         <h2>Le logiciel</h2>
         <ul>
           <li><a href="fonctionnalites.html">Toutes les fonctionnalités</a></li>
-          <li><a href="vigne-vendanges.html">Vigne &amp; vendanges</a></li>
-          <li><a href="cave-vinification.html">Cave &amp; vinification</a></li>
-          <li><a href="stocks-tracabilite.html">Stocks &amp; traçabilité</a></li>
-          <li><a href="ventes-clients.html">Ventes, clients &amp; facturation</a></li>
-          <li><a href="drm-conformite.html">DRM &amp; conformité</a></li>
-          <li><a href="mises-conditionnement.html">Conditionnement &amp; mises</a></li>
-          <li><a href="oenotourisme.html">Œnotourisme</a></li>
+          <li><a href="vigne-vendanges.html">Vigne &amp; vendanges</a></li>           <li><a href="cave-vinification.html">Cave &amp; vinification</a></li>           <li><a href="mises-conditionnement.html">Conditionnement &amp; mises</a></li>           <li><a href="stocks-tracabilite.html">Stocks &amp; traçabilité</a></li>           <li><a href="ventes-clients.html">Ventes, clients &amp; facturation</a></li>           <li><a href="drm-conformite.html">DRM &amp; conformité</a></li>           <li><a href="oenotourisme.html">Œnotourisme</a></li>
           <li><a href="#assistant">Assistant IA</a></li>
         </ul>
       </nav>
@@ -760,6 +763,8 @@
         <h2>Société</h2>
         <ul>
           <li><a href="tarifs.html">Tarifs</a></li>
+          <li><a href="essai-gratuit.html">Essai gratuit</a></li>
+          <li><a href="choisir-logiciel-viticole.html">Bien choisir son logiciel</a></li>
           <li><a href="#apropos">À propos</a></li>
           <li><a href="#faq">FAQ</a></li>
           <li><a href="#actualite">Notre actualité</a></li>

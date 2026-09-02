@@ -1,8 +1,8 @@
 /* =========================================================
    Mon Chai, header partagé
-   Chargé par index.html et par les 8 pages « Le logiciel ».
+   Chargé par toutes les pages publiques dotées du header partagé.
    1. tiroir de navigation (bouton menu, sous 900px)
-   2. menus déroulants « Le logiciel » et « À propos » (au-dessus de 900px)
+   2. menus déroulants de la rangée principale (au-dessus de 900px)
    ========================================================= */
 
 (function () {

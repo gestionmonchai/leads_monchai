@@ -1,0 +1,661 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<title>Comment choisir son logiciel viticole - Guide pratique Mon Chai</title>
+<!-- Source du PDF. Cette page n'est pas destinée à être visitée : elle sert
+     uniquement à produire assets/docs/guide-choisir-logiciel-viticole.pdf
+     (Chrome --headless --print-to-pdf). D'où le noindex : le contenu public
+     est la page choisir-logiciel-viticole.html. -->
+<meta name="robots" content="noindex, nofollow">
+<link rel="stylesheet" href="../css/polices.css">
+<style>
+@page{ size:A4; margin:19mm 17mm 16mm; }
+
+:root{
+  --bordeaux:#7B1E22;
+  --lie:#471318;
+  --encre:#211B18;
+  --gris:#463c37;
+  --gris-doux:#8a7f78;
+  --or:#DFB780;
+  --cuivre:#C99159;
+  --cuivre-f:#A85D35;
+  --creme:#FFF9F4;
+  --bord:#F3EAE1;
+  --serif:"Playfair Display", Georgia, serif;
+  --sans:"Inter", system-ui, sans-serif;
+}
+
+*{ box-sizing:border-box; print-color-adjust:exact; -webkit-print-color-adjust:exact; }
+
+body{
+  margin:0;
+  font-family:var(--sans);
+  font-size:10.4pt; line-height:1.55;
+  color:var(--gris);
+}
+
+h1,h2,h3{ font-family:var(--serif); color:var(--bordeaux); font-weight:500; }
+p{ margin:0 0 8pt; }
+strong{ color:var(--encre); font-weight:600; }
+ul,ol{ margin:0 0 10pt; padding-left:15pt; }
+li{ margin:4pt 0; }
+
+/* ---------- Couverture ---------- */
+.couv{
+  break-after:page;
+  height:250mm;
+  display:flex; flex-direction:column;
+}
+.couv__logo{ width:46mm; margin-bottom:38mm; }
+.couv__kicker{
+  font-family:var(--sans); font-weight:600; font-size:8.5pt;
+  letter-spacing:.22em; text-transform:uppercase;
+  color:var(--cuivre-f); margin:0 0 9mm;
+}
+.couv__filet{ width:34mm; height:2px; background:var(--or); margin:0 0 9mm; }
+.couv h1{
+  font-size:31pt; line-height:1.12; margin:0 0 8mm;
+  max-width:150mm;
+}
+.couv__sous{
+  font-size:12pt; line-height:1.55; color:var(--gris);
+  max-width:135mm; margin:0 0 14mm;
+}
+.couv__note{
+  background:var(--creme); border:1px solid rgba(223,183,128,.6);
+  border-left:3px solid var(--or); border-radius:3mm;
+  padding:6mm 7mm; max-width:135mm;
+  font-size:10pt;
+}
+.couv__note p:last-child{ margin-bottom:0; }
+.couv__pied{
+  margin-top:auto;
+  border-top:1px solid var(--bord); padding-top:5mm;
+  font-size:9pt; color:var(--gris-doux);
+  display:flex; justify-content:space-between;
+}
+
+/* ---------- Sommaire ---------- */
+.som{ break-after:page; }
+.som ol{ list-style:none; padding:0; margin:0; counter-reset:s; }
+.som li{
+  counter-increment:s;
+  display:flex; gap:6mm; align-items:baseline;
+  padding:3.2mm 0; border-bottom:1px solid var(--bord);
+  font-size:11pt;
+}
+.som li::before{
+  content:counter(s);
+  flex:0 0 8mm;
+  font-family:var(--sans); font-weight:600; font-size:9.5pt;
+  color:var(--cuivre);
+}
+.som li span{ color:var(--gris-doux); font-size:9.5pt; margin-left:auto; }
+
+/* ---------- Chapitres ---------- */
+.chap{ break-before:page; }
+.chap__num{
+  font-family:var(--sans); font-weight:600; font-size:8.5pt;
+  letter-spacing:.2em; text-transform:uppercase;
+  color:var(--cuivre-f); margin:0 0 3mm;
+}
+.chap h2{
+  font-size:20pt; line-height:1.2; margin:0 0 6mm;
+  padding-bottom:4mm; border-bottom:1px solid rgba(223,183,128,.55);
+}
+.chap a{ color:var(--cuivre-f); text-decoration:none; }
+h3{
+  font-family:var(--sans); font-weight:600; font-size:10.5pt;
+  color:var(--encre); margin:7mm 0 2.5mm;
+}
+
+/* Blocs demander / alerter */
+.duo{ display:flex; gap:5mm; margin:5mm 0 6mm; break-inside:avoid; }
+.duo > div{
+  flex:1 1 0; border:1px solid var(--bord); border-radius:3mm;
+  padding:4.5mm 5mm 2mm;
+}
+.duo--dem{ border-left:3px solid var(--or); }
+.duo--ale{ border-left:3px solid var(--cuivre-f); }
+.duo h4{
+  font-family:var(--sans); font-weight:600; font-size:8pt;
+  letter-spacing:.14em; text-transform:uppercase;
+  margin:0 0 3mm;
+}
+.duo--dem h4{ color:var(--cuivre-f); }
+.duo--ale h4{ color:var(--bordeaux); }
+.duo ul{ margin:0 0 3mm; padding-left:13pt; }
+.duo li{ font-size:9.6pt; line-height:1.45; margin:2.5mm 0; }
+
+/* Le test concret */
+.test{
+  break-inside:avoid;
+  background:var(--creme);
+  border-left:3px solid var(--bordeaux);
+  padding:4.5mm 5mm; margin:5mm 0 6mm;
+}
+.test__t{
+  font-family:var(--sans); font-weight:600; font-size:8pt;
+  letter-spacing:.14em; text-transform:uppercase;
+  color:var(--bordeaux); margin:0 0 2.5mm;
+}
+.test p:last-child{ margin-bottom:0; }
+
+/* Encadré repère */
+.repere{
+  break-inside:avoid;
+  border:1px solid rgba(223,183,128,.6); border-radius:3mm;
+  padding:5mm 6mm 3mm; margin:5mm 0 6mm;
+  background:#fff;
+}
+.repere__t{
+  font-family:var(--sans); font-weight:600; font-size:8pt;
+  letter-spacing:.14em; text-transform:uppercase;
+  color:var(--cuivre-f); margin:0 0 3mm;
+}
+
+/* Tableaux */
+table{ width:100%; border-collapse:collapse; margin:4mm 0 6mm; break-inside:avoid; }
+th{
+  background:var(--bordeaux); color:#fff;
+  font-family:var(--sans); font-weight:600; font-size:8.6pt;
+  text-align:left; padding:3mm 3.5mm;
+}
+td{
+  padding:3mm 3.5mm; font-size:9.5pt; line-height:1.45;
+  border-bottom:1px solid var(--bord); vertical-align:top;
+}
+td.vide{ height:11mm; background:#FDFBF9; }
+
+/* Cases à cocher */
+.check{ list-style:none; padding:0; margin:4mm 0 6mm; }
+.check li{
+  position:relative; padding-left:8mm; margin:3.4mm 0;
+  font-size:10pt; line-height:1.5;
+}
+.check li::before{
+  content:""; position:absolute; left:0; top:1mm;
+  width:3.6mm; height:3.6mm;
+  border:.4mm solid var(--cuivre); border-radius:.8mm;
+}
+
+/* Modèle de courriel */
+.courriel{
+  break-inside:avoid;
+  border:1px dashed rgba(168,93,53,.5); border-radius:3mm;
+  padding:5mm 6mm; margin:4mm 0 6mm;
+  background:#FFFDFB;
+  font-size:9.6pt; line-height:1.55;
+}
+.courriel p{ margin:0 0 4mm; }
+.courriel p:last-child{ margin:0; }
+
+/* Lexique */
+.lex{ margin:0; }
+.lex dt{
+  font-family:var(--sans); font-weight:600; font-size:9.8pt;
+  color:var(--encre); margin:4mm 0 1mm;
+}
+.lex dd{ margin:0; font-size:9.8pt; line-height:1.5; }
+
+/* Dernière page */
+.fin__mentions{
+  margin-top:8mm; padding-top:4mm; border-top:1px solid var(--bord);
+  font-size:8.6pt; color:var(--gris-doux);
+}
+.fin__mentions a{ color:var(--cuivre-f); }
+
+@media screen{
+  .couv,.som{ break-after:auto; }
+  .chap{ break-before:auto; }
+}
+</style>
+</head>
+<body>
+
+<!-- ======================= COUVERTURE ======================= -->
+<section class="couv" id="couverture">
+  <img class="couv__logo" src="../img/logo-header.png" alt="Mon Chai">
+  <p class="couv__kicker">Guide pratique</p>
+  <div class="couv__filet"></div>
+  <h1>Choisir un logiciel de gestion viticole</h1>
+  <p class="couv__sous">Une méthode pour comparer les offres, conduire les essais et relire les conditions avant de s'engager.</p>
+
+  <div class="couv__note">
+    <p><strong>Ce guide est gratuit et ne demande aucune inscription.</strong> Il propose une trame de travail utilisable avec tous les éditeurs de logiciels viticoles.</p>
+    <p>Les chapitres peuvent être consultés séparément. La grille, les questions et le modèle de courriel sont prévus pour être imprimés ou repris dans un document de consultation.</p>
+  </div>
+
+  <div class="couv__pied">
+    <span>Édition du 2 septembre 2026</span>
+    <span>Mon Chai · monchai.fr</span>
+  </div>
+</section>
+
+<!-- ======================= SOMMAIRE ======================= -->
+<section class="som" id="sommaire">
+  <h2 style="font-size:20pt; margin:0 0 3mm;">Sommaire</h2>
+  <p style="margin-bottom:7mm;">Le choix d'un logiciel engage les habitudes de travail du domaine et l'organisation de ses données pour plusieurs années. Pour comparer les solutions sur une base utile, il faut partir des opérations réelles, prévoir un essai représentatif et examiner les conditions d'utilisation autant que les fonctionnalités.</p>
+
+  <ol>
+    <li>Exporter et reprendre ses données <span>périmètre, formats et conditions</span></li>
+    <li>Vérifier les mesures de sécurité <span>accès, sauvegardes et incidents</span></li>
+    <li>Encadrer les données personnelles <span>contrat et sous-traitants</span></li>
+    <li>Vérifier la couverture réglementaire <span>registre, facturation et DRM</span></li>
+    <li>Comparer le coût sur trois ans <span>abonnement et frais associés</span></li>
+    <li>Lire les conditions de sortie <span>engagement et restitution</span></li>
+    <li>Évaluer le support et l'éditeur <span>service et continuité</span></li>
+    <li>Organiser un essai représentatif <span>scénarios et utilisateurs</span></li>
+    <li>Grille de comparaison <span>à compléter</span></li>
+    <li>Treize questions à envoyer <span>avec un modèle de courriel</span></li>
+    <li>Lexique <span>les principaux termes</span></li>
+  </ol>
+
+  <div class="repere">
+    <p class="repere__t">Avant de consulter les éditeurs</p>
+    <p>Notez trois à cinq opérations fréquentes, les données déjà disponibles et les personnes qui utiliseront le logiciel. Ajoutez les contraintes propres au domaine : couverture réseau, saisonnalité, outils comptables, caisse, déclarations ou vente en ligne.</p>
+    <p style="margin-bottom:0;">Présentez ensuite le même scénario à deux ou trois éditeurs. Une comparaison est plus simple lorsque les démonstrations, les devis et les réponses écrites portent sur le même périmètre.</p>
+  </div>
+</section>
+
+<!-- ======================= 1. EXPORT ======================= -->
+<section class="chap" id="donnees">
+  <p class="chap__num">Chapitre 1</p>
+  <h2>Exporter et reprendre ses données</h2>
+
+  <p>La réversibilité désigne la possibilité de quitter un service en récupérant ses données dans des conditions prévues à l'avance. Elle concerne le contenu des fichiers, mais aussi le délai de restitution, le coût éventuel et l'aide disponible pour préparer une migration.</p>
+
+  <h3>Définir le périmètre</h3>
+  <p>Demandez la liste précise des données exportables : parcelles et références cadastrales, interventions, vendanges, cuves et lots, opérations de cave, analyses, stocks, clients, commandes, factures, règlements et documents réglementaires. Les pièces jointes, photographies et documents importés doivent également être mentionnés.</p>
+  <p>Les relations entre les données comptent autant que les données elles-mêmes. Un identifiant stable doit permettre, par exemple, de rattacher une facture à son client ou une intervention à sa parcelle.</p>
+
+  <h3>Choisir des formats réutilisables</h3>
+  <p>Les données structurées peuvent être remises en CSV ou dans un autre format documenté. Les documents destinés à être conservés ou présentés lors d'un contrôle peuvent être fournis en PDF. Si l'éditeur utilise un format spécifique, demandez sa documentation et les solutions capables de le relire.</p>
+
+  <h3>Connaître les conditions</h3>
+  <p>Vérifiez si l'export peut être lancé depuis le logiciel ou s'il nécessite l'intervention du support. Dans ce second cas, faites préciser le délai, le prix et les limites de volume. Les mêmes informations doivent figurer dans les conditions applicables à la fin du contrat.</p>
+
+  <div class="duo">
+    <div class="duo--dem">
+      <h4>Points à vérifier</h4>
+      <ul>
+        <li>Liste complète des données et des documents exportables.</li>
+        <li>Formats proposés et documentation associée.</li>
+        <li>Conservation des identifiants et des liens entre les fichiers.</li>
+        <li>Autonomie de l'utilisateur, fréquence et volume autorisés.</li>
+        <li>Délai et coût de restitution en fin de contrat.</li>
+      </ul>
+    </div>
+    <div class="duo--ale">
+      <h4>À faire préciser</h4>
+      <ul>
+        <li>Export limité à certaines rubriques ou uniquement disponible en PDF.</li>
+        <li>Tarif annoncé seulement après la demande de résiliation.</li>
+        <li>Format spécifique sans documentation.</li>
+        <li>Délai de mise à disposition non défini.</li>
+        <li>Suppression immédiate des données après la fin de l'abonnement.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="test">
+    <p class="test__t">Pendant l'essai</p>
+    <p>Lancez un export, ouvrez les fichiers et retrouvez trois dossiers connus : une parcelle avec ses interventions, un lot avec ses mouvements et un client avec ses factures. Notez les informations manquantes et les opérations qui demanderaient une reprise manuelle.</p>
+  </div>
+</section>
+
+<!-- ======================= 2. SÉCURITÉ ======================= -->
+<section class="chap" id="securite">
+  <p class="chap__num">Chapitre 2</p>
+  <h2>Vérifier les mesures de sécurité</h2>
+
+  <p>La sécurité d'un service en ligne repose sur plusieurs mesures complémentaires : gestion des comptes, sauvegardes, contrôle des accès, mises à jour et organisation en cas d'incident. Leur niveau doit être adapté aux données traitées et aux conséquences d'une interruption pour le domaine.</p>
+
+  <h3>Les informations à recueillir</h3>
+  <ul>
+    <li><strong>Hébergement :</strong> nom du prestataire, localisation des centres de données et services techniques associés.</li>
+    <li><strong>Comptes et habilitations :</strong> compte individuel, droits par rôle, double authentification et procédure de retrait des accès.</li>
+    <li><strong>Sauvegardes :</strong> fréquence, durée de conservation, séparation avec l'environnement principal et date du dernier test de restauration.</li>
+    <li><strong>Accès du support :</strong> personnes autorisées, motif de l'accès, durée et traçabilité des interventions.</li>
+    <li><strong>Incidents :</strong> canal de signalement, délai d'information du client et dispositif de continuité ou de reprise du service.</li>
+    <li><strong>Maintenance :</strong> fréquence des mises à jour, traitement des vulnérabilités et information des utilisateurs.</li>
+  </ul>
+
+  <p>Le chiffrement des échanges, le chiffrement des données stockées et la restriction des accès répondent à des risques différents. Lorsque le devis ou la documentation mentionne un « chiffrement », demandez quelles données sont concernées et dans quelles conditions.</p>
+
+  <div class="duo">
+    <div class="duo--dem">
+      <h4>Documents utiles</h4>
+      <ul>
+        <li>Description de l'hébergement et des sauvegardes.</li>
+        <li>Politique de gestion des accès.</li>
+        <li>Procédure de notification des incidents.</li>
+        <li>Engagements de disponibilité, s'ils sont contractuels.</li>
+      </ul>
+    </div>
+    <div class="duo--ale">
+      <h4>À faire préciser</h4>
+      <ul>
+        <li>Compte ou mot de passe partagé entre plusieurs personnes.</li>
+        <li>Sauvegardes sans test de restauration planifié.</li>
+        <li>Accès du support sans journalisation.</li>
+        <li>Absence de procédure en cas d'indisponibilité prolongée.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="repere">
+    <p class="repere__t">Certifications et attestations</p>
+    <p style="margin-bottom:0;">Une certification apporte une information sur un périmètre et une période donnés. Demandez quel service elle couvre, qui en est titulaire et jusqu'à quelle date elle est valable. Son absence ne suffit pas à évaluer un éditeur ; elle doit être rapprochée des mesures documentées et des engagements contractuels.</p>
+  </div>
+</section>
+
+<!-- ======================= 3. RGPD ======================= -->
+<section class="chap" id="donnees-personnelles">
+  <p class="chap__num">Chapitre 3</p>
+  <h2>Encadrer les données personnelles</h2>
+
+  <p>Un logiciel viticole peut contenir des coordonnées de clients, de prospects, de visiteurs du caveau, de salariés ou de fournisseurs. Pour les traitements réalisés pour le compte du domaine, celui-ci est généralement responsable de traitement et l'éditeur agit comme sous-traitant. Cette relation doit être décrite par écrit.</p>
+
+  <p>L'éditeur peut aussi traiter certaines données pour ses propres besoins, par exemple pour gérer la facturation de l'abonnement. Sa documentation doit permettre de distinguer ces situations et les responsabilités associées.</p>
+
+  <h3>Relire le contrat de sous-traitance</h3>
+  <ul>
+    <li>L'objet, la durée et les finalités des traitements réalisés pour le domaine.</li>
+    <li>Les catégories de données et les personnes concernées.</li>
+    <li>Les mesures de sécurité et les engagements de confidentialité.</li>
+    <li>La liste ou le mécanisme d'information des sous-traitants ultérieurs.</li>
+    <li>La localisation des traitements et l'encadrement des éventuels transferts hors de l'Union européenne.</li>
+    <li>L'assistance prévue pour répondre aux demandes des personnes et gérer une violation de données.</li>
+    <li>Le sort des données à la fin du contrat : restitution, suppression et délais.</li>
+    <li>Les informations permettant au domaine de vérifier le respect des obligations convenues.</li>
+  </ul>
+
+  <h3>Collecte au caveau et relation commerciale</h3>
+  <p>Le logiciel doit permettre de conserver les informations nécessaires au suivi des choix exprimés par les contacts : origine de la collecte, date, canal, préférences et opposition éventuelle. La base légale et le texte présenté au moment de la collecte dépendent de l'usage prévu ; ils doivent être définis avant d'importer ou de solliciter les contacts.</p>
+
+  <div class="test">
+    <p class="test__t">Avant la signature</p>
+    <p>Demandez le contrat de sous-traitance, la liste des prestataires concernés et la politique de confidentialité. Vérifiez que les services réellement utilisés — hébergement, messagerie, assistance, statistiques ou intelligence artificielle — sont bien couverts par les documents reçus.</p>
+  </div>
+</section>
+
+<!-- ======================= 4. CONFORMITÉ ======================= -->
+<section class="chap" id="reglementation">
+  <p class="chap__num">Chapitre 4</p>
+  <h2>Vérifier la couverture réglementaire</h2>
+
+  <p>La conformité ne se résume pas à la présence d'un module. Il faut identifier ce que le logiciel enregistre, ce qu'il contrôle, les documents qu'il produit et les opérations qui restent à réaliser dans un portail externe.</p>
+
+  <h3>Registre phytosanitaire numérique</h3>
+  <p>À la date d'édition de ce guide, la tenue du registre dans un format électronique structuré est prévue à compter du 1<sup>er</sup> janvier 2027. Un fichier simplement numérisé ne répond pas au même usage qu'un registre exploitable par machine. Demandez la liste des champs enregistrés, le format de sortie et la manière dont sont gérées les corrections.</p>
+  <p>Selon les besoins du domaine, vérifiez également la gestion des autorisations, des doses, des surfaces, des délais avant récolte, des délais de rentrée et du calcul de l'IFT.</p>
+
+  <h3>Facturation électronique</h3>
+  <p>Depuis le 1<sup>er</sup> septembre 2026, les entreprises doivent pouvoir recevoir des factures électroniques. L'obligation d'émission s'appliquera aux TPE et PME à compter du 1<sup>er</sup> septembre 2027 selon le calendrier en vigueur à la date de ce guide.</p>
+  <p>Demandez si le logiciel se connectera à la plateforme agréée choisie par le domaine, s'il en inclut une dans son offre et quels statuts de facture seront repris. Faites distinguer les fonctions déjà disponibles de celles qui sont encore planifiées.</p>
+
+  <h3>DRM et comptabilité matière</h3>
+  <p>La préparation de la DRM dépend de la continuité du suivi des entrées, sorties, pertes et stocks par produit et par lot. Pendant la démonstration, partez d'un jeu de données renseigné et suivez le passage des mouvements à la déclaration. Demandez si le logiciel prépare le document, génère un fichier ou assure aussi sa transmission.</p>
+
+  <h3>Autres obligations du domaine</h3>
+  <p>Documents de circulation, capsules, déclarations de récolte et de stock, mentions d'étiquetage ou références INAO : établissez une liste adaptée à l'activité. Pour chaque document, notez la fonction disponible, son périmètre, la date de mise à jour et l'éventuelle étape à effectuer hors du logiciel.</p>
+
+  <div class="repere">
+    <p class="repere__t">Tenir compte des évolutions</p>
+    <p style="margin-bottom:0;">Les textes, calendriers et formats peuvent évoluer. Pour les fonctions réglementaires en cours de développement, demandez un calendrier écrit et prévoyez une vérification auprès de la source officielle avant la mise en service.</p>
+  </div>
+</section>
+
+<!-- ======================= 5. COÛT ======================= -->
+<section class="chap" id="cout">
+  <p class="chap__num">Chapitre 5</p>
+  <h2>Comparer le coût sur trois ans</h2>
+
+  <p>Le montant de l'abonnement ne suffit pas à comparer deux offres. Un calcul sur trois ans permet d'intégrer les frais de démarrage, les options et les variations prévues. Utilisez les mêmes hypothèses pour chaque devis.</p>
+
+  <table>
+    <thead>
+      <tr><th style="width:40%">Poste</th><th>Informations à relever</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Abonnement</td><td>Prix, périodicité, nombre d'utilisateurs, volumes ou établissements compris.</td></tr>
+      <tr><td>Fonctions et options</td><td>Modules inclus, fonctions mobiles, caisse, œnotourisme, connecteurs et stockage.</td></tr>
+      <tr><td>Mise en service</td><td>Paramétrage, reprise des données, contrôles et éventuelles corrections manuelles.</td></tr>
+      <tr><td>Formation</td><td>Format, durée, nombre de participants et formation des futurs arrivants.</td></tr>
+      <tr><td>Assistance</td><td>Canaux inclus, horaires et prestations facturées séparément.</td></tr>
+      <tr><td>Évolution du tarif</td><td>Durée d'un prix de lancement, indexation et préavis en cas de modification.</td></tr>
+      <tr><td>Fin de contrat</td><td>Export, assistance à la migration et accès temporaire en lecture.</td></tr>
+    </tbody>
+  </table>
+
+  <p>Demandez un devis qui reprend explicitement le nombre d'utilisateurs, les modules, la reprise de données et la formation. Si certains montants dépendent du volume réel, indiquez une hypothèse basse et une hypothèse haute.</p>
+
+  <div class="test">
+    <p class="test__t">Calcul à reproduire</p>
+    <p>Pour chaque offre, additionnez le démarrage, trente-six mois d'abonnement, les utilisateurs et modules supplémentaires, la formation et les frais de sortie connus. Conservez séparément les éléments non chiffrés : ils devront être confirmés avant la décision.</p>
+  </div>
+</section>
+
+<!-- ======================= 6. SORTIE ======================= -->
+<section class="chap" id="sortie">
+  <p class="chap__num">Chapitre 6</p>
+  <h2>Lire les conditions de sortie</h2>
+
+  <p>Les modalités de résiliation et de restitution se vérifient avant la signature. Elles figurent généralement dans le contrat, les conditions générales et, parfois, une annexe consacrée à la réversibilité.</p>
+
+  <ul>
+    <li><strong>Durée et renouvellement :</strong> engagement mensuel, annuel ou pluriannuel, date de reconduction et information préalable.</li>
+    <li><strong>Résiliation :</strong> préavis, canal à utiliser, personne habilitée et date effective.</li>
+    <li><strong>Accès après résiliation :</strong> maintien éventuel en lecture seule, durée et fonctions disponibles.</li>
+    <li><strong>Restitution :</strong> données concernées, formats, délai, prix et contrôle de complétude.</li>
+    <li><strong>Suppression :</strong> calendrier appliqué aux données actives et aux sauvegardes.</li>
+    <li><strong>Assistance à la migration :</strong> interlocuteur, contenu de la prestation et mode de facturation.</li>
+    <li><strong>Impayé ou litige :</strong> délai avant restriction du service et accès possible aux données.</li>
+  </ul>
+
+  <p>La durée d'engagement peut être liée à une remise, à une reprise de données ou à une prestation de déploiement. Comparez cette contrepartie avec la souplesse dont le domaine a besoin. Toute condition importante annoncée pendant l'échange commercial doit être retrouvée dans un document contractuel.</p>
+
+  <div class="test">
+    <p class="test__t">Lecture pratique du contrat</p>
+    <p>Recherchez les mots « durée », « reconduction », « résiliation », « réversibilité », « restitution » et « suppression ». Reportez les délais et les coûts dans la grille, puis faites confirmer par écrit les points qui restent ouverts.</p>
+  </div>
+</section>
+
+<!-- ======================= 7. ÉDITEUR ======================= -->
+<section class="chap" id="support">
+  <p class="chap__num">Chapitre 7</p>
+  <h2>Évaluer le support et l'éditeur</h2>
+
+  <p>Les besoins d'assistance varient au cours de l'année. Avant les vendanges ou une échéance déclarative, la disponibilité du service et la qualité du suivi peuvent compter autant que le nombre de fonctions.</p>
+
+  <h3>Organisation du support</h3>
+  <ul>
+    <li>Canaux disponibles : téléphone, courriel, messagerie intégrée ou centre d'aide.</li>
+    <li>Horaires habituels et dispositif prévu pendant les périodes chargées.</li>
+    <li>Distinction entre délai de première réponse et délai de résolution.</li>
+    <li>Niveau d'assistance inclus dans l'abonnement et prestations complémentaires.</li>
+    <li>Procédure d'escalade lorsqu'un incident bloque une opération importante.</li>
+  </ul>
+
+  <h3>Continuité du service</h3>
+  <p>Renseignez-vous sur l'ancienneté de l'entreprise, la taille de l'équipe, le nombre de clients accompagnés et la répartition des compétences. Ces éléments ne prédisent pas l'avenir, mais ils permettent de comprendre l'organisation du service et sa dépendance éventuelle à une seule personne.</p>
+  <p>Demandez les dispositions prévues en cas d'arrêt d'activité, de changement de propriétaire ou d'indisponibilité durable. Elles doivent être cohérentes avec les engagements d'export et de restitution.</p>
+
+  <h3>Mises à jour et documentation</h3>
+  <p>Consultez l'historique des versions, la fréquence des évolutions et la façon dont les changements sont annoncés. Vérifiez également la disponibilité d'une documentation à jour et les modalités d'accompagnement lorsqu'une fonction importante change.</p>
+</section>
+
+<!-- ======================= 8. ESSAI ======================= -->
+<section class="chap" id="essai">
+  <p class="chap__num">Chapitre 8</p>
+  <h2>Organiser un essai représentatif</h2>
+
+  <p>La démonstration présente le fonctionnement général du logiciel. L'essai sert à vérifier son adéquation avec les données, les contraintes et les gestes du domaine. Il gagne à être préparé comme une courte séquence de travail, avec un début et un résultat attendu.</p>
+
+  <h3>Préparer trois scénarios</h3>
+  <ol>
+    <li>Une opération fréquente, par exemple saisir une intervention ou un mouvement de cave.</li>
+    <li>Une chaîne complète, de la création d'un lot jusqu'au document ou à la déclaration obtenue.</li>
+    <li>Un cas moins régulier mais sensible : correction, annulation, perte de réseau, erreur de stock ou départ d'un utilisateur.</li>
+  </ol>
+
+  <h3>Conditions de l'essai</h3>
+  <ul>
+    <li>Faire participer les personnes qui utiliseront effectivement le logiciel.</li>
+    <li>Importer un échantillon limité mais représentatif : parcelles, cuves, produits et clients.</li>
+    <li>Tester sur les appareils prévus et dans les conditions de connexion du domaine.</li>
+    <li>Noter le nombre d'étapes, les saisies répétées et les corrections nécessaires.</li>
+    <li>Vérifier la durée de l'essai, son éventuelle conversion en abonnement et la procédure de suppression des données d'essai.</li>
+  </ul>
+
+  <div class="test">
+    <p class="test__t">Compte rendu d'essai</p>
+    <p>Pour chaque scénario, notez le résultat obtenu, le temps passé, les questions restées sans réponse et l'aide reçue. Distinguez les difficultés liées à la prise en main de celles qui imposeraient durablement une étape supplémentaire au travail du domaine.</p>
+  </div>
+</section>
+
+<!-- ======================= 9. GRILLE ======================= -->
+<section class="chap" id="grille">
+  <p class="chap__num">Chapitre 9</p>
+  <h2>Grille de comparaison</h2>
+
+  <p>Complétez cette grille pendant ou juste après chaque échange. Notez une réponse courte, un montant, une date ou le nom du document reçu. Les mentions « à confirmer » restent visibles jusqu'à leur validation écrite.</p>
+
+  <table>
+    <thead>
+      <tr>
+        <th style="width:34%">Critère</th>
+        <th style="width:22%">Éditeur A</th>
+        <th style="width:22%">Éditeur B</th>
+        <th style="width:22%">Éditeur C</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>Périmètre et formats d'export</td><td class="vide"></td><td class="vide"></td><td class="vide"></td></tr>
+      <tr><td>Restitution en fin de contrat</td><td class="vide"></td><td class="vide"></td><td class="vide"></td></tr>
+      <tr><td>Hébergeur et localisation</td><td class="vide"></td><td class="vide"></td><td class="vide"></td></tr>
+      <tr><td>Sauvegardes et dernier test de restauration</td><td class="vide"></td><td class="vide"></td><td class="vide"></td></tr>
+      <tr><td>Double authentification et droits</td><td class="vide"></td><td class="vide"></td><td class="vide"></td></tr>
+      <tr><td>Documents RGPD reçus</td><td class="vide"></td><td class="vide"></td><td class="vide"></td></tr>
+      <tr><td>Registre phytosanitaire : sortie examinée</td><td class="vide"></td><td class="vide"></td><td class="vide"></td></tr>
+      <tr><td>Facturation électronique : dispositif et date</td><td class="vide"></td><td class="vide"></td><td class="vide"></td></tr>
+      <tr><td>DRM : périmètre vérifié</td><td class="vide"></td><td class="vide"></td><td class="vide"></td></tr>
+      <tr><td>Coût total sur trois ans</td><td class="vide"></td><td class="vide"></td><td class="vide"></td></tr>
+      <tr><td>Engagement, préavis et renouvellement</td><td class="vide"></td><td class="vide"></td><td class="vide"></td></tr>
+      <tr><td>Support en période de vendanges</td><td class="vide"></td><td class="vide"></td><td class="vide"></td></tr>
+      <tr><td>Essai : durée et conditions</td><td class="vide"></td><td class="vide"></td><td class="vide"></td></tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- ======================= 10. QUESTIONS ======================= -->
+<section class="chap" id="questions">
+  <p class="chap__num">Chapitre 10</p>
+  <h2>Treize questions à envoyer</h2>
+
+  <p>Envoyez la même liste aux éditeurs consultés et adaptez les questions au périmètre du domaine. Les réponses pourront être jointes au devis ou au compte rendu de démonstration.</p>
+
+  <ul class="check">
+    <li>Quelles données et quels documents puis-je exporter, dans quels formats et à quel coût ?</li>
+    <li>Quelles sont les conditions de restitution et de suppression des données à la fin du contrat ?</li>
+    <li>Quel prestataire héberge le service et dans quels pays les données sont-elles traitées ?</li>
+    <li>À quelle fréquence les sauvegardes sont-elles réalisées et quand la restauration a-t-elle été testée pour la dernière fois ?</li>
+    <li>La double authentification est-elle disponible et les droits sont-ils gérés par utilisateur ?</li>
+    <li>Dans quelles conditions vos équipes accèdent-elles aux données du domaine et ces accès sont-ils tracés ?</li>
+    <li>Pouvez-vous transmettre le contrat de sous-traitance RGPD et les informations sur vos sous-traitants ultérieurs ?</li>
+    <li>Puis-je examiner un exemple de registre phytosanitaire exporté dans le format prévu pour 2027 ?</li>
+    <li>Comment le logiciel s'intégrera-t-il à une plateforme agréée pour la facturation électronique, et selon quel calendrier ?</li>
+    <li>Quelles étapes de préparation et de transmission de la DRM sont couvertes par le logiciel ?</li>
+    <li>Quel est le coût sur trois ans pour notre nombre d'utilisateurs, les modules retenus, la reprise et la formation ?</li>
+    <li>Quelle est la durée d'engagement et quelles règles s'appliquent au renouvellement et à la résiliation ?</li>
+    <li>Quels sont les horaires, canaux et délais du support, notamment pendant les vendanges ?</li>
+  </ul>
+
+  <h3>Modèle de courriel</h3>
+  <div class="courriel">
+    <p><strong>Objet :</strong> Informations complémentaires sur votre logiciel de gestion viticole</p>
+    <p>Bonjour,</p>
+    <p>Nous comparons actuellement plusieurs solutions pour le domaine. Afin d'étudier les offres sur le même périmètre, pourriez-vous répondre aux questions ci-dessous et joindre les documents disponibles ? Si un point n'est pas encore arrêté, merci d'indiquer l'échéance prévue.</p>
+    <p>[coller ici les treize questions]</p>
+    <p>Nous souhaiterions également organiser un essai à partir d'un échantillon de nos données et consulter un exemple d'export.</p>
+    <p>Merci par avance,<br>[nom et coordonnées]</p>
+  </div>
+</section>
+
+<!-- ======================= 11. LEXIQUE ======================= -->
+<section class="chap" id="lexique">
+  <p class="chap__num">Chapitre 11</p>
+  <h2>Lexique</h2>
+
+  <dl class="lex">
+    <dt>AMM — autorisation de mise sur le marché</dt>
+    <dd>Autorisation associée à un produit phytopharmaceutique, à des usages et à des conditions d'emploi. Les références doivent être tenues à jour.</dd>
+
+    <dt>Comptabilité matière</dt>
+    <dd>Suivi des entrées, sorties, pertes et stocks par produit. Elle fournit les éléments nécessaires à la préparation de la DRM.</dd>
+
+    <dt>DAE — document administratif électronique</dt>
+    <dd>Document utilisé pour la circulation de produits soumis à accise dans les situations concernées.</dd>
+
+    <dt>DRM — déclaration récapitulative mensuelle</dt>
+    <dd>Déclaration périodique établie à partir de la comptabilité matière et transmise à la douane.</dd>
+
+    <dt>DTI+</dt>
+    <dd>Service en ligne de la douane utilisé pour le dépôt de certaines déclarations. Un logiciel peut préparer les informations sans assurer lui-même la transmission.</dd>
+
+    <dt>IFT — indicateur de fréquence de traitements phytosanitaires</dt>
+    <dd>Indicateur calculé à partir des traitements réalisés, des doses de référence et des surfaces concernées.</dd>
+
+    <dt>Plateforme agréée</dt>
+    <dd>Opérateur immatriculé par l'administration pour transmettre et recevoir les factures électroniques et leurs données.</dd>
+
+    <dt>Réversibilité</dt>
+    <dd>Organisation du retour des données et, le cas échéant, du transfert du service vers le client ou un autre prestataire.</dd>
+
+    <dt>Responsable de traitement et sous-traitant</dt>
+    <dd>Le responsable détermine les finalités et les moyens du traitement. Le sous-traitant traite des données personnelles pour son compte, selon des instructions encadrées par un contrat.</dd>
+
+    <dt>Sous-traitant ultérieur</dt>
+    <dd>Prestataire auquel un sous-traitant confie une partie des opérations, par exemple l'hébergement, l'envoi de courriels ou l'assistance.</dd>
+  </dl>
+</section>
+
+<!-- ======================= 12. ÉDITEUR ======================= -->
+<section class="chap" id="a-propos">
+  <p class="chap__num">À propos de ce guide</p>
+  <h2>Un document publié par Mon Chai</h2>
+
+  <p>Mon Chai édite un logiciel de gestion viticole. Ce guide présente une méthode de consultation ; il ne remplace ni les documents contractuels ni la vérification des obligations propres à chaque domaine.</p>
+
+  <p>Les treize questions du chapitre 10 peuvent également nous être adressées. À la date de cette édition, les éléments suivants s'appliquent à notre offre :</p>
+
+  <ul>
+    <li>les exports CSV et PDF sont disponibles depuis le logiciel, sans facturation supplémentaire ;</li>
+    <li>les données sont hébergées en France ;</li>
+    <li>l'abonnement est mensuel et sans engagement ;</li>
+    <li>l'essai ne nécessite pas de carte bancaire.</li>
+  </ul>
+
+  <div class="repere">
+    <p class="repere__t">Nous contacter</p>
+    <p style="margin-bottom:0;">monchai.fr/contact.html · Essai : monchai.fr/essai-gratuit.html</p>
+  </div>
+
+  <h3>Documents consultés</h3>
+  <ul>
+    <li>France Num, <a href="https://www.francenum.gouv.fr/guides-et-conseils/pilotage-de-lentreprise/logiciels-de-gestion-de-lentreprise/pourquoi-utiliser-0"><em>Pourquoi utiliser un logiciel SaaS et comment le choisir ?</em></a></li>
+    <li>CNIL, <a href="https://www.cnil.fr/fr/guide-de-la-securite-des-donnees-personnelles"><em>Guide de la sécurité des données personnelles</em></a>, version mise à jour.</li>
+    <li>ANSSI, <a href="https://messervices.cyber.gouv.fr/guides/externalisation-et-securite-des-systemes-dinformation-un-guide-pour-maitriser-les"><em>Externalisation et sécurité des systèmes d'information : un guide pour maîtriser les risques</em></a>.</li>
+  </ul>
+
+  <div class="fin__mentions">
+    <p>Guide publié par Mon Chai, logiciel de gestion viticole, Rennes. Édition du 2 septembre 2026. Reproduction et diffusion libres, à condition de ne pas le modifier.</p>
+    <p style="margin-bottom:0;">Les informations réglementaires correspondent au calendrier connu à la date d'édition. Elles ne constituent pas un conseil juridique et doivent être vérifiées avant toute décision contractuelle ou mise en conformité.</p>
+  </div>
+</section>
+
+</body>
+</html>

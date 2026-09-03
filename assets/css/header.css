@@ -124,14 +124,38 @@
 }
 .hd__cta:hover{ background:#b87f4a; }
 
-/* Pastille FR : x 1718 y 30 · 66 × 48 */
+/* Sélecteur de langue : la pastille conserve exactement les coordonnées
+   de l'accueil et ouvre des liens HTML réels vers chaque version indexable. */
 .hd__langue{
-  position:absolute; left:1718px; top:30px;
-  display:flex; align-items:center; justify-content:center; gap:3px;
-  width:66px; height:48px; border-radius:24px;
-  background:var(--hd-blanc); border:1px solid var(--hd-bord);
+  position:absolute; left:1718px; top:30px; z-index:2;
+  width:66px; height:48px;
   font-family:var(--hd-titre); font-weight:600; font-size:19px; color:var(--hd-encre);
-  cursor:pointer;
+}
+.hd__langue-bouton{
+  display:flex; align-items:center; justify-content:center; gap:3px;
+  width:100%; height:100%; padding:0; border-radius:24px;
+  background:var(--hd-blanc); border:1px solid var(--hd-bord);
+  font:inherit; color:inherit; cursor:pointer;
+}
+.hd__langue-menu{
+  position:absolute; right:0; top:calc(100% + 10px);
+  width:190px; padding:8px;
+  background:var(--hd-blanc); border:1px solid var(--hd-bord);
+  border-radius:10px; box-shadow:0 14px 34px rgba(71,19,24,.13);
+  opacity:0; visibility:hidden; transform:translateY(-6px);
+  transition:opacity .18s ease, transform .18s ease, visibility .18s;
+}
+.hd__langue.est-ouvert .hd__langue-menu{
+  opacity:1; visibility:visible; transform:none;
+}
+.hd__langue-menu a{
+  display:block; padding:9px 12px; border-radius:7px;
+  font-family:var(--hd-sans); font-size:14px; line-height:1.25;
+  font-weight:500; color:var(--hd-encre); text-decoration:none;
+}
+.hd__langue-menu a:hover{ color:var(--hd-cuivre-f); background:var(--hd-creme); }
+.hd__langue-menu a[aria-current="page"]{
+  color:var(--hd-cuivre-f); font-weight:700; background:var(--hd-creme);
 }
 .hd__chev{
   width:7px; height:7px; margin-top:-3px;
@@ -227,6 +251,14 @@
 .site-header .hd{
   transform:scale(var(--echelle, 1));
   transform-origin:top left;
+}
+
+/* Les pages éditoriales utilisent le même header 1920 que l'accueil, mais
+   il reste dans le flux. L'enveloppe réserve sa hauteur une fois mise à
+   l'échelle ; aucun second dessin « compact » ne peut donc dériver. */
+.site-header--page{
+  position:sticky;
+  height:calc(100vw * 94 / 1920);
 }
 
 
@@ -365,7 +397,18 @@
     position:static; width:100%; height:52px; margin-top:18px;
     font-size:17px;
   }
-  .hd__langue{ position:static; margin-top:12px; align-self:flex-start; }
+  .hd__langue{
+    position:static; width:100%; height:auto; margin-top:12px;
+    align-self:flex-start;
+  }
+  .hd__langue-bouton{ width:66px; height:48px; }
+  .hd__langue-menu{
+    position:static; display:none; width:100%; margin-top:8px;
+    padding:6px; opacity:1; visibility:visible; transform:none;
+    box-shadow:none;
+  }
+  .hd__langue.est-ouvert .hd__langue-menu{ display:grid; grid-template-columns:1fr 1fr; }
+  .hd__langue-menu a{ font-size:15px; }
 }
 
 /* Tablette : le header respire un peu plus que sur téléphone. */

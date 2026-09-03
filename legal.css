@@ -36,3 +36,8 @@ body{background:var(--creme);color:var(--encre);font-family:var(--sans);-webkit-
 }
 .legal-foot a,.legal-cookies{color:var(--bordeaux);text-decoration:none;background:none;border:0;font:inherit;cursor:pointer;}
 .legal-foot a:hover,.legal-cookies:hover{text-decoration:underline;}
+/* Les noms composés allemands doivent rester dans la largeur du titre mobile. */
+html[lang="de"] .legal h1 {
+  hyphens: auto;
+  overflow-wrap: anywhere;
+}

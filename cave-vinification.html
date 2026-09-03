@@ -8,6 +8,12 @@
 <meta name="description" content="Gérez votre cuverie et vos vinifications avec Mon Chai : plan de cave, contenants, lots techniques, fermentations, températures, densités, transferts, soutirages, assemblages et analyses œnologiques.">
 <meta name="robots" content="index, follow, max-image-preview:large">
 <link rel="canonical" href="https://monchai.fr/cave-vinification.html">
+<link rel="alternate" hreflang="fr" href="https://monchai.fr/cave-vinification.html">
+<link rel="alternate" hreflang="en" href="https://monchai.fr/en/cave-vinification.html">
+<link rel="alternate" hreflang="it" href="https://monchai.fr/it/cave-vinification.html">
+<link rel="alternate" hreflang="de" href="https://monchai.fr/de/cave-vinification.html">
+<link rel="alternate" hreflang="zh-Hans" href="https://monchai.fr/zh/cave-vinification.html">
+<link rel="alternate" hreflang="x-default" href="https://monchai.fr/cave-vinification.html">
 
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://monchai.fr/cave-vinification.html">
@@ -23,6 +29,7 @@
 <link rel="stylesheet" href="assets/css/polices.css">
 <link rel="stylesheet" href="assets/css/header.css">
 <link rel="stylesheet" href="assets/css/pages.css">
+<link rel="stylesheet" href="assets/css/module-texte.css">
 <link rel="stylesheet" href="assets/css/galerie.css">
 <link rel="stylesheet" href="assets/css/pied.css">
 </head>
@@ -111,7 +118,18 @@
 
         <a class="hd__connexion" href="https://tester.monchai.fr">Me Connecter</a>
         <a class="hd__cta" href="https://tester.monchai.fr">Essayer gratuitement</a>
-        <button class="hd__langue" type="button">FR<span class="hd__chev"></span></button>
+        <div class="hd__langue">
+          <button class="hd__langue-bouton" type="button" aria-label="Choisir la langue" aria-haspopup="true" aria-expanded="false" aria-controls="menu-langues">
+            FR<span class="hd__chev" aria-hidden="true"></span>
+          </button>
+          <div class="hd__langue-menu" id="menu-langues">
+            <a href="cave-vinification.html" lang="fr" hreflang="fr" aria-current="page">Français</a>
+            <a href="en/cave-vinification.html" lang="en" hreflang="en">English</a>
+            <a href="it/cave-vinification.html" lang="it" hreflang="it">Italiano</a>
+            <a href="de/cave-vinification.html" lang="de" hreflang="de">Deutsch</a>
+            <a href="zh/cave-vinification.html" lang="zh-Hans" hreflang="zh-Hans">中文</a>
+          </div>
+        </div>
       </div>
     </header>
 
@@ -200,6 +218,106 @@
        Absent des frames Figma. Ajouté pour que les mentions légales, la
        politique de confidentialité et les CGUV soient atteignables depuis
        chaque page, et pas seulement depuis index.html. -->
+  <!-- ============ CONTENU ÉDITORIAL ============
+       Bande .mtx. Écrit d'après le module Production : contenants,
+       lots techniques et leur journal de mouvements, changement de
+       cuve, assemblage orienté cuves avec pertes par source, analyses,
+       registre des manipulations œnologiques.
+       ================================================================ -->
+  <section class="mtx mtx--sable" aria-labelledby="mtx-cave">
+    <div class="mtx__inner">
+
+      <div class="mtx__entete">
+        <span class="mtx__sur">Cuverie, lots &amp; vinification</span>
+        <h2 class="mtx__titre" id="mtx-cave">Un logiciel de cave <em>qui sait toujours ce qu'il y a dans la cuve</em></h2>
+        <div class="mtx__orn" aria-hidden="true"></div>
+        <p class="mtx__chapo">Pendant les vinifications, la question n'est jamais « qu'est-ce que je devrais avoir ? » mais « qu'est-ce que j'ai, maintenant, dans cette cuve ? ». Mon Chai tient le <strong>journal des mouvements de chaque lot</strong> : ce qui est entré, ce qui en est sorti, ce qui s'est perdu, et où il se trouve.</p>
+      </div>
+
+      <div class="mtx__cles">
+        <div class="mtx__cle"><b>Par contenant</b><span>Chaque cuve, barrique ou tank a son volume, sa salle et son contenu du moment</span></div>
+        <div class="mtx__cle"><b>Journal du lot</b><span>Encuvage, soutirage, changement de cuve, assemblage : tout est daté et volumé</span></div>
+        <div class="mtx__cle"><b>Pertes réelles</b><span>Constatées à l'opération, source par source, pas estimées en fin d'année</span></div>
+        <div class="mtx__cle"><b>Registre prêt</b><span>Les manipulations œnologiques s'exportent en PDF ou en CSV</span></div>
+      </div>
+
+      <div class="mtx__corps">
+
+        <h2>Gérer sa cuverie</h2>
+        <p class="mtx__ouvre">La cuverie se décrit une fois : les contenants, leur contenance, leur emplacement dans une salle et un entrepôt. Ensuite, le logiciel répond à la question qui compte pendant les vendanges, celle de la place disponible, et à celle qui compte le reste de l'année, celle du contenu de chaque cuve.</p>
+        <p>Déplacer un vin ne consiste donc pas à corriger deux lignes dans un tableur : c'est un changement de cuve, enregistré comme tel, avec sa date et son volume. Le lot suit son contenant, l'historique reste.</p>
+
+        <h2>Suivre les lots techniques</h2>
+        <p>Le lot est l'unité de travail du chai. Il porte un volume, un cépage, une campagne, une nature (moût ou vin) et un statut qui évolue avec la vinification. Toutes les opérations qui le concernent s'écrivent dans son journal, ce qui donne à tout moment une frise lisible : d'où il vient, ce qu'on lui a fait, où il est.</p>
+        <p>Cette continuité est ce qui permet à la traçabilité de tenir jusqu'à la bouteille, et à la comptabilité matière d'être calculée plutôt que reconstituée.</p>
+
+        <h2>Soutirages, transferts et assemblages</h2>
+        <p>L'assemblage se prépare sur un écran unique, orienté cuves : vous choisissez les lots sources et leurs volumes, vous voyez le résultat se composer, et les <strong>pertes sont constatées source par source</strong> plutôt que réparties au jugé. Le lot d'arrivée conserve la composition exacte de ce qui l'a formé.</p>
+        <p>Les soutirages et transferts suivent la même logique : une opération, une date, un volume, un contenant d'arrivée, et l'écart éventuel enregistré comme perte au moment où il est constaté.</p>
+        <p class="mtx__cit">Un chai bien tenu n'est pas un chai sans perte : c'est un chai où l'on sait où elle a eu lieu.</p>
+
+        <h2>Analyses et suivi des fermentations</h2>
+        <p>Les analyses se rattachent au lot et s'empilent en historique : vous suivez l'évolution d'un vin dans le temps au lieu de consulter une feuille isolée. Les paramètres de conservation, dont le SO<sub>2</sub>, sont surveillés et signalés lorsqu'ils sortent des repères que vous avez posés.</p>
+
+        <h2>Le registre des manipulations œnologiques</h2>
+        <p>Les pratiques œnologiques et les intrants employés constituent un registre exportable en PDF pour un contrôle, en CSV pour votre œnologue ou votre comptable. Les intrants viennent d'un référentiel qui identifie ceux utilisables en agriculture biologique, ce qui évite les vérifications de dernière minute avant une certification.</p>
+
+        <div class="mtx__chaine" aria-label="Le parcours d'un lot en cave">
+          <span class="mtx__jeton">Encuvage</span><span class="mtx__lien-chaine" aria-hidden="true">›</span>
+          <span class="mtx__jeton">Fermentation &amp; analyses</span><span class="mtx__lien-chaine" aria-hidden="true">›</span>
+          <span class="mtx__jeton">Soutirage</span><span class="mtx__lien-chaine" aria-hidden="true">›</span>
+          <span class="mtx__jeton">Assemblage</span><span class="mtx__lien-chaine" aria-hidden="true">›</span>
+          <span class="mtx__jeton">Élevage</span><span class="mtx__lien-chaine" aria-hidden="true">›</span>
+          <span class="mtx__jeton">Prêt à la mise</span>
+        </div>
+      </div>
+
+      <div class="mtx__faq">
+        <h2 class="mtx__titre" style="font-size:28px; margin:52px 0 8px">Questions fréquentes</h2>
+        <details>
+          <summary>Comment sait-on ce qu'il y a dans une cuve à une date donnée ?</summary>
+          <p>En lisant le journal du lot. Chaque opération ayant été enregistrée avec sa date et son volume, l'état d'un contenant est le résultat de ces mouvements, et non une valeur saisie à part que quelqu'un aurait oublié de corriger.</p>
+        </details>
+        <details>
+          <summary>Les pertes sont-elles saisies à la main ?</summary>
+          <p>Elles sont constatées à l'opération, par différence entre ce qui est entré et ce qui est sorti. Sur un assemblage, elles sont attribuées source par source, ce qui donne une image juste plutôt qu'un pourcentage global.</p>
+        </details>
+        <details>
+          <summary>Peut-on changer un lot de cuve sans perdre son historique ?</summary>
+          <p>Oui. Le changement de cuve est une opération enregistrée : le lot change d'emplacement, son historique le suit, et le mouvement apparaît dans la comptabilité matière.</p>
+        </details>
+        <details>
+          <summary>Le registre de cave est-il exportable pour un contrôle ?</summary>
+          <p>Oui, en PDF pour le présenter et en CSV pour le retravailler. Il reprend les manipulations œnologiques, leurs dates, les lots concernés et les intrants employés.</p>
+        </details>
+      </div>
+
+      <div class="mtx__liens">
+        <p class="mtx__liens-titre">Pour aller plus loin</p>
+        <ul>
+          <li><a href="vigne-vendanges.html">Vigne &amp; vendanges : ce qui précède la cuve</a></li>
+          <li><a href="mises-conditionnement.html">Conditionnement &amp; mises : la suite du parcours</a></li>
+          <li><a href="drm-conformite.html">DRM &amp; comptabilité matière</a></li>
+          <li><a href="stocks-tracabilite.html">Stocks &amp; traçabilité</a></li>
+          <li><a href="actualites-cave-registres.html">Actualités cave &amp; registres</a></li>
+          <li><a href="faq.html">Questions fréquentes sur le logiciel</a></li>
+        </ul>
+      </div>
+
+      <div class="mtx__cta">
+        <div>
+          <h2>Voir le journal d'un lot</h2>
+          <p>Encuvez, soutirez, assemblez sur un compte d'essai, puis ouvrez la frise du lot obtenu.</p>
+        </div>
+        <div class="mtx__cta-actions">
+          <a class="mtx__btn" href="essai-gratuit.html">Essayer gratuitement</a>
+          <a class="mtx__btn mtx__btn--fant" href="contact.html">Poser une question</a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
 </main>
 
   <footer class="pied">

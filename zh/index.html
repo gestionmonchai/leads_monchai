@@ -1,0 +1,796 @@
+<!DOCTYPE html>
+
+<html lang="zh-Hans">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1, viewport-fit=cover" name="viewport"/>
+<!-- SEO -->
+<title>Mon Chai,葡萄管理软件,从藤藤到销售</title>
+<meta content="Mon Chai,葡萄酒软件:DRM准备用于DTI+、地窖登记、植物登记册2027、最新《美国迷魂》AMM。" name="description"/>
+<meta content="gestion viticole, logiciel viticole, chai, vin, viticulture, parcelles, vendanges, cuverie, stocks, DRM, traçabilité, Mon Chai" name="keywords"/>
+<meta content="Berthelot &amp; Hallais" name="author"/>
+<meta content="index, follow, max-image-preview:large, max-snippet:-1" name="robots"/>
+<link href="https://monchai.fr/zh/" rel="canonical"/><link href="https://monchai.fr/" hreflang="x-default" rel="alternate"/><link href="https://monchai.fr/" hreflang="fr" rel="alternate"/><link href="https://monchai.fr/en/" hreflang="en" rel="alternate"/><link href="https://monchai.fr/it/" hreflang="it" rel="alternate"/><link href="https://monchai.fr/de/" hreflang="de" rel="alternate"/><link href="https://monchai.fr/zh/" hreflang="zh-Hans" rel="alternate"/>
+
+
+
+
+
+
+<!-- Open Graph -->
+<meta content="website" property="og:type"/>
+<meta content="https://monchai.fr/zh/" property="og:url"/>
+<meta content="Mon Chai,葡萄酒管理软件" property="og:title"/>
+<meta content="从藤树到销售:集中管理您的房产。加入贝塔测试程序。" property="og:description"/>
+<meta content="https://monchai.fr/assets/img/vignes_2.jpg" property="og:image"/>
+<meta content="zh_CN" property="og:locale"/>
+<meta content="Mon Chai" property="og:site_name"/>
+<!-- Twitter -->
+<meta content="summary_large_image" name="twitter:card"/>
+<meta content="Mon Chai,葡萄酒管理软件" name="twitter:title"/>
+<meta content="从葡萄园到销售:集中管理你的地产。" name="twitter:description"/>
+<meta content="https://monchai.fr/assets/img/vignes_2.jpg" name="twitter:image"/>
+<!-- Favicon -->
+<link href="../assets/img/logo_mon_chai.png" rel="icon" type="image/png"/>
+<link href="../assets/img/logo_mon_chai.png" rel="apple-touch-icon"/>
+<meta content="#7B1E22" name="theme-color"/>
+<!-- Données structurées : point 6 de la feuille de route SEO.
+     Le prix est celui de tarifs.html (49 € HT/mois au 1er novembre 2026) ;
+     si la grille change, le changer ici aussi. -->
+<script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Mon Chai",
+  "url": "https://monchai.fr/zh/",
+  "image": "https://monchai.fr/assets/img/vignes_2.jpg",
+  "applicationCategory": "BusinessApplication",
+  "operatingSystem": "Web",
+  "inLanguage": "zh-Hans",
+  "description": "葡萄酒管理软件:监测葡萄酒地下室,投入清单与安斯公司的销售授权、收获、地窖和酿酒、地库登记以及材料、库存和可追踪性会计、准备用于DTI+门户的DRM、销售和账单、葡萄酒旅游和在地下室的品尝同步。",
+  "disambiguatingDescription": "Logiciel professionnel de gestion de domaine viticole (monchai.fr), sans lien avec les applications mobiles de cave personnelle homonymes.",
+  "featureList": [
+    "Vigne et vendanges : parcelles, journal des travaux, registre phytosanitaire numérique conforme 2027, liste des intrants synchronisée avec les autorisations de mise sur le marché de l'Anses",
+    "Cave et vinification : cuverie, lots techniques, opérations, analyses œnologiques",
+    "Stocks et traçabilité : vrac, produits finis, matières sèches, inventaires",
+    "Ventes, clients et facturation : CRM viticole, devis, commandes, factures",
+    "DRM et conformité : registre de cave, comptabilité matière, données DTI+",
+    "Conditionnement et mises : ordres de fabrication, lots commerciaux",
+    "Œnotourisme : dégustations au caveau avec QR code, ventes au domaine, visiteurs ajoutés au CRM",
+    "Assistant IA en français"
+  ],
+  "offers": {
+    "@type": "Offer",
+    "price": "49.00",
+    "priceCurrency": "EUR",
+    "availabilityStarts": "2026-11-01",
+    "url": "https://monchai.fr/tarifs.html"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Mon Chai",
+    "url": "https://monchai.fr/zh/",
+    "logo": "https://monchai.fr/assets/img/logo_mon_chai.png",
+    "foundingLocation": {
+      "@type": "Place",
+      "name": "Rennes, France"
+    },
+    "founder": [
+      {
+        "@type": "Person",
+        "name": "Denis Berthelot"
+      },
+      {
+        "@type": "Person",
+        "name": "Laura Hallais"
+      }
+    ],
+    "memberOf": [
+      {
+        "@type": "Organization",
+        "name": "La WineTech"
+      },
+      {
+        "@type": "Organization",
+        "name": "Le Poool"
+      }
+    ],
+    "sameAs": [
+      "https://www.instagram.com/monchai.fr/",
+      "https://www.linkedin.com/company/monchai"
+    ]
+  }
+}</script>
+<!-- Graisses limitées à celles réellement employées sur cette page :
+     Playfair 500 (titres) et 700 (cartes actualité), Inter 400-700,
+     Manrope 700 (chiffres de l'aperçu produit), Poppins 500-600 (header
+     et pied). -->
+<link href="../assets/css/polices.css" rel="stylesheet"/>
+<link href="../styles.css" rel="stylesheet"/>
+<link href="../assets/css/header.css" rel="stylesheet"/>
+<link href="../assets/css/pied.css" rel="stylesheet"/>
+<link href="../assets/css/index-responsive.css" rel="stylesheet"/>
+<link href="../assets/css/index-mobile.css" rel="stylesheet"/>
+<!-- Repli sans JavaScript : les fonds différés (script.js, section 7)
+     sont posés directement. -->
+<noscript><style>
+  @media (min-width:900px){
+    #parcours .parcours-bas{ background-image:url("assets/svg/parcours-bas.svg"); }
+    #apropos-faq .apfaq-fond{ background-image:url("assets/svg/a-propos-faq.svg"); }
+    #actualite{ background-image:url("assets/svg/actualite.svg"); }
+  }
+</style></noscript>
+</head>
+<body class="lang-zh">
+<!-- ================================================================
+     HEADER : sprint Figma « Work 24 08 2026 sprint 2 »
+     Même composant que les 8 pages « Le logiciel » : le balisage, les styles
+     (assets/css/header.css) et le comportement (assets/js/header.js) sont
+     partagés. Ici il est fixe au-dessus du défilement et porte lui-même le
+     facteur d'échelle publié par script.js dans --echelle ; il se masque au
+     défilement vers le bas et revient au défilement vers le haut.
+
+     L'ancien header était une image SVG surmontée de zones cliquables. Il
+     comptait 6 entrées à plat ; le nouveau en compte 5, dont quatre ouvrent
+     un sous-menu : Le logiciel, Tarifs (essai gratuit, guide d'achat),
+     Actualités et À propos regroupent chacun les pages de leur univers.
+     ================================================================ -->
+<div class="site-header" id="siteHeader">
+<header class="hd">
+<a class="hd__logo" href="index.html"><img alt="Mon Chai,葡萄酒软件" height="85" src="../assets/img/logo-header.webp" width="263"/></a>
+<button aria-controls="nav-principale" aria-expanded="false" aria-label="打开菜单" class="hd__burger" type="button">
+<span></span><span></span><span></span>
+</button>
+<div class="hd__barre" id="nav-principale">
+<nav aria-label="软件" class="hd__menu" style="--hd-x:468px; --hd-dx:-72px; --hd-dw:610px">
+<button aria-controls="sous-menu-logiciel" aria-expanded="false" aria-haspopup="true" class="hd__lien hd__declencheur" type="button"><span>软件</span><span aria-hidden="true" class="hd__menu-chev"></span></button>
+<div class="hd__panneau hd__panneau--logiciel" id="sous-menu-logiciel">
+<div class="hd__groupe">
+<span class="hd__groupe-titre">探索</span>
+<a href="fonctionnalites.html">软件概览</a>
+<a href="#parcours">工作原理</a>
+<a href="#assistant">AI 助手</a>
+</div>
+<div class="hd__groupe">
+<span class="hd__groupe-titre">酒庄模块</span>
+<a href="vigne-vendanges.html">葡萄园与采收</a>
+<a href="cave-vinification.html">酒窖与酿造</a>
+<a href="mises-conditionnement.html">包装与装瓶</a>
+<a href="stocks-tracabilite.html">库存与追溯</a>
+<a href="ventes-clients.html">销售、客户与开票</a>
+<a href="drm-conformite.html">DRM 与合规</a>
+<a href="oenotourisme.html">葡萄酒旅游</a>
+</div>
+</div>
+</nav>
+<nav aria-label="价格与免费试用" class="hd__menu" style="--hd-x:650px; --hd-dx:-60px; --hd-dw:280px">
+<button aria-controls="sous-menu-tarifs" aria-expanded="false" aria-haspopup="true" class="hd__lien hd__declencheur" type="button"><span>价格</span><span aria-hidden="true" class="hd__menu-chev"></span></button>
+<div class="hd__panneau" id="sous-menu-tarifs">
+<div class="hd__groupe">
+<span class="hd__groupe-titre">开始使用</span>
+<a href="tarifs.html">查看价格</a>
+<a href="essai-gratuit.html">免费试用 30 天</a>
+</div>
+</div>
+</nav>
+<nav aria-label="资源" class="hd__menu hd__menu--ressources" style="--hd-x:819px; --hd-dx:-270px; --hd-dw:650px">
+<button aria-controls="sous-menu-ressources" aria-expanded="false" aria-haspopup="true" class="hd__lien hd__declencheur" type="button"><span>资源</span><span aria-hidden="true" class="hd__menu-chev"></span></button>
+<div class="hd__panneau hd__panneau--ressources" id="sous-menu-ressources">
+<div class="hd__groupe">
+<span class="hd__groupe-titre">指南与帮助</span>
+<a href="choisir-logiciel-viticole.html">选择合适的软件</a>
+<a href="faq.html">常见问题</a>
+<a href="ia-au-service-de-mon-chai.html">连接 ChatGPT 或 Claude</a>
+</div>
+<div class="hd__groupe">
+<span class="hd__groupe-titre">法规动态</span>
+<a href="actualites-reglementaires.html">全部动态</a>
+<a href="actualites-vigne-phyto.html">葡萄园与植保</a>
+<a href="actualites-cave-registres.html">酒窖与记录</a>
+<a href="actualites-douane-declarations.html">海关与申报</a>
+<a href="actualites-etiquetage-mises.html">标签与装瓶</a>
+<a href="actualites-ventes-facturation.html">销售与开票</a>
+<a href="actualites-oenotourisme-vente-directe.html">葡萄酒旅游与直销</a>
+</div>
+</div>
+</nav>
+<nav aria-label="关于我们" class="hd__menu" style="--hd-x:1030px; --hd-dx:-55px; --hd-dw:260px">
+<button aria-controls="sous-menu-apropos" aria-expanded="false" aria-haspopup="true" class="hd__lien hd__declencheur" type="button"><span>关于我们</span><span aria-hidden="true" class="hd__menu-chev"></span></button>
+<div class="hd__panneau" id="sous-menu-apropos">
+<div class="hd__groupe">
+<span class="hd__groupe-titre">Mon Chai</span>
+<a href="#apropos">关于我们</a>
+<a href="#actualite">Mon Chai 动态</a>
+<a href="contact.html">联系我们</a>
+</div>
+</div>
+</nav>
+<a class="hd__connexion" href="https://tester.monchai.fr">登录</a>
+<a class="hd__cta" href="https://tester.monchai.fr">免费试用</a>
+<div class="hd__langue"><button aria-controls="menu-langues" aria-expanded="false" aria-haspopup="true" aria-label="选择语言" class="hd__langue-bouton" type="button">ZH<span aria-hidden="true" class="hd__chev"></span></button><div class="hd__langue-menu" id="menu-langues"><a href="../index.html" hreflang="fr" lang="fr">Français</a><a href="../en/index.html" hreflang="en" lang="en">English</a><a href="../it/index.html" hreflang="it" lang="it">Italiano</a><a href="../de/index.html" hreflang="de" lang="de">Deutsch</a><a aria-current="page" href="index.html" hreflang="zh-Hans" lang="zh-Hans">中文</a></div></div>
+</div>
+</header>
+</div>
+<!-- Barre de lecture (progression du scroll) -->
+<div class="reading-bar"><span id="readingBar"></span></div>
+<!-- Navigation latérale en tirets -->
+<nav aria-label="章节导航" class="dot-nav" id="dotNav">
+<a data-cible="accueil" href="#accueil"><span class="tiret"></span><span class="etiquette">首页</span></a>
+<a data-cible="pourquoi" href="#pourquoi"><span class="tiret"></span><span class="etiquette">为什么Mon Chai</span></a>
+<a data-cible="assistant" href="#assistant"><span class="tiret"></span><span class="etiquette">AI 助手</span></a>
+<a data-cible="tarifs" href="#tarifs"><span class="tiret"></span><span class="etiquette">测试率和率</span></a>
+<a data-cible="apropos" href="#apropos"><span class="tiret"></span><span class="etiquette">关于我们</span></a>
+<a data-cible="faq" href="#faq"><span class="tiret"></span><span class="etiquette">常答问题</span></a>
+<a data-cible="actualite" href="#actualite"><span class="tiret"></span><span class="etiquette">新闻</span></a>
+</nav>
+<div class="page" id="page">
+<main>
+<!-- ================================================================
+       ÉCRAN 1 : frame Figma "ACCUEIL" (24:1834) · 1920 × 1200
+       ================================================================ -->
+<section class="stage" id="accueil">
+<div class="hero-photo"></div>
+<div class="hero-card">
+<h1 class="hero-title">葡萄酒庄管理软件 <br/>让管理更简单 <br/>助力您的酒庄。</h1>
+<div class="ornement"></div>
+<p class="hero-lead">Mon Chai <strong>中央中央</strong> 你们的粮袋,葡萄收割, <br/>自动售机、库存、销售、客户和文件 <br/>在一个工具 设计与酿酒者。</p>
+<!-- L'inscription se fait directement dans l'application : plus de
+           pop-up de formulaire, tous les CTA mènent à tester.monchai.fr. -->
+<a class="btn btn-gold" href="https://tester.monchai.fr">加入程序 <br/>免费乙型试验</a>
+<a class="btn btn-light" href="fonctionnalites.html">发现功能</a>
+</div>
+<div aria-label="产品概览" class="apercu">
+<div class="dots"><i></i><i></i><i></i></div>
+<span class="screen-title">域记分板</span>
+<article class="dash-card c1">
+<p class="kicker">可用数量</p>
+<p class="number">18 420</p>
+<p class="kicker">气瓶</p>
+<div class="bar"><span style="width:72%"></span></div>
+</article>
+<article class="dash-card c2">
+<p class="kicker">采收</p>
+<p class="number">7</p>
+<p class="kicker">所遵循的批次</p>
+<div class="bar"><span style="width:58%"></span></div>
+</article>
+<article class="dash-card cw">
+<p class="kicker">下一步建议的行动</p>
+<p class="number">设定75cl</p>
+<p class="kicker">检查干物质、现有数量和待处理的命令。</p>
+</article>
+<article class="dash-card c3">
+<p class="kicker">活跃客户</p>
+<p class="number">248</p>
+<p class="kicker">工作表</p>
+</article>
+<article class="dash-card c4">
+<p class="kicker">文档</p>
+<p class="number">12</p>
+<p class="kicker">待编写</p>
+</article>
+</div>
+</section>
+<!-- ================================================================
+       ÉCRAN 2 : frame Figma "Frame 1" · 1920 × 3705
+       Les trois sections (Pourquoi Mon Chai + Assistant IA + Bêta-test &
+       Tarifs) sont désormais UNE SEULE frame. Les transitions entre elles
+       sont gérées dans Figma (photo à 74 % + dégradé de fondu), plus en CSS.
+
+       Le fond est la frame entière MOINS les 9 vignettes, qui sont posées
+       par-dessus en SVG indépendants pour rester animables.
+       Recomposition vérifiée contre la frame d'origine : 0,00/255.
+       ================================================================ -->
+<section class="stage" id="parcours">
+<div class="frame1-fond"></div>
+<div class="parcours-bas" data-fond=""></div>
+<!-- Les 9 modules : survol -> voile beige + flèche qui devient un trait
+         + encadré. Clic -> figé. Clic ailleurs -> fermé. -->
+<div class="pq-modules">
+<div class="pq-slot" style="--i:0; --fx:93.92px; --fy:213.3px">
+<button aria-expanded="false" class="pq-module" data-module="parcelles">
+<span class="sr">地块</span>
+<span class="pq-fleche"></span>
+<span class="pq-trait"></span>
+</button>
+<div class="pq-panneau">
+<ul>
+<li>地块</li>
+<li>2027年工厂登记</li>
+<li>AMAM AAM ANSs 动脉</li>
+</ul>
+</div>
+</div>
+<div class="pq-slot" style="--i:1; --fx:90.91px; --fy:214.3px">
+<button aria-expanded="false" class="pq-module" data-module="vendanges">
+<span class="sr">采收</span>
+<span class="pq-fleche"></span>
+<span class="pq-trait"></span>
+</button>
+<div class="pq-panneau">
+<ul>
+<li>入罐</li>
+<li>平压</li>
+<li>单位</li>
+</ul>
+</div>
+</div>
+<div class="pq-slot" style="--i:2; --fx:91.91px; --fy:214.3px">
+<button aria-expanded="false" class="pq-module" data-module="cuverie">
+<span class="sr">发酵车间</span>
+<span class="pq-fleche"></span>
+<span class="pq-trait"></span>
+</button>
+<div class="pq-panneau">
+<ul>
+<li>调配</li>
+<li>缩编</li>
+<li>繁殖,分析</li>
+</ul>
+</div>
+</div>
+<div class="pq-slot" style="--i:3; --fx:90.91px; --fy:214.3px">
+<button aria-expanded="false" class="pq-module" data-module="mises">
+<span class="sr">装瓶</span>
+<span class="pq-fleche"></span>
+<span class="pq-trait"></span>
+</button>
+<div class="pq-panneau">
+<ul>
+<li>规划者</li>
+<li>装瓶</li>
+<li>干 体 体</li>
+</ul>
+</div>
+</div>
+<div class="pq-slot" style="--i:4; --fx:89.9px; --fy:214.3px">
+<button aria-expanded="false" class="pq-module" data-module="stocks">
+<span class="sr">库存</span>
+<span class="pq-fleche"></span>
+<span class="pq-trait"></span>
+</button>
+<div class="pq-panneau">
+<ul>
+<li>商业地块</li>
+<li>清单清单清单</li>
+<li>价值价值估价</li>
+</ul>
+</div>
+</div>
+<div class="pq-slot" style="--i:5; --fx:90.9px; --fy:214.3px">
+<button aria-expanded="false" class="pq-module" data-module="ventes">
+<span class="sr">销售</span>
+<span class="pq-fleche"></span>
+<span class="pq-trait"></span>
+</button>
+<div class="pq-panneau">
+<ul>
+<li>费用、发票</li>
+<li>交付交付</li>
+<li>物体正体</li>
+</ul>
+</div>
+</div>
+<div class="pq-slot" style="--i:6; --fx:90.91px; --fy:214.3px">
+<button aria-expanded="false" class="pq-module" data-module="clients">
+<span class="sr">客户</span>
+<span class="pq-fleche"></span>
+<span class="pq-trait"></span>
+</button>
+<div class="pq-panneau">
+<ul>
+<li>分区</li>
+<li>采购历史</li>
+<li>探矿</li>
+</ul>
+</div>
+</div>
+<div class="pq-slot" style="--i:7; --fx:90.91px; --fy:214.3px">
+<button aria-expanded="false" class="pq-module" data-module="administratif">
+<span class="sr">行政</span>
+<span class="pq-fleche"></span>
+<span class="pq-trait"></span>
+</button>
+<div class="pq-panneau">
+<ul>
+<li>DRM和DTI+</li>
+<li>地窖登记簿</li>
+<li>海关、胶囊</li>
+</ul>
+</div>
+</div>
+<div class="pq-slot" style="--i:8; --fx:90.9px; --fy:218.33px">
+<button aria-expanded="false" class="pq-module" data-module="tableaux-de-bord">
+<span class="sr">计分牌</span>
+<span class="pq-fleche"></span>
+<span class="pq-trait"></span>
+</button>
+<div class="pq-panneau">
+<ul>
+<li>指标</li>
+<li>成本、幅度</li>
+<li>全全观观</li>
+</ul>
+</div>
+</div>
+</div>
+<!-- Boutons dessinés dans parcours-bas.svg (écran offre), rendus
+         cliquables par des liens posés à leurs coordonnées : le bouton
+         « Rejoindre le programme bêta-test » mène à l'application,
+         « Voir l'offre détaillée » à la page tarifs. -->
+<a aria-label="参加乙型测试计划" class="parcours__lien parcours__lien--rejoindre" href="https://tester.monchai.fr"></a>
+<a aria-label="见详细报价" class="parcours__lien parcours__lien--offre" href="tarifs.html"></a>
+<!-- ================================================================
+         MONDE MOBILE (< 900 px) — voir assets/css/index-mobile.css.
+         Les couches dessinées ci-dessus sont masquées, ces blocs en vrai
+         HTML les remplacent : texte lisible, tactile et indexable (les
+         écrans dessinés sont muets pour les moteurs). Les ancres sont
+         posées ici, en flux ; au-dessus de 900 px elles restent
+         positionnées en absolu, leur place dans le DOM est indifférente.
+         Textes et icônes au trait transposés de l'ancienne landing,
+         listes des modules identiques aux pq-panneau ci-dessus.
+         ================================================================ -->
+<div class="ancre" id="pourquoi" style="top:150px"></div>
+<div class="m-bloc m-benefices">
+<span class="m-kicker">为什么Mon Chai</span>
+<h2 class="m-titre">少许相似, 更清晰的你的领域。</h2>
+<p class="m-intro">Mon Chai收集你领域的关键信息:地块、收获、葡萄酒、股票、销售和客户,以避免双倍扣押,并清楚了解你的业务。</p>
+<article>
+<span aria-hidden="true" class="m-icone"><svg viewbox="0 0 24 24"><ellipse cx="12" cy="6" rx="7" ry="2.6"></ellipse><path d="M5 6v6c0 1.4 3.1 2.6 7 2.6s7-1.2 7-2.6V6"></path><path d="M5 12v6c0 1.4 3.1 2.6 7 2.6s7-1.2 7-2.6v-6"></path></svg></span>
+<div><h3>中央集 权</h3><p>同一位置的域内的所有数据 。</p></div>
+</article>
+<article>
+<span aria-hidden="true" class="m-icone"><svg viewbox="0 0 24 24"><path d="M4 19h16"></path><path d="M5 15l4-4 3 2.5L18 8"></path><path d="M14.5 8H18v3.5"></path></svg></span>
+<div><h3>后续</h3><p>数量、股票、客户和股票仍然可以看得清。</p></div>
+</article>
+<article>
+<span aria-hidden="true" class="m-icone"><svg viewbox="0 0 24 24"><circle cx="12" cy="13" r="7.5"></circle><path d="M12 9v4l2.8 1.8"></path><path d="M9.5 3h5"></path></svg></span>
+<div><h3>节省时间</h3><p>少许相似 少忘少 少回程</p></div>
+</article>
+</div>
+<div aria-label="9 Mon Chai 模块" class="m-bloc m-modules">
+<span class="m-kicker">从藤藤到卖</span>
+<h2 class="m-titre">您的整个域, 模块按模块进行 。</h2>
+<p class="m-intro">一个用来查看其覆盖内容的磁带模块 。</p>
+<div class="m-carrousel">
+<div class="m-carte"><button aria-controls="mm-parcelles" aria-expanded="false" class="m-carte__btn" data-mm="parcelles" type="button"><img alt="" class="m-ico" decoding="async" height="54" loading="lazy" src="../assets/svg/icones/parcelles.svg" width="54"/>地块</button></div>
+<div class="m-carte"><button aria-controls="mm-vendanges" aria-expanded="false" class="m-carte__btn" data-mm="vendanges" type="button"><img alt="" class="m-ico" decoding="async" height="54" loading="lazy" src="../assets/svg/icones/vendanges.svg" width="54"/>采收</button></div>
+<div class="m-carte"><button aria-controls="mm-cuverie" aria-expanded="false" class="m-carte__btn" data-mm="cuverie" type="button"><img alt="" class="m-ico" decoding="async" height="54" loading="lazy" src="../assets/svg/icones/cuverie.svg" width="54"/>发酵车间</button></div>
+<div class="m-carte"><button aria-controls="mm-mises" aria-expanded="false" class="m-carte__btn" data-mm="mises" type="button"><img alt="" class="m-ico" decoding="async" height="54" loading="lazy" src="../assets/svg/icones/mises.svg" width="54"/>装瓶</button></div>
+<div class="m-carte"><button aria-controls="mm-stocks" aria-expanded="false" class="m-carte__btn" data-mm="stocks" type="button"><img alt="" class="m-ico" decoding="async" height="54" loading="lazy" src="../assets/svg/icones/stocks.svg" width="54"/>库存</button></div>
+<div class="m-carte"><button aria-controls="mm-ventes" aria-expanded="false" class="m-carte__btn" data-mm="ventes" type="button"><img alt="" class="m-ico" decoding="async" height="54" loading="lazy" src="../assets/svg/icones/ventes.svg" width="54"/>销售</button></div>
+<div class="m-carte"><button aria-controls="mm-clients" aria-expanded="false" class="m-carte__btn" data-mm="clients" type="button"><img alt="" class="m-ico" decoding="async" height="54" loading="lazy" src="../assets/svg/icones/clients.svg" width="54"/>客户</button></div>
+<div class="m-carte"><button aria-controls="mm-administratif" aria-expanded="false" class="m-carte__btn" data-mm="administratif" type="button"><img alt="" class="m-ico" decoding="async" height="54" loading="lazy" src="../assets/svg/icones/administratif.svg" width="54"/>行政</button></div>
+<div class="m-carte"><button aria-controls="mm-tableaux-de-bord" aria-expanded="false" class="m-carte__btn" data-mm="tableaux-de-bord" type="button"><img alt="" class="m-ico" decoding="async" height="54" loading="lazy" src="../assets/svg/icones/tableaux-de-bord.svg" width="54"/>计分牌</button></div>
+</div>
+<div aria-hidden="true" class="m-points"><i class="actif"></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+<div class="m-panneau" hidden="" id="mm-parcelles"><ul><li>地块</li><li>2027年工厂登记</li><li>AMAM AAM ANSs 动脉</li></ul></div>
+<div class="m-panneau" hidden="" id="mm-vendanges"><ul><li>入罐</li><li>平压</li><li>单位</li></ul></div>
+<div class="m-panneau" hidden="" id="mm-cuverie"><ul><li>调配</li><li>缩编</li><li>繁殖,分析</li></ul></div>
+<div class="m-panneau" hidden="" id="mm-mises"><ul><li>规划者</li><li>装瓶</li><li>干 体 体</li></ul></div>
+<div class="m-panneau" hidden="" id="mm-stocks"><ul><li>商业地块</li><li>清单清单清单</li><li>价值价值估价</li></ul></div>
+<div class="m-panneau" hidden="" id="mm-ventes"><ul><li>费用、发票</li><li>交付交付</li><li>物体正体</li></ul></div>
+<div class="m-panneau" hidden="" id="mm-clients"><ul><li>分区</li><li>采购历史</li><li>探矿</li></ul></div>
+<div class="m-panneau" hidden="" id="mm-administratif"><ul><li>DRM和DTI+</li><li>地窖登记簿</li><li>海关、胶囊</li></ul></div>
+<div class="m-panneau" hidden="" id="mm-tableaux-de-bord"><ul><li>指标</li><li>成本、幅度</li><li>全全观观</li></ul></div>
+</div>
+<div class="ancre" id="assistant" style="top:1300px"></div>
+<div class="m-bloc m-assistant">
+<span class="m-kicker">AI 助手</span>
+<h2 class="m-titre">我助理想到了葡萄酒行业</h2>
+<p class="m-intro">Mon Chai将法国小组设计的助理合并在一起,帮助查找信息、准备行动或综合数据。</p>
+<ul class="m-liste">
+<li>使用自然语言询问数据 。</li>
+<li>编写客户、股票或小吃摘要。</li>
+<li>确定预期的行动。</li>
+<li>一家AI在法国的服务器上操作 并且为了真正使用域名</li>
+</ul>
+<div aria-hidden="true" class="m-chat">
+<div class="m-chat__entete"><span>MC</span> 助理Mon Chai</div>
+<div class="m-chat__q">传统文化上我还剩多少瓶?</div>
+<div class="m-chat__r">现有1 248瓶。 320瓶是保留待决命令。</div>
+<div class="m-chat__q">哪个顾客买的?</div>
+<div class="m-chat__r">我可以用购买的量和订购日期来编制清单。</div>
+<div class="m-chat__saisie">问Mon Chai助理...</div>
+</div>
+</div>
+<div class="ancre" id="tarifs" style="top:2700px"></div>
+<div class="m-bloc m-offre">
+<span class="m-kicker">Betta方案</span>
+<h2 class="m-titre">免费测试 Mon Chai</h2>
+<p class="m-dates">2026年7月15日至10月31日</p>
+<div class="m-carte-offre m-carte-offre--beta">
+<h3>测试,贡献, 与我们一起移动。</h3>
+<div class="m-prix"><strong>0 €</strong><span class="m-badge">有限地点</span></div>
+<p class="m-mention">在试验阶段没有要求付款。</p>
+<ul class="m-liste">
+<li>完全使用软件</li>
+<li>启动支持</li>
+<li>提供1小时个人培训</li>
+<li>提供数据传输,价值300欧元的税费,不包括。</li>
+<li>24小时内提供专门支助</li>
+<li>1个网络研讨会, 回答您所有问题</li>
+</ul>
+<a class="m-cta" href="https://tester.monchai.fr">参加乙型测试计划</a>
+<small>仅供酒业专业人员使用。</small>
+</div>
+<div class="m-primeurs">
+<h3>十月三十一日之后呢?</h3>
+<p class="m-suite">你自由选择是否追求。</p>
+<div class="m-prix"><strong>49欧元,不包括税/月</strong><span class="m-badge">期酒方案</span></div>
+<p class="m-note">1年,59欧元,不包括月税</p>
+<ul class="m-liste">
+<li>所有内容包括所有内容</li>
+<li>不承诺</li>
+<li>最新情况和援助包括</li>
+<li>+15欧元 不包括每个额外用户的税费</li>
+</ul>
+<a class="m-lien" href="tarifs.html">见详细报价</a>
+<a class="m-lien" href="essai-gratuit.html">自由审判是如何进行?</a>
+</div>
+</div>
+</section>
+<!-- ================================================================
+       ÉCRAN 3 : frame Figma "À propos et FAQ" · 1920 × 2481
+       À propos et FAQ fusionnés en une seule frame : la photo de raisins est
+       continue de l'un à l'autre, la transition est gérée dans Figma (fondu
+       vers le crème en bas). Bande de header retirée (coupe y=119), cadre noir
+       de l'export supprimé.
+       ⚠️ Les « + » de la FAQ sont dessinés dans le SVG : l'accordéon n'est pas
+       encore interactif.
+       ================================================================ -->
+<section aria-label="关于和常问问题" class="stage" id="apropos-faq">
+<div class="apfaq-fond" data-fond=""></div>
+<!-- Ancre posée en flux pour le mobile, absolue au-dessus de 900 px. -->
+<div class="ancre" id="apropos" style="top:0"></div>
+<!-- MONDE MOBILE : l'écran À propos dessiné est masqué sous 900 px,
+         ce bloc en vrai texte le remplace (même contenu que le dessin). -->
+<div class="m-bloc m-apropos">
+<span class="m-kicker">关于我们</span>
+<h2 class="m-titre">关于我们</h2>
+<div class="m-portraits">
+<img alt="丹尼斯·贝瑟洛特,XX公司共同创始人 Mon Chai" decoding="async" height="76" loading="lazy" src="../assets/img/portrait-denis.jpg" width="76"/>
+<img alt="Laura Halla, Mon Chai公司共同创始人" decoding="async" height="76" loading="lazy" src="../assets/img/portrait-laura.jpg" width="76"/>
+</div>
+<p>Mon Chai产生于一个简单的观察:葡萄酒庄仍然经常在不交流的工具之间玩弄花招,它们具有许多再杀法,而且整体可见度很小。</p>
+<p>在葡萄酒管理软件使用几年后,丹尼斯设计了Mon Chai,将一个域的主要活动从藤树到销售同一个工具联系起来。</p>
+<p>劳拉随后加入开发用户经验、设计、通信和对实地的支持。</p>
+<p>今天,我们的乙型测试计划 使我们能够与实地对抗Mon Chai 并共同建立最有用的发展</p>
+<blockquote class="m-citation">我们的雄心:建立一个适合实地现实的有用、明确和适应的工具。</blockquote>
+<p class="m-france"><span aria-hidden="true">🇫🇷</span> 开发并主办于法国</p>
+<p class="m-signature">德尼·贝特洛特和劳拉·哈拉<span>Mon Chai的共同创始人</span></p>
+</div>
+<div class="ancre" id="faq" style="top:1500px"></div>
+<!-- Titre de la FAQ : dessiné dans le SVG sur bureau, écrit ici pour
+         le mobile. -->
+<div class="m-bloc m-faq-titre">
+<h2 class="m-titre">您经常被问到的问题</h2>
+</div>
+<!-- FAQ interactive : recouvre les cartes figées du SVG (fond crème)
+         et les remplace par un vrai accordéon. Clic sur une question ->
+         réponse ; clic ailleurs -> referme celle ouverte. Sous 900 px,
+         l'accordéon sort du dessin et s'écoule en colonne. -->
+<div class="faq">
+<div class="faq-col">
+<div class="faq-item">
+<button aria-expanded="false" class="faq-q"><span>谁是Mon Chai?</span><span aria-hidden="true" class="faq-plus"></span></button>
+<div class="faq-a"><p>首先,对于希望集中管理并更好地跟踪其数据、从葡萄树到销售的葡萄酒厂,Mon Chai还将为葡萄酒制造商和商人提出模块。</p></div>
+</div>
+<div class="faq-item">
+<button aria-expanded="false" class="faq-q"><span>乙酯计划如何运作?</span><span aria-hidden="true" class="faq-plus"></span></button>
+<div class="faq-a"><p>您在7月15日至10月31日期间免费测试软件:程序刚刚延期一个月。作为交换,您共享反馈,帮助我们建立一个真正适合实地的工具。个人化支持包括数据传输、培训和网络接收研讨会。</p></div>
+</div>
+<div class="faq-item">
+<button aria-expanded="false" class="faq-q"><span>我们可以输入数据吗?</span><span aria-hidden="true" class="faq-plus"></span></button>
+<div class="faq-a"><p>。我们将陪同您从您当前的文件或工具中导入您现有的数据(公园、客户、库存)。在测试乙型试验期间提供转账。</p></div>
+</div>
+<div class="faq-item">
+<button aria-expanded="false" class="faq-q"><span>Mon Chai安全吗?</span><span aria-hidden="true" class="faq-plus"></span></button>
+<div class="faq-a"><p>是的,您的数据在法国的安全服务器上,有常规备份和安全访问,您仍然是您信息的唯一所有者。</p></div>
+</div>
+</div>
+<div class="faq-col">
+<div class="faq-item">
+<button aria-expanded="false" class="faq-q"><span>乙酯计划结束时你的工资是多少?</span><span aria-hidden="true" class="faq-plus"></span></button>
+<div class="faq-a"><p>从2026年11月1日起:49欧元,不包括一年的每月税,而59欧元,不包括月税,不承付款项,贝塔测试者受益于为他们保留的开源商报价。</p></div>
+</div>
+<div class="faq-item">
+<button aria-expanded="false" class="faq-q"><span>您为那些想要测试软件的领域提供哪些支持?</span><span aria-hidden="true" class="faq-plus"></span></button>
+<div class="faq-a"><p>视您所在的领域而定:数据传输、1小时个人培训、一次网络控制研讨会和为启动而提供的专心和反应灵敏的支持。</p></div>
+</div>
+<div class="faq-item">
+<button aria-expanded="false" class="faq-q"><span>订阅中包括哪些内容?</span><span aria-hidden="true" class="faq-plus"></span></button>
+<div class="faq-a"><p>软件及其所有功能的全面使用,包括更新和支持。最多有两个用户,然后是每个新增用户的15欧元税除外。</p></div>
+</div>
+<!-- Carte-lien vers la FAQ complète (faq.html) : pas de classe
+             .faq-item pour que l'accordéon de script.js l'ignore. -->
+<a class="faq-lien" href="faq.html"><span>DRM, 植物注册2027年, 追踪,你的数据...</span><span aria-hidden="true" class="faq-fleche">→</span></a>
+</div>
+</div>
+</section>
+<!-- ================================================================
+       ÉCRAN 4 : Notre actualité · 1920 × 1081
+       Le texte était vectorisé dans actualite.svg : ni sélectionnable, ni
+       indexable. Il en a été retiré et reposé ici en vrai HTML, aux
+       coordonnées relevées dans le SVG. Le fond ne porte plus que les cartes,
+       les photos et les pastilles réseaux sociaux (la bande « publications »
+       en a aussi été retirée, voir le bloc .actu-insta plus bas).
+       Les pastilles Instagram et LinkedIn du fond sont recouvertes par de
+       vrais liens (.actu__reseau) ; la pastille Facebook a été retirée du SVG,
+       aucun compte n'existant (le site en ligne n'a qu'Instagram et LinkedIn).
+       Interview et salon reprennent le libellé du site en ligne, pas celui du
+       Figma : la date d'interview « arrêtée » du Figma n'était pas réelle
+       (encore « à venir » sur le site), et le salon s'écrit « au salon
+       Vinitech-Sifel », sans « de ».
+       ================================================================ -->
+<section aria-label="我们的新闻" class="stage" data-fond="" id="actualite">
+<h2 class="actu__titre">我们的新闻</h2>
+<article class="actu-carte actu-carte--beta">
+<img alt="日落时的藤叶" class="m-actu-img m-only" decoding="async" height="320" loading="lazy" src="../assets/img/actu-2-480-20260720.webp" width="480"/>
+<h3 class="actu-carte__titre">贝塔测试延长至10月31日</h3>
+<p class="actu-carte__date">2026年7月15日至10月31日</p>
+<p class="actu-carte__texte">加入Mon Chai冒险:测试免费软件 <br/>共享您的反馈, 以共同构建一个非常合适的工具 <br/>每天在葡萄园里。</p>
+</article>
+<article class="actu-carte actu-carte--interview">
+<img alt="带鼓鼓的柴仔" class="m-actu-img m-only" decoding="async" height="270" loading="lazy" src="../assets/img/actu-4-480-20260720.webp" width="480"/>
+<h3 class="actu-carte__titre">在Winetechtec咖啡厅与Mon Chai的访谈</h3>
+<p class="actu-carte__date">日期到来时在 LinkedIn / 回放到YouTube上</p>
+<p class="actu-carte__texte">发现Mon Chai的故事, 激励我们的信念 <br/>和在幕后 开启我们的贝塔测试程序。</p>
+</article>
+<article class="actu-carte actu-carte--salon">
+<img alt="葡萄葡萄葡萄" class="m-actu-img m-only" decoding="async" height="320" loading="lazy" src="../assets/img/actu-3-480-20260720.webp" width="480"/>
+<h3 class="actu-carte__titre">维尼科技-西菲尔展的XXX 在波尔多 Mon Chai</h3>
+<p class="actu-carte__date">2026年12月1日至12月3日</p>
+<p class="actu-carte__texte">来和我们团队聊天 发现软件 <br/>并参加 Mon Chai 演示。</p>
+</article>
+<h3 class="actu__suivez">跟着冒险Mon Chai</h3>
+<!-- Icônes réelles pour le mobile (les pastilles dessinées du fond
+         n'y existent plus). -->
+<div class="m-social m-only">
+<a aria-label="Instagram 上跟踪Mon Chai" href="https://www.instagram.com/monchai.fr/" rel="noopener noreferrer" target="_blank"><svg aria-hidden="true" viewbox="0 0 24 24"><rect height="18" rx="5" width="18" x="3" y="3"></rect><circle cx="12" cy="12" r="4"></circle><circle class="m-social__point" cx="17.4" cy="6.7" r="1.1"></circle></svg></a>
+<a aria-label="LinkedIn 上跟踪Mon Chai" href="https://www.linkedin.com/company/monchai" rel="noopener noreferrer" target="_blank"><svg aria-hidden="true" viewbox="0 0 24 24"><path d="M5.2 8.2H2.1V22h3.1V8.2ZM3.7 2A1.8 1.8 0 1 0 3.7 5.6 1.8 1.8 0 0 0 3.7 2ZM22 14.1c0-4.2-2.2-6.2-5.2-6.2-2.4 0-3.5 1.3-4.1 2.2V8.2H9.6V22h3.1v-6.8c0-1.8.3-3.6 2.6-3.6 2.2 0 2.3 2.1 2.3 3.7V22H22v-7.9Z"></path></svg></a>
+</div>
+<!-- Liens réels posés sur les pastilles dessinées dans le fond
+         (Instagram : 136-200 px, LinkedIn : 237-301 px, à 851 px du haut). -->
+<a aria-label="Instagram 上跟踪Mon Chai" class="actu__reseau actu__reseau--instagram" href="https://www.instagram.com/monchai.fr/" rel="noopener noreferrer" target="_blank"></a>
+<a aria-label="LinkedIn 上跟踪Mon Chai" class="actu__reseau actu__reseau--linkedin" href="https://www.linkedin.com/company/monchai" rel="noopener noreferrer" target="_blank"></a>
+<!-- Publications Instagram : bloc repris tel quel du site en ligne
+         (landing_mail). La bande dessinée dans le Figma était une image de
+         démonstration du template (canapé, basket, téléphone) : retirée du
+         SVG. Ici, aucun appel à Meta avant l'accord « Services tiers » :
+         des cartes d'attente invitent à régler les cookies, puis embed.js
+         affiche les publications complètes (script.js, section 12).
+         Le bloc s'écoule sous l'écran dessiné : #actualite est passé en
+         hauteur automatique, le fond gardant ses 1084 px fixes. -->
+<div aria-labelledby="instagramFeedTitle" class="instagram-feed">
+<div class="instagram-feed__heading">
+<span>乘XXX 与我们一起 Instagram</span>
+<h3 id="instagramFeedTitle">我们的最新出版物</h3>
+</div>
+<div class="instagram-feed__grid">
+<article class="instagram-embed-shell" data-instagram-embed="" data-permalink="https://www.instagram.com/p/Dau-f-GDIgO/">
+<div class="instagram-placeholder">
+<span aria-hidden="true" class="instagram-placeholder__icon"><svg viewbox="0 0 24 24"><rect height="18" rx="5" width="18" x="3" y="3"></rect><circle cx="12" cy="12" r="4"></circle><circle class="social-dot" cx="17.4" cy="6.7" r="1.1"></circle></svg></span>
+<strong>出版物Instagram</strong>
+<p>允许第三方服务查看完整出版物。</p>
+<button data-cookies="" type="button">选择我的设置</button>
+<a href="https://www.instagram.com/p/Dau-f-GDIgO/" rel="noopener noreferrer" target="_blank">见Instagram</a>
+</div>
+</article>
+<article class="instagram-embed-shell" data-instagram-embed="" data-permalink="https://www.instagram.com/p/DXEz3a9DNxf/">
+<div class="instagram-placeholder">
+<span aria-hidden="true" class="instagram-placeholder__icon"><svg viewbox="0 0 24 24"><rect height="18" rx="5" width="18" x="3" y="3"></rect><circle cx="12" cy="12" r="4"></circle><circle class="social-dot" cx="17.4" cy="6.7" r="1.1"></circle></svg></span>
+<strong>出版物Instagram</strong>
+<p>允许第三方服务查看完整出版物。</p>
+<button data-cookies="" type="button">选择我的设置</button>
+<a href="https://www.instagram.com/p/DXEz3a9DNxf/" rel="noopener noreferrer" target="_blank">见Instagram</a>
+</div>
+</article>
+</div>
+</div>
+</section>
+<!-- ================================================================
+       PIED DE PAGE : composant partagé (assets/css/pied.css)
+       L'ancien était une image SVG de 1920 × 520 surmontée de zones
+       cliquables : illisible pour les moteurs de recherche et les lecteurs
+       d'écran, et impossible à faire refluer. Reconstruit en vrai texte,
+       identique à celui des 8 pages « Le logiciel ».
+       ================================================================ -->
+</main>
+<footer aria-label="页脚" class="pied">
+<div class="pied__haut">
+<div class="pied__marque">
+<p class="pied__nom">Mon Chai</p>
+<p class="pied__sous">葡萄酒软件</p>
+<p class="pied__phrase">庄园的管理,从葡萄园到销售</p>
+<p class="pied__fr">开发并主办于法国</p>
+<div class="pied__suivre">
+<p class="pied__suivre-titre">跟着我们</p>
+<div class="pied__reseaux">
+<a aria-label="Instagram 上跟踪Mon Chai" href="https://www.instagram.com/monchai.fr/" rel="noopener noreferrer" target="_blank"><svg aria-hidden="true" viewbox="0 0 24 24"><rect height="18" rx="5" width="18" x="3" y="3"></rect><circle cx="12" cy="12" r="4"></circle><circle class="pied__reseau-point" cx="17.4" cy="6.7" r="1.1"></circle></svg></a>
+<a aria-label="LinkedIn 上跟踪Mon Chai" href="https://www.linkedin.com/company/monchai" rel="noopener noreferrer" target="_blank"><svg aria-hidden="true" viewbox="0 0 24 24"><path d="M5.2 8.2H2.1V22h3.1V8.2ZM3.7 2A1.8 1.8 0 1 0 3.7 5.6 1.8 1.8 0 0 0 3.7 2ZM22 14.1c0-4.2-2.2-6.2-5.2-6.2-2.4 0-3.5 1.3-4.1 2.2V8.2H9.6V22h3.1v-6.8c0-1.8.3-3.6 2.6-3.6 2.2 0 2.3 2.1 2.3 3.7V22H22v-7.9Z"></path></svg></a>
+</div>
+</div>
+</div>
+<nav aria-label="软件" class="pied__col">
+<h2>软件</h2>
+<ul>
+<li><a href="fonctionnalites.html">全部功能</a></li>
+<li><a href="vigne-vendanges.html">葡萄园与采收</a></li> <li><a href="cave-vinification.html">酒窖与酿造</a></li> <li><a href="mises-conditionnement.html">包装与装瓶</a></li> <li><a href="stocks-tracabilite.html">库存与追溯</a></li> <li><a href="ventes-clients.html">销售、客户与开票</a></li> <li><a href="drm-conformite.html">DRM 与合规</a></li> <li><a href="oenotourisme.html">葡萄酒旅游</a></li>
+<li><a href="#assistant">AI 助手</a></li>
+</ul>
+</nav>
+<nav aria-label="公司" class="pied__col">
+<h2>公司</h2>
+<ul>
+<li><a href="tarifs.html">价格</a></li>
+<li><a href="essai-gratuit.html">免费试用</a></li>
+<li><a href="choisir-logiciel-viticole.html">选择合适的软件</a></li>
+<li><a href="ia-au-service-de-mon-chai.html">连接 ChatGPT 或 Claude</a></li>
+<li><a href="#apropos">关于我们</a></li>
+<li><a href="#faq">常答问题</a></li>
+<li><a href="#actualite">我们的新闻</a></li>
+<li><a href="actualites-reglementaires.html">法规动态</a></li>
+<li><a href="contact.html">联系我们</a></li>
+</ul>
+</nav>
+<nav aria-label="法律 法律" class="pied__col">
+<h2>法律 法律</h2>
+<ul>
+<li><a href="mentions-legales.html">法律声明</a></li>
+<li><a href="politique-confidentialite.html">隐私政策</a></li>
+<li><a href="cgu.html">销售与使用条款</a></li>
+<li><button data-cookies="" type="button">管理我的饼干</button></li>
+</ul>
+</nav>
+</div>
+<div class="pied__bas">
+<p>2026Mon Chai 保留所有权利</p>
+<p>成员 <a href="https://www.lawinetech.com/" rel="noopener" target="_blank">酒科技</a> 和 <a href="https://lepoool.tech/" rel="noopener" target="_blank">Poool</a>被想象出来,在雷恩发展</p>
+</div>
+</footer>
+</div>
+<!-- ================================================================
+     COOKIES : bandeau de consentement (conforme CNIL)
+     Cookies strictement nécessaires : toujours actifs, sans consentement.
+     Mesure d'audience + tiers : soumis au consentement. Choix conservé 6 mois,
+     réouvrable via « Gérer mes cookies » (footer / pages légales).
+     ================================================================ -->
+<div class="cookie" hidden="" id="cookieBanner">
+<div class="cookie__texte">
+<strong>曲曲奇和隐私</strong>
+<p>使用严格必要的饼干 来操作网站。在征得您的同意后, 我们还使用观众测量饼干来改进Mon Chai。 <a href="politique-confidentialite.html">了解更多</a>.</p>
+</div>
+<div class="cookie__actions">
+<button class="cookie__btn cookie__btn--ghost" id="cookieRefus" type="button">拒绝</button>
+<button class="cookie__btn cookie__btn--ghost" id="cookieRegler" type="button">自自定义</button>
+<button class="cookie__btn cookie__btn--plein" id="cookieAccept" type="button">接受一切</button>
+</div>
+</div>
+<div class="cookie-modal" hidden="" id="cookieModal">
+<div class="cookie-modal__fond" data-cookies-fermer=""></div>
+<div aria-label="Cookie 设置" aria-modal="true" class="cookie-modal__boite" role="dialog">
+<button aria-label="关闭" class="cookie-modal__fermer" data-cookies-fermer="">×</button>
+<h2>Cookie 设置</h2>
+<p class="cookie-modal__intro">选择您接受的饼干。 您的选项保留六个月 。</p>
+<label class="cookie-opt">
+<span><strong>绝对必要</strong><br/>现场的运作和安全 一直活跃</span>
+<input checked="" disabled="" type="checkbox"/>
+</label>
+<label class="cookie-opt">
+<span><strong>听询行动</strong><br/>帮助我们了解网站如何用来改进。</span>
+<input id="optAudience" type="checkbox"/>
+</label>
+<label class="cookie-opt">
+<span><strong>第三方服务</strong><br/>外部内容和工具(表格、视频、运动后续行动)。</span>
+<input id="optTiers" type="checkbox"/>
+</label>
+<div class="cookie-modal__pied">
+<button class="cookie__btn cookie__btn--ghost" id="cookieToutRefus" type="button">拒绝一切</button>
+<button class="cookie__btn cookie__btn--plein" id="cookieEnregistrer" type="button">省省我的选择</button>
+</div>
+</div>
+</div>
+<script src="../assets/js/header.js"></script>
+<script src="../script.js"></script>
+</body>
+</html>

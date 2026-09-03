@@ -13,6 +13,15 @@
      barre de défilement. */
   var NAV_HORIZ = window.matchMedia('(min-width: 900px)');
 
+  /* Le header de référence est dessiné sur 1920 px. Publier son facteur ici
+     permet aux pages éditoriales d'utiliser exactement le même composant que
+     l'accueil, même lorsqu'elles ne chargent pas script.js. */
+  function publierEchelle() {
+    document.documentElement.style.setProperty('--echelle', window.innerWidth / 1920);
+  }
+  window.addEventListener('resize', publierEchelle);
+  publierEchelle();
+
   var hd     = document.querySelector('.hd');
   var burger = document.querySelector('.hd__burger');
   if (!hd) return;
@@ -126,5 +135,29 @@
   document.addEventListener('click', function (e) {
     var dans = menus.some(function (m) { return m.contains(e.target); });
     if (!dans) toutFermer(null);
+  });
+
+
+  /* ---------- 3. Sélecteur de langue ---------- */
+  var langue = document.querySelector('.hd__langue');
+  var boutonLangue = langue && langue.querySelector('.hd__langue-bouton');
+  function fermerLangues() {
+    if (!langue || !boutonLangue) return;
+    langue.classList.remove('est-ouvert');
+    boutonLangue.setAttribute('aria-expanded', 'false');
+  }
+  if (boutonLangue) {
+    boutonLangue.addEventListener('click', function (e) {
+      e.stopPropagation();
+      var ouvert = langue.classList.toggle('est-ouvert');
+      boutonLangue.setAttribute('aria-expanded', ouvert ? 'true' : 'false');
+      if (ouvert) toutFermer(null);
+    });
+  }
+  document.addEventListener('click', function (e) {
+    if (langue && !langue.contains(e.target)) fermerLangues();
+  });
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') fermerLangues();
   });
 })();

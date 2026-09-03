@@ -8,6 +8,12 @@
 <meta name="description" content="Préparez vos mises avec Mon Chai : ordres de fabrication, sélection des lots à conditionner, habillage, tiré-bouché, matières sèches, écarts de production, lots commerciaux et entrée automatique en stock.">
 <meta name="robots" content="index, follow, max-image-preview:large">
 <link rel="canonical" href="https://monchai.fr/mises-conditionnement.html">
+<link rel="alternate" hreflang="fr" href="https://monchai.fr/mises-conditionnement.html">
+<link rel="alternate" hreflang="en" href="https://monchai.fr/en/mises-conditionnement.html">
+<link rel="alternate" hreflang="it" href="https://monchai.fr/it/mises-conditionnement.html">
+<link rel="alternate" hreflang="de" href="https://monchai.fr/de/mises-conditionnement.html">
+<link rel="alternate" hreflang="zh-Hans" href="https://monchai.fr/zh/mises-conditionnement.html">
+<link rel="alternate" hreflang="x-default" href="https://monchai.fr/mises-conditionnement.html">
 
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://monchai.fr/mises-conditionnement.html">
@@ -23,6 +29,7 @@
 <link rel="stylesheet" href="assets/css/polices.css">
 <link rel="stylesheet" href="assets/css/header.css">
 <link rel="stylesheet" href="assets/css/pages.css">
+<link rel="stylesheet" href="assets/css/module-texte.css">
 <link rel="stylesheet" href="assets/css/galerie.css">
 <link rel="stylesheet" href="assets/css/pied.css">
 </head>
@@ -111,7 +118,18 @@
 
         <a class="hd__connexion" href="https://tester.monchai.fr">Me Connecter</a>
         <a class="hd__cta" href="https://tester.monchai.fr">Essayer gratuitement</a>
-        <button class="hd__langue" type="button">FR<span class="hd__chev"></span></button>
+        <div class="hd__langue">
+          <button class="hd__langue-bouton" type="button" aria-label="Choisir la langue" aria-haspopup="true" aria-expanded="false" aria-controls="menu-langues">
+            FR<span class="hd__chev" aria-hidden="true"></span>
+          </button>
+          <div class="hd__langue-menu" id="menu-langues">
+            <a href="mises-conditionnement.html" lang="fr" hreflang="fr" aria-current="page">Français</a>
+            <a href="en/mises-conditionnement.html" lang="en" hreflang="en">English</a>
+            <a href="it/mises-conditionnement.html" lang="it" hreflang="it">Italiano</a>
+            <a href="de/mises-conditionnement.html" lang="de" hreflang="de">Deutsch</a>
+            <a href="zh/mises-conditionnement.html" lang="zh-Hans" hreflang="zh-Hans">中文</a>
+          </div>
+        </div>
       </div>
     </header>
 
@@ -198,6 +216,106 @@
        Absent des frames Figma. Ajouté pour que les mentions légales, la
        politique de confidentialité et les CGUV soient atteignables depuis
        chaque page, et pas seulement depuis index.html. -->
+  <!-- ============ CONTENU ÉDITORIAL ============
+       Bande .mtx. Écrit d'après le module Mises : planificateur,
+       ordres de fabrication, formats, matières sèches, création des
+       lots commerciaux à l'issue de la mise.
+       ================================================================ -->
+  <section class="mtx mtx--sable" aria-labelledby="mtx-mises">
+    <div class="mtx__inner">
+
+      <div class="mtx__entete">
+        <span class="mtx__sur">Mises, formats &amp; matières sèches</span>
+        <h2 class="mtx__titre" id="mtx-mises">Préparer une mise en bouteille <em>sans surprise le jour J</em></h2>
+        <div class="mtx__orn" aria-hidden="true"></div>
+        <p class="mtx__chapo">Une mise se joue avant la mise : le volume disponible, le nombre de cols par format, les bouchons et les étiquettes qu'il faut avoir commandés. Mon Chai part du <strong>vin réellement en cuve</strong>, calcule ce que la mise produira, et crée les lots commerciaux à l'arrivée.</p>
+      </div>
+
+      <div class="mtx__cles">
+        <div class="mtx__cle"><b>Du vrac au col</b><span>Le volume disponible devient un nombre de bouteilles, format par format</span></div>
+        <div class="mtx__cle"><b>Matières sèches</b><span>Bouchons, capsules, étiquettes et cartons suivis comme du stock</span></div>
+        <div class="mtx__cle"><b>Ordre de fabrication</b><span>La mise se prépare, se lance, puis se solde sur le réalisé</span></div>
+        <div class="mtx__cle"><b>Lot commercial</b><span>Créé à l'issue de la mise, avec son lien vers le lot de cave</span></div>
+      </div>
+
+      <div class="mtx__corps">
+
+        <h2>Préparer une mise et calculer les volumes</h2>
+        <p class="mtx__ouvre">La préparation part du lot en cuve et de son volume réel, celui du journal des mouvements, pas d'une estimation reportée d'un carnet. Vous choisissez les formats à produire et leurs quantités, et le logiciel vous montre ce que cela représente en volume, ce qu'il restera en cuve, et si le compte n'y est pas.</p>
+        <p>C'est là que se règlent la plupart des mauvaises surprises : un format de trop, un fond de cuve oublié, une quantité qui ne tombe pas juste.</p>
+
+        <h2>Gérer les formats et les habillages</h2>
+        <p>Bouteilles de 75 centilitres, magnums, demi-bouteilles, autres contenants : chaque format est une ligne de production distincte, avec sa quantité et son habillage. Une même cuvée peut donc partir en plusieurs formats dans la même mise, sans que le suivi ne devienne illisible.</p>
+
+        <h2>Suivre bouchons, cartons, étiquettes et capsules</h2>
+        <p>Les matières sèches sont du stock à part entière : elles se reçoivent, se consomment à la mise et se comptent. Les capsules à référence douanière suivent le même chemin, avec leur référence, ce qui évite de découvrir en fin d'année un écart entre les capsules commandées et les bouteilles habillées.</p>
+        <div class="mtx__note">
+          <p><strong>Une seule saisie, deux effets.</strong> La mise décrémente le vrac et incrémente les bouteilles : c'est le même événement qui alimente votre stock commercial et votre comptabilité matière. Vous ne saisissez pas deux fois, et les deux vues ne peuvent pas diverger.</p>
+        </div>
+
+        <h2>De l'ordre de fabrication au lot commercial</h2>
+        <p>Une mise se déroule en trois temps : elle se prépare, elle se lance, elle se solde sur ce qui a réellement été produit. À l'arrivée, le <strong>lot commercial</strong> est créé, prêt à être vendu, et il conserve le lien vers le lot de cave dont il provient.</p>
+        <p>C'est ce lien qui fait tenir la traçabilité descendante : d'un numéro de lot sur une bouteille, on remonte à la cuve, à l'assemblage, aux apports de vendange et donc aux parcelles.</p>
+
+        <div class="mtx__chaine" aria-label="De la cuve au lot commercial">
+          <span class="mtx__jeton">Lot en cuve</span><span class="mtx__lien-chaine" aria-hidden="true">›</span>
+          <span class="mtx__jeton">Préparation de la mise</span><span class="mtx__lien-chaine" aria-hidden="true">›</span>
+          <span class="mtx__jeton">Matières sèches</span><span class="mtx__lien-chaine" aria-hidden="true">›</span>
+          <span class="mtx__jeton">Mise réalisée</span><span class="mtx__lien-chaine" aria-hidden="true">›</span>
+          <span class="mtx__jeton">Lot commercial</span><span class="mtx__lien-chaine" aria-hidden="true">›</span>
+          <span class="mtx__jeton">Stock vendable</span>
+        </div>
+
+        <h2>Conserver la traçabilité de la mise</h2>
+        <p>La mise reste consultable après coup : ce qui était prévu, ce qui a été produit, les formats, les quantités et les pertes constatées. Ce n'est pas seulement un confort de gestion, c'est la pièce qui explique un écart de stock ou un volume déclaré.</p>
+      </div>
+
+      <div class="mtx__faq">
+        <h2 class="mtx__titre" style="font-size:28px; margin:52px 0 8px">Questions fréquentes</h2>
+        <details>
+          <summary>Le logiciel calcule-t-il le nombre de bouteilles à partir du volume ?</summary>
+          <p>Oui, format par format, à partir du volume réellement disponible dans le lot. Vous voyez ce qu'il restera en cuve avant de lancer la mise.</p>
+        </details>
+        <details>
+          <summary>Peut-on faire plusieurs formats dans une même mise ?</summary>
+          <p>Oui. Chaque format est une ligne de production avec sa quantité, et chacun donne son lot commercial à l'arrivée.</p>
+        </details>
+        <details>
+          <summary>Les bouchons et les étiquettes sont-ils suivis ?</summary>
+          <p>Oui, comme des articles de stock : entrées, consommations à la mise, restant. Les capsules à référence douanière sont suivies par référence.</p>
+        </details>
+        <details>
+          <summary>Que devient le lien avec la cuve après la mise ?</summary>
+          <p>Il est conservé sur le lot commercial. C'est ce qui permet de remonter d'une bouteille jusqu'aux parcelles qui l'ont produite.</p>
+        </details>
+      </div>
+
+      <div class="mtx__liens">
+        <p class="mtx__liens-titre">Pour aller plus loin</p>
+        <ul>
+          <li><a href="cave-vinification.html">Cave &amp; vinification : ce qui précède la mise</a></li>
+          <li><a href="stocks-tracabilite.html">Stocks &amp; traçabilité : après la mise</a></li>
+          <li><a href="ventes-clients.html">Ventes, clients &amp; facturation</a></li>
+          <li><a href="drm-conformite.html">DRM &amp; comptabilité matière</a></li>
+          <li><a href="actualites-etiquetage-mises.html">Actualités étiquetage &amp; mises</a></li>
+          <li><a href="paquet-vin-europeen-2027.html">Paquet vin européen : étiquetage 2027</a></li>
+        </ul>
+      </div>
+
+      <div class="mtx__cta">
+        <div>
+          <h2>Simuler une mise</h2>
+          <p>Prenez un lot, choisissez deux formats, regardez ce qu'il reste en cuve et ce qui part en stock.</p>
+        </div>
+        <div class="mtx__cta-actions">
+          <a class="mtx__btn" href="essai-gratuit.html">Essayer gratuitement</a>
+          <a class="mtx__btn mtx__btn--fant" href="contact.html">Poser une question</a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
 </main>
 
   <footer class="pied">

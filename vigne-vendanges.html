@@ -8,6 +8,12 @@
 <meta name="description" content="Pilotez votre vignoble avec Mon Chai : parcelles, cépages, journal des travaux, registre phytosanitaire 2027 avec les intrants et leurs AMM synchronisés sur l'Anses, maturité et vendanges.">
 <meta name="robots" content="index, follow, max-image-preview:large">
 <link rel="canonical" href="https://monchai.fr/vigne-vendanges.html">
+<link rel="alternate" hreflang="fr" href="https://monchai.fr/vigne-vendanges.html">
+<link rel="alternate" hreflang="en" href="https://monchai.fr/en/vigne-vendanges.html">
+<link rel="alternate" hreflang="it" href="https://monchai.fr/it/vigne-vendanges.html">
+<link rel="alternate" hreflang="de" href="https://monchai.fr/de/vigne-vendanges.html">
+<link rel="alternate" hreflang="zh-Hans" href="https://monchai.fr/zh/vigne-vendanges.html">
+<link rel="alternate" hreflang="x-default" href="https://monchai.fr/vigne-vendanges.html">
 
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://monchai.fr/vigne-vendanges.html">
@@ -23,6 +29,7 @@
 <link rel="stylesheet" href="assets/css/polices.css">
 <link rel="stylesheet" href="assets/css/header.css">
 <link rel="stylesheet" href="assets/css/pages.css">
+<link rel="stylesheet" href="assets/css/module-texte.css">
 <link rel="stylesheet" href="assets/css/galerie.css">
 <link rel="stylesheet" href="assets/css/pied.css">
 </head>
@@ -111,7 +118,18 @@
 
         <a class="hd__connexion" href="https://tester.monchai.fr">Me Connecter</a>
         <a class="hd__cta" href="https://tester.monchai.fr">Essayer gratuitement</a>
-        <button class="hd__langue" type="button">FR<span class="hd__chev"></span></button>
+        <div class="hd__langue">
+          <button class="hd__langue-bouton" type="button" aria-label="Choisir la langue" aria-haspopup="true" aria-expanded="false" aria-controls="menu-langues">
+            FR<span class="hd__chev" aria-hidden="true"></span>
+          </button>
+          <div class="hd__langue-menu" id="menu-langues">
+            <a href="vigne-vendanges.html" lang="fr" hreflang="fr" aria-current="page">Français</a>
+            <a href="en/vigne-vendanges.html" lang="en" hreflang="en">English</a>
+            <a href="it/vigne-vendanges.html" lang="it" hreflang="it">Italiano</a>
+            <a href="de/vigne-vendanges.html" lang="de" hreflang="de">Deutsch</a>
+            <a href="zh/vigne-vendanges.html" lang="zh-Hans" hreflang="zh-Hans">中文</a>
+          </div>
+        </div>
       </div>
     </header>
 
@@ -211,6 +229,108 @@
        Absent des frames Figma. Ajouté pour que les mentions légales, la
        politique de confidentialité et les CGUV soient atteignables depuis
        chaque page, et pas seulement depuis index.html. -->
+  <!-- ============ CONTENU ÉDITORIAL ============
+       Bande .mtx. Écrit d'après le module Production : parcelles,
+       assistants d'opérations, journal cultural, IFT, relevés de
+       maturité, réception de vendange, encuvage orienté par cépage.
+       ================================================================ -->
+  <section class="mtx mtx--sable" aria-labelledby="mtx-vigne">
+    <div class="mtx__inner">
+
+      <div class="mtx__entete">
+        <span class="mtx__sur">Parcellaire, travaux &amp; vendanges</span>
+        <h2 class="mtx__titre" id="mtx-vigne">Un logiciel de suivi parcellaire <em>qui suit jusqu'à la cuve</em></h2>
+        <div class="mtx__orn" aria-hidden="true"></div>
+        <p class="mtx__chapo">Le vignoble produit des données tous les jours : une taille, un traitement, un relevé de sucre, une remorque qui rentre. Mon Chai les enregistre là où elles se font, <strong>à la parcelle</strong>, et les garde attachées au raisin jusqu'à son entrée en cave.</p>
+      </div>
+
+      <div class="mtx__cles">
+        <div class="mtx__cle"><b>Parcelle</b><span>Surface, part réellement cultivée, encépagement, appellation, commune</span></div>
+        <div class="mtx__cle"><b>Cadastre</b><span>Les références et les contours viennent des données publiques, pas d'une ressaisie</span></div>
+        <div class="mtx__cle"><b>Journal</b><span>Chaque intervention datée alimente le registre phytosanitaire et l'IFT</span></div>
+        <div class="mtx__cle"><b>kg ou litres</b><span>La vendange se saisit dans l'unité de votre bascule, pas dans la nôtre</span></div>
+      </div>
+
+      <div class="mtx__corps">
+
+        <h2>Suivre ses parcelles et son vignoble</h2>
+        <p class="mtx__ouvre">Une parcelle, dans Mon Chai, n'est pas une simple ligne de tableau. Elle porte sa surface et la part qui est réellement plantée, son encépagement, son appellation, son millésime de plantation et sa localisation cadastrale. C'est cette fiche qui sert ensuite de référence à tout le reste : les travaux s'y rattachent, les rendements s'y calculent, la déclaration s'y appuie.</p>
+        <p>Les références cadastrales et les contours proviennent des données publiques : vous cherchez votre commune et votre parcelle plutôt que de recopier un relevé. Les surfaces déclarées et les surfaces cultivées restent distinctes, parce que sur le terrain elles le sont aussi : une parcelle partiellement arrachée ou en cours de replantation ne produit pas comme une parcelle pleine.</p>
+
+        <h2>Un registre phytosanitaire alimenté par les travaux</h2>
+        <p>Les interventions se saisissent par assistants, un par type d'opération : taille, travaux du sol, traitement, fertilisation, palissage, entretien. Chaque assistant demande ce qui compte pour cette opération et rien d'autre : la date, la parcelle, le produit et sa dose, le matériel, le temps de main-d'œuvre quand vous le suivez.</p>
+        <p>Ce journal cultural n'est pas une corvée séparée : c'est lui qui constitue le <strong>registre phytosanitaire</strong>. Les produits employés viennent d'un référentiel d'intrants avec leurs autorisations, et les mentions utilisables en agriculture biologique y sont identifiées. L'<strong>indice de fréquence de traitement</strong> se calcule au fil des saisies, sans campagne de rattrapage en fin d'année.</p>
+        <div class="mtx__note">
+          <p><strong>Échéance à connaître.</strong> Le registre phytosanitaire numérique devient obligatoire au 1<sup>er</sup> janvier 2027. Le sujet est traité en détail dans notre <a href="registre-phyto-numerique-2027.html">article dédié</a>, avec ce qui change concrètement pour un domaine.</p>
+        </div>
+
+        <h2>Relevés de maturité et décision de vendange</h2>
+        <p>Les contrôles de maturité se saisissent parcelle par parcelle et s'empilent en historique : vous voyez la progression plutôt qu'un chiffre isolé, et vous comparez vos parcelles entre elles au moment de décider de l'ordre de ramassage.</p>
+        <p>C'est un outil d'aide à la décision, pas un oracle : Mon Chai vous montre vos relevés et vos dates, la décision reste la vôtre.</p>
+
+        <h2>Préparer et suivre les vendanges</h2>
+        <p>La préparation permet d'annoncer ce que l'on attend : les parcelles à ramasser, les volumes estimés, l'ordre. La réception enregistre ce qui rentre réellement, <strong>en kilos ou en litres</strong> selon ce que dit votre bascule ou votre pressoir, avec la parcelle d'origine et le cépage.</p>
+        <p>L'entrée en cave suit immédiatement : l'assistant d'encuvage propose les apports reçus, vous choisissez le contenant, et le lot naît avec son volume, son cépage et sa provenance. Une réception mixte peut être orientée cépage par cépage, ce qui évite le mélange comptable d'un pressurage qui n'a rien mélangé dans la réalité.</p>
+
+        <div class="mtx__chaine" aria-label="De la parcelle à la cuve">
+          <span class="mtx__jeton">Parcelle</span><span class="mtx__lien-chaine" aria-hidden="true">›</span>
+          <span class="mtx__jeton">Travaux &amp; traitements</span><span class="mtx__lien-chaine" aria-hidden="true">›</span>
+          <span class="mtx__jeton">Relevés de maturité</span><span class="mtx__lien-chaine" aria-hidden="true">›</span>
+          <span class="mtx__jeton">Réception de vendange</span><span class="mtx__lien-chaine" aria-hidden="true">›</span>
+          <span class="mtx__jeton">Encuvage</span><span class="mtx__lien-chaine" aria-hidden="true">›</span>
+          <span class="mtx__jeton">Lot en cave</span>
+        </div>
+
+        <h2>Reprendre l'existant sans tout ressaisir</h2>
+        <p>Un domaine qui change de logiciel arrive avec des fichiers. Mon Chai importe vos référentiels au format CSV : parcelles, cépages, unités, contenants, contacts. Vous démarrez sur vos données, pas sur un exemple.</p>
+      </div>
+
+      <div class="mtx__faq">
+        <h2 class="mtx__titre" style="font-size:28px; margin:52px 0 8px">Questions fréquentes</h2>
+        <details>
+          <summary>Faut-il ressaisir le parcellaire à la main ?</summary>
+          <p>Non. Les références et les contours cadastraux viennent des données publiques, et vos référentiels existants s'importent en CSV. Il reste à vérifier et à compléter ce qui n'est nulle part ailleurs, comme la part réellement cultivée.</p>
+        </details>
+        <details>
+          <summary>L'IFT est-il calculé automatiquement ?</summary>
+          <p>Oui, à partir des traitements saisis et des produits employés. C'est une raison de plus pour saisir au fil de l'eau : l'indicateur devient une lecture, pas un calcul de fin de campagne.</p>
+        </details>
+        <details>
+          <summary>Peut-on saisir la vendange en litres plutôt qu'en kilos ?</summary>
+          <p>Oui. L'unité se choisit à la réception, selon ce que votre matériel affiche. La conversion et les totaux suivent, sans double saisie.</p>
+        </details>
+        <details>
+          <summary>Que devient le lien avec la parcelle une fois le raisin en cuve ?</summary>
+          <p>Il est conservé. Le lot technique garde la trace des apports qui l'ont constitué, et cette trace se propage aux assemblages puis à la mise. C'est ce qui permet, plus tard, de remonter d'une bouteille à sa parcelle.</p>
+        </details>
+      </div>
+
+      <div class="mtx__liens">
+        <p class="mtx__liens-titre">Pour aller plus loin</p>
+        <ul>
+          <li><a href="cave-vinification.html">Cave &amp; vinification : la suite du parcours</a></li>
+          <li><a href="stocks-tracabilite.html">Stocks &amp; traçabilité, de la parcelle à la bouteille</a></li>
+          <li><a href="drm-conformite.html">DRM &amp; comptabilité matière</a></li>
+          <li><a href="registre-phyto-numerique-2027.html">Registre phytosanitaire numérique 2027</a></li>
+          <li><a href="actualites-vigne-phyto.html">Actualités vigne &amp; phyto</a></li>
+          <li><a href="choisir-logiciel-viticole.html">Comment choisir son logiciel viticole</a></li>
+        </ul>
+      </div>
+
+      <div class="mtx__cta">
+        <div>
+          <h2>Essayer sur vos parcelles</h2>
+          <p>Créez une parcelle, saisissez un traitement, recevez une vendange : le parcours complet tient en quelques minutes.</p>
+        </div>
+        <div class="mtx__cta-actions">
+          <a class="mtx__btn" href="essai-gratuit.html">Essayer gratuitement</a>
+          <a class="mtx__btn mtx__btn--fant" href="contact.html">Poser une question</a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
 </main>
 
   <footer class="pied">

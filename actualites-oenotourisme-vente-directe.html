@@ -8,6 +8,12 @@
 <meta name="description" content="Vente au caveau, dégustation, licences, loi Évin, protection des mineurs : la réglementation de la vente directe et de l'œnotourisme pour les vignerons.">
 <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
 <link rel="canonical" href="https://monchai.fr/actualites-oenotourisme-vente-directe.html">
+<link rel="alternate" hreflang="fr" href="https://monchai.fr/actualites-oenotourisme-vente-directe.html">
+<link rel="alternate" hreflang="en" href="https://monchai.fr/en/actualites-oenotourisme-vente-directe.html">
+<link rel="alternate" hreflang="it" href="https://monchai.fr/it/actualites-oenotourisme-vente-directe.html">
+<link rel="alternate" hreflang="de" href="https://monchai.fr/de/actualites-oenotourisme-vente-directe.html">
+<link rel="alternate" hreflang="zh-Hans" href="https://monchai.fr/zh/actualites-oenotourisme-vente-directe.html">
+<link rel="alternate" hreflang="x-default" href="https://monchai.fr/actualites-oenotourisme-vente-directe.html">
 
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://monchai.fr/actualites-oenotourisme-vente-directe.html">
@@ -60,6 +66,7 @@
 <body class="corps-actus">
 
 <!-- ============ HEADER (composant partagé, repassé en flux par actus.css) ============ -->
+<div class="site-header site-header--page">
 <header class="hd">
   <a class="hd__logo" href="index.html"><img src="assets/img/logo-header.webp" alt="Mon Chai, logiciel viticole" width="263" height="85"></a>
 
@@ -138,9 +145,21 @@
 
     <a class="hd__connexion" href="https://tester.monchai.fr">Me Connecter</a>
     <a class="hd__cta" href="https://tester.monchai.fr">Essayer gratuitement</a>
-    <button class="hd__langue" type="button">FR<span class="hd__chev"></span></button>
+    <div class="hd__langue">
+      <button class="hd__langue-bouton" type="button" aria-label="Choisir la langue" aria-haspopup="true" aria-expanded="false" aria-controls="menu-langues">
+        FR<span class="hd__chev" aria-hidden="true"></span>
+      </button>
+      <div class="hd__langue-menu" id="menu-langues">
+        <a href="actualites-oenotourisme-vente-directe.html" lang="fr" hreflang="fr" aria-current="page">Français</a>
+        <a href="en/actualites-oenotourisme-vente-directe.html" lang="en" hreflang="en">English</a>
+        <a href="it/actualites-oenotourisme-vente-directe.html" lang="it" hreflang="it">Italiano</a>
+        <a href="de/actualites-oenotourisme-vente-directe.html" lang="de" hreflang="de">Deutsch</a>
+        <a href="zh/actualites-oenotourisme-vente-directe.html" lang="zh-Hans" hreflang="zh-Hans">中文</a>
+      </div>
+    </div>
   </div>
 </header>
+</div>
 
 <!-- ============ TÊTE DE CATÉGORIE ============ -->
 <main>
@@ -155,6 +174,38 @@
   <section class="actus-grille" aria-label="Articles de la catégorie">
     <!-- FILE-ATTENTE : cartes de la catégorie, les nouvelles s'insèrent sous cette ligne (workflow publier-article.yml). Ne pas supprimer ce repère. -->
 
+  </section>
+
+  <!-- Fond éditorial : cette catégorie attend ses premiers articles. Plutôt
+       qu'une page vide, les repères utiles et les sources officielles. -->
+  <section class="cat-fond" aria-labelledby="cat-fond-titre">
+    <h2 class="cat-fond__titre" id="cat-fond-titre">Recevoir et vendre au domaine</h2>
+    <p class="cat-fond__sous">Les premiers articles de cette rubrique paraîtront prochainement. En attendant, voici les sujets qu'elle couvrira et les sources à consulter directement.</p>
+    <div class="cat-fond__grille">
+      <div class="cat-fond__carte">
+        <h3>La vente au caveau</h3>
+        <p>Vendre directement suppose d'encaisser, d'éditer les pièces attendues et de sortir le stock au bon moment. Une vente au caveau est une vente comme une autre : elle doit se retrouver dans les mêmes comptes.</p>
+        <p><a href="ventes-clients.html">Voir Ventes, clients &amp; facturation</a></p>
+      </div>
+      <div class="cat-fond__carte">
+        <h3>L'accueil et la dégustation</h3>
+        <p>Visites, dégustations, prestations payantes : l'accueil crée des clients et des données. Encore faut-il que le visiteur d'un jour se retrouve dans le fichier client, avec son consentement.</p>
+        <p><a href="oenotourisme.html">Voir le module Œnotourisme</a></p>
+      </div>
+      <div class="cat-fond__carte">
+        <h3>Le cadre à connaître</h3>
+        <p>La communication sur les boissons alcoolisées est encadrée, et la vente à distance obéit à ses propres règles. Nous renvoyons aux textes plutôt que de les paraphraser.</p>
+        <p><a href="https://www.economie.gouv.fr/dgccrf" target="_blank" rel="noopener">Voir la DGCCRF</a></p>
+      </div>
+    </div>
+    <div class="sources">
+      <p class="sources__titre">Sources officielles</p>
+      <ul>
+        <li><a href="https://www.economie.gouv.fr/dgccrf" target="_blank" rel="noopener">DGCCRF</a> : information du consommateur, vente à distance, pratiques commerciales.</li>
+        <li><a href="https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006072665/LEGISCTA000006171058/" target="_blank" rel="noopener">Code de la santé publique</a> : encadrement de la publicité pour les boissons alcooliques.</li>
+        <li><a href="https://www.douane.gouv.fr/les-actualites/pour-les-professionnels/vins-et-alcools" target="_blank" rel="noopener">Douane, vins et alcools</a> : circulation et vente des produits soumis à accises.</li>
+      </ul>
+    </div>
   </section>
 
   <p class="actus-note">De nouveaux articles paraissent chaque semaine. <a href="actualites-reglementaires.html">Voir toutes les actualités réglementaires&nbsp;→</a></p>

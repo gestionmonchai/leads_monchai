@@ -107,9 +107,6 @@
   font-size:15px; color:rgba(255,249,244,.6);
 }
 .pied__bas p{ margin:0; }
-.pied__bas a{ color:var(--pd-cuivre); text-decoration:none; }
-.pied__bas a:hover{ text-decoration:underline; text-underline-offset:3px; }
-
 
 
 @media (max-width:1199px){

@@ -4,10 +4,16 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 
-<title>Les meilleures IA au service de Mon Chai : connecter ChatGPT ou Claude à votre domaine</title>
+<title>Connecter ChatGPT ou Claude à son logiciel viticole | Mon Chai</title>
 <meta name="description" content="Interrogez les stocks et les factures de votre domaine depuis ChatGPT ou Claude, en lecture seule et sous votre contrôle. Ce qu'est le protocole MCP, et la procédure pas à pas pour relier Mon Chai à votre assistant.">
 <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
 <link rel="canonical" href="https://monchai.fr/ia-au-service-de-mon-chai.html">
+<link rel="alternate" hreflang="fr" href="https://monchai.fr/ia-au-service-de-mon-chai.html">
+<link rel="alternate" hreflang="en" href="https://monchai.fr/en/ia-au-service-de-mon-chai.html">
+<link rel="alternate" hreflang="it" href="https://monchai.fr/it/ia-au-service-de-mon-chai.html">
+<link rel="alternate" hreflang="de" href="https://monchai.fr/de/ia-au-service-de-mon-chai.html">
+<link rel="alternate" hreflang="zh-Hans" href="https://monchai.fr/zh/ia-au-service-de-mon-chai.html">
+<link rel="alternate" hreflang="x-default" href="https://monchai.fr/ia-au-service-de-mon-chai.html">
 
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://monchai.fr/ia-au-service-de-mon-chai.html">
@@ -230,6 +236,7 @@
 <body class="corps-actus">
 
 <!-- ============ HEADER (composant partagé, repassé en flux par actus.css) ============ -->
+<div class="site-header site-header--page">
 <header class="hd">
   <a class="hd__logo" href="index.html"><img src="assets/img/logo-header.webp" alt="Mon Chai, logiciel viticole" width="263" height="85"></a>
 
@@ -308,9 +315,21 @@
 
     <a class="hd__connexion" href="https://tester.monchai.fr">Me Connecter</a>
     <a class="hd__cta" href="https://tester.monchai.fr">Essayer gratuitement</a>
-    <button class="hd__langue" type="button">FR<span class="hd__chev"></span></button>
+    <div class="hd__langue">
+      <button class="hd__langue-bouton" type="button" aria-label="Choisir la langue" aria-haspopup="true" aria-expanded="false" aria-controls="menu-langues">
+        FR<span class="hd__chev" aria-hidden="true"></span>
+      </button>
+      <div class="hd__langue-menu" id="menu-langues">
+        <a href="ia-au-service-de-mon-chai.html" lang="fr" hreflang="fr" aria-current="page">Français</a>
+        <a href="en/ia-au-service-de-mon-chai.html" lang="en" hreflang="en">English</a>
+        <a href="it/ia-au-service-de-mon-chai.html" lang="it" hreflang="it">Italiano</a>
+        <a href="de/ia-au-service-de-mon-chai.html" lang="de" hreflang="de">Deutsch</a>
+        <a href="zh/ia-au-service-de-mon-chai.html" lang="zh-Hans" hreflang="zh-Hans">中文</a>
+      </div>
+    </div>
   </div>
 </header>
+</div>
 
 <!-- ============ ARTICLE ============ -->
 <main class="article">
@@ -375,7 +394,7 @@
 
   <h2>3. Relier Mon Chai à Claude</h2>
 
-  <p>Fonctionne avec claude.ai, l'application Claude pour ordinateur, l'application mobile et Claude Code. Un compte Claude Pro, Max, Team ou Enterprise est nécessaire pour ajouter un connecteur personnalisé.</p>
+  <p>Fonctionne avec claude.ai, l'application Claude pour ordinateur, l'application mobile et Claude Code. Ajouter un connecteur personnalisé demande une offre payante ; si l'option n'apparaît pas dans vos paramètres, c'est qu'elle n'est pas ouverte sur votre compte.</p>
   <p class="ia-beta"><strong>En cours de test.</strong> Testé sur l'application de bureau et dans Claude Code ; le connecteur distant sur claude.ai est en cours de vérification en réel.</p>
 
   <ol class="ia-etapes">
@@ -405,7 +424,7 @@
 
   <h2>4. Relier Mon Chai à ChatGPT</h2>
 
-  <p>Fonctionne avec ChatGPT sur le web, avec un compte Plus, Pro, Business, Enterprise ou Edu. ChatGPT n'accepte les connecteurs externes qu'en <em>mode développeur</em>, à activer une seule fois.</p>
+  <p>Fonctionne avec ChatGPT sur le web. Les connecteurs externes passent par le <em>mode développeur</em>, une fonction que OpenAI diffuse progressivement : son accès dépend de votre offre, de votre région et, en environnement partagé, de votre administrateur. Commencez donc par vérifier qu'elle existe dans vos paramètres.</p>
   <p class="ia-beta"><strong>En cours de test.</strong> Ce parcours suit la documentation d'OpenAI ; nous le vérifions en réel en ce moment. Si un écran diffère, <a href="contact.html">dites-le-nous</a>.</p>
 
   <ol class="ia-etapes">
@@ -487,7 +506,7 @@
     </details>
     <details>
       <summary>Faut-il un abonnement particulier ?</summary>
-      <p>Côté Mon Chai, le connecteur est inclus. Côté assistant, il faut une offre qui accepte les connecteurs personnalisés : Claude Pro, Max, Team ou Enterprise ; ChatGPT Plus, Pro, Business, Enterprise ou Edu.</p>
+      <p>Côté Mon Chai, le connecteur est inclus, sans supplément. Côté assistant, il faut une offre payante qui autorise les connecteurs personnalisés. Ces conditions changent souvent et diffèrent d'un éditeur à l'autre : la seule réponse fiable est celle de vos propres paramètres. Si vous ne trouvez ni « connecteur personnalisé » chez Claude, ni « mode développeur » chez ChatGPT, l'option n'est pas encore ouverte sur votre compte.</p>
     </details>
     <details>
       <summary>Puis-je brancher plusieurs exploitations ?</summary>

@@ -8,6 +8,12 @@
 <meta name="description" content="FAQ du logiciel viticole Mon Chai : DRM et DTI+, registre phytosanitaire numérique 2027, IFT, traçabilité, propriété et export des données, tarifs et programme bêta-test.">
 <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
 <link rel="canonical" href="https://monchai.fr/faq.html">
+<link rel="alternate" hreflang="fr" href="https://monchai.fr/faq.html">
+<link rel="alternate" hreflang="en" href="https://monchai.fr/en/faq.html">
+<link rel="alternate" hreflang="it" href="https://monchai.fr/it/faq.html">
+<link rel="alternate" hreflang="de" href="https://monchai.fr/de/faq.html">
+<link rel="alternate" hreflang="zh-Hans" href="https://monchai.fr/zh/faq.html">
+<link rel="alternate" hreflang="x-default" href="https://monchai.fr/faq.html">
 
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://monchai.fr/faq.html">
@@ -120,6 +126,7 @@
 <body class="corps-actus">
 
 <!-- ============ HEADER (composant partagé, repassé en flux par actus.css) ============ -->
+<div class="site-header site-header--page">
 <header class="hd">
   <a class="hd__logo" href="index.html"><img src="assets/img/logo-header.webp" alt="Mon Chai, logiciel viticole" width="263" height="85"></a>
 
@@ -198,9 +205,21 @@
 
     <a class="hd__connexion" href="https://tester.monchai.fr">Me Connecter</a>
     <a class="hd__cta" href="https://tester.monchai.fr">Essayer gratuitement</a>
-    <button class="hd__langue" type="button">FR<span class="hd__chev"></span></button>
+    <div class="hd__langue">
+      <button class="hd__langue-bouton" type="button" aria-label="Choisir la langue" aria-haspopup="true" aria-expanded="false" aria-controls="menu-langues">
+        FR<span class="hd__chev" aria-hidden="true"></span>
+      </button>
+      <div class="hd__langue-menu" id="menu-langues">
+        <a href="faq.html" lang="fr" hreflang="fr" aria-current="page">Français</a>
+        <a href="en/faq.html" lang="en" hreflang="en">English</a>
+        <a href="it/faq.html" lang="it" hreflang="it">Italiano</a>
+        <a href="de/faq.html" lang="de" hreflang="de">Deutsch</a>
+        <a href="zh/faq.html" lang="zh-Hans" hreflang="zh-Hans">中文</a>
+      </div>
+    </div>
   </div>
 </header>
+</div>
 
 <!-- ============ FAQ ============ -->
 <main class="article faq-page">

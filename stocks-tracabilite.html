@@ -8,6 +8,12 @@
 <meta name="description" content="Maîtrisez vos stocks viticoles avec Mon Chai : vins en vrac, produits finis, matières sèches, mouvements, lieux de stockage, inventaires, numéros de lots et traçabilité ascendante et descendante.">
 <meta name="robots" content="index, follow, max-image-preview:large">
 <link rel="canonical" href="https://monchai.fr/stocks-tracabilite.html">
+<link rel="alternate" hreflang="fr" href="https://monchai.fr/stocks-tracabilite.html">
+<link rel="alternate" hreflang="en" href="https://monchai.fr/en/stocks-tracabilite.html">
+<link rel="alternate" hreflang="it" href="https://monchai.fr/it/stocks-tracabilite.html">
+<link rel="alternate" hreflang="de" href="https://monchai.fr/de/stocks-tracabilite.html">
+<link rel="alternate" hreflang="zh-Hans" href="https://monchai.fr/zh/stocks-tracabilite.html">
+<link rel="alternate" hreflang="x-default" href="https://monchai.fr/stocks-tracabilite.html">
 
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://monchai.fr/stocks-tracabilite.html">
@@ -23,6 +29,7 @@
 <link rel="stylesheet" href="assets/css/polices.css">
 <link rel="stylesheet" href="assets/css/header.css">
 <link rel="stylesheet" href="assets/css/pages.css">
+<link rel="stylesheet" href="assets/css/module-texte.css">
 <link rel="stylesheet" href="assets/css/galerie.css">
 <link rel="stylesheet" href="assets/css/pied.css">
 </head>
@@ -111,7 +118,18 @@
 
         <a class="hd__connexion" href="https://tester.monchai.fr">Me Connecter</a>
         <a class="hd__cta" href="https://tester.monchai.fr">Essayer gratuitement</a>
-        <button class="hd__langue" type="button">FR<span class="hd__chev"></span></button>
+        <div class="hd__langue">
+          <button class="hd__langue-bouton" type="button" aria-label="Choisir la langue" aria-haspopup="true" aria-expanded="false" aria-controls="menu-langues">
+            FR<span class="hd__chev" aria-hidden="true"></span>
+          </button>
+          <div class="hd__langue-menu" id="menu-langues">
+            <a href="stocks-tracabilite.html" lang="fr" hreflang="fr" aria-current="page">Français</a>
+            <a href="en/stocks-tracabilite.html" lang="en" hreflang="en">English</a>
+            <a href="it/stocks-tracabilite.html" lang="it" hreflang="it">Italiano</a>
+            <a href="de/stocks-tracabilite.html" lang="de" hreflang="de">Deutsch</a>
+            <a href="zh/stocks-tracabilite.html" lang="zh-Hans" hreflang="zh-Hans">中文</a>
+          </div>
+        </div>
       </div>
     </header>
 
@@ -198,6 +216,139 @@
        Absent des frames Figma. Ajouté pour que les mentions légales, la
        politique de confidentialité et les CGUV soient atteignables depuis
        chaque page, et pas seulement depuis index.html. -->
+  <!-- ============ CONTENU ÉDITORIAL ============
+       Bande .mtx. Écrit d'après le service de lecture unique des stocks :
+       familles vrac, produits finis, lots commerciaux, matières sèches,
+       capsules CRD et intrants œnologiques ; réservé/disponible ;
+       fraîcheur de la donnée.
+       ================================================================ -->
+  <section class="mtx mtx--sable" aria-labelledby="mtx-stocks">
+    <div class="mtx__inner">
+
+      <div class="mtx__entete">
+        <span class="mtx__sur">Stock, lots &amp; traçabilité</span>
+        <h2 class="mtx__titre" id="mtx-stocks">Le stock du domaine, <em>du vrac à la bouteille</em></h2>
+        <div class="mtx__orn" aria-hidden="true"></div>
+        <p class="mtx__chapo">Un domaine ne gère pas un stock, il en gère plusieurs : des hectolitres en cuve, des bouteilles par format, des bouchons, des capsules. Mon Chai les lit tous <strong>à la même source</strong>, celle des opérations, et sait dire d'où vient chaque bouteille.</p>
+      </div>
+
+      <div class="mtx__cles">
+        <div class="mtx__cle"><b>6 familles</b><span>Vrac, produits finis, lots commerciaux, matières sèches, capsules, intrants</span></div>
+        <div class="mtx__cle"><b>Réservé / disponible</b><span>Ce qui est promis sur commande n'est plus annoncé comme vendable</span></div>
+        <div class="mtx__cle"><b>Par site</b><span>Le stock se filtre par entrepôt quand vous en avez plusieurs</span></div>
+        <div class="mtx__cle"><b>Même chiffre</b><span>L'écran, l'export et la déclaration lisent la même source</span></div>
+      </div>
+
+      <div class="mtx__corps">
+
+        <h2>Un stock lu à la source, pas ressaisi</h2>
+        <p class="mtx__ouvre">Le stock n'est pas une table que quelqu'un met à jour : c'est le résultat des opérations enregistrées. Une réception de vendange, un assemblage, une mise, une facture ou un ticket de caveau modifient le stock parce qu'ils ont eu lieu, et non parce qu'on a pensé à ajuster une ligne après coup.</p>
+        <p>Cette règle a une conséquence pratique : l'écran de stock, l'export et la déclaration douanière affichent le même nombre. Quand deux chiffres divergent dans un logiciel, c'est presque toujours qu'ils viennent de deux endroits différents. Ici, il n'y en a qu'un.</p>
+
+        <h2>Ce que le logiciel compte</h2>
+        <div class="mtx__grille">
+          <div class="mtx__carte">
+            <h3>Vin en vrac</h3>
+            <ul>
+              <li>Volumes par lot et par contenant, en litres</li>
+              <li>Emplacement : salle et entrepôt</li>
+              <li>Cépage, campagne, statut du lot</li>
+            </ul>
+          </div>
+          <div class="mtx__carte">
+            <h3>Bouteilles</h3>
+            <ul>
+              <li>Lots commerciaux issus des mises</li>
+              <li>Répartition par format et par cuvée</li>
+              <li>Quantité réservée et quantité disponible</li>
+            </ul>
+          </div>
+          <div class="mtx__carte">
+            <h3>Matières sèches</h3>
+            <ul>
+              <li>Bouchons, étiquettes, cartons</li>
+              <li>Consommation rattachée aux mises</li>
+            </ul>
+          </div>
+          <div class="mtx__carte">
+            <h3>Capsules et intrants</h3>
+            <ul>
+              <li>Capsules à référence douanière, par référence</li>
+              <li>Intrants œnologiques et mentions bio</li>
+            </ul>
+          </div>
+        </div>
+        <div class="mtx__note">
+          <p><strong>Une précision qui évite un contresens.</strong> Les lots commerciaux détaillent les produits finis : ce sont deux vues du même stock, pas deux stocks à additionner. Le logiciel le signale explicitement plutôt que de vous laisser doubler vos bouteilles dans un tableau croisé.</p>
+        </div>
+
+        <h2>De la parcelle à la bouteille</h2>
+        <p>La traçabilité n'est pas une fonction ajoutée à la fin : c'est la conséquence d'avoir enregistré chaque étape avec son lien vers la précédente. Un numéro de lot commercial permet de remonter la chaîne, et un contrôle peut la redescendre.</p>
+
+        <div class="mtx__chaine" aria-label="La chaîne de traçabilité">
+          <span class="mtx__jeton">Parcelle</span><span class="mtx__lien-chaine" aria-hidden="true">›</span>
+          <span class="mtx__jeton">Vendange</span><span class="mtx__lien-chaine" aria-hidden="true">›</span>
+          <span class="mtx__jeton">Lot technique</span><span class="mtx__lien-chaine" aria-hidden="true">›</span>
+          <span class="mtx__jeton">Assemblage</span><span class="mtx__lien-chaine" aria-hidden="true">›</span>
+          <span class="mtx__jeton">Mise</span><span class="mtx__lien-chaine" aria-hidden="true">›</span>
+          <span class="mtx__jeton">Lot commercial</span><span class="mtx__lien-chaine" aria-hidden="true">›</span>
+          <span class="mtx__jeton">Client</span>
+        </div>
+        <p>Concrètement : un caviste appelle au sujet d'une bouteille, vous retrouvez son lot, la mise qui l'a produite, la cuve dont elle sort, les apports de vendange qui composaient cette cuve, et les parcelles d'où ils venaient. Sans reconstituer quoi que ce soit.</p>
+
+        <h2>Réservé, disponible, et ce qu'on annonce à un client</h2>
+        <p>Le stock utile n'est pas le stock physique. Mon Chai distingue ce qui est <strong>réservé</strong> par des commandes en cours de ce qui est réellement <strong>disponible</strong> à la vente, afin que la réponse donnée au téléphone soit la bonne.</p>
+
+        <h2>Plusieurs sites, un seul stock</h2>
+        <p>Quand le domaine stocke à plusieurs endroits, chaque ligne porte son entrepôt et le stock se filtre par site. Les lots dont l'emplacement n'est pas renseigné sont signalés plutôt que rattachés au hasard à un site : un chiffre incomplet annoncé comme tel vaut mieux qu'un chiffre faux annoncé comme sûr.</p>
+      </div>
+
+      <div class="mtx__faq">
+        <h2 class="mtx__titre" style="font-size:28px; margin:52px 0 8px">Questions fréquentes</h2>
+        <details>
+          <summary>Faut-il faire un inventaire pour que le stock soit juste ?</summary>
+          <p>Le stock découle des opérations : il est à jour dès qu'elles sont saisies. L'inventaire sert à confronter ce calcul au réel et à expliquer les écarts, pas à alimenter le logiciel.</p>
+        </details>
+        <details>
+          <summary>Peut-on remonter d'une bouteille à sa parcelle ?</summary>
+          <p>Oui, lorsque la chaîne a été saisie : lot commercial, mise, lot de cave, assemblage, apports de vendange, parcelles. Chaque maillon conserve le lien vers le précédent.</p>
+        </details>
+        <details>
+          <summary>Le vrac et les bouteilles sont-ils comptés ensemble ?</summary>
+          <p>Non, et c'est volontaire : le vrac est en litres, les bouteilles en cols. Ils sont présentés côte à côte, chacun dans son unité, avec les totaux qui ont un sens.</p>
+        </details>
+        <details>
+          <summary>Le stock est-il exportable ?</summary>
+          <p>Oui. Et il est aussi interrogeable depuis votre assistant, si vous connectez ChatGPT ou Claude à Mon Chai en lecture seule.</p>
+        </details>
+      </div>
+
+      <div class="mtx__liens">
+        <p class="mtx__liens-titre">Pour aller plus loin</p>
+        <ul>
+          <li><a href="mises-conditionnement.html">Conditionnement &amp; mises : ce qui crée les bouteilles</a></li>
+          <li><a href="ventes-clients.html">Ventes, clients &amp; facturation : ce qui les fait sortir</a></li>
+          <li><a href="drm-conformite.html">DRM &amp; comptabilité matière</a></li>
+          <li><a href="cave-vinification.html">Cave &amp; vinification</a></li>
+          <li><a href="ia-au-service-de-mon-chai.html">Interroger son stock depuis ChatGPT ou Claude</a></li>
+          <li><a href="faq.html">Questions fréquentes sur le logiciel</a></li>
+        </ul>
+      </div>
+
+      <div class="mtx__cta">
+        <div>
+          <h2>Regarder votre stock se calculer</h2>
+          <p>Faites une mise, vendez trois cartons, et regardez les deux chiffres bouger ensemble.</p>
+        </div>
+        <div class="mtx__cta-actions">
+          <a class="mtx__btn" href="essai-gratuit.html">Essayer gratuitement</a>
+          <a class="mtx__btn mtx__btn--fant" href="contact.html">Poser une question</a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
 </main>
 
   <footer class="pied">

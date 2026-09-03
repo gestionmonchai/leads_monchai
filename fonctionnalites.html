@@ -8,6 +8,12 @@
 <meta name="description" content="La liste complète des fonctionnalités de Mon Chai : vigne et vendanges, cave et vinification, conditionnement et mises, stocks et traçabilité, ventes et facturation, DRM et conformité, œnotourisme, pilotage du domaine.">
 <meta name="robots" content="index, follow, max-image-preview:large">
 <link rel="canonical" href="https://monchai.fr/fonctionnalites.html">
+<link rel="alternate" hreflang="fr" href="https://monchai.fr/fonctionnalites.html">
+<link rel="alternate" hreflang="en" href="https://monchai.fr/en/fonctionnalites.html">
+<link rel="alternate" hreflang="it" href="https://monchai.fr/it/fonctionnalites.html">
+<link rel="alternate" hreflang="de" href="https://monchai.fr/de/fonctionnalites.html">
+<link rel="alternate" hreflang="zh-Hans" href="https://monchai.fr/zh/fonctionnalites.html">
+<link rel="alternate" hreflang="x-default" href="https://monchai.fr/fonctionnalites.html">
 
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://monchai.fr/fonctionnalites.html">
@@ -113,11 +119,35 @@
 
         <a class="hd__connexion" href="https://tester.monchai.fr">Me Connecter</a>
         <a class="hd__cta" href="https://tester.monchai.fr">Essayer gratuitement</a>
-        <button class="hd__langue" type="button">FR<span class="hd__chev"></span></button>
+        <div class="hd__langue">
+          <button class="hd__langue-bouton" type="button" aria-label="Choisir la langue" aria-haspopup="true" aria-expanded="false" aria-controls="menu-langues">
+            FR<span class="hd__chev" aria-hidden="true"></span>
+          </button>
+          <div class="hd__langue-menu" id="menu-langues">
+            <a href="fonctionnalites.html" lang="fr" hreflang="fr" aria-current="page">Français</a>
+            <a href="en/fonctionnalites.html" lang="en" hreflang="en">English</a>
+            <a href="it/fonctionnalites.html" lang="it" hreflang="it">Italiano</a>
+            <a href="de/fonctionnalites.html" lang="de" hreflang="de">Deutsch</a>
+            <a href="zh/fonctionnalites.html" lang="zh-Hans" hreflang="zh-Hans">中文</a>
+          </div>
+        </div>
       </div>
     </header>
 
     <h1 class="fonc__titre">Toutes les fonctionnalités</h1>
+
+    <!-- Introduction ajoutée le 03/09/2026 : la liste seule ne dit pas ce qui
+         relie les modules entre eux, qui est précisément la différence entre
+         un logiciel de gestion et une collection d'écrans. -->
+    <div class="fonc__intro">
+      <h2>Un logiciel de gestion viticole qui relie toute l'activité du domaine</h2>
+      <p>Un domaine ne travaille pas par modules : il travaille en continu. Le raisin d'une parcelle devient un lot en cuve, ce lot devient un assemblage, l'assemblage devient une mise, la mise devient des bouteilles, et ces bouteilles finissent chez un client. Mon Chai suit ce fil sans jamais le couper : chaque étape sait d'où elle vient.</p>
+      <p>C'est ce qui change la vie au quotidien. Le stock n'est pas un tableau à tenir à jour, c'est le résultat de vos opérations. La DRM n'est pas une ressaisie de fin de mois, c'est une lecture de vos mouvements. La traçabilité n'est pas un classeur, c'est la trace laissée par le travail déjà enregistré.</p>
+      <p>Les fonctions ci-dessous se présentent module par module pour la lisibilité, mais elles partagent les mêmes données : vos parcelles, vos cuvées, vos lots, vos clients. Une information saisie une fois est disponible partout où elle a du sens.</p>
+      <p class="fonc__chaine" aria-label="Le parcours d'un domaine dans Mon Chai">
+        <span>Vigne</span><i aria-hidden="true">›</i><span>Vendanges</span><i aria-hidden="true">›</i><span>Cave</span><i aria-hidden="true">›</i><span>Mise</span><i aria-hidden="true">›</i><span>Stock</span><i aria-hidden="true">›</i><span>Vente</span><i aria-hidden="true">›</i><span>DRM</span>
+      </p>
+    </div>
 
     <!-- 4 colonnes, x 138 · 583 · 1029 · 1474 (pas relevé : 445,3) -->
     <div class="fonc__colonnes">

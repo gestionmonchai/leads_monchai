@@ -8,6 +8,12 @@
 <meta name="description" content="Registre de cave (entrées-sorties), manipulations, comptabilité matière, traçabilité des lots : l'actualité réglementaire du chai pour les vignerons.">
 <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
 <link rel="canonical" href="https://monchai.fr/actualites-cave-registres.html">
+<link rel="alternate" hreflang="fr" href="https://monchai.fr/actualites-cave-registres.html">
+<link rel="alternate" hreflang="en" href="https://monchai.fr/en/actualites-cave-registres.html">
+<link rel="alternate" hreflang="it" href="https://monchai.fr/it/actualites-cave-registres.html">
+<link rel="alternate" hreflang="de" href="https://monchai.fr/de/actualites-cave-registres.html">
+<link rel="alternate" hreflang="zh-Hans" href="https://monchai.fr/zh/actualites-cave-registres.html">
+<link rel="alternate" hreflang="x-default" href="https://monchai.fr/actualites-cave-registres.html">
 
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://monchai.fr/actualites-cave-registres.html">
@@ -60,6 +66,7 @@
 <body class="corps-actus">
 
 <!-- ============ HEADER (composant partagé, repassé en flux par actus.css) ============ -->
+<div class="site-header site-header--page">
 <header class="hd">
   <a class="hd__logo" href="index.html"><img src="assets/img/logo-header.webp" alt="Mon Chai, logiciel viticole" width="263" height="85"></a>
 
@@ -138,9 +145,21 @@
 
     <a class="hd__connexion" href="https://tester.monchai.fr">Me Connecter</a>
     <a class="hd__cta" href="https://tester.monchai.fr">Essayer gratuitement</a>
-    <button class="hd__langue" type="button">FR<span class="hd__chev"></span></button>
+    <div class="hd__langue">
+      <button class="hd__langue-bouton" type="button" aria-label="Choisir la langue" aria-haspopup="true" aria-expanded="false" aria-controls="menu-langues">
+        FR<span class="hd__chev" aria-hidden="true"></span>
+      </button>
+      <div class="hd__langue-menu" id="menu-langues">
+        <a href="actualites-cave-registres.html" lang="fr" hreflang="fr" aria-current="page">Français</a>
+        <a href="en/actualites-cave-registres.html" lang="en" hreflang="en">English</a>
+        <a href="it/actualites-cave-registres.html" lang="it" hreflang="it">Italiano</a>
+        <a href="de/actualites-cave-registres.html" lang="de" hreflang="de">Deutsch</a>
+        <a href="zh/actualites-cave-registres.html" lang="zh-Hans" hreflang="zh-Hans">中文</a>
+      </div>
+    </div>
   </div>
 </header>
+</div>
 
 <!-- ============ TÊTE DE CATÉGORIE ============ -->
 <main>
@@ -155,6 +174,38 @@
   <section class="actus-grille" aria-label="Articles de la catégorie">
     <!-- FILE-ATTENTE : cartes de la catégorie, les nouvelles s'insèrent sous cette ligne (workflow publier-article.yml). Ne pas supprimer ce repère. -->
 
+  </section>
+
+  <!-- Fond éditorial : cette catégorie attend ses premiers articles. Plutôt
+       qu'une page vide, les repères utiles et les sources officielles. -->
+  <section class="cat-fond" aria-labelledby="cat-fond-titre">
+    <h2 class="cat-fond__titre" id="cat-fond-titre">Ce que recouvrent les registres de cave</h2>
+    <p class="cat-fond__sous">Les premiers articles de cette rubrique paraîtront prochainement. En attendant, voici les repères que nous suivons pour l'écrire, et les textes de référence à consulter directement.</p>
+    <div class="cat-fond__grille">
+      <div class="cat-fond__carte">
+        <h3>La comptabilité matière</h3>
+        <p>Tout opérateur détenant des produits vitivinicoles tient une comptabilité des entrées et des sorties, produit par produit. C'est elle qui alimente la déclaration récapitulative mensuelle, et c'est la première chose qu'un contrôle demande à voir.</p>
+        <p><a href="drm-conformite.html">Voir comment Mon Chai la tient</a></p>
+      </div>
+      <div class="cat-fond__carte">
+        <h3>Le registre des manipulations</h3>
+        <p>Les pratiques œnologiques employées, les intrants, les dates et les lots concernés doivent pouvoir être présentés. Un registre tenu au moment de l'opération vaut mieux qu'une reconstitution de fin d'année.</p>
+        <p><a href="cave-vinification.html">Voir le module Cave &amp; vinification</a></p>
+      </div>
+      <div class="cat-fond__carte">
+        <h3>La traçabilité des lots</h3>
+        <p>Chaque lot doit rester rattachable à ce qui l'a formé et à ce qu'il est devenu. C'est ce lien, entretenu à chaque opération, qui rend un rappel de lot possible sans reconstitution.</p>
+        <p><a href="stocks-tracabilite.html">Voir Stocks &amp; traçabilité</a></p>
+      </div>
+    </div>
+    <div class="sources">
+      <p class="sources__titre">Sources officielles</p>
+      <ul>
+        <li><a href="https://eur-lex.europa.eu/legal-content/FR/TXT/?uri=CELEX%3A32018R0273" target="_blank" rel="noopener">Règlement délégué (UE) 2018/273</a> : registres et documents d'accompagnement dans le secteur vitivinicole.</li>
+        <li><a href="https://www.douane.gouv.fr/les-actualites/pour-les-professionnels/vins-et-alcools" target="_blank" rel="noopener">Douane, espace vins et alcools</a> : obligations déclaratives et téléservices.</li>
+        <li><a href="https://www.inao.gouv.fr" target="_blank" rel="noopener">INAO</a> : cahiers des charges des appellations et pratiques autorisées.</li>
+      </ul>
+    </div>
   </section>
 
   <p class="actus-note">De nouveaux articles paraissent chaque semaine. <a href="actualites-reglementaires.html">Voir toutes les actualités réglementaires&nbsp;→</a></p>

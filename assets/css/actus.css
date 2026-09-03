@@ -45,58 +45,9 @@ body.corps-actus{
 body.corps-actus *{ box-sizing:border-box; }
 
 
-/* ---------- Header partagé, repassé en flux au-dessus de 1200px ---------- */
-@media (min-width:1200px){
-  body.corps-actus .hd{
-    position:sticky; left:auto; top:0; z-index:100;
-    width:100%; height:88px;
-    display:flex; align-items:center;
-    padding:0 clamp(32px,4.5vw,88px);
-  }
-  body.corps-actus .hd__logo{ position:static; }
-  body.corps-actus .hd__logo img{ width:208px; height:67px; }
-  body.corps-actus .hd__burger{ display:none; }
-
-  body.corps-actus .hd__barre{
-    position:static; inset:auto;
-    display:flex; flex-direction:row; flex-wrap:nowrap;
-    align-items:center; gap:clamp(16px,1.8vw,30px);
-    margin-left:auto; padding:0; max-height:none; overflow:visible;
-    background:none; border:0; box-shadow:none;
-  }
-
-  /* position:relative et non static : le soulignement ::after des liens
-     actifs est en absolu et doit s'ancrer sur le lien lui-même. */
-  body.corps-actus .hd__lien,
-  body.corps-actus .hd__connexion{
-    position:relative; left:auto; top:auto;
-    font-size:16.5px; line-height:1; padding:0; border:0;
-  }
-  body.corps-actus .hd__lien.est-actif{ color:var(--hd-texte, #000); }
-  body.corps-actus .hd__lien.est-actif::after{
-    display:block; left:0; top:calc(100% + 6px); width:100%; height:3px;
-  }
-  body.corps-actus .hd__connexion::after{
-    display:block; left:0; top:calc(100% + 5px); width:100%; height:1px;
-  }
-
-  body.corps-actus .hd__menu{ position:relative; left:auto; top:auto; }
-  body.corps-actus .hd__menu::after{ left:-18px; top:100%; width:243px; height:18px; }
-  body.corps-actus .hd__panneau{
-    left:var(--hd-dx); top:calc(100% + 14px);
-    width:var(--hd-dw); padding:14px 0; margin:0; border-radius:10px;
-  }
-  body.corps-actus .hd__panneau a{ padding:0 20px; font-size:15px; line-height:40px; }
-
-  body.corps-actus .hd__cta{
-    position:static; width:auto; height:46px; padding:0 24px; margin:0;
-    font-size:15.5px; border-radius:23px;
-  }
-  body.corps-actus .hd__langue{
-    position:static; width:58px; height:46px; margin:0;
-    font-size:15px; border-radius:23px;
-  }
-}
+/* Le header éditorial n'a plus de variante visuelle. L'enveloppe
+   .site-header--page de header.css réutilise au pixel près le composant 1920
+   de l'accueil et le garde dans le flux. */
 
 
 /* ---------- Bandeau de tête de la section ---------- */
@@ -328,3 +279,211 @@ a.actu-tag:hover{ background:var(--ac-bordeaux); color:var(--ac-creme-2); }
   text-align:center; font-size:14.5px; color:var(--ac-gris-doux);
 }
 .actus-note a{ color:var(--ac-cuivre-f); }
+
+
+/* =========================================================
+   ORNEMENTS DES PAGES D'ARTICLE — ajout du 3 septembre 2026
+   Décoration de tout ce qui est déjà en place : aucune classe à
+   ajouter dans le HTML pour l'essentiel (h1, h2, listes, tableaux,
+   citations, images), plus quelques classes optionnelles pour les
+   sommaires, les sources et les séparateurs.
+   ========================================================= */
+
+/* --- Titre : filet doré à losange sous le h1 --- */
+.article h1{ margin-bottom:14px; }
+.article h1 + .article__chapo{ margin-top:0; }
+.article h1::after{
+  content:"";
+  display:block; position:relative;
+  width:132px; height:1px; margin:18px 0 4px;
+  background:linear-gradient(90deg, var(--ac-or), rgba(223,183,128,0));
+}
+
+/* --- Chapô : un ton plus soutenu, il porte la promesse --- */
+.article__chapo{ color:var(--ac-encre); }
+
+/* --- Lettrine sur le premier paragraphe de corps --- */
+.article__chapo + p::first-letter,
+.article > p.lettrine::first-letter{
+  float:left;
+  font-family:var(--ac-serif); font-weight:500;
+  font-size:58px; line-height:.86;
+  color:var(--ac-bordeaux);
+  margin:7px 11px 0 0;
+}
+
+/* --- Intertitres : losange doré en tête, filet conservé --- */
+.article h2{ position:relative; padding-left:0; }
+.article h2::before{
+  content:"";
+  position:absolute; left:-22px; top:34px;
+  width:8px; height:8px;
+  background:var(--ac-or); transform:rotate(45deg);
+}
+@media (max-width:900px){ .article h2::before{ display:none; } }
+
+.article h3{
+  font-family:var(--ac-titre); font-weight:600; font-size:17.5px;
+  color:var(--ac-bordeaux);
+}
+
+/* --- Listes ornées : losange doré au lieu de la puce --- */
+.article > ul, .essentiel ul, .article__suite ul{ list-style:none; padding-left:4px; }
+.article > ul > li, .essentiel li, .article__suite li{ position:relative; padding-left:26px; }
+.article > ul > li::before, .essentiel li::before, .article__suite li::before{
+  content:"";
+  position:absolute; left:5px; top:10px;
+  width:7px; height:7px;
+  background:var(--ac-or); transform:rotate(45deg);
+}
+.article ol{ counter-reset:orn; list-style:none; padding-left:4px; }
+.article ol > li{ counter-increment:orn; position:relative; padding-left:34px; }
+.article ol > li::before{
+  content:counter(orn);
+  position:absolute; left:0; top:1px;
+  display:flex; align-items:center; justify-content:center;
+  width:23px; height:23px; border-radius:50%;
+  background:rgba(223,183,128,.24); color:var(--ac-bordeaux);
+  font-family:var(--ac-titre); font-weight:600; font-size:12.5px;
+}
+
+/* --- Liens de corps : soulignement doré qui s'assombrit --- */
+.article p > a, .article li > a{
+  text-decoration:none;
+  border-bottom:1px solid rgba(223,183,128,.85);
+  transition:border-color .15s ease, color .15s ease;
+}
+.article p > a:hover, .article li > a:hover{
+  color:var(--ac-lie); border-bottom-color:var(--ac-bordeaux);
+}
+
+/* --- Citation --- */
+.article blockquote{
+  margin:26px 0; padding:6px 0 6px 26px;
+  border-left:3px solid var(--ac-or);
+  font-family:var(--ac-serif); font-style:italic;
+  font-size:20px; line-height:1.5; color:var(--ac-bordeaux);
+}
+.article blockquote p{ margin:0; font-size:inherit; line-height:inherit; color:inherit; }
+
+/* --- Tableaux : lignes alternées et bord doux --- */
+.article table{ border-radius:10px; overflow:hidden; }
+.article tbody tr:nth-child(even){ background:rgba(242,233,222,.42); }
+.article tbody tr:hover{ background:rgba(223,183,128,.16); }
+
+/* --- Figures et captures --- */
+.article figure{ margin:26px 0; }
+.article figure img{
+  display:block; width:100%; height:auto;
+  border-radius:12px; border:1px solid rgba(223,183,128,.55);
+}
+.article figcaption{
+  margin-top:9px; font-size:14px; color:var(--ac-gris-doux); text-align:center;
+}
+
+/* --- Séparateur ornemental, à poser entre deux parties --- */
+.orn-sep{
+  position:relative; height:1px; border:0;
+  margin:44px auto; width:min(360px, 70%);
+  background:linear-gradient(90deg, transparent, var(--ac-or), transparent);
+  overflow:visible;
+}
+.orn-sep::after{
+  content:""; position:absolute; left:50%; top:50%;
+  width:7px; height:7px; margin:-4px 0 0 -4px;
+  background:var(--ac-or); transform:rotate(45deg);
+}
+
+/* --- Sommaire d'article --- */
+.sommaire{
+  background:var(--ac-creme-2);
+  border:1px solid rgba(223,183,128,.5);
+  border-radius:12px;
+  padding:20px 24px 18px; margin:26px 0 30px;
+}
+.sommaire__titre{
+  font-family:var(--ac-titre); font-weight:600; font-size:12.5px;
+  letter-spacing:.16em; text-transform:uppercase;
+  color:var(--ac-cuivre-f); margin:0 0 12px;
+}
+.sommaire ol{ margin:0; }
+.sommaire li{ margin:6px 0; font-size:15.5px; }
+.sommaire a{ color:var(--ac-encre); text-decoration:none; border-bottom:1px solid rgba(223,183,128,.7); }
+.sommaire a:hover{ color:var(--ac-bordeaux); }
+
+/* --- Sources officielles en fin d'article --- */
+.sources{
+  margin:34px 0 0; padding:20px 24px;
+  background:#fff;
+  border:1px solid rgba(223,183,128,.5);
+  border-radius:12px;
+}
+.sources__titre{
+  font-family:var(--ac-titre); font-weight:600; font-size:12.5px;
+  letter-spacing:.16em; text-transform:uppercase;
+  color:var(--ac-cuivre-f); margin:0 0 12px;
+}
+.sources ul{ list-style:none; padding:0; margin:0; }
+.sources li{ position:relative; padding-left:22px; margin:8px 0; font-size:15.5px; line-height:1.55; }
+.sources li::before{
+  content:"§"; position:absolute; left:2px; top:0;
+  color:var(--ac-cuivre); font-size:14px;
+}
+.sources a{ color:var(--ac-cuivre-f); }
+
+/* --- Fin d'article : ornement avant « À lire aussi » --- */
+.article__suite{ position:relative; }
+.article__suite::before{
+  content:""; position:absolute; left:50%; top:-2px;
+  width:9px; height:9px; margin-left:-5px;
+  background:var(--ac-creme); border:1px solid var(--ac-or);
+  transform:rotate(45deg);
+}
+.article__suite h2{ border-top:0; padding-top:8px; }
+.article__suite h2::before{ display:none; }
+
+/* --- Fiches de la grille : liseré doré au survol --- */
+.actu-fiche{ position:relative; }
+.actu-fiche::after{
+  content:""; position:absolute; inset:0; pointer-events:none;
+  border-radius:inherit; border:1px solid transparent;
+  transition:border-color .16s ease;
+}
+.actu-fiche:hover::after{ border-color:rgba(223,183,128,.85); }
+
+/* --- Hero des hubs : losange sous le filet --- */
+.actus-hero__filet{ position:relative; }
+.actus-hero__filet::after{
+  content:""; position:absolute; left:50%; top:50%;
+  width:7px; height:7px; margin:-4px 0 0 -4px;
+  background:var(--ac-or); transform:rotate(45deg);
+}
+/* --- Fond éditorial des catégories en attente d'articles (03/09/2026) ---
+   Une catégorie sans article n'a aucune raison d'exister pour un lecteur.
+   Ce bloc lui donne un contenu utile : ce que couvre la rubrique, les
+   repères en vigueur et les sources officielles. Il disparaît le jour où
+   la catégorie a ses propres articles. */
+.cat-fond{ max-width:1180px; margin:0 auto; padding:8px 24px 10px; }
+.cat-fond__titre{
+  font-family:var(--ac-serif); font-weight:500; font-size:clamp(23px,2.6vw,28px);
+  line-height:1.25; color:var(--ac-bordeaux); text-align:center; margin:0 0 10px;
+}
+.cat-fond__sous{
+  max-width:760px; margin:0 auto 30px; text-align:center;
+  font-size:16.5px; line-height:1.65; color:var(--ac-gris);
+}
+.cat-fond__grille{ display:grid; grid-template-columns:repeat(3, 1fr); gap:20px; margin:0 0 26px; }
+.cat-fond__carte{
+  background:#fff; border:1px solid rgba(223,183,128,.55);
+  border-top:3px solid var(--ac-or); border-radius:0 0 12px 12px;
+  padding:22px 24px 20px;
+}
+.cat-fond__carte h3{
+  font-family:var(--ac-titre); font-weight:600; font-size:15px;
+  letter-spacing:.03em; text-transform:uppercase;
+  color:var(--ac-bordeaux); margin:0 0 10px;
+}
+.cat-fond__carte p{ font-size:15.5px; line-height:1.62; color:var(--ac-gris); margin:0 0 8px; }
+.cat-fond__carte p:last-child{ margin:0; }
+.cat-fond__carte a{ color:var(--ac-cuivre-f); }
+@media (max-width:900px){ .cat-fond__grille{ grid-template-columns:1fr; } }

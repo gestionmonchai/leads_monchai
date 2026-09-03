@@ -8,6 +8,12 @@
 <meta name="description" content="Préparez votre DRM avec Mon Chai : comptabilité matière, données DTI+, gestion des pertes, régularisations réglementaires, contrôle de cohérence des stocks, référentiels douaniers et DAE, DSA, DEB.">
 <meta name="robots" content="index, follow, max-image-preview:large">
 <link rel="canonical" href="https://monchai.fr/drm-conformite.html">
+<link rel="alternate" hreflang="fr" href="https://monchai.fr/drm-conformite.html">
+<link rel="alternate" hreflang="en" href="https://monchai.fr/en/drm-conformite.html">
+<link rel="alternate" hreflang="it" href="https://monchai.fr/it/drm-conformite.html">
+<link rel="alternate" hreflang="de" href="https://monchai.fr/de/drm-conformite.html">
+<link rel="alternate" hreflang="zh-Hans" href="https://monchai.fr/zh/drm-conformite.html">
+<link rel="alternate" hreflang="x-default" href="https://monchai.fr/drm-conformite.html">
 
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://monchai.fr/drm-conformite.html">
@@ -23,6 +29,7 @@
 <link rel="stylesheet" href="assets/css/polices.css">
 <link rel="stylesheet" href="assets/css/header.css">
 <link rel="stylesheet" href="assets/css/pages.css">
+<link rel="stylesheet" href="assets/css/module-texte.css">
 <link rel="stylesheet" href="assets/css/galerie.css">
 <link rel="stylesheet" href="assets/css/pied.css">
 </head>
@@ -111,7 +118,18 @@
 
         <a class="hd__connexion" href="https://tester.monchai.fr">Me Connecter</a>
         <a class="hd__cta" href="https://tester.monchai.fr">Essayer gratuitement</a>
-        <button class="hd__langue" type="button">FR<span class="hd__chev"></span></button>
+        <div class="hd__langue">
+          <button class="hd__langue-bouton" type="button" aria-label="Choisir la langue" aria-haspopup="true" aria-expanded="false" aria-controls="menu-langues">
+            FR<span class="hd__chev" aria-hidden="true"></span>
+          </button>
+          <div class="hd__langue-menu" id="menu-langues">
+            <a href="drm-conformite.html" lang="fr" hreflang="fr" aria-current="page">Français</a>
+            <a href="en/drm-conformite.html" lang="en" hreflang="en">English</a>
+            <a href="it/drm-conformite.html" lang="it" hreflang="it">Italiano</a>
+            <a href="de/drm-conformite.html" lang="de" hreflang="de">Deutsch</a>
+            <a href="zh/drm-conformite.html" lang="zh-Hans" hreflang="zh-Hans">中文</a>
+          </div>
+        </div>
       </div>
     </header>
 
@@ -200,6 +218,140 @@
        Absent des frames Figma. Ajouté pour que les mentions légales, la
        politique de confidentialité et les CGUV soient atteignables depuis
        chaque page, et pas seulement depuis index.html. -->
+  <!-- ============ CONTENU ÉDITORIAL ============
+       Bande .mtx (assets/css/module-texte.css), en flux après la scène.
+       Contenu écrit d'après le code réel du module DRM : exporteurs
+       CIEL/DTI+, Interloire, Demat'Vin (BIVB) et CIVC, journal des
+       mouvements, brouillon avec remontée à l'origine, verrou après
+       édition. Rien n'est promis que le logiciel ne fasse.
+       ================================================================ -->
+  <section class="mtx mtx--sable" aria-labelledby="mtx-drm">
+    <div class="mtx__inner">
+
+      <div class="mtx__entete">
+        <span class="mtx__sur">Comptabilité matière &amp; douane</span>
+        <h2 class="mtx__titre" id="mtx-drm">Logiciel DRM et comptabilité matière <em>pour domaines viticoles</em></h2>
+        <div class="mtx__orn" aria-hidden="true"></div>
+        <p class="mtx__chapo">La déclaration récapitulative mensuelle n'est pas un formulaire à remplir en fin de mois : c'est le reflet de ce qui s'est passé dans la cave. Mon Chai tient la <strong>comptabilité matière</strong> au fil de vos opérations, puis vous présente une DRM que vous pouvez vérifier ligne par ligne avant de la déposer.</p>
+      </div>
+
+      <div class="mtx__cles">
+        <div class="mtx__cle"><b>Une saisie</b><span>La vendange, le soutirage, la mise et la vente alimentent la même comptabilité matière</span></div>
+        <div class="mtx__cle"><b>4 passerelles</b><span>CIEL / DTI+, Interloire, Demat'Vin pour la Bourgogne, CIVC pour la Champagne</span></div>
+        <div class="mtx__cle"><b>Ligne à ligne</b><span>Chaque ligne du brouillon remonte à l'opération qui l'a produite</span></div>
+        <div class="mtx__cle"><b>Rien d'effacé</b><span>Une erreur se corrige par un mouvement inverse, jamais par une suppression</span></div>
+      </div>
+
+      <div class="mtx__corps">
+
+        <h2>Une comptabilité matière alimentée par vos opérations</h2>
+        <p class="mtx__ouvre">Chaque geste enregistré dans Mon Chai produit un mouvement daté et volumé. La réception d'une vendange crée une entrée, l'encuvage rattache le volume à un contenant, le soutirage et l'assemblage tracent les transferts et les pertes réelles, la mise transforme du vrac en bouteilles, la facture sort le stock. Vous ne tenez pas un registre à côté de votre travail : le registre est la trace de votre travail.</p>
+        <p>Cette chaîne est ce qui rend la DRM calculable. Les entrées, les sorties, les changements de conditionnement et les pertes ne sont pas ressaisis en fin de mois : ils existent déjà, avec leur date, leur volume, leur cuvée et leur appellation.</p>
+
+        <div class="mtx__chaine" aria-label="Ce qui alimente la comptabilité matière">
+          <span class="mtx__jeton">Vendange reçue</span><span class="mtx__lien-chaine" aria-hidden="true">›</span>
+          <span class="mtx__jeton">Encuvage</span><span class="mtx__lien-chaine" aria-hidden="true">›</span>
+          <span class="mtx__jeton">Soutirages &amp; assemblages</span><span class="mtx__lien-chaine" aria-hidden="true">›</span>
+          <span class="mtx__jeton">Mise en bouteille</span><span class="mtx__lien-chaine" aria-hidden="true">›</span>
+          <span class="mtx__jeton">Vente ou expédition</span><span class="mtx__lien-chaine" aria-hidden="true">›</span>
+          <span class="mtx__jeton">Ligne de DRM</span>
+        </div>
+
+        <h2>Préparer sa DRM sans ressaisir ses mouvements</h2>
+        <p>Le brouillon de DRM se consulte à tout moment du mois, et pas seulement à l'échéance. Chaque case du document affiche un total, et ce total s'ouvre : vous voyez les opérations qui le composent, avec leur date et leur origine. Un chiffre qui surprend se vérifie en deux clics, à la source, avant que la déclaration ne parte.</p>
+        <p>C'est le point où un logiciel de gestion se distingue d'un tableur : la déclaration n'est pas une saisie parallèle, c'est une lecture. Et parce que c'est une lecture, elle peut être vérifiée par quelqu'un d'autre que celui qui a saisi.</p>
+        <p>Une fois la déclaration éditée, elle se verrouille : les mouvements de la période déclarée ne peuvent plus être modifiés en silence. Ce qui a été déclaré reste ce qui a été déclaré.</p>
+
+        <h2>DRM, DTI+ et passerelles interprofessionnelles</h2>
+        <p>Selon votre bassin, la DRM ne suit pas le même chemin, et certaines interprofessions demandent des déclarations en plus de la déclaration douanière. Mon Chai connaît votre interprofession et produit les fichiers correspondants :</p>
+        <ul class="mtx__liste">
+          <li><strong>CIEL / DTI+ (douane)</strong> : génération du fichier au format attendu par le téléservice des contributions indirectes en ligne.</li>
+          <li><strong>Interloire (Val de Loire)</strong> : fichier XML destiné au dépôt sur le portail interprofessionnel, avec réinjection vers CIEL.</li>
+          <li><strong>Demat'Vin (Bourgogne, BIVB)</strong> : fichier au format RCI, profil récoltant-vinificateur.</li>
+          <li><strong>CIVC (Champagne)</strong> : flux spécifique, déposé sur le portail interprofessionnel avant la validation douanière.</li>
+        </ul>
+        <div class="mtx__note">
+          <p><strong>Ce que Mon Chai ne fait pas, et le dit.</strong> Mon Chai <em>prépare et produit</em> vos fichiers déclaratifs. Le dépôt sur le téléservice reste votre geste, avec vos identifiants : il n'y a pas de télétransmission automatique à la douane. Nous préférons l'annoncer clairement plutôt que de vous laisser le découvrir le 10 du mois.</p>
+          <p>La date de dépôt se note dans le logiciel, ce qui vous laisse un historique de vos déclarations et de leur destination.</p>
+        </div>
+
+        <h2>Registre de cave et historique des mouvements</h2>
+        <p>Le registre des manipulations œnologiques se constitue lui aussi tout seul, à partir des opérations de chai : ajouts d'intrants, opérations autorisées, dates, lots concernés. Il s'exporte en PDF pour un contrôle, en CSV pour votre comptable ou votre œnologue.</p>
+        <p>Les intrants employés sont rattachés à un référentiel, avec leur mention biologique lorsqu'elle existe : le registre indique donc non seulement ce qui a été fait, mais avec quoi.</p>
+        <p class="mtx__cit">Une cave se contrôle sur ce qu'elle peut montrer, pas sur ce qu'elle se souvient d'avoir fait.</p>
+
+        <h2>Pertes, régularisations et déclassements</h2>
+        <p>Les pertes ne sont pas une case à ajuster à la main : elles se constatent au moment de l'opération, par différence entre ce qui est entré et ce qui est sorti d'une cuve, et elles restent attachées à cette opération.</p>
+        <p>Pour la correction, Mon Chai suit une règle simple, la même partout dans le logiciel : <strong>on n'annule pas, on contre-passe</strong>. Une erreur de volume se corrige par un mouvement inverse, une facture par un avoir. L'historique conserve les deux écritures, donc reste explicable devant un contrôle.</p>
+        <p>Le déclassement d'un lot, lui, est un mouvement à part entière : le volume change d'appellation, la trace du changement reste attachée au lot et à la fiche douanière.</p>
+
+        <h2>Capsules CRD et documents de circulation</h2>
+        <p>Les capsules à référence douanière se suivent par référence : ce que vous avez, ce que vous avez utilisé sur vos mises, ce qui reste. Le stock de capsules devient une ligne de stock comme une autre, consultable avec le reste.</p>
+        <p>Pour la circulation des produits en droits suspendus, Mon Chai gère les documents d'accompagnement électroniques : les titres de mouvement, leur apurement, et le repérage de ceux dont l'apurement tarde. Le raccordement complet aux échanges automatisés avec Gamma2 est en cours de développement : là encore, le fichier existe, le dépôt reste manuel.</p>
+
+        <h2>Comment se déroule un mois dans Mon Chai</h2>
+        <ul class="mtx__liste">
+          <li><strong>Au fil du mois</strong> : vous saisissez vos opérations de chai, vos mises et vos ventes, comme vous le feriez de toute façon.</li>
+          <li><strong>À tout moment</strong> : vous ouvrez le brouillon de DRM pour voir où vous en êtes, et vous vérifiez une ligne qui vous étonne.</li>
+          <li><strong>À l'échéance</strong> : vous éditez la déclaration, vous récupérez le fichier de votre passerelle, vous le déposez sur le téléservice.</li>
+          <li><strong>Après le dépôt</strong> : la période est verrouillée et la date de dépôt notée. Une correction ultérieure passe par un mouvement, pas par une réécriture.</li>
+        </ul>
+      </div>
+
+      <div class="mtx__faq">
+        <h2 class="mtx__titre" style="font-size:28px; margin:52px 0 8px">Questions fréquentes</h2>
+        <details>
+          <summary>Mon Chai télétransmet-il la DRM à la douane ?</summary>
+          <p>Non. Mon Chai calcule votre DRM et produit le fichier au format attendu ; le dépôt sur le téléservice se fait par vous, avec vos identifiants. Vous gardez la main sur ce qui est déclaré, et la date de dépôt est conservée dans le logiciel.</p>
+        </details>
+        <details>
+          <summary>Qu'est-ce que DTI+, et qu'est-ce que CIEL ?</summary>
+          <p>CIEL est le téléservice des contributions indirectes en ligne de la douane, par lequel passent notamment les DRM. DTI+ en est la voie de saisie et de dépôt de fichier pour les opérateurs viticoles. Mon Chai produit le fichier attendu par cette voie.</p>
+        </details>
+        <details>
+          <summary>Qu'est-ce qui alimente exactement la comptabilité matière ?</summary>
+          <p>Les réceptions de vendange, les encuvages, les transferts et changements de cuve, les assemblages, les pertes constatées, les mises en bouteille, les ventes et les avoirs, ainsi que les déclassements. Chaque opération produit un mouvement daté et volumé, et c'est la somme de ces mouvements qui constitue la déclaration.</p>
+        </details>
+        <details>
+          <summary>Peut-on corriger une perte ou une erreur de volume ?</summary>
+          <p>Oui, par un mouvement inverse. Mon Chai ne supprime pas une écriture passée : il en ajoute une qui la compense, avec sa date et son motif. Les deux restent visibles dans l'historique, ce qui est exactement ce qu'un contrôle attend.</p>
+        </details>
+        <details>
+          <summary>Peut-on exporter le registre de cave ?</summary>
+          <p>Oui, en PDF pour le présenter, en CSV pour le retravailler. Le registre des manipulations œnologiques reprend les opérations de chai et les intrants employés, avec leurs dates et les lots concernés.</p>
+        </details>
+        <details>
+          <summary>Et si mon interprofession n'est pas encore prise en charge ?</summary>
+          <p>Les passerelles se développent bassin par bassin, à partir des formats réellement publiés par chaque interprofession. Dites-nous laquelle vous concerne : c'est ainsi que nous choisissons l'ordre des prochaines.</p>
+        </details>
+      </div>
+
+      <div class="mtx__liens">
+        <p class="mtx__liens-titre">Pour aller plus loin</p>
+        <ul>
+          <li><a href="stocks-tracabilite.html">Stocks &amp; traçabilité : d'où viennent les volumes déclarés</a></li>
+          <li><a href="cave-vinification.html">Cave &amp; vinification : les opérations qui produisent les mouvements</a></li>
+          <li><a href="mises-conditionnement.html">Conditionnement &amp; mises : du vrac aux bouteilles</a></li>
+          <li><a href="actualites-douane-declarations.html">Actualités douane &amp; déclarations</a></li>
+          <li><a href="faq.html">Questions fréquentes sur le logiciel</a></li>
+          <li><a href="choisir-logiciel-viticole.html">Comment choisir son logiciel viticole</a></li>
+        </ul>
+      </div>
+
+      <div class="mtx__cta">
+        <div>
+          <h2>Voir votre DRM se remplir toute seule</h2>
+          <p>Saisissez une vendange, un soutirage et une vente sur un compte d'essai, puis ouvrez le brouillon de déclaration.</p>
+        </div>
+        <div class="mtx__cta-actions">
+          <a class="mtx__btn" href="essai-gratuit.html">Essayer gratuitement</a>
+          <a class="mtx__btn mtx__btn--fant" href="contact.html">Poser une question</a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
 </main>
 
   <footer class="pied">

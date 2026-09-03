@@ -8,6 +8,12 @@
 <meta name="description" content="Centralisez votre gestion commerciale avec le CRM viticole de Mon Chai : clients, prospects, catalogue, tarifs, devis, commandes, bons de livraison, factures, avoirs et suivi des règlements.">
 <meta name="robots" content="index, follow, max-image-preview:large">
 <link rel="canonical" href="https://monchai.fr/ventes-clients.html">
+<link rel="alternate" hreflang="fr" href="https://monchai.fr/ventes-clients.html">
+<link rel="alternate" hreflang="en" href="https://monchai.fr/en/ventes-clients.html">
+<link rel="alternate" hreflang="it" href="https://monchai.fr/it/ventes-clients.html">
+<link rel="alternate" hreflang="de" href="https://monchai.fr/de/ventes-clients.html">
+<link rel="alternate" hreflang="zh-Hans" href="https://monchai.fr/zh/ventes-clients.html">
+<link rel="alternate" hreflang="x-default" href="https://monchai.fr/ventes-clients.html">
 
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://monchai.fr/ventes-clients.html">
@@ -23,6 +29,7 @@
 <link rel="stylesheet" href="assets/css/polices.css">
 <link rel="stylesheet" href="assets/css/header.css">
 <link rel="stylesheet" href="assets/css/pages.css">
+<link rel="stylesheet" href="assets/css/module-texte.css">
 <link rel="stylesheet" href="assets/css/galerie.css">
 <link rel="stylesheet" href="assets/css/pied.css">
 </head>
@@ -111,7 +118,18 @@
 
         <a class="hd__connexion" href="https://tester.monchai.fr">Me Connecter</a>
         <a class="hd__cta" href="https://tester.monchai.fr">Essayer gratuitement</a>
-        <button class="hd__langue" type="button">FR<span class="hd__chev"></span></button>
+        <div class="hd__langue">
+          <button class="hd__langue-bouton" type="button" aria-label="Choisir la langue" aria-haspopup="true" aria-expanded="false" aria-controls="menu-langues">
+            FR<span class="hd__chev" aria-hidden="true"></span>
+          </button>
+          <div class="hd__langue-menu" id="menu-langues">
+            <a href="ventes-clients.html" lang="fr" hreflang="fr" aria-current="page">Français</a>
+            <a href="en/ventes-clients.html" lang="en" hreflang="en">English</a>
+            <a href="it/ventes-clients.html" lang="it" hreflang="it">Italiano</a>
+            <a href="de/ventes-clients.html" lang="de" hreflang="de">Deutsch</a>
+            <a href="zh/ventes-clients.html" lang="zh-Hans" hreflang="zh-Hans">中文</a>
+          </div>
+        </div>
       </div>
     </header>
 
@@ -200,6 +218,110 @@
        Absent des frames Figma. Ajouté pour que les mentions légales, la
        politique de confidentialité et les CGUV soient atteignables depuis
        chaque page, et pas seulement depuis index.html. -->
+  <!-- ============ CONTENU ÉDITORIAL ============
+       Bande .mtx. Écrit d'après le module Commerce : documents
+       commerciaux (devis, commande, bon de livraison, facture, avoir),
+       émission verrouillée, règlements, avoir de correction, caisse au
+       caveau, fiche client et segments, e-facturation Factur-X.
+       ================================================================ -->
+  <section class="mtx mtx--sable" aria-labelledby="mtx-ventes">
+    <div class="mtx__inner">
+
+      <div class="mtx__entete">
+        <span class="mtx__sur">CRM, commandes &amp; facturation</span>
+        <h2 class="mtx__titre" id="mtx-ventes">Vendre son vin, <em>et savoir à qui</em></h2>
+        <div class="mtx__orn" aria-hidden="true"></div>
+        <p class="mtx__chapo">Un domaine vend à des particuliers au caveau, à des cavistes, à des restaurants, à l'export, parfois à un négociant. Mon Chai réunit ces canaux dans un même circuit : <strong>du devis au règlement</strong>, avec le stock qui suit et le client qui se souvient.</p>
+      </div>
+
+      <div class="mtx__cles">
+        <div class="mtx__cle"><b>Devis → facture</b><span>Le document se transforme sans ressaisie, en gardant son historique</span></div>
+        <div class="mtx__cle"><b>Stock lié</b><span>Une vente sort du stock réel, pas d'un tableau parallèle</span></div>
+        <div class="mtx__cle"><b>Factur-X</b><span>Facture au format européen EN 16931, prête pour l'e-facturation</span></div>
+        <div class="mtx__cle"><b>Caveau</b><span>Une caisse pour les ventes directes, rattachée aux mêmes clients</span></div>
+      </div>
+
+      <div class="mtx__corps">
+
+        <h2>Un CRM fait pour les clients d'un domaine</h2>
+        <p class="mtx__ouvre">La fiche client réunit ce dont un domaine a besoin : les coordonnées, le rôle (client, fournisseur, transporteur), le segment commercial, et surtout l'historique réel des achats. Un caviste, un restaurant, un particulier rencontré au caveau et un importateur ne se traitent pas de la même façon : ils ne sont donc pas rangés dans la même case.</p>
+        <p>L'analyse de la clientèle repose sur ces mêmes données : qui achète, à quelle fréquence, pour quel montant, et qui n'a pas commandé depuis longtemps. C'est ce dernier point qui déclenche le plus souvent un appel utile.</p>
+
+        <h2>Du devis à la facture</h2>
+        <p>Les pièces commerciales s'enchaînent : devis, commande, bon de livraison, facture, avoir. Chaque étape reprend la précédente sans ressaisie et garde le lien vers elle, ce qui permet de savoir, depuis une facture, quelle commande et quel devis l'ont précédée.</p>
+        <p>Une pièce fiscale se comporte comme telle : tant qu'elle est en brouillon, elle se modifie librement ; une fois <strong>émise, elle se verrouille</strong>. Rien ne se réécrit après coup, et une correction passe par un avoir. C'est la même règle que pour les mouvements de cave, pour la même raison : ce qui est parti chez un client ou dans une déclaration ne doit pas changer dans votre dos.</p>
+
+        <h2>Suivre les règlements</h2>
+        <p>Les règlements s'enregistrent par facture, en totalité ou en plusieurs fois, avec leur moyen de paiement et leur date. Le montant restant dû se calcule, les factures échues remontent, et vous savez ce qu'il vous reste à encaisser sans reprendre vos relevés bancaires ligne par ligne.</p>
+
+        <h2>Vendre au caveau</h2>
+        <p>La vente directe a son écran de caisse : une session de caisse s'ouvre, les tickets s'enchaînent, plusieurs moyens de paiement sont acceptés, et le stock diminue au fur et à mesure. Un visiteur qui laisse ses coordonnées devient un client de la base, avec l'historique de ce qu'il a acheté ce jour-là.</p>
+
+        <div class="mtx__chaine" aria-label="Le circuit commercial">
+          <span class="mtx__jeton">Client</span><span class="mtx__lien-chaine" aria-hidden="true">›</span>
+          <span class="mtx__jeton">Devis</span><span class="mtx__lien-chaine" aria-hidden="true">›</span>
+          <span class="mtx__jeton">Commande</span><span class="mtx__lien-chaine" aria-hidden="true">›</span>
+          <span class="mtx__jeton">Livraison</span><span class="mtx__lien-chaine" aria-hidden="true">›</span>
+          <span class="mtx__jeton">Facture</span><span class="mtx__lien-chaine" aria-hidden="true">›</span>
+          <span class="mtx__jeton">Règlement</span>
+        </div>
+
+        <h2>Facturation électronique : ce qui est déjà prêt</h2>
+        <p>Mon Chai produit des factures au format <strong>Factur-X</strong>, conformes à la norme européenne EN 16931 : un PDF lisible par un humain, contenant les données structurées attendues par les administrations et les logiciels comptables.</p>
+        <div class="mtx__note">
+          <p><strong>Où en est l'obligation.</strong> Le format est en place ; le raccordement à une plateforme agréée pour l'émission et la réception fait l'objet du chantier en cours, au calendrier de la réforme. Le détail des échéances est dans notre <a href="facturation-electronique-viticulture.html">article sur la facturation électronique</a>.</p>
+        </div>
+
+        <h2>TVA, mentions et tarifs</h2>
+        <p>Le régime de TVA est un réglage du domaine, appliqué ensuite partout de la même façon : sur les documents, dans les totaux, dans les mentions obligatoires. Les prix se gèrent par produit et par canal de vente, parce qu'un tarif caviste n'est pas un tarif caveau.</p>
+      </div>
+
+      <div class="mtx__faq">
+        <h2 class="mtx__titre" style="font-size:28px; margin:52px 0 8px">Questions fréquentes</h2>
+        <details>
+          <summary>Peut-on modifier une facture déjà émise ?</summary>
+          <p>Non, et c'est une protection. Une facture émise est verrouillée ; la correction se fait par un avoir, qui reste lié à la facture d'origine. Les deux pièces subsistent, ce qui rend l'historique explicable.</p>
+        </details>
+        <details>
+          <summary>La vente met-elle le stock à jour ?</summary>
+          <p>Oui, sur le stock réel, celui des lots commerciaux. Une commande réserve, une livraison ou une vente au caveau sort la marchandise. Vous n'avez pas de tableau de stock à corriger en parallèle.</p>
+        </details>
+        <details>
+          <summary>Mon Chai gère-t-il la facturation électronique ?</summary>
+          <p>Les factures sont produites au format Factur-X conforme à la norme EN 16931. Le raccordement à une plateforme agréée suit le calendrier de la réforme ; nous le documentons au fur et à mesure plutôt que de l'annoncer par avance.</p>
+        </details>
+        <details>
+          <summary>Peut-on tenir la caisse du caveau avec Mon Chai ?</summary>
+          <p>Oui : session de caisse, tickets, plusieurs moyens de paiement, sortie de stock immédiate, et rattachement au client lorsqu'il se présente.</p>
+        </details>
+      </div>
+
+      <div class="mtx__liens">
+        <p class="mtx__liens-titre">Pour aller plus loin</p>
+        <ul>
+          <li><a href="stocks-tracabilite.html">Stocks &amp; traçabilité : ce que vous vendez</a></li>
+          <li><a href="oenotourisme.html">Œnotourisme : le visiteur devient client</a></li>
+          <li><a href="facturation-electronique-viticulture.html">Facturation électronique : ce qui change</a></li>
+          <li><a href="drm-conformite.html">DRM &amp; comptabilité matière</a></li>
+          <li><a href="actualites-ventes-facturation.html">Actualités ventes &amp; facturation</a></li>
+          <li><a href="ia-au-service-de-mon-chai.html">Interroger ses factures depuis ChatGPT ou Claude</a></li>
+        </ul>
+      </div>
+
+      <div class="mtx__cta">
+        <div>
+          <h2>Faire une facture de bout en bout</h2>
+          <p>Créez un client, un devis, transformez-le en facture, encaissez : le circuit complet en quelques minutes.</p>
+        </div>
+        <div class="mtx__cta-actions">
+          <a class="mtx__btn" href="essai-gratuit.html">Essayer gratuitement</a>
+          <a class="mtx__btn mtx__btn--fant" href="contact.html">Poser une question</a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
 </main>
 
   <footer class="pied">

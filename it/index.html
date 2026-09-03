@@ -1,0 +1,796 @@
+<!DOCTYPE html>
+
+<html lang="it">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1, viewport-fit=cover" name="viewport"/>
+<!-- SEO -->
+<title>Mon Chai, software di gestione del vino dalla vite alla vendita</title>
+<meta content="Mon Chai, software di cantina: DRM pronto per DTI+, registro delle cantine, registro delle piante 2027, AMM delle Anse aggiornate. Prova gratuita, senza carta di credito." name="description"/>
+<meta content="gestion viticole, logiciel viticole, chai, vin, viticulture, parcelles, vendanges, cuverie, stocks, DRM, traçabilité, Mon Chai" name="keywords"/>
+<meta content="Berthelot &amp; Hallais" name="author"/>
+<meta content="index, follow, max-image-preview:large, max-snippet:-1" name="robots"/>
+<link href="https://monchai.fr/it/" rel="canonical"/><link href="https://monchai.fr/" hreflang="x-default" rel="alternate"/><link href="https://monchai.fr/" hreflang="fr" rel="alternate"/><link href="https://monchai.fr/en/" hreflang="en" rel="alternate"/><link href="https://monchai.fr/it/" hreflang="it" rel="alternate"/><link href="https://monchai.fr/de/" hreflang="de" rel="alternate"/><link href="https://monchai.fr/zh/" hreflang="zh-Hans" rel="alternate"/>
+
+
+
+
+
+
+<!-- Open Graph -->
+<meta content="website" property="og:type"/>
+<meta content="https://monchai.fr/it/" property="og:url"/>
+<meta content="Mon Chai, software di gestione del vino" property="og:title"/>
+<meta content="Dalla vite alla vendita: centralizzare la gestione della vostra azienda. Unisciti al programma beta-test." property="og:description"/>
+<meta content="https://monchai.fr/assets/img/vignes_2.jpg" property="og:image"/>
+<meta content="it_IT" property="og:locale"/>
+<meta content="Mon Chai" property="og:site_name"/>
+<!-- Twitter -->
+<meta content="summary_large_image" name="twitter:card"/>
+<meta content="Mon Chai, software di gestione del vino" name="twitter:title"/>
+<meta content="Dal vigneto alla vendita: centralizzare la gestione della vostra azienda." name="twitter:description"/>
+<meta content="https://monchai.fr/assets/img/vignes_2.jpg" name="twitter:image"/>
+<!-- Favicon -->
+<link href="../assets/img/logo_mon_chai.png" rel="icon" type="image/png"/>
+<link href="../assets/img/logo_mon_chai.png" rel="apple-touch-icon"/>
+<meta content="#7B1E22" name="theme-color"/>
+<!-- Données structurées : point 6 de la feuille de route SEO.
+     Le prix est celui de tarifs.html (49 € HT/mois au 1er novembre 2026) ;
+     si la grille change, le changer ici aussi. -->
+<script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Mon Chai",
+  "url": "https://monchai.fr/it/",
+  "image": "https://monchai.fr/assets/img/vignes_2.jpg",
+  "applicationCategory": "BusinessApplication",
+  "operatingSystem": "Web",
+  "inLanguage": "it",
+  "description": "Software di gestione del vino: monitoraggio della cantina, sincronizzazione dell'elenco degli ingressi con le autorizzazioni di commercializzazione delle Anse, vendemmia, cantina e vinificazione, registro delle cantine e contabilità dei materiali, scorte e tracciabilità, DRM pronto per il portale DTI+, vendita e fatturazione, turismo enologico e degustazioni in cantina.",
+  "disambiguatingDescription": "Logiciel professionnel de gestion de domaine viticole (monchai.fr), sans lien avec les applications mobiles de cave personnelle homonymes.",
+  "featureList": [
+    "Vigne et vendanges : parcelles, journal des travaux, registre phytosanitaire numérique conforme 2027, liste des intrants synchronisée avec les autorisations de mise sur le marché de l'Anses",
+    "Cave et vinification : cuverie, lots techniques, opérations, analyses œnologiques",
+    "Stocks et traçabilité : vrac, produits finis, matières sèches, inventaires",
+    "Ventes, clients et facturation : CRM viticole, devis, commandes, factures",
+    "DRM et conformité : registre de cave, comptabilité matière, données DTI+",
+    "Conditionnement et mises : ordres de fabrication, lots commerciaux",
+    "Œnotourisme : dégustations au caveau avec QR code, ventes au domaine, visiteurs ajoutés au CRM",
+    "Assistant IA en français"
+  ],
+  "offers": {
+    "@type": "Offer",
+    "price": "49.00",
+    "priceCurrency": "EUR",
+    "availabilityStarts": "2026-11-01",
+    "url": "https://monchai.fr/tarifs.html"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Mon Chai",
+    "url": "https://monchai.fr/it/",
+    "logo": "https://monchai.fr/assets/img/logo_mon_chai.png",
+    "foundingLocation": {
+      "@type": "Place",
+      "name": "Rennes, France"
+    },
+    "founder": [
+      {
+        "@type": "Person",
+        "name": "Denis Berthelot"
+      },
+      {
+        "@type": "Person",
+        "name": "Laura Hallais"
+      }
+    ],
+    "memberOf": [
+      {
+        "@type": "Organization",
+        "name": "La WineTech"
+      },
+      {
+        "@type": "Organization",
+        "name": "Le Poool"
+      }
+    ],
+    "sameAs": [
+      "https://www.instagram.com/monchai.fr/",
+      "https://www.linkedin.com/company/monchai"
+    ]
+  }
+}</script>
+<!-- Graisses limitées à celles réellement employées sur cette page :
+     Playfair 500 (titres) et 700 (cartes actualité), Inter 400-700,
+     Manrope 700 (chiffres de l'aperçu produit), Poppins 500-600 (header
+     et pied). -->
+<link href="../assets/css/polices.css" rel="stylesheet"/>
+<link href="../styles.css" rel="stylesheet"/>
+<link href="../assets/css/header.css" rel="stylesheet"/>
+<link href="../assets/css/pied.css" rel="stylesheet"/>
+<link href="../assets/css/index-responsive.css" rel="stylesheet"/>
+<link href="../assets/css/index-mobile.css" rel="stylesheet"/>
+<!-- Repli sans JavaScript : les fonds différés (script.js, section 7)
+     sont posés directement. -->
+<noscript><style>
+  @media (min-width:900px){
+    #parcours .parcours-bas{ background-image:url("assets/svg/parcours-bas.svg"); }
+    #apropos-faq .apfaq-fond{ background-image:url("assets/svg/a-propos-faq.svg"); }
+    #actualite{ background-image:url("assets/svg/actualite.svg"); }
+  }
+</style></noscript>
+</head>
+<body class="lang-it">
+<!-- ================================================================
+     HEADER : sprint Figma « Work 24 08 2026 sprint 2 »
+     Même composant que les 8 pages « Le logiciel » : le balisage, les styles
+     (assets/css/header.css) et le comportement (assets/js/header.js) sont
+     partagés. Ici il est fixe au-dessus du défilement et porte lui-même le
+     facteur d'échelle publié par script.js dans --echelle ; il se masque au
+     défilement vers le bas et revient au défilement vers le haut.
+
+     L'ancien header était une image SVG surmontée de zones cliquables. Il
+     comptait 6 entrées à plat ; le nouveau en compte 5, dont quatre ouvrent
+     un sous-menu : Le logiciel, Tarifs (essai gratuit, guide d'achat),
+     Actualités et À propos regroupent chacun les pages de leur univers.
+     ================================================================ -->
+<div class="site-header" id="siteHeader">
+<header class="hd">
+<a class="hd__logo" href="index.html"><img alt="Mon Chai, software per il vino" height="85" src="../assets/img/logo-header.webp" width="263"/></a>
+<button aria-controls="nav-principale" aria-expanded="false" aria-label="Apri il menu" class="hd__burger" type="button">
+<span></span><span></span><span></span>
+</button>
+<div class="hd__barre" id="nav-principale">
+<nav aria-label="Software" class="hd__menu" style="--hd-x:468px; --hd-dx:-72px; --hd-dw:610px">
+<button aria-controls="sous-menu-logiciel" aria-expanded="false" aria-haspopup="true" class="hd__lien hd__declencheur" type="button"><span>Software</span><span aria-hidden="true" class="hd__menu-chev"></span></button>
+<div class="hd__panneau hd__panneau--logiciel" id="sous-menu-logiciel">
+<div class="hd__groupe">
+<span class="hd__groupe-titre">Scopri</span>
+<a href="fonctionnalites.html">Panoramica del software</a>
+<a href="#parcours">Come funziona</a>
+<a href="#assistant">Assistente IA</a>
+</div>
+<div class="hd__groupe">
+<span class="hd__groupe-titre">Moduli dell'azienda vinicola</span>
+<a href="vigne-vendanges.html">Vigneto e vendemmia</a>
+<a href="cave-vinification.html">Cantina e vinificazione</a>
+<a href="mises-conditionnement.html">Confezionamento e imbottigliamento</a>
+<a href="stocks-tracabilite.html">Scorte e tracciabilità</a>
+<a href="ventes-clients.html">Vendite, clienti e fatturazione</a>
+<a href="drm-conformite.html">DRM e conformità</a>
+<a href="oenotourisme.html">Enoturismo</a>
+</div>
+</div>
+</nav>
+<nav aria-label="Prezzi e prova gratuita" class="hd__menu" style="--hd-x:650px; --hd-dx:-60px; --hd-dw:280px">
+<button aria-controls="sous-menu-tarifs" aria-expanded="false" aria-haspopup="true" class="hd__lien hd__declencheur" type="button"><span>Prezzi</span><span aria-hidden="true" class="hd__menu-chev"></span></button>
+<div class="hd__panneau" id="sous-menu-tarifs">
+<div class="hd__groupe">
+<span class="hd__groupe-titre">Inizia</span>
+<a href="tarifs.html">Vedi i prezzi</a>
+<a href="essai-gratuit.html">Prova gratuita di 30 giorni</a>
+</div>
+</div>
+</nav>
+<nav aria-label="Risorse" class="hd__menu hd__menu--ressources" style="--hd-x:819px; --hd-dx:-270px; --hd-dw:650px">
+<button aria-controls="sous-menu-ressources" aria-expanded="false" aria-haspopup="true" class="hd__lien hd__declencheur" type="button"><span>Risorse</span><span aria-hidden="true" class="hd__menu-chev"></span></button>
+<div class="hd__panneau hd__panneau--ressources" id="sous-menu-ressources">
+<div class="hd__groupe">
+<span class="hd__groupe-titre">Guide e assistenza</span>
+<a href="choisir-logiciel-viticole.html">Scegliere il software giusto</a>
+<a href="faq.html">Domande frequenti</a>
+<a href="ia-au-service-de-mon-chai.html">Collega ChatGPT o Claude</a>
+</div>
+<div class="hd__groupe">
+<span class="hd__groupe-titre">Aggiornamenti normativi</span>
+<a href="actualites-reglementaires.html">Tutti gli aggiornamenti</a>
+<a href="actualites-vigne-phyto.html">Vigneto e difesa fitosanitaria</a>
+<a href="actualites-cave-registres.html">Cantina e registri</a>
+<a href="actualites-douane-declarations.html">Dogane e dichiarazioni</a>
+<a href="actualites-etiquetage-mises.html">Etichettatura e imbottigliamento</a>
+<a href="actualites-ventes-facturation.html">Vendite e fatturazione</a>
+<a href="actualites-oenotourisme-vente-directe.html">Enoturismo e vendita diretta</a>
+</div>
+</div>
+</nav>
+<nav aria-label="Chi siamo" class="hd__menu" style="--hd-x:1030px; --hd-dx:-55px; --hd-dw:260px">
+<button aria-controls="sous-menu-apropos" aria-expanded="false" aria-haspopup="true" class="hd__lien hd__declencheur" type="button"><span>Chi siamo</span><span aria-hidden="true" class="hd__menu-chev"></span></button>
+<div class="hd__panneau" id="sous-menu-apropos">
+<div class="hd__groupe">
+<span class="hd__groupe-titre">Mon Chai</span>
+<a href="#apropos">Chi siamo</a>
+<a href="#actualite">Novità Mon Chai</a>
+<a href="contact.html">Contattaci</a>
+</div>
+</div>
+</nav>
+<a class="hd__connexion" href="https://tester.monchai.fr">Accedi</a>
+<a class="hd__cta" href="https://tester.monchai.fr">Prova gratis</a>
+<div class="hd__langue"><button aria-controls="menu-langues" aria-expanded="false" aria-haspopup="true" aria-label="Scegli la lingua" class="hd__langue-bouton" type="button">IT<span aria-hidden="true" class="hd__chev"></span></button><div class="hd__langue-menu" id="menu-langues"><a href="../index.html" hreflang="fr" lang="fr">Français</a><a href="../en/index.html" hreflang="en" lang="en">English</a><a aria-current="page" href="index.html" hreflang="it" lang="it">Italiano</a><a href="../de/index.html" hreflang="de" lang="de">Deutsch</a><a href="../zh/index.html" hreflang="zh-Hans" lang="zh-Hans">中文</a></div></div>
+</div>
+</header>
+</div>
+<!-- Barre de lecture (progression du scroll) -->
+<div class="reading-bar"><span id="readingBar"></span></div>
+<!-- Navigation latérale en tirets -->
+<nav aria-label="Navigazione per sezione" class="dot-nav" id="dotNav">
+<a data-cible="accueil" href="#accueil"><span class="tiret"></span><span class="etiquette">Home</span></a>
+<a data-cible="pourquoi" href="#pourquoi"><span class="tiret"></span><span class="etiquette">Perché Mon Chai</span></a>
+<a data-cible="assistant" href="#assistant"><span class="tiret"></span><span class="etiquette">Assistente IA</span></a>
+<a data-cible="tarifs" href="#tarifs"><span class="tiret"></span><span class="etiquette">Beta-test e tassi</span></a>
+<a data-cible="apropos" href="#apropos"><span class="tiret"></span><span class="etiquette">Chi siamo</span></a>
+<a data-cible="faq" href="#faq"><span class="tiret"></span><span class="etiquette">FAQ</span></a>
+<a data-cible="actualite" href="#actualite"><span class="tiret"></span><span class="etiquette">Novità</span></a>
+</nav>
+<div class="page" id="page">
+<main>
+<!-- ================================================================
+       ÉCRAN 1 : frame Figma "ACCUEIL" (24:1834) · 1920 × 1200
+       ================================================================ -->
+<section class="stage" id="accueil">
+<div class="hero-photo"></div>
+<div class="hero-card">
+<h1 class="hero-title">Software vitivinicolo <br/>Gestione semplificata <br/>per la tua azienda.</h1>
+<div class="ornement"></div>
+<p class="hero-lead">Mon Chai <strong>Centralizzato</strong> i vostri pacchi, vendemmia, <br/>distributore automatico, inventario, vendita, clienti e documenti <br/>in uno strumento progettato con i viticoltori.</p>
+<!-- L'inscription se fait directement dans l'application : plus de
+           pop-up de formulaire, tous les CTA mènent à tester.monchai.fr. -->
+<a class="btn btn-gold" href="https://tester.monchai.fr">Unisciti al programma <br/>beta-test gratis</a>
+<a class="btn btn-light" href="fonctionnalites.html">Scopri funzionalità</a>
+</div>
+<div aria-label="Panoramica dei prodotti illustrativa" class="apercu">
+<div class="dots"><i></i><i></i><i></i></div>
+<span class="screen-title">Quadro di valutazione del dominio</span>
+<article class="dash-card c1">
+<p class="kicker">Volume disponibile</p>
+<p class="number">18 420</p>
+<p class="kicker">cilindri</p>
+<div class="bar"><span style="width:72%"></span></div>
+</article>
+<article class="dash-card c2">
+<p class="kicker">Vendemmia</p>
+<p class="number">7</p>
+<p class="kicker">lotti seguiti</p>
+<div class="bar"><span style="width:58%"></span></div>
+</article>
+<article class="dash-card cw">
+<p class="kicker">Azione raccomandata successiva</p>
+<p class="number">Set 75cl</p>
+<p class="kicker">Controllare la materia secca, i volumi disponibili e gli ordini in attesa.</p>
+</article>
+<article class="dash-card c3">
+<p class="kicker">Clienti attivi</p>
+<p class="number">248</p>
+<p class="kicker">fogli</p>
+</article>
+<article class="dash-card c4">
+<p class="kicker">Documenti</p>
+<p class="number">12</p>
+<p class="kicker">da preparare</p>
+</article>
+</div>
+</section>
+<!-- ================================================================
+       ÉCRAN 2 : frame Figma "Frame 1" · 1920 × 3705
+       Les trois sections (Pourquoi Mon Chai + Assistant IA + Bêta-test &
+       Tarifs) sont désormais UNE SEULE frame. Les transitions entre elles
+       sont gérées dans Figma (photo à 74 % + dégradé de fondu), plus en CSS.
+
+       Le fond est la frame entière MOINS les 9 vignettes, qui sont posées
+       par-dessus en SVG indépendants pour rester animables.
+       Recomposition vérifiée contre la frame d'origine : 0,00/255.
+       ================================================================ -->
+<section class="stage" id="parcours">
+<div class="frame1-fond"></div>
+<div class="parcours-bas" data-fond=""></div>
+<!-- Les 9 modules : survol -> voile beige + flèche qui devient un trait
+         + encadré. Clic -> figé. Clic ailleurs -> fermé. -->
+<div class="pq-modules">
+<div class="pq-slot" style="--i:0; --fx:93.92px; --fy:213.3px">
+<button aria-expanded="false" class="pq-module" data-module="parcelles">
+<span class="sr">Particelle</span>
+<span class="pq-fleche"></span>
+<span class="pq-trait"></span>
+</button>
+<div class="pq-panneau">
+<ul>
+<li>Particelle</li>
+<li>Registro delle piante 2027</li>
+<li>Ans</li>
+</ul>
+</div>
+</div>
+<div class="pq-slot" style="--i:1; --fx:90.91px; --fy:214.3px">
+<button aria-expanded="false" class="pq-module" data-module="vendanges">
+<span class="sr">Vendemmia</span>
+<span class="pq-fleche"></span>
+<span class="pq-trait"></span>
+</button>
+<div class="pq-panneau">
+<ul>
+<li>Riempimento tini</li>
+<li>pressurizzazione</li>
+<li>rese</li>
+</ul>
+</div>
+</div>
+<div class="pq-slot" style="--i:2; --fx:91.91px; --fy:214.3px">
+<button aria-expanded="false" class="pq-module" data-module="cuverie">
+<span class="sr">Sala tini</span>
+<span class="pq-fleche"></span>
+<span class="pq-trait"></span>
+</button>
+<div class="pq-panneau">
+<ul>
+<li>Assemblaggi</li>
+<li>prelievi</li>
+<li>allevamento, analisi</li>
+</ul>
+</div>
+</div>
+<div class="pq-slot" style="--i:3; --fx:90.91px; --fy:214.3px">
+<button aria-expanded="false" class="pq-module" data-module="mises">
+<span class="sr">Imbottigliamento</span>
+<span class="pq-fleche"></span>
+<span class="pq-trait"></span>
+</button>
+<div class="pq-panneau">
+<ul>
+<li>Progettista</li>
+<li>imbottigliamento</li>
+<li>sostanza secca</li>
+</ul>
+</div>
+</div>
+<div class="pq-slot" style="--i:4; --fx:89.9px; --fy:214.3px">
+<button aria-expanded="false" class="pq-module" data-module="stocks">
+<span class="sr">Scorte</span>
+<span class="pq-fleche"></span>
+<span class="pq-trait"></span>
+</button>
+<div class="pq-panneau">
+<ul>
+<li>Partite commerciali</li>
+<li>inventari</li>
+<li>valutazione</li>
+</ul>
+</div>
+</div>
+<div class="pq-slot" style="--i:5; --fx:90.9px; --fy:214.3px">
+<button aria-expanded="false" class="pq-module" data-module="ventes">
+<span class="sr">Vendite</span>
+<span class="pq-fleche"></span>
+<span class="pq-trait"></span>
+</button>
+<div class="pq-panneau">
+<ul>
+<li>Costo, fatture</li>
+<li>consegne</li>
+<li>corpo</li>
+</ul>
+</div>
+</div>
+<div class="pq-slot" style="--i:6; --fx:90.91px; --fy:214.3px">
+<button aria-expanded="false" class="pq-module" data-module="clients">
+<span class="sr">Clienti</span>
+<span class="pq-fleche"></span>
+<span class="pq-trait"></span>
+</button>
+<div class="pq-panneau">
+<ul>
+<li>Segmentazione</li>
+<li>storia dell'appalto</li>
+<li>prospezione</li>
+</ul>
+</div>
+</div>
+<div class="pq-slot" style="--i:7; --fx:90.91px; --fy:214.3px">
+<button aria-expanded="false" class="pq-module" data-module="administratif">
+<span class="sr">Amministrazione</span>
+<span class="pq-fleche"></span>
+<span class="pq-trait"></span>
+</button>
+<div class="pq-panneau">
+<ul>
+<li>DRM e DTI+</li>
+<li>registro delle cantine</li>
+<li>Dogana, capsule</li>
+</ul>
+</div>
+</div>
+<div class="pq-slot" style="--i:8; --fx:90.9px; --fy:218.33px">
+<button aria-expanded="false" class="pq-module" data-module="tableaux-de-bord">
+<span class="sr">Quadri di valutazione</span>
+<span class="pq-fleche"></span>
+<span class="pq-trait"></span>
+</button>
+<div class="pq-panneau">
+<ul>
+<li>Indicatori</li>
+<li>costi, margini</li>
+<li>vista globale</li>
+</ul>
+</div>
+</div>
+</div>
+<!-- Boutons dessinés dans parcours-bas.svg (écran offre), rendus
+         cliquables par des liens posés à leurs coordonnées : le bouton
+         « Rejoindre le programme bêta-test » mène à l'application,
+         « Voir l'offre détaillée » à la page tarifs. -->
+<a aria-label="Unisciti al programma beta-test" class="parcours__lien parcours__lien--rejoindre" href="https://tester.monchai.fr"></a>
+<a aria-label="Vedi l'offerta dettagliata" class="parcours__lien parcours__lien--offre" href="tarifs.html"></a>
+<!-- ================================================================
+         MONDE MOBILE (< 900 px) — voir assets/css/index-mobile.css.
+         Les couches dessinées ci-dessus sont masquées, ces blocs en vrai
+         HTML les remplacent : texte lisible, tactile et indexable (les
+         écrans dessinés sont muets pour les moteurs). Les ancres sont
+         posées ici, en flux ; au-dessus de 900 px elles restent
+         positionnées en absolu, leur place dans le DOM est indifférente.
+         Textes et icônes au trait transposés de l'ancienne landing,
+         listes des modules identiques aux pq-panneau ci-dessus.
+         ================================================================ -->
+<div class="ancre" id="pourquoi" style="top:150px"></div>
+<div class="m-bloc m-benefices">
+<span class="m-kicker">Perché Mon Chai</span>
+<h2 class="m-titre">Meno somigliante, più chiarezza sul tuo dominio.</h2>
+<p class="m-intro">Mon Chai raccoglie le informazioni chiave del tuo dominio: trame, raccolti, tini, scorte, vendite e clienti, per evitare doppi sequestri e mantenere una visione chiara del tuo business.</p>
+<article>
+<span aria-hidden="true" class="m-icone"><svg viewbox="0 0 24 24"><ellipse cx="12" cy="6" rx="7" ry="2.6"></ellipse><path d="M5 6v6c0 1.4 3.1 2.6 7 2.6s7-1.2 7-2.6V6"></path><path d="M5 12v6c0 1.4 3.1 2.6 7 2.6s7-1.2 7-2.6v-6"></path></svg></span>
+<div><h3>Centralizza</h3><p>Tutti i dati nel dominio nello stesso posto.</p></div>
+</article>
+<article>
+<span aria-hidden="true" class="m-icone"><svg viewbox="0 0 24 24"><path d="M4 19h16"></path><path d="M5 15l4-4 3 2.5L18 8"></path><path d="M14.5 8H18v3.5"></path></svg></span>
+<div><h3>Segui</h3><p>I volumi, le scorte, i clienti e le azioni rimangono leggibili.</p></div>
+</article>
+<article>
+<span aria-hidden="true" class="m-icone"><svg viewbox="0 0 24 24"><circle cx="12" cy="13" r="7.5"></circle><path d="M12 9v4l2.8 1.8"></path><path d="M9.5 3h5"></path></svg></span>
+<div><h3>Risparmia tempo</h3><p>Meno somiglianti, meno dimenticanze, meno viaggi di ritorno.</p></div>
+</article>
+</div>
+<div aria-label="I nove moduli Mon Chai" class="m-bloc m-modules">
+<span class="m-kicker">Dalla vite alla vendita</span>
+<h2 class="m-titre">Tutto il tuo dominio, modulo per modulo.</h2>
+<p class="m-intro">Toccare un modulo per vedere cosa copre.</p>
+<div class="m-carrousel">
+<div class="m-carte"><button aria-controls="mm-parcelles" aria-expanded="false" class="m-carte__btn" data-mm="parcelles" type="button"><img alt="" class="m-ico" decoding="async" height="54" loading="lazy" src="../assets/svg/icones/parcelles.svg" width="54"/>Particelle</button></div>
+<div class="m-carte"><button aria-controls="mm-vendanges" aria-expanded="false" class="m-carte__btn" data-mm="vendanges" type="button"><img alt="" class="m-ico" decoding="async" height="54" loading="lazy" src="../assets/svg/icones/vendanges.svg" width="54"/>Vendemmia</button></div>
+<div class="m-carte"><button aria-controls="mm-cuverie" aria-expanded="false" class="m-carte__btn" data-mm="cuverie" type="button"><img alt="" class="m-ico" decoding="async" height="54" loading="lazy" src="../assets/svg/icones/cuverie.svg" width="54"/>Sala tini</button></div>
+<div class="m-carte"><button aria-controls="mm-mises" aria-expanded="false" class="m-carte__btn" data-mm="mises" type="button"><img alt="" class="m-ico" decoding="async" height="54" loading="lazy" src="../assets/svg/icones/mises.svg" width="54"/>Imbottigliamento</button></div>
+<div class="m-carte"><button aria-controls="mm-stocks" aria-expanded="false" class="m-carte__btn" data-mm="stocks" type="button"><img alt="" class="m-ico" decoding="async" height="54" loading="lazy" src="../assets/svg/icones/stocks.svg" width="54"/>Scorte</button></div>
+<div class="m-carte"><button aria-controls="mm-ventes" aria-expanded="false" class="m-carte__btn" data-mm="ventes" type="button"><img alt="" class="m-ico" decoding="async" height="54" loading="lazy" src="../assets/svg/icones/ventes.svg" width="54"/>Vendite</button></div>
+<div class="m-carte"><button aria-controls="mm-clients" aria-expanded="false" class="m-carte__btn" data-mm="clients" type="button"><img alt="" class="m-ico" decoding="async" height="54" loading="lazy" src="../assets/svg/icones/clients.svg" width="54"/>Clienti</button></div>
+<div class="m-carte"><button aria-controls="mm-administratif" aria-expanded="false" class="m-carte__btn" data-mm="administratif" type="button"><img alt="" class="m-ico" decoding="async" height="54" loading="lazy" src="../assets/svg/icones/administratif.svg" width="54"/>Amministrazione</button></div>
+<div class="m-carte"><button aria-controls="mm-tableaux-de-bord" aria-expanded="false" class="m-carte__btn" data-mm="tableaux-de-bord" type="button"><img alt="" class="m-ico" decoding="async" height="54" loading="lazy" src="../assets/svg/icones/tableaux-de-bord.svg" width="54"/>Quadri di valutazione</button></div>
+</div>
+<div aria-hidden="true" class="m-points"><i class="actif"></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+<div class="m-panneau" hidden="" id="mm-parcelles"><ul><li>Particelle</li><li>Registro delle piante 2027</li><li>Ans</li></ul></div>
+<div class="m-panneau" hidden="" id="mm-vendanges"><ul><li>Riempimento tini</li><li>pressurizzazione</li><li>rese</li></ul></div>
+<div class="m-panneau" hidden="" id="mm-cuverie"><ul><li>Assemblaggi</li><li>prelievi</li><li>allevamento, analisi</li></ul></div>
+<div class="m-panneau" hidden="" id="mm-mises"><ul><li>Progettista</li><li>imbottigliamento</li><li>sostanza secca</li></ul></div>
+<div class="m-panneau" hidden="" id="mm-stocks"><ul><li>Partite commerciali</li><li>inventari</li><li>valutazione</li></ul></div>
+<div class="m-panneau" hidden="" id="mm-ventes"><ul><li>Costo, fatture</li><li>consegne</li><li>corpo</li></ul></div>
+<div class="m-panneau" hidden="" id="mm-clients"><ul><li>Segmentazione</li><li>storia dell'appalto</li><li>prospezione</li></ul></div>
+<div class="m-panneau" hidden="" id="mm-administratif"><ul><li>DRM e DTI+</li><li>registro delle cantine</li><li>Dogana, capsule</li></ul></div>
+<div class="m-panneau" hidden="" id="mm-tableaux-de-bord"><ul><li>Indicatori</li><li>costi, margini</li><li>vista globale</li></ul></div>
+</div>
+<div class="ancre" id="assistant" style="top:1300px"></div>
+<div class="m-bloc m-assistant">
+<span class="m-kicker">Assistente IA</span>
+<h2 class="m-titre">Assistente degli Affari Interni pensato per il commercio del vino.</h2>
+<p class="m-intro">Mon Chai integra un assistente progettato da un team francese per aiutare a trovare informazioni, preparare un'azione o sintetizzare i dati.</p>
+<ul class="m-liste">
+<li>Chiedi ai tuoi dati in lingua naturale.</li>
+<li>Preparate i riassunti dei clienti, delle scorte o delle cuvée.</li>
+<li>Identificare le azioni da anticipare.</li>
+<li>Un'IA ha operato sui nostri server in Francia e ha dimensioni per i reali usi dei domini.</li>
+</ul>
+<div aria-hidden="true" class="m-chat">
+<div class="m-chat__entete"><span>MC</span> Assistente Mon Chai</div>
+<div class="m-chat__q">Quante bottiglie mi rimangono sulla Cuvée Tradition?</div>
+<div class="m-chat__r">Sono disponibili 1.248 bottiglie. 320 sono riservate su ordini in corso.</div>
+<div class="m-chat__q">Quali clienti hanno comprato questo vintage?</div>
+<div class="m-chat__r">Posso preparare la lista con i volumi acquistati e le date di ordine.</div>
+<div class="m-chat__saisie">Chiedi all'assistente Mon Chai...</div>
+</div>
+</div>
+<div class="ancre" id="tarifs" style="top:2700px"></div>
+<div class="m-bloc m-offre">
+<span class="m-kicker">Programma Beta</span>
+<h2 class="m-titre">Test per Mon Chai gratuito</h2>
+<p class="m-dates">dal 15 luglio al 31 ottobre 2026</p>
+<div class="m-carte-offre m-carte-offre--beta">
+<h3>Prova, contribuisci, vieni con noi.</h3>
+<div class="m-prix"><strong>0 €</strong><span class="m-badge">Luoghi limitati</span></div>
+<p class="m-mention">Nessun pagamento richiesto durante la fase di prova.</p>
+<ul class="m-liste">
+<li>Accesso completo al software</li>
+<li>Supporto per l'avvio</li>
+<li>1 ora di formazione individuale offerta</li>
+<li>Trasferimento dati offerto, del valore di €300 tasse escl.</li>
+<li>Supporto dedicato entro 24 ore</li>
+<li>1 webinar per rispondere a tutte le tue domande</li>
+</ul>
+<a class="m-cta" href="https://tester.monchai.fr">Unisciti al programma beta-test</a>
+<small>Solo per professionisti del settore vitivinicolo.</small>
+</div>
+<div class="m-primeurs">
+<h3>E dopo il 31 ottobre?</h3>
+<p class="m-suite">Scegliete liberamente se perseguire.</p>
+<div class="m-prix"><strong>49 € IVA esclusa / mese</strong><span class="m-badge">Offerta en primeur</span></div>
+<p class="m-note">Per 1 anno, poi 59 € tasse escl. / mese</p>
+<ul class="m-liste">
+<li>Tutte le funzioni incluse</li>
+<li>Nessun impegno</li>
+<li>Aggiornamenti e assistenza inclusi</li>
+<li>+15 € tasse escluse per utente aggiuntivo</li>
+</ul>
+<a class="m-lien" href="tarifs.html">Vedi offerta dettagliata</a>
+<a class="m-lien" href="essai-gratuit.html">Come sta andando la prova gratuita</a>
+</div>
+</div>
+</section>
+<!-- ================================================================
+       ÉCRAN 3 : frame Figma "À propos et FAQ" · 1920 × 2481
+       À propos et FAQ fusionnés en une seule frame : la photo de raisins est
+       continue de l'un à l'autre, la transition est gérée dans Figma (fondu
+       vers le crème en bas). Bande de header retirée (coupe y=119), cadre noir
+       de l'export supprimé.
+       ⚠️ Les « + » de la FAQ sont dessinés dans le SVG : l'accordéon n'est pas
+       encore interactif.
+       ================================================================ -->
+<section aria-label="Domande su e frequenti" class="stage" id="apropos-faq">
+<div class="apfaq-fond" data-fond=""></div>
+<!-- Ancre posée en flux pour le mobile, absolue au-dessus de 900 px. -->
+<div class="ancre" id="apropos" style="top:0"></div>
+<!-- MONDE MOBILE : l'écran À propos dessiné est masqué sous 900 px,
+         ce bloc en vrai texte le remplace (même contenu que le dessin). -->
+<div class="m-bloc m-apropos">
+<span class="m-kicker">Chi siamo</span>
+<h2 class="m-titre">Chi siamo</h2>
+<div class="m-portraits">
+<img alt="Denis Berthelot, co-fondatore di Mon Chai" decoding="async" height="76" loading="lazy" src="../assets/img/portrait-denis.jpg" width="76"/>
+<img alt="Laura Halla, co-fondatrice di Mon Chai" decoding="async" height="76" loading="lazy" src="../assets/img/portrait-laura.jpg" width="76"/>
+</div>
+<p>Mon Chai nasce da una semplice osservazione: le aziende vinicole si mescolano ancora troppo spesso tra strumenti che non comunicano, con molta riqualificazione e poca visibilità complessiva.</p>
+<p>Dopo diversi anni di software di gestione del vino, Denis ha progettato Mon Chai per collegare le principali attività di un dominio all'interno di un unico strumento, dalla vite alla vendita.</p>
+<p>Laura si è poi unita per sviluppare esperienza utente, design, comunicazione e supporto dei campi.</p>
+<p>Oggi, il nostro programma beta-test ci permette di confrontarci con Mon Chai sul campo e di co-costruire gli sviluppi più utili.</p>
+<blockquote class="m-citation">La nostra ambizione: costruire uno strumento utile, chiaro e adattato alla realtà dei campi.</blockquote>
+<p class="m-france"><span aria-hidden="true">🇫🇷</span> Sviluppato e ospitato in Francia</p>
+<p class="m-signature">Denis Berthelot &amp; Laura Halla<span>Co-fondatori di Mon Chai</span></p>
+</div>
+<div class="ancre" id="faq" style="top:1500px"></div>
+<!-- Titre de la FAQ : dessiné dans le SVG sur bureau, écrit ici pour
+         le mobile. -->
+<div class="m-bloc m-faq-titre">
+<h2 class="m-titre">Le tue domande frequenti</h2>
+</div>
+<!-- FAQ interactive : recouvre les cartes figées du SVG (fond crème)
+         et les remplace par un vrai accordéon. Clic sur une question ->
+         réponse ; clic ailleurs -> referme celle ouverte. Sous 900 px,
+         l'accordéon sort du dessin et s'écoule en colonne. -->
+<div class="faq">
+<div class="faq-col">
+<div class="faq-item">
+<button aria-expanded="false" class="faq-q"><span>Chi è Mon Chai?</span><span aria-hidden="true" class="faq-plus"></span></button>
+<div class="faq-a"><p>Prima di tutto, alle cantine che vogliono centralizzare la loro gestione e seguire meglio i loro dati, dalla vite alla vendita. Mon Chai proporrà anche moduli per produttori e commercianti.</p></div>
+</div>
+<div class="faq-item">
+<button aria-expanded="false" class="faq-q"><span>Come funziona il programma beta-tester?</span><span aria-hidden="true" class="faq-plus"></span></button>
+<div class="faq-a"><p>Stai testando il software gratuitamente dal 15 luglio al 31 ottobre: il programma è stato esteso per un mese. In cambio, condividi il tuo feedback per aiutarci a costruire uno strumento che sia davvero adatto al campo. Il supporto personalizzato è incluso: trasferimento dati, formazione e webinar di presa in consegna.</p></div>
+</div>
+<div class="faq-item">
+<button aria-expanded="false" class="faq-q"><span>Possiamo importare i nostri dati?</span><span aria-hidden="true" class="faq-plus"></span></button>
+<div class="faq-a"><p>Sì. Vi accompagneremo per importare i dati esistenti (parchi, clienti, scorte) dai file o dagli strumenti attuali. Il trasferimento è offerto durante il programma beta-test.</p></div>
+</div>
+<div class="faq-item">
+<button aria-expanded="false" class="faq-q"><span>Mon Chai è sicuro?</span><span aria-hidden="true" class="faq-plus"></span></button>
+<div class="faq-a"><p>Sì. I tuoi dati sono ospitati in Francia su server sicuri, con backup regolari e accesso sicuro. Tu resti l'unico proprietario delle tue informazioni.</p></div>
+</div>
+</div>
+<div class="faq-col">
+<div class="faq-item">
+<button aria-expanded="false" class="faq-q"><span>Quali sono le tue tariffe alla fine del programma beta-tester?</span><span aria-hidden="true" class="faq-plus"></span></button>
+<div class="faq-a"><p>Dal 1 novembre 2026: 49 € tasse escluse/mese per un anno, 59 € tasse escluse/mese, senza impegno. I betatester beneficiano di un'offerta di primer riservata per loro.</p></div>
+</div>
+<div class="faq-item">
+<button aria-expanded="false" class="faq-q"><span>Che supporto offrite per quelle aree che vogliono testare il software?</span><span aria-hidden="true" class="faq-plus"></span></button>
+<div class="faq-a"><p>A seconda del campo: trasferimento dati, un'ora di allenamento individuale, un webinar di controllo e supporto dedicato e reattivo per iniziare.</p></div>
+</div>
+<div class="faq-item">
+<button aria-expanded="false" class="faq-q"><span>Cosa sarà incluso nell'abbonamento?</span><span aria-hidden="true" class="faq-plus"></span></button>
+<div class="faq-a"><p>Accesso completo al software e a tutte le sue funzionalità, compresi aggiornamenti e supporto. Fino a 2 utenti, poi +15 € tasse escluse per utente aggiuntivo.</p></div>
+</div>
+<!-- Carte-lien vers la FAQ complète (faq.html) : pas de classe
+             .faq-item pour que l'accordéon de script.js l'ignore. -->
+<a class="faq-lien" href="faq.html"><span>DRM, fitoregistro 2027, tracciabilità, i tuoi dati... Consulta le FAQ complete</span><span aria-hidden="true" class="faq-fleche">→</span></a>
+</div>
+</div>
+</section>
+<!-- ================================================================
+       ÉCRAN 4 : Notre actualité · 1920 × 1081
+       Le texte était vectorisé dans actualite.svg : ni sélectionnable, ni
+       indexable. Il en a été retiré et reposé ici en vrai HTML, aux
+       coordonnées relevées dans le SVG. Le fond ne porte plus que les cartes,
+       les photos et les pastilles réseaux sociaux (la bande « publications »
+       en a aussi été retirée, voir le bloc .actu-insta plus bas).
+       Les pastilles Instagram et LinkedIn du fond sont recouvertes par de
+       vrais liens (.actu__reseau) ; la pastille Facebook a été retirée du SVG,
+       aucun compte n'existant (le site en ligne n'a qu'Instagram et LinkedIn).
+       Interview et salon reprennent le libellé du site en ligne, pas celui du
+       Figma : la date d'interview « arrêtée » du Figma n'était pas réelle
+       (encore « à venir » sur le site), et le salon s'écrit « au salon
+       Vinitech-Sifel », sans « de ».
+       ================================================================ -->
+<section aria-label="Le nostre notizie" class="stage" data-fond="" id="actualite">
+<h2 class="actu__titre">Le nostre notizie</h2>
+<article class="actu-carte actu-carte--beta">
+<img alt="Vigneto al tramonto" class="m-actu-img m-only" decoding="async" height="320" loading="lazy" src="../assets/img/actu-2-480-20260720.webp" width="480"/>
+<h3 class="actu-carte__titre">Beta-test prorogato fino al 31 ottobre</h3>
+<p class="actu-carte__date">15 luglio - 31 ottobre 2026</p>
+<p class="actu-carte__texte">Unisciti all'avventura Mon Chai: prova il software gratuitamente e <br/>condividere il tuo feedback per costruire, insieme, uno strumento davvero adatto <br/>ogni giorno in cantine.</p>
+</article>
+<article class="actu-carte actu-carte--interview">
+<img alt="Chai con batteria" class="m-actu-img m-only" decoding="async" height="270" loading="lazy" src="../assets/img/actu-4-480-20260720.webp" width="480"/>
+<h3 class="actu-carte__titre">Intervista con Mon Chai al Winetech Coffee</h3>
+<p class="actu-carte__date">Data per venire su LinkedIn · Riproduci poi su YouTube</p>
+<p class="actu-carte__texte">Scopri la storia di Mon Chai, le convinzioni che ci ispirano <br/>e dietro le quinte di apertura del nostro programma di beta test.</p>
+</article>
+<article class="actu-carte actu-carte--salon">
+<img alt="Uve" class="m-actu-img m-only" decoding="async" height="320" loading="lazy" src="../assets/img/actu-3-480-20260720.webp" width="480"/>
+<h3 class="actu-carte__titre">Mon Chai alla mostra Vinitech-Sifel di Bordeaux</h3>
+<p class="actu-carte__date">1 - 3 dicembre 2026</p>
+<p class="actu-carte__texte">Vieni a chiacchierare con il nostro team, scopri il software <br/>e partecipare ad una dimostrazione di Mon Chai.</p>
+</article>
+<h3 class="actu__suivez">Segui l'avventura Mon Chai</h3>
+<!-- Icônes réelles pour le mobile (les pastilles dessinées du fond
+         n'y existent plus). -->
+<div class="m-social m-only">
+<a aria-label="Seguire Mon Chai su Instagram" href="https://www.instagram.com/monchai.fr/" rel="noopener noreferrer" target="_blank"><svg aria-hidden="true" viewbox="0 0 24 24"><rect height="18" rx="5" width="18" x="3" y="3"></rect><circle cx="12" cy="12" r="4"></circle><circle class="m-social__point" cx="17.4" cy="6.7" r="1.1"></circle></svg></a>
+<a aria-label="Seguire Mon Chai su LinkedIn" href="https://www.linkedin.com/company/monchai" rel="noopener noreferrer" target="_blank"><svg aria-hidden="true" viewbox="0 0 24 24"><path d="M5.2 8.2H2.1V22h3.1V8.2ZM3.7 2A1.8 1.8 0 1 0 3.7 5.6 1.8 1.8 0 0 0 3.7 2ZM22 14.1c0-4.2-2.2-6.2-5.2-6.2-2.4 0-3.5 1.3-4.1 2.2V8.2H9.6V22h3.1v-6.8c0-1.8.3-3.6 2.6-3.6 2.2 0 2.3 2.1 2.3 3.7V22H22v-7.9Z"></path></svg></a>
+</div>
+<!-- Liens réels posés sur les pastilles dessinées dans le fond
+         (Instagram : 136-200 px, LinkedIn : 237-301 px, à 851 px du haut). -->
+<a aria-label="Seguire Mon Chai su Instagram" class="actu__reseau actu__reseau--instagram" href="https://www.instagram.com/monchai.fr/" rel="noopener noreferrer" target="_blank"></a>
+<a aria-label="Seguire Mon Chai su LinkedIn" class="actu__reseau actu__reseau--linkedin" href="https://www.linkedin.com/company/monchai" rel="noopener noreferrer" target="_blank"></a>
+<!-- Publications Instagram : bloc repris tel quel du site en ligne
+         (landing_mail). La bande dessinée dans le Figma était une image de
+         démonstration du template (canapé, basket, téléphone) : retirée du
+         SVG. Ici, aucun appel à Meta avant l'accord « Services tiers » :
+         des cartes d'attente invitent à régler les cookies, puis embed.js
+         affiche les publications complètes (script.js, section 12).
+         Le bloc s'écoule sous l'écran dessiné : #actualite est passé en
+         hauteur automatique, le fond gardant ses 1084 px fixes. -->
+<div aria-labelledby="instagramFeedTitle" class="instagram-feed">
+<div class="instagram-feed__heading">
+<span>Seguici su Instagram</span>
+<h3 id="instagramFeedTitle">Le nostre ultime pubblicazioni</h3>
+</div>
+<div class="instagram-feed__grid">
+<article class="instagram-embed-shell" data-instagram-embed="" data-permalink="https://www.instagram.com/p/Dau-f-GDIgO/">
+<div class="instagram-placeholder">
+<span aria-hidden="true" class="instagram-placeholder__icon"><svg viewbox="0 0 24 24"><rect height="18" rx="5" width="18" x="3" y="3"></rect><circle cx="12" cy="12" r="4"></circle><circle class="social-dot" cx="17.4" cy="6.7" r="1.1"></circle></svg></span>
+<strong>Pubblicazione Instagram</strong>
+<p>Permettere a terzi di visualizzare la pubblicazione completa.</p>
+<button data-cookies="" type="button">Scegli le mie impostazioni</button>
+<a href="https://www.instagram.com/p/Dau-f-GDIgO/" rel="noopener noreferrer" target="_blank">Vedere su Instagram</a>
+</div>
+</article>
+<article class="instagram-embed-shell" data-instagram-embed="" data-permalink="https://www.instagram.com/p/DXEz3a9DNxf/">
+<div class="instagram-placeholder">
+<span aria-hidden="true" class="instagram-placeholder__icon"><svg viewbox="0 0 24 24"><rect height="18" rx="5" width="18" x="3" y="3"></rect><circle cx="12" cy="12" r="4"></circle><circle class="social-dot" cx="17.4" cy="6.7" r="1.1"></circle></svg></span>
+<strong>Pubblicazione Instagram</strong>
+<p>Permettere a terzi di visualizzare la pubblicazione completa.</p>
+<button data-cookies="" type="button">Scegli le mie impostazioni</button>
+<a href="https://www.instagram.com/p/DXEz3a9DNxf/" rel="noopener noreferrer" target="_blank">Vedere su Instagram</a>
+</div>
+</article>
+</div>
+</div>
+</section>
+<!-- ================================================================
+       PIED DE PAGE : composant partagé (assets/css/pied.css)
+       L'ancien était une image SVG de 1920 × 520 surmontée de zones
+       cliquables : illisible pour les moteurs de recherche et les lecteurs
+       d'écran, et impossible à faire refluer. Reconstruit en vrai texte,
+       identique à celui des 8 pages « Le logiciel ».
+       ================================================================ -->
+</main>
+<footer aria-label="Piè di pagina" class="pied">
+<div class="pied__haut">
+<div class="pied__marque">
+<p class="pied__nom">Mon Chai</p>
+<p class="pied__sous">Software per il vino</p>
+<p class="pied__phrase">La gestione della tenuta, dal vigneto alla vendita.</p>
+<p class="pied__fr">Sviluppato e ospitato in Francia</p>
+<div class="pied__suivre">
+<p class="pied__suivre-titre">Seguici.</p>
+<div class="pied__reseaux">
+<a aria-label="Seguire Mon Chai su Instagram" href="https://www.instagram.com/monchai.fr/" rel="noopener noreferrer" target="_blank"><svg aria-hidden="true" viewbox="0 0 24 24"><rect height="18" rx="5" width="18" x="3" y="3"></rect><circle cx="12" cy="12" r="4"></circle><circle class="pied__reseau-point" cx="17.4" cy="6.7" r="1.1"></circle></svg></a>
+<a aria-label="Seguire Mon Chai su LinkedIn" href="https://www.linkedin.com/company/monchai" rel="noopener noreferrer" target="_blank"><svg aria-hidden="true" viewbox="0 0 24 24"><path d="M5.2 8.2H2.1V22h3.1V8.2ZM3.7 2A1.8 1.8 0 1 0 3.7 5.6 1.8 1.8 0 0 0 3.7 2ZM22 14.1c0-4.2-2.2-6.2-5.2-6.2-2.4 0-3.5 1.3-4.1 2.2V8.2H9.6V22h3.1v-6.8c0-1.8.3-3.6 2.6-3.6 2.2 0 2.3 2.1 2.3 3.7V22H22v-7.9Z"></path></svg></a>
+</div>
+</div>
+</div>
+<nav aria-label="Software" class="pied__col">
+<h2>Software</h2>
+<ul>
+<li><a href="fonctionnalites.html">Tutte le funzionalità</a></li>
+<li><a href="vigne-vendanges.html">Vigneto e vendemmia</a></li> <li><a href="cave-vinification.html">Cantina e vinificazione</a></li> <li><a href="mises-conditionnement.html">Confezionamento e imbottigliamento</a></li> <li><a href="stocks-tracabilite.html">Scorte e tracciabilità</a></li> <li><a href="ventes-clients.html">Vendite, clienti e fatturazione</a></li> <li><a href="drm-conformite.html">DRM e conformità</a></li> <li><a href="oenotourisme.html">Enoturismo</a></li>
+<li><a href="#assistant">Assistente IA</a></li>
+</ul>
+</nav>
+<nav aria-label="Società" class="pied__col">
+<h2>Società</h2>
+<ul>
+<li><a href="tarifs.html">Prezzi</a></li>
+<li><a href="essai-gratuit.html">Prova gratuita</a></li>
+<li><a href="choisir-logiciel-viticole.html">Scegliere il software giusto</a></li>
+<li><a href="ia-au-service-de-mon-chai.html">Collega ChatGPT o Claude</a></li>
+<li><a href="#apropos">Chi siamo</a></li>
+<li><a href="#faq">FAQ</a></li>
+<li><a href="#actualite">Le nostre notizie</a></li>
+<li><a href="actualites-reglementaires.html">Aggiornamenti normativi</a></li>
+<li><a href="contact.html">Contattaci</a></li>
+</ul>
+</nav>
+<nav aria-label="Legale" class="pied__col">
+<h2>Legale</h2>
+<ul>
+<li><a href="mentions-legales.html">Note legali</a></li>
+<li><a href="politique-confidentialite.html">Informativa sulla privacy</a></li>
+<li><a href="cgu.html">CONDIZIONI DI VENDITA E UTILIZZO</a></li>
+<li><button data-cookies="" type="button">Gestisci i miei cookie</button></li>
+</ul>
+</nav>
+</div>
+<div class="pied__bas">
+<p>© 2026 Mon Chai. Tutti i diritti riservati.</p>
+<p>Membro della <a href="https://www.lawinetech.com/" rel="noopener" target="_blank">WineTech</a> e <a href="https://lepoool.tech/" rel="noopener" target="_blank">Poool</a>. Immaginato e sviluppato a Rennes.</p>
+</div>
+</footer>
+</div>
+<!-- ================================================================
+     COOKIES : bandeau de consentement (conforme CNIL)
+     Cookies strictement nécessaires : toujours actifs, sans consentement.
+     Mesure d'audience + tiers : soumis au consentement. Choix conservé 6 mois,
+     réouvrable via « Gérer mes cookies » (footer / pages légales).
+     ================================================================ -->
+<div class="cookie" hidden="" id="cookieBanner">
+<div class="cookie__texte">
+<strong>Cookies e Privacy</strong>
+<p>Utilizziamo i cookie strettamente necessari al funzionamento del sito. Con il vostro consenso, utilizziamo anche i cookie di misurazione del pubblico per migliorare Mon Chai. <a href="politique-confidentialite.html">Scopri di più</a>.</p>
+</div>
+<div class="cookie__actions">
+<button class="cookie__btn cookie__btn--ghost" id="cookieRefus" type="button">Rifiuta</button>
+<button class="cookie__btn cookie__btn--ghost" id="cookieRegler" type="button">Personalizza</button>
+<button class="cookie__btn cookie__btn--plein" id="cookieAccept" type="button">Accetta tutto</button>
+</div>
+</div>
+<div class="cookie-modal" hidden="" id="cookieModal">
+<div class="cookie-modal__fond" data-cookies-fermer=""></div>
+<div aria-label="Impostazioni dei cookie" aria-modal="true" class="cookie-modal__boite" role="dialog">
+<button aria-label="Chiudi" class="cookie-modal__fermer" data-cookies-fermer="">×</button>
+<h2>Impostazioni dei cookie</h2>
+<p class="cookie-modal__intro">Scegli i cookie che accetti. Le tue scelte vengono mantenute per sei mesi.</p>
+<label class="cookie-opt">
+<span><strong>Seritualmente necessario</strong><br/>Essenziale per il funzionamento e la sicurezza del sito. Sempre attivo.</span>
+<input checked="" disabled="" type="checkbox"/>
+</label>
+<label class="cookie-opt">
+<span><strong>Azione uditiva</strong><br/>Aiutaci a capire come il sito viene utilizzato per migliorarlo.</span>
+<input id="optAudience" type="checkbox"/>
+</label>
+<label class="cookie-opt">
+<span><strong>Servizi di terzi</strong><br/>Contenuti e strumenti esterni (forme, video, follow-up della campagna).</span>
+<input id="optTiers" type="checkbox"/>
+</label>
+<div class="cookie-modal__pied">
+<button class="cookie__btn cookie__btn--ghost" id="cookieToutRefus" type="button">Rifiuta tutto</button>
+<button class="cookie__btn cookie__btn--plein" id="cookieEnregistrer" type="button">Salva le mie scelte</button>
+</div>
+</div>
+</div>
+<script src="../assets/js/header.js"></script>
+<script src="../script.js"></script>
+</body>
+</html>

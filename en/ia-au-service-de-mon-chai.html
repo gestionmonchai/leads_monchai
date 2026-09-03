@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1, viewport-fit=cover" name="viewport"/>
+<title>Best AIs for Mon Chai: connect ChatGPT or Claude to your domain</title>
+<meta content="Ask your domain for your inventory and invoices from ChatGPT or Claude, read-only and under your control. What is the MCP protocol, and the step-by-step procedure to connect Mon Chai to your assistant." name="description"/>
+<meta content="index, follow, max-image-preview:large, max-snippet:-1" name="robots"/>
+<link href="https://monchai.fr/en/ia-au-service-de-mon-chai.html" rel="canonical"/><link href="https://monchai.fr/ia-au-service-de-mon-chai.html" hreflang="x-default" rel="alternate"/><link href="https://monchai.fr/ia-au-service-de-mon-chai.html" hreflang="fr" rel="alternate"/><link href="https://monchai.fr/en/ia-au-service-de-mon-chai.html" hreflang="en" rel="alternate"/><link href="https://monchai.fr/it/ia-au-service-de-mon-chai.html" hreflang="it" rel="alternate"/><link href="https://monchai.fr/de/ia-au-service-de-mon-chai.html" hreflang="de" rel="alternate"/><link href="https://monchai.fr/zh/ia-au-service-de-mon-chai.html" hreflang="zh-Hans" rel="alternate"/>
+
+
+
+
+
+
+<meta content="article" property="og:type"/>
+<meta content="https://monchai.fr/en/ia-au-service-de-mon-chai.html" property="og:url"/>
+<meta content="The best AI tools for Mon Chai" property="og:title"/>
+<meta content="ChatGPT or Claude connected to your domain data, read-only, revocable at any time. The explained MCP protocol and procedure in a few clicks." property="og:description"/>
+<meta content="https://monchai.fr/assets/img/vignes_2.jpg" property="og:image"/>
+<meta content="en_GB" property="og:locale"/>
+<meta content="Mon Chai" property="og:site_name"/>
+<link href="../assets/img/logo_mon_chai.png" rel="icon" type="image/png"/>
+<meta content="#7B1E22" name="theme-color"/>
+<script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "The best AI tools for Mon Chai",
+  "description": "What is MCP protocol and how to link Mon Chai to ChatGPT or Claude to query its domain data in natural language.",
+  "inLanguage": "en",
+  "datePublished": "2026-09-03",
+  "dateModified": "2026-09-03",
+  "image": "https://monchai.fr/assets/img/vignes_2.jpg",
+  "mainEntityOfPage": "https://monchai.fr/ia-au-service-de-mon-chai.html",
+  "author": {
+    "@type": "Organization",
+    "name": "Mon Chai",
+    "url": "https://monchai.fr/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Mon Chai",
+    "url": "https://monchai.fr/",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://monchai.fr/assets/img/logo_mon_chai.png"
+    }
+  }
+}</script>
+<script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Accueil",
+      "item": "https://monchai.fr/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Les meilleures IA au service de Mon Chai",
+      "item": "https://monchai.fr/ia-au-service-de-mon-chai.html"
+    }
+  ]
+}</script>
+<link href="../assets/css/polices.css" rel="stylesheet"/>
+<link href="../assets/css/header.css" rel="stylesheet"/>
+<link href="../assets/css/actus.css" rel="stylesheet"/>
+<link href="../assets/css/pied.css" rel="stylesheet"/>
+<style>
+/* Composants propres à cette page. Variables et polices de actus.css uniquement. */
+
+/* Encadré « en bref » */
+.ia-bref{
+  background:var(--ac-creme-2);
+  border:1px solid rgba(223,183,128,.55);
+  border-left:4px solid var(--ac-or);
+  border-radius:14px;
+  padding:20px 26px;
+  margin:26px 0 32px;
+}
+.ia-bref p{ margin:0 0 8px; font-size:16px; line-height:1.6; }
+.ia-bref p:last-child{ margin:0; }
+.ia-bref strong{ color:var(--ac-bordeaux); }
+
+/* Schéma du circuit : trois cases reliées */
+.ia-circuit{
+  display:grid; grid-template-columns:1fr auto 1fr auto 1fr;
+  align-items:center; gap:10px;
+  margin:26px 0 30px;
+}
+.ia-circuit__case{
+  background:#fff;
+  border:1px solid rgba(223,183,128,.8);
+  border-radius:12px;
+  padding:16px 14px;
+  text-align:center;
+}
+.ia-circuit__case strong{
+  display:block;
+  font-family:var(--ac-titre); font-weight:600; font-size:15px;
+  color:var(--ac-bordeaux); margin-bottom:4px;
+}
+.ia-circuit__case span{ font-size:13.5px; color:var(--ac-gris); line-height:1.4; display:block; }
+.ia-circuit__fleche{
+  font-family:var(--ac-titre); font-size:13px; color:var(--ac-cuivre-f);
+  text-align:center; white-space:nowrap;
+}
+@media (max-width:700px){
+  .ia-circuit{ grid-template-columns:1fr; }
+  .ia-circuit__fleche{ transform:rotate(90deg); padding:6px 0; }
+}
+
+/* Tableau deux IA */
+.ia-tableau{ width:100%; border-collapse:collapse; margin:20px 0 30px; font-size:15.5px; }
+.ia-tableau th, .ia-tableau td{
+  text-align:left; vertical-align:top;
+  padding:12px 14px;
+  border-bottom:1px solid rgba(223,183,128,.45);
+}
+.ia-tableau th{
+  font-family:var(--ac-titre); font-weight:600; font-size:14px;
+  color:var(--ac-bordeaux); background:var(--ac-creme-2);
+}
+.ia-tableau td:first-child{ color:var(--ac-gris-doux); font-size:14px; width:26%; }
+/* Sur mobile, le tableau s'empile : une carte par ligne, l'en-tête de
+   colonne rappelé devant chaque cellule (data-label). Jamais de défilement
+   horizontal de la page. */
+@media (max-width:640px){
+  /* actus.css impose min-width:480px aux tableaux d'article (défilement) :
+     inutile ici puisque le tableau s'empile. */
+  .article .ia-tableau{ min-width:0; }
+  .ia-tableau, .ia-tableau tbody, .ia-tableau tr, .ia-tableau td{ display:block; width:100%; }
+  .ia-tableau thead{ display:none; }
+  .ia-tableau tr{
+    background:#fff; border:1px solid rgba(223,183,128,.55); border-radius:12px;
+    padding:6px 14px 10px; margin:0 0 12px;
+  }
+  .ia-tableau td{ border:0; padding:8px 0; font-size:14.5px; }
+  .ia-tableau td:first-child{
+    width:auto; font-family:var(--ac-titre); font-weight:600; font-size:13px;
+    letter-spacing:.04em; text-transform:uppercase; color:var(--ac-bordeaux);
+    border-bottom:1px solid rgba(223,183,128,.45);
+  }
+  .ia-tableau td[data-label]::before{
+    content:attr(data-label);
+    display:block; font-size:12.5px; color:var(--ac-gris-doux); margin-bottom:2px;
+  }
+}
+
+/* Procédures numérotées, une par assistant */
+.ia-etapes{ list-style:none; padding:0; margin:18px 0 26px; counter-reset:et; }
+.ia-etapes li{
+  counter-increment:et;
+  position:relative;
+  padding-left:52px;
+  margin:0 0 18px;
+}
+.ia-etapes li::before{
+  content:counter(et);
+  position:absolute; left:0; top:-2px;
+  display:flex; align-items:center; justify-content:center;
+  width:34px; height:34px;
+  border-radius:50%;
+  background:rgba(223,183,128,.22); color:var(--ac-bordeaux);
+  font-family:var(--ac-titre); font-weight:600; font-size:14px;
+}
+.ia-etapes h3{
+  margin:4px 0 4px;
+  font-family:var(--ac-serif); font-weight:500; font-size:19px;
+  color:var(--ac-bordeaux);
+}
+.ia-etapes p{ margin:0 0 6px; font-size:16px; line-height:1.6; }
+.ia-etapes .ia-voit{
+  display:block; font-size:14.5px; color:var(--ac-gris-doux);
+  border-left:3px solid rgba(223,183,128,.8); padding-left:12px; margin-top:6px;
+}
+
+/* Adresse à copier */
+.ia-adresse{
+  display:inline-block;
+  font-family:ui-monospace, Consolas, "Courier New", monospace;
+  font-size:15px;
+  background:#fff;
+  border:1px solid rgba(223,183,128,.8);
+  border-radius:8px;
+  padding:6px 12px;
+  color:var(--ac-encre);
+  user-select:all;
+}
+
+/* Questions à poser */
+.ia-questions{ list-style:none; padding:0; margin:16px 0 26px; display:grid; gap:10px; }
+.ia-questions li{
+  background:#fff;
+  border:1px solid rgba(223,183,128,.55);
+  border-radius:999px;
+  padding:10px 18px;
+  font-size:15.5px;
+  color:var(--ac-encre);
+}
+.ia-questions li::before{ content:"«\00a0"; color:var(--ac-cuivre-f); }
+.ia-questions li::after{ content:"\00a0»"; color:var(--ac-cuivre-f); }
+
+/* Ce qui est partagé / pas partagé */
+.ia-deux{ display:grid; grid-template-columns:1fr 1fr; gap:18px; margin:20px 0 30px; }
+.ia-deux div{
+  background:#fff; border:1px solid rgba(223,183,128,.55); border-radius:12px; padding:18px 20px;
+}
+.ia-deux h3{
+  margin:0 0 10px; font-family:var(--ac-titre); font-weight:600; font-size:14px;
+  letter-spacing:.04em; text-transform:uppercase; color:var(--ac-bordeaux);
+}
+.ia-deux ul{ margin:0; padding-left:18px; }
+.ia-deux li{ margin:6px 0; font-size:15.5px; line-height:1.5; }
+@media (max-width:640px){ .ia-deux{ grid-template-columns:1fr; } }
+
+/* Note bêta */
+.ia-beta{
+  font-size:14.5px; color:var(--ac-gris);
+  background:rgba(223,183,128,.16);
+  border-radius:10px; padding:12px 16px; margin:0 0 26px;
+}
+.ia-beta strong{ color:var(--ac-bordeaux); }
+
+/* FAQ courte */
+.ia-faq details{ border-bottom:1px solid rgba(223,183,128,.45); padding:10px 0; }
+.ia-faq summary{
+  cursor:pointer; font-family:var(--ac-titre); font-weight:600; font-size:16px;
+  color:var(--ac-encre); list-style:none; position:relative; padding-right:28px;
+}
+.ia-faq summary::-webkit-details-marker{ display:none; }
+.ia-faq summary::after{
+  content:"+"; position:absolute; right:4px; top:-2px;
+  color:var(--ac-cuivre-f); font-size:22px; font-weight:400;
+}
+.ia-faq details[open] summary::after{ content:"–"; }
+.ia-faq p{ margin:10px 0 4px; font-size:15.5px; line-height:1.6; }
+</style>
+</head>
+<body class="corps-actus lang-en">
+<!-- ============ HEADER (composant partagé, repassé en flux par actus.css) ============ -->
+<div class="site-header site-header--page">
+<header class="hd">
+<a class="hd__logo" href="index.html"><img alt="Mon Chai, wine software" height="85" src="../assets/img/logo-header.webp" width="263"/></a>
+<button aria-controls="nav-principale" aria-expanded="false" aria-label="Open menu" class="hd__burger" type="button">
+<span></span><span></span><span></span>
+</button>
+<div class="hd__barre" id="nav-principale">
+<nav aria-label="Software" class="hd__menu" style="--hd-x:468px; --hd-dx:-72px; --hd-dw:610px">
+<button aria-controls="sous-menu-logiciel" aria-expanded="false" aria-haspopup="true" class="hd__lien hd__declencheur" type="button"><span>Software</span><span aria-hidden="true" class="hd__menu-chev"></span></button>
+<div class="hd__panneau hd__panneau--logiciel" id="sous-menu-logiciel">
+<div class="hd__groupe">
+<span class="hd__groupe-titre">Discover</span>
+<a href="fonctionnalites.html">Software overview</a>
+<a href="index.html#parcours">How it works</a>
+<a href="index.html#assistant">AI assistant</a>
+</div>
+<div class="hd__groupe">
+<span class="hd__groupe-titre">Winery modules</span>
+<a href="vigne-vendanges.html">Vineyard &amp; harvest</a>
+<a href="cave-vinification.html">Cellar &amp; winemaking</a>
+<a href="mises-conditionnement.html">Packaging &amp; bottling</a>
+<a href="stocks-tracabilite.html">Inventory &amp; traceability</a>
+<a href="ventes-clients.html">Sales, customers &amp; invoicing</a>
+<a href="drm-conformite.html">DRM &amp; compliance</a>
+<a href="oenotourisme.html">Wine tourism</a>
+</div>
+</div>
+</nav>
+<nav aria-label="Pricing and free trial" class="hd__menu" style="--hd-x:650px; --hd-dx:-60px; --hd-dw:280px">
+<button aria-controls="sous-menu-tarifs" aria-expanded="false" aria-haspopup="true" class="hd__lien hd__declencheur" type="button"><span>Pricing</span><span aria-hidden="true" class="hd__menu-chev"></span></button>
+<div class="hd__panneau" id="sous-menu-tarifs">
+<div class="hd__groupe">
+<span class="hd__groupe-titre">Get started</span>
+<a href="tarifs.html">View pricing</a>
+<a href="essai-gratuit.html">30-day free trial</a>
+</div>
+</div>
+</nav>
+<nav aria-label="Resources" class="hd__menu hd__menu--ressources" style="--hd-x:819px; --hd-dx:-270px; --hd-dw:650px">
+<button aria-controls="sous-menu-ressources" aria-expanded="false" aria-haspopup="true" class="hd__lien hd__declencheur est-actif" type="button"><span>Resources</span><span aria-hidden="true" class="hd__menu-chev"></span></button>
+<div class="hd__panneau hd__panneau--ressources" id="sous-menu-ressources">
+<div class="hd__groupe">
+<span class="hd__groupe-titre">Guides &amp; help</span>
+<a href="choisir-logiciel-viticole.html">Choose the right software</a>
+<a href="faq.html">Frequently asked questions</a>
+<a aria-current="page" href="ia-au-service-de-mon-chai.html">Connect ChatGPT or Claude</a>
+</div>
+<div class="hd__groupe">
+<span class="hd__groupe-titre">Regulatory updates</span>
+<a href="actualites-reglementaires.html">All updates</a>
+<a href="actualites-vigne-phyto.html">Vineyard &amp; plant protection</a>
+<a href="actualites-cave-registres.html">Cellar &amp; records</a>
+<a href="actualites-douane-declarations.html">Customs &amp; declarations</a>
+<a href="actualites-etiquetage-mises.html">Labelling &amp; bottling</a>
+<a href="actualites-ventes-facturation.html">Sales &amp; invoicing</a>
+<a href="actualites-oenotourisme-vente-directe.html">Wine tourism &amp; direct sales</a>
+</div>
+</div>
+</nav>
+<nav aria-label="About" class="hd__menu" style="--hd-x:1030px; --hd-dx:-55px; --hd-dw:260px">
+<button aria-controls="sous-menu-apropos" aria-expanded="false" aria-haspopup="true" class="hd__lien hd__declencheur" type="button"><span>About</span><span aria-hidden="true" class="hd__menu-chev"></span></button>
+<div class="hd__panneau" id="sous-menu-apropos">
+<div class="hd__groupe">
+<span class="hd__groupe-titre">Mon Chai</span>
+<a href="index.html#apropos">Who we are</a>
+<a href="index.html#actualite">Mon Chai news</a>
+<a href="contact.html">Contact us</a>
+</div>
+</div>
+</nav>
+<a class="hd__connexion" href="https://tester.monchai.fr">Log in</a>
+<a class="hd__cta" href="https://tester.monchai.fr">Try for free</a>
+<div class="hd__langue"><button aria-controls="menu-langues" aria-expanded="false" aria-haspopup="true" aria-label="Choose language" class="hd__langue-bouton" type="button">EN<span aria-hidden="true" class="hd__chev"></span></button><div class="hd__langue-menu" id="menu-langues"><a href="../ia-au-service-de-mon-chai.html" hreflang="fr" lang="fr">Français</a><a aria-current="page" href="ia-au-service-de-mon-chai.html" hreflang="en" lang="en">English</a><a href="../it/ia-au-service-de-mon-chai.html" hreflang="it" lang="it">Italiano</a><a href="../de/ia-au-service-de-mon-chai.html" hreflang="de" lang="de">Deutsch</a><a href="../zh/ia-au-service-de-mon-chai.html" hreflang="zh-Hans" lang="zh-Hans">中文</a></div></div>
+</div>
+</header>
+</div>
+<!-- ============ ARTICLE ============ -->
+<main class="article">
+<p class="article__ariane"><a href="index.html">Home</a> › Best AIs at Mon Chai</p>
+<div class="article__meta">
+<span class="actu-tag">Guide</span>
+<span class="actu-date">September 3, 2026 edition · 8 minutes reading</span>
+</div>
+<h1>The best AI tools for Mon Chai</h1>
+<p class="article__chapo">You already use ChatGPT or Claude. Mon Chai allows you to connect them to your domain data, read only, to ask your questions in natural language: "how many magnums of Tradition I have left?", "what bills are unpaid?", "what turnover in August?", without copying and pasting, without exporting, and you cut when you want.</p>
+<div class="ia-bref">
+<p><strong>In short.</strong> Mon Chai opens a standard door, called <strong>connector MCP</strong>, which your assistant comes to question. You allow it once, on Mon Chai, for an operation; it can then only <strong>read</strong> your inventory and invoices; you revoke access with one click.</p>
+<p>This page first explains the technology, then gives the procedure for Claude and for ChatGPT.</p>
+</div>
+<h2>1. MCP, technology: a universal socket for AI</h2>
+<p>An assistant like ChatGPT or Claude knows nothing about your domain. He doesn't know your cuvées, your stocks, or your customers. So far, the only way to get him to read your numbers was to copy them to him by hand, question after question.</p>
+<p>The <strong>Model Context Protocol</strong>This is an open standard, published in late 2024 by Anthropic (the Claude editor) and adopted since by OpenAI (ChatGPT), Google, Microsoft and most publishers. It is often compared to the USB-C socket: one single plug-in standard, regardless of device on one side and the assistant on the other. MCP</p>
+<p>In concrete terms, a software that "spokes MCP" displays <strong>tools</strong> The assistant reads this list, chooses the tool that is appropriate for your question, calls it, and formulates the answer from what he has received. He doesn't know anything: he reads.</p>
+<div aria-label="Circuit of a question" class="ia-circuit">
+<div class="ia-circuit__case"><strong>Your assistant</strong><span>ChatGPT, Claude...<br/>receives your question</span></div>
+<div class="ia-circuit__fleche">call the tool ›</div>
+<div class="ia-circuit__case"><strong>Mon Chai connector</strong><span>check your authorization<br/>and your rights</span></div>
+<div class="ia-circuit__fleche">bed ›</div>
+<div class="ia-circuit__case"><strong>Your data</strong><span>Inventory, lots, invoices<br/>of the selected holding</span></div>
+</div>
+<p>At Mon Chai, these tools are new, all readable: the context of the connection, the inventory summary, the stock of a vintage by format and by vintage, the stock by format, the bulk, the list of invoices, the details of an invoice, the unpaid invoices and the turnover over a period. The numbers returned are exactly those of your Stock and Sales screens: the assistant does not recalculate anything.</p>
+<h3>How access is protected</h3>
+<p>The connection uses <strong>OAuth 2.1</strong>, the mechanism behind "Login with Google": your assistant never has your Mon Chai password. At the time of connection, you are returned to Mon Chai, you identify as usual (double authentication included if you enabled it), you choose <strong>the holding</strong> You're the one who decides, never the assistant.</p>
+<p>Then, with each question, Mon Chai checks that the authorization is still valid, that your account is active and that you still have the right to read this data. A collaborator without access to invoices will not get the invoices either by the assistant. Each reading is logged in to Mon Chai: what connection, what tool, what time, never the content of the answers.</p>
+<h2>2. Two AIs, two roles</h2>
+<p>Mon Chai already integrates <a href="index.html#assistant">an assistant</a>, operated on our servers in France, for help in the software. The MCP connector is something else: it puts <em>your</em> Assistant, the one you pay and know, at the service of your data. Both coexist.</p>
+<table class="ia-tableau">
+<thead>
+<tr><th></th><th>Integrated Assistant Mon Chai</th><th>Your ChatGPT or Claude, via the connector</th></tr>
+</thead>
+<tbody>
+<tr><td>Where AI is running</td><td data-label="Integrated Assistant Mon Chai">On Mon Chai servers, France</td><td data-label="Your ChatGPT or Claude">At OpenAI or Anthropic, in your account</td></tr>
+<tr><td>Where your data goes</td><td data-label="Integrated Assistant Mon Chai">Nowhere: they stay at Mon Chai</td><td data-label="Your ChatGPT or Claude">The data read is transmitted to the editor of your assistant, according to his conditions</td></tr>
+<tr><td>What it does</td><td data-label="Integrated Assistant Mon Chai">Help, information search, preparation of software entries</td><td data-label="Your ChatGPT or Claude">Answer your questions about your inventory and invoices, cross them with everything you ask for elsewhere</td></tr>
+<tr><td>Writing</td><td data-label="Integrated Assistant Mon Chai">Depending on your rights, in the software</td><td data-label="Your ChatGPT or Claude">Never: reading alone, by construction</td></tr>
+<tr><td>Cost</td><td data-label="Integrated Assistant Mon Chai">Included</td><td data-label="Your ChatGPT or Claude">Included side Mon Chai; subscription of your assistant to your charge</td></tr>
+</tbody>
+</table>
+<p class="ia-beta"><strong>Beta.</strong> The connector is open to beta accounts on <code>tester.monchai.fr</code>. The address to paste in your assistant is in Mon Chai, menu <strong>Administration › ChatGPT / Claude connector</strong>. For beta, it's: <span class="ia-adresse">https://tester.monchai.fr/mcp</span></p>
+<h2>3. Link Mon Chai to Claude</h2>
+<p>Works with claude.ai, the Claude computer application, the mobile application and Claude Code. A Claude Pro, Max, Team or Enterprise account is required to add a custom connector.</p>
+<ol class="ia-etapes">
+<li>
+<h3>Copy the connector address</h3>
+<p>In Mon Chai: Administration › ChatGPT / Claude connector › button <strong>Copy</strong>.</p>
+<span class="ia-voit">You see: the server address, and the list of your active connections (empty the first time).</span>
+</li>
+<li>
+<h3>Add the connector in Claude</h3>
+<p>On claude.ai : Settings › <strong>Connectors</strong> › <strong>Add Custom Connector</strong>Name: <em>Mon Chai</em>. Paste the address. Leave the fields "client ID" and "secret" empty. Validate.</p>
+<span class="ia-voit">You see: "Mon Chai" in your list of connectors, with a Connect button.</span>
+</li>
+<li>
+<h3>Allow, on Mon Chai</h3>
+<p>Click <strong>Connect</strong>. A Mon Chai tab opens. Identify yourself if necessary, choose the operation to share, read what will be read, and then <strong>Allow playback</strong>.</p>
+<span class="ia-voit">You see: the screen "Authorize access to your data", then the automatic return in Claude, connector marked connected.</span>
+</li>
+<li>
+<h3>Ask your question</h3>
+<p>In a conversation, check that Mon Chai is enabled in the tool menu, and ask for example: "What operation is it?".</p>
+<span class="ia-voit">You see: Claude indicates that it uses Mon Chai, then answers with the name of your operation and your role.</span>
+</li>
+</ol>
+<p><strong>Office application.</strong> The connector added to claude.ai is available in the Claude app for computer and mobile, with the same permission. Nothing to do.</p>
+<h2>4. Link Mon Chai to ChatGPT</h2>
+<p>Works with ChatGPT on the web, with a Plus, Pro, Business, Enterprise or Edu account. ChatGPT only accepts external connectors in <em>developer mode</em>, to activate once only.</p>
+<ol class="ia-etapes">
+<li>
+<h3>Enable developer mode (once)</h3>
+<p>On chatgpt.com : Settings › <strong>Connectors</strong> › <em>Advanced</em> › enable <strong>Developer Mode</strong>.</p>
+<span class="ia-voit">You see: a Create button appears in the Connectors page.</span>
+</li>
+<li>
+<h3>Create Connector</h3>
+<p>Settings › Connectors › <strong>Create</strong>Name: <em>Mon Chai</em>. Address of the MCP server: paste the address copied in Mon Chai. Authentication: <strong>OAuth</strong>. Check the confidence box, then <strong>Create</strong>.</p>
+<span class="ia-voit">You see: ChatGPT displays the nine tools of Mon Chai, all marked in read-only.</span>
+</li>
+<li>
+<h3>Allow, on Mon Chai</h3>
+<p>Click <strong>Connect</strong>. A Mon Chai tab opens: identify yourself, choose the operation, read what will be read, and then <strong>Allow playback</strong>.</p>
+<span class="ia-voit">You see: the screen "Authorize access to your data", then the return to ChatGPT, connected connector.</span>
+</li>
+<li>
+<h3>Enable it in the conversation</h3>
+<p>In a new conversation: button <strong>+</strong> › <em>More</em> › check <strong>Mon Chai</strong>. Ask your question. The first time, ChatGPT can ask you to confirm the call to the tool.</p>
+<span class="ia-voit">You see: ChatGPT reports that he used Mon Chai, then answers with your numbers.</span>
+</li>
+</ol>
+<h2>5. What you share, what you do not share</h2>
+<div class="ia-deux">
+<div>
+<h3>Read by the assistant</h3>
+<ul>
+<li>Your stocks: bulk, bottles, commercial lots, per cuvée, format and vintage.</li>
+<li>Your invoices: list, details with lines and payments, unpaid, turnover over a period.</li>
+<li>The name of the operation chosen, your name and your role.</li>
+</ul>
+</div>
+<div>
+<h3>Never</h3>
+<ul>
+<li>No writing: neither creation, nor correction, nor deletion, nor sending.</li>
+<li>Your other farms: a connection, a farm.</li>
+<li>Your credentials, your settings, your collaborators, your customs declarations.</li>
+<li>What your rights do not allow you to see in Mon Chai.</li>
+</ul>
+</div>
+</div>
+<p><strong>- Yeah, I guess so.</strong> The data read (cuvées names, quantities, customer names, amounts) are transmitted to the editor of the assistant you have chosen and processed according to his conditions, outside Mon Chai. Check the rules of storage of your ChatGPT or Claude account before logging in real data.</p>
+<h3>Revoke</h3>
+<p>At any time: Mon Chai › Administration › ChatGPT / Claude connector › connection line › <strong>Revoke</strong>. The wizard can no longer read anything from the next second, without asking anyone. You can also delete the assistant-side connector; still call back in Mon Chai to be sure.</p>
+<h2>6. Issues that Work</h2>
+<ul class="ia-questions">
+<li>What kind of farm are we talking about?</li>
+<li>How many bottles of Tradition do I have left, by vintage?</li>
+<li>How many magnums in stock?</li>
+<li>What's my bulk stock?</li>
+<li>What bills are unpaid, and which ones are due?</li>
+<li>What turnover in August 2026?</li>
+<li>Invoice Detail FCC-2026-0010</li>
+<li>Prepare me a stock point for my caviste, from my numbers</li>
+</ul>
+<p>And a question that does not work, voluntarily: "Modify the stock of Tradition to 30,000". The assistant will answer you that he can only read. There is no writing tool.</p>
+<h2>7. Frequently Asked Questions</h2>
+<div class="ia-faq">
+<details>
+<summary>Do my data leave with OpenAI or Anthropic?</summary>
+<p>Yes, the ones the assistant reads to answer, and only at the publisher you have chosen and authorized. Mon Chai does not send anything of its own: it is your assistant who comes to read, with your permission, and you can remove it at any time. The integrated assistant of Mon Chai, he, never leaves our servers in France.</p>
+</details>
+<details>
+<summary>Can the assistant be wrong?</summary>
+<p>The numbers he receives are those of Mon Chai, which are correct to the second of the question. What he does next (a calculation, a comparison, a projection) is the assistant's. If in doubt, open the Stocks or Sales screen: it is the same source.</p>
+</details>
+<details>
+<summary>Do you need a specific subscription?</summary>
+<p>Mon Chai side, the connector is included. On the assistant side, you need an offer that accepts custom connectors: Claude Pro, Max, Team or Enterprise; ChatGPT Plus, Pro, Business, Enterprise or Edu.</p>
+</details>
+<details>
+<summary>Can I plug in several farms?</summary>
+<p>Yes, by adding the connector once per operation and selecting the desired operation for each authorization. Each connection is independent and cancels separately.</p>
+</details>
+<details>
+<summary>What does Mon Chai see from my conversations?</summary>
+<p>None of your conversations. Mon Chai logs only tool calls: which connection, what tool, what time, with the question settings (a cuvée name, a period). Never the content of the answers or what you write to the assistant.</p>
+</details>
+<details>
+<summary>What about Mistral, Gemini, Copilot?</summary>
+<p>MCP is a standard: any assistant that accepts a remote MCP connector with OAuth can plug in the same way. Claude has been tested on the desktop app and in Claude Code; the remote claude.ai connector and ChatGPT follow the same standard and are being tested for real now. Tell us which one you use.</p>
+</details>
+</div>
+<div class="article-cta">
+<p class="article-cta__titre">Test it on your data</p>
+<p>A Mon Chai trial account, your usual assistant, and your real questions.</p>
+<div class="article-cta__actions">
+<a class="article-cta__btn" href="essai-gratuit.html">Try for free</a>
+<a class="article-cta__lien" href="contact.html">Ask us a question.</a>
+</div>
+</div>
+<section class="article__suite">
+<h2>Read also</h2>
+<ul>
+<li><a href="stocks-tracabilite.html">Stocks &amp; traceability in Mon Chai</a></li>
+<li><a href="ventes-clients.html">Sales, customers &amp; invoicing</a></li>
+<li><a href="choisir-logiciel-viticole.html">How to choose winery management software</a></li>
+<li><a href="faq.html">Frequently asked questions: data, compliance, tariffs</a></li>
+</ul>
+</section>
+</main>
+<!-- ============ PIED DE PAGE (composant partagé) ============ -->
+<footer class="pied">
+<div class="pied__haut">
+<div class="pied__marque">
+<p class="pied__nom">Mon Chai</p>
+<p class="pied__sous">Wine software</p>
+<p class="pied__phrase">The management of the estate, from the vineyard to the sale.</p>
+<p class="pied__fr">Developed and hosted in France</p>
+<div class="pied__suivre">
+<p class="pied__suivre-titre">Follow us</p>
+<div class="pied__reseaux">
+<a aria-label="Follow Mon Chai on Instagram" href="https://www.instagram.com/monchai.fr/" rel="noopener noreferrer" target="_blank"><svg aria-hidden="true" viewbox="0 0 24 24"><rect height="18" rx="5" width="18" x="3" y="3"></rect><circle cx="12" cy="12" r="4"></circle><circle class="pied__reseau-point" cx="17.4" cy="6.7" r="1.1"></circle></svg></a>
+<a aria-label="Follow Mon Chai on LinkedIn" href="https://www.linkedin.com/company/monchai" rel="noopener noreferrer" target="_blank"><svg aria-hidden="true" viewbox="0 0 24 24"><path d="M5.2 8.2H2.1V22h3.1V8.2ZM3.7 2A1.8 1.8 0 1 0 3.7 5.6 1.8 1.8 0 0 0 3.7 2ZM22 14.1c0-4.2-2.2-6.2-5.2-6.2-2.4 0-3.5 1.3-4.1 2.2V8.2H9.6V22h3.1v-6.8c0-1.8.3-3.6 2.6-3.6 2.2 0 2.3 2.1 2.3 3.7V22H22v-7.9Z"></path></svg></a>
+</div>
+</div>
+</div>
+<nav aria-label="Software" class="pied__col">
+<h2>Software</h2>
+<ul>
+<li><a href="fonctionnalites.html">All features</a></li>
+<li><a href="vigne-vendanges.html">Vineyard &amp; harvest</a></li> <li><a href="cave-vinification.html">Cellar &amp; winemaking</a></li> <li><a href="mises-conditionnement.html">Packaging &amp; bottling</a></li> <li><a href="stocks-tracabilite.html">Inventory &amp; traceability</a></li> <li><a href="ventes-clients.html">Sales, customers &amp; invoicing</a></li> <li><a href="drm-conformite.html">DRM &amp; compliance</a></li> <li><a href="oenotourisme.html">Wine tourism</a></li>
+<li><a href="index.html#assistant">AI assistant</a></li>
+</ul>
+</nav>
+<nav aria-label="Company" class="pied__col">
+<h2>Company</h2>
+<ul>
+<li><a href="tarifs.html">Pricing</a></li>
+<li><a href="essai-gratuit.html">Free trial</a></li>
+<li><a href="choisir-logiciel-viticole.html">Choose the right software</a></li>
+<li><a href="ia-au-service-de-mon-chai.html">Connect ChatGPT or Claude</a></li>
+<li><a href="index.html#apropos">About</a></li>
+<li><a href="faq.html">FAQ</a></li>
+<li><a href="index.html#actualite">Our News</a></li>
+<li><a href="actualites-reglementaires.html">Regulatory updates</a></li>
+<li><a href="contact.html">Contact us</a></li>
+</ul>
+</nav>
+<nav aria-label="Legal" class="pied__col">
+<h2>Legal</h2>
+<ul>
+<li><a href="mentions-legales.html">Legal notice</a></li>
+<li><a href="politique-confidentialite.html">Privacy policy</a></li>
+<li><a href="cgu.html">TERMS OF SALE AND USE</a></li>
+<li><button data-cookies="" type="button">Manage my cookies</button></li>
+</ul>
+</nav>
+</div>
+<div class="pied__bas">
+<p>© 2026 Mon Chai. All rights reserved.</p>
+<p>Member of <a href="https://www.lawinetech.com/" rel="noopener" target="_blank">WineTech</a> and <a href="https://lepoool.tech/" rel="noopener" target="_blank">Poool</a>. Imagined and developed in Rennes.</p>
+</div>
+</footer>
+<script src="../assets/js/header.js"></script>
+</body>
+</html>

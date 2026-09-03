@@ -10,6 +10,7 @@ const W = 1920, H = 1200;
 const GRAND_ECRAN = window.matchMedia('(min-width: 1200px)');
 
 function fit() {
+  if (!page) return;
   const scale = window.innerWidth / W;
 
   // Publiée pour tout ce qui vit hors de .page et doit suivre la même
@@ -49,7 +50,7 @@ fit();
 // La hauteur de .page bouge après coup (bascule des polices, publications
 // Instagram chargées ou repliées) : la hauteur du body posée par fit()
 // deviendrait fausse, laissant un blanc ou coupant le pied de page.
-if (window.ResizeObserver) new ResizeObserver(fit).observe(page);
+if (window.ResizeObserver && page) new ResizeObserver(fit).observe(page);
 
 
 /* =========================================================
@@ -100,6 +101,7 @@ let dernierY = window.scrollY;
 let enAttente = false;
 
 function majHeader() {
+  if (!header) return;
   const y = window.scrollY;
   const delta = y - dernierY;
 
@@ -118,6 +120,7 @@ function majHeader() {
 const barre = document.getElementById('readingBar');
 
 function majBarre() {
+  if (!barre) return;
   const total = document.documentElement.scrollHeight - window.innerHeight;
   const pct = total > 0 ? (window.scrollY / total) * 100 : 0;
   barre.style.width = Math.min(100, Math.max(0, pct)) + '%';

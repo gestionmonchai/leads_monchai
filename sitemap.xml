@@ -170,4 +170,12 @@
     <changefreq>yearly</changefreq>
     <priority>0.2</priority>
   </url>
+
+  <!-- Guides -->
+  <url>
+    <loc>https://monchai.fr/ia-au-service-de-mon-chai.html</loc>
+    <lastmod>2026-09-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
 </urlset>

@@ -210,11 +210,23 @@
 .hd__panneau a[aria-current="page"]{ color:var(--hd-cuivre-f); font-weight:600; }
 
 .hd__panneau--logiciel{
-  grid-template-columns:minmax(190px,.8fr) minmax(310px,1.2fr);
+  /* Même garde que le panneau ressources ci-dessous. Marge mesurée avant :
+     26px en français pour « Vue d'ensemble du logiciel », soit trois
+     caractères. Le motif était identique à celui qui a produit le
+     chevauchement : fractions fixes, nowrap, pas d'overflow. */
+  grid-template-columns:minmax(max-content,.8fr) minmax(0,1.2fr);
   column-gap:18px;
 }
 .hd__panneau--ressources{
-  grid-template-columns:minmax(200px,.72fr) minmax(340px,1.28fr);
+  /* minmax(max-content, …) et non des fractions fixes : la colonne vaut le
+     plus grand des deux, sa part de fraction ou son libellé le plus long.
+     Elle ne peut donc que grandir, jamais rétrécir. Avec des fractions
+     seules, « Ce que votre assistant peut demander » sortait de ses 227px et
+     se dessinait par-dessus la bordure du groupe voisin, les liens étant en
+     nowrap sans overflow déclaré. Le minimum de la seconde colonne doit
+     rester à 0 : son ancien minimum de 340px, ajouté aux 309px que réclame
+     la première et aux 18px de gouttière, dépasse les 650px du panneau. */
+  grid-template-columns:minmax(max-content,.72fr) minmax(0,1.28fr);
   column-gap:18px;
 }
 .hd__groupe{ min-width:0; }

@@ -107,6 +107,16 @@
   font-size:15px; color:rgba(255,249,244,.6);
 }
 .pied__bas p{ margin:0; }
+/* Les liens partenaires vivent dans une phrase, pas dans une liste : sans règle
+   propre ils héritaient du bleu par défaut du navigateur sur le fond bordeaux.
+   Mêmes valeurs que .pied__col a, plus le soulignement qui les distingue. */
+.pied__bas a{
+  color:rgba(255,249,244,.82);
+  text-decoration:underline; text-underline-offset:3px;
+  transition:color .15s ease;
+}
+.pied__bas a:hover,
+.pied__bas a:focus-visible{ color:var(--pd-blanc); }
 
 
 @media (max-width:1199px){
@@ -130,5 +140,5 @@
 }
 
 @media (prefers-reduced-motion:reduce){
-  .pied__col a, .pied__col button, .pied__reseaux a{ transition:none; }
+  .pied__col a, .pied__col button, .pied__reseaux a, .pied__bas a{ transition:none; }
 }

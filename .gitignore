@@ -1,4 +1,88 @@
+# Mon Chai, site vitrine.
+# Ce qui suit reste sur le disque mais n'entre pas dans le dépôt.
 
-# Page sécurité : brouillon, NE PAS publier avant fin du durcissement
-securite.html
+# Dossier de contrôle, reconstruit par deploie.ps1. Il sert à vérifier quels
+# fichiers le site appelle réellement, pas à publier.
+#
+# La publication passe par GitHub Pages sur gestionmonchai/leads_monchai :
+# .github/workflows/static.yml met en ligne « path: '.' », c'est-à-dire le dépôt
+# entier. Autrement dit, tout ce qui est commité sur main est servi sur
+# monchai.fr, et ce fichier-ci est bien ce qui décide de ce qui part en ligne.
+# Le dépôt étant public, il décide aussi de ce qui est lisible sur github.com.
+dist/
 
+# Dépendances installées.
+node_modules/
+
+# Exports Figma bruts et version précédente du site : 154 Mo.
+# Git conserve chaque binaire indéfiniment, un dépôt ne s'allège jamais après coup.
+# Si tu veux les versionner malgré tout, retire ces deux lignes.
+V2/
+from figma/
+
+# Exports Figma par écran, sources des pages déjà reconstruites en HTML.
+Accueil/
+a propos/
+a propos faq/
+faq/
+tarifs/
+header/
+frame1/
+assistant ia/
+Pourquoi Mon Chai/
+Fonctionnalites IA  Tarif/
+
+# Références de comparaison au pixel, servent aux tests de rendu.
+assets/ref-figma/
+assets/svg/pages/
+assets/png/
+
+# Maquettes déposées à la racine.
+/*.png
+/*.zip
+/Assistant IA.svg
+
+# Notes de travail. Règle inversée à dessein : par défaut aucun .md ne part,
+# et on autorise nommément les exceptions. Lister les notes une à une laissait
+# passer toute note créée ensuite, ce qui est précisément ce qui a mis
+# DEVBOOK.md en ligne sur monchai.fr.
+*.md
+!README.md
+
+# Outillage. Même raisonnement : le dépôt étant servi tel quel, tout script
+# commité est téléchargeable sur monchai.fr.
+# assets/img/captures/*.py pilote Playwright sur l'application connectée : il
+# ne contient aucun mot de passe, mais il nomme le module de réglages Django,
+# un compte de démonstration, et la façon de forger une session. Rien de tout
+# cela n'a sa place sur un site vitrine.
+*.py
+*.ps1
+*.sh
+__pycache__/
+*.pyc
+
+# Réglages de l'outil de développement, dont la liste des permissions.
+.claude/
+
+# Profil Chrome piloté par l'outillage. Contient Login Data, Cookies, History
+# et Web Data, soit des identifiants, l'historique de navigation et les données
+# de remplissage automatique. Sous Windows les mots de passe et les cookies sont
+# chiffrés par DPAPI, donc liés à cette machine et à ce compte, mais History et
+# Web Data sont du SQLite lisible tel quel. Le dépôt étant public et servi tel
+# quel, ce dossier n'a rien à y faire. Vérifié le 10/09/2026 : absent de main.
+.codex-chrome/
+
+# Outillage de génération. Même raisonnement que pour les *.py plus haut : les
+# scripts sont déjà exclus, mais pas les captures qui les accompagnent.
+outillage_codex/
+
+# Source des traductions, 1 Mo. Aucun script ne la charge à l'exécution, le
+# texte traduit est déjà dans les pages. Inutile de la servir sur monchai.fr.
+i18n/
+
+# Système et éditeurs.
+Thumbs.db
+desktop.ini
+.DS_Store
+*.swp
+.vscode/

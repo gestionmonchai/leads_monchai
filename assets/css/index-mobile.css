@@ -18,9 +18,13 @@
    crème #FFFAF5, doré #C99159).
    ========================================================= */
 
-/* Les blocs mobiles n'existent pas au-dessus de 900 px. */
+/* Les blocs mobiles n'existent pas au-dessus de 900 px.
+   Une exception : .m-benefices porte aussi le texte de l'écran « Pourquoi »
+   en version bureau, où il est reposé aux coordonnées du dessin (styles.css).
+   Ce texte était vectorisé dans frame1-fond.svg ; plutôt que d'en écrire une
+   seconde copie pour l'ordinateur, le même bloc sert les deux largeurs. */
 @media (min-width:900px){
-  .m-bloc, .m-only{ display:none !important; }
+  .m-bloc:not(.m-benefices), .m-only{ display:none !important; }
 }
 
 @media (max-width:899px){
@@ -52,7 +56,13 @@
   #parcours .frame1-fond,
   #parcours .parcours-bas,
   #parcours .pq-modules,
+  #parcours .pq-vigne,
   #parcours .parcours__lien{ display:none; }
+
+  /* Les coupures de ligne du Figma sont forcées : aucune largeur de bloc ne
+     les reproduit. Elles n'ont de sens qu'à 1920 px, où le texte est posé
+     sur un dessin. Ici, le texte se répartit sur la largeur de l'écran. */
+  .pq-br{ display:none; }
 
   /* Les ancres (#pourquoi, #assistant, #tarifs, #apropos, #faq)
      reprennent leur place dans le flux : posées dans index.html

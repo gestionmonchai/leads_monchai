@@ -266,6 +266,92 @@ body{
   }
 }
 
+/* ---------- Écran « Pourquoi Mon Chai » : le texte reposé ----------
+   Le haut de frame1-fond.svg portait son texte en tracés : neuf blocs, 337 Ko,
+   ni sélectionnables ni indexables, muets pour un lecteur d'écran. Ils ont été
+   retirés du dessin, qui ne garde que le décor et les icônes.
+
+   Le texte n'a pas été récrit : c'est le bloc .m-benefices, déjà présent pour
+   le mobile, qui est reposé ici aux coordonnées relevées dans les tracés
+   (getBBox, moins le décalage de 7 px du viewBox). Un seul texte pour les deux
+   mondes, donc une seule chose à corriger le jour où la formulation change.
+
+   Polices identifiées par comparaison de pixels contre la capture d'avant, pas
+   par supposition : titre et chapô en Poppins, titres de carte en Inter 700
+   — le dessin mélange bel et bien les deux. Les « left » et « top » ne sont pas
+   la position de l'encre : entre les deux il y a l'approche du premier glyphe,
+   le demi-interligne, puis l'écart entre l'ascendante déclarée de la fonte et
+   celle réellement encrée par ces caractères-là.
+   ------------------------------------------------------------------ */
+@media (min-width:900px){
+  #parcours .m-benefices{
+    position:absolute; top:0; left:0;
+    width:1920px; height:760px;
+    z-index:2;
+    /* le conteneur ne doit pas intercepter les clics des 9 modules, posés
+       plus bas dans la même scène ; le texte, lui, reste sélectionnable */
+    pointer-events:none;
+  }
+  #parcours .m-benefices .m-titre,
+  #parcours .m-benefices .m-intro,
+  #parcours .m-benefices h3,
+  #parcours .m-benefices article p{
+    position:absolute;
+    margin:0;
+    pointer-events:auto;
+  }
+
+  /* Le chapeau et les icônes n'appartiennent qu'au monde mobile : ici, les
+     pictogrammes sont dessinés dans le fond. */
+  #parcours .m-benefices .m-kicker,
+  #parcours .m-benefices .m-icone{ display:none; }
+
+  #parcours .m-benefices .m-titre{
+    left:359.4px; top:175.1px;
+    font:600 50px/54px "Poppins","Inter",system-ui,sans-serif;
+    letter-spacing:-1.2px;
+    color:#7B1E22;
+    white-space:nowrap;
+  }
+  #parcours .m-benefices .m-intro{
+    left:540.1px; top:275px;
+    width:900px;
+    font:400 22.9px/31px "Inter",system-ui,sans-serif;
+    color:#7B1E22;
+    text-align:center;
+  }
+
+  #parcours .m-benefices h3{
+    font:700 22px/22px "Inter",system-ui,sans-serif;
+    letter-spacing:.05px;
+    color:#471217;
+    white-space:nowrap;
+  }
+  #parcours .m-benefices article p{
+    font:400 17.85px/25px "Inter",system-ui,sans-serif;
+    color:#471217;
+    white-space:nowrap;
+  }
+  /* Titre et texte ne partent pas du même bord : le dessin les cale
+     séparément, l'écart va jusqu'à 4,6 px. */
+  #parcours .pq-c1 h3{ left:314.1px;  top:457.1px; }
+  #parcours .pq-c1 p { left:313.9px;  top:489.9px; }
+  #parcours .pq-c2 h3{ left:900.9px;  top:457.1px; }
+  #parcours .pq-c2 p { left:905.5px;  top:490.5px; }
+  #parcours .pq-c3 h3{ left:1491.1px; top:457.1px; }
+  #parcours .pq-c3 p { left:1493.6px; top:490.5px; }
+
+  #parcours .pq-vigne{
+    position:absolute;
+    left:777.2px; top:685.5px;
+    z-index:2;
+    font:500 34px/34px "Playfair Display", Georgia, serif;
+    letter-spacing:2.24px;
+    color:#7B1E22;
+    white-space:nowrap;
+  }
+}
+
 /* Ancres invisibles : la nav latérale et les liens du header visent toujours
    #pourquoi, #assistant et #tarifs, qui sont maintenant DANS la même section. */
 #parcours .ancre{

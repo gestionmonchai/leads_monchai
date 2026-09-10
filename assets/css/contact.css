@@ -100,7 +100,11 @@
   font-family:var(--titre); font-weight:600; font-size:19px; cursor:pointer;
   transition:background .18s ease, opacity .18s ease;
 }
+/* La classe sert aussi sur un <a> (prise de rendez-vous) : sans cette règle,
+   le lien garde le soulignement par défaut du navigateur. */
+.ct__bouton{ text-decoration:none; }
 .ct__bouton:hover{ background:#b87f4a; }
+.ct__bouton:focus-visible{ outline:2px solid var(--cuivre); outline-offset:3px; }
 .ct__bouton:disabled{ opacity:.6; cursor:default; }
 
 .hp-field{ position:absolute; left:-9999px; width:1px; height:1px; overflow:hidden; }

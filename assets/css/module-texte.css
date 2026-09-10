@@ -255,12 +255,18 @@
   padding:30px 34px;
   display:flex; align-items:center; justify-content:space-between; gap:24px;
 }
-.mtx__cta div{ flex:1 1 auto; }
+/* Le premier enfant seulement, c'est-à-dire le bloc de texte. Écrit .mtx__cta div,
+   ce sélecteur visait aussi la colonne d'actions, et il pesait (0,1,1) contre
+   (0,1,0) : le flex:0 0 auto de .mtx__cta-actions ne s'appliquait jamais, la
+   colonne se laissait comprimer à 192px et chaque libellé se cassait en deux. */
+.mtx__cta > div:first-child{ flex:1 1 auto; }
 .mtx__cta h2{
   font-family:var(--serif); font-weight:500; font-size:24px;
   color:#fff; margin:0 0 6px; border:0; padding:0;
 }
 .mtx__cta p{ margin:0; font-size:16px; line-height:1.55; color:rgba(255,249,244,.88); }
+/* Spécificité laissée à un seul niveau de classe, exprès : la bascule en ligne
+   sous 1200px vise .mtx__cta-actions et doit pouvoir gagner. */
 .mtx__cta-actions{ flex:0 0 auto; display:flex; flex-direction:column; gap:10px; }
 .mtx__btn{
   display:inline-block; text-align:center;
@@ -273,7 +279,10 @@
 .mtx__btn:hover{ background:#e9c99a; }
 .mtx__btn--fant{
   background:transparent; color:var(--creme);
-  border:1px solid rgba(255,249,244,.5);
+  /* Padding réduit d'un pixel pour absorber le filet : sans ça le bouton
+     fantôme faisait 56px contre 54 au bouton plein, écart visible dès qu'ils
+     sont empilés dans la même colonne. */
+  border:1px solid rgba(255,249,244,.5); padding:12px 25px;
 }
 .mtx__btn--fant:hover{ background:rgba(255,249,244,.12); }
 

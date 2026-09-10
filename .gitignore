@@ -80,6 +80,23 @@ outillage_codex/
 # texte traduit est déjà dans les pages. Inutile de la servir sur monchai.fr.
 i18n/
 
+# Secrets. Le dépôt est public ET servi tel quel par GitHub Pages : un fichier
+# de clés commité ici serait lisible sur github.com et téléchargeable sur
+# monchai.fr dans la minute. Ces règles sont préventives, aucun de ces fichiers
+# n'existe au 10/09/2026, et elles doivent le rester.
+.env
+.env.*
+*.env
+*.key
+*.pem
+*.p12
+*.pfx
+*.token
+secrets/
+credentials*
+*_secret*
+*_credentials*
+
 # Système et éditeurs.
 Thumbs.db
 desktop.ini

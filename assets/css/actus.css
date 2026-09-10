@@ -210,6 +210,18 @@ body.corps-actus *{ box-sizing:border-box; }
   transition:background .18s ease;
 }
 .article-cta__btn:hover{ background:#b87f4a; }
+/* Action secondaire : même géométrie que le bouton plein, mais en contour.
+   Elle porte la hiérarchie du bloc, une action principale, une secondaire,
+   puis un lien de repli : deux actions de poids différent ne doivent pas
+   avoir le même poids visuel. S'emploie avec .article-cta__btn, dont elle
+   reprend la forme. Le padding compense l'épaisseur du filet, sinon le
+   bouton contour serait 3px plus haut que le bouton plein. */
+.article-cta__btn--contour{
+  background:transparent; color:var(--ac-or) !important;
+  border:1px solid var(--ac-or); padding:12px 25px;
+  transition:background .18s ease, color .18s ease;
+}
+.article-cta__btn--contour:hover{ background:var(--ac-or); color:var(--ac-lie) !important; }
 .article-cta__lien{ color:var(--ac-or) !important; font-weight:600; font-size:15px; }
 
 /* Sources et suite de lecture */

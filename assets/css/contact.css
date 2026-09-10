@@ -22,7 +22,11 @@
 /* ---------- Carte du formulaire, dans .mod__captures ---------- */
 .ct{
   position:absolute; z-index:4;
-  left:819px; top:200px; width:900px;
+  /* top 170 et non 200 : la carte porte désormais le rendez-vous ET le
+     formulaire. À 200 elle finissait à 1192 pour une scène de 1200, soit
+     8px de marge, que la moindre ligne de texte en plus aurait fait sauter,
+     et .stage rogne au-delà. */
+  left:819px; top:170px; width:900px;
   background:#fff; border:1px solid #E7DED6; border-radius:11px;
   box-shadow:0 18px 44px rgba(46,40,38,.10);
   padding:42px 48px 40px;
@@ -32,6 +36,23 @@
   color:var(--encre);
 }
 .ct__aide{ margin-top:8px; font-size:15px; line-height:24px; color:#6F625C; }
+
+/* Les deux temps de la carte : prendre rendez-vous, puis écrire si aucun
+   créneau ne convient. Un seul .ct les contient, parce que .ct est posée en
+   absolu à des coordonnées fixes : deux cartes voisines se superposeraient
+   au lieu de s'empiler. Le filet remplace la séparation qu'aurait donnée
+   la seconde carte. */
+/* Le bouton est posé à côté du texte et non dessous : la scène fait 1200px
+   de haut et rogne au-delà (.stage, overflow:hidden). Sous le texte, le
+   bloc coûtait 236px et le bas du formulaire, bouton d'envoi compris,
+   passait à la trappe. */
+.ct__volet--rdv{ display:flex; align-items:center; gap:30px; flex-wrap:wrap; }
+.ct__rdv-texte{ flex:1 1 380px; }
+.ct__rdv{ margin:0; flex:0 0 auto; }
+.ct__volet--suite{
+  margin-top:28px; padding-top:26px;
+  border-top:1px solid #E7DED6;
+}
 
 .ct__grille{
   display:grid; grid-template-columns:1fr 1fr; gap:20px 24px;
@@ -145,6 +166,11 @@
   }
   .ct__titre{ font-size:clamp(22px,4.6vw,28px); }
   .ct__aide{ font-size:14px; line-height:1.5; }
+  /* En flux la contrainte de hauteur disparait : le bouton repasse sous le
+     texte, en pleine largeur comme celui du formulaire. */
+  .ct__volet--rdv{ display:block; }
+  .ct__rdv{ margin-top:18px; }
+  .ct__volet--suite{ margin-top:26px; padding-top:24px; }
   .ct__grille{ gap:16px 18px; margin-top:22px; }
   .champ input,
   .champ select,

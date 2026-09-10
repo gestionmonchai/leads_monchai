@@ -194,15 +194,20 @@
 
     <!-- Le formulaire prend la place de la capture des pages module. -->
     <div class="mod__captures">
-      <div class="ct" id="rendez-vous">
-        <h2 class="ct__titre">Prendre rendez-vous</h2>
-        <p class="ct__aide">Une démonstration de trente minutes, en visio, sur vos propres questions. Du lundi au vendredi, 9h à 18h, heure de Paris.</p>
-        <p>
-          <a class="ct__bouton" href="https://calendar.app.google/bJGuZudhQ7q9ka3T9" target="_blank" rel="noopener">Choisir un créneau</a>
-        </p>
-      </div>
+      <!-- Une seule carte, deux temps. .ct est posée en absolu à des
+           coordonnées fixes : deux cartes voisines se superposeraient. -->
+      <div class="ct">
+        <div class="ct__volet ct__volet--rdv" id="rendez-vous">
+          <div class="ct__rdv-texte">
+            <h2 class="ct__titre">Prendre rendez-vous</h2>
+            <p class="ct__aide">Une démonstration de trente minutes, en visio, sur vos propres questions. Du lundi au vendredi, 9h à 18h, heure de Paris.</p>
+          </div>
+          <p class="ct__rdv">
+            <a class="ct__bouton" href="https://calendar.app.google/bJGuZudhQ7q9ka3T9" target="_blank" rel="noopener">Choisir un créneau</a>
+          </p>
+        </div>
 
-      <div class="ct" id="formulaire">
+        <div class="ct__volet ct__volet--suite" id="formulaire">
         <h2 class="ct__titre">Écrivez-nous</h2>
         <p class="ct__aide">Si vous préférez écrire, ou si aucun créneau ne vous convient. Les champs marqués d'un astérisque sont nécessaires pour vous répondre.</p>
 
@@ -285,6 +290,7 @@
         </div>
 
         <noscript><p class="ct__noscript">Le formulaire nécessite JavaScript. Écrivez-nous à <a href="mailto:contact@monchai.fr">contact@monchai.fr</a>.</p></noscript>
+        </div>
       </div>
     </div>
   </section>

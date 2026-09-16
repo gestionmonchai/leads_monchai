@@ -1,0 +1,22 @@
+/* Compléments aux composants éditoriaux existants, limités à cette série. */
+.article-couts { overflow-wrap: anywhere; }
+.article-couts [id] { scroll-margin-top: 130px; }
+.article-couts .article-sommaire { margin: 28px 0; padding: 22px 26px; border: 1px solid var(--ac-bord); border-radius: 12px; }
+.article-couts .article-sommaire ol { margin-bottom: 0; }
+.article-couts table caption { text-align: left; font-weight: 600; color: var(--ac-encre); padding: 0 0 12px; }
+.article-couts table { min-width: 560px; }
+.article-couts tbody td:first-child { white-space: normal; }
+.article-couts .table-defile { border-radius: 10px; }
+.article-couts .table-defile:focus-visible, .article-couts a:focus-visible { outline: 3px solid var(--ac-bordeaux); outline-offset: 3px; }
+.article-couts figure { margin: 28px 0; }
+.article-couts figure img { display: block; width: 100%; height: auto; border: 1px solid var(--ac-bord); border-radius: 12px; }
+.article-couts figcaption { font-size: 14px; line-height: 1.6; color: var(--ac-gris); margin-top: 12px; }
+.article-couts .article__meta .actu-date { color: var(--ac-gris); }
+.article-couts .article__sources h2 { line-height: 1.5; }
+.article-couts .article__sources p { margin-top: 12px; font-size: 14px; }
+.article-couts .article-erreurs li { margin-bottom: 14px; }
+@media (max-width: 480px) {
+  .article-couts { padding-left: 20px; padding-right: 20px; }
+  .article-couts .essentiel, .article-couts .article-sommaire { padding: 18px; }
+  .article-couts .article-cta__btn { text-align: center; }
+}

@@ -22,6 +22,16 @@ File vide ou aucun article dû → le workflow ne fait rien.
 Déclenchement manuel possible depuis l'onglet Actions (avec un mode
 « test à blanc » qui montre le diff sans rien pousser).
 
+Depuis le 16/09/2026, le workflow tourne aussi le **jeudi à 06:30 UTC**
+pour les guides de la rubrique « Ressources ». Un article dont le manifeste
+porte `"destination": "ressources"` n'est pas inséré dans les actualités :
+sa carte (un simple bloc `<p>` titre + résumé) va sous le repère
+`FILE-ATTENTE : guides` de `ressources.html`, et le lien préparé dans sa
+page pilier (`"pilier": "<slug>"`, marqueur `<!--SATELLITE:<slug> … SATELLITE-->`
+sur une seule ligne) est activé. Sans ce champ, la destination est
+`actualites`. Dans la pratique, GitHub lance le cron avec plusieurs heures
+de retard (vers 13:00 UTC les 07/09 et 14/09) : ce n'est pas une panne.
+
 ## Contenu de la branche
 
 - `manifest.json` — ordre, dates prévues, statuts et métadonnées SEO.

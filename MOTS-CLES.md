@@ -33,6 +33,19 @@ le H1, la description et le slug.
 | 14 | choisir-plateforme-agreee-facturation | plateforme agréée facturation électronique | PDP liste, PA DGFiP |
 | 15 | calendrier-declarations-vigneron-2027 | calendrier déclarations vigneron | échéances viticulteur 2027 |
 
+## Série « coût de revient » (rubrique Ressources, publiée le jeudi)
+
+Pilier publié le 16/09/2026 : `cout-de-revient-bouteille-vin` (mot-clé
+principal « coût de revient bouteille de vin » ; Isagri tient déjà la
+première place sur cette requête avec un article daté 2026, l'objectif est
+la première page et la longue traîne des satellites).
+
+| # | Article | Mot-clé principal | Secondaires |
+|---|---|---|---|
+| 16 | charges-indirectes-domaine-viticole | charges indirectes domaine viticole | clé de répartition coût cuvée |
+| 17 | cout-lot-vin-pertes-assemblage | coût d'un lot de vin pertes assemblage | coût moyen pondéré vin, fractionnement lot |
+| 18 | marge-vin-taux-marge-marque | taux de marge vin | taux de marque vin, marge bouteille caveau |
+
 ## Mesurer (à faire une fois, puis mensuel)
 
 1. **Google Search Console** : ajouter la propriété `monchai.fr` (validation

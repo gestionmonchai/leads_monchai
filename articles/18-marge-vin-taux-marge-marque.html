@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="fr"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Marge du vin : taux de marge, taux de marque et calcul</title>
+<meta name="description" content="Les formules de marge, taux de marge et taux de marque appliquées au vin, puis une comparaison chiffrée entre caveau, e-commerce, caviste et agent.">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<link rel="canonical" href="https://monchai.fr/marge-vin-taux-marge-marque.html">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://monchai.fr/marge-vin-taux-marge-marque.html">
+<meta property="og:title" content="Marge du vin : taux de marge, taux de marque et calcul">
+<meta property="og:description" content="Les formules de marge, taux de marge et taux de marque appliquées au vin, puis une comparaison chiffrée entre caveau, e-commerce, caviste et agent.">
+<meta property="og:image" content="https://monchai.fr/assets/img/pages/cave-vinification.jpg">
+<meta property="og:image:alt" content="Le travail au chai et la vinification">
+<meta property="og:locale" content="fr_FR">
+<meta property="og:site_name" content="Mon Chai">
+<meta property="article:published_time" content="{{DATE_ISO}}"><meta property="article:modified_time" content="{{DATE_ISO}}">
+<link rel="icon" type="image/png" href="assets/img/logo_mon_chai.png">
+<meta name="theme-color" content="#7B1E22">
+<link rel="stylesheet" href="assets/css/polices.css">
+<link rel="stylesheet" href="assets/css/header.css">
+<link rel="stylesheet" href="assets/css/actus.css">
+<link rel="stylesheet" href="assets/css/pied.css">
+<link rel="stylesheet" href="assets/css/couts-editorial.css">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Marge, taux de marge, taux de marque et coût de revient : comment calculer la rentabilité d'un vin ?", "description": "Les formules de marge, taux de marge et taux de marque appliquées au vin, puis une comparaison chiffrée entre caveau, e-commerce, caviste et agent.", "inLanguage": "fr", "articleSection": "Coûts et marges", "datePublished": "{{DATE_ISO}}", "dateModified": "{{DATE_ISO}}", "timeRequired": "PT5M", "wordCount": 1049, "image": "https://monchai.fr/assets/img/pages/cave-vinification.jpg", "mainEntityOfPage": "https://monchai.fr/marge-vin-taux-marge-marque.html", "author": {"@type": "Organization", "name": "Mon Chai", "url": "https://monchai.fr/"}, "publisher": {"@type": "Organization", "name": "Mon Chai", "url": "https://monchai.fr/", "logo": {"@type": "ImageObject", "url": "https://monchai.fr/assets/img/logo_mon_chai.png"}}}</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Accueil", "item": "https://monchai.fr/"}, {"@type": "ListItem", "position": 2, "name": "Ressources", "item": "https://monchai.fr/ressources.html"}, {"@type": "ListItem", "position": 3, "name": "Marge, taux de marge, taux de marque et coût de revient : comment calculer la rentabilité d'un vin ?", "item": "https://monchai.fr/marge-vin-taux-marge-marque.html"}]}</script>
+</head><body class="corps-actus">
+<div class="site-header site-header--page">
+<header class="hd">
+  <a class="hd__logo" href="index.html"><img src="assets/img/logo-header.webp" alt="Mon Chai, logiciel viticole" width="263" height="85"></a>
+
+  <button class="hd__burger" type="button" aria-label="Ouvrir le menu"
+          aria-expanded="false" aria-controls="nav-principale">
+    <span></span><span></span><span></span>
+  </button>
+
+  <div class="hd__barre" id="nav-principale">
+    <nav class="hd__menu" style="--hd-x:468px; --hd-dx:-72px; --hd-dw:610px" aria-label="Le logiciel">
+      <button class="hd__lien hd__declencheur" type="button" aria-haspopup="true" aria-expanded="false" aria-controls="sous-menu-logiciel"><span>Le logiciel</span><span class="hd__menu-chev" aria-hidden="true"></span></button>
+      <div class="hd__panneau hd__panneau--logiciel" id="sous-menu-logiciel">
+        <div class="hd__groupe">
+          <span class="hd__groupe-titre">Découvrir</span>
+          <a href="fonctionnalites.html">Vue d'ensemble du logiciel</a>
+          <a href="index.html#parcours">Comment ça fonctionne</a>
+          <a href="index.html#assistant">Assistant IA</a>
+        </div>
+        <div class="hd__groupe">
+          <span class="hd__groupe-titre">Modules du domaine</span>
+          <a href="vigne-vendanges.html">Vigne &amp; vendanges</a>
+          <a href="cave-vinification.html">Cave &amp; vinification</a>
+          <a href="mises-conditionnement.html">Conditionnement &amp; mises</a>
+          <a href="stocks-tracabilite.html">Stocks &amp; traçabilité</a>
+          <a href="ventes-clients.html">Ventes, clients &amp; facturation</a>
+          <a href="drm-conformite.html">DRM &amp; conformité</a>
+          <a href="oenotourisme.html">Œnotourisme</a>
+        </div>
+      </div>
+    </nav>
+
+    <nav class="hd__menu" style="--hd-x:650px; --hd-dx:-60px; --hd-dw:280px" aria-label="Tarifs et essai gratuit">
+      <button class="hd__lien hd__declencheur" type="button" aria-haspopup="true" aria-expanded="false" aria-controls="sous-menu-tarifs"><span>Tarifs</span><span class="hd__menu-chev" aria-hidden="true"></span></button>
+      <div class="hd__panneau" id="sous-menu-tarifs">
+        <div class="hd__groupe">
+          <span class="hd__groupe-titre">Commencer</span>
+          <a href="tarifs.html">Voir les tarifs</a>
+          <a href="essai-gratuit.html">Essai gratuit - 30 jours</a>
+        </div>
+      </div>
+    </nav>
+
+    <nav class="hd__menu hd__menu--ressources" style="--hd-x:819px; --hd-dx:-270px; --hd-dw:650px" aria-label="Ressources">
+      <button class="hd__lien hd__declencheur est-actif" type="button" aria-haspopup="true" aria-expanded="false" aria-controls="sous-menu-ressources"><span>Ressources</span><span class="hd__menu-chev" aria-hidden="true"></span></button>
+      <div class="hd__panneau hd__panneau--ressources" id="sous-menu-ressources">
+        <div class="hd__groupe">
+          <span class="hd__groupe-titre">Guides &amp; aide</span>
+          <a href="ressources.html">Guides pratiques</a>
+          <a href="choisir-logiciel-viticole.html">Bien choisir son logiciel</a>
+          <a href="faq.html">Questions fréquentes</a>
+          <a href="ia-au-service-de-mon-chai.html">Connecter ChatGPT ou Claude</a>
+          <a href="ce-que-votre-assistant-peut-demander.html">Ce que votre assistant peut demander</a>
+        </div>
+        <div class="hd__groupe">
+          <span class="hd__groupe-titre">Veille réglementaire</span>
+          <a href="actualites-reglementaires.html">Toutes les actualités</a>
+          <a href="actualites-vigne-phyto.html">Vigne &amp; phyto</a>
+          <a href="actualites-cave-registres.html">Cave &amp; registres</a>
+          <a href="actualites-douane-declarations.html">Douane &amp; déclarations</a>
+          <a href="actualites-etiquetage-mises.html">Étiquetage &amp; mises</a>
+          <a href="actualites-ventes-facturation.html">Ventes &amp; facturation</a>
+          <a href="actualites-oenotourisme-vente-directe.html">Œnotourisme &amp; vente directe</a>
+        </div>
+      </div>
+    </nav>
+
+    <nav class="hd__menu" style="--hd-x:1030px; --hd-dx:-55px; --hd-dw:260px" aria-label="À propos">
+      <button class="hd__lien hd__declencheur" type="button" aria-haspopup="true" aria-expanded="false" aria-controls="sous-menu-apropos"><span>À propos</span><span class="hd__menu-chev" aria-hidden="true"></span></button>
+      <div class="hd__panneau" id="sous-menu-apropos">
+        <div class="hd__groupe">
+          <span class="hd__groupe-titre">Mon Chai</span>
+          <a href="index.html#apropos">Qui sommes-nous</a>
+          <a href="index.html#actualite">Actualité de Mon Chai</a>
+          <a href="contact.html">Nous contacter</a>
+        </div>
+      </div>
+    </nav>
+
+    <a class="hd__connexion" href="https://tester.monchai.fr">Me Connecter</a>
+    <a class="hd__cta" href="https://tester.monchai.fr">Essayer gratuitement</a>
+    <div class="hd__langue">
+      <button class="hd__langue-bouton" type="button" aria-label="Choisir la langue" aria-haspopup="true" aria-expanded="false" aria-controls="menu-langues">
+        FR<span class="hd__chev" aria-hidden="true"></span>
+      </button>
+      <div class="hd__langue-menu" id="menu-langues">
+        <a href="marge-vin-taux-marge-marque.html" aria-current="page" lang="fr" hreflang="fr">Français</a>
+        <a href="en/index.html" title="Accueil du site en anglais" lang="en" hreflang="en">English</a>
+        <a href="it/index.html" title="Accueil du site en italien" lang="it" hreflang="it">Italiano</a>
+        <a href="de/index.html" title="Accueil du site en allemand" lang="de" hreflang="de">Deutsch</a>
+        <a href="zh/index.html" title="Accueil du site en chinois" lang="zh-Hans" hreflang="zh-Hans">中文</a>
+      </div>
+    </div>
+  </div>
+</header>
+</div>
+<main class="article article-couts">
+<nav class="article__ariane" aria-label="Fil d’Ariane"><a href="index.html">Accueil</a> › <a href="ressources.html">Ressources</a> › Coûts et marges</nav><div class="article__meta"><a class="actu-tag" href="ressources.html">Coûts et marges</a><span class="actu-date">Par Mon Chai · Publié le <time datetime="{{DATE_ISO}}">{{DATE_FR}}</time> · 5 min de lecture</span></div><h1>Marge, taux de marge, taux de marque et coût de revient : comment calculer la rentabilité d&#x27;un vin ?</h1><p class="article__chapo">Une bouteille coûte 5,20 € et se vend 10 € HT. Sa marge est de 4,80 €. Mais représente-t-elle 48 % ou 92,31 % ? Les deux chiffres sont corrects : ils mesurent cette marge sur deux bases différentes. Pour comparer les débouchés d'un domaine, il faut nommer le ratio et compter les frais de chaque vente.</p>
+<h2>Choisir le bon coût avant de calculer la marge</h2>
+<p>Le <strong>prix d'achat</strong> concerne ce que vous payez au fournisseur : raisin, vrac ou bouteille de négoce. Ce n'est pas le coût complet du produit revendu. Des frais de transport, de préparation et de vente peuvent encore s'ajouter. Inversement, le raisin récolté au domaine n'a pas de facture d'achat, mais sa production mobilise travail, fournitures et matériel.</p>
+<p>Le <strong>coût de production</strong> rassemble les coûts attribués à la fabrication, jusqu'au stade retenu : vin en cuve ou bouteille conditionnée. Le <strong>coût de revient</strong> étend le périmètre aux charges nécessaires à la vente. Indiquez toujours ce que votre montant contient. Pour reprendre toute la chaîne, le <a href="cout-de-revient-bouteille-vin.html">guide du coût de revient d'une bouteille de vin</a> déroule un cas depuis la vigne.</p>
+<p>Une « marge sur coût matière » peut servir à lire les achats de vrac ou d'intrants. Elle ne mesure pas la même rentabilité qu'une marge après conditionnement, travail et frais de structure. Avant toute comparaison entre cuvées, vérifiez que leurs coûts couvrent les mêmes postes et que les coûts manquants ne sont pas traités comme des zéros.</p>
+<h2>HT, TTC : garder la même base</h2>
+<p>Le prix de vente HT est la recette hors TVA. Le TTC est ce que règle le client lorsque la TVA s'applique. Avec un taux <em>t</em> exprimé sous forme décimale : <strong>TTC = HT × (1 + t)</strong> et <strong>HT = TTC ÷ (1 + t)</strong>. Si l'on pose, uniquement pour illustrer le calcul, t = 0,20, un prix de 12 € TTC correspond à 10 € HT.</p>
+<p>Ne soustrayez pas un coût HT de 12 € TTC pour annoncer une marge. Travaillez hors TVA récupérable ; une taxe non récupérable reste dans le coût. Retenez aussi le prix effectivement facturé après les remises, et non le tarif affiché au caveau avant une remise carton.</p>
+<h2>Les trois formules, appliquées à 5,20 € et 10 €</h2>
+<p>Pour un fabricant, <a href="https://bpifrance-creation.fr/taux-marque">Bpifrance Création distingue la marge sur coût de revient et ses deux ratios</a>. Avec CR = coût de revient et PVHT = prix de vente HT :</p>
+<div class="table-defile" tabindex="0" role="region" aria-label="Formules de marge"><table><caption>Exemple : coût complet 5,20 €, vente 10 € HT</caption><thead><tr><th scope="col">Indicateur</th><th scope="col">Formule</th><th scope="col">Calcul</th></tr></thead><tbody><tr><td>Marge en euros</td><td>PVHT − CR</td><td>10 − 5,20 = 4,80 €</td></tr><tr><td>Taux de marge</td><td>Marge ÷ CR × 100</td><td>4,80 ÷ 5,20 × 100 = 92,31 %</td></tr><tr><td>Taux de marque</td><td>Marge ÷ PVHT × 100</td><td>4,80 ÷ 10 × 100 = 48 %</td></tr></tbody></table></div>
+<p>Ces formules supposent des dénominateurs non nuls. Une marge positive ne signifie pas que tous les coûts du domaine sont couverts si le CR est incomplet. Elle ne décrit pas non plus à elle seule le résultat net annuel, ni la trésorerie disponible après investissement.</p>
+<p>Pour tester un taux de marge cible <em>m</em>, exprimé en décimal, le prix théorique est <strong>CR × (1 + m)</strong>. Pour un taux de marque cible <em>k</em>, inférieur à 1, il est <strong>CR ÷ (1 − k)</strong>. À 5,20 € de coût, 40 % de marge donne 7,28 € HT ; 40 % de marque donne 8,6667 € HT. Confondre les deux change sensiblement le tarif envisagé.</p>
+<h2>Caveau, e-commerce, caviste, agent : comparer après les frais</h2>
+<p>Pour ce second exercice, les <strong>5,20 € deviennent une base commune avant frais propres au circuit</strong>. Elle inclut production, conditionnement et charges communes attribuées. Les frais du tableau sont ajoutés une seule fois ; si votre coût les contient déjà, ne les rajoutez pas. Prix et montants sont des hypothèses fictives, pas des moyennes de marché.</p>
+<div class="table-defile" tabindex="0" role="region" aria-label="Marge par circuit de vente"><table><caption>Comparaison par bouteille vendue</caption><thead><tr><th scope="col">Circuit</th><th scope="col">Recette HT</th><th scope="col">Frais spécifiques</th><th scope="col">Marge restante</th></tr></thead><tbody><tr><td>Caveau</td><td>10,00 €</td><td>0,60 €</td><td>4,20 €</td></tr><tr><td>E-commerce</td><td>10,00 €</td><td>2,00 €</td><td>2,80 €</td></tr><tr><td>Caviste</td><td>7,00 €</td><td>0,30 €</td><td>1,50 €</td></tr><tr><td>Agent</td><td>8,00 €</td><td>1,30 €</td><td>1,50 €</td></tr></tbody></table></div>
+<p>Au caveau, les 0,60 € représentent du temps d'accueil et de vente non inclus dans la base commune. En ligne, les 2 € réunissent 0,40 € de préparation, 0,35 € d'emballage d'expédition, 1 € de transport restant à la charge du domaine et 0,25 € de paiement. Le carton de conditionnement initial n'est pas facturé une seconde fois.</p>
+<p>Le caviste achète ici à 7 € HT ; 0,30 € couvrent le traitement et la livraison de sa commande. Dans le scénario agent, le domaine facture 8 € HT, verse 12,5 % de commission sur cette base, soit 1 €, et supporte 0,30 € de livraison. La marge restante est bien 8 − 5,20 − 1 − 0,30 = 1,50 €.</p>
+<p>Les frais facturés au client doivent rejoindre les recettes correspondantes. Répartissez les coûts par commande sur son nombre réel de bouteilles : une commande de trois cols n'absorbe pas un forfait transport comme un carton de douze. Échantillons et bouteilles offertes ont aussi un coût, même sans recette associée.</p>
+<h2>Ce que la marge permet de décider</h2>
+<p>Comparez marge par bouteille, volume vendu, temps commercial et délai d'encaissement. Un caviste peut laisser moins par col mais acheter régulièrement des quantités qui demanderaient beaucoup d'expéditions individuelles. À l'inverse, un circuit affichant un bon taux peut immobiliser longtemps le stock d'une cuvée.</p>
+<p>Le <a href="https://opera-connaissances.chambres-agriculture.fr/doc_num.php?explnum_id=216524">référentiel viticole des Chambres d'agriculture 2025-2027</a> rappelle que le coût doit être confronté aux perspectives de marché et au prix de vente. Un objectif de marge est un test de viabilité, pas la preuve que le client acceptera le prix calculé.</p>
+<p>Établissez une fiche par cuvée et par circuit, avec coûts inclus, prix net, frais particuliers et période. Vérifiez enfin le dénominateur des pourcentages dans vos tableaux de bord : un indicateur calculé sur le chiffre d'affaires se lit ici comme un taux de marque, même si un écran l'appelle « taux de marge ».</p>
+<section class="article__sources"><h2>Sources et références</h2><ul><li>Bpifrance Création, <a href="https://bpifrance-creation.fr/taux-marque">Taux de marque</a>, lexique sans date affichée.</li><li>Chambres d'agriculture Pays de la Loire et Indre-et-Loire, <a href="https://opera-connaissances.chambres-agriculture.fr/doc_num.php?explnum_id=216524">Référentiel économique du vigneron, Anjou-Saumur, Ouest 37</a>, 12e édition, 2025-2027, p. 7-8.</li></ul><p>Consultés le 16 septembre 2026. Les exemples et hypothèses de circuits sont fictifs.</p></section>
+
+</main>
+<footer class="pied">
+  <div class="pied__haut">
+    <div class="pied__marque">
+      <p class="pied__nom">Mon Chai</p>
+      <p class="pied__sous">Logiciel viticole</p>
+      <p class="pied__phrase">La gestion du domaine, de la vigne à la vente.</p>
+      <p class="pied__fr">Développé et hébergé en France</p>
+      <div class="pied__suivre">
+        <p class="pied__suivre-titre">Nous suivre</p>
+        <div class="pied__reseaux">
+          <a href="https://www.instagram.com/monchai.fr/" target="_blank" rel="noopener noreferrer" aria-label="Suivre Mon Chai sur Instagram"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle class="pied__reseau-point" cx="17.4" cy="6.7" r="1.1"/></svg></a>
+          <a href="https://www.linkedin.com/company/monchai" target="_blank" rel="noopener noreferrer" aria-label="Suivre Mon Chai sur LinkedIn"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5.2 8.2H2.1V22h3.1V8.2ZM3.7 2A1.8 1.8 0 1 0 3.7 5.6 1.8 1.8 0 0 0 3.7 2ZM22 14.1c0-4.2-2.2-6.2-5.2-6.2-2.4 0-3.5 1.3-4.1 2.2V8.2H9.6V22h3.1v-6.8c0-1.8.3-3.6 2.6-3.6 2.2 0 2.3 2.1 2.3 3.7V22H22v-7.9Z"/></svg></a>
+        </div>
+      </div>
+    </div>
+
+    <nav class="pied__col" aria-label="Le logiciel">
+      <h2>Le logiciel</h2>
+      <ul>
+        <li><a href="fonctionnalites.html">Toutes les fonctionnalités</a></li>
+        <li><a href="vigne-vendanges.html">Vigne &amp; vendanges</a></li>         <li><a href="cave-vinification.html">Cave &amp; vinification</a></li>         <li><a href="mises-conditionnement.html">Conditionnement &amp; mises</a></li>         <li><a href="stocks-tracabilite.html">Stocks &amp; traçabilité</a></li>         <li><a href="ventes-clients.html">Ventes, clients &amp; facturation</a></li>         <li><a href="drm-conformite.html">DRM &amp; conformité</a></li>         <li><a href="oenotourisme.html">Œnotourisme</a></li>
+        <li><a href="index.html#assistant">Assistant IA</a></li>
+      </ul>
+    </nav>
+
+    <nav class="pied__col" aria-label="Société">
+      <h2>Société</h2>
+      <ul>
+        <li><a href="tarifs.html">Tarifs</a></li>
+        <li><a href="essai-gratuit.html">Essai gratuit</a></li>
+        <li><a href="choisir-logiciel-viticole.html">Bien choisir son logiciel</a></li>
+        <li><a href="index.html#apropos">À propos</a></li>
+        <li><a href="faq.html">FAQ</a></li>
+        <li><a href="index.html#actualite">Notre actualité</a></li>
+        <li><a href="ressources.html">Guides pratiques</a></li>
+        <li><a href="actualites-reglementaires.html">Actualités réglementaires</a></li>
+        <li><a href="contact.html">Nous contacter</a></li>
+      </ul>
+    </nav>
+
+    <nav class="pied__col" aria-label="Légal">
+      <h2>Légal</h2>
+      <ul>
+        <li><a href="mentions-legales.html">Mentions légales</a></li>
+        <li><a href="politique-confidentialite.html">Politique de confidentialité</a></li>
+        <li><a href="cgu.html">CGUV</a></li>
+      </ul>
+    </nav>
+  </div>
+
+  <div class="pied__bas">
+    <p>© 2026 Mon Chai. Tous droits réservés.</p>
+    <p>Membre de <a href="https://www.lawinetech.com/" target="_blank" rel="noopener">La WineTech</a> et du <a href="https://lepoool.tech/" target="_blank" rel="noopener">Poool</a>. Imaginé et développé à Rennes.</p>
+  </div>
+</footer>
+<script src="assets/js/header.js"></script>
+</body></html>

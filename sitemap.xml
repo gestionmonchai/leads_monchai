@@ -1679,4 +1679,11 @@
   </url>
   <url><loc>https://monchai.fr/ressources.html</loc><lastmod>2026-09-16</lastmod></url>
   <url><loc>https://monchai.fr/cout-de-revient-bouteille-vin.html</loc><lastmod>2026-09-16</lastmod></url>
+  <!-- FILE-ATTENTE : nouvelles URL insérées sous cette ligne (workflow publier-article.yml). Ne pas supprimer ce repère. -->
+  <url>
+    <loc>https://monchai.fr/registre-de-cave-vigneron.html</loc>
+    <lastmod>2026-09-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
 </urlset>

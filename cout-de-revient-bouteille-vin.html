@@ -105,7 +105,18 @@
 
     <a class="hd__connexion" href="https://tester.monchai.fr">Me Connecter</a>
     <a class="hd__cta" href="https://tester.monchai.fr">Essayer gratuitement</a>
-
+    <div class="hd__langue">
+      <button class="hd__langue-bouton" type="button" aria-label="Choisir la langue" aria-haspopup="true" aria-expanded="false" aria-controls="menu-langues">
+        FR<span class="hd__chev" aria-hidden="true"></span>
+      </button>
+      <div class="hd__langue-menu" id="menu-langues">
+        <a href="cout-de-revient-bouteille-vin.html" aria-current="page" lang="fr" hreflang="fr">Français</a>
+        <a href="en/index.html" title="Accueil du site en anglais" lang="en" hreflang="en">English</a>
+        <a href="it/index.html" title="Accueil du site en italien" lang="it" hreflang="it">Italiano</a>
+        <a href="de/index.html" title="Accueil du site en allemand" lang="de" hreflang="de">Deutsch</a>
+        <a href="zh/index.html" title="Accueil du site en chinois" lang="zh-Hans" hreflang="zh-Hans">中文</a>
+      </div>
+    </div>
   </div>
 </header>
 </div>
@@ -166,19 +177,19 @@
 <h2 id="charges-indirectes">Attribuer les charges communes sans les compter deux fois</h2>
 <p>La facture d'électricité du chai ne désigne généralement pas une cuvée. Une répartition est nécessaire. Choisissez une base liée à la consommation : temps machine, relevé de compteur, heures de travail, surface occupée pendant une durée donnée. Les litres peuvent convenir à des vins suivant des itinéraires proches ; ils reflètent mal l'écart entre un rouge vendu rapidement et une cuvée élevée dix-huit mois.</p>
 <p>Pour chaque poste, conservez montant total, période, base totale et part du lot. La formule est : <strong>charge attribuée = charge à répartir × unités du lot ÷ unités totales</strong>. Dans l'exemple, les 20 % sont des hypothèses d'usage, pas une règle comptable. Vérifiez que les parts attribuées et les éventuels coûts non affectés retrouvent la charge de départ.</p>
-<!-- À la publication du satellite : ajouter ici le lien charges-indirectes-domaine-viticole.html. -->
+<!--SATELLITE:charges-indirectes-domaine-viticole <p>Pour aller plus loin, consultez notre méthode pour <a href="charges-indirectes-domaine-viticole.html">répartir les charges indirectes d'un domaine viticole</a>, avec une comparaison de deux clés sur les mêmes cuvées.</p> SATELLITE-->
 <figure><a href="assets/img/captures/analytique-couts-demo.png"><img src="assets/img/captures/analytique-couts-demo.png" width="1100" height="490" loading="lazy" decoding="async" alt="Compte de résultat analytique Mon Chai : 126 000 euros de ventes, charges par centre et centres non suivis signalés."></a><figcaption>Extrait de l'écran de comptabilité analytique de Mon Chai, rendu localement à partir de son gabarit avec des données fictives. Les centres « non suivis » restent visibles : la marge affichée ne couvre pas les charges manquantes. Illustration de lecture de l'écran, distincte du cas complet des Trois Coteaux. Sélectionnez l'image pour l'agrandir.</figcaption></figure>
 <aside class="article-cta"><h2>Suivre ces coûts sans reconstruire le calcul dans plusieurs fichiers</h2><p>Mon Chai dispose d'un suivi des lots et d'une comptabilité analytique par centres de coût. Ces vues permettent de rapprocher les données de production et les charges renseignées. Leur lecture exige de vérifier la couverture des coûts : une matière ou une charge non renseignée ne devient pas automatiquement un coût nul.</p><p><a class="article-cta__btn article-cta__btn--contour" href="fonctionnalites.html">Découvrir les fonctionnalités de Mon Chai</a></p></aside>
 
 <h2 id="lots">Conserver le coût quand le vin change de lot</h2>
 <p>Un transfert ne crée pas de raisin neuf. Lorsqu'un lot est fractionné, ses coûts historiques suivent les volumes transférés ; les opérations suivantes s'ajoutent à chaque branche. Lors d'un assemblage, additionnez les coûts des volumes effectivement incorporés, puis divisez par le volume obtenu. La moyenne simple de deux prix au litre ne convient que si les volumes sont égaux.</p>
 <p>Gardez un lien entre lot d'origine, mouvement, lot destinataire et mise. Les pages <a href="cave-vinification.html">Cave et vinification</a>, <a href="stocks-tracabilite.html">Stocks et traçabilité</a> et <a href="mises-conditionnement.html">Conditionnement et mises</a> présentent ces étapes dans Mon Chai. Le calcul doit rester explicable même après plusieurs assemblages.</p>
-<!-- À la publication du satellite : ajouter ici le lien cout-lot-vin-pertes-assemblage.html. -->
+<!--SATELLITE:cout-lot-vin-pertes-assemblage <p>Nous détaillons séparément la <a href="cout-lot-vin-pertes-assemblage.html">transmission des coûts après pertes, fractionnement et assemblage</a>, avec les calculs à chaque mouvement.</p> SATELLITE-->
 
 <h2 id="marge">Du coût au prix de vente et à la marge</h2>
 <p>Le coût de revient renseigne la rentabilité ; il ne fixe pas mécaniquement le prix commercial. Appellation, positionnement, débouché et conditions de vente interviennent aussi. À 10 € HT au caveau, la bouteille de notre exemple laisse <strong>10 − 4,299523… = 5,70 €</strong> de marge sur le périmètre retenu. Ce n'est pas nécessairement le résultat net du domaine.</p>
 <p>Les <a href="https://bpifrance-creation.fr/taux-marque">définitions de Bpifrance Création</a> permettent de distinguer les bases : le taux de marge rapporte la marge au coût de revient ; le taux de marque la rapporte au prix de vente HT. Comparez les circuits après remises, livraison, préparation, frais de paiement et commissions. Une vente à prix plus élevé peut demander beaucoup plus de travail commercial.</p>
-<!-- À la publication du satellite : ajouter ici le lien marge-vin-taux-marge-marque.html. -->
+<!--SATELLITE:marge-vin-taux-marge-marque <p>Voir aussi les formules et cas par circuit de notre guide <a href="marge-vin-taux-marge-marque.html">marge, taux de marge et taux de marque du vin</a>.</p> SATELLITE-->
 
 <h2 id="erreurs">Les erreurs qui faussent le plus souvent un coût de revient viticole</h2>
 <ol class="article-erreurs">
@@ -195,10 +206,10 @@
 </ol>
 <p>Pour votre prochaine cuvée, ouvrez trois feuilles : dépenses affectées, mouvements de volume, puis coût par col et par circuit. Rapprochez les factures des consommations, les heures des opérations et les bouteilles de la mise. Datez chaque version : un coût prévisionnel en vendanges et un coût constaté après livraison répondent à deux moments différents de la même campagne.</p>
 <section class="article__sources"><h2>Sources et références</h2><ul>
-<li>Chambres d'agriculture Pays de la Loire et Indre-et-Loire — <a href="https://opera-connaissances.chambres-agriculture.fr/doc_num.php?explnum_id=216524">Référentiel économique du vigneron, Anjou-Saumur, Ouest 37</a>, 12e édition, 2025-2027, p. 2 et 5-8.</li>
-<li>Autorité des normes comptables — <a href="https://www.anc.gouv.fr/plan-comptable-general-0">Plan comptable général, règlement 2014-03 consolidé au 1er janvier 2026</a>, articles 213-30 à 213-32 ; page mise à jour le 9 mars 2026.</li>
-<li>IFV Occitanie — <a href="https://www.vignevin-occitanie.com/la-filtration-des-vins-generalites/">La filtration des vins : généralités</a>, fiche technique sans date affichée.</li>
-<li>Bpifrance Création — <a href="https://bpifrance-creation.fr/taux-marque">Taux de marque</a>, lexique sans date affichée.</li>
+<li>Chambres d'agriculture Pays de la Loire et Indre-et-Loire, <a href="https://opera-connaissances.chambres-agriculture.fr/doc_num.php?explnum_id=216524">Référentiel économique du vigneron, Anjou-Saumur, Ouest 37</a>, 12e édition, 2025-2027, p. 2 et 5-8.</li>
+<li>Autorité des normes comptables, <a href="https://www.anc.gouv.fr/plan-comptable-general-0">Plan comptable général, règlement 2014-03 consolidé au 1er janvier 2026</a>, articles 213-30 à 213-32 ; page mise à jour le 9 mars 2026.</li>
+<li>IFV Occitanie, <a href="https://www.vignevin-occitanie.com/la-filtration-des-vins-generalites/">La filtration des vins : généralités</a>, fiche technique sans date affichée.</li>
+<li>Bpifrance Création, <a href="https://bpifrance-creation.fr/taux-marque">Taux de marque</a>, lexique sans date affichée.</li>
 </ul><p>Sources consultées le 16 septembre 2026. Les chiffres du domaine fictif sont des hypothèses pédagogiques, non des références de prix.</p></section>
 
 </main>
@@ -232,7 +243,7 @@
       <ul>
         <li><a href="tarifs.html">Tarifs</a></li>
         <li><a href="essai-gratuit.html">Essai gratuit</a></li>
-        <li><a href="choisir-logiciel-viticole.html" aria-current="page">Bien choisir son logiciel</a></li>
+        <li><a href="choisir-logiciel-viticole.html">Bien choisir son logiciel</a></li>
         <li><a href="index.html#apropos">À propos</a></li>
         <li><a href="faq.html">FAQ</a></li>
         <li><a href="index.html#actualite">Notre actualité</a></li>

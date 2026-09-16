@@ -109,12 +109,21 @@
 
     bouton.addEventListener('click', function (e) {
       e.stopPropagation();
-      menu.classList.contains('est-ouvert') ? fermerMenu(menu) : ouvrirMenu(menu);
+      clearTimeout(timer);
+      // Sur ordinateur, mouseenter a déjà ouvert le panneau avant le clic.
+      // Ne pas annuler cette ouverture. Le clavier et le tactile gardent
+      // le comportement bascule, comme l'accordéon mobile.
+      var clicSouris = e.detail > 0 && (e.pointerType
+        ? e.pointerType === 'mouse'
+        : window.matchMedia('(hover: hover) and (pointer: fine)').matches);
+      if (NAV_HORIZ.matches && clicSouris) ouvrirMenu(menu);
+      else menu.classList.contains('est-ouvert') ? fermerMenu(menu) : ouvrirMenu(menu);
     });
 
     bouton.addEventListener('keydown', function (e) {
       if (e.key === 'ArrowDown') {
         e.preventDefault();
+        clearTimeout(timer);
         ouvrirMenu(menu);
         var premierLien = menu.querySelector('.hd__panneau a');
         if (premierLien) premierLien.focus();

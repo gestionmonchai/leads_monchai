@@ -306,7 +306,7 @@
   .hd__barre{
     position:static; inset:auto;
     display:flex; flex-direction:row; flex-wrap:nowrap;
-    align-items:center; gap:14px;
+    align-items:center; gap:8px;
     margin-left:auto; padding:0; max-height:none; overflow:visible;
     background:none; border:0; box-shadow:none;
   }

@@ -579,3 +579,17 @@ body{
   .fonc__intro h2{ font-size:clamp(23px,4.4vw,28px); }
   .fonc__intro p{ font-size:16.5px; }
 }
+
+/* Sur la scène de 1920, le header (0 → 94) et le H1 (137 → 193) sont en
+   absolu. L'intro, en flux, démarrait donc en haut de la scène, sous eux, et
+   les colonnes gardaient leur retrait de 228px, prévu pour une page sans
+   intro : texte masqué par le header, chevauchement du titre, puis un grand
+   vide. L'intro prend la place de ce retrait et les colonnes la suivent. */
+@media (min-width:1200px){
+  .fonc__intro{ padding-top:236px; }
+  .fonc__intro + .fonc__colonnes{ padding-top:0; }
+}
+/* En flux, le sous-titre suivait le H1 sans aucun espace. */
+@media (max-width:1199px){
+  .fonc__intro{ margin-top:clamp(22px,4vw,36px); }
+}

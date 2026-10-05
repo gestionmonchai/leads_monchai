@@ -330,6 +330,24 @@
       "carte_titre": "Marge, taux de marge et taux de marque&nbsp;: la rentabilité d'un vin",
       "carte_resume": "Les formules de marge, taux de marge et taux de marque appliquées au vin, puis une comparaison chiffrée entre caveau, e-commerce, caviste et agent.",
       "description": "Les formules de marge, taux de marge et taux de marque appliquées au vin, puis une comparaison chiffrée entre caveau, e-commerce, caviste et agent."
+        },
+    {
+      "ordre": 19,
+      "slug": "ppwr-vin-emballages",
+      "categorie": "etiquetage-mises",
+      "categorie_nom": "Étiquetage & mises",
+      "fichier": "19-ppwr-vin-emballages",
+      "prevu": "2026-12-21",
+      "statut": "brouillon",
+      "tag": "Étiquetage",
+      "image": "assets/img/pages/conditionnement-mises.jpg",
+      "temps": "6 min",
+      "mot_cle": "PPWR vin",
+      "titre_tag": "PPWR et vin : ce que le règlement emballages change | Mon Chai",
+      "og_titre": "PPWR et vin : ce que le règlement emballages change pour votre domaine",
+      "carte_titre": "PPWR et vin&nbsp;: ce que le règlement emballages change pour votre domaine",
+      "carte_resume": "Le règlement européen sur les emballages s'applique depuis le 12 août 2026. Fabricant, réemploi, étiquette de tri, recyclabilité : ce qui concerne votre domaine et ce dont le vin est dispensé.",
+      "description": "PPWR et vin : depuis le 12 août 2026, le domaine qui embouteille devient fabricant de ses emballages. Obligations, exemptions du vin et calendrier jusqu'en 2030."
     }
   ]
 }

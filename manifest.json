@@ -80,7 +80,7 @@
       "categorie_nom": "Vigne & phyto",
       "fichier": "05-cahier-de-culture-vigne",
       "prevu": "2026-10-05",
-      "statut": "en_attente",
+      "statut": "publie_2026-10-05",
       "tag": "Phytosanitaire",
       "image": "assets/img/pages/vigne-vendanges.jpg",
       "temps": "4 min",
@@ -330,7 +330,7 @@
       "carte_titre": "Marge, taux de marge et taux de marque&nbsp;: la rentabilité d'un vin",
       "carte_resume": "Les formules de marge, taux de marge et taux de marque appliquées au vin, puis une comparaison chiffrée entre caveau, e-commerce, caviste et agent.",
       "description": "Les formules de marge, taux de marge et taux de marque appliquées au vin, puis une comparaison chiffrée entre caveau, e-commerce, caviste et agent."
-        },
+    },
     {
       "ordre": 19,
       "slug": "ppwr-vin-emballages",

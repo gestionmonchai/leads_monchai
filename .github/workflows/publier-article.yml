@@ -1,14 +1,23 @@
-# Publication automatique des articles « Actualités réglementaires ».
-# Chaque lundi matin, prend le premier article en attente dont la date
-# prévue est atteinte sur la branche file-attente, le date, l'insère dans
-# le site (page + carte + sitemap) et déploie GitHub Pages.
+# Publication automatique des articles (actualités réglementaires et guides).
+# Deux publications par semaine, le lundi et le jeudi à 11h (heure de Paris).
+# Prend le premier article en attente dont la date prévue est atteinte sur la
+# branche file-attente, le date, l'insère dans le site (page + carte + sitemap)
+# et déploie GitHub Pages.
+#
+# Déclenchement : le cron de GitHub part avec plusieurs heures de retard
+# (constaté : 6 h 30 en septembre 2026). L'heure de 11h est donc tenue par un
+# appel workflow_dispatch envoyé depuis le poste de Denis (tâche planifiée
+# Windows, script declenche-publication.ps1). Le cron ci-dessous ne sert que
+# de filet de sécurité : il ne publie rien si un article est déjà sorti le
+# même jour.
+#
 # La branche file-attente porte la file (articles/, manifest.json) et la
 # documentation (README, LIGNE-EDITORIALE, MOTS-CLES).
 name: Publier le prochain article
 
 on:
   schedule:
-    - cron: '30 6 * * 1'   # lundi 06:30 UTC (07:30/08:30 Paris)
+    - cron: '0 10 * * 1,4'   # lundi et jeudi 10:00 UTC, filet de sécurité
   workflow_dispatch:
     inputs:
       test:
@@ -52,15 +61,20 @@ jobs:
         env:
           FORCER: ${{ inputs.forcer }}
         run: |
-          AUJOURDHUI=$(date -u +%F)
-          if [ -n "$FORCER" ]; then
-            FILTRE='[.articles[] | select(.statut=="en_attente" and .slug==$f)]'
-          else
+          AUJOURDHUI=$(TZ=Europe/Paris date +%F)
+          if [ -z "$FORCER" ]; then
+            DEJA=$(jq -r --arg d "$AUJOURDHUI" '[.articles[] | select(.statut == ("publie_" + $d))] | length' file/manifest.json)
+            if [ "$DEJA" != "0" ]; then
+              echo "::notice::Un article est déjà sorti aujourd'hui ($AUJOURDHUI). Une seule publication par jour : rien à faire."
+              echo "publier=non" >> "$GITHUB_OUTPUT"
+              exit 0
+            fi
             FILTRE='[.articles[] | select(.statut=="en_attente" and .prevu <= $d)] | sort_by(.ordre)'
+          else
+            FILTRE='[.articles[] | select(.statut=="en_attente" and .slug==$f)]'
           fi
-          SLUG=$(jq -r --arg d "$AUJOURDHUI" --arg f "$FORCER" "$FILTRE | .[0].slug // empty" file/manifest.json)
-          FICHIER=$(jq -r --arg d "$AUJOURDHUI" --arg f "$FORCER" "$FILTRE | .[0].fichier // empty" file/manifest.json)
-          CATEGORIE=$(jq -r --arg d "$AUJOURDHUI" --arg f "$FORCER" "$FILTRE | .[0].categorie // empty" file/manifest.json)
+          champ() { jq -r --arg d "$AUJOURDHUI" --arg f "$FORCER" "$FILTRE | .[0].$1 // empty" file/manifest.json; }
+          SLUG=$(champ slug)
           if [ -z "$SLUG" ]; then
             echo "::notice::File d'attente vide ou aucun article dû aujourd'hui ($AUJOURDHUI). Rien à publier."
             RESTANTS=$(jq -r '[.articles[] | select(.statut=="en_attente")] | length' file/manifest.json)
@@ -68,62 +82,92 @@ jobs:
               echo "::warning::La file d'attente est VIDE : écrire de nouveaux articles (voir README de la branche file-attente)."
             fi
             echo "publier=non" >> "$GITHUB_OUTPUT"
-          else
-            echo "Article à publier : $SLUG (fichier $FICHIER)"
-            echo "publier=oui" >> "$GITHUB_OUTPUT"
-            echo "slug=$SLUG" >> "$GITHUB_OUTPUT"
-            echo "fichier=$FICHIER" >> "$GITHUB_OUTPUT"
-            echo "categorie=$CATEGORIE" >> "$GITHUB_OUTPUT"
-            echo "date=$AUJOURDHUI" >> "$GITHUB_OUTPUT"
+            exit 0
           fi
+          DESTINATION=$(champ destination); [ -z "$DESTINATION" ] && DESTINATION=actualites
+          echo "Article à publier : $SLUG (destination $DESTINATION)"
+          {
+            echo "publier=oui"
+            echo "slug=$SLUG"
+            echo "fichier=$(champ fichier)"
+            echo "categorie=$(champ categorie)"
+            echo "destination=$DESTINATION"
+            echo "pilier=$(champ pilier)"
+            echo "date=$AUJOURDHUI"
+          } >> "$GITHUB_OUTPUT"
 
       - name: Dater et insérer l'article
         if: steps.choix.outputs.publier == 'oui'
         run: |
+          set -e
           SLUG="${{ steps.choix.outputs.slug }}"
           FICHIER="${{ steps.choix.outputs.fichier }}"
           DATE_ISO="${{ steps.choix.outputs.date }}"
+          DESTINATION="${{ steps.choix.outputs.destination }}"
+          PILIER="${{ steps.choix.outputs.pilier }}"
           MOIS=(janvier février mars avril mai juin juillet août septembre octobre novembre décembre)
-          JOUR=$((10#$(date -u +%d)))
+          JOUR=$((10#$(TZ=Europe/Paris date +%d)))
           if [ "$JOUR" = "1" ]; then JOUR_FR="1ᵉʳ"; else JOUR_FR="$JOUR"; fi
-          DATE_FR="$JOUR_FR ${MOIS[$((10#$(date -u +%m)-1))]} $(date -u +%Y)"
+          DATE_FR="$JOUR_FR ${MOIS[$((10#$(TZ=Europe/Paris date +%m)-1))]} $(TZ=Europe/Paris date +%Y)"
           echo "Date de publication : $DATE_FR ($DATE_ISO)"
 
           sed -i "s/{{DATE_ISO}}/$DATE_ISO/g; s/{{DATE_FR}}/$DATE_FR/g" \
             "file/articles/$FICHIER.html" "file/articles/$FICHIER.carte.html"
-
           cp "file/articles/$FICHIER.html" "site/$SLUG.html"
-          sed -i "/FILE-ATTENTE : les nouvelles cartes/r file/articles/$FICHIER.carte.html" \
-            site/actualites-reglementaires.html
 
-          CATEGORIE="${{ steps.choix.outputs.categorie }}"
-          HUB="site/actualites-$CATEGORIE.html"
-          if [ -n "$CATEGORIE" ] && [ -f "$HUB" ]; then
-            sed -i "/FILE-ATTENTE : cartes de la catégorie/r file/articles/$FICHIER.carte.html" "$HUB"
-            echo "Carte insérée dans le hub $HUB"
+          if [ "$DESTINATION" = "ressources" ]; then
+            # Guide de la rubrique Ressources : carte sous le repère de ressources.html,
+            # puis activation du lien préparé dans la page pilier.
+            grep -q "FILE-ATTENTE : guides" site/ressources.html || { echo "::error::Repère FILE-ATTENTE : guides absent de ressources.html"; exit 1; }
+            sed -i "/FILE-ATTENTE : guides/r file/articles/$FICHIER.carte.html" site/ressources.html
+            if [ -n "$PILIER" ] && [ -f "site/$PILIER.html" ]; then
+              sed -i "s|<!--SATELLITE:$SLUG \(.*\) SATELLITE-->|\1|" "site/$PILIER.html"
+              sed -i "s/\"dateModified\": *\"[0-9-]*\"/\"dateModified\": \"$DATE_ISO\"/" "site/$PILIER.html"
+              if grep -q "SATELLITE:$SLUG " "site/$PILIER.html"; then echo "::error::Lien satellite non activé dans $PILIER.html"; exit 1; fi
+              echo "Lien activé dans le pilier $PILIER.html"
+            fi
           else
-            echo "::warning::Hub introuvable pour la catégorie $CATEGORIE : carte non insérée dans un hub."
+            sed -i "/FILE-ATTENTE : les nouvelles cartes/r file/articles/$FICHIER.carte.html" \
+              site/actualites-reglementaires.html
+            CATEGORIE="${{ steps.choix.outputs.categorie }}"
+            HUB="site/actualites-$CATEGORIE.html"
+            if [ -n "$CATEGORIE" ] && [ -f "$HUB" ]; then
+              sed -i "/FILE-ATTENTE : cartes de la catégorie/r file/articles/$FICHIER.carte.html" "$HUB"
+              echo "Carte insérée dans le hub $HUB"
+            else
+              echo "::warning::Hub introuvable pour la catégorie $CATEGORIE : carte non insérée dans un hub."
+            fi
           fi
 
           printf '  <url>\n    <loc>https://monchai.fr/%s.html</loc>\n    <lastmod>%s</lastmod>\n    <changefreq>monthly</changefreq>\n    <priority>0.7</priority>\n  </url>\n' \
             "$SLUG" "$DATE_ISO" > /tmp/sitemap-bloc.xml
-          sed -i "/FILE-ATTENTE : nouvelles URL/r /tmp/sitemap-bloc.xml" site/sitemap.xml
+          if grep -q "FILE-ATTENTE : nouvelles URL" site/sitemap.xml; then
+            sed -i "/FILE-ATTENTE : nouvelles URL/r /tmp/sitemap-bloc.xml" site/sitemap.xml
+          else
+            echo "::warning::Repère du sitemap absent : URL insérée avant </urlset>."
+            sed -i "/<\/urlset>/e cat /tmp/sitemap-bloc.xml" site/sitemap.xml
+          fi
 
           jq --arg s "$SLUG" --arg d "$DATE_ISO" \
             '(.articles[] | select(.slug==$s) | .statut) = ("publie_" + $d)' \
             file/manifest.json > /tmp/manifest.json
           mv /tmp/manifest.json file/manifest.json
 
-          echo "--- Contrôles ---"
-          grep -c "actu-fiche" site/actualites-reglementaires.html
-          grep -q "$SLUG.html" site/sitemap.xml && echo "sitemap OK"
-          ! grep -q "{{DATE" "site/$SLUG.html" && echo "dates OK"
+          echo "--- Contrôles (bloquants) ---"
+          grep -q "monchai.fr/$SLUG.html" site/sitemap.xml || { echo "::error::URL absente du sitemap"; exit 1; }
+          ! grep -q "{{DATE" "site/$SLUG.html" || { echo "::error::Dates non remplacées dans la page"; exit 1; }
+          if [ "$DESTINATION" = "ressources" ]; then
+            grep -q "href=\"$SLUG.html\"" site/ressources.html || { echo "::error::Carte absente de ressources.html"; exit 1; }
+          else
+            grep -q "href=\"$SLUG.html\"" site/actualites-reglementaires.html || { echo "::error::Carte absente de l'index des actualités"; exit 1; }
+          fi
+          echo "Contrôles OK"
 
-      - name: Test à blanc — montrer le diff sans pousser
+      - name: Test à blanc, montrer le diff sans pousser
         if: steps.choix.outputs.publier == 'oui' && inputs.test == true
         run: |
           echo "=== Diff site (main) ==="
-          cd site && git add -A && git diff --cached --stat && git diff --cached -- actualites-reglementaires.html sitemap.xml | head -80
+          cd site && git add -A && git diff --cached --stat && git diff --cached -- actualites-reglementaires.html ressources.html sitemap.xml | head -80
           echo "=== Diff file-attente ==="
           cd ../file && git add -A && git diff --cached --stat
 

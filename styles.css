@@ -961,3 +961,7 @@ body{
   background:rgba(33,27,24,.06); color:var(--bordeaux); font-size:26px; line-height:1; cursor:pointer;
 }
 .cookie-modal__fermer:hover{ background:rgba(33,27,24,.12); }
+
+/* Liens d'appel vers l'application posés dans le texte : sans classe, ils
+   prenaient le bleu par défaut du navigateur. */
+a[href="https://tester.monchai.fr"]:not([class]){ color:var(--bordeaux); font-weight:600; text-decoration:underline; text-underline-offset:3px; }

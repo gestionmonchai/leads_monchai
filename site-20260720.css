@@ -3019,3 +3019,7 @@ body{
     white-space:nowrap;
   }
 }
+
+/* Liens d'appel vers l'application posés dans le texte (FAQ, actualité) : sans
+   classe, ils prenaient le bleu par défaut du navigateur. */
+a[href="https://tester.monchai.fr"]:not([class]){ color:var(--bordeaux); font-weight:600; text-decoration:underline; text-underline-offset:3px; }

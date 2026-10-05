@@ -1,0 +1,18 @@
+/* Entrée vers la page de transition, dans l’accueil en flux. */
+.changer-accueil{padding:64px max(24px,calc((100% - 1160px)/2));display:grid;grid-template-columns:1.2fr 1fr;align-items:center;gap:55px;background:#fffaf4;border-block:1px solid #e9dfd3;color:#302824;font-family:'Inter',sans-serif}
+.changer-accueil__kicker{font-size:11px;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:#7b1e22}
+.changer-accueil h2{font:400 clamp(30px,3vw,40px)/1.2 'Playfair Display',Georgia,serif;letter-spacing:-.025em;color:#7b1e22;margin:15px 0}
+.changer-accueil p{font-size:14px;line-height:1.8;color:#6a6159;max-width:510px}
+.changer-accueil__link{display:inline-flex;align-items:center;gap:24px;margin-top:24px;padding:13px 20px;border-radius:7px;background:#7b1e22;color:white;font-size:13px;font-weight:600;text-decoration:none;transition:transform .2s}
+.changer-accueil__link:hover{transform:translateY(-3px)}
+.changer-accueil__choices{display:grid;gap:13px}
+.changer-accueil__choices a{display:flex;align-items:center;gap:18px;border:1px solid #dedfd1;background:#f3f5ed;padding:21px 23px;border-radius:11px;text-decoration:none;color:#456253;transition:transform .2s,box-shadow .2s}
+.changer-accueil__choices a+a{background:#fcf0ed;border-color:#e9d4d0;color:#7b1e22}
+.changer-accueil__choices a:hover{transform:translateX(4px);box-shadow:0 7px 20px #30282408}
+.changer-accueil__choices a>span:first-child{font-size:27px}
+.changer-accueil__choices a>span:last-child{margin-left:auto;font-size:21px}
+.changer-accueil__choices strong{display:block;font:400 22px/1.3 'Playfair Display',Georgia,serif}
+.changer-accueil__choices small{display:block;font-size:11px;color:#6a6159;margin-top:5px}
+.changer-accueil a:focus-visible{outline:3px solid #a85d35;outline-offset:4px}
+@media(max-width:760px){.changer-accueil{grid-template-columns:1fr;gap:30px;padding:48px 22px}.changer-accueil__choices a{padding:18px}.changer-accueil__choices strong{font-size:21px}.changer-accueil__choices small{font-size:10px}}
+@media(prefers-reduced-motion:reduce){.changer-accueil a{transition:none!important}}

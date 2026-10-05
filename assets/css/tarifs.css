@@ -346,3 +346,7 @@
 @media (prefers-reduced-motion:reduce){
   .offre__bouton, .acc__lien, .tar__secondaire a{ transition:none; }
 }
+
+/* Liens d'appel vers l'application posés dans le texte : sans classe, ils
+   prenaient le bleu par défaut du navigateur. */
+a[href="https://tester.monchai.fr"]:not([class]){ color:var(--bordeaux); font-weight:600; text-decoration:underline; text-underline-offset:3px; }

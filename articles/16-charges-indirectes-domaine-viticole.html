@@ -1,6 +1,25 @@
 <!DOCTYPE html>
 <html lang="fr"><head>
 <meta charset="utf-8">
+<!-- Mode consentement de Google : par défaut, rien n'est mesuré. Le choix du
+     bandeau (consent.js ou script.js, clé monchai_cookie_consent) est appliqué
+     au chargement, puis à chaque changement (événement monchai:consent). -->
+<script>
+window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}
+(function(){
+  function etat(c){var a=c&&c.audience?'granted':'denied',t=c&&c.tiers?'granted':'denied';return{analytics_storage:a,ad_storage:t,ad_user_data:t,ad_personalization:t};}
+  var d=etat(null);d.wait_for_update=500;gtag('consent','default',d);
+  try{var c=JSON.parse(localStorage.getItem('monchai_cookie_consent'));if(c&&c.ts&&Date.now()-c.ts<15724800000)gtag('consent','update',etat(c));}catch(e){}
+  window.addEventListener('monchai:consent',function(e){gtag('consent','update',etat(e.detail));dataLayer.push({event:'monchai_consentement'});});
+})();
+</script>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-NDSQV6T7');</script>
+<!-- End Google Tag Manager -->
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Charges indirectes d&#x27;un domaine viticole : quelles clés ?</title>
 <meta name="description" content="Volume, temps, surface ou usage réel : choisissez des clés de répartition justifiables pour les charges indirectes de vos cuvées, avec un cas chiffré.">
@@ -24,6 +43,10 @@
 <link rel="stylesheet" href="assets/css/couts-editorial.css">
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Comment répartir les charges indirectes dans le coût de revient d'un vin ?", "description": "Volume, temps, surface ou usage réel : choisissez des clés de répartition justifiables pour les charges indirectes de vos cuvées, avec un cas chiffré.", "inLanguage": "fr", "articleSection": "Coûts et marges", "datePublished": "{{DATE_ISO}}", "dateModified": "{{DATE_ISO}}", "timeRequired": "PT4M", "wordCount": 996, "image": "https://monchai.fr/assets/img/pages/cave-vinification.jpg", "mainEntityOfPage": "https://monchai.fr/charges-indirectes-domaine-viticole.html", "author": {"@type": "Organization", "name": "Mon Chai", "url": "https://monchai.fr/"}, "publisher": {"@type": "Organization", "name": "Mon Chai", "url": "https://monchai.fr/", "logo": {"@type": "ImageObject", "url": "https://monchai.fr/assets/img/logo_mon_chai.png"}}}</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Accueil", "item": "https://monchai.fr/"}, {"@type": "ListItem", "position": 2, "name": "Ressources", "item": "https://monchai.fr/ressources.html"}, {"@type": "ListItem", "position": 3, "name": "Comment répartir les charges indirectes dans le coût de revient d'un vin ?", "item": "https://monchai.fr/charges-indirectes-domaine-viticole.html"}]}</script>
 </head><body class="corps-actus">
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NDSQV6T7"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
 <div class="site-header site-header--page">
 <header class="hd">
   <a class="hd__logo" href="index.html"><img src="assets/img/logo-header.webp" alt="Mon Chai, logiciel viticole" width="263" height="85"></a>
@@ -210,4 +233,5 @@
   </div>
 </footer>
 <script src="assets/js/header.js"></script>
+<script src="consent.js"></script>
 </body></html>

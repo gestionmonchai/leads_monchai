@@ -24,6 +24,18 @@
   var CLE = 'monchai_cookie_consent';
   var SIX_MOIS = 1000 * 60 * 60 * 24 * 182;
 
+  // Textes du bandeau dans la langue de la page (attribut lang de <html>).
+  // Le lien « En savoir plus » vise la politique de confidentialité du même
+  // dossier de langue.
+  var TEXTES = {
+    fr: { bandeau: '<strong>Cookies&nbsp;:</strong> nécessaires au site et, avec votre accord, pour la mesure d’audience et les contenus Instagram.', plus: 'En savoir plus', perso: 'Personnaliser', refus: 'Refuser', accepte: 'Tout accepter', reglages: 'Réglages des cookies', fermer: 'Fermer', intro: 'Choisissez les cookies que vous acceptez. Vos choix sont conservés six mois.', necT: 'Strictement nécessaires', necD: 'Indispensables au fonctionnement et à la sécurité du site. Toujours actifs.', audT: 'Mesure d’audience', audD: 'Nous aident à comprendre l’usage du site pour l’améliorer.', tiersT: 'Services tiers', tiersD: 'Contenus et outils externes (formulaires, vidéos, suivi de campagne).', toutRefus: 'Tout refuser', enregistrer: 'Enregistrer mes choix' },
+    en: { bandeau: '<strong>Cookies:</strong> required for the site and, with your consent, for audience measurement and Instagram content.', plus: 'Learn more', perso: 'Customize', refus: 'Decline', accepte: 'Accept all', reglages: 'Cookie settings', fermer: 'Close', intro: 'Choose the cookies you accept. Your choices are kept for six months.', necT: 'Strictly necessary', necD: 'Essential to the operation and security of the site. Always active.', audT: 'Audience measurement', audD: 'Help us understand how the site is used so we can improve it.', tiersT: 'Third-party services', tiersD: 'External content and tools (forms, videos, campaign tracking).', toutRefus: 'Decline all', enregistrer: 'Save my choices' },
+    de: { bandeau: '<strong>Cookies:</strong> für den Betrieb der Website erforderlich und, mit Ihrer Zustimmung, für die Reichweitenmessung und Instagram-Inhalte.', plus: 'Mehr erfahren', perso: 'Anpassen', refus: 'Ablehnen', accepte: 'Alle akzeptieren', reglages: 'Cookie-Einstellungen', fermer: 'Schließen', intro: 'Wählen Sie die Cookies, die Sie akzeptieren. Ihre Auswahl wird sechs Monate gespeichert.', necT: 'Unbedingt erforderlich', necD: 'Für den Betrieb und die Sicherheit der Website unerlässlich. Immer aktiv.', audT: 'Reichweitenmessung', audD: 'Hilft uns zu verstehen, wie die Website genutzt wird, um sie zu verbessern.', tiersT: 'Dienste von Drittanbietern', tiersD: 'Externe Inhalte und Werkzeuge (Formulare, Videos, Kampagnenverfolgung).', toutRefus: 'Alle ablehnen', enregistrer: 'Auswahl speichern' },
+    it: { bandeau: '<strong>Cookie:</strong> necessari al sito e, con il tuo consenso, per la misurazione del pubblico e i contenuti Instagram.', plus: 'Scopri di più', perso: 'Personalizza', refus: 'Rifiuta', accepte: 'Accetta tutto', reglages: 'Impostazioni dei cookie', fermer: 'Chiudi', intro: 'Scegli i cookie che accetti. Le tue scelte vengono conservate per sei mesi.', necT: 'Strettamente necessari', necD: 'Indispensabili al funzionamento e alla sicurezza del sito. Sempre attivi.', audT: 'Misurazione del pubblico', audD: 'Ci aiutano a capire come viene usato il sito per migliorarlo.', tiersT: 'Servizi di terze parti', tiersD: 'Contenuti e strumenti esterni (moduli, video, monitoraggio delle campagne).', toutRefus: 'Rifiuta tutto', enregistrer: 'Salva le mie scelte' },
+    zh: { bandeau: '<strong>Cookie：</strong>网站运行所必需；经您同意后，还用于访问量统计和 Instagram 内容。', plus: '了解更多', perso: '自定义', refus: '拒绝', accepte: '全部接受', reglages: 'Cookie 设置', fermer: '关闭', intro: '请选择您接受的 Cookie。您的选择将保留六个月。', necT: '必要 Cookie', necD: '网站运行和安全所必需，始终启用。', audT: '访问量统计', audD: '帮助我们了解网站的使用情况，以便改进。', tiersT: '第三方服务', tiersD: '外部内容和工具（表单、视频、推广活动跟踪）。', toutRefus: '全部拒绝', enregistrer: '保存我的选择' }
+  };
+  var T = TEXTES[(document.documentElement.lang || 'fr').slice(0, 2).toLowerCase()] || TEXTES.fr;
+
   function lire() {
     try {
       var d = JSON.parse(localStorage.getItem(CLE));
@@ -81,36 +93,36 @@
 
   var HTML_BANNIERE =
     '<div class="cookie__texte">' +
-      '<p><strong>Cookies&nbsp;:</strong> nécessaires au site et, avec votre accord, pour la mesure d’audience et les contenus Instagram. ' +
-      '<a href="politique-confidentialite.html">En savoir plus</a> · ' +
-      '<button type="button" class="cookie__perso" id="cookieRegler">Personnaliser</button></p>' +
+      '<p>' + T.bandeau + ' ' +
+      '<a href="politique-confidentialite.html">' + T.plus + '</a> · ' +
+      '<button type="button" class="cookie__perso" id="cookieRegler">' + T.perso + '</button></p>' +
     '</div>' +
     '<div class="cookie__actions">' +
-      '<button type="button" class="cookie__btn cookie__btn--plein" id="cookieRefus">Refuser</button>' +
-      '<button type="button" class="cookie__btn cookie__btn--plein" id="cookieAccept">Tout accepter</button>' +
+      '<button type="button" class="cookie__btn cookie__btn--plein" id="cookieRefus">' + T.refus + '</button>' +
+      '<button type="button" class="cookie__btn cookie__btn--plein" id="cookieAccept">' + T.accepte + '</button>' +
     '</div>';
 
   var HTML_MODALE =
     '<div class="cookie-modal__fond" data-cookies-fermer></div>' +
-    '<div class="cookie-modal__boite" role="dialog" aria-modal="true" aria-label="Réglages des cookies">' +
-      '<button class="cookie-modal__fermer" data-cookies-fermer aria-label="Fermer">&times;</button>' +
-      '<h2>Réglages des cookies</h2>' +
-      '<p class="cookie-modal__intro">Choisissez les cookies que vous acceptez. Vos choix sont conservés six mois.</p>' +
+    '<div class="cookie-modal__boite" role="dialog" aria-modal="true" aria-label="' + T.reglages + '">' +
+      '<button class="cookie-modal__fermer" data-cookies-fermer aria-label="' + T.fermer + '">&times;</button>' +
+      '<h2>' + T.reglages + '</h2>' +
+      '<p class="cookie-modal__intro">' + T.intro + '</p>' +
       '<label class="cookie-opt">' +
-        '<span><strong>Strictement nécessaires</strong><br>Indispensables au fonctionnement et à la sécurité du site. Toujours actifs.</span>' +
+        '<span><strong>' + T.necT + '</strong><br>' + T.necD + '</span>' +
         '<input type="checkbox" checked disabled>' +
       '</label>' +
       '<label class="cookie-opt">' +
-        '<span><strong>Mesure d’audience</strong><br>Nous aident à comprendre l’usage du site pour l’améliorer.</span>' +
+        '<span><strong>' + T.audT + '</strong><br>' + T.audD + '</span>' +
         '<input type="checkbox" id="optAudience">' +
       '</label>' +
       '<label class="cookie-opt">' +
-        '<span><strong>Services tiers</strong><br>Contenus et outils externes (formulaires, vidéos, suivi de campagne).</span>' +
+        '<span><strong>' + T.tiersT + '</strong><br>' + T.tiersD + '</span>' +
         '<input type="checkbox" id="optTiers">' +
       '</label>' +
       '<div class="cookie-modal__pied">' +
-        '<button type="button" class="cookie__btn cookie__btn--ghost" id="cookieToutRefus">Tout refuser</button>' +
-        '<button type="button" class="cookie__btn cookie__btn--plein" id="cookieEnregistrer">Enregistrer mes choix</button>' +
+        '<button type="button" class="cookie__btn cookie__btn--ghost" id="cookieToutRefus">' + T.toutRefus + '</button>' +
+        '<button type="button" class="cookie__btn cookie__btn--plein" id="cookieEnregistrer">' + T.enregistrer + '</button>' +
       '</div>' +
     '</div>';
 

@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Connecteur (MCP + OAuth 2.1) — Documentation développeurs Mon Chai</title>
+  <meta name="description" content="Obtenir un accès en lecture à une exploitation et appeler les outils : découverte, enregistrement, autorisation, jeton, appels, révocation.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://monchai.fr/developpeurs/connecteur.html">
+  <meta name="theme-color" content="#7B1E22">
+  
+  <link rel="stylesheet" href="developpeurs.css">
+</head>
+<body>
+  <a class="dv-evitement" href="#contenu">Aller au contenu</a>
+
+  <header class="dv-entete">
+    <div class="dv-entete__barre">
+      <a class="dv-marque" href="index.html">
+        <img src="logo_monchai.png" alt="Mon Chai" width="72" height="36">
+        <span>Développeurs</span>
+      </a>
+      <a class="dv-entete__retour" href="https://tester.monchai.fr/">Aller sur Mon Chai</a>
+    </div>
+  </header>
+
+  <div class="dv-grille">
+    <nav class="dv-sommaire" aria-label="Sommaire de la documentation">
+      <h2>Documentation</h2>
+      <ol>
+        
+        <li><a href="index.html">Démarrer</a></li>
+        
+        <li><a href="connecteur.html" aria-current="page">Connecteur (MCP + OAuth 2.1)</a></li>
+        
+        <li><a href="outils.html">Référence des outils</a></li>
+        
+        <li><a href="api-rest.html">API REST v1</a></li>
+        
+        <li><a href="importer.html">Importer vos données</a></li>
+        
+        <li><a href="exporter.html">Exporter vos données</a></li>
+        
+        <li><a href="modele-metier.html">Modèle métier</a></li>
+        
+        <li><a href="securite.html">Sécurité et bonnes pratiques</a></li>
+        
+        <li><a href="feuille-de-route.html">Feuille de route</a></li>
+        
+        <li><a href="contact.html">Contact et support</a></li>
+        
+      </ol>
+    </nav>
+
+    <main id="contenu" class="dv-contenu" tabindex="-1">
+      <h1>Connecteur (MCP + OAuth 2.1)</h1>
+      <p class="dv-chapo">Obtenir un accès en lecture à une exploitation et appeler les outils : découverte, enregistrement, autorisation, jeton, appels, révocation.</p>
+      
+<p>Le connecteur est un serveur <strong>MCP</strong> (Model Context Protocol,
+transport « Streamable HTTP ») protégé par <strong>OAuth 2.1</strong>. C'est le
+même que celui qu'utilisent ChatGPT et Claude : votre application est un client
+comme eux. Il est en <strong>lecture seule</strong>, et chaque accès ne vaut que
+pour <strong>une</strong> exploitation, choisie par la personne qui autorise.
+Pour un programme qui tourne seul (script, serveur, tableur), l'<a href="api-rest.html">API REST v1</a>
+lit les mêmes données avec une simple clé, sans OAuth.</p>
+
+<nav aria-label="Dans cette page">
+  <ol>
+    <li><a href="#parcours">Le parcours en bref</a></li>
+    <li><a href="#adresses">Les adresses</a></li>
+    <li><a href="#decouverte">Découverte</a></li>
+    <li><a href="#enregistrement">Enregistrement de votre application</a></li>
+    <li><a href="#autorisation">Autorisation (PKCE)</a></li>
+    <li><a href="#jeton">Échange du code contre un jeton</a></li>
+    <li><a href="#appel">Appeler les outils</a></li>
+    <li><a href="#rafraichissement">Rafraîchir le jeton</a></li>
+    <li><a href="#revocation">Révoquer l'accès</a></li>
+    <li><a href="#erreurs">Erreurs</a></li>
+    <li><a href="#limites">Limites</a></li>
+    <li><a href="#exemple-python">Exemple complet : lire mes stocks depuis mon appli (Python)</a></li><li><a href="#exemple-typescript">Exemple complet : lister mes impayés (TypeScript)</a></li>
+  </ol>
+</nav>
+
+<h2 id="parcours">Le parcours en bref</h2>
+<ol>
+  <li>Votre application <strong>découvre</strong> le serveur d'autorisation à
+    partir de l'adresse du serveur MCP.</li>
+  <li>Elle <strong>s'enregistre</strong> (une fois) et reçoit un
+    <code>client_id</code>.</li>
+  <li>Elle envoie la personne sur la page d'<strong>autorisation</strong> de Mon
+    Chai : connexion, choix de l'exploitation, bouton « Autoriser ».</li>
+  <li>Mon Chai renvoie le navigateur vers votre application avec un
+    <strong>code</strong> à usage unique.</li>
+  <li>Votre application échange ce code contre un <strong>jeton d'accès</strong>
+    (1 heure) et un <strong>jeton de rafraîchissement</strong>
+    (30 jours).</li>
+  <li>Elle <strong>appelle les outils</strong> sur <code>https://tester.monchai.fr/mcp</code>
+    avec le jeton d'accès, et le <strong>rafraîchit</strong> quand il expire.</li>
+</ol>
+<p>Les SDK MCP officiels font tout cela pour vous : voyez les
+<a href="#exemple-python">exemples complets</a>. Les commandes <code>curl</code>
+ci-dessous montrent chaque échange à la main ; ce sont celles que Mon Chai rejoue
+après chaque mise en production pour vérifier que le connecteur fonctionne.</p>
+
+<h2 id="adresses">Les adresses</h2>
+<div class="dv-tableau" tabindex="0" role="region" aria-label="Adresses du connecteur">
+<table>
+  <thead><tr><th scope="col">Rôle</th><th scope="col">Adresse</th></tr></thead>
+  <tbody>
+    <tr><td>Serveur MCP (ressource protégée)</td><td><code>https://tester.monchai.fr/mcp</code></td></tr>
+    <tr><td>Métadonnées de la ressource (RFC 9728)</td><td><code>https://tester.monchai.fr/.well-known/oauth-protected-resource/mcp</code></td></tr>
+    <tr><td>Métadonnées du serveur d'autorisation (RFC 8414)</td><td><code>https://tester.monchai.fr/.well-known/oauth-authorization-server</code></td></tr>
+    <tr><td>Enregistrement dynamique (RFC 7591)</td><td><code>https://tester.monchai.fr/oauth/register</code></td></tr>
+    <tr><td>Autorisation</td><td><code>https://tester.monchai.fr/oauth/authorize</code></td></tr>
+    <tr><td>Jeton</td><td><code>https://tester.monchai.fr/oauth/token</code></td></tr>
+    <tr><td>Révocation (RFC 7009)</td><td><code>https://tester.monchai.fr/oauth/revoke</code></td></tr>
+  </tbody>
+</table>
+</div>
+<p>Portée (<em>scope</em>) unique : <code>monchai:read</code>, lecture seule.
+Paramètre <code>resource</code> (RFC 8707) : exactement
+<code>https://tester.monchai.fr/mcp</code>.</p>
+
+<p>Pour suivre les commandes de cette page dans un terminal (bash, zsh, ou Git
+Bash sous Windows ; <code>curl</code> et <code>openssl</code> requis) :</p>
+<pre tabindex="0" aria-label="Variables de départ"><code>MON_CHAI=&quot;https://tester.monchai.fr&quot;
+RETOUR=&quot;http://127.0.0.1:8765/callback&quot;</code></pre>
+
+<h2 id="decouverte">Découverte</h2>
+<p>Un appel à <code>/mcp</code> sans jeton répond
+<code>401</code> avec un en-tête <code>WWW-Authenticate</code> qui pointe vers
+les métadonnées de la ressource ; celles-ci désignent le serveur
+d'autorisation, dont les métadonnées donnent toutes les autres adresses. Les
+SDK suivent ce chemin seuls. À la main :</p>
+<pre tabindex="0" aria-label="Commandes de découverte"><code>curl -s &quot;$MON_CHAI/.well-known/oauth-protected-resource/mcp&quot;
+curl -s &quot;$MON_CHAI/.well-known/oauth-authorization-server&quot;</code></pre>
+
+<h2 id="enregistrement">Enregistrement de votre application</h2>
+<p>Votre application s'enregistre elle-même (enregistrement dynamique, sans
+compte développeur ni validation manuelle) en client <strong>public</strong>
+(<code>token_endpoint_auth_method: none</code>) :</p>
+<pre tabindex="0" aria-label="Commande d'enregistrement"><code>curl -s -X POST &quot;$MON_CHAI/oauth/register&quot; \
+  -H &#x27;Content-Type: application/json&#x27; \
+  -d &#x27;{&quot;client_name&quot;:&quot;Mon appli perso&quot;,&quot;redirect_uris&quot;:[&quot;http://127.0.0.1:8765/callback&quot;],&quot;grant_types&quot;:[&quot;authorization_code&quot;,&quot;refresh_token&quot;],&quot;response_types&quot;:[&quot;code&quot;],&quot;token_endpoint_auth_method&quot;:&quot;none&quot;}&#x27;</code></pre>
+<p>Réponse <code>201</code> : un JSON qui contient votre <code>client_id</code>.
+Gardez-le :</p>
+<pre tabindex="0" aria-label="Identifiant client"><code>CLIENT_ID=&quot;collez ici la valeur de client_id&quot;</code></pre>
+<p>Règles sur l'adresse de retour (<code>redirect_uris</code>) :</p>
+<ul>
+  <li><strong>HTTPS</strong>, ou <strong>HTTP sur la boucle locale</strong>
+    (<code>127.0.0.1</code>, <code>localhost</code>, <code>::1</code>) pour une
+    application qui tourne sur votre poste ; toute autre adresse est refusée
+    (<code>invalid_redirect_uri</code>) ;</li>
+  <li>sur la boucle locale, le <strong>port peut varier</strong> d'une fois à
+    l'autre (RFC 8252) ; ailleurs, l'adresse présentée doit être identique,
+    caractère pour caractère, à l'adresse enregistrée ;</li>
+  <li>au plus 30 enregistrements par heure et
+    par adresse IP : enregistrez-vous une fois et réutilisez le
+    <code>client_id</code>.</li>
+</ul>
+<p><strong>Autre possibilité :</strong> le propriétaire ou un administrateur de
+l'exploitation peut créer un <strong>identifiant client pré-enregistré</strong>
+(avec ou sans secret) dans <a href="https://tester.monchai.fr/administration/connecteur/">Administration ›
+Connecteur ChatGPT / Claude</a>, pour les destinations Claude, ChatGPT ou « un
+outil installé sur votre ordinateur » (<code>http://localhost/callback</code> et
+<code>http://127.0.0.1/callback</code>, port libre). Au plus
+10 identifiants par personne.</p>
+
+<h2 id="autorisation">Autorisation (PKCE)</h2>
+<p>PKCE est obligatoire, méthode <code>S256</code> uniquement. Préparez un
+vérificateur secret, son empreinte (le « défi ») et un état :</p>
+<pre tabindex="0" aria-label="Préparation PKCE"><code>VERIFIEUR=$(openssl rand -base64 48 | tr -d &#x27;/+=&#x27; | head -c 64)
+DEFI=$(printf &#x27;%s&#x27; &quot;$VERIFIEUR&quot; | openssl dgst -sha256 -binary \
+  | openssl base64 | tr &#x27;+/&#x27; &#x27;-_&#x27; | tr -d &#x27;=&#x27;)
+ETAT=$(openssl rand -hex 8)</code></pre>
+<p>Puis affichez l'adresse d'autorisation et ouvrez-la dans votre navigateur :</p>
+<pre tabindex="0" aria-label="Adresse d'autorisation"><code>echo &quot;$MON_CHAI/oauth/authorize?response_type=code&amp;client_id=$CLIENT_ID&amp;redirect_uri=http%3A%2F%2F127.0.0.1%3A8765%2Fcallback&amp;scope=monchai%3Aread&amp;state=$ETAT&amp;code_challenge=$DEFI&amp;code_challenge_method=S256&amp;resource=https%3A%2F%2Ftester.monchai.fr%2Fmcp&quot;</code></pre>
+<p>Mon Chai vous demande de vous connecter si besoin, affiche l'écran de
+consentement (le nom de l'application, l'adresse où le code sera envoyé,
+l'exploitation à choisir parmi les vôtres) et, après « Autoriser », renvoie le
+navigateur vers <code>http://127.0.0.1:8765/callback?code=…&amp;state=…</code>. Si rien
+n'écoute sur ce port, le navigateur affiche une erreur de connexion : c'est
+normal, le code est dans la barre d'adresse. Vérifiez que <code>state</code>
+est bien le vôtre, puis :</p>
+<pre tabindex="0" aria-label="Code d'autorisation"><code>CODE=&quot;collez ici la valeur de code lue dans la barre d&#x27;adresse&quot;</code></pre>
+<ul>
+  <li>la demande d'autorisation reste valable 30 minutes, le code
+    10 minutes ;</li>
+  <li>le code ne sert <strong>qu'une fois</strong> : présenté deux fois, il est
+    refusé et l'accès qu'il avait ouvert est révoqué ;</li>
+  <li>« Refuser » renvoie <code>error=access_denied</code> à la place du code.</li>
+</ul>
+
+<h2 id="jeton">Échange du code contre un jeton</h2>
+<pre tabindex="0" aria-label="Échange du code"><code>curl -s -X POST &quot;$MON_CHAI/oauth/token&quot; \
+  -d grant_type=authorization_code \
+  -d &quot;code=$CODE&quot; \
+  --data-urlencode &quot;redirect_uri=$RETOUR&quot; \
+  -d &quot;client_id=$CLIENT_ID&quot; \
+  -d &quot;code_verifier=$VERIFIEUR&quot; \
+  --data-urlencode &quot;resource=$MON_CHAI/mcp&quot;</code></pre>
+<p>Réponse <code>200</code> :</p>
+<pre tabindex="0" aria-label="Réponse du jeton"><code>{&quot;access_token&quot;:&quot;mca_…&quot;,&quot;token_type&quot;:&quot;Bearer&quot;,&quot;expires_in&quot;:3600,&quot;scope&quot;:&quot;monchai:read&quot;,&quot;refresh_token&quot;:&quot;mcr_…&quot;}</code></pre>
+<pre tabindex="0" aria-label="Jetons à conserver"><code>ACCES=&quot;mca_…&quot;      # access_token
+RAFRAICHI=&quot;mcr_…&quot;  # refresh_token</code></pre>
+<p>Le jeton d'accès vaut 1 heure (3600 secondes,
+<code>expires_in</code>), le jeton de rafraîchissement 30 jours.
+Les jetons sont opaques (préfixes <code>mca_</code> et <code>mcr_</code>) : ne
+cherchez pas à les décoder. Mon Chai n'en garde qu'une empreinte.</p>
+
+<h2 id="appel">Appeler les outils</h2>
+<p>Chaque appel est un <code>POST</code> JSON-RPC 2.0 sur
+<code>/mcp</code>, avec le jeton en en-tête
+<code>Authorization: Bearer</code>. Le serveur est sans état : pas de session
+à ouvrir pour un appel isolé (les SDK envoient quand même
+<code>initialize</code>, c'est accepté). Lister les outils :</p>
+<pre tabindex="0" aria-label="Lister les outils"><code>curl -s -X POST &quot;$MON_CHAI/mcp&quot; \
+  -H &#x27;Content-Type: application/json&#x27; \
+  -H &#x27;Accept: application/json, text/event-stream&#x27; \
+  -H &quot;Authorization: Bearer $ACCES&quot; \
+  -d &#x27;{&quot;jsonrpc&quot;:&quot;2.0&quot;,&quot;id&quot;:1,&quot;method&quot;:&quot;tools/list&quot;}&#x27;</code></pre>
+<p>Appeler un outil (ici : « combien de magnums en stock ? ») :</p>
+<pre tabindex="0" aria-label="Appeler un outil"><code>curl -s -X POST &quot;$MON_CHAI/mcp&quot; \
+  -H &#x27;Content-Type: application/json&#x27; \
+  -H &#x27;Accept: application/json, text/event-stream&#x27; \
+  -H &quot;Authorization: Bearer $ACCES&quot; \
+  -d &#x27;{&quot;jsonrpc&quot;:&quot;2.0&quot;,&quot;id&quot;:2,&quot;method&quot;:&quot;tools/call&quot;,&quot;params&quot;:{&quot;name&quot;:&quot;stock_par_format&quot;,&quot;arguments&quot;:{&quot;format_ml&quot;:1500}}}&#x27;</code></pre>
+<p>Le résultat de l'outil est un objet JSON, <strong>sérialisé en texte</strong>
+dans <code>result.content[0].text</code> : décodez ce texte
+(<code>json.loads</code>, <code>JSON.parse</code>) pour obtenir l'objet.</p>
+<pre tabindex="0" aria-label="Forme de la réponse"><code>{&quot;jsonrpc&quot;:&quot;2.0&quot;,&quot;id&quot;:2,&quot;result&quot;:{
+  &quot;content&quot;:[{&quot;type&quot;:&quot;text&quot;,
+              &quot;text&quot;:&quot;{\n  \&quot;etat\&quot;: \&quot;ok\&quot;,\n  \&quot;format_ml\&quot;: 1500, …}&quot;}],
+  &quot;isError&quot;:false}}</code></pre>
+<p>Il porte toujours un champ <code>etat</code> : <code>ok</code>,
+<code>empty</code>, <code>unknown</code>, <code>ambiguous</code>,
+<code>invalid</code>, <code>forbidden</code>, <code>unavailable</code> ou
+<code>busy</code>. Le détail de chaque outil est dans la
+<a href="outils.html">référence des outils</a>. Les montants sont des
+chaînes décimales (<code>"125.50"</code>), les dates au format
+<code>AAAA-MM-JJ</code>.</p>
+
+<h2 id="rafraichissement">Rafraîchir le jeton</h2>
+<pre tabindex="0" aria-label="Rafraîchir le jeton"><code>curl -s -X POST &quot;$MON_CHAI/oauth/token&quot; \
+  -d grant_type=refresh_token \
+  -d &quot;refresh_token=$RAFRAICHI&quot; \
+  -d &quot;client_id=$CLIENT_ID&quot; \
+  --data-urlencode &quot;resource=$MON_CHAI/mcp&quot;</code></pre>
+<div class="dv-encadre dv-encadre--alerte">
+  <p><strong>Rotation :</strong> chaque rafraîchissement rend un
+  <strong>nouveau</strong> jeton de rafraîchissement et invalide l'ancien (et
+  les jetons d'accès précédents). Enregistrez toujours le nouveau. Présenter un
+  ancien jeton de rafraîchissement est traité comme un vol :
+  <strong>l'accès entier est révoqué</strong>, et la personne doit autoriser de
+  nouveau.</p>
+</div>
+<p>Le rafraîchissement échoue aussi si la personne a perdu son accès à
+l'exploitation, ou si l'accès a été révoqué : votre application doit alors
+relancer l'autorisation.</p>
+
+<h2 id="revocation">Révoquer l'accès</h2>
+<p>Depuis votre application (RFC 7009) — n'importe lequel des deux jetons
+coupe <strong>tout</strong> l'accès :</p>
+<pre tabindex="0" aria-label="Révoquer"><code>curl -s -o /dev/null -w &quot;%{http_code}\n&quot; -X POST &quot;$MON_CHAI/oauth/revoke&quot; \
+  -d &quot;token=$RAFRAICHI&quot; \
+  -d &quot;client_id=$CLIENT_ID&quot;</code></pre>
+<p>Réponse <code>200</code>, y compris pour un jeton inconnu (la norme
+l'exige). Depuis Mon Chai : la personne voit ses accès dans
+<a href="https://tester.monchai.fr/administration/connecteur/">Administration › Connecteur ChatGPT /
+Claude</a> et peut révoquer chacun d'eux ; l'effet est immédiat.</p>
+
+<h2 id="erreurs">Erreurs</h2>
+<div class="dv-tableau" tabindex="0" role="region" aria-label="Erreurs du connecteur">
+<table>
+  <thead><tr><th scope="col">Où</th><th scope="col">Réponse</th><th scope="col">Cause, et quoi faire</th></tr></thead>
+  <tbody>
+    <tr><td><code>/mcp</code></td><td><code>401</code></td><td>Jeton absent, expiré, révoqué, ou accès retiré à la personne. Rafraîchissez ; si cela échoue, relancez l'autorisation.</td></tr>
+    <tr><td><code>/mcp</code></td><td><code>421</code></td><td>En-tête <code>Host</code> qui n'est pas celui de Mon Chai (protection contre le « DNS rebinding ») : appelez l'adresse publique, sans proxy qui réécrit l'hôte.</td></tr>
+    <tr><td><code>/oauth/register</code></td><td><code>400</code> <code>invalid_redirect_uri</code></td><td>Adresse de retour ni HTTPS ni boucle locale, ou absente.</td></tr>
+    <tr><td><code>/oauth/register</code></td><td><code>400</code> <code>invalid_client_metadata</code></td><td>Trop d'enregistrements depuis votre adresse : réutilisez votre <code>client_id</code>.</td></tr>
+    <tr><td><code>/oauth/authorize</code></td><td><code>400</code>, ou retour avec <code>error=…</code></td><td><code>400</code> si le <code>client_id</code> est inconnu ou l'adresse de retour non enregistrée ; sinon retour vers votre application avec <code>error=…</code> (PKCE absent, portée inconnue…) ; <code>access_denied</code> si la personne refuse.</td></tr>
+    <tr><td><code>/oauth/token</code></td><td><code>400</code> <code>invalid_grant</code></td><td>Code inconnu, déjà utilisé ou expiré ; vérificateur PKCE faux ; jeton de rafraîchissement invalide, déjà tourné ou révoqué.</td></tr>
+    <tr><td><code>/oauth/token</code></td><td><code>400</code> <code>invalid_target</code></td><td><code>resource</code> différent de <code>https://tester.monchai.fr/mcp</code>.</td></tr>
+    <tr><td><code>/oauth/revoke</code></td><td><code>401</code> <code>unauthorized_client</code></td><td><code>client_id</code> manquant ou inconnu.</td></tr>
+    <tr><td>toutes</td><td><code>429</code> <code>temporarily_unavailable</code></td><td>Trop de requêtes (voir les limites) : attendez la durée de l'en-tête <code>Retry-After</code>.</td></tr>
+    <tr><td>toutes</td><td><code>503</code> <code>temporarily_unavailable</code></td><td>Le compteur de limitation est momentanément indisponible : réessayez après <code>Retry-After</code>.</td></tr>
+    <tr><td>un outil</td><td><code>etat: busy</code></td><td>Mon Chai traite déjà d'autres demandes, ou votre accès a consommé son temps de calcul de la minute : réessayez après <code>reessayer_dans_s</code> secondes. Ce n'est pas une panne.</td></tr>
+    <tr><td>un outil</td><td><code>etat: forbidden</code></td><td>Les droits de la personne ne permettent pas cette lecture, ou l'accès a été révoqué pour abus : il faut autoriser de nouveau.</td></tr>
+    <tr><td>un outil</td><td><code>etat: unavailable</code></td><td>Le module concerné est fermé pour cette exploitation.</td></tr>
+  </tbody>
+</table>
+</div>
+
+<h2 id="limites">Limites</h2>
+<div class="dv-tableau" tabindex="0" role="region" aria-label="Limites de débit">
+<table>
+  <thead><tr><th scope="col">Chemin</th><th scope="col">Requêtes au plus</th><th scope="col">Par</th></tr></thead>
+  <tbody>
+    <tr><td><code>/oauth/register</code></td><td>30</td><td>1 heure</td></tr><tr><td><code>/oauth/token</code></td><td>60</td><td>1 minute</td></tr><tr><td><code>/oauth/authorize</code></td><td>60</td><td>1 minute</td></tr><tr><td><code>/mcp</code></td><td>120</td><td>1 minute</td></tr>
+  </tbody>
+</table>
+</div>
+<ul>
+  <li>Les requêtes sont comptées par jeton quand il y en a un, sinon par adresse IP.</li>
+  <li>Chaque accès dispose de 20 secondes de calcul par
+    1 minute sur Mon Chai ; au-delà, les outils répondent
+    <code>busy</code>.</li>
+  <li>Une application qui insiste malgré 50 refus en
+    1 heure voit son accès <strong>révoqué</strong>.</li>
+  <li>Les listes sont plafonnées et les textes longs tronqués : le connecteur
+    sert des réponses, pas des exports (voir la <a href="outils.html">référence</a>
+    et <a href="exporter.html">Exporter vos données</a>).</li>
+</ul>
+
+
+<h2 id="exemple-python">Exemple complet : lire mes stocks depuis mon appli (Python)</h2>
+<p>Installation : <code>pip install &quot;mcp==2.1.1&quot;</code> — lancement :
+<code>python mes_stocks.py</code>. Le script affiche un lien d'autorisation ;
+ouvrez-le, autorisez, et le résultat s'affiche dans le terminal. Outils
+appelés : <code>contexte_connexion</code>, <code>stock_resume</code>.
+Fichier <code>mes_stocks.py</code>, à copier tel quel :</p>
+<pre tabindex="0" aria-label="Code de mes_stocks.py"><code>&quot;&quot;&quot;Lire mes stocks Mon Chai depuis mon appli — exemple complet en Python.
+
+Ce que fait ce script :
+  1. il se présente à Mon Chai comme une application (enregistrement
+     automatique, rien à créer à la main) ;
+  2. il affiche un lien : ouvrez-le, connectez-vous à Mon Chai, choisissez
+     l&#x27;exploitation et cliquez sur « Autoriser » ;
+  3. Mon Chai renvoie votre navigateur vers ce script (http://127.0.0.1:8765),
+     qui reçoit un accès en LECTURE SEULE à cette seule exploitation ;
+  4. il demande au connecteur le contexte puis le résumé des stocks, et les
+     affiche.
+
+Installation (Python 3.10 ou plus récent) :
+    pip install &quot;mcp==2.1.1&quot;
+Lancement :
+    python mes_stocks.py
+Autre adresse Mon Chai, ou autre port de retour :
+    MON_CHAI_URL=https://… MON_CHAI_PORT_RETOUR=8766 python mes_stocks.py
+
+Les jetons restent en mémoire et disparaissent à la fin du script : chaque
+lancement redemande l&#x27;autorisation. Pour les conserver, lisez la page
+« Sécurité et bonnes pratiques » (jamais dans un fichier en clair).
+&quot;&quot;&quot;
+import asyncio
+import json
+import os
+from http.server import BaseHTTPRequestHandler, HTTPServer
+from urllib.parse import parse_qs, urlparse
+
+import httpx2
+from mcp.client import Client
+from mcp.client.auth import AuthorizationCodeResult, OAuthClientProvider
+from mcp.client.streamable_http import streamable_http_client
+from mcp.shared.auth import OAuthClientInformationFull, OAuthClientMetadata, OAuthToken
+
+MON_CHAI = os.environ.get(&quot;MON_CHAI_URL&quot;, &quot;https://tester.monchai.fr&quot;).rstrip(&quot;/&quot;)
+SERVEUR_MCP = MON_CHAI + &quot;/mcp&quot;
+PORT_RETOUR = int(os.environ.get(&quot;MON_CHAI_PORT_RETOUR&quot;, &quot;8765&quot;))
+ADRESSE_RETOUR = f&quot;http://127.0.0.1:{PORT_RETOUR}/callback&quot;
+
+
+class JetonsEnMemoire:
+    &quot;&quot;&quot;Là où le SDK range l&#x27;inscription de l&#x27;application et les jetons.&quot;&quot;&quot;
+
+    def __init__(self):
+        self.jetons = None
+        self.application = None
+
+    async def get_tokens(self) -&gt; OAuthToken | None:
+        return self.jetons
+
+    async def set_tokens(self, tokens: OAuthToken) -&gt; None:
+        self.jetons = tokens
+
+    async def get_client_info(self) -&gt; OAuthClientInformationFull | None:
+        return self.application
+
+    async def set_client_info(self, client_info: OAuthClientInformationFull) -&gt; None:
+        self.application = client_info
+
+
+class RetourDuNavigateur(BaseHTTPRequestHandler):
+    &quot;&quot;&quot;Reçoit le navigateur que Mon Chai renvoie après « Autoriser ».&quot;&quot;&quot;
+
+    recu: dict = {}
+
+    def do_GET(self):
+        adresse = urlparse(self.path)
+        if adresse.path != &quot;/callback&quot;:
+            self.send_response(404)
+            self.end_headers()
+            return
+        RetourDuNavigateur.recu = {cle: valeurs[0] for cle, valeurs in parse_qs(adresse.query).items()}
+        self.send_response(200)
+        self.send_header(&quot;Content-Type&quot;, &quot;text/plain; charset=utf-8&quot;)
+        self.end_headers()
+        self.wfile.write(&quot;C&#x27;est fait : vous pouvez fermer cet onglet.&quot;.encode(&quot;utf-8&quot;))
+
+    def log_message(self, *args):  # pas de journal HTTP dans la console
+        pass
+
+
+ecoute = None
+
+
+async def afficher_le_lien(adresse: str) -&gt; None:
+    &quot;&quot;&quot;Le SDK a préparé l&#x27;autorisation : on écoute AVANT que la personne clique.&quot;&quot;&quot;
+    global ecoute
+    ecoute = HTTPServer((&quot;127.0.0.1&quot;, PORT_RETOUR), RetourDuNavigateur)
+    print(&quot;Ouvrez ce lien dans votre navigateur, connectez-vous et autorisez l&#x27;accès :&quot;)
+    print(adresse, flush=True)
+
+
+async def attendre_le_retour() -&gt; AuthorizationCodeResult:
+    while not RetourDuNavigateur.recu:
+        await asyncio.to_thread(ecoute.handle_request)
+    ecoute.server_close()
+    recu = RetourDuNavigateur.recu
+    if &quot;code&quot; not in recu:
+        raise SystemExit(&quot;Autorisation refusée ou annulée : &quot; + recu.get(&quot;error&quot;, &quot;raison inconnue&quot;))
+    return AuthorizationCodeResult(code=recu[&quot;code&quot;], state=recu.get(&quot;state&quot;), iss=recu.get(&quot;iss&quot;))
+
+
+def donnees(resultat) -&gt; dict:
+    &quot;&quot;&quot;Le résultat d&#x27;un outil : un dictionnaire, avec toujours un champ `etat`.&quot;&quot;&quot;
+    if resultat.structured_content:
+        return resultat.structured_content
+    return json.loads(resultat.content[0].text)
+
+
+async def main() -&gt; None:
+    oauth = OAuthClientProvider(
+        server_url=SERVEUR_MCP,
+        client_metadata=OAuthClientMetadata(
+            client_name=&quot;Mon appli perso (exemple Python)&quot;,
+            redirect_uris=[ADRESSE_RETOUR],
+            grant_types=[&quot;authorization_code&quot;, &quot;refresh_token&quot;],
+            response_types=[&quot;code&quot;],
+            token_endpoint_auth_method=&quot;none&quot;,
+            scope=&quot;monchai:read&quot;,
+        ),
+        storage=JetonsEnMemoire(),
+        redirect_handler=afficher_le_lien,
+        callback_handler=attendre_le_retour,
+    )
+    async with httpx2.AsyncClient(auth=oauth, timeout=30) as http:
+        async with Client(streamable_http_client(SERVEUR_MCP, http_client=http)) as mon_chai:
+            contexte = donnees(await mon_chai.call_tool(&quot;contexte_connexion&quot;, {}))
+            print(&quot;Exploitation :&quot;, contexte.get(&quot;exploitation&quot;), &quot;— rôle :&quot;, contexte.get(&quot;role&quot;))
+
+            stock = donnees(await mon_chai.call_tool(&quot;stock_resume&quot;, {}))
+            if stock.get(&quot;etat&quot;) != &quot;ok&quot;:
+                print(&quot;Stocks non lisibles :&quot;, stock.get(&quot;etat&quot;), stock.get(&quot;message&quot;, &quot;&quot;))
+                return
+            print(&quot;Bouteilles :&quot;, stock[&quot;bouteilles_total&quot;], &quot;— vrac :&quot;, stock[&quot;vrac_litres&quot;], &quot;L&quot;)
+            for ligne in stock[&quot;par_cuvee&quot;]:
+                print(f&quot;  {ligne[&#x27;cuvee&#x27;]} : {ligne[&#x27;bouteilles&#x27;]} bouteilles&quot;)
+
+
+if __name__ == &quot;__main__&quot;:
+    asyncio.run(main())
+</code></pre>
+
+<h2 id="exemple-typescript">Exemple complet : lister mes impayés (TypeScript)</h2>
+<p>Installation : <code>npm install @modelcontextprotocol/sdk@1.32.1 tsx</code> — lancement :
+<code>npx tsx mes_impayes.ts</code>. Le script affiche un lien d'autorisation ;
+ouvrez-le, autorisez, et le résultat s'affiche dans le terminal. Outils
+appelés : <code>factures_impayees</code>.
+Fichier <code>mes_impayes.ts</code>, à copier tel quel :</p>
+<pre tabindex="0" aria-label="Code de mes_impayes.ts"><code>/**
+ * Lister mes impayés Mon Chai depuis mon appli — exemple complet en TypeScript.
+ *
+ * Ce que fait ce script :
+ *   1. il se présente à Mon Chai comme une application (enregistrement
+ *      automatique, rien à créer à la main) ;
+ *   2. il affiche un lien : ouvrez-le, connectez-vous à Mon Chai, choisissez
+ *      l&#x27;exploitation et cliquez sur « Autoriser » ;
+ *   3. Mon Chai renvoie votre navigateur vers ce script (http://127.0.0.1:8765),
+ *      qui reçoit un accès en LECTURE SEULE à cette seule exploitation ;
+ *   4. il demande au connecteur les factures impayées et les affiche.
+ *
+ * Installation (Node.js 18 ou plus récent) :
+ *   npm install @modelcontextprotocol/sdk@1.32.1 tsx
+ * Lancement :
+ *   npx tsx mes_impayes.ts
+ * Autre adresse Mon Chai, ou autre port de retour :
+ *   MON_CHAI_URL=https://… MON_CHAI_PORT_RETOUR=8766 npx tsx mes_impayes.ts
+ *
+ * Les jetons restent en mémoire et disparaissent à la fin du script : chaque
+ * lancement redemande l&#x27;autorisation. Pour les conserver, lisez la page
+ * « Sécurité et bonnes pratiques » (jamais dans un fichier en clair).
+ */
+import { createServer } from &quot;node:http&quot;;
+import { Client } from &quot;@modelcontextprotocol/sdk/client/index.js&quot;;
+import { StreamableHTTPClientTransport } from &quot;@modelcontextprotocol/sdk/client/streamableHttp.js&quot;;
+import { UnauthorizedError, type OAuthClientProvider } from &quot;@modelcontextprotocol/sdk/client/auth.js&quot;;
+import type {
+  OAuthClientInformationFull,
+  OAuthClientMetadata,
+  OAuthTokens,
+} from &quot;@modelcontextprotocol/sdk/shared/auth.js&quot;;
+
+const MON_CHAI = (process.env.MON_CHAI_URL ?? &quot;https://tester.monchai.fr&quot;).replace(/\/+$/, &quot;&quot;);
+const SERVEUR_MCP = new URL(MON_CHAI + &quot;/mcp&quot;);
+const PORT_RETOUR = Number(process.env.MON_CHAI_PORT_RETOUR ?? &quot;8765&quot;);
+const ADRESSE_RETOUR = `http://127.0.0.1:${PORT_RETOUR}/callback`;
+
+/** Là où le SDK range l&#x27;inscription de l&#x27;application, les jetons et le secret PKCE. */
+class AccesEnMemoire implements OAuthClientProvider {
+  private application?: OAuthClientInformationFull;
+  private jetons?: OAuthTokens;
+  private verifieur = &quot;&quot;;
+
+  get redirectUrl(): string {
+    return ADRESSE_RETOUR;
+  }
+
+  get clientMetadata(): OAuthClientMetadata {
+    return {
+      client_name: &quot;Mon appli perso (exemple TypeScript)&quot;,
+      redirect_uris: [ADRESSE_RETOUR],
+      grant_types: [&quot;authorization_code&quot;, &quot;refresh_token&quot;],
+      response_types: [&quot;code&quot;],
+      token_endpoint_auth_method: &quot;none&quot;,
+      scope: &quot;monchai:read&quot;,
+    };
+  }
+
+  clientInformation() {
+    return this.application;
+  }
+  saveClientInformation(application: OAuthClientInformationFull) {
+    this.application = application;
+  }
+  tokens() {
+    return this.jetons;
+  }
+  saveTokens(jetons: OAuthTokens) {
+    this.jetons = jetons;
+  }
+  redirectToAuthorization(adresse: URL) {
+    console.log(&quot;Ouvrez ce lien dans votre navigateur, connectez-vous et autorisez l&#x27;accès :&quot;);
+    console.log(adresse.href);
+  }
+  saveCodeVerifier(verifieur: string) {
+    this.verifieur = verifieur;
+  }
+  codeVerifier() {
+    return this.verifieur;
+  }
+}
+
+/** Écoute le retour du navigateur ; rend le code d&#x27;autorisation. */
+function attendreLeRetour(): Promise&lt;string&gt; {
+  return new Promise((resolve, reject) =&gt; {
+    const ecoute = createServer((requete, reponse) =&gt; {
+      const adresse = new URL(requete.url ?? &quot;/&quot;, ADRESSE_RETOUR);
+      if (adresse.pathname !== &quot;/callback&quot;) {
+        reponse.writeHead(404).end();
+        return;
+      }
+      reponse.writeHead(200, { &quot;Content-Type&quot;: &quot;text/plain; charset=utf-8&quot; });
+      reponse.end(&quot;C&#x27;est fait : vous pouvez fermer cet onglet.&quot;);
+      ecoute.close();
+      const code = adresse.searchParams.get(&quot;code&quot;);
+      if (code) resolve(code);
+      else reject(new Error(&quot;Autorisation refusée ou annulée : &quot; + (adresse.searchParams.get(&quot;error&quot;) ?? &quot;raison inconnue&quot;)));
+    });
+    ecoute.listen(PORT_RETOUR, &quot;127.0.0.1&quot;);
+  });
+}
+
+/** Le résultat d&#x27;un outil : un objet, avec toujours un champ `etat`. */
+function donnees(resultat: Awaited&lt;ReturnType&lt;Client[&quot;callTool&quot;]&gt;&gt;): any {
+  if (resultat.structuredContent) return resultat.structuredContent;
+  const premier = (resultat.content as Array&lt;{ type: string; text?: string }&gt;)[0];
+  return JSON.parse(premier?.text ?? &quot;{}&quot;);
+}
+
+async function main() {
+  const acces = new AccesEnMemoire();
+  const client = new Client({ name: &quot;mes-impayes&quot;, version: &quot;1.0.0&quot; });
+  const retour = attendreLeRetour(); // on écoute AVANT que la personne clique
+
+  try {
+    await client.connect(new StreamableHTTPClientTransport(SERVEUR_MCP, { authProvider: acces }));
+  } catch (erreur) {
+    if (!(erreur instanceof UnauthorizedError)) throw erreur;
+    // Première fois : Mon Chai demande l&#x27;autorisation de la personne.
+    const transport = new StreamableHTTPClientTransport(SERVEUR_MCP, { authProvider: acces });
+    await transport.finishAuth(await retour);
+    await client.connect(new StreamableHTTPClientTransport(SERVEUR_MCP, { authProvider: acces }));
+  }
+
+  const impayes = donnees(await client.callTool({ name: &quot;factures_impayees&quot;, arguments: {} }));
+  if (impayes.etat === &quot;empty&quot;) {
+    console.log(&quot;Aucune facture impayée.&quot;);
+  } else if (impayes.etat !== &quot;ok&quot;) {
+    console.log(&quot;Factures non lisibles :&quot;, impayes.etat, impayes.message ?? &quot;&quot;);
+  } else {
+    console.log(`${impayes.nombre} facture(s) impayée(s), ${impayes.nombre_echues} échue(s) — total dû : ${impayes.montant_du_total} €`);
+    for (const facture of impayes.factures) {
+      console.log(`  ${facture.numero}  ${facture.client}  reste dû ${facture.reste_du} €  échéance ${facture.date_echeance ?? &quot;—&quot;}`);
+    }
+  }
+  await client.close();
+  process.exit(0);
+}
+
+main().catch((erreur) =&gt; {
+  console.error(erreur);
+  process.exit(1);
+});
+</code></pre>
+
+<p>Ces deux fichiers sont ceux que Mon Chai exécute contre un connecteur réel
+pour vérifier cette page. Versions testées : <code>mcp</code> 2.1.1 (Python) et
+<code>@modelcontextprotocol/sdk</code> 1.32.1 (TypeScript).</p>
+
+    </main>
+  </div>
+
+  <footer class="dv-pied">
+    <div class="dv-pied__barre">
+      <span>Mon Chai — logiciel de gestion viticole, développé et hébergé en France.</span>
+      <span>Une question : <a href="mailto:contact@monchai.fr">contact@monchai.fr</a> · <a href="contact.html">Contact et support</a></span>
+    </div>
+  </footer>
+</body>
+</html>

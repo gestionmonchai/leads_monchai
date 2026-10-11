@@ -1,0 +1,871 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Importer vos données — Documentation développeurs Mon Chai</title>
+  <meta name="description" content="Les fichiers CSV que Mon Chai sait importer : colonnes, formats, limites et modèles à télécharger.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://monchai.fr/developpeurs/importer.html">
+  <meta name="theme-color" content="#7B1E22">
+  
+  <link rel="stylesheet" href="developpeurs.css">
+</head>
+<body>
+  <a class="dv-evitement" href="#contenu">Aller au contenu</a>
+
+  <header class="dv-entete">
+    <div class="dv-entete__barre">
+      <a class="dv-marque" href="index.html">
+        <img src="logo_monchai.png" alt="Mon Chai" width="72" height="36">
+        <span>Développeurs</span>
+      </a>
+      <a class="dv-entete__retour" href="https://tester.monchai.fr/">Aller sur Mon Chai</a>
+    </div>
+  </header>
+
+  <div class="dv-grille">
+    <nav class="dv-sommaire" aria-label="Sommaire de la documentation">
+      <h2>Documentation</h2>
+      <ol>
+        
+        <li><a href="index.html">Démarrer</a></li>
+        
+        <li><a href="connecteur.html">Connecteur (MCP + OAuth 2.1)</a></li>
+        
+        <li><a href="outils.html">Référence des outils</a></li>
+        
+        <li><a href="api-rest.html">API REST v1</a></li>
+        
+        <li><a href="importer.html" aria-current="page">Importer vos données</a></li>
+        
+        <li><a href="exporter.html">Exporter vos données</a></li>
+        
+        <li><a href="modele-metier.html">Modèle métier</a></li>
+        
+        <li><a href="securite.html">Sécurité et bonnes pratiques</a></li>
+        
+        <li><a href="feuille-de-route.html">Feuille de route</a></li>
+        
+        <li><a href="contact.html">Contact et support</a></li>
+        
+      </ol>
+    </nav>
+
+    <main id="contenu" class="dv-contenu" tabindex="-1">
+      <h1>Importer vos données</h1>
+      <p class="dv-chapo">Les fichiers CSV que Mon Chai sait importer : colonnes, formats, limites et modèles à télécharger.</p>
+      
+<p>Pour <strong>envoyer</strong> des données à Mon Chai, votre application
+produit un fichier CSV ; une personne de l'exploitation le dépose dans
+<a href="https://tester.monchai.fr/referentiels/import/">Référentiels › Importer des données</a> (ou dans
+<a href="https://tester.monchai.fr/referentiels/import/mes-donnees/">Mes données</a>, qui reconnaît le type du
+fichier). Mon Chai lit tout le fichier, montre ce qu'il va créer et modifier,
+et n'écrit rien avant la confirmation. Il n'existe pas d'import par programme.</p>
+
+<div class="dv-encadre">
+  <p>Les colonnes, formats et modèles ci-dessous sont <strong>engendrés depuis
+  le moteur d'import</strong> de Mon Chai : ce sont exactement ceux qu'il
+  accepte. L'import peut être réservé à certains rôles et le module fermé pour
+  une exploitation : dans ce cas, l'écran d'import le dit.</p>
+</div>
+
+<h2 id="contrat">Le format commun à tous les fichiers</h2>
+<ul>
+  <li>Extension <code>.csv</code> uniquement (pas d'Excel, de PDF ni d'archive,
+    quel que soit le nom du fichier).</li>
+  <li>Encodage <strong>UTF-8</strong>, avec ou sans BOM ; séparateur
+    <strong><code>;</code></strong> (point-virgule) ;
+    guillemet <code>&quot;</code> pour une cellule qui contient
+    un point-virgule ou un retour à la ligne.</li>
+  <li>Première ligne : les <strong>noms de colonnes</strong> ci-dessous, non vides
+    et sans doublon ; l'ordre est libre, les colonnes facultatives peuvent
+    manquer. Mon Chai propose une correspondance pour les noms proches
+    (« alias »), que la personne confirme.</li>
+  <li>Dates <code>AAAA-MM-JJ</code> ; nombres décimaux avec un
+    <strong>point</strong> (<code>2.50</code>) ; vrai/faux : <code>true</code> ou
+    <code>false</code> ; espaces en début et fin de cellule ignorés ; lignes
+    entièrement vides ignorées.</li>
+  <li>Limites : 2048 Ko, 1000 lignes de
+    données, 30 colonnes, 300
+    caractères par cellule.</li>
+</ul>
+<p>« Mes données » accepte aussi les fichiers tels qu'Excel ou Google Sheets les
+enregistrent : encodages UTF-8, Windows-1252 (Excel), Mac OS Roman (ancien Excel sur Mac) ;
+séparateurs « ; » (point-virgule), « ⇥ » (tabulation), « , » (virgule), « | » (barre verticale). La lecture
+détectée est affichée et doit être confirmée ; le fichier est ensuite converti
+au format commun. Votre application a tout intérêt à produire directement de
+l'UTF-8 avec des points-virgules.</p>
+
+<h3 id="rapprochement">Créer ou mettre à jour</h3>
+<p>Chaque type a une <strong>clé de rapprochement</strong> (colonnes marquées
+« clé ») : une ligne dont la clé désigne un élément existant le met à jour,
+sinon elle en crée un. Une cellule vide ne modifie rien. Les colonnes
+« obligatoire » le sont à la création. Les identifiants internes de Mon Chai
+ne s'importent jamais.</p>
+
+<h3 id="refus">Fichier refusé : les raisons possibles</h3>
+<p>Extension autre que <code>.csv</code> ; contenu binaire (tableur, PDF,
+image) ; encodage autre que UTF-8 ; fichier vide ou sans ligne de données ;
+séparateur autre que le point-virgule ; en-tête vide ou en double ; trop de
+lignes, de colonnes ou de caractères. Une ligne invalide est signalée avec son
+numéro et la correction à faire, dans un rapport téléchargeable ; les autres
+lignes ne sont écrites qu'après votre confirmation.</p>
+
+<h2 id="types">Les types importables</h2>
+<ul>
+  <li><a href="#type-cepage">Cépages</a></li><li><a href="#type-appellation">Appellations</a></li><li><a href="#type-parcelle">Parcelles</a></li><li><a href="#type-unite">Unités</a></li><li><a href="#type-entrepot">Entrepôts</a></li><li><a href="#type-cuvee">Cuvées</a></li><li><a href="#type-client">Clients</a></li><li><a href="#type-produit">Produits</a></li><li><a href="#type-tarif">Lignes de grille tarifaire</a></li>
+</ul>
+
+
+
+<h3 id="type-cepage">Cépages <span class="dv-etiquette">Référentiels</span></h3>
+<p>Constituer la liste des cépages de votre exploitation, utilisée par l&#x27;encépagement des parcelles et les lots de chai.</p>
+
+<p>Clé de rapprochement : le code FAM/Douanes (colonne « code ») s&#x27;il est renseigné, sinon le nom normalisé (unique dans votre organisation).</p>
+<div class="dv-tableau" tabindex="0" role="region" aria-label="Colonnes du type Cépages">
+<table>
+  <thead><tr><th scope="col">Colonne</th><th scope="col">Contenu</th><th scope="col">Format</th><th scope="col">Exemple</th></tr></thead>
+  <tbody>
+  
+    <tr>
+      <td><code>nom</code> <span class="dv-etiquette">obligatoire</span> <span class="dv-etiquette">clé</span></td>
+      <td>Nom du cépage<br><small>Alias reconnus : name, libelle, libellé, cepage, cépage</small></td>
+      <td>Texte — 100 caractères au plus</td>
+      <td><code>Chenin</code></td>
+    </tr>
+  
+    <tr>
+      <td><code>code</code> <span class="dv-etiquette">clé</span></td>
+      <td>Code FAM/Douanes<br><small>Code officiel court ; sert de clé s&#x27;il est renseigné.</small><br><small>Alias reconnus : code_officiel, ref, reference, référence</small></td>
+      <td>Texte — 10 caractères au plus</td>
+      <td><code>08</code></td>
+    </tr>
+  
+    <tr>
+      <td><code>couleur</code></td>
+      <td>Couleur de la peau<br><small>Alias reconnus : color</small></td>
+      <td>Valeur imposée<br>Valeurs : <code>noir</code>, <code>rouge</code>, <code>blanc</code>, <code>gris</code>, <code>rose</code>, <code>teinturier</code></td>
+      <td><code>blanc</code></td>
+    </tr>
+  
+    <tr>
+      <td><code>notes</code></td>
+      <td>Notes<br><small>Alias reconnus : commentaire, commentaires, comments</small></td>
+      <td>Texte long</td>
+      <td><code>Sélection massale</code></td>
+    </tr>
+  
+  </tbody>
+</table>
+</div>
+<p><strong>À créer avant :</strong> Aucune. Pour les cépages officiels, préférez le choix depuis le catalogue interne (Référentiels &gt; Cépages), plus complet.</p>
+<p><strong>Ne s'importe pas :</strong> Les fiches détaillées du catalogue national (phénologie, sensibilités, aptitudes) : elles proviennent du référentiel officiel.</p>
+<p>Modèle (version <code>v1</code>) :
+<a href="modeles/modele_import_cepage_v1.csv" download>télécharger modele_import_cepage_v1.csv</a></p>
+<pre tabindex="0" aria-label="Contenu du modèle modele_import_cepage_v1.csv"><code>nom;code;couleur;notes
+Chenin;08;blanc;
+</code></pre>
+
+<details>
+  <summary>Erreurs fréquentes</summary>
+  <ul><li>« Couleur invalide » : Utilisez l&#x27;une des valeurs autorisées : noir, rouge, blanc, gris, rose ou teinturier.</li><li>« Le code désigne un autre cépage » : Le code et le nom de la ligne pointent deux fiches différentes : corrigez l&#x27;un des deux.</li></ul>
+</details>
+
+
+<h3 id="type-appellation">Appellations <span class="dv-etiquette">Référentiels</span></h3>
+<p>Déclarer les appellations que vous produisez, utilisées par les cuvées, les parcelles et vos déclarations douanières.</p>
+
+<p>Clé de rapprochement : le code INAO (colonne « code_inao »), obligatoire. Une correspondance par le nom seul est refusée.</p>
+<div class="dv-tableau" tabindex="0" role="region" aria-label="Colonnes du type Appellations">
+<table>
+  <thead><tr><th scope="col">Colonne</th><th scope="col">Contenu</th><th scope="col">Format</th><th scope="col">Exemple</th></tr></thead>
+  <tbody>
+  
+    <tr>
+      <td><code>code_inao</code> <span class="dv-etiquette">obligatoire</span> <span class="dv-etiquette">clé</span></td>
+      <td>Code INAO<br><small>Code officiel INAO/Douanes ; clé obligatoire.</small><br><small>Alias reconnus : code inao, inao, code</small></td>
+      <td>Texte — 20 caractères au plus</td>
+      <td><code>1B341S</code></td>
+    </tr>
+  
+    <tr>
+      <td><code>nom</code> <span class="dv-etiquette">obligatoire</span></td>
+      <td>Nom de l&#x27;appellation<br><small>Alias reconnus : name, libelle, libellé, appellation</small></td>
+      <td>Texte — 200 caractères au plus</td>
+      <td><code>Vouvray</code></td>
+    </tr>
+  
+    <tr>
+      <td><code>type_appellation</code></td>
+      <td>Type<br><small>Alias reconnus : type</small></td>
+      <td>Valeur imposée<br>Valeurs : <code>aop</code>, <code>igp</code>, <code>vsig</code></td>
+      <td><code>aop</code></td>
+    </tr>
+  
+    <tr>
+      <td><code>region</code></td>
+      <td>Région viticole<br><small>Alias reconnus : région</small></td>
+      <td>Valeur imposée<br>Valeurs : <code>alsace</code>, <code>beaujolais</code>, <code>bordeaux</code>, <code>bourgogne</code>, <code>champagne</code>, <code>corse</code>, <code>jura</code>, <code>languedoc</code>, <code>loire</code>, <code>provence</code>, <code>roussillon</code>, <code>rhone</code>, <code>savoie</code>, <code>sud_ouest</code>, <code>autre</code></td>
+      <td><code>loire</code></td>
+    </tr>
+  
+    <tr>
+      <td><code>rendement_max_hl_ha</code></td>
+      <td>Rendement maximal (hl/ha)<br><small>Alias reconnus : rendement, rendement_max</small></td>
+      <td>Nombre décimal — au moins 0, au plus 500, point décimal (2.50)</td>
+      <td><code>52</code></td>
+    </tr>
+  
+    <tr>
+      <td><code>notes</code></td>
+      <td>Notes<br><small>Alias reconnus : commentaire, commentaires</small></td>
+      <td>Texte long</td>
+      <td></td>
+    </tr>
+  
+  </tbody>
+</table>
+</div>
+<p><strong>À créer avant :</strong> Aucune. Le choix depuis le référentiel INAO intégré (Référentiels &gt; Appellations) reste le parcours recommandé.</p>
+<p><strong>Ne s'importe pas :</strong> Les codes NC/CVI et les règles d&#x27;assemblage officiels : ils proviennent du référentiel INAO.</p>
+<p>Modèle (version <code>v1</code>) :
+<a href="modeles/modele_import_appellation_v1.csv" download>télécharger modele_import_appellation_v1.csv</a></p>
+<pre tabindex="0" aria-label="Contenu du modèle modele_import_appellation_v1.csv"><code>code_inao;nom;type_appellation;region;rendement_max_hl_ha;notes
+1B341S;Vouvray;aop;loire;52;
+</code></pre>
+
+<details>
+  <summary>Erreurs fréquentes</summary>
+  <ul><li>« Une appellation de ce nom existe déjà sans ce code INAO » : Renseignez le code INAO sur sa fiche, puis relancez l&#x27;import : aucun rapprochement par le nom seul n&#x27;est fait.</li><li>« Plusieurs appellations portent ce code INAO » : Corrigez les doublons depuis les fiches avant d&#x27;importer.</li></ul>
+</details>
+
+
+<h3 id="type-parcelle">Parcelles <span class="dv-etiquette">Référentiels</span></h3>
+<p>Créer et mettre à jour vos parcelles : surface, localisation et référence cadastrale.</p>
+
+<p>Clé de rapprochement : la référence Mon Chai de la parcelle (colonne « reference », visible sur la fiche parcelle), sinon la référence cadastrale complète (commune + section + numéro). Le nom seul ne permet jamais de mettre à jour une parcelle.</p>
+<div class="dv-tableau" tabindex="0" role="region" aria-label="Colonnes du type Parcelles">
+<table>
+  <thead><tr><th scope="col">Colonne</th><th scope="col">Contenu</th><th scope="col">Format</th><th scope="col">Exemple</th></tr></thead>
+  <tbody>
+  
+    <tr>
+      <td><code>reference</code> <span class="dv-etiquette">clé</span></td>
+      <td>Référence Mon Chai<br><small>Identifiant stable fourni par Mon Chai ; laisser vide pour une nouvelle parcelle.</small><br><small>Alias reconnus : référence, ref, public_uid</small></td>
+      <td>Texte — 12 caractères au plus</td>
+      <td></td>
+    </tr>
+  
+    <tr>
+      <td><code>nom</code> <span class="dv-etiquette">obligatoire</span></td>
+      <td>Nom de la parcelle<br><small>Alias reconnus : name, libelle, libellé</small></td>
+      <td>Texte — 100 caractères au plus</td>
+      <td><code>Les Perruches</code></td>
+    </tr>
+  
+    <tr>
+      <td><code>surface</code> <span class="dv-etiquette">obligatoire</span></td>
+      <td>Surface (ha)<br><small>Alias reconnus : surface_ha, ha, hectares</small></td>
+      <td>Nombre décimal — au moins 0.01, au plus 999999.99, point décimal (2.50)</td>
+      <td><code>2.50</code></td>
+    </tr>
+  
+    <tr>
+      <td><code>commune</code></td>
+      <td>Commune<br><small>Alias reconnus : ville, city</small></td>
+      <td>Texte — 100 caractères au plus</td>
+      <td><code>Vouvray</code></td>
+    </tr>
+  
+    <tr>
+      <td><code>lieu_dit</code></td>
+      <td>Lieu-dit<br><small>Alias reconnus : lieu dit, lieudit</small></td>
+      <td>Texte — 200 caractères au plus</td>
+      <td><code>Les Perruches</code></td>
+    </tr>
+  
+    <tr>
+      <td><code>cadastre_commune_code</code></td>
+      <td>Code INSEE commune<br><small>Alias reconnus : code_insee, insee</small></td>
+      <td>Texte — 10 caractères au plus</td>
+      <td><code>37281</code></td>
+    </tr>
+  
+    <tr>
+      <td><code>cadastre_prefixe</code></td>
+      <td>Préfixe cadastral<br><small>Alias reconnus : prefixe, préfixe</small></td>
+      <td>Texte — 5 caractères au plus</td>
+      <td><code>000</code></td>
+    </tr>
+  
+    <tr>
+      <td><code>cadastre_section</code></td>
+      <td>Section cadastrale<br><small>Alias reconnus : section</small></td>
+      <td>Texte — 10 caractères au plus</td>
+      <td><code>AB</code></td>
+    </tr>
+  
+    <tr>
+      <td><code>cadastre_numero</code></td>
+      <td>Numéro cadastral<br><small>Alias reconnus : numero, numéro</small></td>
+      <td>Texte — 20 caractères au plus</td>
+      <td><code>0123</code></td>
+    </tr>
+  
+    <tr>
+      <td><code>notes</code></td>
+      <td>Notes<br><small>Alias reconnus : commentaire, commentaires</small></td>
+      <td>Texte long</td>
+      <td></td>
+    </tr>
+  
+  </tbody>
+</table>
+</div>
+<p><strong>À créer avant :</strong> Aucune. L&#x27;encépagement, la plantation et les opérations se renseignent depuis la fiche parcelle.</p>
+<p><strong>Ne s'importe pas :</strong> Encépagement, plantation, contours géographiques et journal cultural : ils se saisissent depuis la fiche parcelle. L&#x27;archivage : une parcelle absente du fichier n&#x27;est jamais archivée.</p>
+<p>Modèle (version <code>v1</code>) :
+<a href="modeles/modele_import_parcelle_v1.csv" download>télécharger modele_import_parcelle_v1.csv</a></p>
+<pre tabindex="0" aria-label="Contenu du modèle modele_import_parcelle_v1.csv"><code>reference;nom;surface;commune;lieu_dit;cadastre_commune_code;cadastre_prefixe;cadastre_section;cadastre_numero;notes
+;Les Perruches;2.50;Vouvray;Les Perruches;37281;000;AB;0123;
+</code></pre>
+
+<details>
+  <summary>Erreurs fréquentes</summary>
+  <ul><li>« Une parcelle de ce nom existe déjà » : Le nom seul ne met jamais à jour : renseignez la référence Mon Chai ou la référence cadastrale complète.</li><li>« La référence ne correspond à aucune parcelle » : La référence est attribuée par Mon Chai : laissez la colonne vide pour créer une nouvelle parcelle.</li><li>« Surface invalide » : La surface est en hectares, avec un point décimal, et doit être supérieure à 0 (ex. 2.50).</li></ul>
+</details>
+
+
+<h3 id="type-unite">Unités <span class="dv-etiquette">Référentiels</span></h3>
+<p>Déclarer vos unités de mesure et de conditionnement, utilisées par les stocks, les achats et les ventes.</p>
+
+<p>Clé de rapprochement : le nom normalisé de l&#x27;unité (unique dans votre organisation).</p>
+<div class="dv-tableau" tabindex="0" role="region" aria-label="Colonnes du type Unités">
+<table>
+  <thead><tr><th scope="col">Colonne</th><th scope="col">Contenu</th><th scope="col">Format</th><th scope="col">Exemple</th></tr></thead>
+  <tbody>
+  
+    <tr>
+      <td><code>nom</code> <span class="dv-etiquette">obligatoire</span> <span class="dv-etiquette">clé</span></td>
+      <td>Nom de l&#x27;unité<br><small>Alias reconnus : name, libelle, libellé, unite, unité</small></td>
+      <td>Texte — 50 caractères au plus</td>
+      <td><code>Bouteille 75 cl</code></td>
+    </tr>
+  
+    <tr>
+      <td><code>symbole</code> <span class="dv-etiquette">obligatoire</span></td>
+      <td>Symbole<br><small>Alias reconnus : symbol, code</small></td>
+      <td>Texte — 10 caractères au plus</td>
+      <td><code>btl</code></td>
+    </tr>
+  
+    <tr>
+      <td><code>type_unite</code></td>
+      <td>Type d&#x27;unité<br><small>Alias reconnus : type</small></td>
+      <td>Valeur imposée<br>Valeurs : <code>volume</code>, <code>poids</code>, <code>surface</code>, <code>quantite</code></td>
+      <td><code>volume</code></td>
+    </tr>
+  
+    <tr>
+      <td><code>facteur_conversion</code></td>
+      <td>Facteur de conversion<br><small>Alias reconnus : facteur, conversion</small></td>
+      <td>Nombre décimal — au moins 0.0001, au plus 999999, point décimal (2.50)</td>
+      <td><code>0.75</code></td>
+    </tr>
+  
+  </tbody>
+</table>
+</div>
+<p><strong>À créer avant :</strong> Aucune.</p>
+<p><strong>Ne s'importe pas :</strong> Les stocks et les quantités : ils proviennent de vos mouvements.</p>
+<p>Modèle (version <code>v1</code>) :
+<a href="modeles/modele_import_unite_v1.csv" download>télécharger modele_import_unite_v1.csv</a></p>
+<pre tabindex="0" aria-label="Contenu du modèle modele_import_unite_v1.csv"><code>nom;symbole;type_unite;facteur_conversion
+Bouteille 75 cl;btl;volume;0.75
+</code></pre>
+
+<details>
+  <summary>Erreurs fréquentes</summary>
+  <ul><li>« Symbole requis » : Le symbole est obligatoire à la création (ex. btl, L, kg).</li><li>« Facteur de conversion invalide » : Le facteur doit être un nombre strictement positif, avec un point décimal (ex. 0.75).</li></ul>
+</details>
+
+
+<h3 id="type-entrepot">Entrepôts <span class="dv-etiquette">Référentiels</span></h3>
+<p>Déclarer vos sites de stockage : chais, dépôts, caves et boutiques.</p>
+
+<p>Clé de rapprochement : le nom normalisé de l&#x27;entrepôt (unique dans votre organisation). Les champs fiscaux (accises, agréments) ne sont pas importables.</p>
+<div class="dv-tableau" tabindex="0" role="region" aria-label="Colonnes du type Entrepôts">
+<table>
+  <thead><tr><th scope="col">Colonne</th><th scope="col">Contenu</th><th scope="col">Format</th><th scope="col">Exemple</th></tr></thead>
+  <tbody>
+  
+    <tr>
+      <td><code>nom</code> <span class="dv-etiquette">obligatoire</span> <span class="dv-etiquette">clé</span></td>
+      <td>Nom de l&#x27;entrepôt<br><small>Alias reconnus : name, libelle, libellé, entrepot, entrepôt</small></td>
+      <td>Texte — 100 caractères au plus</td>
+      <td><code>Chai principal</code></td>
+    </tr>
+  
+    <tr>
+      <td><code>type_entrepot</code> <span class="dv-etiquette">obligatoire</span></td>
+      <td>Type d&#x27;entrepôt<br><small>Alias reconnus : type</small></td>
+      <td>Valeur imposée<br>Valeurs : <code>chai</code>, <code>depot</code>, <code>boutique</code>, <code>cave</code>, <code>autre</code></td>
+      <td><code>chai</code></td>
+    </tr>
+  
+    <tr>
+      <td><code>adresse</code></td>
+      <td>Adresse</td>
+      <td>Texte long</td>
+      <td><code>12 route des Vignes, 37210 Vouvray</code></td>
+    </tr>
+  
+    <tr>
+      <td><code>capacite</code></td>
+      <td>Capacité (nombre de contenants)<br><small>Alias reconnus : capacité</small></td>
+      <td>Nombre entier — au moins 0, au plus 100000000, sans décimale (1200)</td>
+      <td><code>1200</code></td>
+    </tr>
+  
+    <tr>
+      <td><code>temperature_min</code></td>
+      <td>Température minimale (°C)<br><small>Alias reconnus : température_min</small></td>
+      <td>Nombre décimal — au moins -50, au plus 60, point décimal (2.50)</td>
+      <td><code>10</code></td>
+    </tr>
+  
+    <tr>
+      <td><code>temperature_max</code></td>
+      <td>Température maximale (°C)<br><small>Alias reconnus : température_max</small></td>
+      <td>Nombre décimal — au moins -50, au plus 60, point décimal (2.50)</td>
+      <td><code>14</code></td>
+    </tr>
+  
+    <tr>
+      <td><code>notes</code></td>
+      <td>Notes<br><small>Alias reconnus : commentaire, commentaires</small></td>
+      <td>Texte long</td>
+      <td></td>
+    </tr>
+  
+  </tbody>
+</table>
+</div>
+<p><strong>À créer avant :</strong> Aucune.</p>
+<p><strong>Ne s'importe pas :</strong> Les informations fiscales (statut et numéro d&#x27;accises, bureau de douane, agréments, lieu de comptabilité matières) : elles se renseignent sur la fiche du site. Les stocks présents sur le site.</p>
+<p>Modèle (version <code>v1</code>) :
+<a href="modeles/modele_import_entrepot_v1.csv" download>télécharger modele_import_entrepot_v1.csv</a></p>
+<pre tabindex="0" aria-label="Contenu du modèle modele_import_entrepot_v1.csv"><code>nom;type_entrepot;adresse;capacite;temperature_min;temperature_max;notes
+Chai principal;chai;12 route des Vignes, 37210 Vouvray;1200;10;14;
+</code></pre>
+
+<details>
+  <summary>Erreurs fréquentes</summary>
+  <ul><li>« Type d&#x27;entrepôt invalide » : Utilisez l&#x27;une des valeurs : chai, depot, boutique, cave ou autre.</li><li>« Capacité invalide » : La capacité est un nombre entier de contenants, sans décimale.</li></ul>
+</details>
+
+
+<h3 id="type-cuvee">Cuvées <span class="dv-etiquette">Référentiels</span></h3>
+<p>Décrire vos cuvées : couleur, appellation, encépagement et éléments de dégustation.</p>
+
+<p>Clé de rapprochement : le nom normalisé de la cuvée (unique dans votre organisation). L&#x27;appellation et les cépages doivent exister dans votre organisation ; la classification est déduite de l&#x27;appellation lorsqu&#x27;elle est fournie.</p>
+<div class="dv-tableau" tabindex="0" role="region" aria-label="Colonnes du type Cuvées">
+<table>
+  <thead><tr><th scope="col">Colonne</th><th scope="col">Contenu</th><th scope="col">Format</th><th scope="col">Exemple</th></tr></thead>
+  <tbody>
+  
+    <tr>
+      <td><code>nom</code> <span class="dv-etiquette">obligatoire</span> <span class="dv-etiquette">clé</span></td>
+      <td>Nom de la cuvée<br><small>Alias reconnus : name, libelle, libellé</small></td>
+      <td>Texte — 100 caractères au plus</td>
+      <td><code>Les Silex</code></td>
+    </tr>
+  
+    <tr>
+      <td><code>couleur</code> <span class="dv-etiquette">obligatoire</span></td>
+      <td>Couleur<br><small>Alias reconnus : color</small></td>
+      <td>Valeur imposée<br>Valeurs : <code>rouge</code>, <code>blanc</code>, <code>rose</code>, <code>effervescent</code></td>
+      <td><code>blanc</code></td>
+    </tr>
+  
+    <tr>
+      <td><code>classification</code></td>
+      <td>Classification<br><small>Déduite de l&#x27;appellation si celle-ci est fournie.</small></td>
+      <td>Valeur imposée<br>Valeurs : <code>aoc</code>, <code>igp</code>, <code>vsig</code></td>
+      <td><code>aoc</code></td>
+    </tr>
+  
+    <tr>
+      <td><code>appellation</code></td>
+      <td>Appellation<br><small>Nom d&#x27;une appellation existante de votre organisation.</small><br><small>Alias reconnus : aoc, igp, appellation_nom</small></td>
+      <td>Nom d&#x27;un élément existant — 200 caractères au plus</td>
+      <td><code>Vouvray</code></td>
+    </tr>
+  
+    <tr>
+      <td><code>cepages</code></td>
+      <td>Cépages<br><small>Noms de cépages existants, séparés par « | ».</small><br><small>Alias reconnus : cépages, encepagement, encépagement</small></td>
+      <td>Noms d&#x27;éléments existants — 300 caractères au plus, séparés par « | »</td>
+      <td><code>Chenin</code></td>
+    </tr>
+  
+    <tr>
+      <td><code>description</code></td>
+      <td>Description</td>
+      <td>Texte long</td>
+      <td></td>
+    </tr>
+  
+    <tr>
+      <td><code>notes_degustation</code></td>
+      <td>Notes de dégustation<br><small>Alias reconnus : notes, degustation, dégustation</small></td>
+      <td>Texte long</td>
+      <td></td>
+    </tr>
+  
+  </tbody>
+</table>
+</div>
+<p><strong>À créer avant :</strong> L&#x27;appellation doit exister dans Référentiels &gt; Appellations. Les cépages cités doivent exister dans Référentiels &gt; Cépages.</p>
+<p><strong>Ne s'importe pas :</strong> Les lots de chai, volumes et analyses : ils proviennent de la production. Le code INAO : il est hérité de l&#x27;appellation.</p>
+<p>Modèle (version <code>v1</code>) :
+<a href="modeles/modele_import_cuvee_v1.csv" download>télécharger modele_import_cuvee_v1.csv</a></p>
+<pre tabindex="0" aria-label="Contenu du modèle modele_import_cuvee_v1.csv"><code>nom;couleur;classification;appellation;cepages;description;notes_degustation
+Les Silex;blanc;aoc;Vouvray;Chenin;;
+</code></pre>
+
+<details>
+  <summary>Erreurs fréquentes</summary>
+  <ul><li>« Appellation introuvable » : Créez d&#x27;abord l&#x27;appellation, puis relancez l&#x27;import.</li><li>« Cépage introuvable » : Créez d&#x27;abord le cépage : l&#x27;import ne crée jamais de cépage.</li><li>« Renseignez la classification ou une appellation » : À la création, la classification est déduite de l&#x27;appellation ; sans appellation, indiquez aoc, igp ou vsig.</li></ul>
+</details>
+
+
+
+
+<h3 id="type-client">Clients <span class="dv-etiquette">Clients</span></h3>
+<p>Créer et mettre à jour la fiche de vos clients : identité, coordonnées, identifiants légaux et adresse de facturation.</p>
+
+<p>Le rapprochement suit un ordre de priorité strict : référence Mon Chai, puis référence externe, puis SIRET, puis e-mail. La première clé renseignée décide. Le nom ou la raison sociale seuls ne mettent jamais à jour un client.</p>
+<div class="dv-tableau" tabindex="0" role="region" aria-label="Colonnes du type Clients">
+<table>
+  <thead><tr><th scope="col">Colonne</th><th scope="col">Contenu</th><th scope="col">Format</th><th scope="col">Exemple</th></tr></thead>
+  <tbody>
+  
+    <tr>
+      <td><code>reference</code> <span class="dv-etiquette">clé</span></td>
+      <td>Référence Mon Chai<br><small>Laisser vide pour un nouveau client.</small><br><small>Alias reconnus : code, code_client, référence</small></td>
+      <td>Texte — 20 caractères au plus</td>
+      <td></td>
+    </tr>
+  
+    <tr>
+      <td><code>reference_externe</code> <span class="dv-etiquette">clé</span></td>
+      <td>Référence externe<br><small>Votre identifiant client d&#x27;origine.</small><br><small>Alias reconnus : internal_ref, ref_externe, reference_client</small></td>
+      <td>Texte — 50 caractères au plus</td>
+      <td><code>CLI-2024-018</code></td>
+    </tr>
+  
+    <tr>
+      <td><code>nom</code> <span class="dv-etiquette">obligatoire</span></td>
+      <td>Raison sociale ou nom<br><small>Alias reconnus : name, raison_sociale, client, libelle</small></td>
+      <td>Texte — 200 caractères au plus</td>
+      <td><code>Cave des Coteaux</code></td>
+    </tr>
+  
+    <tr>
+      <td><code>type</code></td>
+      <td>Type de client<br><small>company = personne morale, individual = particulier.</small><br><small>Alias reconnus : partner_type, type_client</small></td>
+      <td>Valeur imposée<br>Valeurs : <code>company</code>, <code>individual</code></td>
+      <td><code>company</code></td>
+    </tr>
+  
+    <tr>
+      <td><code>prenom</code></td>
+      <td>Prénom<br><small>Pour un particulier.</small><br><small>Alias reconnus : first_name</small></td>
+      <td>Texte — 100 caractères au plus</td>
+      <td></td>
+    </tr>
+  
+    <tr>
+      <td><code>siret</code> <span class="dv-etiquette">clé</span></td>
+      <td>SIRET<br><small>14 chiffres ; les espaces sont ignorés.</small></td>
+      <td>Texte — 20 caractères au plus</td>
+      <td><code>12345678901234</code></td>
+    </tr>
+  
+    <tr>
+      <td><code>email</code> <span class="dv-etiquette">clé</span></td>
+      <td>E-mail<br><small>Alias reconnus : mail, courriel</small></td>
+      <td>Texte — 254 caractères au plus</td>
+      <td><code>contact@example.com</code></td>
+    </tr>
+  
+    <tr>
+      <td><code>telephone</code></td>
+      <td>Téléphone<br><small>Alias reconnus : phone, tel</small></td>
+      <td>Texte — 30 caractères au plus</td>
+      <td><code>0247000000</code></td>
+    </tr>
+  
+    <tr>
+      <td><code>mobile</code></td>
+      <td>Mobile</td>
+      <td>Texte — 30 caractères au plus</td>
+      <td></td>
+    </tr>
+  
+    <tr>
+      <td><code>tva_intracom</code></td>
+      <td>N° TVA intracommunautaire<br><small>Alias reconnus : vat_number, tva</small></td>
+      <td>Texte — 20 caractères au plus</td>
+      <td></td>
+    </tr>
+  
+    <tr>
+      <td><code>adresse</code></td>
+      <td>Adresse<br><small>Alias reconnus : rue, street</small></td>
+      <td>Texte — 200 caractères au plus</td>
+      <td><code>12 route des Vignes</code></td>
+    </tr>
+  
+    <tr>
+      <td><code>complement_adresse</code></td>
+      <td>Complément d&#x27;adresse<br><small>Alias reconnus : street2</small></td>
+      <td>Texte — 200 caractères au plus</td>
+      <td></td>
+    </tr>
+  
+    <tr>
+      <td><code>code_postal</code></td>
+      <td>Code postal<br><small>Alias reconnus : cp, postal_code</small></td>
+      <td>Texte — 20 caractères au plus</td>
+      <td><code>37210</code></td>
+    </tr>
+  
+    <tr>
+      <td><code>ville</code></td>
+      <td>Ville<br><small>Alias reconnus : city</small></td>
+      <td>Texte — 100 caractères au plus</td>
+      <td><code>Vouvray</code></td>
+    </tr>
+  
+    <tr>
+      <td><code>pays</code></td>
+      <td>Pays (code ISO 2 lettres)<br><small>Alias reconnus : country, country_code</small></td>
+      <td>Texte — 2 caractères au plus</td>
+      <td><code>FR</code></td>
+    </tr>
+  
+    <tr>
+      <td><code>notes</code></td>
+      <td>Notes<br><small>Alias reconnus : commentaire, commentaires</small></td>
+      <td>Texte long</td>
+      <td></td>
+    </tr>
+  
+  </tbody>
+</table>
+</div>
+<p><strong>À créer avant :</strong> Aucune. Les clients absents sont créés ; les tiers existants ne sont jamais requalifiés en client par un import.</p>
+<p><strong>Ne s'importe pas :</strong> Soldes, chiffre d&#x27;affaires, encours et statistiques : ils sont calculés à partir de vos documents. Identifiants internes (référence Mon Chai, identifiant technique, jeton d&#x27;accès public) : ils sont attribués par l&#x27;application. Rattachement à une autre organisation Mon Chai : il relève du partage inter-domaines, jamais d&#x27;un fichier. Conditions de règlement, plafond d&#x27;encours et code comptable : à renseigner sur la fiche client (non couverts par cette version).</p>
+<p>Modèle (version <code>v1</code>) :
+<a href="modeles/modele_import_client_v1.csv" download>télécharger modele_import_client_v1.csv</a></p>
+<pre tabindex="0" aria-label="Contenu du modèle modele_import_client_v1.csv"><code>reference;reference_externe;nom;type;prenom;siret;email;telephone;mobile;tva_intracom;adresse;complement_adresse;code_postal;ville;pays;notes
+;CLI-2024-018;Cave des Coteaux;company;;12345678901234;contact@example.com;0247000000;;;12 route des Vignes;;37210;Vouvray;FR;
+</code></pre>
+
+<details>
+  <summary>Erreurs fréquentes</summary>
+  <ul><li>« Un client de ce nom existe déjà » : Renseignez sa référence Mon Chai, son SIRET ou son e-mail pour le mettre à jour au lieu d&#x27;en créer un second.</li><li>« Ce SIRET désigne plusieurs tiers » : Corrigez les fiches en double dans Mon Chai, ou utilisez la référence Mon Chai comme clé.</li><li>« Ce tiers n&#x27;est pas un client » : La fiche existe avec un autre rôle (fournisseur, prospect…). Ajoutez-lui le rôle client depuis sa fiche avant d&#x27;importer.</li><li>« Adresse incomplète » : Dès qu&#x27;une colonne d&#x27;adresse est renseignée, la rue, le code postal et la ville deviennent obligatoires.</li></ul>
+</details>
+
+
+
+
+<h3 id="type-produit">Produits <span class="dv-etiquette">Produits</span></h3>
+<p>Créer et mettre à jour votre catalogue produits : référence, libellé, prix de base, TVA, unité et catégorie.</p>
+
+<p>Clé de rapprochement unique : la référence article (colonne « reference »). Le libellé ne met jamais à jour un produit existant.</p>
+<div class="dv-tableau" tabindex="0" role="region" aria-label="Colonnes du type Produits">
+<table>
+  <thead><tr><th scope="col">Colonne</th><th scope="col">Contenu</th><th scope="col">Format</th><th scope="col">Exemple</th></tr></thead>
+  <tbody>
+  
+    <tr>
+      <td><code>reference</code> <span class="dv-etiquette">obligatoire</span> <span class="dv-etiquette">clé</span></td>
+      <td>Référence article<br><small>Votre référence interne (SKU), unique.</small><br><small>Alias reconnus : sku, ref, code, code_article, référence</small></td>
+      <td>Texte — 64 caractères au plus</td>
+      <td><code>VOU-BLC-75</code></td>
+    </tr>
+  
+    <tr>
+      <td><code>libelle</code> <span class="dv-etiquette">obligatoire</span></td>
+      <td>Libellé<br><small>Alias reconnus : nom, name, designation, désignation</small></td>
+      <td>Texte — 150 caractères au plus</td>
+      <td><code>Vouvray sec 75 cl</code></td>
+    </tr>
+  
+    <tr>
+      <td><code>type</code> <span class="dv-etiquette">obligatoire</span></td>
+      <td>Type de produit<br><small>wine = vin, food = alimentaire, merch = boutique, other = autre.</small><br><small>Alias reconnus : type_code, famille_produit</small></td>
+      <td>Valeur imposée<br>Valeurs : <code>wine</code>, <code>food</code>, <code>merch</code>, <code>other</code></td>
+      <td><code>wine</code></td>
+    </tr>
+  
+    <tr>
+      <td><code>description</code></td>
+      <td>Description</td>
+      <td>Texte long</td>
+      <td></td>
+    </tr>
+  
+    <tr>
+      <td><code>categorie</code></td>
+      <td>Catégorie<br><small>Nom d&#x27;une catégorie existante.</small><br><small>Alias reconnus : category, famille</small></td>
+      <td>Nom d&#x27;un élément existant — 80 caractères au plus</td>
+      <td></td>
+    </tr>
+  
+    <tr>
+      <td><code>unite</code></td>
+      <td>Unité<br><small>Symbole ou nom d&#x27;une unité existante.</small><br><small>Alias reconnus : unit, unité, unite_mesure</small></td>
+      <td>Nom d&#x27;un élément existant — 50 caractères au plus</td>
+      <td><code>btl</code></td>
+    </tr>
+  
+    <tr>
+      <td><code>prix_ht</code></td>
+      <td>Prix de base HT (€)<br><small>Alias reconnus : prix, price, price_eur_u</small></td>
+      <td>Nombre décimal — au moins 0, au plus 99999999, point décimal (2.50)</td>
+      <td><code>8.50</code></td>
+    </tr>
+  
+    <tr>
+      <td><code>tva</code></td>
+      <td>Taux de TVA (%)<br><small>Alias reconnus : vat_rate, taux_tva</small></td>
+      <td>Nombre décimal — au moins 0, au plus 100, point décimal (2.50)</td>
+      <td><code>20</code></td>
+    </tr>
+  
+    <tr>
+      <td><code>contenance_l</code></td>
+      <td>Contenance (L)<br><small>Alias reconnus : volume, volume_l</small></td>
+      <td>Nombre décimal — au moins 0, au plus 999, point décimal (2.50)</td>
+      <td><code>0.75</code></td>
+    </tr>
+  
+    <tr>
+      <td><code>contenant</code></td>
+      <td>Contenant<br><small>Alias reconnus : container</small></td>
+      <td>Texte — 50 caractères au plus</td>
+      <td><code>Bouteille</code></td>
+    </tr>
+  
+    <tr>
+      <td><code>ean</code></td>
+      <td>Code EAN</td>
+      <td>Texte — 64 caractères au plus</td>
+      <td></td>
+    </tr>
+  
+    <tr>
+      <td><code>vendable</code></td>
+      <td>Vendable<br><small>true pour le proposer à la vente.</small><br><small>Alias reconnus : is_sellable</small></td>
+      <td>Vrai / faux — true ou false</td>
+      <td><code>true</code></td>
+    </tr>
+  
+    <tr>
+      <td><code>achetable</code></td>
+      <td>Achetable<br><small>Alias reconnus : is_buyable</small></td>
+      <td>Vrai / faux — true ou false</td>
+      <td><code>false</code></td>
+    </tr>
+  
+  </tbody>
+</table>
+</div>
+<p><strong>À créer avant :</strong> L&#x27;unité doit exister dans Référentiels &gt; Unités (recherche par symbole puis par nom). La catégorie doit exister dans votre catalogue : elle n&#x27;est jamais créée automatiquement.</p>
+<p><strong>Ne s'importe pas :</strong> Stock, valorisation et numéros de lot : ils proviennent de vos mouvements et mises en bouteille. Identifiants internes et code technique (slug) : attribués par l&#x27;application. Données douanières et comptables calculées.</p>
+<p>Modèle (version <code>v1</code>) :
+<a href="modeles/modele_import_produit_v1.csv" download>télécharger modele_import_produit_v1.csv</a></p>
+<pre tabindex="0" aria-label="Contenu du modèle modele_import_produit_v1.csv"><code>reference;libelle;type;description;categorie;unite;prix_ht;tva;contenance_l;contenant;ean;vendable;achetable
+VOU-BLC-75;Vouvray sec 75 cl;wine;;;btl;8.50;20;0.75;Bouteille;;true;false
+</code></pre>
+
+<details>
+  <summary>Erreurs fréquentes</summary>
+  <ul><li>« Un produit portant ce libellé existe déjà » : Renseignez sa référence article pour le mettre à jour, ou changez le libellé pour créer un produit distinct.</li><li>« Unité introuvable » : Créez l&#x27;unité dans Référentiels &gt; Unités, puis relancez l&#x27;import.</li><li>« Catégorie introuvable » : Créez la catégorie depuis la fiche produit avant d&#x27;importer.</li></ul>
+</details>
+
+
+
+
+<h3 id="type-tarif">Lignes de grille tarifaire <span class="dv-etiquette">Tarifs</span></h3>
+<p>Alimenter UNE grille tarifaire : prix par produit, avec un seuil de quantité facultatif et une remise facultative.</p>
+<p><strong>Avant le dépôt</strong>, la personne choisit la grille tarifaire visée : le fichier ne porte que les lignes.</p>
+<p>La grille est choisie avant le dépôt du fichier : elle ne figure jamais dans le CSV. Une ligne est identifiée par le produit et le seuil de quantité minimale (vide = tarif de base).</p>
+<div class="dv-tableau" tabindex="0" role="region" aria-label="Colonnes du type Lignes de grille tarifaire">
+<table>
+  <thead><tr><th scope="col">Colonne</th><th scope="col">Contenu</th><th scope="col">Format</th><th scope="col">Exemple</th></tr></thead>
+  <tbody>
+  
+    <tr>
+      <td><code>reference_produit</code> <span class="dv-etiquette">obligatoire</span> <span class="dv-etiquette">clé</span></td>
+      <td>Référence article<br><small>Référence d&#x27;un produit existant.</small><br><small>Alias reconnus : sku, code_sku, reference, ref_produit</small></td>
+      <td>Nom d&#x27;un élément existant — 64 caractères au plus</td>
+      <td><code>VOU-BLC-75</code></td>
+    </tr>
+  
+    <tr>
+      <td><code>quantite_min</code> <span class="dv-etiquette">clé</span></td>
+      <td>Quantité minimale<br><small>Laisser vide pour le tarif de base.</small><br><small>Alias reconnus : qte_min, min_qty, seuil</small></td>
+      <td>Nombre entier — au moins 1, au plus 1000000, sans décimale (1200)</td>
+      <td><code>6</code></td>
+    </tr>
+  
+    <tr>
+      <td><code>prix_unitaire</code> <span class="dv-etiquette">obligatoire</span></td>
+      <td>Prix unitaire HT (€)<br><small>Alias reconnus : prix, unit_price, prix_ht</small></td>
+      <td>Nombre décimal — au moins 0.01, au plus 99999999, point décimal (2.50)</td>
+      <td><code>8.50</code></td>
+    </tr>
+  
+    <tr>
+      <td><code>remise_pct</code></td>
+      <td>Remise (%)<br><small>Alias reconnus : remise, discount_pct</small></td>
+      <td>Nombre décimal — au moins 0, au plus 100, point décimal (2.50)</td>
+      <td><code>0</code></td>
+    </tr>
+  
+  </tbody>
+</table>
+</div>
+<p><strong>À créer avant :</strong> Le produit doit exister dans votre catalogue et porter une référence article : l&#x27;import ne crée jamais de produit. La grille tarifaire doit exister : sélectionnez-la avant le dépôt.</p>
+<p><strong>Ne s'importe pas :</strong> La devise et les dates de validité : elles appartiennent à la grille, pas à la ligne. Aucune suppression : les lignes absentes du fichier restent en place. Il n&#x27;existe pas de mode « remplacer la grille ».</p>
+<p>Modèle (version <code>v1</code>) :
+<a href="modeles/modele_import_tarif_v1.csv" download>télécharger modele_import_tarif_v1.csv</a></p>
+<pre tabindex="0" aria-label="Contenu du modèle modele_import_tarif_v1.csv"><code>reference_produit;quantite_min;prix_unitaire;remise_pct
+VOU-BLC-75;6;8.50;0
+</code></pre>
+
+<details>
+  <summary>Erreurs fréquentes</summary>
+  <ul><li>« Produit introuvable » : Vérifiez la référence article, ou importez d&#x27;abord vos produits.</li><li>« Prix invalide » : Le prix doit être un nombre positif avec un point décimal (ex. 8.50) et au moins 0.01 €.</li><li>« Doublon dans le fichier » : Deux lignes visent le même produit avec le même seuil : n&#x27;en gardez qu&#x27;une.</li><li>« La grille a été modifiée depuis l&#x27;aperçu » : Quelqu&#x27;un a modifié la grille entre-temps : relancez la vérification pour repartir d&#x27;un plan à jour.</li></ul>
+</details>
+
+
+
+
+    </main>
+  </div>
+
+  <footer class="dv-pied">
+    <div class="dv-pied__barre">
+      <span>Mon Chai — logiciel de gestion viticole, développé et hébergé en France.</span>
+      <span>Une question : <a href="mailto:contact@monchai.fr">contact@monchai.fr</a> · <a href="contact.html">Contact et support</a></span>
+    </div>
+  </footer>
+</body>
+</html>

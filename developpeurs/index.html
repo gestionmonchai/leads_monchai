@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Démarrer — Documentation développeurs Mon Chai</title>
+  <meta name="description" content="Ce que Mon Chai ouvre aujourd&#x27;hui à votre application, ce qui n&#x27;existe pas encore, et par où commencer.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://monchai.fr/developpeurs/">
+  <meta name="theme-color" content="#7B1E22">
+  
+  <link rel="stylesheet" href="developpeurs.css">
+</head>
+<body>
+  <a class="dv-evitement" href="#contenu">Aller au contenu</a>
+
+  <header class="dv-entete">
+    <div class="dv-entete__barre">
+      <a class="dv-marque" href="index.html">
+        <img src="logo_monchai.png" alt="Mon Chai" width="72" height="36">
+        <span>Développeurs</span>
+      </a>
+      <a class="dv-entete__retour" href="https://tester.monchai.fr/">Aller sur Mon Chai</a>
+    </div>
+  </header>
+
+  <div class="dv-grille">
+    <nav class="dv-sommaire" aria-label="Sommaire de la documentation">
+      <h2>Documentation</h2>
+      <ol>
+        
+        <li><a href="index.html" aria-current="page">Démarrer</a></li>
+        
+        <li><a href="connecteur.html">Connecteur (MCP + OAuth 2.1)</a></li>
+        
+        <li><a href="outils.html">Référence des outils</a></li>
+        
+        <li><a href="api-rest.html">API REST v1</a></li>
+        
+        <li><a href="importer.html">Importer vos données</a></li>
+        
+        <li><a href="exporter.html">Exporter vos données</a></li>
+        
+        <li><a href="modele-metier.html">Modèle métier</a></li>
+        
+        <li><a href="securite.html">Sécurité et bonnes pratiques</a></li>
+        
+        <li><a href="feuille-de-route.html">Feuille de route</a></li>
+        
+        <li><a href="contact.html">Contact et support</a></li>
+        
+      </ol>
+    </nav>
+
+    <main id="contenu" class="dv-contenu" tabindex="-1">
+      <h1>Démarrer</h1>
+      <p class="dv-chapo">Ce que Mon Chai ouvre aujourd&#x27;hui à votre application, ce qui n&#x27;existe pas encore, et par où commencer.</p>
+      
+<p>Vous fabriquez votre propre application — un tableau de bord, une alerte
+d'impayés, des étiquettes, une boutique — souvent avec l'aide d'un assistant IA,
+et vous voulez que Mon Chai fasse le reste : la vigne, le chai, les stocks, la
+facturation, la DRM. Cette documentation dit exactement ce que Mon Chai vous
+ouvre <strong>aujourd'hui</strong>, avec des exemples qui fonctionnent tels
+quels.</p>
+
+<div class="dv-encadre">
+  <p><strong>Astuce si vous codez avec un assistant IA</strong> (Claude, ChatGPT,
+  Cursor…) : donnez-lui l'adresse de cette page et de la page
+  <a href="api-rest.html">API REST v1</a> (ou <a href="connecteur.html">Connecteur</a>),
+  et la description <a href="https://tester.monchai.fr/api/v1/openapi.json">OpenAPI</a>. Tout ce qu'il lui faut y est
+  écrit : vraies adresses, vrais noms d'outils, vraies colonnes. Demandez-lui de
+  ne rien inventer au-delà.</p>
+</div>
+
+<h2 id="ce-qui-est-ouvert">Ce que Mon Chai ouvre aujourd'hui</h2>
+<div class="dv-cartes">
+  <div class="dv-carte">
+    <h3>Lire vos données : le connecteur</h3>
+    <p>Un serveur <abbr title="Model Context Protocol">MCP</abbr> protégé par
+    OAuth 2.1. Votre application obtient, avec votre accord, un accès en
+    <strong>lecture seule</strong> à <strong>une</strong> exploitation : stocks
+    (vrac, bouteilles, lots) et factures (liste, détail, impayés, chiffre
+    d'affaires).</p>
+    <p><a href="connecteur.html">Connecteur (MCP + OAuth 2.1)</a> ·
+    <a href="outils.html">Référence des outils</a></p>
+  </div>
+  <div class="dv-carte">
+    <h3>Lire vos données : l'API REST v1</h3>
+    <p>Les mêmes données que le connecteur, par de simples requêtes
+    <code>GET</code> avec une <strong>clé d'API personnelle</strong>, créée dans
+    <a href="https://tester.monchai.fr/administration/connecteur/cles-api/">Administration › Connecteur IA &amp; clés
+    d'API</a>. Pour un script, un tableur, un serveur : pas de navigateur, pas
+    d'OAuth. Lecture seule.</p>
+    <p><a href="api-rest.html">API REST v1</a></p>
+  </div>
+  <div class="dv-carte">
+    <h3>Envoyer vos données : les imports CSV</h3>
+    <p>Votre application produit un fichier CSV (cépages, appellations,
+    parcelles, unités, entrepôts, cuvées, clients, produits, lignes de tarif) ;
+    vous le déposez dans Mon Chai, qui le vérifie ligne à ligne avant
+    d'écrire quoi que ce soit.</p>
+    <p><a href="importer.html">Importer vos données</a></p>
+  </div>
+  <div class="dv-carte">
+    <h3>Récupérer vos données : les exports</h3>
+    <p>Registres, vendanges, inventaires, ventes, marges, grilles tarifaires,
+    DRM, référentiels : téléchargeables en CSV depuis les pages de Mon Chai,
+    pour les reprendre dans votre application.</p>
+    <p><a href="exporter.html">Exporter vos données</a></p>
+  </div>
+  <div class="dv-carte">
+    <h3>Comprendre le métier</h3>
+    <p>Exploitation, parcelle, vendange, lot technique, cuvée, référence, lot
+    commercial, document commercial, DRM : les mots de Mon Chai, pour que
+    votre brique parle la même langue.</p>
+    <p><a href="modele-metier.html">Modèle métier</a></p>
+  </div>
+</div>
+
+<h2 id="ce-qui-n-existe-pas">Ce qui n'existe pas encore</h2>
+<div class="dv-encadre dv-encadre--alerte">
+  <p>Pour vous éviter de chercher (ou de laisser votre assistant inventer) :</p>
+  <ul>
+    <li><strong>pas d'écriture par programme</strong> : ni le connecteur ni l'API
+      REST ne créent, ne modifient ou ne suppriment quoi que ce soit ; pour
+      envoyer des données, il y a les imports CSV, déposés dans l'interface ;</li>
+    <li><strong>pas de webhooks</strong> : Mon Chai ne prévient pas votre
+      application d'un changement, c'est elle qui interroge ;</li>
+    <li><strong>pas de bac à sable</strong> dédié aux développeurs.</li>
+  </ul>
+  <p>La seule API publique est <code>/api/v1/</code>. Les autres adresses
+  <code>/api/…</code> que vous pourriez croiser (<code>/api/auth/…</code>…)
+  servent l'interface de Mon Chai elle-même : elles peuvent changer sans
+  préavis. Ce qui est à l'étude est dans la
+  <a href="feuille-de-route.html">feuille de route</a>.</p>
+</div>
+
+<h2 id="pour-qui">Pour qui</h2>
+<ul>
+  <li>Vous avez un compte Mon Chai (ou travaillez pour une exploitation qui en a
+    un) et vous voulez brancher votre propre outil dessus.</li>
+  <li>L'accès se fait <strong>au nom d'une personne</strong> : celle qui clique
+    sur « Autoriser » et choisit l'exploitation. Votre application ne voit que ce
+    que cette personne a le droit de voir, dans cette exploitation-là.</li>
+</ul>
+
+<h2 id="par-ou-commencer">Par où commencer</h2>
+<ol>
+  <li>Choisissez votre porte : un programme qui tourne seul →
+    <a href="api-rest.html">API REST v1</a> (une clé) ; un assistant IA ou
+    une appli où chacun se connecte → <a href="connecteur.html">connecteur</a>
+    (OAuth). Les deux pages vont jusqu'aux exemples complets.</li>
+  <li>Lancez l'exemple de votre langage. Par l'API :
+    <a href="api-rest.html#exemple-api-python">Python</a> ou
+    <a href="api-rest.html#exemple-api-typescript">TypeScript</a> ; par le connecteur :
+    <a href="connecteur.html#exemple-python">Lire mes stocks depuis mon appli (Python)</a> ou <a href="connecteur.html#exemple-typescript">Lister mes impayés (TypeScript)</a>.</li>
+  <li>Choisissez ce dont votre application a besoin dans la
+    <a href="api-rest.html#reference">référence de l'API</a> ou celle
+    <a href="outils.html">des outils</a>.</li>
+  <li>Avant de mettre en service, relisez
+    <a href="securite.html">Sécurité et bonnes pratiques</a>.</li>
+</ol>
+<p><a class="dv-action" href="api-rest.html#exemples">Lire mes stocks depuis mon appli</a></p>
+
+    </main>
+  </div>
+
+  <footer class="dv-pied">
+    <div class="dv-pied__barre">
+      <span>Mon Chai — logiciel de gestion viticole, développé et hébergé en France.</span>
+      <span>Une question : <a href="mailto:contact@monchai.fr">contact@monchai.fr</a> · <a href="contact.html">Contact et support</a></span>
+    </div>
+  </footer>
+</body>
+</html>

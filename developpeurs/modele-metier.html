@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Modèle métier — Documentation développeurs Mon Chai</title>
+  <meta name="description" content="Les mots de Mon Chai, et ce qu&#x27;un développeur doit savoir pour construire sa brique à côté.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://monchai.fr/developpeurs/modele-metier.html">
+  <meta name="theme-color" content="#7B1E22">
+  
+  <link rel="stylesheet" href="developpeurs.css">
+</head>
+<body>
+  <a class="dv-evitement" href="#contenu">Aller au contenu</a>
+
+  <header class="dv-entete">
+    <div class="dv-entete__barre">
+      <a class="dv-marque" href="index.html">
+        <img src="logo_monchai.png" alt="Mon Chai" width="72" height="36">
+        <span>Développeurs</span>
+      </a>
+      <a class="dv-entete__retour" href="https://tester.monchai.fr/">Aller sur Mon Chai</a>
+    </div>
+  </header>
+
+  <div class="dv-grille">
+    <nav class="dv-sommaire" aria-label="Sommaire de la documentation">
+      <h2>Documentation</h2>
+      <ol>
+        
+        <li><a href="index.html">Démarrer</a></li>
+        
+        <li><a href="connecteur.html">Connecteur (MCP + OAuth 2.1)</a></li>
+        
+        <li><a href="outils.html">Référence des outils</a></li>
+        
+        <li><a href="api-rest.html">API REST v1</a></li>
+        
+        <li><a href="importer.html">Importer vos données</a></li>
+        
+        <li><a href="exporter.html">Exporter vos données</a></li>
+        
+        <li><a href="modele-metier.html" aria-current="page">Modèle métier</a></li>
+        
+        <li><a href="securite.html">Sécurité et bonnes pratiques</a></li>
+        
+        <li><a href="feuille-de-route.html">Feuille de route</a></li>
+        
+        <li><a href="contact.html">Contact et support</a></li>
+        
+      </ol>
+    </nav>
+
+    <main id="contenu" class="dv-contenu" tabindex="-1">
+      <h1>Modèle métier</h1>
+      <p class="dv-chapo">Les mots de Mon Chai, et ce qu&#x27;un développeur doit savoir pour construire sa brique à côté.</p>
+      
+<p>Mon Chai suit le vin de la vigne à la facture, et la douane au passage.
+Votre brique n'a pas besoin de tout connaître ; elle a besoin de parler la même
+langue que Mon Chai sur ce qu'elle touche. Le tableau final dit où chaque
+notion apparaît dans le connecteur et dans les imports.</p>
+
+<h2 id="exploitation">Exploitation (domaine, structure)</h2>
+<p>L'entreprise viticole : un domaine, un château, une cave. <strong>Toutes</strong>
+les données de Mon Chai appartiennent à une exploitation et à une seule ; deux
+exploitations ne voient jamais les données l'une de l'autre. Une personne peut
+être membre de plusieurs exploitations, avec un <strong>rôle</strong> dans
+chacune (propriétaire, administrateur, éditeur, lecture seule) et des droits
+détaillés par module. Un accès du connecteur vaut pour <strong>une</strong>
+exploitation, au nom d'<strong>une</strong> personne, et ne voit que ce que cette
+personne voit.</p>
+
+<h2 id="parcelle">Parcelle</h2>
+<p>Une pièce de vigne : nom, surface en hectares, commune, lieu-dit, référence
+cadastrale, encépagement. Les cépages et les appellations sont des référentiels
+propres à chaque exploitation.</p>
+
+<h2 id="vendange">Vendange</h2>
+<p>La récolte d'une parcelle (ou d'une partie) à une date, reçue au chai — en
+kilos ou en litres — et dirigée vers un ou plusieurs lots techniques. C'est le
+point de départ de la traçabilité.</p>
+
+<h2 id="lot-technique">Lot technique</h2>
+<p>Le vin <strong>en vrac</strong>, en cours d'élaboration : un volume en litres,
+dans un ou plusieurs contenants (cuves, fûts), qui vise une cuvée. Il naît des
+vendanges, change par les opérations de chai (assemblage, soutirage,
+pertes…) et finit en bouteilles à la mise. Chaque mouvement est tracé. Dans le
+connecteur : le stock « vrac ».</p>
+
+<h2 id="cuvee">Cuvée</h2>
+<p>Le vin tel que vous le nommez et le vendez (« Les Silex ») : couleur,
+appellation, encépagement, éléments de dégustation. Un lot technique vise une
+cuvée ; un lot commercial en porte une, avec son millésime.</p>
+
+<h2 id="reference">Référence (produit)</h2>
+<p>L'article du catalogue que l'on vend ou achète : une référence unique dans
+l'exploitation (<code>VOU-BLC-75</code>), un libellé, un prix hors taxe, un taux
+de TVA, une unité, une contenance. Les grilles tarifaires donnent des prix par
+référence, éventuellement à partir d'une quantité.</p>
+
+<h2 id="lot-commercial">Lot commercial</h2>
+<p>Des bouteilles prêtes à vendre, issues d'une mise : une cuvée, un millésime,
+un format (en millilitres : 375, 750, 1500…), une quantité. Le stock en
+bouteilles de Mon Chai est fait des lots commerciaux (plus l'inventaire de
+négoce).</p>
+
+<h2 id="document-commercial">Document commercial</h2>
+<p>Devis, commande, bon de livraison, facture, avoir — côté vente ou côté
+achat, avec un statut (brouillon, envoyé, validé, émis, payé, annulé). Une
+facture <strong>émise</strong> est définitive : elle reçoit un numéro et ne se
+modifie plus ; on la corrige par un avoir. Le « reste dû » d'une facture est son
+total TTC moins les règlements et les avoirs imputés.</p>
+
+<h2 id="drm">DRM</h2>
+<p>La déclaration récapitulative mensuelle des mouvements de vin, due à la
+douane par les entrepositaires agréés. Mon Chai la calcule à partir des
+mouvements enregistrés (entrées, sorties, mises, pertes) et produit les
+fichiers de dépôt. Elle n'est pas exposée au connecteur : ne la recalculez pas
+de votre côté, laissez Mon Chai la tenir.</p>
+
+<h2 id="correspondances">Où chaque notion apparaît</h2>
+<div class="dv-tableau" tabindex="0" role="region" aria-label="Correspondances des notions">
+<table>
+  <thead><tr><th scope="col">Notion</th><th scope="col">Connecteur (lecture)</th><th scope="col">Import CSV (écriture)</th></tr></thead>
+  <tbody>
+    <tr><td>Exploitation</td><td><code>contexte_connexion</code></td><td>—</td></tr>
+    <tr><td>Parcelle, cépage, appellation</td><td>—</td><td><a href="importer.html#type-parcelle">parcelle</a>, <a href="importer.html#type-cepage">cépage</a>, <a href="importer.html#type-appellation">appellation</a></td></tr>
+    <tr><td>Lot technique (vrac)</td><td><code>stock_vrac</code>, <code>stock_resume</code></td><td>—</td></tr>
+    <tr><td>Cuvée</td><td><code>stock_par_cuvee</code></td><td><a href="importer.html#type-cuvee">cuvée</a></td></tr>
+    <tr><td>Référence (produit), tarif</td><td>—</td><td><a href="importer.html#type-produit">produit</a>, <a href="importer.html#type-tarif">tarif</a></td></tr>
+    <tr><td>Lot commercial</td><td><code>stock_par_cuvee</code>, <code>stock_par_format</code></td><td>—</td></tr>
+    <tr><td>Client</td><td>nom du client dans les factures</td><td><a href="importer.html#type-client">client</a></td></tr>
+    <tr><td>Document commercial</td><td><code>factures_lister</code>, <code>facture_detail</code>, <code>factures_impayees</code>, <code>chiffre_affaires</code></td><td>—</td></tr>
+    <tr><td>DRM</td><td>—</td><td>— (voir <a href="exporter.html">exports</a>)</td></tr>
+  </tbody>
+</table>
+</div>
+
+<h2 id="regles">Cinq règles pour votre brique</h2>
+<ol>
+  <li><strong>Mon Chai reste la source de vérité</strong> pour les stocks, les
+    factures et la DRM : lisez-les, ne les recalculez pas.</li>
+  <li><strong>Désignez les choses par leurs clés métier</strong> (référence
+    produit, numéro de facture, nom de cuvée) : les identifiants internes ne
+    sont pas exposés et peuvent changer.</li>
+  <li><strong>Unités</strong> : volumes en litres, formats de bouteille en
+    millilitres, surfaces en hectares, montants en euros sous forme de chaînes
+    décimales (<code>"125.50"</code>).</li>
+  <li><strong>Dates</strong> au format <code>AAAA-MM-JJ</code>, en heure de Paris
+    (« aujourd'hui » et « échue » se jugent à l'heure française).</li>
+  <li><strong>Une facture émise ne bouge plus</strong> : si votre application
+    garde une copie, elle n'a pas à la resynchroniser, seulement à suivre ses
+    règlements et ses avoirs.</li>
+</ol>
+
+    </main>
+  </div>
+
+  <footer class="dv-pied">
+    <div class="dv-pied__barre">
+      <span>Mon Chai — logiciel de gestion viticole, développé et hébergé en France.</span>
+      <span>Une question : <a href="mailto:contact@monchai.fr">contact@monchai.fr</a> · <a href="contact.html">Contact et support</a></span>
+    </div>
+  </footer>
+</body>
+</html>

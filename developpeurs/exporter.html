@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Exporter vos données — Documentation développeurs Mon Chai</title>
+  <meta name="description" content="Ce que vous pouvez récupérer de Mon Chai, depuis quelle page et en quel format.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://monchai.fr/developpeurs/exporter.html">
+  <meta name="theme-color" content="#7B1E22">
+  
+  <link rel="stylesheet" href="developpeurs.css">
+</head>
+<body>
+  <a class="dv-evitement" href="#contenu">Aller au contenu</a>
+
+  <header class="dv-entete">
+    <div class="dv-entete__barre">
+      <a class="dv-marque" href="index.html">
+        <img src="logo_monchai.png" alt="Mon Chai" width="72" height="36">
+        <span>Développeurs</span>
+      </a>
+      <a class="dv-entete__retour" href="https://tester.monchai.fr/">Aller sur Mon Chai</a>
+    </div>
+  </header>
+
+  <div class="dv-grille">
+    <nav class="dv-sommaire" aria-label="Sommaire de la documentation">
+      <h2>Documentation</h2>
+      <ol>
+        
+        <li><a href="index.html">Démarrer</a></li>
+        
+        <li><a href="connecteur.html">Connecteur (MCP + OAuth 2.1)</a></li>
+        
+        <li><a href="outils.html">Référence des outils</a></li>
+        
+        <li><a href="api-rest.html">API REST v1</a></li>
+        
+        <li><a href="importer.html">Importer vos données</a></li>
+        
+        <li><a href="exporter.html" aria-current="page">Exporter vos données</a></li>
+        
+        <li><a href="modele-metier.html">Modèle métier</a></li>
+        
+        <li><a href="securite.html">Sécurité et bonnes pratiques</a></li>
+        
+        <li><a href="feuille-de-route.html">Feuille de route</a></li>
+        
+        <li><a href="contact.html">Contact et support</a></li>
+        
+      </ol>
+    </nav>
+
+    <main id="contenu" class="dv-contenu" tabindex="-1">
+      <h1>Exporter vos données</h1>
+      <p class="dv-chapo">Ce que vous pouvez récupérer de Mon Chai, depuis quelle page et en quel format.</p>
+      
+<p>Pour <strong>récupérer</strong> des données dans votre application, deux
+voies existent : l'<a href="api-rest.html">API REST v1</a> ou le
+<a href="connecteur.html">connecteur</a>, pour des réponses ciblées et à
+jour (stocks, factures), et les <strong>exports</strong>
+ci-dessous, pour des fichiers complets. Les exports se téléchargent depuis
+l'interface de Mon Chai, par une personne connectée qui a le droit de voir ces
+données ; il n'existe pas d'export par programme.</p>
+
+<div class="dv-encadre">
+  <p>Format des fichiers CSV : UTF-8 (presque toujours avec BOM, pour
+  qu'Excel affiche les accents), séparateur point-virgule, une ligne
+  d'en-tête. Une cellule qui commencerait par <code>=</code>, <code>+</code> ou
+  <code>@</code> est précédée d'une apostrophe, pour qu'aucun tableur ne
+  l'exécute comme une formule : retirez-la si votre application relit la
+  valeur brute. Les fichiers destinés à l'interprofession suivent le format
+  qu'elle impose.</p>
+</div>
+
+
+<h2 id="exports-1">Vigne et chai</h2>
+<div class="dv-tableau" tabindex="0" role="region" aria-label="Exports : Vigne et chai">
+<table>
+  <thead><tr><th scope="col">Ce qui s'exporte</th><th scope="col">Où</th><th scope="col">Format</th></tr></thead>
+  <tbody>
+  
+    <tr>
+      <td>Vendanges</td>
+      <td><a href="https://tester.monchai.fr/production/vendanges/">Production › Vendanges</a></td>
+      <td>CSV</td>
+    </tr>
+  
+    <tr>
+      <td>Mouvements d&#x27;un lot technique</td>
+      <td>fiche d&#x27;un lot technique, historique des mouvements</td>
+      <td>CSV</td>
+    </tr>
+  
+    <tr>
+      <td>Dossier de traçabilité d&#x27;un lot technique</td>
+      <td>fiche d&#x27;un lot technique</td>
+      <td>CSV ou PDF</td>
+    </tr>
+  
+    <tr>
+      <td>Dossier de traçabilité d&#x27;un lot commercial</td>
+      <td>fiche d&#x27;un lot commercial</td>
+      <td>CSV ou PDF</td>
+    </tr>
+  
+    <tr>
+      <td>Matières sèches d&#x27;un plan de mise</td>
+      <td><a href="https://tester.monchai.fr/production/planificateur/">Production › Planificateur, un plan</a></td>
+      <td>CSV</td>
+    </tr>
+  
+    <tr>
+      <td>Inventaire</td>
+      <td><a href="https://tester.monchai.fr/production/inventaires/">Production › Inventaires, un inventaire</a></td>
+      <td>CSV</td>
+    </tr>
+  
+  </tbody>
+</table>
+</div>
+
+<h2 id="exports-2">Registres</h2>
+<div class="dv-tableau" tabindex="0" role="region" aria-label="Exports : Registres">
+<table>
+  <thead><tr><th scope="col">Ce qui s'exporte</th><th scope="col">Où</th><th scope="col">Format</th></tr></thead>
+  <tbody>
+  
+    <tr>
+      <td>Registre phytosanitaire</td>
+      <td><a href="https://tester.monchai.fr/production/registre-phyto/">Production › Registre phytosanitaire</a></td>
+      <td>CSV ou PDF</td>
+    </tr>
+  
+    <tr>
+      <td>Cahier de culture</td>
+      <td><a href="https://tester.monchai.fr/production/registre-culture/">Production › Cahier de culture</a></td>
+      <td>CSV ou PDF</td>
+    </tr>
+  
+    <tr>
+      <td>Registre des manipulations</td>
+      <td><a href="https://tester.monchai.fr/production/registre-manipulations/">Production › Registre des manipulations</a></td>
+      <td>CSV ou PDF</td>
+    </tr>
+  
+    <tr>
+      <td>Registre des mises</td>
+      <td><a href="https://tester.monchai.fr/production/registre-mises/">Production › Registre des mises</a></td>
+      <td>CSV ou PDF</td>
+    </tr>
+  
+    <tr>
+      <td>Registre des entrées et sorties</td>
+      <td><a href="https://tester.monchai.fr/production/registre-entrees-sorties/">Production › Registre des entrées et sorties</a></td>
+      <td>CSV ou PDF</td>
+    </tr>
+  
+  </tbody>
+</table>
+</div>
+
+<h2 id="exports-3">Douane</h2>
+<div class="dv-tableau" tabindex="0" role="region" aria-label="Exports : Douane">
+<table>
+  <thead><tr><th scope="col">Ce qui s'exporte</th><th scope="col">Où</th><th scope="col">Format</th></tr></thead>
+  <tbody>
+  
+    <tr>
+      <td>DRM de la période</td>
+      <td><a href="https://tester.monchai.fr/drm/">DRM, une période</a></td>
+      <td>CSV</td>
+    </tr>
+  
+    <tr>
+      <td>Fichiers pour l&#x27;interprofession</td>
+      <td><a href="https://tester.monchai.fr/drm/exports/">DRM › Exports</a></td>
+      <td>formats des déclarations interprofessionnelles</td>
+    </tr>
+  
+  </tbody>
+</table>
+</div>
+
+<h2 id="exports-4">Ventes</h2>
+<div class="dv-tableau" tabindex="0" role="region" aria-label="Exports : Ventes">
+<table>
+  <thead><tr><th scope="col">Ce qui s'exporte</th><th scope="col">Où</th><th scope="col">Format</th></tr></thead>
+  <tbody>
+  
+    <tr>
+      <td>Ventes</td>
+      <td><a href="https://tester.monchai.fr/stats/">Statistiques › Ventes</a></td>
+      <td>CSV</td>
+    </tr>
+  
+    <tr>
+      <td>Explorateur de ventes</td>
+      <td><a href="https://tester.monchai.fr/stats/explorer/">Statistiques › Explorateur</a></td>
+      <td>CSV</td>
+    </tr>
+  
+    <tr>
+      <td>Marges</td>
+      <td><a href="https://tester.monchai.fr/stats/marges/">Statistiques › Marges</a></td>
+      <td>CSV</td>
+    </tr>
+  
+    <tr>
+      <td>Grille tarifaire</td>
+      <td><a href="https://tester.monchai.fr/ventes/grilletarifs/">Ventes › Grilles tarifaires, une grille</a></td>
+      <td>CSV ou PDF</td>
+    </tr>
+  
+    <tr>
+      <td>Historique des sessions de caisse</td>
+      <td><a href="https://tester.monchai.fr/ventes/caisse/historique/">Ventes › Caisse › Historique, bouton d&#x27;export</a></td>
+      <td>CSV</td>
+    </tr>
+  
+  </tbody>
+</table>
+</div>
+
+<h2 id="exports-5">Référentiels</h2>
+<div class="dv-tableau" tabindex="0" role="region" aria-label="Exports : Référentiels">
+<table>
+  <thead><tr><th scope="col">Ce qui s'exporte</th><th scope="col">Où</th><th scope="col">Format</th></tr></thead>
+  <tbody>
+  
+    <tr>
+      <td>Cépages, parcelles, unités, cuvées</td>
+      <td><a href="https://tester.monchai.fr/referentiels/cepages/">Référentiels, la liste concernée</a></td>
+      <td>CSV</td>
+    </tr>
+  
+    <tr>
+      <td>Appellations</td>
+      <td><a href="https://tester.monchai.fr/referentiels/appellations/">Référentiels › Appellations</a></td>
+      <td>CSV</td>
+    </tr>
+  
+    <tr>
+      <td>Vos données au format du modèle d&#x27;import</td>
+      <td><a href="https://tester.monchai.fr/referentiels/import/">Référentiels › Importer des données, un type</a></td>
+      <td>CSV au format exact du modèle d&#x27;import (aller-retour)</td>
+    </tr>
+  
+  </tbody>
+</table>
+</div>
+
+
+<h2 id="aller-retour">L'aller-retour avec les imports</h2>
+<p>Pour les types importables, l'export « au format du modèle d'import » rend
+vos données existantes avec exactement les colonnes de la page
+<a href="importer.html">Importer vos données</a> : votre application peut
+le lire, le corriger, puis le rendre à Mon Chai par un import, qui mettra à
+jour les éléments existants grâce à leur clé.</p>
+
+    </main>
+  </div>
+
+  <footer class="dv-pied">
+    <div class="dv-pied__barre">
+      <span>Mon Chai — logiciel de gestion viticole, développé et hébergé en France.</span>
+      <span>Une question : <a href="mailto:contact@monchai.fr">contact@monchai.fr</a> · <a href="contact.html">Contact et support</a></span>
+    </div>
+  </footer>
+</body>
+</html>

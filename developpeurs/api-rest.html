@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>API REST v1 — Documentation développeurs Mon Chai</title>
+  <meta name="description" content="Lire stocks et factures avec une clé d&#x27;API personnelle et de simples requêtes HTTP — référence engendrée depuis la description OpenAPI.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://monchai.fr/developpeurs/api-rest.html">
+  <meta name="theme-color" content="#7B1E22">
+  
+  <link rel="stylesheet" href="developpeurs.css">
+</head>
+<body>
+  <a class="dv-evitement" href="#contenu">Aller au contenu</a>
+
+  <header class="dv-entete">
+    <div class="dv-entete__barre">
+      <a class="dv-marque" href="index.html">
+        <img src="logo_monchai.png" alt="Mon Chai" width="72" height="36">
+        <span>Développeurs</span>
+      </a>
+      <a class="dv-entete__retour" href="https://tester.monchai.fr/">Aller sur Mon Chai</a>
+    </div>
+  </header>
+
+  <div class="dv-grille">
+    <nav class="dv-sommaire" aria-label="Sommaire de la documentation">
+      <h2>Documentation</h2>
+      <ol>
+        
+        <li><a href="index.html">Démarrer</a></li>
+        
+        <li><a href="connecteur.html">Connecteur (MCP + OAuth 2.1)</a></li>
+        
+        <li><a href="outils.html">Référence des outils</a></li>
+        
+        <li><a href="api-rest.html" aria-current="page">API REST v1</a></li>
+        
+        <li><a href="importer.html">Importer vos données</a></li>
+        
+        <li><a href="exporter.html">Exporter vos données</a></li>
+        
+        <li><a href="modele-metier.html">Modèle métier</a></li>
+        
+        <li><a href="securite.html">Sécurité et bonnes pratiques</a></li>
+        
+        <li><a href="feuille-de-route.html">Feuille de route</a></li>
+        
+        <li><a href="contact.html">Contact et support</a></li>
+        
+      </ol>
+    </nav>
+
+    <main id="contenu" class="dv-contenu" tabindex="-1">
+      <h1>API REST v1</h1>
+      <p class="dv-chapo">Lire stocks et factures avec une clé d&#x27;API personnelle et de simples requêtes HTTP — référence engendrée depuis la description OpenAPI.</p>
+      
+<p>L'API REST v1 lit les <strong>mêmes données que le
+<a href="connecteur.html">connecteur</a></strong> (chaque point d'API sert
+le même outil, avec les mêmes contrôles), mais avec de simples requêtes
+<code>GET</code> et une <strong>clé d'API personnelle</strong> : pas de
+navigateur, pas d'OAuth. Elle est en <strong>lecture seule</strong>. Une clé
+vaut pour <strong>une personne</strong> dans <strong>une exploitation</strong>.</p>
+
+<div class="dv-encadre">
+  <p><strong>Connecteur MCP ou API REST : lequel choisir ?</strong></p>
+  <ul>
+    <li><strong>API REST</strong> : un script, un tableur, un serveur, une
+      tâche planifiée — un programme qui tourne seul. Une clé dans une variable
+      d'environnement, un <code>GET</code>, du JSON.</li>
+    <li><strong>Connecteur MCP</strong> : un assistant IA (Claude, ChatGPT) ou une
+      application dont chaque utilisateur se connecte lui-même à Mon Chai, avec
+      un écran de consentement et des jetons qui se renouvellent.</li>
+  </ul>
+  <p>Les deux lisent la même chose ; aucun des deux n'écrit.</p>
+</div>
+
+<nav aria-label="Dans cette page">
+  <ol>
+    <li><a href="#cle">Créer et révoquer une clé</a></li>
+    <li><a href="#authentification">S'authentifier</a></li>
+    <li><a href="#portees">Portées et droits</a></li>
+    <li><a href="#erreurs">Réponses et erreurs</a></li>
+    <li><a href="#limites">Limites</a></li>
+    <li><a href="#reference">Référence des points</a></li>
+    <li><a href="#exemples">Exemples complets</a></li>
+  </ol>
+</nav>
+
+<h2 id="cle">Créer et révoquer une clé</h2>
+<ol>
+  <li>Dans Mon Chai : <a href="https://tester.monchai.fr/administration/connecteur/cles-api/">Administration › Connecteur IA &amp; clés d&#x27;API</a>, onglet
+    « Clés d'API (vos programmes) ». Réservé au propriétaire et aux
+    administrateurs de l'exploitation.</li>
+  <li>Donnez un nom à la clé (celui de votre programme), cochez les portées
+    utiles, choisissez sa durée de vie (30, 90, 365 jours).
+    Au plus 5 clés actives par personne et par exploitation.</li>
+  <li>La clé s'affiche <strong>une seule fois</strong> : copiez-la tout de suite
+    dans un gestionnaire de mots de passe ou dans la configuration de votre
+    programme. Mon Chai n'en garde qu'une empreinte et ne pourra plus vous la
+    montrer.</li>
+</ol>
+<p>Forme d'une clé : <code>mc_live_&lt;préfixe : 10 caractères&gt;_&lt;secret : 43 caractères&gt;</code>. Le préfixe n'est pas
+secret : c'est lui que l'écran affiche pour reconnaître la clé. Pour
+<strong>révoquer</strong> une clé, même écran, bouton « Révoquer » : l'effet est
+immédiat. Une clé expirée ou révoquée ne se réactive pas ; on en crée une
+nouvelle.</p>
+
+<h2 id="authentification">S'authentifier</h2>
+<p>Chaque requête porte la clé dans l'en-tête <code>Authorization</code>, et
+<strong>uniquement</strong> là :</p>
+<pre tabindex="0" aria-label="En-tête d'authentification"><code>Authorization: Bearer mc_live_…</code></pre>
+<ul>
+  <li>Une clé dans l'adresse (<code>?cle=…</code>, <code>?api_key=…</code>, ou
+    collée dans le chemin) est <strong>refusée</strong> en <code>400</code>
+    <code>cle_dans_l_adresse</code>, sans être lue : une adresse finit dans les
+    journaux et l'historique. Si c'est déjà arrivé, révoquez la clé.</li>
+  <li>Toujours en <strong>HTTPS</strong> (<code>https://tester.monchai.fr</code>) : une clé
+    envoyée une seule fois en <code>http://</code> a circulé en clair, révoquez-la.</li>
+  <li>Depuis un serveur ou un script uniquement : l'API n'envoie pas d'en-têtes
+    CORS, et une clé servie à un navigateur est lisible par tous.</li>
+</ul>
+
+<h2 id="portees">Portées et droits</h2>
+<div class="dv-tableau" tabindex="0" role="region" aria-label="Portées des clés">
+<table>
+  <thead><tr><th scope="col">Portée</th><th scope="col">Ce qu'elle ouvre</th></tr></thead>
+  <tbody>
+    <tr><td><code>stocks:lecture</code></td><td>Stocks : bouteilles, formats, cuvées, vrac</td></tr><tr><td><code>factures:lecture</code></td><td>Factures et chiffre d&#x27;affaires : factures de vente et d&#x27;achat, impayés, chiffre d&#x27;affaires</td></tr>
+  </tbody>
+</table>
+</div>
+<p>Les deux sont exigés <strong>à chaque requête</strong> : la portée de la clé
+<em>et</em> le droit actuel de la personne dans l'exploitation. Un droit retiré
+coupe la clé (<code>403</code>) sans la révoquer ; une personne qui quitte
+l'exploitation perd ses clés (<code>401</code>).</p>
+
+<h2 id="erreurs">Réponses et erreurs</h2>
+<p>Une réponse <code>200</code> est l'objet JSON de l'outil correspondant du
+connecteur, avec son champ <code>etat</code> (<code>ok</code> ou
+<code>empty</code>). Les montants sont des chaînes décimales
+(<code>"125.50"</code>), les dates au format <code>AAAA-MM-JJ</code>. Toute
+erreur a la même forme :</p>
+<pre tabindex="0" aria-label="Forme d'une erreur"><code>{"erreur": {"code": "portee_insuffisante", "message": "Cette clé ne permet pas de lire …"}}</code></pre>
+<p>Testez le <code>code</code> (stable) dans votre programme ; le
+<code>message</code> est une phrase en français qui dit quoi faire.
+<code>details</code> s'ajoute parfois (paramètres acceptés, candidats).</p>
+<div class="dv-tableau" tabindex="0" role="region" aria-label="Erreurs de l'API">
+<table>
+  <thead><tr><th scope="col">Statut</th><th scope="col">Codes</th><th scope="col">Cause, et quoi faire</th></tr></thead>
+  <tbody>
+    <tr><td><code>400</code></td><td><code>cle_dans_l_adresse</code>, <code>parametre_inconnu</code>, <code>parametre_invalide</code>, <code>ambigu</code></td><td>Clé dans l'adresse ; paramètre mal orthographié (la liste acceptée est dans <code>details</code>) ou hors bornes ; nom de cuvée ambigu (candidats dans <code>details</code>).</td></tr>
+    <tr><td><code>401</code></td><td><code>cle_absente</code>, <code>authentification_non_supportee</code>, <code>cle_mal_formee</code>, <code>cle_inconnue</code>, <code>cle_revoquee</code>, <code>cle_expiree</code>, <code>acces_retire</code></td><td>Pas d'en-tête, autre schéma que <code>Bearer</code>, clé tronquée ou inconnue, révoquée, expirée, ou la personne n'a plus accès à l'exploitation.</td></tr>
+    <tr><td><code>403</code></td><td><code>portee_insuffisante</code>, <code>permission_refusee</code>, <code>module_indisponible</code></td><td>La clé n'a pas la portée ; le rôle de la personne ne le permet plus ; module fermé pour l'exploitation.</td></tr>
+    <tr><td><code>404</code></td><td><code>introuvable</code>, <code>route_inconnue</code></td><td>Cuvée ou facture inconnue ; adresse qui n'existe pas (sans barre finale).</td></tr>
+    <tr><td><code>405</code></td><td><code>methode_non_autorisee</code></td><td>Autre méthode que <code>GET</code> : l'API est en lecture seule.</td></tr>
+    <tr><td><code>429</code></td><td><code>trop_de_requetes</code>, <code>trop_d_echecs</code></td><td>Limite atteinte : attendez la durée de l'en-tête <code>Retry-After</code> (secondes).</td></tr>
+    <tr><td><code>503</code></td><td><code>service_indisponible</code></td><td>Le compteur de limitation ne répond pas : réessayez après <code>Retry-After</code>.</td></tr>
+  </tbody>
+</table>
+</div>
+
+<h2 id="limites">Limites</h2>
+<ul>
+  <li>120 requêtes par minute et par clé ;</li>
+  <li>300 requêtes par minute et par adresse IP ;</li>
+  <li>20 essais de clé refusés par 5 minutes et par
+    adresse IP, après quoi l'adresse attend.</li>
+</ul>
+<p>Chaque réponse authentifiée porte <code>X-RateLimit-Limit</code>,
+<code>X-RateLimit-Remaining</code> et <code>X-RateLimit-Reset</code> (secondes
+avant la nouvelle fenêtre). Les listes sont plafonnées comme au connecteur
+(par exemple 50 factures au plus).</p>
+
+<h2 id="reference">Référence des points</h2>
+<div class="dv-encadre">
+  <p>Cette référence est <strong>engendrée</strong> depuis la description
+  OpenAPI 1.0.0 que sert Mon Chai :
+  <a href="https://tester.monchai.fr/api/v1/openapi.json">https://tester.monchai.fr/api/v1/openapi.json</a> (publique, sans clé). Tous
+  les points sont des <code>GET</code>.</p>
+</div>
+
+<h3 id="point-moi"><code>GET /api/v1/moi</code></h3>
+<p>Exploitation, utilisateur, rôle et portées de la clé. À appeler en premier.</p>
+<p>Aucune portée exigée.
+ Outil du connecteur équivalent : <a href="outils.html#contexte_connexion"><code>contexte_connexion</code></a>.
+Réponses : <code>200</code>, <code>401</code>, <code>403</code>, <code>405</code>, <code>429</code>.</p>
+
+
+<h3 id="point-stocks"><code>GET /api/v1/stocks</code></h3>
+<p>Résumé des stocks : vrac en litres, bouteilles au total, par format et par cuvée.</p>
+<p>Portée : <code>stocks:lecture</code>.
+ Outil du connecteur équivalent : <a href="outils.html#stock_resume"><code>stock_resume</code></a>.
+Réponses : <code>200</code>, <code>401</code>, <code>403</code>, <code>405</code>, <code>429</code>.</p>
+
+
+<h3 id="point-stocks_vrac"><code>GET /api/v1/stocks/vrac</code></h3>
+<p>Vin en vrac (cuves, lots techniques) en litres, par lot.</p>
+<p>Portée : <code>stocks:lecture</code>.
+ Outil du connecteur équivalent : <a href="outils.html#stock_vrac"><code>stock_vrac</code></a>.
+Réponses : <code>200</code>, <code>401</code>, <code>403</code>, <code>405</code>, <code>429</code>.</p>
+
+
+<h3 id="point-stocks_cuvee"><code>GET /api/v1/stocks/cuvees/{cuvee}</code></h3>
+<p>Stock d&#x27;une cuvée par son nom (exact, sinon « contient ») : bouteilles par format et lots commerciaux.</p>
+<p>Portée : <code>stocks:lecture</code>.
+ Outil du connecteur équivalent : <a href="outils.html#stock_par_cuvee"><code>stock_par_cuvee</code></a>.
+Réponses : <code>200</code>, <code>400</code>, <code>401</code>, <code>403</code>, <code>404</code>, <code>405</code>, <code>429</code>.</p>
+
+<div class="dv-tableau" tabindex="0" role="region" aria-label="Paramètres de /api/v1/stocks/cuvees/{cuvee}">
+<table>
+  <thead><tr><th scope="col">Paramètre</th><th scope="col">Où</th><th scope="col">Description</th></tr></thead>
+  <tbody>
+    <tr><td><code>cuvee</code> <span class="dv-etiquette">obligatoire</span></td><td>chemin</td><td>Nom de la cuvée (encodé dans l&#x27;adresse).</td></tr>
+  </tbody>
+</table>
+</div>
+
+
+<h3 id="point-stocks_format"><code>GET /api/v1/stocks/formats/{format_ml}</code></h3>
+<p>Lots commerciaux d&#x27;un format en millilitres (750 bouteille, 1500 magnum, 375 demi).</p>
+<p>Portée : <code>stocks:lecture</code>.
+ Outil du connecteur équivalent : <a href="outils.html#stock_par_format"><code>stock_par_format</code></a>.
+Réponses : <code>200</code>, <code>400</code>, <code>401</code>, <code>403</code>, <code>405</code>, <code>429</code>.</p>
+
+<div class="dv-tableau" tabindex="0" role="region" aria-label="Paramètres de /api/v1/stocks/formats/{format_ml}">
+<table>
+  <thead><tr><th scope="col">Paramètre</th><th scope="col">Où</th><th scope="col">Description</th></tr></thead>
+  <tbody>
+    <tr><td><code>format_ml</code> <span class="dv-etiquette">obligatoire</span></td><td>chemin</td><td>Format en millilitres, entre 50 et 30000.</td></tr>
+  </tbody>
+</table>
+</div>
+
+
+<h3 id="point-factures"><code>GET /api/v1/factures</code></h3>
+<p>Factures (ventes par défaut, achats avec sens=purchase), filtrables par statut, période et client ; triées par date d&#x27;émission décroissante ; au plus 50.</p>
+<p>Portée : <code>factures:lecture</code>.
+ Outil du connecteur équivalent : <a href="outils.html#factures_lister"><code>factures_lister</code></a>.
+Réponses : <code>200</code>, <code>400</code>, <code>401</code>, <code>403</code>, <code>405</code>, <code>429</code>.</p>
+
+<div class="dv-tableau" tabindex="0" role="region" aria-label="Paramètres de /api/v1/factures">
+<table>
+  <thead><tr><th scope="col">Paramètre</th><th scope="col">Où</th><th scope="col">Description</th></tr></thead>
+  <tbody>
+    <tr><td><code>statut</code></td><td>requête</td><td>Statut de la facture. Valeurs : <code>draft</code>, <code>sent</code>, <code>validated</code>, <code>executed</code>, <code>issued</code>, <code>paid</code>, <code>cancelled</code>.</td></tr><tr><td><code>du</code></td><td>requête</td><td>Début de période (date d&#x27;émission), AAAA-MM-JJ.</td></tr><tr><td><code>au</code></td><td>requête</td><td>Fin de période (date d&#x27;émission), AAAA-MM-JJ.</td></tr><tr><td><code>client</code></td><td>requête</td><td>Partie du nom du client (100 caractères au plus).</td></tr><tr><td><code>sens</code></td><td>requête</td><td>sale (ventes) ou purchase (achats). Valeurs : <code>sale</code>, <code>purchase</code>. Par défaut : <code>sale</code>.</td></tr><tr><td><code>limite</code></td><td>requête</td><td>Nombre de factures rendues (1 à 50). Par défaut : <code>20</code>.</td></tr>
+  </tbody>
+</table>
+</div>
+
+
+<h3 id="point-factures_impayees"><code>GET /api/v1/factures/impayees</code></h3>
+<p>Factures de vente émises non soldées (avoirs déduits), total dû et échues.</p>
+<p>Portée : <code>factures:lecture</code>.
+ Outil du connecteur équivalent : <a href="outils.html#factures_impayees"><code>factures_impayees</code></a>.
+Réponses : <code>200</code>, <code>400</code>, <code>401</code>, <code>403</code>, <code>405</code>, <code>429</code>.</p>
+
+<div class="dv-tableau" tabindex="0" role="region" aria-label="Paramètres de /api/v1/factures/impayees">
+<table>
+  <thead><tr><th scope="col">Paramètre</th><th scope="col">Où</th><th scope="col">Description</th></tr></thead>
+  <tbody>
+    <tr><td><code>au</code></td><td>requête</td><td>Fin de période (date d&#x27;émission), AAAA-MM-JJ.</td></tr>
+  </tbody>
+</table>
+</div>
+
+
+<h3 id="point-facture"><code>GET /api/v1/factures/{numero}</code></h3>
+<p>Détail d&#x27;une facture ou d&#x27;un avoir par son numéro : en-tête, lignes, règlements.</p>
+<p>Portée : <code>factures:lecture</code>.
+ Outil du connecteur équivalent : <a href="outils.html#facture_detail"><code>facture_detail</code></a>.
+Réponses : <code>200</code>, <code>400</code>, <code>401</code>, <code>403</code>, <code>404</code>, <code>405</code>, <code>429</code>.</p>
+
+<div class="dv-tableau" tabindex="0" role="region" aria-label="Paramètres de /api/v1/factures/{numero}">
+<table>
+  <thead><tr><th scope="col">Paramètre</th><th scope="col">Où</th><th scope="col">Description</th></tr></thead>
+  <tbody>
+    <tr><td><code>numero</code> <span class="dv-etiquette">obligatoire</span></td><td>chemin</td><td>Numéro (ou référence) de la facture ou de l&#x27;avoir.</td></tr>
+  </tbody>
+</table>
+</div>
+
+
+<h3 id="point-chiffre_affaires"><code>GET /api/v1/chiffre-affaires</code></h3>
+<p>Chiffre d&#x27;affaires sur une période : factures et avoirs de vente émis ou payés, net HT et TTC.</p>
+<p>Portée : <code>factures:lecture</code>.
+ Outil du connecteur équivalent : <a href="outils.html#chiffre_affaires"><code>chiffre_affaires</code></a>.
+Réponses : <code>200</code>, <code>400</code>, <code>401</code>, <code>403</code>, <code>405</code>, <code>429</code>.</p>
+
+<div class="dv-tableau" tabindex="0" role="region" aria-label="Paramètres de /api/v1/chiffre-affaires">
+<table>
+  <thead><tr><th scope="col">Paramètre</th><th scope="col">Où</th><th scope="col">Description</th></tr></thead>
+  <tbody>
+    <tr><td><code>du</code></td><td>requête</td><td>Début de période (date d&#x27;émission), AAAA-MM-JJ.</td></tr><tr><td><code>au</code></td><td>requête</td><td>Fin de période (date d&#x27;émission), AAAA-MM-JJ.</td></tr>
+  </tbody>
+</table>
+</div>
+
+
+
+<h2 id="exemples">Exemples complets</h2>
+<p>Ils lisent la clé dans la variable d'environnement <code>MON_CHAI_CLE</code> —
+jamais écrite dans le code. Dans un terminal (bash, zsh, Git Bash) :</p>
+<pre tabindex="0" aria-label="Variable de la clé"><code>export MON_CHAI_CLE="mc_live_…"   # collez votre clé ; PowerShell : $env:MON_CHAI_CLE = "…"</code></pre>
+
+<h3 id="curl-mes-stocks">Mes stocks (curl)</h3>
+<pre tabindex="0" aria-label="Mes stocks avec curl"><code>curl -s &quot;https://tester.monchai.fr/api/v1/stocks&quot; \
+  -H &quot;Authorization: Bearer $MON_CHAI_CLE&quot;</code></pre>
+
+<h3 id="curl-mes-impayes">Mes impayés (curl)</h3>
+<pre tabindex="0" aria-label="Mes impayés avec curl"><code>curl -s &quot;https://tester.monchai.fr/api/v1/factures/impayees&quot; \
+  -H &quot;Authorization: Bearer $MON_CHAI_CLE&quot;</code></pre>
+
+
+<h3 id="exemple-api-python">Mes stocks et mes impayés (Python)</h3>
+<p>Installation : pip install httpx — lancement : <code>python api_mes_donnees.py</code>.
+Fichier <code>api_mes_donnees.py</code>, à copier tel quel :</p>
+<pre tabindex="0" aria-label="Code de api_mes_donnees.py"><code>&quot;&quot;&quot;Mes stocks et mes impayés par l&#x27;API REST v1 de Mon Chai — exemple complet en Python.
+
+Avant de lancer :
+  1. dans Mon Chai, Administration › Connecteur IA &amp; clés d&#x27;API › « Clés d&#x27;API
+     (vos programmes) », créez une clé avec les portées « Stocks » et
+     « Factures et chiffre d&#x27;affaires » ; copiez-la, elle ne sera plus affichée ;
+  2. installez le client HTTP :   pip install httpx
+  3. donnez la clé au script par une variable d&#x27;environnement, jamais dans le code :
+       macOS / Linux :        export MON_CHAI_CLE=&quot;mc_live_…&quot;
+       Windows PowerShell :   $env:MON_CHAI_CLE = &quot;mc_live_…&quot;
+
+Lancement :
+    python api_mes_donnees.py
+Autre adresse Mon Chai :  MON_CHAI_URL=https://… python api_mes_donnees.py
+&quot;&quot;&quot;
+import os
+
+import httpx
+
+MON_CHAI = os.environ.get(&quot;MON_CHAI_URL&quot;, &quot;https://tester.monchai.fr&quot;).rstrip(&quot;/&quot;)
+CLE = os.environ.get(&quot;MON_CHAI_CLE&quot;, &quot;&quot;)
+
+
+def lire(client: httpx.Client, chemin: str) -&gt; dict:
+    &quot;&quot;&quot;Un GET sur l&#x27;API ; en cas de refus, le code et le message de Mon Chai.&quot;&quot;&quot;
+    reponse = client.get(chemin)
+    corps = reponse.json()
+    if reponse.status_code != 200:
+        erreur = corps[&quot;erreur&quot;]
+        attente = reponse.headers.get(&quot;Retry-After&quot;)
+        raise SystemExit(f&quot;{reponse.status_code} {erreur[&#x27;code&#x27;]} : {erreur[&#x27;message&#x27;]}&quot;
+                         + (f&quot; (réessayer dans {attente} s)&quot; if attente else &quot;&quot;))
+    return corps
+
+
+def main() -&gt; None:
+    if not CLE:
+        raise SystemExit(&quot;Définissez la variable d&#x27;environnement MON_CHAI_CLE (votre clé d&#x27;API).&quot;)
+    entetes = {&quot;Authorization&quot;: f&quot;Bearer {CLE}&quot;}
+    with httpx.Client(base_url=MON_CHAI + &quot;/api/v1&quot;, headers=entetes, timeout=30) as client:
+        moi = lire(client, &quot;/moi&quot;)
+        print(&quot;Exploitation :&quot;, moi[&quot;exploitation&quot;], &quot;— portées :&quot;, &quot;, &quot;.join(moi[&quot;portee&quot;]))
+
+        stocks = lire(client, &quot;/stocks&quot;)
+        print(&quot;Bouteilles :&quot;, stocks[&quot;bouteilles_total&quot;], &quot;— vrac :&quot;, stocks[&quot;vrac_litres&quot;], &quot;L&quot;)
+        for ligne in stocks[&quot;par_cuvee&quot;]:
+            print(f&quot;  {ligne[&#x27;cuvee&#x27;]} : {ligne[&#x27;bouteilles&#x27;]} bouteilles&quot;)
+
+        impayes = lire(client, &quot;/factures/impayees&quot;)
+        if impayes[&quot;etat&quot;] == &quot;empty&quot;:
+            print(&quot;Aucune facture impayée.&quot;)
+            return
+        print(f&quot;{impayes[&#x27;nombre&#x27;]} facture(s) impayée(s), {impayes[&#x27;nombre_echues&#x27;]} échue(s)&quot;
+              f&quot; — total dû : {impayes[&#x27;montant_du_total&#x27;]} €&quot;)
+        for facture in impayes[&quot;factures&quot;]:
+            print(f&quot;  {facture[&#x27;numero&#x27;]}  {facture[&#x27;client&#x27;]}  reste dû {facture[&#x27;reste_du&#x27;]} €&quot;
+                  f&quot;  échéance {facture[&#x27;date_echeance&#x27;] or &#x27;—&#x27;}&quot;)
+
+
+if __name__ == &quot;__main__&quot;:
+    main()
+</code></pre>
+
+<h3 id="exemple-api-typescript">Mes stocks et mes impayés (TypeScript)</h3>
+<p>Installation : aucune dépendance (fetch de Node.js 18+) ; tsx pour exécuter le TypeScript — lancement : <code>npx tsx api_mes_donnees.ts</code>.
+Fichier <code>api_mes_donnees.ts</code>, à copier tel quel :</p>
+<pre tabindex="0" aria-label="Code de api_mes_donnees.ts"><code>/**
+ * Mes stocks et mes impayés par l&#x27;API REST v1 de Mon Chai — exemple complet en TypeScript.
+ *
+ * Avant de lancer :
+ *   1. dans Mon Chai, Administration › Connecteur IA &amp; clés d&#x27;API › « Clés d&#x27;API
+ *      (vos programmes) », créez une clé avec les portées « Stocks » et
+ *      « Factures et chiffre d&#x27;affaires » ; copiez-la, elle ne sera plus affichée ;
+ *   2. donnez la clé au script par une variable d&#x27;environnement, jamais dans le code :
+ *        macOS / Linux :        export MON_CHAI_CLE=&quot;mc_live_…&quot;
+ *        Windows PowerShell :   $env:MON_CHAI_CLE = &quot;mc_live_…&quot;
+ *
+ * Lancement (Node.js 18 ou plus récent, aucune dépendance : fetch est intégré) :
+ *   npx tsx api_mes_donnees.ts        (ou, avec Node.js 23.6+ :  node api_mes_donnees.ts)
+ * Autre adresse Mon Chai :  MON_CHAI_URL=https://… npx tsx api_mes_donnees.ts
+ *
+ * À exécuter côté serveur ou dans un script : jamais dans une page web, la clé
+ * y serait lisible par tous (et l&#x27;API n&#x27;envoie pas d&#x27;en-têtes CORS : un
+ * navigateur refuserait de toute façon la réponse).
+ */
+const MON_CHAI = (process.env.MON_CHAI_URL ?? &quot;https://tester.monchai.fr&quot;).replace(/\/+$/, &quot;&quot;);
+const CLE = process.env.MON_CHAI_CLE ?? &quot;&quot;;
+
+/** Un GET sur l&#x27;API ; en cas de refus, le code et le message de Mon Chai. */
+async function lire(chemin: string): Promise&lt;any&gt; {
+  const reponse = await fetch(`${MON_CHAI}/api/v1${chemin}`, {
+    headers: { Authorization: `Bearer ${CLE}` },
+  });
+  const corps = await reponse.json();
+  if (!reponse.ok) {
+    const attente = reponse.headers.get(&quot;Retry-After&quot;);
+    throw new Error(`${reponse.status} ${corps.erreur.code} : ${corps.erreur.message}`
+      + (attente ? ` (réessayer dans ${attente} s)` : &quot;&quot;));
+  }
+  return corps;
+}
+
+async function main() {
+  if (!CLE) throw new Error(&quot;Définissez la variable d&#x27;environnement MON_CHAI_CLE (votre clé d&#x27;API).&quot;);
+
+  const moi = await lire(&quot;/moi&quot;);
+  console.log(`Exploitation : ${moi.exploitation} — portées : ${moi.portee.join(&quot;, &quot;)}`);
+
+  const stocks = await lire(&quot;/stocks&quot;);
+  console.log(`Bouteilles : ${stocks.bouteilles_total} — vrac : ${stocks.vrac_litres} L`);
+  for (const ligne of stocks.par_cuvee) {
+    console.log(`  ${ligne.cuvee} : ${ligne.bouteilles} bouteilles`);
+  }
+
+  const impayes = await lire(&quot;/factures/impayees&quot;);
+  if (impayes.etat === &quot;empty&quot;) {
+    console.log(&quot;Aucune facture impayée.&quot;);
+    return;
+  }
+  console.log(`${impayes.nombre} facture(s) impayée(s), ${impayes.nombre_echues} échue(s) — total dû : ${impayes.montant_du_total} €`);
+  for (const facture of impayes.factures) {
+    console.log(`  ${facture.numero}  ${facture.client}  reste dû ${facture.reste_du} €  échéance ${facture.date_echeance ?? &quot;—&quot;}`);
+  }
+}
+
+main().catch((erreur) =&gt; {
+  console.error(erreur.message ?? erreur);
+  process.exit(1);
+});
+</code></pre>
+
+<p>Ces commandes et ces deux fichiers sont ceux que Mon Chai exécute contre un
+serveur réel, avec une clé de test, pour vérifier cette page.</p>
+
+    </main>
+  </div>
+
+  <footer class="dv-pied">
+    <div class="dv-pied__barre">
+      <span>Mon Chai — logiciel de gestion viticole, développé et hébergé en France.</span>
+      <span>Une question : <a href="mailto:contact@monchai.fr">contact@monchai.fr</a> · <a href="contact.html">Contact et support</a></span>
+    </div>
+  </footer>
+</body>
+</html>

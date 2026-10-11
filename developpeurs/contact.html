@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Contact et support — Documentation développeurs Mon Chai</title>
+  <meta name="description" content="Une question, un problème, une demande : à qui écrire et quoi joindre.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://monchai.fr/developpeurs/contact.html">
+  <meta name="theme-color" content="#7B1E22">
+  
+  <link rel="stylesheet" href="developpeurs.css">
+</head>
+<body>
+  <a class="dv-evitement" href="#contenu">Aller au contenu</a>
+
+  <header class="dv-entete">
+    <div class="dv-entete__barre">
+      <a class="dv-marque" href="index.html">
+        <img src="logo_monchai.png" alt="Mon Chai" width="72" height="36">
+        <span>Développeurs</span>
+      </a>
+      <a class="dv-entete__retour" href="https://tester.monchai.fr/">Aller sur Mon Chai</a>
+    </div>
+  </header>
+
+  <div class="dv-grille">
+    <nav class="dv-sommaire" aria-label="Sommaire de la documentation">
+      <h2>Documentation</h2>
+      <ol>
+        
+        <li><a href="index.html">Démarrer</a></li>
+        
+        <li><a href="connecteur.html">Connecteur (MCP + OAuth 2.1)</a></li>
+        
+        <li><a href="outils.html">Référence des outils</a></li>
+        
+        <li><a href="api-rest.html">API REST v1</a></li>
+        
+        <li><a href="importer.html">Importer vos données</a></li>
+        
+        <li><a href="exporter.html">Exporter vos données</a></li>
+        
+        <li><a href="modele-metier.html">Modèle métier</a></li>
+        
+        <li><a href="securite.html">Sécurité et bonnes pratiques</a></li>
+        
+        <li><a href="feuille-de-route.html">Feuille de route</a></li>
+        
+        <li><a href="contact.html" aria-current="page">Contact et support</a></li>
+        
+      </ol>
+    </nav>
+
+    <main id="contenu" class="dv-contenu" tabindex="-1">
+      <h1>Contact et support</h1>
+      <p class="dv-chapo">Une question, un problème, une demande : à qui écrire et quoi joindre.</p>
+      
+<p>Écrivez à <a href="mailto:contact@monchai.fr">contact@monchai.fr</a>. Une
+personne de l'équipe vous répond ; il n'y a pas de forum ni de support
+téléphonique dédié aux développeurs.</p>
+
+<h2 id="quoi-joindre">Pour une réponse rapide, joignez</h2>
+<ul>
+  <li>ce que vous cherchez à faire, en une phrase ;</li>
+  <li>le langage et la version du SDK (par exemple <code>mcp</code> 2.1.1,
+    <code>@modelcontextprotocol/sdk</code> 1.32.1) ;</li>
+  <li>la requête et la réponse complètes (code HTTP, corps JSON, en-tête
+    <code>WWW-Authenticate</code> ou <code>Retry-After</code> s'il y en a),
+    l'heure de l'essai ;</li>
+  <li>pour un import refusé : le message affiché et, si possible, les premières
+    lignes du fichier.</li>
+</ul>
+<div class="dv-encadre dv-encadre--alerte">
+  <p><strong>N'envoyez jamais un jeton</strong> (<code>mca_…</code>,
+  <code>mcr_…</code>), un mot de passe ou un secret client, même expiré.
+  Remplacez-les par <code>…</code>. Si un jeton a fuité, révoquez l'accès
+  (<a href="connecteur.html#revocation">comment</a>) avant de nous
+  écrire.</p>
+</div>
+
+<h2 id="vous-etes-client">Vous êtes déjà client</h2>
+<p>Depuis Mon Chai, vous pouvez aussi ouvrir une demande d'assistance : elle
+arrive à la même équipe, avec le nom de votre exploitation.</p>
+
+    </main>
+  </div>
+
+  <footer class="dv-pied">
+    <div class="dv-pied__barre">
+      <span>Mon Chai — logiciel de gestion viticole, développé et hébergé en France.</span>
+      <span>Une question : <a href="mailto:contact@monchai.fr">contact@monchai.fr</a> · <a href="contact.html">Contact et support</a></span>
+    </div>
+  </footer>
+</body>
+</html>

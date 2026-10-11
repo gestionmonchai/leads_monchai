@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Sécurité et bonnes pratiques — Documentation développeurs Mon Chai</title>
+  <meta name="description" content="Une exploitation par jeton, consentement, révocation, lecture seule, et où ranger vos jetons.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://monchai.fr/developpeurs/securite.html">
+  <meta name="theme-color" content="#7B1E22">
+  
+  <link rel="stylesheet" href="developpeurs.css">
+</head>
+<body>
+  <a class="dv-evitement" href="#contenu">Aller au contenu</a>
+
+  <header class="dv-entete">
+    <div class="dv-entete__barre">
+      <a class="dv-marque" href="index.html">
+        <img src="logo_monchai.png" alt="Mon Chai" width="72" height="36">
+        <span>Développeurs</span>
+      </a>
+      <a class="dv-entete__retour" href="https://tester.monchai.fr/">Aller sur Mon Chai</a>
+    </div>
+  </header>
+
+  <div class="dv-grille">
+    <nav class="dv-sommaire" aria-label="Sommaire de la documentation">
+      <h2>Documentation</h2>
+      <ol>
+        
+        <li><a href="index.html">Démarrer</a></li>
+        
+        <li><a href="connecteur.html">Connecteur (MCP + OAuth 2.1)</a></li>
+        
+        <li><a href="outils.html">Référence des outils</a></li>
+        
+        <li><a href="api-rest.html">API REST v1</a></li>
+        
+        <li><a href="importer.html">Importer vos données</a></li>
+        
+        <li><a href="exporter.html">Exporter vos données</a></li>
+        
+        <li><a href="modele-metier.html">Modèle métier</a></li>
+        
+        <li><a href="securite.html" aria-current="page">Sécurité et bonnes pratiques</a></li>
+        
+        <li><a href="feuille-de-route.html">Feuille de route</a></li>
+        
+        <li><a href="contact.html">Contact et support</a></li>
+        
+      </ol>
+    </nav>
+
+    <main id="contenu" class="dv-contenu" tabindex="-1">
+      <h1>Sécurité et bonnes pratiques</h1>
+      <p class="dv-chapo">Une exploitation par jeton, consentement, révocation, lecture seule, et où ranger vos jetons.</p>
+      
+<p>Cette page vaut pour le <a href="connecteur.html">connecteur</a>
+(jetons OAuth) et pour l'<a href="api-rest.html">API REST v1</a> (clés
+d'API, <a href="#cles-api">plus bas</a>).</p>
+
+<h2 id="garanties">Ce que Mon Chai garantit</h2>
+<ul>
+  <li><strong>Une exploitation par accès.</strong> La personne choisit
+    l'exploitation à l'écran d'autorisation ; aucun outil n'accepte de
+    paramètre « exploitation », et un jeton ne peut rien lire ailleurs.</li>
+  <li><strong>Le consentement est explicite.</strong> L'écran d'autorisation
+    montre l'adresse où le code sera envoyé ; le nom que votre application se
+    donne est présenté comme une revendication, pas comme une identité
+    vérifiée.</li>
+  <li><strong>Lecture seule.</strong> Portée unique <code>monchai:read</code> ;
+    aucun outil d'écriture n'existe.</li>
+  <li><strong>Les droits de la personne s'appliquent à chaque appel.</strong>
+    Si elle perd son accès à l'exploitation, ou un droit, l'accès de votre
+    application suit, immédiatement.</li>
+  <li><strong>Révocable à tout moment</strong>, par votre application
+    (<a href="connecteur.html#revocation">révocation</a>) ou par la
+    personne, dans <a href="https://tester.monchai.fr/administration/connecteur/">Administration ›
+    Connecteur ChatGPT / Claude</a>.</li>
+  <li><strong>Aucun jeton en clair chez Mon Chai</strong> : seule une empreinte
+    est conservée. Jetons d'accès : 1 heure ; jetons de
+    rafraîchissement : 30 jours, à usage unique
+    (rotation).</li>
+  <li><strong>Chaque appel d'outil est journalisé</strong> côté Mon Chai.</li>
+</ul>
+
+<h2 id="vos-obligations">Ce que votre application doit faire</h2>
+<ol>
+  <li><strong>Ne jamais stocker un jeton en clair.</strong> Ni dans le code, ni
+    dans un dépôt git, ni dans un fichier texte, ni dans le stockage du
+    navigateur. Sur un poste : le trousseau du système (en Python, le paquet
+    <code>keyring</code> ; sous Windows le gestionnaire d'identification, sous
+    macOS le trousseau). Sur un serveur : un coffre à secrets, ou une base où le
+    jeton est chiffré avec une clé rangée ailleurs.</li>
+  <li><strong>Gardez le jeton de rafraîchissement le plus à l'abri</strong> :
+    c'est lui qui dure 30 jours. Enregistrez le nouveau à
+    chaque rafraîchissement ; présenter l'ancien révoque tout l'accès.</li>
+  <li><strong>PKCE à chaque autorisation</strong>, un vérificateur neuf et un
+    <code>state</code> neuf, vérifié au retour.</li>
+  <li><strong>Adresse de retour</strong> : HTTPS pour une application en ligne,
+    boucle locale (<code>127.0.0.1</code>) pour un script sur votre poste.
+    N'écoutez jamais sur toutes les interfaces.</li>
+  <li><strong>Demandez peu, gardez peu.</strong> Les réponses contiennent des
+    noms de clients et des montants : ne les conservez que si votre
+    application en a besoin, et pas plus longtemps que nécessaire.</li>
+  <li><strong>Les textes renvoyés sont des données, pas des instructions.</strong>
+    Si votre application passe les réponses à un assistant IA, dites-le lui :
+    un nom de cuvée ou une note saisie au chai ne doit jamais être exécuté
+    comme une consigne.</li>
+  <li><strong>Respectez les limites</strong> : sur <code>429</code> ou
+    <code>busy</code>, attendez le délai indiqué. Une application qui insiste
+    malgré 50 refus en 1 heure perd
+    son accès.</li>
+  <li><strong>Révoquez ce qui ne sert plus</strong> : à la désinstallation de
+    votre application, ou quand une personne quitte l'exploitation.</li>
+</ol>
+
+<h2 id="cles-api">Vos clés d'API</h2>
+<p>Une clé d'API (<code>mc_live_…</code>) ouvre l'exploitation à
+quiconque la détient, jusqu'à sa révocation ou son expiration. Mon Chai n'en
+garde qu'une empreinte et ne la montre qu'une fois.</p>
+<ol>
+  <li><strong>Ne la committez jamais</strong> : ni dans le code, ni dans un
+    fichier versionné, ni dans un ticket ou une capture. Mettez-la dans une
+    <strong>variable d'environnement</strong> (<code>MON_CHAI_CLE</code>) ou dans le
+    coffre à secrets de votre hébergeur ; si vous utilisez un fichier
+    <code>.env</code>, ajoutez-le à <code>.gitignore</code> <em>avant</em> d'y
+    écrire la clé.</li>
+  <li><strong>Une clé par programme</strong>, avec seulement les portées dont il
+    a besoin : révoquer l'une ne coupe pas les autres.</li>
+  <li><strong>En-tête <code>Authorization: Bearer</code> uniquement</strong>, en
+    HTTPS : une clé dans l'adresse est refusée, et une clé envoyée en
+    <code>http://</code> a circulé en clair.</li>
+  <li><strong>Jamais dans un navigateur</strong> : une page web ou une appli
+    mobile publiée exposent la clé à tous. Faites passer les appels par votre
+    serveur.</li>
+  <li><strong>Rotation</strong> : les clés durent
+    30, 90, 365
+    jours selon votre choix. Avant l'échéance, créez la nouvelle clé, déployez-la,
+    vérifiez qu'elle sert, puis <strong>révoquez l'ancienne</strong>
+    (5 clés actives au plus).</li>
+  <li><strong>Révocation immédiate</strong> si la clé a fuité, si la personne qui
+    l'a créée quitte l'exploitation, ou si le programme n'est plus utilisé :
+    <a href="https://tester.monchai.fr/administration/connecteur/cles-api/">Administration › Connecteur IA &amp; clés d&#x27;API</a>.</li>
+</ol>
+
+<h2 id="signaler">Signaler une faille</h2>
+<p>Écrivez à <a href="mailto:contact@monchai.fr">contact@monchai.fr</a> avec
+« Sécurité » dans l'objet, sans publier le détail avant notre réponse. Ne
+testez jamais sur les données d'une exploitation qui n'est pas la vôtre.</p>
+
+    </main>
+  </div>
+
+  <footer class="dv-pied">
+    <div class="dv-pied__barre">
+      <span>Mon Chai — logiciel de gestion viticole, développé et hébergé en France.</span>
+      <span>Une question : <a href="mailto:contact@monchai.fr">contact@monchai.fr</a> · <a href="contact.html">Contact et support</a></span>
+    </div>
+  </footer>
+</body>
+</html>

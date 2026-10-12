@@ -1,12 +1,6 @@
 /* Progressive enhancement: all steps and links remain available without JS. */
 (function () {
   'use strict';
-  // The shared desktop header must fit the space left by the scrollbar.
-  function fitHeader() {
-    document.documentElement.style.setProperty('--echelle', document.documentElement.clientWidth / 1920);
-  }
-  fitHeader();
-  window.addEventListener('resize', fitHeader);
   var reduced = window.matchMedia('(prefers-reduced-motion: reduce)');
   var journeys = [];
   document.querySelectorAll('[data-journey]').forEach(function (card) {

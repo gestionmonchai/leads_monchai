@@ -124,6 +124,20 @@
 }
 .hd__cta:hover{ background:#b87f4a; }
 
+/* Réserver une démo (remplace « Me Connecter » depuis le 13/10/2026) :
+   pastille à contour, calée à droite contre le bouton principal (fin à
+   x 1416) quelle que soit la longueur du libellé traduit. */
+.hd__demo{
+  position:absolute; right:504px; top:30px;
+  display:flex; align-items:center; justify-content:center;
+  height:48px; padding:0 24px; border-radius:24px; box-sizing:border-box;
+  border:1.5px solid var(--hd-cuivre); background:var(--hd-blanc);
+  color:var(--hd-cuivre-f); text-decoration:none;
+  font-family:var(--hd-titre); font-weight:600; font-size:18px; line-height:1;
+  white-space:nowrap; transition:background .18s ease, border-color .18s ease;
+}
+.hd__demo:hover{ background:var(--hd-creme); border-color:var(--hd-cuivre-f); }
+
 /* Sélecteur de langue : la pastille conserve exactement les coordonnées
    de l'accueil et ouvre des liens HTML réels vers chaque version indexable. */
 .hd__langue{
@@ -338,10 +352,21 @@
     position:static; width:auto; height:42px; padding:0 16px; margin:0;
     font-size:13.5px; border-radius:21px;
   }
+  .hd__demo{
+    position:static; height:42px; padding:0 14px; margin:0;
+    font-size:13.5px; border-radius:21px;
+  }
   .hd__langue{
     position:static; width:52px; height:42px; margin:0;
     font-size:13.5px; border-radius:21px;
   }
+}
+/* De 900 à 1099px, les deux pastilles d'appel prennent 70px de plus que
+   l'ancien lien « Me Connecter » : la rangée débordait de 18px à 900px. */
+@media (min-width:900px) and (max-width:1099px){
+  .hd__barre{ gap:6px; }
+  .hd__demo{ padding:0 10px; font-size:12.5px; }
+  .hd__cta{ padding:0 12px; font-size:12.5px; }
 }
 
 
@@ -409,6 +434,11 @@
     position:static; width:100%; height:52px; margin-top:18px;
     font-size:17px;
   }
+  .hd__demo{
+    position:static; width:100%; height:52px; margin-top:18px;
+    font-size:17px; border-radius:26px;
+  }
+  .hd__demo + .hd__cta{ margin-top:10px; }
   .hd__langue{
     position:static; width:100%; height:auto; margin-top:12px;
     align-self:flex-start;

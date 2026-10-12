@@ -3023,3 +3023,11 @@ body{
 /* Liens d'appel vers l'application posés dans le texte (FAQ, actualité) : sans
    classe, ils prenaient le bleu par défaut du navigateur. */
 a[href="https://tester.monchai.fr"]:not([class]){ color:var(--bordeaux); font-weight:600; text-decoration:underline; text-underline-offset:3px; }
+
+/* Carte « Mon Chai rejoint le Poool » (13/10/2026) : toute la carte mène
+   à l'article. */
+.mobile-news__card--poool{ position:relative; background:linear-gradient(155deg,rgba(91,23,30,.1),rgba(91,23,30,.94)),url("assets/img/actu-2-480-20260720.webp") center/cover; }
+.mobile-news__card--poool > img{ object-position:40% center; }
+.mobile-news__card h3 a{ color:inherit; text-decoration:none; }
+.mobile-news__card--poool h3 a::after{ content:""; position:absolute; inset:0; z-index:1; }
+.mobile-news__card--poool:hover h3 a{ text-decoration:underline; text-underline-offset:4px; }

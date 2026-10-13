@@ -3031,3 +3031,10 @@ a[href="https://tester.monchai.fr"]:not([class]){ color:var(--bordeaux); font-we
 .mobile-news__card h3 a{ color:inherit; text-decoration:none; }
 .mobile-news__card--poool h3 a::after{ content:""; position:absolute; inset:0; z-index:1; }
 .mobile-news__card--poool:hover h3 a{ text-decoration:underline; text-underline-offset:4px; }
+
+/* Carte « Mon Chai Notes est disponible » (14/10/2026) : toute la carte mène à
+   Mon Chai, où se trouve le lien de téléchargement. */
+.mobile-news__card--notes{ position:relative; background:linear-gradient(155deg,rgba(91,23,30,.1),rgba(91,23,30,.94)),url("assets/img/assistant-fond-20260720.webp") center/cover; }
+.mobile-news__card--notes > img{ object-position:35% center; }
+.mobile-news__card--notes h3 a::after{ content:""; position:absolute; inset:0; z-index:1; }
+.mobile-news__card--notes:hover h3 a{ text-decoration:underline; text-underline-offset:4px; }

@@ -136,6 +136,10 @@ async function construire() {
       }
       const liste = JSON.stringify(externes.map(p => [p.media, p.fichier]));
       const remplacement =
+        // Préchargement limité à chaque tranche : le téléchargement part dès
+        // la lecture de l'en-tête, sans attendre le script ci-dessous, et rien
+        // n'est téléchargé hors de la tranche.
+        externes.map(p => '<link rel="preload" as="style" href="' + p.fichier + '" media="' + p.media + '">\n').join('') +
         '<style data-lot="' + nom + '">' + integree.css + '</style>\n' +
         // Tranche active : feuille écrite par le parseur, donc bloquante comme
         // une feuille ordinaire. Changement de tranche (rotation, fenêtre

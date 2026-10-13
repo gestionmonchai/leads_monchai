@@ -129,15 +129,11 @@ window.addEventListener('scroll', function () {
     chromeEnAttente = false;
   });
 }, {passive:true});
-// État de départ posé sans rien mesurer : toute lecture de position au
-// chargement force une mise en page (Lighthouse : « ajustement forcé »). En
-// haut de page, le premier tiret est actif et aucun ne passe sur un fond
-// sombre. Le moindre défilement recalcule tout, y compris la restauration de
-// position au rechargement et l'arrivée par une ancre.
-if (dotLinks[0]) {
-  dotLinks[0].classList.add('est-actif');
-  dotLinks[0].setAttribute('aria-current', 'true');
-}
+// Pas de calcul au chargement : toute lecture de position forcerait une
+// mise en page (Lighthouse : « ajustement forcé »). L'état de départ, premier
+// tiret actif, est écrit dans le HTML, sans animation au chargement. Le
+// moindre défilement recalcule tout, y compris la restauration de position
+// au rechargement et l'arrivée par une ancre.
 
 function fermerMenuMobile() {
   if (!mobileMenuBtn || !mobileNav) return;

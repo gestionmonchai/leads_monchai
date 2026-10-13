@@ -17,10 +17,17 @@
      permet aux pages éditoriales d'utiliser exactement le même composant que
      l'accueil, même lorsqu'elles ne chargent pas script.js. */
   function publierEchelle() {
+    // --echelle ne sert qu'à partir de 900 px. Sur téléphone, l'écrire sur
+    // <html> forçait un recalcul du style de toute la page au chargement
+    // (Lighthouse mobile : tâche bloquante de 252 ms).
+    if (!NAV_HORIZ.matches) return;
     document.documentElement.style.setProperty('--echelle', window.innerWidth / 1920);
   }
   window.addEventListener('resize', publierEchelle);
-  publierEchelle();
+  if (NAV_HORIZ.addEventListener) NAV_HORIZ.addEventListener('change', publierEchelle);
+  // L'accueil pose déjà la valeur dans un script de tête, page encore vide :
+  // la relire ici forcerait une mise en page complète.
+  if (!document.documentElement.style.getPropertyValue('--echelle')) publierEchelle();
 
   var hd     = document.querySelector('.hd');
   var burger = document.querySelector('.hd__burger');

@@ -25,6 +25,21 @@
   font-weight:400 500;
   font-display:swap;
 }
+/* Compléments pris dans assets/css/polices.css, que l'accueil ne charge plus :
+   ce fichier redéclarait Playfair 400/500 et Manrope 700 en fichiers statiques,
+   téléchargés en double des fichiers variables ci-dessus. Restent ici les
+   seules graisses absentes : Playfair 500 italique (citation), Playfair 700
+   (libellés Instagram, titre de la carte CTA), Poppins 500 à 700 (header, CTA). */
+@font-face{font-family:'Playfair Display';font-style:italic;font-weight:500;font-display:swap;src:url('assets/fonts/playfairdisplay-500-italic-latin-ext.woff2') format('woff2');unicode-range:U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;}
+@font-face{font-family:'Playfair Display';font-style:italic;font-weight:500;font-display:swap;src:url('assets/fonts/playfairdisplay-500-italic-latin.woff2') format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;}
+@font-face{font-family:'Playfair Display';font-style:normal;font-weight:700;font-display:swap;src:url('assets/fonts/playfairdisplay-700-normal-latin-ext.woff2') format('woff2');unicode-range:U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;}
+@font-face{font-family:'Playfair Display';font-style:normal;font-weight:700;font-display:swap;src:url('assets/fonts/playfairdisplay-700-normal-latin.woff2') format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;}
+@font-face{font-family:'Poppins';font-style:normal;font-weight:500;font-display:swap;src:url('assets/fonts/poppins-500-normal-latin-ext.woff2') format('woff2');unicode-range:U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;}
+@font-face{font-family:'Poppins';font-style:normal;font-weight:500;font-display:swap;src:url('assets/fonts/poppins-500-normal-latin.woff2') format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;}
+@font-face{font-family:'Poppins';font-style:normal;font-weight:600;font-display:swap;src:url('assets/fonts/poppins-600-normal-latin-ext.woff2') format('woff2');unicode-range:U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;}
+@font-face{font-family:'Poppins';font-style:normal;font-weight:600;font-display:swap;src:url('assets/fonts/poppins-600-normal-latin.woff2') format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;}
+@font-face{font-family:'Poppins';font-style:normal;font-weight:700;font-display:swap;src:url('assets/fonts/poppins-700-normal-latin-ext.woff2') format('woff2');unicode-range:U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;}
+@font-face{font-family:'Poppins';font-style:normal;font-weight:700;font-display:swap;src:url('assets/fonts/poppins-700-normal-latin.woff2') format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;}
 
 /* ===== styles.css ===== */
 /* =========================================================
@@ -1685,7 +1700,7 @@ body{
 
   /* Hero : véritable canvas HTML 1920 × 1200, scalé sans déformer le DOM. */
   .mobile-hero{ position:relative; height:calc(100vw * 1200 / 1920); min-height:0; padding:0; display:block; overflow:hidden; background:none; }
-  .hero-desktop-canvas{ position:absolute; top:0; left:0; display:block; width:1920px; height:1200px; transform-origin:top left; }
+  .hero-desktop-canvas{ position:absolute; top:0; left:0; display:block; width:1920px; height:1200px; transform-origin:top left; transform:scale(var(--desktop-scale)); }
   .mobile-hero__veil{ position:absolute; left:0; top:0; z-index:1; width:2141px; height:1428px; background:url("assets/img/hero-desktop-20260720.webp") center/100% 100% no-repeat; transform:scaleX(-1); }
   .mobile-hero__content{ position:absolute; inset:0; z-index:2; display:block; width:1920px; max-width:none; height:1200px; color:var(--encre); }
   .hero-copy{ position:absolute; left:136px; top:273px; width:824px; height:775px; padding:0; border:0; border-radius:22px; background:rgba(255,253,252,.94); box-shadow:0 4px 4px rgba(0,0,0,.13); backdrop-filter:none; transform:scale(.95); transform-origin:top left; }
@@ -3034,7 +3049,74 @@ a[href="https://tester.monchai.fr"]:not([class]){ color:var(--bordeaux); font-we
 
 /* Carte « Mon Chai Notes est disponible » (14/10/2026) : toute la carte mène à
    Mon Chai, où se trouve le lien de téléchargement. */
-.mobile-news__card--notes{ position:relative; background:linear-gradient(155deg,rgba(91,23,30,.1),rgba(91,23,30,.94)),url("assets/img/assistant-fond-20260720.webp") center/cover; }
+.mobile-news__card--notes{ position:relative; background:linear-gradient(155deg,rgba(91,23,30,.1),rgba(91,23,30,.94)),url("assets/img/assistant-fond-480-20260720.webp") center/cover; }
 .mobile-news__card--notes > img{ object-position:35% center; }
 .mobile-news__card--notes h3 a::after{ content:""; position:absolute; inset:0; z-index:1; }
 .mobile-news__card--notes:hover h3 a{ text-decoration:underline; text-underline-offset:4px; }
+
+/* Contrastes AA (PageSpeed mobile, 14/10/2026) : le doré #DFB780 est trop clair
+   pour porter du texte blanc (1,9:1) ou servir de texte sur fond blanc. Texte
+   bordeaux sur les fonds dorés (5,5:1), cuivre foncé pour les étiquettes (4,9:1). */
+.mobile-button--gold,
+.mobile-actions .mobile-button--gold{ color:var(--bordeaux) !important; }
+.mobile-ai__entete span{ color:var(--bordeaux); }
+.mobile-ai__input{ color:#6e665f; }
+.mobile-offer__pitch,
+.mobile-offer__pitch h3,
+.mobile-offer__pitch > p{ color:var(--bordeaux) !important; }
+.mobile-news .mobile-news__card span,
+.instagram-feed__heading > span{ color:#A85D35; }
+.mobile-news .mobile-news__date{ color:#A85D35 !important; }
+
+/* Fond de la section Assistant sur téléphone : la photo de 1600 px (120 Ko)
+   pour un écran de 412 px ; la déclinaison de 960 px (42 Ko) suffit. */
+@media (max-width:640px){
+  .mobile-ai{ background:linear-gradient(180deg,rgba(255,255,255,.12),rgba(255,255,255,.3)),url("assets/img/assistant-fond-960-20260720.webp") center/cover no-repeat !important; }
+}
+
+
+/* Téléphone : la ligne « Offre de lancement : inscription avant le
+   31 octobre 2026 » ne tient pas sur une ligne. En nowrap, elle élargissait
+   toute la grille de l'offre (479 px pour 380 disponibles sur un écran de
+   412 px) : titre, sous-titre et encadrés étaient coupés à droite. Elle passe
+   à la ligne, et la colonne ne peut plus s'élargir au-delà de l'écran. */
+@media (max-width:699px){
+  .mobile-offer{ grid-template-columns:minmax(0,1fr) !important; }
+  .mobile-offer > .mobile-offer__dates{ white-space:normal; text-wrap:balance; }
+  /* Le retour forcé du sous-titre, prévu pour les grands écrans, laissait
+     « Chai » seul sur sa ligne. */
+  .mobile-offer > .mobile-offer__subtitle br{ display:none; }
+  .mobile-offer > .mobile-offer__subtitle{ text-wrap:balance; }
+}
+
+/* Fonds différés : tant qu'une section sous le premier écran n'est pas
+   « prête » (script de tête d'index.html, à son approche ou page au repos),
+   aucune de ses images de fond n'est téléchargée. Le haut de page n'est pas
+   concerné. Spécificité (0,4,3) avec !important : passe devant toutes les
+   règles de fond de la page, y compris les !important. */
+html.fonds-differes .mobile-site main > section:not(.fond-pret):not(.mobile-hero),
+html.fonds-differes .mobile-site main > section:not(.fond-pret):not(.mobile-hero)::before,
+html.fonds-differes .mobile-site main > section:not(.fond-pret):not(.mobile-hero)::after,
+html.fonds-differes .mobile-site main > section:not(.fond-pret):not(.mobile-hero) *,
+html.fonds-differes .mobile-site main > section:not(.fond-pret):not(.mobile-hero) *::before,
+html.fonds-differes .mobile-site main > section:not(.fond-pret):not(.mobile-hero) *::after{
+  background-image:none !important;
+}
+
+/* Sections sous le premier écran : mises en page seulement à leur approche
+   (content-visibility). Au chargement, le navigateur ne calcule pas leur
+   contenu : moins de travail avant le premier affichage, et les deux polices
+   qui ne servent qu'à À propos et Actualités (Playfair 500 italique pour la
+   citation, Playfair 700 pour les libellés Instagram) ne sont pas encore
+   téléchargées. Aucun enfant ne déborde de ces sections (vérifié de 412 à
+   1920 px), le rognage propre à content-visibility n'a donc pas d'effet.
+   La FAQ n'en a pas : son dernier paragraphe dépasse de 18 px sous 1200 px.
+   L'Offre non plus : ses règles, nombreuses, compteraient sinon comme « CSS
+   inutilisé » au chargement (Lighthouse, seuil de 10 Ko).
+   Hauteurs de réserve proches du réel, mesurées de 360 à 1920 px. */
+.mobile-site main > .mobile-apropos{ content-visibility:auto; contain-intrinsic-size:auto 1000px; }
+.mobile-site main > .mobile-news{ content-visibility:auto; contain-intrinsic-size:auto 2400px; }
+.mobile-site main > .mobile-intro{ content-visibility:auto; contain-intrinsic-size:auto 600px; }
+.mobile-site main > .mobile-modules{ content-visibility:auto; contain-intrinsic-size:auto 600px; }
+.mobile-site main > .mobile-ai{ content-visibility:auto; contain-intrinsic-size:auto 1000px; }
+.mobile-site main > .changer-accueil{ content-visibility:auto; contain-intrinsic-size:auto 450px; }

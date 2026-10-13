@@ -43,6 +43,18 @@ function mettreAJourContrasteNavigation() {
 
 function ajusterCanvasDesktop() {
   const desktop = window.matchMedia('(min-width:1200px)').matches;
+  // Sur téléphone, rien à mettre à l'échelle : on n'écrit sur <html> que si
+  // une valeur d'ordinateur y a été posée avant (passage d'une largeur à
+  // l'autre). Écrire « 1 » à chaque chargement forçait un recalcul du style
+  // de toute la page (Lighthouse mobile).
+  if (!desktop) {
+    if (document.documentElement.style.getPropertyValue('--desktop-scale')) {
+      document.documentElement.style.setProperty('--desktop-scale', '1');
+      if (liensHeader) liensHeader.style.transform = '';
+      if (heroCanvas) heroCanvas.style.transform = '';
+    }
+    return;
+  }
   const scale = window.innerWidth / 1920;
   document.documentElement.style.setProperty('--desktop-scale', desktop ? String(scale) : '1');
   if (liensHeader) liensHeader.style.transform = desktop ? 'scale(' + scale + ')' : '';
@@ -52,9 +64,15 @@ window.addEventListener('resize', function () {
   ajusterCanvasDesktop();
   majChromeDesktop();
 });
-ajusterCanvasDesktop();
+// Sur ordinateur, le script de tête d'index.html a déjà posé --desktop-scale
+// et le CSS en tire l'échelle du canvas : relire innerWidth ici forcerait une
+// mise en page complète avant le premier affichage.
+if (!document.documentElement.style.getPropertyValue('--desktop-scale')) ajusterCanvasDesktop();
 
-let dernierYChrome = window.scrollY;
+// Lire window.scrollY pendant l'exécution du script force une mise en page
+// complète avant le premier affichage (Lighthouse : « ajustement forcé »).
+// La position est relue à chaque défilement.
+let dernierYChrome = 0;
 let chromeEnAttente = false;
 
 function majChromeDesktop() {
@@ -111,7 +129,15 @@ window.addEventListener('scroll', function () {
     chromeEnAttente = false;
   });
 }, {passive:true});
-majChromeDesktop();
+// État de départ posé sans rien mesurer : toute lecture de position au
+// chargement force une mise en page (Lighthouse : « ajustement forcé »). En
+// haut de page, le premier tiret est actif et aucun ne passe sur un fond
+// sombre. Le moindre défilement recalcule tout, y compris la restauration de
+// position au rechargement et l'arrivée par une ancre.
+if (dotLinks[0]) {
+  dotLinks[0].classList.add('est-actif');
+  dotLinks[0].setAttribute('aria-current', 'true');
+}
 
 function fermerMenuMobile() {
   if (!mobileMenuBtn || !mobileNav) return;

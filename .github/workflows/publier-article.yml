@@ -190,6 +190,22 @@ jobs:
         if: steps.choix.outputs.publier == 'oui' && inputs.test != true
         uses: actions/configure-pages@v5
 
+      # Même optimisation que static.yml, après la poussée : elle ne touche
+      # que la copie publiée, jamais ce qui est commité.
+      - name: Optimiser le site
+        if: steps.choix.outputs.publier == 'oui' && inputs.test != true
+        continue-on-error: true
+        run: |
+          DEPS="$RUNNER_TEMP/construire"
+          mkdir -p "$DEPS"
+          cp site/outils/construire/package.json site/outils/construire/package-lock.json "$DEPS/"
+          npm ci --prefix "$DEPS" --ignore-scripts --no-audit --no-fund --loglevel=error
+          NODE_PATH="$DEPS/node_modules" node site/outils/construire/construire.js site
+
+      - name: Retirer l'outillage de la copie publiée
+        if: steps.choix.outputs.publier == 'oui' && inputs.test != true
+        run: rm -rf site/outils
+
       - name: Construire l'artefact
         if: steps.choix.outputs.publier == 'oui' && inputs.test != true
         uses: actions/upload-pages-artifact@v3

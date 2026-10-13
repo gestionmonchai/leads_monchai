@@ -26,6 +26,38 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 })(window,document,'script','dataLayer','GTM-NDSQV6T7');};</script>
 <!-- End Google Tag Manager -->
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<!-- Échelles du dessin 1920 px (header dès 900 px, scènes dès 1200 px), posées
+     ici tant que la page est vide : calculées en fin de page par header.js et
+     accueil.js, elles forçaient une mise en page complète avant le premier
+     affichage. Les deux scripts les recalculent au redimensionnement. -->
+<script>(function(h){if(!matchMedia('(min-width:900px)').matches)return;var e=innerWidth/1920;h.style.setProperty('--echelle',e);if(matchMedia('(min-width:1200px)').matches)h.style.setProperty('--desktop-scale',e);})(document.documentElement);</script>
+<!-- Fonds d'image des sections sous le premier écran : différés tant que la
+     section n'approche pas de l'écran (règle .fonds-differes en fin de
+     site-20260720.css), puis tous chargés une fois la page au repos. Ils ne
+     concurrencent plus l'image du haut de page. Sans JavaScript, rien ne change. -->
+<script>(function(h){
+  h.classList.add('fonds-differes');
+  function pret(s){ s.classList.add('fond-pret'); }
+  document.addEventListener('DOMContentLoaded', function () {
+    var sections = [].slice.call(document.querySelectorAll('.mobile-site main > section'));
+    if (!('IntersectionObserver' in window)) { sections.forEach(pret); return; }
+    var io = new IntersectionObserver(function (entrees) {
+      entrees.forEach(function (e) { if (e.isIntersecting) { pret(e.target); io.unobserve(e.target); } });
+    }, { rootMargin: '0px 0px 100px 0px' });
+    sections.forEach(function (s) { io.observe(s); });
+    // Page chargée et au repos : le reste suit, une section à la fois.
+    window.addEventListener('load', function () {
+      setTimeout(function () {
+        var reste = sections.filter(function (s) { return !s.classList.contains('fond-pret'); });
+        (function suivante() {
+          var s = reste.shift(); if (!s) return;
+          pret(s); io.unobserve(s);
+          (window.requestIdleCallback || setTimeout)(suivante);
+        })();
+      }, 3000);
+    }, { once: true });
+  });
+})(document.documentElement);</script>
 
 <!-- SEO -->
 <title>Mon Chai, logiciel de gestion viticole | De la vigne à la vente</title>
@@ -57,7 +89,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <meta name="twitter:image" content="https://monchai.fr/assets/img/vignes_2.jpg">
 
 <!-- Favicon -->
-<link rel="icon" type="image/png" href="assets/img/logo_mon_chai.png">
+<link rel="icon" type="image/png" href="assets/img/favicon-mon-chai-96.png">
 <link rel="apple-touch-icon" href="assets/img/logo_mon_chai.png">
 <meta name="theme-color" content="#7B1E22">
 
@@ -119,10 +151,18 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <link rel="preload" as="image" href="assets/img/hero-desktop-20260720.webp" type="image/webp" media="(min-width:1200px)" fetchpriority="high">
 <link rel="preload" as="font" href="assets/fonts/Inter-Latin-20260720.woff2" type="font/woff2" crossorigin>
 <link rel="preload" as="font" href="assets/fonts/PlayfairDisplay-Latin-20260720.woff2" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="site-20260720.css">
-<link rel="stylesheet" href="assets/css/polices.css">
-<link rel="stylesheet" href="assets/css/header.css">
-<link rel="stylesheet" href="assets/css/changer-accueil.css">
+<!-- Polices découvertes sinon en cascade (page puis CSS puis police) :
+     Manrope (modules), Poppins 600 (header) et, dès 900 px, Poppins 500
+     (liens du header). -->
+<link rel="preload" as="font" href="assets/fonts/Manrope-Latin-20260720.woff2" type="font/woff2" crossorigin>
+<link rel="preload" as="font" href="assets/fonts/poppins-600-normal-latin.woff2" type="font/woff2" crossorigin>
+<link rel="preload" as="font" href="assets/fonts/poppins-500-normal-latin.woff2" type="font/woff2" crossorigin media="(min-width:900px)">
+<!-- data-lot : au déploiement, ces feuilles sont fusionnées et intégrées à la
+     page pour les écrans de moins de 1200 px (outils/construire). En local,
+     elles se chargent normalement. -->
+<link rel="stylesheet" href="site-20260720.css" data-lot="accueil">
+<link rel="stylesheet" href="assets/css/header.css" data-lot="accueil">
+<link rel="stylesheet" href="assets/css/changer-accueil.css" data-lot="accueil">
 <style>.site-header{display:block}</style>
 </head>
 <body>
@@ -130,7 +170,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <!-- Header partagé du site actuel. -->
 <div class="site-header" id="siteHeader">
   <header class="hd">
-    <a class="hd__logo" href="index.html"><img src="assets/img/logo-header.webp" alt="Mon Chai, logiciel viticole" width="263" height="85"></a>
+    <a class="hd__logo" href="index.html"><img src="assets/img/logo-header.webp" srcset="assets/img/logo-header-344.webp 344w, assets/img/logo-header.webp 602w" sizes="(max-width:639px) 172px, (max-width:899px) 208px, 263px" alt="Mon Chai, logiciel viticole" width="263" height="85"></a>
 
     <button class="hd__burger" type="button" aria-label="Ouvrir le menu"
             aria-expanded="false" aria-controls="nav-principale">
@@ -211,7 +251,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       <a class="hd__demo" href="https://calendar.app.google/bJGuZudhQ7q9ka3T9" target="_blank" rel="noopener">Réserver une démo</a>
       <a class="hd__cta" href="https://tester.monchai.fr">Essayer Mon Chai</a>
       <div class="hd__langue">
-        <button class="hd__langue-bouton" type="button" aria-label="Choisir la langue" aria-haspopup="true" aria-expanded="false" aria-controls="menu-langues">
+        <button class="hd__langue-bouton" type="button" aria-label="FR, choisir la langue" aria-haspopup="true" aria-expanded="false" aria-controls="menu-langues">
           FR<span class="hd__chev" aria-hidden="true"></span>
         </button>
         <div class="hd__langue-menu" id="menu-langues">
@@ -437,7 +477,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <section class="mobile-section mobile-offer" id="mobile-offre">
       <span class="mobile-kicker">Programme bêta</span>
       <h2>Testez <span class="mobile-offer__underline">gratuitement</span> Mon Chai</h2>
-      <p class="mobile-offer__subtitle">Rejoignez dès maintenant le programme bêta-test de Mon Chai<br>et profitez d’un accompagnement personnalisé</p>
+      <p class="mobile-offer__subtitle">Rejoignez dès maintenant le programme bêta-test de Mon Chai <br>et profitez d’un accompagnement personnalisé</p>
       <p class="mobile-offer__dates">Offre de lancement&nbsp;: inscription avant le 31 octobre 2026</p>
 
       <div class="mobile-offer__pitch">
@@ -544,7 +584,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           </div></div>
         </div>
         <div class="mobile-news__secondaires">
-          <article class="mobile-news__card mobile-news__card--notes"><div><span>Nouveau</span><h3><a class="mobile-news__lien" href="https://tester.monchai.fr">Mon Chai Notes est disponible</a></h3><p class="mobile-news__date">Application mobile · Android · Octobre 2026</p><p>Préparez vos saisies à la vigne et au chai, à la voix ou au clavier&nbsp;: transferts, traitements, vendanges, analyses, notes. Vous vérifiez, puis tout part dans votre compte Mon Chai. À installer depuis votre compte.</p></div><img src="assets/img/assistant-fond-20260720.webp" alt="Feuilles de vigne au soleil" width="1600" height="1066" loading="lazy" decoding="async"></article>
+          <article class="mobile-news__card mobile-news__card--notes"><div><span>Nouveau</span><h3><a class="mobile-news__lien" href="https://tester.monchai.fr">Mon Chai Notes est disponible</a></h3><p class="mobile-news__date">Application mobile · Android · Octobre 2026</p><p>Préparez vos saisies à la vigne et au chai, à la voix ou au clavier&nbsp;: transferts, traitements, vendanges, analyses, notes. Vous vérifiez, puis tout part dans votre compte Mon Chai. À installer depuis votre compte.</p></div><img src="assets/img/assistant-fond-480-20260720.webp" srcset="assets/img/assistant-fond-480-20260720.webp 480w, assets/img/assistant-fond-960-20260720.webp 960w" sizes="(max-width:899px) calc(100vw - 32px), 120px" alt="Feuilles de vigne au soleil" width="480" height="320" loading="lazy" decoding="async"></article>
           <article class="mobile-news__card mobile-news__card--poool"><div><span>Incubation</span><h3><a href="mon-chai-rejoint-le-poool.html">Mon Chai rejoint l’incubateur du Poool</a></h3><p class="mobile-news__date">Septembre 2026 · 9<sup>e</sup> promotion</p><p>Nous intégrons la promotion d’incubation du Poool x French Tech Rennes St Malo&nbsp;: deux ans d’accompagnement pour aller plus loin, avec vous.</p></div><img src="assets/img/actu-2-480-20260720.webp" alt="Vignoble au soleil couchant" width="480" height="320" loading="lazy" decoding="async"></article>
           <article class="mobile-news__card mobile-news__card--coffee"><div><span>À venir</span><h3>Interview de Mon Chai au Winetech Coffee</h3><p class="mobile-news__date">Date à venir sur LinkedIn · Replay disponible ensuite sur YouTube</p><p>Découvrez l’histoire de Mon Chai, les convictions qui nous animent et les coulisses de l’ouverture de notre programme bêta-test.</p></div><img src="assets/img/actu-4-480-20260720.webp" alt="Chai avec des fûts" width="480" height="270" loading="lazy" decoding="async"></article>
           <article class="mobile-news__card mobile-news__card--salon"><div><span>À venir</span><h3>Mon Chai au salon Vinitech-Sifel à Bordeaux</h3><p class="mobile-news__date">1<sup>er</sup> – 3 décembre 2026</p><p>Venez échanger avec notre équipe, découvrir le logiciel et assister à une démonstration de Mon Chai.</p></div><img src="assets/img/actu-3-480-20260720.webp" alt="Grappes de raisin" width="480" height="320" loading="lazy" decoding="async"></article>
@@ -768,9 +808,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 <!-- Le bandeau cookies et le panneau de réglages sont injectés par consent.js
      (source unique du consentement, partagée avec les pages légales). -->
-<script src="consent.js"></script>
-<script src="assets/js/header.js"></script>
-<script src="accueil.js"></script>
+<script src="consent.js" defer></script>
+<script src="assets/js/header.js" defer></script>
+<script src="accueil.js" defer></script>
 <script src="assets/js/cta-popup.js" defer></script>
 </body>
 </html>

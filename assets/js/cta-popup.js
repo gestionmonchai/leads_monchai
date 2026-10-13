@@ -133,9 +133,12 @@
     signaler('cta_popup_ferme');
   }
 
+  // Réponse au bandeau encore attendue : bandeau visible, ou bandeau pas encore
+  // affiché (il attend sa police) alors qu'aucun choix n'est enregistré.
   function bandeauCookiesOuvert() {
     var b = document.getElementById('cookieBanner');
-    return !!(b && !b.hidden && b.offsetParent !== null);
+    if (b && !b.hidden && b.offsetParent !== null) return true;
+    try { return !!b && !localStorage.getItem('monchai_cookie_consent'); } catch (e) { return false; }
   }
 
   var declenchee = false;

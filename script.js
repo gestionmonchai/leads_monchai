@@ -344,7 +344,16 @@ document.addEventListener('keydown', function (e) {
   // état initial
   var actuel = lire();
   if (actuel) appliquer(actuel.audience, actuel.tiers);
-  else montrerBanniere();
+  else {
+    // Bandeau affiché une fois sa police chargée : plus tôt, il se recomposait
+    // à l'arrivée d'Inter et changeait de hauteur (décalage CLS sur mobile).
+    var montrerApresPolices = function () { montrerBanniere(); };
+    try {
+      if (document.fonts && document.fonts.load) {
+        Promise.all([document.fonts.load('400 13px Inter'), document.fonts.load('700 13px Inter')]).then(montrerApresPolices, montrerApresPolices);
+      } else { montrerBanniere(); }
+    } catch (e) { montrerBanniere(); }
+  }
 
   // bandeau
   var bA = document.getElementById('cookieAccept');

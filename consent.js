@@ -173,6 +173,16 @@
 
   if (initial) appliquer(initial.audience, initial.tiers);
 
+  function apresPolices(rappel) {
+    try {
+      if (document.fonts && document.fonts.load) {
+        Promise.all([document.fonts.load('400 13px Inter'), document.fonts.load('700 13px Inter')]).then(rappel, rappel);
+        return;
+      }
+    } catch (e) {}
+    rappel();
+  }
+
   function initDom() {
     var style = document.createElement('style');
     style.textContent = CSS;
@@ -213,7 +223,10 @@
     }
 
     // état initial : pas de choix valide enregistré -> bandeau
-    if (!lire()) montrerBanniere();
+    // Le bandeau n'apparaît qu'une fois sa police (Inter normal et gras)
+    // chargée : affiché plus tôt, son texte se recomposait à l'arrivée de la
+    // police et le bandeau changeait de hauteur (CLS de 0,11 mesuré sur mobile).
+    if (!lire()) apresPolices(montrerBanniere);
 
     document.getElementById('cookieAccept').addEventListener('click', function () { ecrire(true, true); cacherBanniere(); });
     document.getElementById('cookieRefus').addEventListener('click', function () { ecrire(false, false); cacherBanniere(); });

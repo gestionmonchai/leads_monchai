@@ -9,10 +9,11 @@
    Jamais tant que le bandeau de cookies attend une réponse. Au plus une
    fois par semaine, et plus du tout pendant 30 jours après un clic.
 
-   Offre de lancement : gratuit jusqu'au 31/12/2026 pour toute inscription
-   avant le 31/10/2026. À partir du 1er novembre 2026 (FIN_OFFRE), le bloc
-   d'offre et la ligne « reprise et formation offertes » disparaissent
-   d'eux-mêmes et le bouton redevient « Essayer Mon Chai ».
+   Trois périodes, sans retouche manuelle :
+   - jusqu'au 31/10/2026 : offre de lancement (gratuit jusqu'au 31/12) ;
+   - du 1/11 au 31/12/2026 (FIN_OFFRE → FIN_ANNEE) : 30 jours d'essai, reprise
+     et formation offertes, bouton « Essayer Mon Chai » ;
+   - à partir du 1/1/2027 : 30 jours d'essai seuls, prix sans « Puis ».
 
    Le HTML et le CSS vivent ici : toute page qui charge ce script est
    couverte. Textes selon <html lang>. Événements envoyés à GTM :
@@ -38,8 +39,21 @@
     it: { titre: 'E se riduceste i costi di gestione?', accroche: 'Meno abbonamenti, meno doppie digitazioni, meno tempo perso.', texte: 'Riunite tutta la gestione della vostra azienda, dalla vigna alla fatturazione, in un unico software semplice e conveniente.', badge: 'Offerta di lancio', offre: 'Gratis fino al 31 dicembre 2026 per ogni iscrizione entro il 31 ottobre 2026.', coche1: 'Importazione dei dati e formazione offerte', coche2: 'Senza impegno né carta di credito', bouton: 'Approfitto dell’offerta', boutonApres: 'Prova Mon Chai', prix: 'Poi 59 € IVA esclusa/mese o 590 € IVA esclusa/anno.', prixApres: '59 € IVA esclusa/mese o 590 € IVA esclusa/anno.', plus_tard: 'Più tardi', fermer: 'Chiudi' },
     zh: { titre: '何不降低您的管理成本？', accroche: '更少的订阅，更少的重复录入，更少的时间浪费。', texte: '将酒庄从葡萄园到开票的全部管理，集中到一款简单实惠的软件中。', badge: '首发优惠', offre: '2026年10月31日前注册，可免费使用至2026年12月31日。', coche1: '免费数据导入和培训', coche2: '无需承诺，无需银行卡', bouton: '立即享受优惠', boutonApres: '试用 Mon Chai', prix: '之后每月59欧元（不含税）或每年590欧元（不含税）。', prixApres: '每月59欧元（不含税）或每年590欧元（不含税）。', plus_tard: '稍后', fermer: '关闭' }
   };
-  var T = TEXTES[(document.documentElement.lang || 'fr').slice(0, 2).toLowerCase()] || TEXTES.fr;
+  // Inscriptions du 1er novembre au 31 décembre 2026 : 30 jours d'essai,
+  // reprise des données et formation toujours offertes (décision du 14/10).
+  var TEXTES_NOV = {
+    fr: { badge: 'Jusqu’au 31 décembre', offre: 'Inscription à partir du 1er novembre : 30 jours d’essai gratuit.', essai30: '30 jours d’essai gratuit' },
+    en: { badge: 'Until 31 December', offre: 'Sign up from 1 November: 30-day free trial.', essai30: '30-day free trial' },
+    de: { badge: 'Bis 31. Dezember', offre: 'Anmeldung ab 1. November: 30 Tage kostenlos testen.', essai30: '30 Tage kostenlos testen' },
+    it: { badge: 'Fino al 31 dicembre', offre: 'Iscrizione dal 1° novembre: 30 giorni di prova gratuita.', essai30: '30 giorni di prova gratuita' },
+    zh: { badge: '至12月31日', offre: '11月1日起注册：免费试用30天。', essai30: '免费试用30天' }
+  };
+  var langue = (document.documentElement.lang || 'fr').slice(0, 2).toLowerCase();
+  var T = TEXTES[langue] || TEXTES.fr;
+  var N = TEXTES_NOV[langue] || TEXTES_NOV.fr;
+  var FIN_ANNEE = new Date('2027-01-01T00:00:00+01:00');
   var offreValable = Date.now() < FIN_OFFRE.getTime();
+  var periodeNovDec = !offreValable && Date.now() < FIN_ANNEE.getTime();
 
   var CSS = [
     '.mc-cta{position:fixed;right:24px;bottom:24px;z-index:290;width:min(390px,calc(100vw - 32px));max-height:calc(100vh - 48px);overflow-y:auto;box-sizing:border-box;padding:26px 24px 18px;background:#FFFCF8;border:1px solid #E7D3BC;border-radius:18px;box-shadow:0 24px 60px rgba(71,19,24,.22);font-family:"Inter",system-ui,-apple-system,sans-serif;color:#2E2826;opacity:0;transform:translateY(16px);transition:opacity .35s ease,transform .35s ease;}',
@@ -90,12 +104,13 @@
       '<p class="mc-cta__accroche">' + T.accroche + '</p>' +
       '<p class="mc-cta__texte">' + T.texte + '</p>' +
       (offreValable ? '<div class="mc-cta__offre"><span class="mc-cta__badge">' + T.badge + '</span><p>' + T.offre + '</p></div>' : '') +
+      (periodeNovDec ? '<div class="mc-cta__offre"><span class="mc-cta__badge">' + N.badge + '</span><p>' + N.offre + '</p></div>' : '') +
       '<ul class="mc-cta__coches">' +
-        (offreValable ? '<li>' + T.coche1 + '</li>' : '') +
+        (offreValable || periodeNovDec ? '<li>' + T.coche1 + '</li>' : '<li>' + N.essai30 + '</li>') +
         '<li>' + T.coche2 + '</li>' +
       '</ul>' +
       '<a class="mc-cta__btn" href="' + APP + '" data-mc-cta="essai">' + (offreValable ? T.bouton : T.boutonApres) + '</a>' +
-      '<p class="mc-cta__prix">' + (offreValable ? T.prix : T.prixApres) + '</p>' +
+      '<p class="mc-cta__prix">' + (offreValable || periodeNovDec ? T.prix : T.prixApres) + '</p>' +
       '<button type="button" class="mc-cta__plus-tard">' + T.plus_tard + '</button>';
     document.body.appendChild(carte);
 

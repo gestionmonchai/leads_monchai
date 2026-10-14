@@ -3089,6 +3089,17 @@ a[href="https://tester.monchai.fr"]:not([class]){ color:var(--bordeaux); font-we
   .mobile-offer > .mobile-offer__subtitle{ text-wrap:balance; }
 }
 
+/* Ordinateur : les filets de la ligne « Offre de lancement… » mesuraient
+   390 px chacun en position fixe, calibrés pour un texte plus court. Avec la
+   phrase actuelle, ils traversaient son début et sa fin (effet barré). Ils
+   occupent désormais l'espace restant de part et d'autre du texte, comme
+   sur tablette. */
+@media (min-width:1200px){
+  .mobile-offer > .mobile-offer__dates{ display:flex; align-items:center; gap:28px; white-space:nowrap; }
+  .mobile-offer > .mobile-offer__dates::before,
+  .mobile-offer > .mobile-offer__dates::after{ position:static; flex:1; width:auto; }
+}
+
 /* Haut de page en attente de ses polices (script en fin d'en-tête
    d'index.html, une seconde au plus) : voir le commentaire du script. */
 html.polices-attente .mobile-hero__content{ visibility:hidden; }

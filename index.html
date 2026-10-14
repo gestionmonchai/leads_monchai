@@ -164,6 +164,19 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <link rel="stylesheet" href="assets/css/header.css" data-lot="accueil">
 <link rel="stylesheet" href="assets/css/changer-accueil.css" data-lot="accueil">
 <style>.site-header{display:block}</style>
+<!-- Contenu du haut de page (titre, texte, boutons, aperçu) masqué jusqu'à
+     l'arrivée de ses polices, une seconde au plus : affiché d'abord dans la
+     police de repli puis recomposé, il décalait la page (CLS jusqu'à 0,08).
+     Le fond du haut s'affiche sans attendre. Placé après les feuilles pour
+     que les polices soient déjà déclarées. -->
+<script>(function(h){
+  if (!document.fonts || !document.fonts.load) return;
+  h.classList.add('polices-attente');
+  function montrer(){ h.classList.remove('polices-attente'); }
+  Promise.all(['500 40px "Playfair Display"', '400 15px Inter', '700 15px Inter', '700 15px Manrope']
+    .map(function (f) { return document.fonts.load(f); })).then(montrer, montrer);
+  setTimeout(montrer, 1000);
+})(document.documentElement);</script>
 </head>
 <body>
 

@@ -3089,6 +3089,10 @@ a[href="https://tester.monchai.fr"]:not([class]){ color:var(--bordeaux); font-we
   .mobile-offer > .mobile-offer__subtitle{ text-wrap:balance; }
 }
 
+/* Haut de page en attente de ses polices (script en fin d'en-tête
+   d'index.html, une seconde au plus) : voir le commentaire du script. */
+html.polices-attente .mobile-hero__content{ visibility:hidden; }
+
 /* Fonds différés : tant qu'une section sous le premier écran n'est pas
    « prête » (script de tête d'index.html, à son approche ou page au repos),
    aucune de ses images de fond n'est téléchargée. Le haut de page n'est pas

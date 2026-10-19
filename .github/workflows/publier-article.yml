@@ -1,5 +1,5 @@
 # Publication automatique des articles (actualités réglementaires et guides).
-# Deux publications par semaine, le lundi et le jeudi à 11h (heure de Paris).
+# Cadence habituelle lundi/jeudi ; série quotidienne du 19 au 25 octobre 2026.
 # Prend le premier article en attente dont la date prévue est atteinte sur la
 # branche file-attente, le date, l'insère dans le site (page + carte + sitemap)
 # et déploie GitHub Pages.
@@ -17,6 +17,8 @@ name: Publier le prochain article
 
 on:
   schedule:
+    - cron: '0 9 19-24 10 *'   # 11h à Paris avant le changement d’heure
+    - cron: '0 10 25 10 *'     # 11h à Paris le dimanche, après le changement d’heure
     - cron: '0 10 * * 1,4'   # lundi et jeudi 10:00 UTC, filet de sécurité
   workflow_dispatch:
     inputs:
@@ -60,41 +62,10 @@ jobs:
         id: choix
         env:
           FORCER: ${{ inputs.forcer }}
+          EVENT_NAME: ${{ github.event_name }}
+          SCHEDULE: ${{ github.event.schedule }}
         run: |
-          AUJOURDHUI=$(TZ=Europe/Paris date +%F)
-          if [ -z "$FORCER" ]; then
-            DEJA=$(jq -r --arg d "$AUJOURDHUI" '[.articles[] | select(.statut == ("publie_" + $d))] | length' file/manifest.json)
-            if [ "$DEJA" != "0" ]; then
-              echo "::notice::Un article est déjà sorti aujourd'hui ($AUJOURDHUI). Une seule publication par jour : rien à faire."
-              echo "publier=non" >> "$GITHUB_OUTPUT"
-              exit 0
-            fi
-            FILTRE='[.articles[] | select(.statut=="en_attente" and .prevu <= $d)] | sort_by(.ordre)'
-          else
-            FILTRE='[.articles[] | select(.statut=="en_attente" and .slug==$f)]'
-          fi
-          champ() { jq -r --arg d "$AUJOURDHUI" --arg f "$FORCER" "$FILTRE | .[0].$1 // empty" file/manifest.json; }
-          SLUG=$(champ slug)
-          if [ -z "$SLUG" ]; then
-            echo "::notice::File d'attente vide ou aucun article dû aujourd'hui ($AUJOURDHUI). Rien à publier."
-            RESTANTS=$(jq -r '[.articles[] | select(.statut=="en_attente")] | length' file/manifest.json)
-            if [ "$RESTANTS" = "0" ]; then
-              echo "::warning::La file d'attente est VIDE : écrire de nouveaux articles (voir README de la branche file-attente)."
-            fi
-            echo "publier=non" >> "$GITHUB_OUTPUT"
-            exit 0
-          fi
-          DESTINATION=$(champ destination); [ -z "$DESTINATION" ] && DESTINATION=actualites
-          echo "Article à publier : $SLUG (destination $DESTINATION)"
-          {
-            echo "publier=oui"
-            echo "slug=$SLUG"
-            echo "fichier=$(champ fichier)"
-            echo "categorie=$(champ categorie)"
-            echo "destination=$DESTINATION"
-            echo "pilier=$(champ pilier)"
-            echo "date=$AUJOURDHUI"
-          } >> "$GITHUB_OUTPUT"
+          AUJOURDHUI=$(TZ=Europe/Paris date +%F) node site/outils/choisir-article.cjs file/manifest.json
 
       - name: Dater et insérer l'article
         if: steps.choix.outputs.publier == 'oui'
@@ -105,6 +76,7 @@ jobs:
           DATE_ISO="${{ steps.choix.outputs.date }}"
           DESTINATION="${{ steps.choix.outputs.destination }}"
           PILIER="${{ steps.choix.outputs.pilier }}"
+          SERIE="${{ steps.choix.outputs.serie }}"
           MOIS=(janvier février mars avril mai juin juillet août septembre octobre novembre décembre)
           JOUR=$((10#$(TZ=Europe/Paris date +%d)))
           if [ "$JOUR" = "1" ]; then JOUR_FR="1ᵉʳ"; else JOUR_FR="$JOUR"; fi
@@ -118,8 +90,10 @@ jobs:
           if [ "$DESTINATION" = "ressources" ]; then
             # Guide de la rubrique Ressources : carte sous le repère de ressources.html,
             # puis activation du lien préparé dans la page pilier.
-            grep -q "FILE-ATTENTE : guides" site/ressources.html || { echo "::error::Repère FILE-ATTENTE : guides absent de ressources.html"; exit 1; }
-            sed -i "/FILE-ATTENTE : guides/r file/articles/$FICHIER.carte.html" site/ressources.html
+            REPERE="FILE-ATTENTE : guides"
+            if [ "$SERIE" = "leviers-2026-10" ]; then REPERE="FILE-ATTENTE : debouches"; fi
+            grep -q "$REPERE" site/ressources.html || { echo "::error::Repère $REPERE absent de ressources.html"; exit 1; }
+            sed -i "/$REPERE/r file/articles/$FICHIER.carte.html" site/ressources.html
             if [ -n "$PILIER" ] && [ -f "site/$PILIER.html" ]; then
               sed -i "s|<!--SATELLITE:$SLUG \(.*\) SATELLITE-->|\1|" "site/$PILIER.html"
               sed -i "s/\"dateModified\": *\"[0-9-]*\"/\"dateModified\": \"$DATE_ISO\"/" "site/$PILIER.html"

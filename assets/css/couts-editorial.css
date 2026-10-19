@@ -20,3 +20,11 @@
   .article-couts .essentiel, .article-couts .article-sommaire { padding: 18px; }
   .article-couts .article-cta__btn { text-align: center; }
 }
+
+/* Série Débouchés : lecture et navigation clavier, sans dépendance JS. */
+.serie-saut { position: absolute; left: 12px; top: -100px; z-index: 1000; padding: 12px 18px; background: #fff; color: #7b1e22; }
+.serie-saut:focus { top: 12px; outline: 3px solid #7b1e22; }
+.article-couts .serie-carte { margin: 22px 0; padding: 18px 22px; border: 1px solid var(--ac-bord); border-radius: 12px; }
+.article-couts .serie-carte h3 { margin: 8px 0; line-height: 1.5; }
+.article-couts .serie-carte p:last-child { margin-bottom: 0; }
+@media (max-width:480px) { .article-couts .serie-carte { padding: 16px; } }

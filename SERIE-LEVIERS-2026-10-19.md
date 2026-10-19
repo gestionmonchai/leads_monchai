@@ -62,7 +62,7 @@ La sélection ponctuelle des crons est neutralisée hors des dates exactes de 20
 1. Depuis Ressources, un lecteur ouvre chaque épisode déjà publié, consulte la date réelle, accède aux sections du sommaire et aux sources.
 2. Avant publication, aucun épisode futur n’est servi sur main ni lié depuis les pages publiques. Un épisode absent laisse une notice d’exploitation explicite.
 3. Aucun débordement horizontal aux quatre largeurs contrôlées ; les sept pages restent lisibles sur téléphone. Menu, Échap et sommaire fonctionnent.
-4. JSON-LD, liens internes, ancres et ordre des lectures contrôlés ; scénarios de sélection pour sept dates, doublons, reprise de l’ancienne file, épisode manquant, forçage et cron annuel hors période vérifiés. Test à blanc du workflow puis déploiement du premier article à confirmer dans les runs GitHub.
+4. JSON-LD, liens internes, ancres et ordre des lectures contrôlés ; scénarios de sélection pour sept dates, doublons, reprise de l’ancienne file, épisode manquant, forçage et cron annuel hors période vérifiés. 27 contrôles locaux et 11 rendus navigateur réussis. Le jeton refuse le workflow_dispatch (HTTP 403) ; le premier article est intégré manuellement aux deux branches puis déployé par static.yml. Les épisodes suivants utilisent les crons du workflow existant. Vérifier le run de déploiement avant d’annoncer la mise en ligne.
 
 ## Entretien
 

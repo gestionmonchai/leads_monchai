@@ -67,3 +67,11 @@ La sélection ponctuelle des crons est neutralisée hors des dates exactes de 20
 ## Entretien
 
 Les HTML complets de cette série utilisent le gabarit Ressources, pas le gabarit des actualités réglementaires. Les fragments sont conservés pour les retouches, mais l’assembleur historique ne doit pas être relancé aveuglément sur ces entrées : il ne gère pas leur mise en page. Retoucher la page complète et son fragment, garder les placeholders de date et la carte cohérente.
+
+## Correction de classement — 19 octobre 2026
+
+Les sept épisodes sont également référencés dans Actualités réglementaires, avec le filtre « Œnotourisme & vente directe », et dans la page de cette catégorie. Leur présence dans Ressources et leurs URL uniques sont conservées. Les cartes portent la mention « Analyse commerciale » pour distinguer leur angle des nouvelles obligations.
+
+Chaque entrée utilise la catégorie oenotourisme-vente-directe et dispose d’une carte additionnelle NN-slug.actualites.carte.html. Le workflow appelle outils/referencer-serie.cjs après publication de la page, pour dater et insérer cette carte dans les deux listes. L’opération valide les repères des deux pages avant écriture et bloque les doublons et les liens vers un article non publié.
+
+Volet UX/UI : point d’entrée via le filtre existant ou le lien de catégorie ; hiérarchie, image décorative et intitulés reprennent les cartes du site ; état nominal avec les articles publiés seulement, état partiel au fil de la semaine, erreur de référencement explicite dans le workflow ; feedback par date réelle et badge « Analyse commerciale ». Aucun nouveau composant ni bouton : styles responsive, focus et navigation clavier existants conservés. Critères d’acceptation : le filtre rend la carte visible, le mode « Tout » la conserve, le hub contient la même URL, aucun épisode futur n’est accessible, et une relance n’ajoute pas de double. Sept sorties successives, absence de liens prématurés et comportement du script réel de filtrage vérifiés.

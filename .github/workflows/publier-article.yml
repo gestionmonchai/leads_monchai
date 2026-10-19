@@ -113,6 +113,11 @@ jobs:
             fi
           fi
 
+          # La série commerciale est également visible dans sa rubrique et son filtre.
+          if [ "$SERIE" = "leviers-2026-10" ]; then
+            node site/outils/referencer-serie.cjs site "file/articles/$FICHIER.actualites.carte.html" "$SLUG" "$DATE_ISO" "$DATE_FR"
+          fi
+
           printf '  <url>\n    <loc>https://monchai.fr/%s.html</loc>\n    <lastmod>%s</lastmod>\n    <changefreq>monthly</changefreq>\n    <priority>0.7</priority>\n  </url>\n' \
             "$SLUG" "$DATE_ISO" > /tmp/sitemap-bloc.xml
           if grep -q "FILE-ATTENTE : nouvelles URL" site/sitemap.xml; then

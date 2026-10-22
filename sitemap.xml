@@ -1677,7 +1677,7 @@
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
-  <url><loc>https://monchai.fr/ressources.html</loc><lastmod>2026-09-16</lastmod></url>
+  <url><loc>https://monchai.fr/ressources.html</loc><lastmod>2026-10-22</lastmod></url>
   <url><loc>https://monchai.fr/cout-de-revient-bouteille-vin.html</loc><lastmod>2026-09-16</lastmod></url>
   <!-- FILE-ATTENTE : nouvelles URL insérées sous cette ligne (workflow publier-article.yml). Ne pas supprimer ce repère. -->
   <url>
@@ -1825,4 +1825,16 @@
     <priority>0.7</priority>
   </url>
   <url><loc>https://monchai.fr/monchainotes.html</loc><lastmod>2026-10-20</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url>
+    <loc>https://monchai.fr/s-installer-en-viticulture.html</loc>
+    <lastmod>2026-10-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://monchai.fr/dja-installation-vigneron.html</loc>
+    <lastmod>2026-10-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
 </urlset>

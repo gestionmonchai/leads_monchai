@@ -1,0 +1,5 @@
+/* Rubrique installation : mêmes composants que les guides existants. */
+.article-installation .essentiel > h2 { margin: 0 0 12px; padding: 0; border: 0; font-family: var(--ac-titre); font-size: 14px; line-height: 1.5; }
+.article-installation .essentiel > h2::before, .article-installation .article__sources > h2::before { display: none; }
+.article-installation .table-defile { overscroll-behavior-x: contain; }
+.article-installation table { min-width: 560px; }

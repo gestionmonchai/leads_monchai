@@ -1681,6 +1681,12 @@
   <url><loc>https://monchai.fr/cout-de-revient-bouteille-vin.html</loc><lastmod>2026-09-16</lastmod></url>
   <!-- FILE-ATTENTE : nouvelles URL insérées sous cette ligne (workflow publier-article.yml). Ne pas supprimer ce repère. -->
   <url>
+    <loc>https://monchai.fr/vin-multigenerationnel-clienteles-adultes.html</loc>
+    <lastmod>2026-10-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://monchai.fr/vin-low-alcool-6-8-degres.html</loc>
     <lastmod>2026-10-23</lastmod>
     <changefreq>monthly</changefreq>

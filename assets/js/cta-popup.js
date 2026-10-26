@@ -22,10 +22,13 @@
 (function () {
   if (window.self !== window.top) return;
 
-  var CLE = 'monchai_cta_vu';
   var JOUR = 86400000;
   var APP = 'https://tester.monchai.fr';
   var FIN_OFFRE = new Date('2026-11-01T00:00:00+01:00');
+  var balise = document.currentScript;
+  var campagneRecolte = Date.now() < FIN_OFFRE.getTime() && !!balise &&
+    balise.getAttribute('data-campagne') === 'recolte-2026';
+  var CLE = campagneRecolte ? 'monchai_cta_recolte_2026_vu' : 'monchai_cta_vu';
 
   try {
     var vu = JSON.parse(localStorage.getItem(CLE));
@@ -50,6 +53,22 @@
   };
   var langue = (document.documentElement.lang || 'fr').slice(0, 2).toLowerCase();
   var T = TEXTES[langue] || TEXTES.fr;
+  if (campagneRecolte) {
+    // Message limité à l’article de récolte, pendant l’offre de lancement.
+    T = {
+      titre: 'Votre déclaration de récolte 2026, gratuitement',
+      accroche: 'Inscrivez-vous au plus tard le 31 octobre.',
+      texte: 'Regroupez vos vendanges et éditez votre récapitulatif pour préparer votre déclaration de récolte.',
+      badge: 'Offre récolte 2026',
+      offre: 'Inscription jusqu’au 31 octobre 2026 : Mon Chai gratuit jusqu’au 31 décembre 2026.',
+      coche1: 'Vos volumes de vendange regroupés',
+      coche2: 'Sans carte bancaire ni engagement',
+      bouton: 'Préparer ma déclaration gratuitement',
+      prix: TEXTES.fr.prix,
+      plus_tard: TEXTES.fr.plus_tard,
+      fermer: TEXTES.fr.fermer
+    };
+  }
   var N = TEXTES_NOV[langue] || TEXTES_NOV.fr;
   var FIN_ANNEE = new Date('2027-01-01T00:00:00+01:00');
   var offreValable = Date.now() < FIN_OFFRE.getTime();
@@ -79,10 +98,15 @@
   ].join('\n');
 
   function signaler(evenement) {
-    try { (window.dataLayer = window.dataLayer || []).push({ event: evenement }); } catch (e) {}
+    try { (window.dataLayer = window.dataLayer || []).push({ event: evenement, cta_campagne: campagneRecolte ? 'recolte_2026' : 'generale' }); } catch (e) {}
   }
   function memoriser(clic) {
-    try { localStorage.setItem(CLE, JSON.stringify({ ts: Date.now(), clic: !!clic })); } catch (e) {}
+    try {
+      var etat = JSON.stringify({ ts: Date.now(), clic: !!clic });
+      localStorage.setItem(CLE, etat);
+      // Évite une seconde sollicitation générale après la campagne récolte.
+      if (campagneRecolte) localStorage.setItem('monchai_cta_vu', etat);
+    } catch (e) {}
   }
 
   var carte = null, affichee = false;
@@ -94,6 +118,7 @@
 
     carte = document.createElement('div');
     carte.className = 'mc-cta';
+    carte.setAttribute('data-campagne', campagneRecolte ? 'recolte-2026' : 'generale');
     carte.hidden = true;
     carte.setAttribute('role', 'dialog');
     carte.setAttribute('aria-modal', 'false');

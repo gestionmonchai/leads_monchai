@@ -1,33 +1,10 @@
-/* =========================================================
-   Mon Chai, page d'accueil : le monde mobile (< 900 px)
-   À charger APRÈS index-responsive.css.
+/* Accueils traduits : composants HTML communs au mobile et à l’ordinateur.
+   Les textes commerciaux restent éditables, sans texte vectorisé. */
 
-   Sous 900 px, les écrans dessinés (Pourquoi + Assistant + Offre,
-   À propos, fond de l'actualité) ne sont plus réduits d'un bloc : leurs
-   couches dessinées disparaissent et de vrais blocs HTML (.m-bloc,
-   écrits dans index.html) prennent le relais. Le texte redevient du
-   texte : lisible, tactile, et indexable par les moteurs — ces écrans
-   étaient vectorisés, donc muets pour le SEO.
 
-   Les fonds SVG lourds ne sont posés que ≥ 900 px (styles.css) : un
-   téléphone ne télécharge plus jamais parcours-bas, a-propos-faq ni
-   les vignettes modules.
 
-   Palette et typos : celles du site (Playfair pour les titres, Inter
-   pour le texte, Poppins pour les étiquettes, bordeaux #531217,
-   crème #FFFAF5, doré #C99159).
-   ========================================================= */
 
-/* Les blocs mobiles n'existent pas au-dessus de 900 px.
-   Une exception : .m-benefices porte aussi le texte de l'écran « Pourquoi »
-   en version bureau, où il est reposé aux coordonnées du dessin (styles.css).
-   Ce texte était vectorisé dans frame1-fond.svg ; plutôt que d'en écrire une
-   seconde copie pour l'ordinateur, le même bloc sert les deux largeurs. */
-@media (min-width:900px){
-  .m-bloc:not(.m-benefices), .m-only{ display:none !important; }
-}
-
-@media (max-width:899px){
+@media screen{
 
   /* =====================================================
      ÉCRAN 1 · Accueil — déjà en flux (index-responsive.css).
@@ -471,4 +448,18 @@
 @media (prefers-reduced-motion:reduce){
   .m-carrousel{ scroll-behavior:auto; }
   .m-carte__btn, .m-points i, .m-cta, .m-social a{ transition:none; }
+}
+
+@media (min-width:900px){
+ .m-bloc{padding-left:max(32px,calc((100vw - 1180px)/2));padding-right:max(32px,calc((100vw - 1180px)/2));}
+ .m-benefices{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px;}
+ .m-benefices>.m-kicker,.m-benefices>.m-titre,.m-benefices>.m-intro{grid-column:1/-1;}
+ .m-benefices article+article{margin-top:0;}
+ .m-offre{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));align-items:start;gap:20px;}
+ .m-offre>.m-kicker,.m-offre>.m-titre,.m-offre>.m-dates{grid-column:1/-1;}
+ .m-offre>.m-kicker,.m-offre>.m-titre{margin-bottom:0;}
+ .m-offre .m-dates{margin:0 0 4px;line-height:1.5;}
+ .m-primeurs{margin-top:0;}
+ #apropos-faq .faq{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));max-width:1244px;margin:0 auto;}
+ #actualite{padding-left:max(32px,calc((100vw - 1180px)/2));padding-right:max(32px,calc((100vw - 1180px)/2));}
 }

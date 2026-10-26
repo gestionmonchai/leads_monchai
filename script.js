@@ -3,6 +3,7 @@
    ========================================================= */
 const page = document.getElementById('page');
 const W = 1920, H = 1200;
+const accueilEnHtml = !!document.querySelector('.m-offre');
 
 /* matchMedia plutôt qu'innerWidth : il lit la même largeur que les media
    queries d'assets/css/index-responsive.css, sans compter la barre de
@@ -18,7 +19,7 @@ function fit() {
   // dessinés dans des SVG (index-responsive.css).
   document.documentElement.style.setProperty('--echelle', scale);
 
-  if (!GRAND_ECRAN.matches) {
+  if (!GRAND_ECRAN.matches || accueilEnHtml) {
     // Sous 1200px l'écran d'accueil repasse en flux : la scène ne peut plus
     // être mise à l'échelle d'un bloc. On retire ce que ce mode avait posé.
     page.style.transform = '';

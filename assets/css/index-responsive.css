@@ -1,24 +1,6 @@
-/* =========================================================
-   Mon Chai, page d'accueil responsive
-   À charger APRÈS styles.css.
+/* Accueils traduits : mise en page HTML en flux à toutes les largeurs. */
 
-   État des lieux : sur index.html, seul l'écran d'accueil est du vrai HTML.
-   Les trois suivants (Pourquoi + Assistant IA + Tarifs, À propos + FAQ,
-   Notre actualité) et l'ancien pied de page sont des **images SVG de 1920 de
-   large**, exportées de Figma avec le texte vectorisé : zéro balise <text>,
-   donc rien qui puisse refluer, ni être lu par un moteur de recherche.
-
-   Conséquence, assumée et documentée dans NOTES_PAGES_LOGICIEL.md :
-   · l'écran d'accueil repasse en flux et devient réellement responsive ;
-   · le pied de page est remplacé par le composant HTML partagé ;
-   · les trois écrans dessinés gardent leurs 1920 et sont réduits d'un bloc,
-     en attendant d'être reconstruits en HTML. Ils restent petits sur
-     téléphone : aucune règle CSS ne peut agrandir un texte vectorisé.
-
-   --echelle (largeur de fenêtre ÷ 1920) est publiée par script.js.
-   ========================================================= */
-
-@media (max-width:1199px){
+@media screen{
 
   /* La scène n'est plus mise à l'échelle globalement (script.js coupe le
      transform sous 1200) : chaque écran se débrouille. */
@@ -119,40 +101,18 @@
   .bar{ position:static; left:auto; top:auto; width:100%; margin-top:auto; }
   .dash-card .bar{ margin-top:12px; }
 
-
-  /* ---------- Écrans encore dessinés dans des SVG ----------
-     Réduits d'un bloc, en gardant leurs 1920 en interne.
-
-     `zoom` et non `transform:scale()` : scale ne met à l'échelle QUE la boîte
-     de l'élément, pas sa position. Les enfants en position absolue restaient
-     à leur `top` d'origine (le bas de « Pourquoi » à 1150px, par exemple) et
-     tombaient hors de la section réduite, d'où le grand vide blanc. `zoom` met à
-     l'échelle la mise en page elle-même : positions, tailles et hauteur de la
-     section suivent, sans rien changer au balisage.
-
-     Sous 900 px, ils ne sont PLUS réduits : leurs couches dessinées sont
-     masquées et des blocs mobiles en vrai HTML les remplacent
-     (index-mobile.css). Le zoom ne subsiste qu'entre 900 et 1199 px, où
-     l'échelle (≥ 0,47) reste lisible. */
-  @media (min-width:900px){
-    #parcours,
-    #apropos-faq,
-    #actualite{
-      zoom:var(--echelle, 1);
-    }
-  }
 }
 
 
 /* =========================================================
-   PALIER INTERMÉDIAIRE  900 → 1199
+   COMPOSITION À DEUX COLONNES DÈS 900 PX
 
    Empilé, l'écran d'accueil donnait une carte de 940px de large et un titre
    qui traversait l'écran : une mise en page de téléphone étirée. On revient
    ici à la composition du Figma (carte à gauche, aperçu produit à
    droite), comme sur les 8 pages « Le logiciel ».
    ========================================================= */
-@media (min-width:900px) and (max-width:1199px){
+@media (min-width:900px){
   #accueil{
     display:grid;
     grid-template-columns:minmax(0,1fr) minmax(0,1fr);

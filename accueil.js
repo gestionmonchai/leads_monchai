@@ -556,7 +556,7 @@ if (modalLegal && cadreLegal) {
     etatBouton(true, 'Envoi…');
     var nomComplet = net(g('prenom')) + ' ' + net(g('nom'));
     var resume = [
-      'Nouvelle demande d’inscription au programme bêta Mon Chai',
+      'Nouvelle demande d’essai gratuit Mon Chai',
       '',
       'Nom : ' + nomComplet,
       'E-mail : ' + mail,
@@ -573,7 +573,7 @@ if (modalLegal && cadreLegal) {
       reply_to: mail,
       email: mail,
       name: nomComplet,
-      title: 'Nouvelle inscription bêta : ' + net(g('domaine')),
+      title: 'Nouvelle demande d’essai : ' + net(g('domaine')),
       message: resume,
       from_email: mail,
       prenom: net(g('prenom')),

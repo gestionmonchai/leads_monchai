@@ -164,6 +164,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <link rel="stylesheet" href="assets/css/header.css" data-lot="accueil">
 <link rel="stylesheet" href="assets/css/changer-accueil.css" data-lot="accueil">
 <link rel="stylesheet" href="assets/css/accueil-demo.css" data-lot="accueil">
+<link rel="stylesheet" href="assets/css/nouveautes.css" data-lot="accueil">
 <style>.site-header{display:block}</style>
 <!-- Contenu du haut de page (titre, texte, boutons, aperçu) masqué jusqu'à
      l'arrivée de ses polices, une seconde au plus : affiché d'abord dans la
@@ -324,6 +325,47 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           <p class="sr-only" id="demo-mcp-resume">33 secondes pour voir comment interroger vos stocks et vos impayés dans Claude, connecté à Mon Chai.</p>
         </section>
       </div>
+      </div>
+    </section>
+
+    <section class="nouveautes" id="nouveautes" aria-labelledby="nouveautes-titre">
+      <div class="nouveautes__contenu">
+        <header class="nouveautes__entete">
+          <p class="nouveautes__kicker">Nouveautés Mon Chai</p>
+          <h2 id="nouveautes-titre">Saisissez. Interrogez.</h2>
+          <p>Sur le terrain ou au bureau, faites vivre les données de votre domaine.</p>
+        </header>
+        <div class="nouveautes__duo">
+          <article class="nouveautes__demo" aria-labelledby="nouveautes-notes-titre">
+            <h3 id="nouveautes-notes-titre">Saisissez vos données<span>avec Mon Chai Notes</span></h3>
+            <p class="nouveautes__description">À la voix ou au clavier, depuis votre téléphone Android. Vous vérifiez, puis vous envoyez.</p>
+            <video class="nouveautes__video" controls playsinline preload="none" width="720" height="1440" poster="assets/img/demo-mon-chai-notes.webp" aria-label="Présentation de Mon Chai Notes" aria-describedby="nouveautes-notes-origine">
+              <source src="assets/video/mon-chai-notes.mp4" type="video/mp4">
+              Votre navigateur ne permet pas de lire cette vidéo. <a href="assets/video/mon-chai-notes.mp4">Ouvrir la vidéo Mon Chai Notes</a>.
+            </video>
+            <p class="nouveautes__origine" id="nouveautes-notes-origine">24 secondes · Montage de captures de l’application Android sur un domaine de démonstration.</p>
+            <details class="nouveautes__transcription">
+              <summary>Lire le déroulé de la démonstration</summary>
+              <p>L’accueil donne accès au micro et à la saisie au clavier. La démonstration présente l’écran d’enregistrement vocal, puis le choix d’une cuve dans le référentiel. Une fiche de transfert de 10 hL est relue avant le bouton « Valider et envoyer ». L’écran Activité montre ensuite une saisie synchronisée.</p>
+              <p>Les captures sont assemblées pour présenter ces étapes ; ce montage n’est pas un enregistrement continu des manipulations.</p>
+            </details>
+            <a class="nouveautes__lien" href="monchainotes.html">Découvrir Mon Chai Notes <span aria-hidden="true">→</span></a>
+          </article>
+          <article class="nouveautes__demo" aria-labelledby="nouveautes-ia-titre">
+            <h3 id="nouveautes-ia-titre">Interrogez vos données<span>avec l’IA</span></h3>
+            <p class="nouveautes__description">Posez vos questions sur vos stocks et vos impayés dans Claude, connecté à Mon Chai.</p>
+            <video class="nouveautes__video" controls playsinline preload="none" width="720" height="794" poster="assets/img/demo-mcp.webp" aria-label="Interroger Mon Chai avec Claude" aria-describedby="nouveautes-ia-origine">
+              <source src="assets/video/monchai-mcp.mp4" type="video/mp4">
+              Votre navigateur ne permet pas de lire cette vidéo. <a href="assets/video/monchai-mcp.mp4">Ouvrir la vidéo IA</a>.
+            </video>
+            <p class="nouveautes__origine" id="nouveautes-ia-origine">33 secondes · Démonstration de la connexion de Claude à Mon Chai.</p>
+            <details class="nouveautes__transcription">
+              <summary>Lire le déroulé de la démonstration</summary>
+              <p>Une première question demande quelles cuvées sont presque épuisées. Claude consulte Mon Chai et présente les stocks. Une seconde question porte sur les impayés ; la réponse présente les factures et les montants concernés.</p>
+            </details>
+            <a class="nouveautes__lien" href="ia-au-service-de-mon-chai.html">Connecter mon assistant <span aria-hidden="true">→</span></a>
+          </article>
+        </div>
       </div>
     </section>
 

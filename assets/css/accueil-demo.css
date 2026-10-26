@@ -12,6 +12,13 @@
   color:var(--bordeaux);
   text-align:center;
 }
+.mobile-demo__nouveaute{
+  margin:0 0 10px;
+  color:var(--bordeaux);
+  font:600 14px/1.4 var(--sans);
+  letter-spacing:.12em;
+  text-transform:uppercase;
+}
 .mobile-demo h2{
   margin:0;
   color:var(--bordeaux);
@@ -27,7 +34,8 @@
   aspect-ratio:720 / 794;
   object-fit:contain;
   border:0;
-  border-radius:0;
+  border-radius:24px;
+  overflow:hidden;
   background:transparent;
 }
 .mobile-demo__video:focus-visible{

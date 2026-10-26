@@ -163,6 +163,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <link rel="stylesheet" href="site-20260720.css" data-lot="accueil">
 <link rel="stylesheet" href="assets/css/header.css" data-lot="accueil">
 <link rel="stylesheet" href="assets/css/changer-accueil.css" data-lot="accueil">
+<link rel="stylesheet" href="assets/css/accueil-demo.css" data-lot="accueil">
 <style>.site-header{display:block}</style>
 <!-- Contenu du haut de page (titre, texte, boutons, aperçu) masqué jusqu'à
      l'arrivée de ses polices, une seconde au plus : affiché d'abord dans la
@@ -313,16 +314,15 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           <p class="mobile-proof"><span>✓</span> Sans carte bancaire <span>✓</span> Formation et import offerts</p>
         </div>
 
-        <div class="mobile-apercu" aria-label="Aperçu produit illustratif">
-          <div class="mobile-apercu__barre"><i></i><i></i><i></i><span>Tableau de bord domaine</span></div>
-          <div class="mobile-apercu__grid">
-            <article><span class="k">Volume disponible</span><strong>18 420</strong><span class="k">bouteilles</span><span class="jauge"><span style="width:72%"></span></span></article>
-            <article><span class="k">Vendanges</span><strong>7</strong><span class="k">lots suivis</span><span class="jauge"><span style="width:58%"></span></span></article>
-            <article class="large"><span class="k">Prochaine action recommandée</span><strong>Mise 75cl</strong><span class="k">Vérifier matières sèches, volumes disponibles et commandes en attente.</span></article>
-            <article><span class="k">Clients actifs</span><strong>248</strong><span class="k">fiches</span></article>
-            <article><span class="k">Documents</span><strong>12</strong><span class="k">à préparer</span></article>
-          </div>
-        </div>
+        <section class="mobile-apercu mobile-demo" aria-labelledby="demo-mcp-titre">
+          <h2 id="demo-mcp-titre">Vos données,<br>sans chercher</h2>
+          <p class="mobile-demo__intro">Posez votre question. Retrouvez l’essentiel.</p>
+          <video class="mobile-demo__video" controls playsinline preload="none" width="720" height="794" poster="assets/img/demo-mcp.webp" aria-label="Démonstration de Mon Chai avec Claude" aria-describedby="demo-mcp-resume">
+            <source src="assets/video/monchai-mcp.mp4" type="video/mp4">
+            Votre navigateur ne permet pas de lire cette vidéo. <a href="assets/video/monchai-mcp.mp4">Ouvrir la démonstration</a>.
+          </video>
+          <p class="mobile-demo__resume" id="demo-mcp-resume">33 secondes pour voir comment interroger vos stocks et vos impayés dans Claude, connecté à Mon Chai.</p>
+        </section>
       </div>
       </div>
     </section>

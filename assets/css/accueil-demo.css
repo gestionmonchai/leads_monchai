@@ -1,0 +1,51 @@
+/* Démonstration réelle à la place du tableau de bord illustratif. */
+.mobile-apercu.mobile-demo{
+  height:auto !important;
+  min-height:0 !important;
+  padding:26px !important;
+  background:rgba(255,253,252,.97) !important;
+  border:1px solid rgba(223,183,128,.5) !important;
+  border-radius:24px !important;
+  color:var(--bordeaux);
+  text-align:left;
+}
+.mobile-demo h2{
+  margin:0;
+  color:var(--bordeaux);
+  font:500 42px/1.08 var(--serif);
+  letter-spacing:-.025em;
+}
+.mobile-demo__intro{
+  margin:12px 0 18px;
+  color:var(--gris);
+  font:400 17px/1.45 var(--sans);
+}
+.mobile-demo__video{
+  display:block;
+  width:100%;
+  height:auto;
+  max-height:540px;
+  aspect-ratio:720 / 794;
+  object-fit:contain;
+  border:1px solid rgba(111,29,45,.12);
+  border-radius:12px;
+  background:#f8f8f8;
+}
+.mobile-demo__video:focus-visible{
+  outline:3px solid var(--bordeaux);
+  outline-offset:4px;
+}
+.mobile-demo__resume{
+  margin:12px 0 0;
+  color:var(--gris);
+  font:400 14px/1.5 var(--sans);
+}
+@media (min-width:1200px){
+  .mobile-apercu.mobile-demo{top:273px;}
+}
+@media (max-width:1199px){
+  .mobile-apercu.mobile-demo{padding:20px !important;}
+  .mobile-demo h2{font-size:clamp(30px,5vw,40px);}
+  .mobile-demo__intro{font-size:15px;}
+  .mobile-demo__resume{font-size:13px;}
+}

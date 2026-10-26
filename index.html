@@ -315,57 +315,64 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           <p class="mobile-proof"><span>✓</span> Sans carte bancaire <span>✓</span> Formation et import offerts</p>
         </div>
 
-        <section class="mobile-apercu mobile-demo" aria-labelledby="demo-mcp-titre">
-          <p class="mobile-demo__nouveaute">Nouveauté</p>
-          <h2 id="demo-mcp-titre">Interrogez toutes vos données avec l’IA</h2>
-          <video class="mobile-demo__video" controls playsinline preload="none" width="720" height="794" poster="assets/img/demo-mcp.webp" aria-label="Démonstration de Mon Chai avec Claude" aria-describedby="demo-mcp-resume">
-            <source src="assets/video/monchai-mcp.mp4" type="video/mp4">
-            Votre navigateur ne permet pas de lire cette vidéo. <a href="assets/video/monchai-mcp.mp4">Ouvrir la démonstration</a>.
-          </video>
-          <p class="sr-only" id="demo-mcp-resume">33 secondes pour voir comment interroger vos stocks et vos impayés dans Claude, connecté à Mon Chai.</p>
+        <section class="mobile-apercu mobile-demo nouveautes-carrousel" id="nouveautes" aria-label="Nouveautés Mon Chai" aria-roledescription="carrousel">
+          <div class="nouveautes-carrousel__entete">
+            <p class="mobile-demo__nouveaute">Nouveautés</p>
+            <span class="nouveautes-carrousel__compteur" aria-hidden="true">01 / 03</span>
+          </div>
+          <div class="nouveautes-carrousel__diapos">
+            <article class="nouveautes-carrousel__diapo" id="nouveaute-ia" role="group" aria-roledescription="diapositive" aria-label="1 sur 3 : interroger vos données avec l’IA">
+              <h2>Interrogez toutes vos données avec l’IA</h2>
+              <div class="nouveautes-carrousel__media">
+                <video class="mobile-demo__video" controls playsinline preload="none" width="720" height="794" poster="assets/img/demo-mcp.webp" aria-label="Démonstration de Mon Chai avec Claude" aria-describedby="demo-mcp-resume demo-mcp-deroule">
+                  <source src="assets/video/monchai-mcp.mp4" type="video/mp4">
+                  <a href="assets/video/monchai-mcp.mp4">Ouvrir la démonstration IA</a>.
+                </video>
+              </div>
+              <p class="nouveautes-carrousel__legende" id="demo-mcp-resume">33 secondes · Vos stocks et vos impayés dans Claude, connecté à Mon Chai.</p>
+              <p class="sr-only" id="demo-mcp-deroule">Une première question demande quelles cuvées sont presque épuisées. Claude consulte Mon Chai et présente les stocks. Une seconde question porte sur les impayés ; la réponse présente les factures et les montants concernés.</p>
+              <a class="nouveautes-carrousel__lien" href="ia-au-service-de-mon-chai.html">Découvrir la connexion IA <span aria-hidden="true">→</span></a>
+            </article>
+            <article class="nouveautes-carrousel__diapo" id="nouveaute-notes" role="group" aria-roledescription="diapositive" aria-label="2 sur 3 : saisir avec Mon Chai Notes" hidden>
+              <h2>Saisissez vos données avec Mon Chai Notes</h2>
+              <div class="nouveautes-carrousel__media">
+                <video class="mobile-demo__video mobile-demo__video--notes" controls playsinline preload="none" width="720" height="1440" poster="assets/img/demo-mon-chai-notes.webp" aria-label="Présentation de Mon Chai Notes sur Android" aria-describedby="demo-notes-resume demo-notes-deroule">
+                  <source src="assets/video/mon-chai-notes.mp4" type="video/mp4">
+                  <a href="assets/video/mon-chai-notes.mp4">Ouvrir la vidéo Mon Chai Notes</a>.
+                </video>
+              </div>
+              <p class="nouveautes-carrousel__legende" id="demo-notes-resume">24 secondes · Montage de captures de l’application Android sur un domaine de démonstration.</p>
+              <p class="sr-only" id="demo-notes-deroule">L’accueil donne accès au micro et à la saisie au clavier. Le montage présente l’enregistrement vocal, le choix d’une cuve, puis la relecture d’une fiche de transfert avant validation et envoi. L’écran Activité montre une saisie synchronisée. Ces captures ne constituent pas un enregistrement continu des manipulations.</p>
+              <a class="nouveautes-carrousel__lien" href="monchainotes.html">Découvrir Mon Chai Notes <span aria-hidden="true">→</span></a>
+            </article>
+            <article class="nouveautes-carrousel__diapo" id="nouveaute-annonces" role="group" aria-roledescription="diapositive" aria-label="3 sur 3 : créer vos annonces de recrutement" hidden>
+              <h2>Créez vos annonces</h2>
+              <div class="nouveautes-carrousel__media nouveautes-carrousel__recrutement">
+                <p class="nouveautes-carrousel__accroche">Votre prochaine équipe<br>commence ici.</p>
+                <p class="nouveautes-carrousel__besoin">Vendanges, taille, travaux saisonniers…<br>Faites connaître vos besoins au domaine.</p>
+                <ol class="nouveautes-carrousel__etapes">
+                  <li><span>01</span> Rédigez votre offre</li>
+                  <li><span>02</span> Publiez votre annonce</li>
+                  <li><span>03</span> Retrouvez les réponses dans Mon Chai</li>
+                </ol>
+              </div>
+              <p class="nouveautes-carrousel__legende">Recrutement saisonnier · Depuis votre espace Mon Chai.</p>
+              <a class="nouveautes-carrousel__lien" href="https://tester.monchai.fr/annonces/nouvelle/recrutement/">Créer mon annonce <span aria-hidden="true">→</span></a>
+            </article>
+          </div>
+          <div class="nouveautes-carrousel__navigation" hidden>
+            <button class="nouveautes-carrousel__fleche" type="button" data-direction="-1" aria-label="Nouveauté précédente">←</button>
+            <div class="nouveautes-carrousel__choix" role="group" aria-label="Choisir une nouveauté">
+              <button type="button" data-diapo="0" aria-controls="nouveaute-ia" aria-pressed="true">IA</button>
+              <button type="button" data-diapo="1" aria-controls="nouveaute-notes" aria-pressed="false">Mon Chai Notes</button>
+              <button type="button" data-diapo="2" aria-controls="nouveaute-annonces" aria-pressed="false">Annonces</button>
+            </div>
+            <button class="nouveautes-carrousel__fleche" type="button" data-direction="1" aria-label="Nouveauté suivante">→</button>
+          </div>
+          <p class="sr-only" data-carrousel-statut aria-live="polite" aria-atomic="true"></p>
+          <noscript><p>À découvrir aussi : <a href="monchainotes.html">Mon Chai Notes</a> et <a href="https://tester.monchai.fr/annonces/nouvelle/recrutement/">les annonces de recrutement</a>.</p></noscript>
         </section>
       </div>
-      </div>
-    </section>
-
-    <section class="nouveautes" id="nouveautes" aria-labelledby="nouveautes-titre">
-      <div class="nouveautes__contenu">
-        <header class="nouveautes__entete">
-          <p class="nouveautes__kicker">Nouveautés Mon Chai</p>
-          <h2 id="nouveautes-titre">Saisissez. Interrogez.</h2>
-          <p>Sur le terrain ou au bureau, faites vivre les données de votre domaine.</p>
-        </header>
-        <div class="nouveautes__duo">
-          <article class="nouveautes__demo" aria-labelledby="nouveautes-notes-titre">
-            <h3 id="nouveautes-notes-titre">Saisissez vos données<span>avec Mon Chai Notes</span></h3>
-            <p class="nouveautes__description">À la voix ou au clavier, depuis votre téléphone Android. Vous vérifiez, puis vous envoyez.</p>
-            <video class="nouveautes__video" controls playsinline preload="none" width="720" height="1440" poster="assets/img/demo-mon-chai-notes.webp" aria-label="Présentation de Mon Chai Notes" aria-describedby="nouveautes-notes-origine">
-              <source src="assets/video/mon-chai-notes.mp4" type="video/mp4">
-              Votre navigateur ne permet pas de lire cette vidéo. <a href="assets/video/mon-chai-notes.mp4">Ouvrir la vidéo Mon Chai Notes</a>.
-            </video>
-            <p class="nouveautes__origine" id="nouveautes-notes-origine">24 secondes · Montage de captures de l’application Android sur un domaine de démonstration.</p>
-            <details class="nouveautes__transcription">
-              <summary>Lire le déroulé de la démonstration</summary>
-              <p>L’accueil donne accès au micro et à la saisie au clavier. La démonstration présente l’écran d’enregistrement vocal, puis le choix d’une cuve dans le référentiel. Une fiche de transfert de 10 hL est relue avant le bouton « Valider et envoyer ». L’écran Activité montre ensuite une saisie synchronisée.</p>
-              <p>Les captures sont assemblées pour présenter ces étapes ; ce montage n’est pas un enregistrement continu des manipulations.</p>
-            </details>
-            <a class="nouveautes__lien" href="monchainotes.html">Découvrir Mon Chai Notes <span aria-hidden="true">→</span></a>
-          </article>
-          <article class="nouveautes__demo" aria-labelledby="nouveautes-ia-titre">
-            <h3 id="nouveautes-ia-titre">Interrogez vos données<span>avec l’IA</span></h3>
-            <p class="nouveautes__description">Posez vos questions sur vos stocks et vos impayés dans Claude, connecté à Mon Chai.</p>
-            <video class="nouveautes__video" controls playsinline preload="none" width="720" height="794" poster="assets/img/demo-mcp.webp" aria-label="Interroger Mon Chai avec Claude" aria-describedby="nouveautes-ia-origine">
-              <source src="assets/video/monchai-mcp.mp4" type="video/mp4">
-              Votre navigateur ne permet pas de lire cette vidéo. <a href="assets/video/monchai-mcp.mp4">Ouvrir la vidéo IA</a>.
-            </video>
-            <p class="nouveautes__origine" id="nouveautes-ia-origine">33 secondes · Démonstration de la connexion de Claude à Mon Chai.</p>
-            <details class="nouveautes__transcription">
-              <summary>Lire le déroulé de la démonstration</summary>
-              <p>Une première question demande quelles cuvées sont presque épuisées. Claude consulte Mon Chai et présente les stocks. Une seconde question porte sur les impayés ; la réponse présente les factures et les montants concernés.</p>
-            </details>
-            <a class="nouveautes__lien" href="ia-au-service-de-mon-chai.html">Connecter mon assistant <span aria-hidden="true">→</span></a>
-          </article>
-        </div>
       </div>
     </section>
 
@@ -868,6 +875,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <script src="consent.js" defer></script>
 <script src="assets/js/header.js" defer></script>
 <script src="accueil.js" defer></script>
+<script src="assets/js/nouveautes-carrousel.js" defer></script>
 <script src="assets/js/cta-popup.js" defer></script>
 </body>
 </html>

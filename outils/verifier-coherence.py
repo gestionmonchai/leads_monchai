@@ -7,6 +7,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import re
 import sys
 from collections import Counter
 from html.parser import HTMLParser
@@ -85,4 +86,17 @@ if __name__ == '__main__':
         commun = all(p['footers'] == ['mc-site-footer'] for p in report['pages'])
         if not commun:
             print('Le footer commun doit figurer exactement une fois sur chaque page.')
-        sys.exit(1 if report['anomalies'] or not commun else 0)
+        references, divergences = {}, []
+        for page in report['pages']:
+            name = page['page']
+            langue = name.split('/')[0] if '/' in name else 'fr'
+            source = (args.site / name).read_text(encoding='utf-8-sig')
+            footer = re.search(r'<footer\b[^>]*>.*?</footer>', source, flags=re.S)
+            if footer:
+                normalized = re.sub(r'\s+', ' ', footer[0]).strip()
+                expected = references.setdefault(langue, normalized)
+                if normalized != expected:
+                    divergences.append(name)
+        if divergences:
+            print('Footers différents dans une même langue : ' + ', '.join(divergences))
+        sys.exit(1 if report['anomalies'] or not commun or divergences else 0)

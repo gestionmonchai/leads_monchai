@@ -26,6 +26,7 @@
   var APP = 'https://tester.monchai.fr';
   var FIN_OFFRE = new Date('2026-11-01T00:00:00+01:00');
   var balise = document.currentScript;
+  var affichageBandeau = !!balise && balise.getAttribute('data-affichage') === 'bandeau';
   var campagneRecolte = Date.now() < FIN_OFFRE.getTime() && !!balise &&
     balise.getAttribute('data-campagne') === 'recolte-2026';
   var CLE = campagneRecolte ? 'monchai_cta_recolte_2026_vu' : 'monchai_cta_vu';
@@ -73,6 +74,9 @@
   var FIN_ANNEE = new Date('2027-01-01T00:00:00+01:00');
   var offreValable = Date.now() < FIN_OFFRE.getTime();
   var periodeNovDec = !offreValable && Date.now() < FIN_ANNEE.getTime();
+  if (affichageBandeau && langue === 'fr') {
+    T = Object.assign({}, T, { titre: campagneRecolte ? 'Préparez votre récolte 2026' : 'Préparez votre récolte avec Mon Chai' });
+  }
 
   var CSS = [
     '.mc-cta{position:fixed;right:24px;bottom:24px;z-index:290;width:min(390px,calc(100vw - 32px));max-height:calc(100vh - 48px);overflow-y:auto;box-sizing:border-box;padding:26px 24px 18px;background:#FFFCF8;border:1px solid #E7D3BC;border-radius:18px;box-shadow:0 24px 60px rgba(71,19,24,.22);font-family:"Inter",system-ui,-apple-system,sans-serif;color:#2E2826;opacity:0;transform:translateY(16px);transition:opacity .35s ease,transform .35s ease;}',
@@ -93,12 +97,21 @@
     '.mc-cta__btn:hover{background:#b87f4a;}',
     '.mc-cta__prix{margin:10px 0 0;text-align:center;font-size:12.5px;line-height:1.4;color:#6E625C;}',
     '.mc-cta__plus-tard{display:block;margin:8px auto 0;padding:4px 8px;border:0;background:none;color:#6E625C;font:inherit;font-size:12.5px;text-decoration:underline;cursor:pointer;}',
+    '.mc-cta__essai{display:none;}',
+    '@media(max-width:639px){.mc-cta--bandeau .mc-cta__essai{display:block;margin:0 0 8px;font-size:12px;}}',
     '@media (max-width:639px){.mc-cta{left:0;right:0;bottom:0;width:100%;max-height:70vh;border-radius:18px 18px 0 0;border-bottom:0;padding:18px 18px calc(10px + env(safe-area-inset-bottom));}.mc-cta__titre{font-size:18.5px;margin-bottom:6px;}.mc-cta__accroche{font-size:13.5px;}.mc-cta__texte{display:none;}.mc-cta__offre{padding:10px 12px;margin-bottom:10px;}.mc-cta__offre p{font-size:13px;}.mc-cta__coches{margin-bottom:12px;}.mc-cta__coches li{font-size:13px;}.mc-cta__btn{min-height:46px;font-size:15px;}.mc-cta__prix{margin-top:8px;}.mc-cta__plus-tard{margin-top:4px;}}',
+    '@media (max-width:639px){.mc-cta--bandeau{padding:12px 16px calc(10px + env(safe-area-inset-bottom));max-height:40vh;}.mc-cta--bandeau .mc-cta__titre{font:600 16px/1.3 "Inter",sans-serif;margin:0 0 6px;}.mc-cta--bandeau .mc-cta__accroche,.mc-cta--bandeau .mc-cta__texte,.mc-cta--bandeau .mc-cta__coches,.mc-cta--bandeau .mc-cta__badge,.mc-cta--bandeau .mc-cta__plus-tard{display:none;}.mc-cta--bandeau .mc-cta__offre{padding:0;margin:0 28px 8px 0;border:0;background:none;}.mc-cta--bandeau .mc-cta__offre p{font-size:12px;font-weight:500;line-height:1.4;}.mc-cta--bandeau .mc-cta__btn{min-height:44px;font-size:14px;background:#7B1E22;}.mc-cta--bandeau .mc-cta__prix{font-size:11px;margin-top:6px;}.mc-cta--bandeau .mc-cta__fermer{width:44px;height:44px;top:3px;right:3px;}.mc-cta--bandeau .mc-cta__titre{padding-right:36px;}}',
+    '.mc-cta :focus-visible{outline:2px solid #7B1E22;outline-offset:3px;}',
+    '@media print{.mc-cta{display:none!important;}}',
     '@media (prefers-reduced-motion:reduce){.mc-cta{transition:none;transform:none;}}'
   ].join('\n');
 
   function signaler(evenement) {
-    try { (window.dataLayer = window.dataLayer || []).push({ event: evenement, cta_campagne: campagneRecolte ? 'recolte_2026' : 'generale' }); } catch (e) {}
+    try {
+      var consentement = JSON.parse(localStorage.getItem('monchai_cookie_consent'));
+      if (!consentement || consentement.audience !== true || !consentement.ts || Date.now() - consentement.ts >= 15724800000) return;
+      (window.dataLayer = window.dataLayer || []).push({ event: evenement, cta_campagne: campagneRecolte ? 'recolte_2026' : 'generale' });
+    } catch (e) {}
   }
   function memoriser(clic) {
     try {
@@ -117,7 +130,7 @@
     document.head.appendChild(style);
 
     carte = document.createElement('div');
-    carte.className = 'mc-cta';
+    carte.className = 'mc-cta' + (affichageBandeau ? ' mc-cta--bandeau' : '');
     carte.setAttribute('data-campagne', campagneRecolte ? 'recolte-2026' : 'generale');
     carte.hidden = true;
     carte.setAttribute('role', 'dialog');
@@ -130,6 +143,7 @@
       '<p class="mc-cta__texte">' + T.texte + '</p>' +
       (offreValable ? '<div class="mc-cta__offre"><span class="mc-cta__badge">' + T.badge + '</span><p>' + T.offre + '</p></div>' : '') +
       (periodeNovDec ? '<div class="mc-cta__offre"><span class="mc-cta__badge">' + N.badge + '</span><p>' + N.offre + '</p></div>' : '') +
+      (!offreValable && !periodeNovDec && affichageBandeau ? '<p class="mc-cta__essai">' + N.essai30 + '</p>' : '') +
       '<ul class="mc-cta__coches">' +
         (offreValable || periodeNovDec ? '<li>' + T.coche1 + '</li>' : '<li>' + N.essai30 + '</li>') +
         '<li>' + T.coche2 + '</li>' +

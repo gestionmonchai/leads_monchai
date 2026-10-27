@@ -62,3 +62,26 @@
   .recolte-fiche__contenu { display: block !important; }
   .recolte-retour, .recolte-fiche__resume::after { display: none; }
 }
+
+/* Outils éditoriaux : lecture et téléchargements libres, sans compte. */
+.recolte-sommaire { display:flex; flex-wrap:wrap; gap:8px 20px; margin:24px 0; padding:14px 18px; background:var(--ac-creme-2); border-radius:12px; }
+.recolte-sommaire a { display:inline-flex; align-items:center; min-height:44px; font-weight:600; }
+.article .recolte-verification { font-size:14px; line-height:1.65; padding:12px 14px; background:#faf7f2; border-radius:8px; }
+.recolte-verification__badge { display:inline-block; font-weight:700; color:#514139; margin-bottom:5px; }
+.recolte-verification__badge--campagne { color:#46602d; }
+.recolte-verification__badge--extranet { color:#80500d; }
+.recolte-verification__date { display:block; color:#67574d; font-size:13px; }
+.recolte-outils { margin-top:36px; }
+.recolte-outils h2 { scroll-margin-top:120px; }
+.article .recolte-checklist { padding-left:25px; }
+.recolte-checklist li { padding:6px 0 8px 6px; }
+.recolte-outils__actions { display:flex; flex-wrap:wrap; gap:12px; }
+.recolte-outils__actions a { display:inline-flex; align-items:center; min-height:48px; padding:10px 16px; box-sizing:border-box; border:1px solid var(--ac-bordeaux); border-radius:10px; background:#fff; color:var(--ac-bordeaux); font-weight:600; text-decoration:none; }
+.recolte-outils__actions a:hover { background:var(--ac-creme-2); }
+.recolte-outils a:focus-visible,.recolte-sommaire a:focus-visible { outline:2px solid var(--ac-bordeaux); outline-offset:4px; }
+.article .recolte-outils__note,.recolte-exemple figcaption { font-size:14px; line-height:1.6; color:#67574d; }
+.recolte-exemple { margin:24px 0 18px; }
+.recolte-exemple img { display:block; width:100%; height:auto; border:1px solid var(--ac-bord); border-radius:12px; box-sizing:border-box; }
+.recolte-exemple figcaption { margin-top:10px; }
+@media(max-width:580px){ .recolte-sommaire{display:grid;gap:0;padding:10px 16px;} .recolte-outils__actions a{width:100%;} }
+@media print { .recolte-sommaire,.recolte-outils__actions{display:none;} .recolte-exemple{break-inside:avoid;} }

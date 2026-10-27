@@ -8,11 +8,11 @@
 <script>
 window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}
 (function(){
-  function etat(c){var a=c&&c.audience?'granted':'denied',t=c&&c.tiers?'granted':'denied';return{analytics_storage:a,ad_storage:t,ad_user_data:t,ad_personalization:t};}
+  function etat(c){var a=c&&c.audience===true?'granted':'denied',t='denied';return{analytics_storage:a,ad_storage:t,ad_user_data:t,ad_personalization:t};}
   var d=etat(null);d.wait_for_update=500;gtag('consent','default',d);
   function chargerPlusTard(){if(document.readyState==='complete'){if(window.monchaiChargerGtm)window.monchaiChargerGtm();}else{window.addEventListener('load',function(){setTimeout(function(){if(window.monchaiChargerGtm)window.monchaiChargerGtm();},0);},{once:true});}}
-  try{var c=JSON.parse(localStorage.getItem('monchai_cookie_consent'));if(c&&c.ts&&Date.now()-c.ts<15724800000){gtag('consent','update',etat(c));if(c.audience||c.tiers)chargerPlusTard();}}catch(e){}
-  window.addEventListener('monchai:consent',function(e){gtag('consent','update',etat(e.detail));dataLayer.push({event:'monchai_consentement'});if(e.detail&&(e.detail.audience||e.detail.tiers))chargerPlusTard();});
+  try{var c=JSON.parse(localStorage.getItem('monchai_cookie_consent'));if(c&&typeof c.ts==='number'&&Number.isFinite(c.ts)&&c.ts<=Date.now()&&Date.now()-c.ts<15724800000&&typeof c.audience==='boolean'&&typeof c.tiers==='boolean'){gtag('consent','update',etat(c));if(c.audience===true)chargerPlusTard();}}catch(e){}
+  window.addEventListener('monchai:consent',function(e){gtag('consent','update',etat(e.detail));dataLayer.push({event:'monchai_consentement'});if(e.detail&&e.detail.audience===true)chargerPlusTard();});
 })();
 </script>
 <!-- Google Tag Manager, chargé seulement après un accord (mesure d'audience ou
@@ -41,6 +41,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <link rel="stylesheet" href="assets/css/header.css">
 <link rel="stylesheet" href="assets/css/actus.css">
 <link rel="stylesheet" href="legal.css">
+<link rel="stylesheet" href="assets/css/footer-commun.css">
 </head>
 <body class="corps-actus">
 <div class="site-header site-header--page">
@@ -142,51 +143,25 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   </header>
 </div>
 <main class="legal">
-  <h1>Mentions légales</h1>
-  <p class="maj">Dernière mise à jour : 15 juillet 2026</p>
-
-  <h2>Éditeur du site</h2>
-  <p>
-    <strong>HALLAIS &amp; BERTHELOT</strong><br>
-    Société par actions simplifiée (SAS) au capital de 1 000 euros<br>
-    Nom commercial : Mon Chai<br>
-    Siège social : 5 rue Pierre-Joseph Colin, 35000 Rennes<br>
-    SIREN : 100 858 547<br>
-    RCS Rennes : 100 858 547<br>
-    Adresse électronique : <a href="mailto:contact@monchai.fr">contact@monchai.fr</a><br>
-    Téléphone : +33 (0)6 76 20 59 67
-  </p>
-
-  <h2>Directeur de la publication</h2>
-  <p>Denis Berthelot, représentant légal de la société HALLAIS &amp; BERTHELOT.</p>
-
-  <h2>Hébergement</h2>
-  <p>
-    Le site et la plateforme Mon Chai sont hébergés par <strong>OVHcloud</strong><br>
-    SAS au capital de 50 000 000 €, RCS Lille Métropole 424 761 419 00045<br>
-    2 rue Kellermann, 59100 Roubaix, France<br>
-    <a href="https://www.ovhcloud.com" target="_blank" rel="noopener">www.ovhcloud.com</a>
-  </p>
-
-  <h2>Propriété intellectuelle</h2>
-  <p>L’ensemble des éléments du site (textes, visuels, logo, mise en page, logiciel) est la propriété de HALLAIS &amp; BERTHELOT ou de ses partenaires, et est protégé par le droit de la propriété intellectuelle. Toute reproduction ou représentation, totale ou partielle, sans autorisation écrite préalable est interdite.</p>
-
-  <h2>Données personnelles</h2>
-  <p>Les traitements de données personnelles réalisés dans le cadre du site et du service sont décrits dans notre <a href="politique-confidentialite.html">politique de confidentialité</a>. Vous disposez notamment d’un droit d’accès, de rectification, d’effacement et d’opposition, exerçable à <a href="mailto:contact@monchai.fr">contact@monchai.fr</a>.</p>
-
-  <h2>Cookies</h2>
-  <p>Le site utilise des cookies dont le détail figure dans la <a href="politique-confidentialite.html">politique de confidentialité</a>. Vous pouvez à tout moment modifier vos choix via le bouton ci-dessous.</p>
-  <p><button type="button" class="legal-cookies" data-cookies>Gérer mes cookies</button></p>
-
-  <h2>Contact</h2>
-  <p>Pour toute question relative au site : <a href="mailto:contact@monchai.fr">contact@monchai.fr</a>.</p>
+<h1>Mentions légales</h1><p class="maj">Version préparée le 28 octobre 2026</p>
+<h2>Éditeur du site</h2><p><strong>HALLAIS &amp; BERTHELOT</strong><br>SAS · Capital : 1 000 €<br>Mon Chai<br>5 rue Pierre-Joseph Colin, 35000 Rennes, France<br>SIREN / RCS Rennes : 100 858 547<br>TVA / VAT : FR61100858547<br><a href="mailto:contact@monchai.fr">contact@monchai.fr</a><br><a href="tel:+33676205967">+33 (0)6 76 20 59 67</a></p>
+<h2>Directeur de la publication</h2><p>Denis Berthelot · HALLAIS &amp; BERTHELOT</p>
+<h2>Site public monchai.fr</h2><p><strong>GitHub Pages · GitHub, Inc.</strong><br>88 Colin P. Kelly Jr. St., San Francisco, CA 94107, United States<br><a href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement">Notice officielle du prestataire</a> · <a href="https://support.github.com/">GitHub Support</a></p>
+<h2>Application et données métier</h2><p><strong>OVH SAS · OVHcloud</strong><br>RCS Lille Métropole : 424 761 419<br>2 rue Kellermann, 59100 Roubaix, France<br><a href="tel:+33972101007">+33 9 72 10 10 07</a><br><a href="https://www.ovhcloud.com/">www.ovhcloud.com</a></p>
+<h2>Propriété intellectuelle</h2><p>Les contenus et logiciels sont protégés par le droit de la propriété intellectuelle. Les droits des tiers sur leurs propres contenus restent réservés.</p>
+<h2>Données personnelles</h2><p>Consultez notre politique pour les traitements, les prestataires, la conservation et vos droits. <a href="politique-confidentialite.html">Politique de confidentialité</a>.</p>
 </main>
-<footer class="legal-foot">
-  <a href="politique-confidentialite.html">Politique de confidentialité</a> ·
-  <a href="index.html">Accueil</a> ·
-  <button type="button" class="legal-cookies" data-cookies>Gérer mes cookies</button>
+<footer class="mc-site-footer" aria-label="Informations légales">
+  <div class="mc-site-footer__inner">
+    <div class="mc-site-footer__brand"><a class="mc-site-footer__name" href="index.html"><img src="assets/img/logo-mon-chai-400-20260720.webp" alt="Mon Chai" width="400" height="219" loading="lazy" decoding="async"></a><p>De la vigne à la vente.</p><a href="mailto:contact@monchai.fr">contact@monchai.fr</a><nav class="mc-site-footer__social" aria-label="Mon Chai"><a href="https://www.instagram.com/monchai.fr/" target="_blank" rel="noopener noreferrer">Instagram ↗</a><a href="https://www.linkedin.com/company/monchai" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a></nav></div>
+    <nav aria-label="Le logiciel"><h2>Le logiciel</h2><a href="fonctionnalites.html">Fonctionnalités</a><a href="tarifs.html">Tarifs</a><a href="monchainotes.html">Mon Chai Notes</a></nav>
+    <nav aria-label="Ressources"><h2>Ressources</h2><a href="ressources.html">Guides pratiques</a><a href="faq.html">Questions fréquentes</a><a href="contact.html">Nous contacter</a></nav>
+    <nav class="mc-site-footer__privacy" aria-label="Confidentialité & données"><h2>Confidentialité & données</h2><a href="politique-confidentialite.html">Consulter la politique de confidentialité</a><a href="politique-confidentialite.html#traitements">Traitement des données</a><a href="politique-confidentialite.html#vos-droits">Vos droits</a><button type="button" data-cookies>Gérer mes cookies</button></nav>
+    <div class="mc-site-footer__bottom"><small>© 2026 HALLAIS &amp; BERTHELOT · Imaginé et développé à Rennes</small><nav aria-label="Informations légales"><a href="mentions-legales.html">Mentions légales</a><a href="cgu.html">Conditions générales</a></nav></div>
+  </div>
 </footer>
 <script src="assets/js/header.js"></script>
-<script src="script.js"></script>
+<script src="consent.js" defer></script>
+<script src="assets/js/documents-legaux.js" defer></script>
 </body>
 </html>

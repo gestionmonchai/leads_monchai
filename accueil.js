@@ -322,8 +322,8 @@ modal.querySelectorAll('[data-fermer]').forEach(function (el) {
   el.addEventListener('click', fermerModal);
 });
 document.addEventListener('keydown', function (e) {
-  const legalOuverte = document.getElementById('modalLegal');
-  if (e.key === 'Escape' && !modal.hidden && (!legalOuverte || legalOuverte.hidden)) fermerModal();
+  const legalOuverte = document.querySelector('dialog[open]');
+  if (e.key === 'Escape' && !modal.hidden && !legalOuverte) fermerModal();
 });
 modal.addEventListener('keydown', function (e) {
   if (e.key !== 'Tab' || modal.hidden) return;
@@ -348,130 +348,7 @@ modal.addEventListener('keydown', function (e) {
       Les documents conservent leurs URLs autonomes ; depuis la landing,
       leurs liens sont affichés dans un cadre interne habillé Mon Chai.
    ========================================================= */
-const modalLegal = document.getElementById('modalLegal');
-const cadreLegal = document.getElementById('legalModalFrame');
-const titreLegal = document.getElementById('legalModalTitre');
-const pageLegalComplete = document.getElementById('legalModalPage');
-let elementAvantLegal = null;
-let overflowAvantLegal = '';
-
-const pagesLegales = {
-  'cgu.html': 'Conditions générales d’utilisation',
-  'mentions-legales.html': 'Mentions légales',
-  'politique-confidentialite.html': 'Politique de confidentialité'
-};
-
-function fichierLegal(url) {
-  try {
-    const chemin = new URL(url, window.location.href).pathname;
-    return decodeURIComponent(chemin.split('/').pop() || '').toLowerCase();
-  } catch (e) { return ''; }
-}
-
-function urlIntegree(url) {
-  try {
-    const cible = new URL(url, window.location.href);
-    cible.searchParams.set('embed', '1');
-    if (fichierLegal(cible.href) === 'politique-confidentialite.html') {
-      cible.searchParams.set('version', '20260720-2');
-    }
-    return cible.href;
-  } catch (e) { return url; }
-}
-
-function ouvrirLegal(url, libelle, declencheur) {
-  if (!modalLegal || !cadreLegal) return;
-  elementAvantLegal = declencheur || document.activeElement;
-  overflowAvantLegal = document.body.style.overflow;
-  const fichier = fichierLegal(url);
-  const titre = libelle || pagesLegales[fichier] || 'Informations légales';
-  titreLegal.textContent = titre;
-  cadreLegal.title = titre + ' | Mon Chai';
-  pageLegalComplete.href = new URL(url, window.location.href).href;
-  cadreLegal.src = urlIntegree(url);
-  modalLegal.hidden = false;
-  document.body.style.overflow = 'hidden';
-  if (modal && !modal.hidden) modal.setAttribute('aria-hidden', 'true');
-  const fermer = modalLegal.querySelector('.legal-modal__fermer');
-  if (fermer) fermer.focus();
-}
-
-function fermerLegal() {
-  if (!modalLegal || modalLegal.hidden) return;
-  modalLegal.hidden = true;
-  if (cadreLegal) cadreLegal.src = 'about:blank';
-  document.body.style.overflow = overflowAvantLegal;
-  if (modal) modal.removeAttribute('aria-hidden');
-  if (elementAvantLegal && elementAvantLegal.isConnected && typeof elementAvantLegal.focus === 'function') {
-    elementAvantLegal.focus();
-  }
-}
-
-if (modalLegal && cadreLegal) {
-  // Délégation : couvre aussi le lien injecté plus tard dans le bandeau cookies.
-  document.addEventListener('click', function (event) {
-    const lien = event.target.closest && event.target.closest('a[href]');
-    if (!lien || lien.hasAttribute('data-legal-page')) return;
-    const fichier = fichierLegal(lien.href);
-    if (!pagesLegales[fichier]) return;
-    event.preventDefault();
-    fermerMenuMobile();
-    ouvrirLegal(lien.href, pagesLegales[fichier], lien);
-  });
-
-  modalLegal.querySelectorAll('[data-legal-fermer]').forEach(function (element) {
-    element.addEventListener('click', fermerLegal);
-  });
-
-  document.addEventListener('keydown', function (event) {
-    if (event.key === 'Escape' && !modalLegal.hidden) {
-      event.preventDefault();
-      fermerLegal();
-    }
-  });
-
-  cadreLegal.addEventListener('load', function () {
-    if (cadreLegal.src === 'about:blank') return;
-    try {
-      const doc = cadreLegal.contentDocument;
-      if (!doc) return;
-      doc.documentElement.classList.add('legal-embed');
-      const h1 = doc.querySelector('h1');
-      if (h1) {
-        titreLegal.textContent = h1.textContent.trim();
-        cadreLegal.title = h1.textContent.trim() + ' | Mon Chai';
-      }
-      const urlCadre = cadreLegal.contentWindow.location.href;
-      const cibleComplete = new URL(urlCadre);
-      cibleComplete.searchParams.delete('embed');
-      pageLegalComplete.href = cibleComplete.href;
-
-      doc.querySelectorAll('.legal-retour, a[href$="index.html"]').forEach(function (lien) {
-        lien.addEventListener('click', function (event) {
-          event.preventDefault();
-          fermerLegal();
-        });
-      });
-      doc.querySelectorAll('[data-cookies]').forEach(function (bouton) {
-        bouton.addEventListener('click', function (event) {
-          event.preventDefault();
-          const boutonParent = document.querySelector('.mobile-footer [data-cookies]') || document.querySelector('[data-cookies]');
-          if (boutonParent) boutonParent.click();
-        });
-      });
-      doc.addEventListener('keydown', function (event) {
-        if (event.key === 'Escape') {
-          event.preventDefault();
-          fermerLegal();
-        }
-      });
-    } catch (e) {
-      // Le document reste lisible même si un navigateur restreint l’accès
-      // au contenu d’un iframe local ouvert via file://.
-    }
-  });
-}
-
+// Le lecteur commun est dans assets/js/documents-legaux.js.
 
 /* =========================================================
    4. Formulaire d'inscription bêta-test -> envoi du mail (EmailJS)
@@ -547,7 +424,7 @@ if (modalLegal && cadreLegal) {
 
     if (!net(g('activite'))){ afficher('err','Merci de sélectionner votre activité.'); invalide(g('activite')); return; }
 
-    if (!consent.checked){ afficher('err','Merci d’accepter la réutilisation de vos informations pour continuer.'); consent.focus(); return; }
+    if (!consent.checked){ afficher('err','Merci de confirmer la lecture des informations sur vos données.'); consent.focus(); return; }
 
     try { await chargerEmailJS(); }
     catch (erreur) { afficher('err','Service momentanément indisponible. Réessayez dans un instant.'); return; }

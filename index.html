@@ -8,11 +8,11 @@
 <script>
 window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}
 (function(){
-  function etat(c){var a=c&&c.audience?'granted':'denied',t=c&&c.tiers?'granted':'denied';return{analytics_storage:a,ad_storage:t,ad_user_data:t,ad_personalization:t};}
+  function etat(c){var a=c&&c.audience===true?'granted':'denied',t='denied';return{analytics_storage:a,ad_storage:t,ad_user_data:t,ad_personalization:t};}
   var d=etat(null);d.wait_for_update=500;gtag('consent','default',d);
   function chargerPlusTard(){if(document.readyState==='complete'){if(window.monchaiChargerGtm)window.monchaiChargerGtm();}else{window.addEventListener('load',function(){setTimeout(function(){if(window.monchaiChargerGtm)window.monchaiChargerGtm();},0);},{once:true});}}
-  try{var c=JSON.parse(localStorage.getItem('monchai_cookie_consent'));if(c&&c.ts&&Date.now()-c.ts<15724800000){gtag('consent','update',etat(c));if(c.audience||c.tiers)chargerPlusTard();}}catch(e){}
-  window.addEventListener('monchai:consent',function(e){gtag('consent','update',etat(e.detail));dataLayer.push({event:'monchai_consentement'});if(e.detail&&(e.detail.audience||e.detail.tiers))chargerPlusTard();});
+  try{var c=JSON.parse(localStorage.getItem('monchai_cookie_consent'));if(c&&typeof c.ts==='number'&&Number.isFinite(c.ts)&&c.ts<=Date.now()&&Date.now()-c.ts<15724800000&&typeof c.audience==='boolean'&&typeof c.tiers==='boolean'){gtag('consent','update',etat(c));if(c.audience===true)chargerPlusTard();}}catch(e){}
+  window.addEventListener('monchai:consent',function(e){gtag('consent','update',etat(e.detail));dataLayer.push({event:'monchai_consentement'});if(e.detail&&e.detail.audience===true)chargerPlusTard();});
 })();
 </script>
 <!-- Google Tag Manager, chargé seulement après un accord (mesure d'audience ou
@@ -179,6 +179,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     .map(function (f) { return document.fonts.load(f); })).then(montrer, montrer);
   setTimeout(montrer, 1000);
 })(document.documentElement);</script>
+<link rel="stylesheet" href="assets/css/footer-commun.css">
 </head>
 <body>
 
@@ -682,52 +683,15 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     </section>
   </main>
 
-  <footer class="mobile-footer" aria-label="Pied de page" data-nav-contrast="light">
-    <div class="mobile-footer__marque">
-      <svg class="mobile-footer__filters" width="0" height="0" aria-hidden="true" focusable="false">
-        <filter id="footer-logo-gold" color-interpolation-filters="sRGB">
-          <feColorMatrix in="SourceGraphic" type="matrix"
-            values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  .2126 .7152 .0722 0 0"
-            result="logoLightness"/>
-          <feComponentTransfer in="logoLightness" result="logoGoldMask">
-            <feFuncA type="linear" slope="4" intercept="-1.5"/>
-          </feComponentTransfer>
-          <feFlood flood-color="#FFF9F4" result="logoIvory"/>
-          <feComposite in="logoIvory" in2="SourceAlpha" operator="in" result="logoIvoryShape"/>
-          <feFlood flood-color="#D9B07A" result="logoGold"/>
-          <feComposite in="logoGold" in2="logoGoldMask" operator="in" result="logoGoldShape"/>
-          <feMerge><feMergeNode in="logoIvoryShape"/><feMergeNode in="logoGoldShape"/></feMerge>
-        </filter>
-      </svg>
-      <img src="assets/img/logo-mon-chai-400-20260720.webp" alt="Mon Chai" width="400" height="219" loading="lazy" decoding="async">
-      <p>Le logiciel de gestion viticole pensé pour relier votre domaine, de la vigne à la vente, avec moins de ressaisie et plus de clarté.</p>
-      <p>Mon Chai est membre de <a href="https://www.lawinetech.com/" target="_blank" rel="noopener">LA WINE TECH</a><br>&amp; DU <a href="https://lepoool.tech/" target="_blank" rel="noopener">POOOL</a> x La French Tech Rennes Saint-Malo</p>
-      <div class="mobile-footer__badges"><img src="assets/img/badge-frenchtech-20260720.webp" alt="La WineTech" width="220" height="250" loading="lazy" decoding="async"><img src="assets/img/badge-winetech-20260720.webp" alt="La French Tech" width="220" height="183" loading="lazy" decoding="async"></div>
-    </div>
-    <nav class="mobile-footer__liens" aria-label="Liens du pied de page">
-      <a href="fonctionnalites.html">Fonctionnalités</a>
-      <a href="tarifs.html">Tarifs</a>
-      <a href="faq.html">FAQ</a>
-      <a href="developpeurs/">Développeurs &amp; API</a>
-      <a class="mobile-footer__heading" href="cgu.html" data-legal>CGUV</a>
-      <a href="mailto:contact@monchai.fr">Nous contacter</a>
-      <a href="mentions-legales.html" data-legal>Mentions légales</a>
-      <button type="button" data-cookies>Gérer mes cookies</button>
-      <a href="politique-confidentialite.html" data-legal>Politique de confidentialité</a>
-    </nav>
-    <div class="mobile-footer__suivre">
-      <strong>Nous suivre</strong>
-      <div class="mobile-footer__social">
-        <a href="https://www.instagram.com/monchai.fr/" target="_blank" rel="noopener noreferrer" aria-label="Suivre Mon Chai sur Instagram">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle class="social-dot" cx="17.4" cy="6.7" r="1.1"/></svg>
-        </a>
-        <a href="https://www.linkedin.com/company/monchai" target="_blank" rel="noopener noreferrer" aria-label="Suivre Mon Chai sur LinkedIn">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5.2 8.2H2.1V22h3.1V8.2ZM3.7 2A1.8 1.8 0 1 0 3.7 5.6 1.8 1.8 0 0 0 3.7 2ZM22 14.1c0-4.2-2.2-6.2-5.2-6.2-2.4 0-3.5 1.3-4.1 2.2V8.2H9.6V22h3.1v-6.8c0-1.8.3-3.6 2.6-3.6 2.2 0 2.3 2.1 2.3 3.7V22H22v-7.9Z"/></svg>
-        </a>
-      </div>
-    </div>
-    <p class="mobile-footer__credit">Imaginé et développé à Rennes<br><a href="tel:+33783161166">Contacter Denis&nbsp;: 07&nbsp;83&nbsp;16&nbsp;11&nbsp;66</a></p>
-  </footer>
+  <footer class="mc-site-footer" aria-label="Informations légales">
+  <div class="mc-site-footer__inner">
+    <div class="mc-site-footer__brand"><a class="mc-site-footer__name" href="index.html"><img src="assets/img/logo-mon-chai-400-20260720.webp" alt="Mon Chai" width="400" height="219" loading="lazy" decoding="async"></a><p>De la vigne à la vente.</p><a href="mailto:contact@monchai.fr">contact@monchai.fr</a><nav class="mc-site-footer__social" aria-label="Mon Chai"><a href="https://www.instagram.com/monchai.fr/" target="_blank" rel="noopener noreferrer">Instagram ↗</a><a href="https://www.linkedin.com/company/monchai" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a></nav></div>
+    <nav aria-label="Le logiciel"><h2>Le logiciel</h2><a href="fonctionnalites.html">Fonctionnalités</a><a href="tarifs.html">Tarifs</a><a href="monchainotes.html">Mon Chai Notes</a></nav>
+    <nav aria-label="Ressources"><h2>Ressources</h2><a href="ressources.html">Guides pratiques</a><a href="faq.html">Questions fréquentes</a><a href="contact.html">Nous contacter</a></nav>
+    <nav class="mc-site-footer__privacy" aria-label="Confidentialité & données"><h2>Confidentialité & données</h2><a href="politique-confidentialite.html">Consulter la politique de confidentialité</a><a href="politique-confidentialite.html#traitements">Traitement des données</a><a href="politique-confidentialite.html#vos-droits">Vos droits</a><button type="button" data-cookies>Gérer mes cookies</button></nav>
+    <div class="mc-site-footer__bottom"><small>© 2026 HALLAIS &amp; BERTHELOT · Imaginé et développé à Rennes</small><nav aria-label="Informations légales"><a href="mentions-legales.html">Mentions légales</a><a href="cgu.html">Conditions générales</a></nav></div>
+  </div>
+</footer>
 </div>
 
 <!-- ================================================================
@@ -825,7 +789,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
         <label class="modal__consent">
           <input type="checkbox" id="consent" name="consentement" required>
-          <span>J’accepte que HALLAIS &amp; BERTHELOT utilise ces informations pour étudier ma demande, vérifier mon éligibilité, créer mon accès et organiser mon accompagnement. <a href="politique-confidentialite.html" data-legal>Consulter la politique de confidentialité</a>.</span>
+          <span>HALLAIS &amp; BERTHELOT utilise ces informations pour traiter ma demande, via EmailJS et la messagerie de l’équipe. Je confirme avoir pris connaissance de la <a href="politique-confidentialite.html">politique de confidentialité</a>.</span>
         </label>
 
         <p id="form-message" class="modal__message" style="display:none;" role="alert" aria-live="polite"></p>
@@ -849,23 +813,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 <!-- Les pages légales restent accessibles par leur URL propre, mais s’ouvrent
      dans cette modale depuis la landing afin de préserver le parcours. -->
-<div class="legal-modal" id="modalLegal" hidden>
-  <div class="legal-modal__fond" data-legal-fermer></div>
-  <section class="legal-modal__boite" role="dialog" aria-modal="true" aria-labelledby="legalModalTitre">
-    <header class="legal-modal__entete">
-      <img src="assets/img/logo-mon-chai-400-20260720.webp" alt="" width="400" height="219" loading="lazy" decoding="async">
-      <div class="legal-modal__titres">
-        <span>Informations légales</span>
-        <h2 id="legalModalTitre">Mon Chai</h2>
-      </div>
-      <div class="legal-modal__actions">
-        <a id="legalModalPage" href="mentions-legales.html" target="_blank" rel="noopener" data-legal-page>Page complète</a>
-        <button type="button" class="legal-modal__fermer" data-legal-fermer aria-label="Fermer la fenêtre légale">&times;</button>
-      </div>
-    </header>
-    <iframe id="legalModalFrame" title="Informations légales Mon Chai"></iframe>
-  </section>
-</div>
+
 
 
 <!-- Le bandeau cookies et le panneau de réglages sont injectés par consent.js
@@ -875,5 +823,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <script src="accueil.js" defer></script>
 <script src="assets/js/nouveautes-carrousel.js" defer></script>
 <script src="assets/js/cta-popup.js" defer></script>
+<script src="assets/js/documents-legaux.js" defer></script>
 </body>
 </html>

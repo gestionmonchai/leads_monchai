@@ -1,5 +1,5 @@
 /* =========================================================
-   Mon Chai — consentement cookies (conforme CNIL)
+   Mon Chai — choix de cookies
    SOURCE UNIQUE : ce fichier porte TOUTE la gestion du consentement
    (remplace hubspot-consent.js + la section cookies de script.js).
 
@@ -28,18 +28,18 @@
   // Le lien « En savoir plus » vise la politique de confidentialité du même
   // dossier de langue.
   var TEXTES = {
-    fr: { bandeau: '<strong>Cookies&nbsp;:</strong> nécessaires au site et, avec votre accord, pour la mesure d’audience et les contenus Instagram.', plus: 'En savoir plus', perso: 'Personnaliser', refus: 'Refuser', accepte: 'Tout accepter', reglages: 'Réglages des cookies', fermer: 'Fermer', intro: 'Choisissez les cookies que vous acceptez. Vos choix sont conservés six mois.', necT: 'Strictement nécessaires', necD: 'Indispensables au fonctionnement et à la sécurité du site. Toujours actifs.', audT: 'Mesure d’audience', audD: 'Nous aident à comprendre l’usage du site pour l’améliorer.', tiersT: 'Services tiers', tiersD: 'Contenus et outils externes (formulaires, vidéos, suivi de campagne).', toutRefus: 'Tout refuser', enregistrer: 'Enregistrer mes choix' },
-    en: { bandeau: '<strong>Cookies:</strong> required for the site and, with your consent, for audience measurement and Instagram content.', plus: 'Learn more', perso: 'Customize', refus: 'Decline', accepte: 'Accept all', reglages: 'Cookie settings', fermer: 'Close', intro: 'Choose the cookies you accept. Your choices are kept for six months.', necT: 'Strictly necessary', necD: 'Essential to the operation and security of the site. Always active.', audT: 'Audience measurement', audD: 'Help us understand how the site is used so we can improve it.', tiersT: 'Third-party services', tiersD: 'External content and tools (forms, videos, campaign tracking).', toutRefus: 'Decline all', enregistrer: 'Save my choices' },
-    de: { bandeau: '<strong>Cookies:</strong> für den Betrieb der Website erforderlich und, mit Ihrer Zustimmung, für die Reichweitenmessung und Instagram-Inhalte.', plus: 'Mehr erfahren', perso: 'Anpassen', refus: 'Ablehnen', accepte: 'Alle akzeptieren', reglages: 'Cookie-Einstellungen', fermer: 'Schließen', intro: 'Wählen Sie die Cookies, die Sie akzeptieren. Ihre Auswahl wird sechs Monate gespeichert.', necT: 'Unbedingt erforderlich', necD: 'Für den Betrieb und die Sicherheit der Website unerlässlich. Immer aktiv.', audT: 'Reichweitenmessung', audD: 'Hilft uns zu verstehen, wie die Website genutzt wird, um sie zu verbessern.', tiersT: 'Dienste von Drittanbietern', tiersD: 'Externe Inhalte und Werkzeuge (Formulare, Videos, Kampagnenverfolgung).', toutRefus: 'Alle ablehnen', enregistrer: 'Auswahl speichern' },
-    it: { bandeau: '<strong>Cookie:</strong> necessari al sito e, con il tuo consenso, per la misurazione del pubblico e i contenuti Instagram.', plus: 'Scopri di più', perso: 'Personalizza', refus: 'Rifiuta', accepte: 'Accetta tutto', reglages: 'Impostazioni dei cookie', fermer: 'Chiudi', intro: 'Scegli i cookie che accetti. Le tue scelte vengono conservate per sei mesi.', necT: 'Strettamente necessari', necD: 'Indispensabili al funzionamento e alla sicurezza del sito. Sempre attivi.', audT: 'Misurazione del pubblico', audD: 'Ci aiutano a capire come viene usato il sito per migliorarlo.', tiersT: 'Servizi di terze parti', tiersD: 'Contenuti e strumenti esterni (moduli, video, monitoraggio delle campagne).', toutRefus: 'Rifiuta tutto', enregistrer: 'Salva le mie scelte' },
-    zh: { bandeau: '<strong>Cookie：</strong>网站运行所必需；经您同意后，还用于访问量统计和 Instagram 内容。', plus: '了解更多', perso: '自定义', refus: '拒绝', accepte: '全部接受', reglages: 'Cookie 设置', fermer: '关闭', intro: '请选择您接受的 Cookie。您的选择将保留六个月。', necT: '必要 Cookie', necD: '网站运行和安全所必需，始终启用。', audT: '访问量统计', audD: '帮助我们了解网站的使用情况，以便改进。', tiersT: '第三方服务', tiersD: '外部内容和工具（表单、视频、推广活动跟踪）。', toutRefus: '全部拒绝', enregistrer: '保存我的选择' }
+    fr: { bandeau: '<strong>Cookies&nbsp;:</strong> nécessaires au site et, avec votre accord, pour la mesure d’audience et les contenus Instagram.', plus: 'En savoir plus', perso: 'Personnaliser', refus: 'Refuser', accepte: 'Tout accepter', reglages: 'Réglages des cookies', fermer: 'Fermer', intro: 'Choisissez les cookies que vous acceptez. Vos choix sont conservés six mois.', necT: 'Strictement nécessaires', necD: 'Indispensables au fonctionnement et à la sécurité du site. Toujours actifs.', audT: 'Mesure d’audience', audD: 'HubSpot et les balises de mesure gérées avec Google Tag Manager nous aident à comprendre l’usage du site.', tiersT: 'Services tiers', tiersD: 'Publications Instagram intégrées, fournies par Meta. Sans accord, les liens vers Instagram restent disponibles.', toutRefus: 'Tout refuser', enregistrer: 'Enregistrer mes choix' },
+    en: { bandeau: '<strong>Cookies:</strong> required for the site and, with your consent, for audience measurement and Instagram content.', plus: 'Learn more', perso: 'Customize', refus: 'Decline', accepte: 'Accept all', reglages: 'Cookie settings', fermer: 'Close', intro: 'Choose the cookies you accept. Your choices are kept for six months.', necT: 'Strictly necessary', necD: 'Essential to the operation and security of the site. Always active.', audT: 'Audience measurement', audD: 'HubSpot and measurement tags managed with Google Tag Manager help us understand how the site is used.', tiersT: 'Third-party services', tiersD: 'Instagram posts provided by Meta. Links to Instagram remain available if you decline.', toutRefus: 'Decline all', enregistrer: 'Save my choices' },
+    de: { bandeau: '<strong>Cookies:</strong> für den Betrieb der Website erforderlich und, mit Ihrer Zustimmung, für die Reichweitenmessung und Instagram-Inhalte.', plus: 'Mehr erfahren', perso: 'Anpassen', refus: 'Ablehnen', accepte: 'Alle akzeptieren', reglages: 'Cookie-Einstellungen', fermer: 'Schließen', intro: 'Wählen Sie die Cookies, die Sie akzeptieren. Ihre Auswahl wird sechs Monate gespeichert.', necT: 'Unbedingt erforderlich', necD: 'Für den Betrieb und die Sicherheit der Website unerlässlich. Immer aktiv.', audT: 'Reichweitenmessung', audD: 'HubSpot und über Google Tag Manager verwaltete Mess-Tags helfen uns, die Nutzung der Website zu verstehen.', tiersT: 'Dienste von Drittanbietern', tiersD: 'Instagram-Beiträge von Meta. Bei Ablehnung bleiben die Links zu Instagram verfügbar.', toutRefus: 'Alle ablehnen', enregistrer: 'Auswahl speichern' },
+    it: { bandeau: '<strong>Cookie:</strong> necessari al sito e, con il tuo consenso, per la misurazione del pubblico e i contenuti Instagram.', plus: 'Scopri di più', perso: 'Personalizza', refus: 'Rifiuta', accepte: 'Accetta tutto', reglages: 'Impostazioni dei cookie', fermer: 'Chiudi', intro: 'Scegli i cookie che accetti. Le tue scelte vengono conservate per sei mesi.', necT: 'Strettamente necessari', necD: 'Indispensabili al funzionamento e alla sicurezza del sito. Sempre attivi.', audT: 'Misurazione del pubblico', audD: 'HubSpot e i tag di misurazione gestiti con Google Tag Manager ci aiutano a capire come viene usato il sito.', tiersT: 'Servizi di terze parti', tiersD: 'Pubblicazioni Instagram fornite da Meta. Se rifiuti, i link a Instagram restano disponibili.', toutRefus: 'Rifiuta tutto', enregistrer: 'Salva le mie scelte' },
+    zh: { bandeau: '<strong>Cookie：</strong>网站运行所必需；经您同意后，还用于访问量统计和 Instagram 内容。', plus: '了解更多', perso: '自定义', refus: '拒绝', accepte: '全部接受', reglages: 'Cookie 设置', fermer: '关闭', intro: '请选择您接受的 Cookie。您的选择将保留六个月。', necT: '必要 Cookie', necD: '网站运行和安全所必需，始终启用。', audT: '访问量统计', audD: 'HubSpot 及通过 Google Tag Manager 管理的统计标签帮助我们了解网站的使用情况。', tiersT: '第三方服务', tiersD: '由 Meta 提供的 Instagram 帖子。拒绝后仍可使用 Instagram 链接。', toutRefus: '全部拒绝', enregistrer: '保存我的选择' }
   };
   var T = TEXTES[(document.documentElement.lang || 'fr').slice(0, 2).toLowerCase()] || TEXTES.fr;
 
   function lire() {
     try {
       var d = JSON.parse(localStorage.getItem(CLE));
-      if (!d || !d.ts || Date.now() - d.ts > SIX_MOIS) return null;   // expiré
+      if (!d || typeof d.ts !== 'number' || !Number.isFinite(d.ts) || d.ts > Date.now() || Date.now() - d.ts > SIX_MOIS || typeof d.audience !== 'boolean' || typeof d.tiers !== 'boolean') return null;
       return d;
     } catch (e) { return null; }
   }
@@ -127,8 +127,13 @@
     '</div>';
 
   function ecrire(audience, tiers) {
+    var precedent = window.monchaiConsent || {};
+    var retrait = (precedent.audience && !audience) || (precedent.tiers && !tiers);
     try { localStorage.setItem(CLE, JSON.stringify({ audience: audience, tiers: tiers, ts: Date.now() })); } catch (e) {}
     appliquer(audience, tiers);
+    // Un script tiers déjà exécuté ne peut pas être « déchargé ». Une nouvelle
+    // page applique le refus avant tout chargement et arrête ses traitements.
+    if (retrait) window.location.reload();
   }
 
   function chargerHubSpot() {

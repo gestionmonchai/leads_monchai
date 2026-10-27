@@ -1,0 +1,25 @@
+name: Cohérence du site public
+on:
+  pull_request:
+  push:
+    branches: [main]
+permissions:
+  contents: read
+jobs:
+  liens-et-documents:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Liens, ancres, ressources et footer sur toutes les pages
+        run: python outils/verifier-coherence.py . --strict --output "$RUNNER_TEMP/coherence.json"
+      - name: Syntaxe des scripts des parcours modifiés
+        run: |
+          for script in accueil.js script.js consent.js assets/js/documents-legaux.js assets/js/contact.js; do
+            node --check "$script"
+          done

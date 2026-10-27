@@ -9,11 +9,11 @@
 <script>
 window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}
 (function(){
-  function etat(c){var a=c&&c.audience?'granted':'denied',t=c&&c.tiers?'granted':'denied';return{analytics_storage:a,ad_storage:t,ad_user_data:t,ad_personalization:t};}
+  function etat(c){var a=c&&c.audience===true?'granted':'denied',t='denied';return{analytics_storage:a,ad_storage:t,ad_user_data:t,ad_personalization:t};}
   var d=etat(null);d.wait_for_update=500;gtag('consent','default',d);
   function chargerPlusTard(){if(document.readyState==='complete'){if(window.monchaiChargerGtm)window.monchaiChargerGtm();}else{window.addEventListener('load',function(){setTimeout(function(){if(window.monchaiChargerGtm)window.monchaiChargerGtm();},0);},{once:true});}}
-  try{var c=JSON.parse(localStorage.getItem('monchai_cookie_consent'));if(c&&c.ts&&Date.now()-c.ts<15724800000){gtag('consent','update',etat(c));if(c.audience||c.tiers)chargerPlusTard();}}catch(e){}
-  window.addEventListener('monchai:consent',function(e){gtag('consent','update',etat(e.detail));dataLayer.push({event:'monchai_consentement'});if(e.detail&&(e.detail.audience||e.detail.tiers))chargerPlusTard();});
+  try{var c=JSON.parse(localStorage.getItem('monchai_cookie_consent'));if(c&&typeof c.ts==='number'&&Number.isFinite(c.ts)&&c.ts<=Date.now()&&Date.now()-c.ts<15724800000&&typeof c.audience==='boolean'&&typeof c.tiers==='boolean'){gtag('consent','update',etat(c));if(c.audience===true)chargerPlusTard();}}catch(e){}
+  window.addEventListener('monchai:consent',function(e){gtag('consent','update',etat(e.detail));dataLayer.push({event:'monchai_consentement'});if(e.detail&&e.detail.audience===true)chargerPlusTard();});
 })();
 </script>
 <!-- Google Tag Manager, chargé seulement après un accord (mesure d'audience ou
@@ -27,7 +27,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 })(window,document,'script','dataLayer','GTM-NDSQV6T7');};</script>
 <!-- End Google Tag Manager -->
 <meta content="width=device-width, initial-scale=1" name="viewport"/>
-<title>Condizioni generali di utilizzo Mon Chai</title>
+<title>Condizioni di utilizzo | Mon Chai</title>
 <meta content="index, follow, max-image-preview:large, max-snippet:-1" name="robots"/>
 <link href="https://monchai.fr/it/cgu.html" rel="canonical"/><link href="https://monchai.fr/cgu.html" hreflang="x-default" rel="alternate"/><link href="https://monchai.fr/cgu.html" hreflang="fr" rel="alternate"/><link href="https://monchai.fr/en/cgu.html" hreflang="en" rel="alternate"/><link href="https://monchai.fr/it/cgu.html" hreflang="it" rel="alternate"/><link href="https://monchai.fr/de/cgu.html" hreflang="de" rel="alternate"/><link href="https://monchai.fr/zh/cgu.html" hreflang="zh-Hans" rel="alternate"/>
 
@@ -41,6 +41,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <link href="../assets/css/header.css" rel="stylesheet"/>
 <link href="../assets/css/actus.css" rel="stylesheet"/>
 <link href="../legal.css" rel="stylesheet"/>
+<link rel="stylesheet" href="../assets/css/footer-commun.css">
+<meta name="description" content="Condizioni del servizio Mon Chai, diritti e obblighi degli utenti professionali.">
 </head>
 <body class="corps-actus lang-it">
 <div class="site-header site-header--page">
@@ -240,13 +242,17 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <p>In caso di violazione dell'accordo di accesso nel momento in cui è previsto per l'articolo di controllo, la competenza dell'espresse è attribuita ai giudici della Corte di giustizia delle regioni (competenza esclusiva riconosciuta a una diversa giurisdizione), non applicabile ai difensori o agli imputati in garanzia, alle procedure di emergenza o alle procedure di sequestro in riferimento o in richiesta.</p>
 <p>Contatto del MON CHAI: contact@monchai.fr.</p>
 </main>
-<footer class="legal-foot">
-<a href="politique-confidentialite.html">Informativa sulla privacy</a> ·
-  <a href="mentions-legales.html">Note legali</a> ·
-  <a href="index.html">Home</a> ·
-  <button class="legal-cookies" data-cookies="" type="button">Gestisci i miei cookie</button>
+<footer class="mc-site-footer" aria-label="Informazioni legali">
+  <div class="mc-site-footer__inner">
+    <div class="mc-site-footer__brand"><a class="mc-site-footer__name" href="index.html"><img src="../assets/img/logo-mon-chai-400-20260720.webp" alt="Mon Chai" width="400" height="219" loading="lazy" decoding="async"></a><p>Dalla vigna alla vendita.</p><a href="mailto:contact@monchai.fr">contact@monchai.fr</a><nav class="mc-site-footer__social" aria-label="Mon Chai"><a href="https://www.instagram.com/monchai.fr/" target="_blank" rel="noopener noreferrer">Instagram ↗</a><a href="https://www.linkedin.com/company/monchai" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a></nav></div>
+    <nav aria-label="Il software"><h2>Il software</h2><a href="fonctionnalites.html">Funzionalità</a><a href="tarifs.html">Prezzi</a><a href="../monchainotes.html">Mon Chai Notes</a></nav>
+    <nav aria-label="Risorse"><h2>Risorse</h2><a href="actualites-reglementaires.html">Guide pratiche</a><a href="faq.html">Domande frequenti</a><a href="contact.html">Contattaci</a></nav>
+    <nav class="mc-site-footer__privacy" aria-label="Privacy e dati"><h2>Privacy e dati</h2><a href="politique-confidentialite.html">Leggi l’informativa sulla privacy</a><a href="../politique-confidentialite.html#traitements">Trattamento dei dati</a><a href="../politique-confidentialite.html#vos-droits">I tuoi diritti</a><button type="button" data-cookies>Gestisci i cookie</button></nav>
+    <div class="mc-site-footer__bottom"><small>© 2026 HALLAIS &amp; BERTHELOT · Ideato e sviluppato a Rennes</small><nav aria-label="Informazioni legali"><a href="mentions-legales.html">Note legali</a><a href="cgu.html">Condizioni di utilizzo</a></nav></div>
+  </div>
 </footer>
 <script src="../assets/js/header.js"></script>
-<script src="../script.js"></script>
+<script src="../consent.js" defer></script>
+<script src="../assets/js/documents-legaux.js" defer></script>
 </body>
 </html>

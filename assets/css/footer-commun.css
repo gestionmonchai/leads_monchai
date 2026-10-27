@@ -30,7 +30,7 @@
 .mc-legal-dialog{width:min(920px,calc(100% - 32px));max-height:calc(100dvh - 32px);margin:auto;padding:0;border:1px solid #d9c6ba;border-radius:16px;background:#fffdfc;color:#211b18;box-shadow:0 24px 90px #211b1833;font:16px/1.65 Inter,system-ui,sans-serif}
 .mc-legal-dialog::backdrop{background:#211b18a6}
 .mc-legal-dialog__head{position:sticky;top:0;z-index:1;display:flex;align-items:center;gap:16px;padding:18px 24px;border-bottom:1px solid #e4d8cf;background:#fffdfc}
-.mc-legal-dialog__head h2{flex:1;margin:0;font:600 1.1rem/1.4 Inter,system-ui,sans-serif;color:#60232b}
+.mc-legal-dialog__head #mc-legal-title{flex:1;margin:0;font:600 1.1rem/1.4 Inter,system-ui,sans-serif;color:#60232b}
 .mc-legal-dialog__head a{font-size:.8rem;color:#60232b}
 .mc-legal-dialog__close{flex-shrink:0;width:44px;height:44px;border:1px solid #dfd3cb;border-radius:50%;background:#fffdfc;color:#60232b;font:24px/1 system-ui;cursor:pointer}
 .mc-legal-dialog__body{padding:24px 32px 40px;overflow-wrap:anywhere}
@@ -45,8 +45,8 @@
 .mc-legal-dialog [id]{scroll-margin-top:110px}
 .legal-summary{padding:20px 24px;background:#f5eee7;border:1px solid #e4d8cf;border-radius:8px;margin:20px 0 28px}
 .legal-summary ul{margin-bottom:0}
-.legal-summary a{display:inline-block;padding:6px 0}
+.legal-summary a{display:block;padding:6px 0}
 .legal table,.mc-legal-dialog table{border-collapse:collapse;width:100%;font-size:.9em;margin:16px 0 24px}
 .legal th,.legal td,.mc-legal-dialog th,.mc-legal-dialog td{padding:12px;vertical-align:top;text-align:left;border:1px solid #d9c6ba;overflow-wrap:anywhere}
 .legal th,.mc-legal-dialog th{background:#f5eee7}
-@media(max-width:540px){.mc-legal-dialog{width:calc(100% - 16px);max-height:calc(100dvh - 16px);border-radius:10px}.mc-legal-dialog__head{padding:12px;gap:10px}.mc-legal-dialog__head h2{font-size:.95rem}.mc-legal-dialog__head a{max-width:80px}.mc-legal-dialog__body{padding:20px}.legal table,.mc-legal-dialog table{font-size:.8em}.legal th,.legal td,.mc-legal-dialog th,.mc-legal-dialog td{padding:8px}}
+@media(max-width:540px){.mc-legal-dialog{width:calc(100% - 16px);max-height:calc(100dvh - 16px);border-radius:10px}.mc-legal-dialog__head{padding:12px;gap:10px}.mc-legal-dialog__head #mc-legal-title{font-size:.95rem}.mc-legal-dialog__head a{max-width:80px}.mc-legal-dialog__body{padding:20px}.legal table,.mc-legal-dialog table{font-size:.8em}.legal th,.legal td,.mc-legal-dialog th,.mc-legal-dialog td{padding:8px}}

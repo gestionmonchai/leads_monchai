@@ -15,9 +15,9 @@
   var dialog = document.createElement('dialog');
   dialog.className = 'mc-legal-dialog';
   dialog.setAttribute('aria-labelledby', 'mc-legal-title');
-  dialog.innerHTML = '<div class="mc-legal-dialog__head"><h2 id="mc-legal-title"></h2><a class="mc-legal-dialog__page" data-legal-page></a><button type="button" class="mc-legal-dialog__close" autofocus>×</button></div><div class="mc-legal-dialog__body" aria-live="polite"></div>';
+  dialog.innerHTML = '<div class="mc-legal-dialog__head"><h1 id="mc-legal-title"></h1><a class="mc-legal-dialog__page" data-legal-page></a><button type="button" class="mc-legal-dialog__close" autofocus>×</button></div><div class="mc-legal-dialog__body" aria-live="polite"></div>';
   document.body.appendChild(dialog);
-  var titre = dialog.querySelector('h2');
+  var titre = dialog.querySelector('#mc-legal-title');
   var complet = dialog.querySelector('a');
   var fermer = dialog.querySelector('button');
   var corps = dialog.querySelector('.mc-legal-dialog__body');
@@ -87,7 +87,7 @@
       if (courant !== controleur || !dialog.open) return;
       corps.replaceChildren(document.importNode(main, true));
       var h1 = corps.querySelector('h1');
-      if (h1) titre.textContent = h1.textContent.trim();
+      if (h1) { titre.textContent = h1.textContent.trim(); h1.remove(); }
       dialog.scrollTop = 0;
       if (url.hash) {
         var cible = corps.querySelector('[id="' + CSS.escape(decodeURIComponent(url.hash.slice(1))) + '"]');

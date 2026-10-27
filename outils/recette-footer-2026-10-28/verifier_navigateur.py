@@ -92,6 +92,7 @@ with sync_playwright() as pw:
     dialog = page.locator('dialog[open]')
     dialog.locator('main.legal').wait_for()
     assert dialog.locator('.hd, .site-header, footer, iframe').count() == 0
+    assert dialog.locator('h1').count() == 1
     assert 'Conditions' in dialog.locator('#mc-legal-title').inner_text()
     assert dialog.locator('[data-legal-page]').get_attribute('target') == '_blank'
     for _ in range(12):

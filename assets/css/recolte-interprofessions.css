@@ -1,0 +1,40 @@
+/* Repères par interprofession : extension limitée à l'article récolte. */
+.recolte-interpros { margin-top: 40px; }
+.article .recolte-sommaire__liste {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 2px 20px;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+.article .recolte-sommaire__liste li { margin: 0; min-width: 0; }
+.recolte-sommaire__liste a {
+  display: flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 5px 0;
+  line-height: 1.4;
+  overflow-wrap: anywhere;
+}
+.article .recolte-repere { font-size: 15px; }
+.recolte-fiche { padding: 8px 0 20px; border-bottom: 1px solid var(--ac-bord); }
+.recolte-fiche h3, #interprofessions { scroll-margin-top: 120px; }
+.article .recolte-fiche__sources { font-size: 14px; line-height: 1.65; }
+.recolte-fiche__sources a { overflow-wrap: anywhere; }
+.recolte-retour { display: inline-flex; align-items: center; min-height: 44px; font-size: 14px; }
+.recolte-interpros a:focus-visible,
+.recolte-fiche h3:focus,
+#interprofessions:target {
+  outline: 2px solid var(--ac-bordeaux);
+  outline-offset: 4px;
+  border-radius: 2px;
+}
+@media (max-width: 580px) {
+  .article .recolte-sommaire__liste { grid-template-columns: minmax(0, 1fr); }
+  .recolte-sommaire { padding: 16px 20px; }
+}
+@media print {
+  .recolte-retour { display: none; }
+  .recolte-fiche { break-inside: avoid; }
+}

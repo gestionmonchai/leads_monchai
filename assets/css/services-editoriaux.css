@@ -28,4 +28,14 @@
 .mc-callout__liens{display:flex;align-items:center;gap:18px;flex-wrap:wrap;margin-top:18px}
 .mc-callout__liens>a:not(.mc-service__bouton){color:#7b1e22;text-underline-offset:4px;min-height:44px;display:inline-flex;align-items:center}
 [hidden]{display:none!important}
+@media(min-width:1200px){
+  /* Les tarifs utilisent encore une scène de 1920px : garder le texte et les cibles à leur taille réelle. */
+  #page .mc-callout{max-width:calc(1040px / var(--echelle,1));margin:calc(36px / var(--echelle,1)) auto;padding:calc(32px / var(--echelle,1))}
+  #page .mc-callout h2{font-size:calc(32px / var(--echelle,1))}
+  #page .mc-callout p{font-size:calc(16px / var(--echelle,1))}
+  #page .mc-callout .mc-callout__surtitre{font-size:calc(12px / var(--echelle,1))}
+  #page .mc-callout__liens{gap:calc(18px / var(--echelle,1))}
+  #page .mc-callout__liens a{min-height:calc(48px / var(--echelle,1));font-size:calc(15px / var(--echelle,1))}
+  #page .mc-callout a.mc-service__bouton{padding:calc(12px / var(--echelle,1)) calc(20px / var(--echelle,1))}
+}
 @media(max-width:640px){.mc-service__grille{grid-template-columns:1fr}.mc-callout{margin:28px 16px}.article .mc-callout{margin:28px 0}.mc-service__actions{align-items:stretch}.mc-service__bouton{max-width:100%}.mc-callout__liens{align-items:flex-start;flex-direction:column}}

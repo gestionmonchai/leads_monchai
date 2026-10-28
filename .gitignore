@@ -105,3 +105,7 @@ desktop.ini
 .DS_Store
 *.swp
 .vscode/
+
+# Génération reproductible des fiches ; outils exclus de l’artefact Pages.
+!outils/aides/contenus.py
+!outils/aides/generer.py

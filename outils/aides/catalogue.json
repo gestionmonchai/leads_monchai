@@ -1,0 +1,2008 @@
+{
+  "date": "2026-10-28",
+  "perimetre": "France, principaux dispositifs et exemples territoriaux ; pas une garantie d’exhaustivité locale ni de droit",
+  "fiches": [
+    {
+      "id": "dja",
+      "titre": "DJA : dotation jeunes agriculteurs",
+      "etape": "installation",
+      "type": "subvention",
+      "territoire": [
+        "fr"
+      ],
+      "statut": "local",
+      "calendrier": "Dépôt et conditions fixés par la Région ; vérifier la campagne avant l’installation.",
+      "financeur": "Régions + Union européenne / FEADER",
+      "resume": "Une dotation de démarrage, dont les critères et modulations dépendent de la région d’installation.",
+      "beneficiaires": "Première installation comme chef d’exploitation ; âge, capacité professionnelle, plan d’entreprise et conditions d’activité sont appréciés selon le règlement régional. Un projet viticole n’est pas exclu du seul fait de sa production.",
+      "soutien": "Le montant n’est pas national. Les majorations affichées pour certaines productions ne s’appliquent pas nécessairement à la vigne. Le guide présente les exemples Grand Est et Nouvelle-Aquitaine sans en déduire un tarif pour toutes les régions.",
+      "demarche": "Prendre rendez-vous au point d’accueil installation, demander le règlement actuel et faire préciser le moment où déposer par rapport à l’affiliation MSA, à la reprise des parts et au début des investissements.",
+      "vigilance": "La DJA, l’aide complémentaire PAC aux jeunes agriculteurs et l’exonération MSA relèvent de dossiers et de critères distincts. Les additionner dans un plan de trésorerie sans les faire instruire surestime le financement.",
+      "exemple": "Un repreneur qui vendra son premier millésime après élevage doit couvrir l’attente des ventes. Une dotation annoncée ne remplace pas le besoin de trésorerie jusqu’à son versement effectif.",
+      "sources": [
+        [
+          "Ministère — aides des Régions",
+          "https://agriculture.gouv.fr/les-aides-des-regions"
+        ],
+        [
+          "Grand Est — aide à l’installation",
+          "https://www.grandest.fr/vos-aides-regionales/installation-agriculture/"
+        ],
+        [
+          "Nouvelle-Aquitaine — DNJA",
+          "https://les-aides.nouvelle-aquitaine.fr/economie-et-emploi/installation-dotation-nouveaux-et-jeunes-agriculteurs-dnja"
+        ]
+      ],
+      "mots": "jeune agriculteur installation reprise",
+      "article": "dja-installation-vigneron.html",
+      "verifie": "2026-10-28"
+    },
+    {
+      "id": "nouveaux-agriculteurs",
+      "titre": "S’installer après l’âge de la DJA : aides aux nouveaux agriculteurs",
+      "etape": "installation",
+      "type": "subvention",
+      "territoire": [
+        "fr"
+      ],
+      "statut": "local",
+      "calendrier": "Dispositifs régionaux ; aucune ouverture ni limite d’âge unique en France.",
+      "financeur": "Régions ; FEADER selon le dispositif",
+      "resume": "Certaines Régions soutiennent aussi des installations hors du parcours jeune agriculteur. Les conditions ne se transposent pas d’une région à l’autre.",
+      "beneficiaires": "L’éligibilité dépend du règlement de la région du futur siège, de la date de première installation, du niveau de formation et de l’activité exercée. En Nouvelle-Aquitaine, la DNJA comprend une catégorie nouveaux agriculteurs de 41 à 54 ans inclus, distincte de celle des jeunes agriculteurs.",
+      "soutien": "Une même appellation peut réunir plusieurs volets : trésorerie et outil de production n’ont pas nécessairement les mêmes bénéficiaires. En Bretagne, le soutien à l’installation des 40–49 ans vise des productions déterminées : il ne constitue pas une aide ouverte à tout projet de vigne.",
+      "demarche": "Demandez au point d’accueil une recherche portant explicitement sur les nouveaux agriculteurs et les installations hors DJA. Faites examiner diplôme, expérience, statut MSA et éventuelle activité antérieure avant de conclure que votre âge ferme toutes les possibilités.",
+      "vigilance": "Ne reprenez pas le montant DJA d’une autre région pour bâtir votre plan. Demandez si une aide départementale complète le dispositif et si le volet envisagé relève du de minimis. Une aide à l’équipement peut rester pertinente même sans dotation d’installation.",
+      "exemple": "Pour une reconversion à 45 ans, préparez deux scénarios de financement : installation sans dotation, puis aide régionale éventuelle après confirmation. Conservez le même projet de ventes et de charges pour mesurer ce que l’aide change réellement.",
+      "sources": [
+        [
+          "Nouvelle-Aquitaine — DNJA et catégories d’âge",
+          "https://les-aides.nouvelle-aquitaine.fr/economie-et-emploi/installation-dotation-nouveaux-et-jeunes-agriculteurs-dnja"
+        ],
+        [
+          "Bretagne — AGRI Install, productions et parcours",
+          "https://www.bretagne.bzh/aides/fiches/agri-install/"
+        ],
+        [
+          "Ministère — aides régionales",
+          "https://agriculture.gouv.fr/les-aides-des-regions"
+        ]
+      ],
+      "mots": "plus de 40 ans reconversion hors dja",
+      "article": "aide-nouveaux-agriculteurs-viticulture.html",
+      "verifie": "2026-10-28"
+    },
+    {
+      "id": "aita",
+      "titre": "AITA : préparer l’installation et bénéficier d’un conseil",
+      "etape": "installation",
+      "type": "conseil",
+      "territoire": [
+        "fr"
+      ],
+      "statut": "local",
+      "calendrier": "Actions et prestataires habilités selon la région en 2026 ; accueil à recontrôler en 2027.",
+      "financeur": "État ; cofinancements territoriaux selon l’action",
+      "resume": "Accueil, professionnalisation, conseil, suivi et parfois stage parrainage : une aide peut financer une prestation plutôt qu’un versement au porteur de projet.",
+      "beneficiaires": "Les porteurs de projet et les exploitants récemment installés accèdent à des actions différentes. L’entrée dans un parcours ne rend pas toutes ses prestations gratuites. Les DRAAF publient les appels, opérateurs et conditions des actions financées dans leur région.",
+      "soutien": "L’accompagnement à l’installation-transmission en agriculture peut soutenir le conseil et le suivi. En Pays de la Loire, les actions 2026 comprennent notamment le suivi du nouvel exploitant, des diagnostics de transmission et des stages parrainage. Les bénéficiaires, le reste à charge et les modalités passent par le cadre local. Dans cet exemple, les dépôts en ligne SNE, DEC et CST se terminaient le 16 octobre 2026 ; les autres actions ont leurs modalités propres.",
+      "demarche": "Exposez votre besoin concret : vérifier un prix de reprise, construire le plan d’entreprise, tester le métier ou suivre la première année. Demandez qui facture, qui reçoit l’aide et quelle validation doit précéder la prestation. Faites préciser si le prestataire est habilité pour l’action demandée.",
+      "vigilance": "Une prestation déjà commandée ne devient pas rétroactivement financée parce qu’un appel existe. Distinguez l’accueil, la formation, l’étude économique et la demande de dotation. Le déploiement de France Services Agriculture annoncé pour le 1er janvier 2027 ne doit pas être présenté comme déjà généralisé en octobre 2026.",
+      "exemple": "Avant une reprise, apportez un premier inventaire des vignes, baux, stocks et outils de production. Le conseiller pourra identifier les éléments manquants au lieu de reconstruire l’ensemble du projet au premier rendez-vous.",
+      "sources": [
+        [
+          "DRAAF Occitanie — programme AITA",
+          "https://draaf.occitanie.agriculture.gouv.fr/l-accompagnement-a-l-installation-transmission-en-agriculture-aita-r612.html"
+        ],
+        [
+          "Préfecture de la Sarthe — AITA et conseils 2026",
+          "https://www.sarthe.gouv.fr/layout/set/print/Actions-de-l-Etat/Agriculture-foret-et-developpement-rural/Aides-a-l-agriculture/L-Installation-en-Agriculture-dispositif-AITA/Installation-Transmission-Appel-a-projets-aides-aux-conseils-AITA-2026-volets-4-et-5"
+        ]
+      ],
+      "mots": "pai pait formation stage parrainage conseil",
+      "article": "aide-aita-viticulture.html",
+      "verifie": "2026-10-28"
+    },
+    {
+      "id": "msa-jeunes",
+      "titre": "Exonération MSA des jeunes agriculteurs",
+      "etape": "installation",
+      "type": "fiscal",
+      "territoire": [
+        "fr"
+      ],
+      "statut": "permanent",
+      "calendrier": "Exonération partielle sur cinq ans, à vérifier lors de l’affiliation.",
+      "financeur": "Sécurité sociale agricole / MSA",
+      "resume": "Un allègement dégressif de certaines cotisations des jeunes chefs d’exploitation, sans suppression de tous les prélèvements.",
+      "beneficiaires": "La MSA indique notamment un âge de 18 à 40 ans lors de l’affiliation, une activité de chef d’exploitation à titre principal ou exclusif et l’assujettissement à l’AMEXA. Des situations particulières peuvent modifier l’appréciation de l’âge ; elles sont à examiner avec la caisse.",
+      "soutien": "L’exonération est partielle, dégressive et plafonnée annuellement. Elle ne porte pas sur toutes les lignes : IJ AMEXA, ATEXA, retraite complémentaire obligatoire, CSG-CRDS et certaines contributions restent notamment hors du champ présenté par la MSA. Le montant réellement économisé dépend donc de l’assiette et des cotisations concernées.",
+      "demarche": "Lors de l’affiliation, demandez une confirmation de l’ouverture des droits et de l’année de départ. Faites détailler les lignes exonérées dans l’échéancier prévisionnel. Comparez ensuite les appels réels à cette prévision et signalez tout écart à votre interlocuteur MSA.",
+      "vigilance": "La DJA n’est pas une preuve suffisante pour appliquer vous-même un taux à la totalité des prélèvements sociaux. L’ACRE est un autre dispositif : faites vérifier le cumul et l’ordre d’application par la MSA, sans additionner des pourcentages trouvés dans des fiches différentes.",
+      "exemple": "Dans le budget des premières campagnes, distinguez cotisations obligatoires, exonération attendue et régularisation liée au revenu définitif. Conservez une réserve de trésorerie pour les lignes non exonérées et pour l’évolution des revenus après l’installation.",
+      "sources": [
+        [
+          "MSA — exonération jeune agriculteur, conditions et exclusions",
+          "https://www.msa.fr/lfp/installation/exoneration-jeune-agriculteur"
+        ],
+        [
+          "MSA — comprendre ses cotisations",
+          "https://www.msa.fr/lfp/exploitant/vos-cotisations-en-clair-questions-reponses"
+        ]
+      ],
+      "mots": "charges sociales cotisations amexa",
+      "article": "aide-msa-jeunes-viticulture.html",
+      "verifie": "2026-10-28"
+    },
+    {
+      "id": "acre",
+      "titre": "ACRE agricole : allègement au démarrage",
+      "etape": "installation",
+      "type": "fiscal",
+      "territoire": [
+        "fr"
+      ],
+      "statut": "permanent",
+      "calendrier": "Première année, selon les conditions et la procédure MSA applicables au créateur.",
+      "financeur": "Sécurité sociale agricole / MSA",
+      "resume": "Une exonération partielle de certaines cotisations pour une création ou reprise. Le régime agricole doit être vérifié auprès de la MSA.",
+      "beneficiaires": "La création ou reprise peut être individuelle ou sociétaire ; dans une société, le contrôle effectif est un point à établir. Les conditions liées au bénéficiaire et aux précédents droits doivent être examinées à la date de création. Les règles d’un micro-entrepreneur à l’Urssaf ne se transposent pas automatiquement au chef d’exploitation agricole.",
+      "soutien": "La MSA présente une exonération de certaines cotisations pendant la première année, sous conditions. Il ne s’agit ni d’une dotation en capital ni d’une suppression de toutes les contributions. L’assiette, les seuils et la situation du créateur déterminent l’économie effective.",
+      "demarche": "Avant la création, demandez à la MSA la liste des pièces et la démarche correspondant à votre statut. Si vous envisagez l’ARCE, faites aussi confirmer par France Travail la preuve d’ACRE attendue et le calendrier : les deux organismes n’instruisent pas le même droit.",
+      "vigilance": "En 2026, les conditions générales de l’ACRE ont évolué. Une ancienne fiche affirmant une attribution universelle ne suffit pas. Le cumul avec l’exonération jeune agriculteur et ses modalités doivent être confirmés ; ne comptez pas deux fois l’économie sur une même cotisation.",
+      "exemple": "Une installation en société mérite un dossier préparé : répartition du capital, fonctions exercées et date de début d’activité. Faites valider ces éléments avant de bâtir le financement sur un allègement présumé.",
+      "sources": [
+        [
+          "MSA — création ou reprise d’entreprise",
+          "https://www.msa.fr/lfp/installation/creation-reprise-entreprise"
+        ],
+        [
+          "France Travail — ACRE et conditions du créateur",
+          "https://www.francetravail.fr/candidat/je-creereprends-une-entreprise/les-aides-financieres-creation-d/laide-aux-createurs-ou-repreneur.html"
+        ]
+      ],
+      "mots": "acre accre creation reprise cotisations",
+      "article": "aide-acre-viticulture.html",
+      "verifie": "2026-10-28"
+    },
+    {
+      "id": "arce-are",
+      "titre": "ARCE ou maintien de l’ARE pendant la création du domaine",
+      "etape": "installation",
+      "type": "allocation",
+      "territoire": [
+        "fr"
+      ],
+      "statut": "permanent",
+      "calendrier": "Droits individuels France Travail ; choix et démarches avant la création à préparer.",
+      "financeur": "Assurance chômage / France Travail",
+      "resume": "Mobiliser ses droits au chômage en capital ou conserver un complément mensuel : deux options à comparer pour financer la transition.",
+      "beneficiaires": "Il faut disposer de droits à l’ARE et respecter les conditions de création ou reprise. L’ARCE suppose notamment le bénéfice de l’ACRE. France Travail recommande l’inscription avant la création ; faire d’abord immatriculer l’activité puis rechercher les droits peut compromettre le parcours envisagé.",
+      "soutien": "L’ARCE représente, pour les droits concernés par les règles actuelles, 60 % du reliquat d’ARE, avant la retenue dédiée au financement des retraites complémentaires. Elle est versée en deux fractions ; le second versement est conditionné. Le maintien de l’ARE suit d’autres calculs, tenant compte des revenus de l’activité et des règles applicables à la date des droits.",
+      "demarche": "Demandez deux simulations écrites à partir du même reliquat et du même projet de rémunération. Précisez le statut du dirigeant, les revenus agricoles prévus et les justificatifs à produire. Comparez les dates d’encaissement, les obligations déclaratives et la protection conservée dans chaque scénario.",
+      "vigilance": "Le capital ARCE et le maintien mensuel de l’ARE ne s’additionnent pas pour les mêmes droits. Depuis avril 2025, plusieurs conditions ont changé, notamment pour le second versement et le plafond du cumul ARE/activité. Une simulation ancienne peut donc être inadaptée.",
+      "exemple": "Un chai qui ne commercialisera ses bouteilles qu’après un élevage long n’a pas les mêmes besoins qu’un projet rémunéré rapidement. Comparez le besoin personnel mensuel avec le besoin d’investissement professionnel : l’option offrant le plus gros premier versement n’est pas forcément la plus robuste.",
+      "sources": [
+        [
+          "France Travail — ARCE",
+          "https://www.francetravail.fr/candidat/je-creereprends-une-entreprise/les-aides-financieres-creation-d/aide-a-la-reprise-et-a-la-creati.html"
+        ],
+        [
+          "France Travail — création et maintien de l’ARE",
+          "https://www.francetravail.fr/candidat/mes-droits-aux-aides-et-allocati/a-chaque-situation-son-allocatio/quelle-est-ma-situation-professi/je-reprends-une-activite-ou-une/je-cree-je-reprends-une-entrepri.html"
+        ]
+      ],
+      "mots": "chomage pole emploi capital revenu",
+      "article": "aide-arce-are-viticulture.html",
+      "verifie": "2026-10-28"
+    },
+    {
+      "id": "abattement-jeunes",
+      "titre": "Abattement fiscal sur le bénéfice des jeunes agriculteurs",
+      "etape": "installation",
+      "type": "fiscal",
+      "territoire": [
+        "fr"
+      ],
+      "statut": "permanent",
+      "calendrier": "À examiner avec la déclaration de bénéfices agricoles ; période initiale limitée.",
+      "financeur": "État / fiscalité des bénéfices agricoles",
+      "resume": "Une réduction du bénéfice imposable sous conditions, différente d’une subvention encaissée.",
+      "beneficiaires": "Le régime concerne les jeunes agriculteurs répondant aux conditions du texte fiscal, notamment celles liées à l’aide à l’installation et au régime réel des bénéfices agricoles. La date d’installation, l’aide obtenue et le montant du bénéfice sont déterminants. Une activité nouvelle ou un faible âge ne suffisent pas isolément.",
+      "soutien": "L’abattement s’applique pendant les soixante premiers mois d’activité selon les règles de calcul prévues au BOFiP. Son taux et son plafond dépendent notamment du niveau du bénéfice et du millésime des dispositions applicables. Il est trompeur de promettre à tous un abattement uniforme de 50 % sur tout le revenu.",
+      "demarche": "Réunissez la décision d’aide, la date de début d’activité et les déclarations agricoles. Demandez à votre comptable d’identifier la première et la dernière période concernées, puis de montrer le calcul de l’abattement dans la liasse. Contrôlez aussi le traitement de l’année d’inscription de la dotation en comptabilité.",
+      "vigilance": "Un abattement réduit une base imposable : il ne verse pas son montant sur le compte bancaire et n’équivaut pas à une réduction d’impôt du même montant. L’impôt réellement économisé dépend de la situation fiscale du foyer et de l’entreprise. Ne l’inscrivez pas comme recette de vente.",
+      "exemple": "Dans un prévisionnel, faites apparaître bénéfice comptable, bénéfice fiscal après corrections et impôt estimé sur des lignes séparées. Vous pourrez expliquer à la banque pourquoi une amélioration fiscale ne finance pas immédiatement une facture de matériel.",
+      "sources": [
+        [
+          "BOFiP — abattements des jeunes agriculteurs",
+          "https://bofip.impots.gouv.fr/bofip/3117-PGP.html/identifiant%3DBOI-BA-BASE-30-10-30-20250723"
+        ],
+        [
+          "Impôts — brochure pratique IR 2026",
+          "https://www.impots.gouv.fr/www2/fichiers/documentation/brochure/ir_2026/pdf_integral/Brochure-IR-2026.pdf"
+        ]
+      ],
+      "mots": "impot revenu benefice agricole reel",
+      "article": "aide-abattement-jeunes-viticulture.html",
+      "verifie": "2026-10-28"
+    },
+    {
+      "id": "tfnb-jeunes",
+      "titre": "Dégrèvement de taxe foncière pour les jeunes agriculteurs",
+      "etape": "installation",
+      "type": "fiscal",
+      "territoire": [
+        "fr"
+      ],
+      "statut": "permanent",
+      "calendrier": "Déclaration 6711-SD à préparer ; échéance du 31 janvier suivant l’installation selon le cas.",
+      "financeur": "État et collectivités locales",
+      "resume": "Un dégrèvement sur les parcelles éligibles, pouvant être complété localement. Le propriétaire et l’exploitant doivent coordonner la démarche.",
+      "beneficiaires": "Les conditions portent sur le jeune agriculteur installé avec les aides ou financements visés par le texte et sur les parcelles exploitées. La taxe foncière est établie au nom du propriétaire ; un fermier ne doit donc pas attendre de recevoir personnellement l’avis pour identifier le sujet.",
+      "soutien": "Le dispositif national prévoit un dégrèvement de 50 % pendant cinq ans dans les conditions légales. Une délibération locale peut financer les 50 % restants. Cette seconde partie dépend du territoire : elle ne doit pas être annoncée comme une exonération totale automatique sur toute la France.",
+      "demarche": "Préparez avec le propriétaire la liste des parcelles par commune, les références cadastrales et les justificatifs d’installation. Vérifiez la déclaration 6711-SD, son destinataire et le calendrier. Demandez comment signaler les modifications de surface intervenant après la première déclaration.",
+      "vigilance": "Faites préciser la répercussion du dégrèvement au profit de l’exploitant lorsque le bien est loué. Contrôlez le montant sur l’avis de taxe puis dans le décompte de fermage. Le dispositif JA, les autres exonérations de TFNB et un dégrèvement pour perte de récolte ont des bases distinctes.",
+      "exemple": "Pour une reprise de parcelles appartenant à plusieurs bailleurs, un tableau par propriétaire et par commune évite qu’une partie du vignoble soit oubliée. Conservez une copie des déclarations et des avis correspondants pour suivre les cinq années.",
+      "sources": [
+        [
+          "Ministère de l’Économie — TFNB et jeunes agriculteurs",
+          "https://www.economie.gouv.fr/entreprises/gerer-sa-fiscalite-et-ses-impots/autres-impots-et-taxes/taxe-fonciere-sur-les-proprietes-non-baties-etes-vous-concerne"
+        ],
+        [
+          "Service public — formulaire 6711-SD",
+          "https://www.service-public.gouv.fr/particuliers/vosdroits/R18251"
+        ]
+      ],
+      "mots": "foncier fermage bailleur 6711",
+      "article": "aide-tfnb-jeunes-viticulture.html",
+      "verifie": "2026-10-28"
+    },
+    {
+      "id": "installation-locale",
+      "titre": "Compléments départementaux à l’installation : exemple du Finistère",
+      "etape": "installation",
+      "type": "subvention",
+      "territoire": [
+        "bre"
+      ],
+      "statut": "local",
+      "calendrier": "Conditions départementales en vigueur à vérifier avant le dépôt ; exemple limité au Finistère.",
+      "financeur": "Département du Finistère",
+      "resume": "Une aide locale peut compléter la DJA ou examiner une installation hors parcours. Elle ne s’étend pas automatiquement aux autres départements.",
+      "beneficiaires": "Le Département vise les personnes s’installant pour la première fois comme chef d’exploitation, individuellement ou comme associé. La fiche distingue le parcours DJA et l’examen au cas par cas hors de ce cadre. Un projet de vigne doit faire confirmer son admissibilité agricole et ses caractéristiques particulières.",
+      "soutien": "Le Finistère affiche un forfait de 6 000 € en complément de la DJA et, hors parcours DJA, un examen dans la limite de 4 000 €. Un complément JA-CUMA de 1 000 € obéit à des conditions propres d’adhésion et de formation. Ces montants décrivent ce dispositif départemental, pas un barème national.",
+      "demarche": "Contactez le service agricole départemental avant d’assembler le financement. Indiquez le parcours régional engagé, le lieu du siège, le calendrier et l’existence d’une étude économique. Demandez le formulaire actuel et les pièces à joindre, puis vérifiez le cumul avec les aides déjà demandées.",
+      "vigilance": "Un portail national ne recense pas toujours les compléments départementaux ou intercommunaux. Inversement, trouver une aide dans un département voisin ne prouve pas que le vôtre en dispose. Faites confirmer la décision et le paiement avant d’en déduire une baisse de votre emprunt.",
+      "exemple": "Cette fiche sert aussi de méthode de recherche : interrogez Département, Région et intercommunalité sur les aides à la première installation, aux CUMA et à la diversification. Notez pour chaque réponse le bénéficiaire réel et la date limite.",
+      "sources": [
+        [
+          "Finistère — aide pour l’installation en agriculture",
+          "https://www.finistere.fr/aides-et-services/economie-attractivite/agriculture-et-alimentation/aide-pour-linstallation-en-agriculture/"
+        ],
+        [
+          "Bretagne — dispositif régional AGRI Install",
+          "https://www.bretagne.bzh/aides/fiches/agri-install/"
+        ]
+      ],
+      "mots": "departement collectivite cuma bretagne finistere",
+      "article": "aide-installation-locale-viticulture.html",
+      "verifie": "2026-10-28"
+    },
+    {
+      "id": "acja",
+      "titre": "ACJA : complément PAC pour les jeunes agriculteurs",
+      "etape": "installation",
+      "type": "subvention",
+      "territoire": [
+        "metropole"
+      ],
+      "statut": "campagne",
+      "calendrier": "Demande annuelle PAC ; campagne 2026 terminée. Critères et prochaine déclaration à vérifier.",
+      "financeur": "Union européenne / FEAGA — PAC",
+      "resume": "Un paiement PAC distinct de la dotation d’installation, avec ses propres conditions de jeune agriculteur.",
+      "beneficiaires": "L’aide complémentaire au revenu pour les jeunes agriculteurs repose sur les critères de la PAC : âge, première installation, capacité et situation de l’entreprise sont à vérifier dans la notice et l’instruction de campagne. La seule obtention d’une DJA ne dispense pas de cette analyse.",
+      "soutien": "L’ACJA appartient aux paiements directs découplés ; elle ne suit ni le barème régional ni le calendrier de versement de la dotation d’installation. Le montant et la période d’accès se déterminent dans le cadre annuel de la PAC, selon la situation du demandeur.",
+      "demarche": "Dans Telepac, repérez la demande correspondante et rassemblez les justificatifs avant la clôture annuelle. En société, demandez comment la situation du jeune associé et les évolutions de composition sont traitées. Faites confirmer la première et la dernière campagne potentiellement admissibles.",
+      "vigilance": "Ne confondez pas ACJA, attribution de DPB par la réserve et DJA. Une installation progressive, une reprise de parts ou un changement de société peuvent nécessiter une lecture spécifique. Vérifiez avec la DDT(M) plutôt que réutiliser le dossier d’une autre aide.",
+      "exemple": "Construisez un échéancier séparant les recettes d’installation régionales et les paiements annuels PAC. Une attente de notification ou un contrôle sur une pièce ne doit pas empêcher de connaître le financement restant à couvrir pour les charges de la campagne.",
+      "sources": [
+        [
+          "Ministère — instruction ACJA 2026-331",
+          "https://info.agriculture.gouv.fr/boagri/instruction-2026-331"
+        ],
+        [
+          "Telepac — notice des aides découplées 2026",
+          "https://www.telepac.agriculture.gouv.fr/telepac/pdf/tas/2026/Dossier-PAC-2026_notice_aides-decouplees.pdf"
+        ]
+      ],
+      "mots": "acja jeune agriculteur complement revenu pac",
+      "article": "aide-acja-viticulture.html",
+      "verifie": "2026-10-28"
+    },
+    {
+      "id": "outremer",
+      "titre": "Outre-mer : aides agricoles territoriales et vérification POSEI",
+      "etape": "installation",
+      "type": "conseil",
+      "territoire": [
+        "gua",
+        "guy",
+        "mar",
+        "may",
+        "reu"
+      ],
+      "statut": "local",
+      "calendrier": "Programmes propres à chaque territoire ; liste de produits et campagne 2026 à vérifier.",
+      "financeur": "Union européenne / FEADER et POSEI ; État et collectivités selon mesure",
+      "resume": "Une porte d’entrée dédiée aux DOM, sans transposer les aides métropolitaines ni garantir que le raisin ou le vin relève du POSEI.",
+      "beneficiaires": "Les programmes agricoles ultramarins répondent à des cadres spécifiques. La DAAF et l’autorité de gestion compétente doivent examiner le projet, sa production, sa localisation et son statut. La présence d’un soutien à la diversification végétale ne prouve pas que toutes les cultures et transformations sont admissibles.",
+      "soutien": "Le POSEI est distinct du FEADER. L’ODEADOM publie pour 2026 les modalités et listes de produits de diversification végétale ; leur consultation est indispensable avant de compter une aide pour une production particulière. Mayotte et les autres DOM peuvent relever de modalités différentes.",
+      "demarche": "Contactez la DAAF et le portail territorial indiqué dans le panorama avec une description précise : production de raisin, transformation en vin, commercialisation ou autre activité. Demandez le programme, la liste de produits et l’opérateur réellement compétent. À La Réunion, vérifiez aussi les aides FEADER du Département.",
+      "vigilance": "Cette fiche est une orientation, pas une affirmation d’éligibilité viticole au POSEI. Les DPB, l’écorégime ou l’assurance décrits pour la métropole ne sont pas automatiquement transposables. Les cotisations peuvent relever de la CGSS ou d’un autre interlocuteur selon le territoire.",
+      "exemple": "Pour un projet ultramarin, construisez votre inventaire d’aides à partir du territoire avant d’importer un plan de financement métropolitain. Conservez le retour écrit de l’instructeur sur la production et chaque poste de dépenses, notamment lorsque le projet combine agriculture et transformation.",
+      "sources": [
+        [
+          "ODEADOM — textes réglementaires, décisions DIVA 2026 et listes de produits",
+          "https://www.odeadom.fr/ressources/textes-reglementaires/"
+        ],
+        [
+          "FranceAgriMer / ODEADOM — service diversification végétale",
+          "https://www.franceagrimer.fr/e-services/odeadom-diversification-vegetale"
+        ],
+        [
+          "Département de La Réunion — aides FEADER",
+          "https://www.departement974.fr/aides-feader"
+        ],
+        [
+          "Commission européenne — portails territoriaux officiels",
+          "https://france.representation.ec.europa.eu/collectivites-territoriales-programmes-europeens-2021-2027_fr"
+        ]
+      ],
+      "mots": "dom outre mer guadeloupe guyane martinique mayotte reunion posei daaf",
+      "article": "aide-outremer-viticulture.html",
+      "verifie": "2026-10-28"
+    },
+    {
+      "id": "restructuration",
+      "titre": "Restructuration et reconversion du vignoble",
+      "etape": "investissement",
+      "type": "subvention",
+      "territoire": [
+        "metropole"
+      ],
+      "statut": "clos",
+      "calendrier": "Campagne 2025/2026 : demande d’aide close le 19 mai ; paiement clos le 15 octobre 2026 à midi, pénalités incluses.",
+      "financeur": "Union européenne / FEAGA — FranceAgriMer",
+      "resume": "Un soutien aux opérations viticoles admissibles à la restructuration. La campagne 2025/2026 n’accepte plus de nouveaux dossiers.",
+      "beneficiaires": "Le demandeur et les parcelles doivent répondre à la décision de campagne. Une opération de renouvellement courant n’est pas, par sa seule nature, une restructuration aidée. Le projet doit respecter les catégories d’opérations, les surfaces et les formalités prévues, y compris celles liées au casier viticole et aux autorisations.",
+      "soutien": "La fiche officielle distingue demande d’aide et demande de paiement. Pour 2025/2026, la demande d’aide a été prolongée au 19 mai 2026 ; le paiement tardif avec pénalités s’est terminé le 15 octobre à midi. Les taux, forfaits et justificatifs sont propres à la décision : un barème d’une autre campagne ne suffit pas.",
+      "demarche": "Pour préparer une campagne future, rapprochez plan parcellaire, CVI, autorisations, opérations techniques et calendrier des travaux. Demandez au service territorial les contrôles et preuves à prévoir avant arrachage ou plantation. Attendez la publication de la campagne suivante pour confirmer ses règles et dates.",
+      "vigilance": "Une autorisation de replantation n’est pas une décision de subvention. Le dispositif d’arrachage définitif a d’autres objectifs et peut interdire la replantation des surfaces aidées. Ne mettez pas une même opération en double financement et ne supposez pas qu’un nouveau guichet sera reconduit à l’identique.",
+      "exemple": "Pour changer de cépage et de conduite sur une parcelle, décrivez précisément la situation de départ, l’opération prévue et la situation finale. Ce dossier technique permet de poser la question d’éligibilité avant d’acheter les plants ou d’engager un chantier.",
+      "sources": [
+        [
+          "FranceAgriMer — campagne restructuration 2025/2026",
+          "https://www.franceagrimer.fr/aides/aide-la-restructuration-et-reconversion-du-vignoble-campagne-20252026"
+        ],
+        [
+          "FranceAgriMer — Vitiplantation",
+          "https://www.franceagrimer.fr/e-services/vitiplantation"
+        ]
+      ],
+      "mots": "plantation replantation ce page palissage reconversion vitirestructuration",
+      "article": "aide-restructuration-viticulture.html",
+      "verifie": "2026-10-28"
+    },
+    {
+      "id": "investissement-chai",
+      "titre": "Investissement vitivinicole : bâtiments et équipements du chai",
+      "etape": "investissement",
+      "type": "subvention",
+      "territoire": [
+        "fr"
+      ],
+      "statut": "clos",
+      "calendrier": "AAP 2026 clos le 3 avril 2026 à midi après réouverture exceptionnelle ; paiement des dossiers retenus selon notification.",
+      "financeur": "Union européenne / FEAGA — FranceAgriMer",
+      "resume": "Investissements de production, transformation, stockage, conditionnement et commercialisation. L’appel 2026 est clos aux nouvelles demandes.",
+      "beneficiaires": "Les entreprises vitivinicoles doivent entrer dans les catégories et opérations prévues par la décision. L’éligibilité de la structure, sa taille, son activité et la nature précise de chaque dépense sont examinées. Un devis portant le mot chai ne rend pas éligibles toutes ses lignes.",
+      "soutien": "L’aide est calculée sur les dépenses retenues, avec des taux et modulations selon l’entreprise et l’investissement. La fiche pratique 2026 décrit une amplitude de taux, pas un pourcentage unique garanti. La date limite de paiement affichée pour les dossiers de l’appel est le 15 mai 2028, sous réserve des dispositions et modifications notifiées au bénéficiaire.",
+      "demarche": "Si vous avez déjà une décision, classez devis retenus, factures, preuves de paiement et éventuels avenants dans le même dossier. Avant de remplacer un équipement ou de modifier le calendrier, demandez si une autorisation est nécessaire. Pour un projet nouveau, surveillez le prochain appel au lieu d’utiliser un ancien formulaire.",
+      "vigilance": "Une ouverture du paiement ne permet pas de déposer une nouvelle demande d’aide. Les obligations de maintien des investissements et les contrôles perdurent après le versement. L’achat d’occasion, le crédit-bail, les dépenses immatérielles ou les travaux annexes nécessitent une lecture spécifique de la décision.",
+      "exemple": "Pour un projet de cuverie, séparez matériel de vinification, stockage, bâtiment et commercialisation. Faites confirmer le traitement de chaque lot et construisez un plan de trésorerie qui supporte le règlement des fournisseurs avant l’encaissement de l’aide.",
+      "sources": [
+        [
+          "FranceAgriMer — investissement vitivinicole AAP 2026",
+          "https://www.franceagrimer.fr/aides/investissement-vitivinicole-appel-projets-2026"
+        ],
+        [
+          "FranceAgriMer — fiche pratique de dépôt AAP 2026",
+          "https://www.franceagrimer.fr/sites/default/files/2026-03/Fiche%20pratique%20d%C3%A9p%C3%B4t%20demande%20d%27aide%20AAP_2026-.pdf"
+        ]
+      ],
+      "mots": "cuverie pressoir cave vinification materiel batiment stockage conditionnement",
+      "article": "aide-investissement-chai-viticulture.html",
+      "verifie": "2026-10-28"
+    },
+    {
+      "id": "secheresse",
+      "titre": "Protection contre la sécheresse : irrigation et outil d’aide à la décision",
+      "etape": "investissement",
+      "type": "subvention",
+      "territoire": [
+        "fr"
+      ],
+      "statut": "ouvert",
+      "calendrier": "Jusqu’au 31 décembre 2026, dans la limite des crédits ; vérifier le guichet avant engagement.",
+      "financeur": "État — FranceAgriMer",
+      "resume": "Un appel ciblé sur des matériels d’irrigation associés à un outil d’aide à la décision, soumis aux conditions hydriques et administratives.",
+      "beneficiaires": "Les exploitations et certains collectifs répondant à la décision peuvent demander une aide pour les équipements inscrits dans les listes. Le dossier doit comprendre au moins un équipement d’irrigation et un outil d’aide à la décision. L’investissement doit aussi respecter les conditions liées à la ressource et aux prélèvements.",
+      "soutien": "Le taux de base annoncé est de 30 % des dépenses admissibles hors taxes, avec majorations conditionnelles et règles particulières outre-mer. La base de dépenses n’est pas le montant de la subvention : les planchers, plafonds et catégories de bénéficiaires doivent être lus dans la décision consolidée en vigueur.",
+      "demarche": "Faites identifier l’équipement exact par le fournisseur, sans le commander immédiatement. Demandez à la DDT(M) et au service instructeur les validations nécessaires sur l’eau, puis préparez les pièces techniques et les devis. Vérifiez la version actuelle de la décision : des modifications sont intervenues en 2026.",
+      "vigilance": "L’octroi de la subvention n’autorise pas à prélever de l’eau. Une restriction sécheresse, une autorisation administrative et la recevabilité d’une facture relèvent de vérifications différentes. L’aide ne doit pas être présentée comme un financement général de tout matériel contre les aléas climatiques.",
+      "exemple": "Pour un vignoble projetant une irrigation pilotée, comparez d’abord la disponibilité légale de l’eau, le besoin agronomique et les économies attendues. Préparez ensuite le couple matériel/OAD, les coûts d’entretien et la trésorerie restant à financer après l’aide éventuelle.",
+      "sources": [
+        [
+          "FranceAgriMer — protection contre la sécheresse et décision consolidée",
+          "https://www.franceagrimer.fr/aides/aide-aux-investissements-en-exploitations-pour-la-protection-contre-la-secheresse"
+        ],
+        [
+          "Ministère — financements de la planification écologique",
+          "https://agriculture.gouv.fr/les-dispositifs-de-financement-agriculture-alimentation-de-la-planification-ecologique"
+        ]
+      ],
+      "mots": "irrigation eau oad goutte a goutte climat",
+      "article": "aide-secheresse-viticulture.html",
+      "verifie": "2026-10-28"
+    },
+    {
+      "id": "pcae-regions",
+      "titre": "PCAE et aides FEADER régionales à l’investissement",
+      "etape": "investissement",
+      "type": "subvention",
+      "territoire": [
+        "fr"
+      ],
+      "statut": "local",
+      "calendrier": "Appels régionaux et listes de dépenses variables ; pas de guichet PCAE national unique.",
+      "financeur": "Régions + Union européenne / FEADER ; autres cofinanceurs selon l’appel",
+      "resume": "Modernisation, agroéquipement, transformation ou diversification : rechercher le bon appel régional et vérifier sa liste de dépenses viticoles.",
+      "beneficiaires": "La qualité d’agriculteur actif, le siège, l’activité, la situation économique et le type de projet sont appréciés par chaque appel. Les CUMA et autres collectifs peuvent relever d’un volet distinct. Les dépenses d’une exploitation primaire et celles d’une entreprise de transformation n’entrent pas nécessairement dans le même dispositif.",
+      "soutien": "Les Régions pilotent depuis 2023 les aides FEADER non surfaciques concernées par la répartition nationale. Les appellations, taux, planchers, plafonds et critères de sélection diffèrent. Certaines opérations vitivinicoles relèvent plutôt du FEAGA via FranceAgriMer : le porteur ne peut pas financer deux fois les mêmes coûts.",
+      "demarche": "Partez du lieu du projet et de sa fonction : vigne, chai, atelier de transformation, vente ou accueil. Récupérez l’appel et son annexe de matériels, puis demandez à l’instructeur où déposer. Présentez un tableau de dépenses avec, pour chaque ligne, le dispositif envisagé et le reste à charge.",
+      "vigilance": "La règle de début des dépenses doit être lue dans l’appel précis. Beaucoup exigent un dépôt avant engagement ; certains prévoient une date d’admissibilité particulière. Un dépôt recevable ne vaut pas sélection, et un taux maximal ne garantit pas l’enveloppe nécessaire au projet.",
+      "exemple": "Un domaine qui prévoit un intercep et un espace de vente peut devoir monter deux dossiers. Séparez les devis, les objectifs et les justificatifs dès le départ. Vérifiez aussi les coûts non aidés, la TVA et le financement transitoire avant versement.",
+      "sources": [
+        [
+          "Ministère — répartition des aides des Régions",
+          "https://agriculture.gouv.fr/les-aides-des-regions"
+        ],
+        [
+          "Pays de la Loire — exemple PCAE végétal 2026",
+          "https://territoires.paysdelaloire.fr/les-aides/feader-pcae-vegetal"
+        ],
+        [
+          "Commission européenne — portails territoriaux",
+          "https://france.representation.ec.europa.eu/collectivites-territoriales-programmes-europeens-2021-2027_fr"
+        ]
+      ],
+      "mots": "pcae pve feader cuma materiel modernisation innovation robot desherbage mecanique",
+      "article": "aide-pcae-regions-viticulture.html",
+      "verifie": "2026-10-28"
+    },
+    {
+      "id": "plantations-occitanie",
+      "titre": "Occitanie : plantations nouvelles par de nouveaux exploitants",
+      "etape": "investissement",
+      "type": "subvention",
+      "territoire": [
+        "occ"
+      ],
+      "statut": "local",
+      "calendrier": "Fenêtre de dépôt à faire confirmer : la page annonce encore un accès Euro-PAC prochainement.",
+      "financeur": "Région Occitanie + Union européenne / FEADER",
+      "resume": "Un dispositif régional spécifique aux nouveaux exploitants, distinct d’une simple autorisation de plantation.",
+      "beneficiaires": "La page régionale vise des agriculteurs à titre principal ou secondaire, des cotisants solidaires et des personnes engagées dans un parcours d’installation. Les sociétés doivent notamment respecter les conditions d’activité agricole, d’affiliation et de détention des parts par des associés exploitants prévues par le règlement.",
+      "soutien": "Le programme régional annonce un soutien aux plantations nouvelles dans la limite de six hectares sur le cadre présenté jusqu’à fin 2027. Cette limite de surface ne prouve pas qu’un guichet est ouvert tous les jours jusqu’à cette date. Les documents de périodes de dépôt et l’accès effectif au téléservice doivent être vérifiés ensemble.",
+      "demarche": "Contactez le service instructeur indiqué sur la fiche officielle avec votre statut, l’autorisation de plantation envisagée, les parcelles et le calendrier. Demandez le règlement et la période de dépôt actuellement utilisables, puis la liste des coûts admissibles et des pièces à produire.",
+      "vigilance": "La Région précise que les devis ou bons de commande signés avant le dépôt ne sont pas éligibles. N’engagez pas une commande sur la seule base de l’existence de cette fiche. Une autorisation de plantation délivrée par l’administration ne remplace pas la demande de financement.",
+      "exemple": "Pour un nouveau domaine, préparez un plan montrant la mise en production progressive des parcelles et les recettes attendues avant la première récolte complète. Ce travail permet de séparer besoin de plantation et besoin de revenu pendant les années de montée en charge.",
+      "sources": [
+        [
+          "Europe en Occitanie — plantations nouvelles, documents et calendrier",
+          "https://www.europe-en-occitanie.eu/FEADER-Occitanie-2023-2027-Soutien-aux-plantations-nouvelles-de-vignes-par-de"
+        ],
+        [
+          "FranceAgriMer — autorisations Vitiplantation",
+          "https://www.franceagrimer.fr/e-services/vitiplantation"
+        ]
+      ],
+      "mots": "occitanie plantation nouvelle installation six hectares",
+      "article": "aide-plantations-occitanie-viticulture.html",
+      "verifie": "2026-10-28"
+    },
+    {
+      "id": "pcae-pays-loire",
+      "titre": "Pays de la Loire : PCAE végétal 2026",
+      "etape": "investissement",
+      "type": "subvention",
+      "territoire": [
+        "pdl"
+      ],
+      "statut": "clos",
+      "calendrier": "Appel du 15 juin au 15 septembre 2026 : nouvelles demandes closes.",
+      "financeur": "Région Pays de la Loire + Union européenne / FEADER",
+      "resume": "Un appel à la modernisation et à la transition des productions végétales, avec dépenses et sélection encadrées.",
+      "beneficiaires": "Le règlement détermine les exploitations et collectifs admissibles, les conditions d’activité et les équipements retenus. Pour un domaine viticole, il faut vérifier la présence du matériel dans la liste plutôt que déduire son admissibilité de son utilité agronomique.",
+      "soutien": "L’appel 2026 prévoit ses propres taux, plafonds, critères et obligations. La fiche mentionne notamment une étude d’installation préalable pour certains nouveaux installés, ainsi qu’un autodiagnostic et une formation liés à la transition. Ces étapes peuvent avoir un calendrier différent de celui de l’achat.",
+      "demarche": "Pour un dossier déjà déposé, gardez l’accusé, les devis présentés et les pièces de diagnostic. Vérifiez toute modification avec l’instructeur. Pour un nouveau projet, utilisez le règlement 2026 comme préparation et attendez les conditions d’un prochain appel avant de lui attribuer un financement.",
+      "vigilance": "Cet appel autorise sous conditions une date d’engagement des dépenses à compter du 10 avril 2026 et exige que le projet ne soit pas matériellement achevé au dépôt. Cet exemple montre pourquoi une règle générale trouvée sur internet ne remplace pas le règlement précis. Il n’autorise pas à extrapoler la même date à un autre guichet.",
+      "exemple": "Pour remplacer un désherbage chimique par du matériel mécanique, documentez les parcelles, les passages, la capacité de traction et le temps de travail. Comparez achat individuel, prestation et CUMA ; l’aide ne doit pas masquer un équipement surdimensionné ou des charges nouvelles.",
+      "sources": [
+        [
+          "Région — PCAE végétal et règlement 2026",
+          "https://territoires.paysdelaloire.fr/les-aides/feader-pcae-vegetal"
+        ],
+        [
+          "Ministère — organisation des aides régionales",
+          "https://agriculture.gouv.fr/les-aides-des-regions"
+        ]
+      ],
+      "mots": "pays de la loire pcae intercep desherbage",
+      "article": "aide-pcae-pays-loire-viticulture.html",
+      "verifie": "2026-10-28"
+    },
+    {
+      "id": "petits-equipements-bfc",
+      "titre": "Bourgogne-Franche-Comté : petits équipements agricoles",
+      "etape": "investissement",
+      "type": "subvention",
+      "territoire": [
+        "bfc"
+      ],
+      "statut": "ouvert",
+      "calendrier": "Date limite affichée : 30 juin 2027 ; vérifier crédits et règlement avant dépôt.",
+      "financeur": "Région Bourgogne-Franche-Comté",
+      "resume": "Une aide régionale à des petits investissements identifiés, avec majorations conditionnelles.",
+      "beneficiaires": "La fiche régionale définit les exploitations et les équipements concernés. Le soutien ne vise pas tout achat courant et exclut notamment le simple remplacement à l’identique selon ses conditions. L’activité viticole et le matériel envisagé doivent être rapprochés des catégories prévues.",
+      "soutien": "La fiche annonce une assiette de dépenses hors taxes comprise entre 2 000 et 10 000 € et un taux de base de 20 %. La majoration de 25 % du montant d’aide pour certaines situations n’est pas une hausse de vingt-cinq points du taux : les deux calculs sont très différents.",
+      "demarche": "Identifiez le matériel avec un devis détaillé et demandez confirmation de sa catégorie. Préparez les justificatifs du statut et, si vous sollicitez une majoration, ceux de l’installation récente ou de la situation biologique. Faites préciser les règles d’engagement et de paiement dans le règlement applicable à votre demande.",
+      "vigilance": "Le plafond de dépenses n’est pas une somme versée. Vérifiez le traitement des frais annexes, de l’occasion, de la TVA et des autres aides. En cas de projet comprenant plusieurs achats, ne le découpez pas artificiellement pour multiplier les financements sans validation.",
+      "exemple": "Pour un outil de travail du sol, comparez le coût annuel complet avec une prestation ou l’usage d’un outil partagé. Une petite subvention peut réduire le prix d’achat sans compenser un temps d’utilisation trop faible ou des besoins de maintenance sous-estimés.",
+      "sources": [
+        [
+          "Région — soutien aux petits équipements agricoles",
+          "https://bourgognefranchecomte.fr/index.php/node/3875"
+        ],
+        [
+          "Europe en BFC — autres dispositifs régionaux",
+          "https://www.europe-bfc.eu"
+        ]
+      ],
+      "mots": "bourgogne franche comte petit materiel investissement",
+      "article": "aide-petits-equipements-bfc-viticulture.html",
+      "verifie": "2026-10-28"
+    },
+    {
+      "id": "modernisation-idf",
+      "titre": "Île-de-France : modernisation des exploitations, AAP 2026",
+      "etape": "investissement",
+      "type": "subvention",
+      "territoire": [
+        "idf"
+      ],
+      "statut": "ouvert",
+      "calendrier": "Dépôt jusqu’au 15 novembre 2026, selon règlement et crédits.",
+      "financeur": "Région Île-de-France + Union européenne / FEADER",
+      "resume": "Un appel régional ouvert à certains investissements de production agricole. La liste de matériels reste déterminante pour un projet viticole.",
+      "beneficiaires": "La fiche vise notamment les agriculteurs actifs et les structures admissibles dont le siège est situé en Île-de-France. L’activité, la situation juridique et les dépenses doivent respecter le règlement de modernisation ; une implantation dans la région ne donne pas accès à toutes ses aides économiques.",
+      "soutien": "Le taux annoncé est de 40 % de l’assiette retenue, avec majorations conditionnelles pour l’agriculture biologique et les jeunes agriculteurs. Le taux maximal éventuel ne s’applique pas automatiquement au montant total du devis. La sélection et les limites de dépenses demeurent celles de l’appel.",
+      "demarche": "Avant le 15 novembre, vérifiez la liste des équipements, les critères de sélection et l’état complet du dossier demandé. Faites distinguer production agricole primaire, transformation et accueil du public si votre projet réunit plusieurs fonctions. Posez par écrit la question du début d’engagement des dépenses.",
+      "vigilance": "Une majoration JA peut utiliser une définition propre au programme. Un certificat biologique, une DJA ou une qualité d’associé ne remplacent pas l’ensemble des justificatifs. Gardez les devis non engagés tant que le cadre applicable ne vous permet pas de commander.",
+      "exemple": "Pour un domaine francilien en développement, préparez une ventilation du projet : implantation des vignes, outils de culture, chai et espace d’accueil. Ce découpage aide l’instructeur à orienter chaque dépense sans supposer que le même appel finance tout le domaine.",
+      "sources": [
+        [
+          "Région — modernisation des exploitations AAP 2026",
+          "https://www.iledefrance.fr/aides-et-appels-a-projets/feader-soutien-aux-investissements-agricoles-modernisation-des-exploitations-aap-2026"
+        ],
+        [
+          "Europe Île-de-France — programmes",
+          "https://www.europeidf.fr"
+        ]
+      ],
+      "mots": "ile de france paris modernisation materiel",
+      "article": "aide-modernisation-idf-viticulture.html",
+      "verifie": "2026-10-28"
+    },
+    {
+      "id": "pve-nouvelle-aquitaine",
+      "titre": "Nouvelle-Aquitaine : Plan végétal environnement 2026–2027",
+      "etape": "investissement",
+      "type": "subvention",
+      "territoire": [
+        "naq"
+      ],
+      "statut": "ouvert",
+      "calendrier": "Appel du 12 octobre 2026 au 29 janvier 2027 ; vérifier annexes et crédits.",
+      "financeur": "Région Nouvelle-Aquitaine + Union européenne / FEADER ; cofinanceurs selon projet",
+      "resume": "Investissements réduisant l’usage de l’eau et des intrants, dans un cadre régional de transition agroécologique.",
+      "beneficiaires": "Le PVE vise les agriculteurs actifs et les structures agricoles définies par l’appel. Il prévoit des conditions environnementales d’accès, liées par exemple à l’agriculture biologique, à une certification ou à d’autres situations décrites dans le règlement. Le matériel doit figurer dans les dépenses admissibles.",
+      "soutien": "L’aide finance une part des dépenses retenues, avec une sélection et des modalités propres à l’appel 2026–2027. L’intitulé environnemental ne garantit pas le financement de n’importe quel outil de culture. Le niveau de soutien doit être calculé sur les lignes effectivement éligibles.",
+      "demarche": "Récupérez le règlement, l’annexe des matériels et les coordonnées des animateurs sur la fiche officielle. Décrivez votre pratique actuelle, le changement visé et les surfaces concernées. Demandez si vos justificatifs environnementaux permettent l’accès au dispositif avant d’engager le projet.",
+      "vigilance": "L’éligibilité d’un équipement, la condition d’accès environnementale et la sélection du dossier sont trois examens différents. Contrôlez aussi les possibilités de cumul avec un financement de l’agence de l’eau ou de FranceAgriMer. Une même facture ne peut pas être remboursée deux fois.",
+      "exemple": "Pour un intercep ou un outil d’entretien de l’enherbement, rapprochez coût d’achat, débit de chantier, passages et réduction réelle des intrants. Préparez également les besoins de traction et de main-d’œuvre afin que le projet conserve son intérêt sans aide maximale.",
+      "sources": [
+        [
+          "Europe en Nouvelle-Aquitaine — PVE 2026–2027",
+          "https://www.europe-en-nouvelle-aquitaine.eu/en/node/11873"
+        ],
+        [
+          "Ministère — aides des Régions",
+          "https://agriculture.gouv.fr/les-aides-des-regions"
+        ]
+      ],
+      "mots": "nouvelle aquitaine pve pesticides eau intercep",
+      "article": "aide-pve-nouvelle-aquitaine-viticulture.html",
+      "verifie": "2026-10-28"
+    },
+    {
+      "id": "hydraulique-ara",
+      "titre": "Auvergne-Rhône-Alpes : infrastructures hydrauliques collectives",
+      "etape": "investissement",
+      "type": "subvention",
+      "territoire": [
+        "ara"
+      ],
+      "statut": "ouvert",
+      "calendrier": "Appel affiché jusqu’au 30 novembre 2026 ; porteurs collectifs admissibles uniquement.",
+      "financeur": "Région + FEADER ; collectivités et agence de l’eau selon le projet",
+      "resume": "Un financement de réseaux ou d’infrastructures collectives : ce n’est pas un guichet d’achat individuel de goutte-à-goutte.",
+      "beneficiaires": "La Région vise notamment des associations syndicales autorisées ou libres et des acteurs publics répondant au règlement. Les projets doivent concerner un collectif respectant les conditions, dont le nombre d’exploitations desservies. Un vigneron peut être utilisateur du réseau sans être personnellement le bénéficiaire de l’aide.",
+      "soutien": "L’assiette et le taux sont déterminés selon la nature des travaux et les cofinancements. Le règlement prévoit des conditions techniques, environnementales et de calendrier, notamment pour l’achèvement et le paiement. Le financement d’une infrastructure ne dispense d’aucune autorisation relative à l’eau.",
+      "demarche": "Identifiez d’abord le porteur collectif, les exploitations desservies et le périmètre des travaux. Préparez les études, les droits d’eau, le coût d’exploitation du réseau et les modalités de répartition entre membres. Demandez au service régional la recevabilité du montage avant les engagements de travaux.",
+      "vigilance": "Une subvention d’investissement peut laisser aux utilisateurs des charges annuelles importantes : énergie, entretien, renouvellement et redevances. Faites préciser qui conserve les ouvrages, qui reçoit les factures et qui porte les obligations après paiement. Les financements individuels d’irrigation relèvent d’autres règles.",
+      "exemple": "Un petit groupe de domaines doit d’abord vérifier si son organisation remplit les conditions du programme. La préparation d’un dossier hydraulique ne se limite pas au coût des tuyaux : sa pérennité dépend de la ressource, de la gouvernance et du modèle de charges.",
+      "sources": [
+        [
+          "Région AURA — infrastructures hydrauliques agricoles FEADER",
+          "https://www.auvergnerhonealpes.fr/aides/investir-sur-mon-territoire-dans-les-infrastructures-hydrauliques-agricoles-feader-dispositif"
+        ],
+        [
+          "Agences de l’eau — moyens d’action",
+          "https://www.lesagencesdeleau.fr/les-agences-de-leau/moyens-dactions"
+        ]
+      ],
+      "mots": "auvergne rhone alpes irrigation asa asl collectif",
+      "article": "aide-hydraulique-ara-viticulture.html",
+      "verifie": "2026-10-28"
+    },
+    {
+      "id": "pepinieres-sud",
+      "titre": "Région Sud : investissements des pépinières viticoles",
+      "etape": "investissement",
+      "type": "subvention",
+      "territoire": [
+        "sud"
+      ],
+      "statut": "local",
+      "calendrier": "Dépôt à anticiper au moins trois mois avant l’engagement selon la fiche ; enveloppe annuelle limitée.",
+      "financeur": "Région Provence-Alpes-Côte d’Azur",
+      "resume": "Une aide ciblée sur les professionnels de la pépinière viticole régionale, distincte des achats de plants d’un domaine.",
+      "beneficiaires": "Le bénéficiaire doit être un pépiniériste répondant aux conditions professionnelles et de contrôle prévues, dont la carte professionnelle et le contrôle FranceAgriMer. Un viticulteur achetant ses plants ne devient pas bénéficiaire de ce programme du seul fait de sa commande.",
+      "soutien": "La Région annonce un soutien de 20 % avec un plafond régional de 20 000 € et un plancher de dépenses de 5 000 € hors taxes. Les limites de financement public et les règles de cumul sont précisées dans la fiche. L’enveloppe annuelle est limitée ; l’existence du programme n’assure pas la disponibilité des crédits.",
+      "demarche": "Avant de commander, vérifiez le matériel admissible, le calendrier d’anticipation et l’ordre de traitement des demandes. Préparez la preuve d’activité professionnelle, les devis et le plan de financement. Faites examiner les autres soutiens sollicités sur les mêmes équipements.",
+      "vigilance": "La fiche prévoit notamment une articulation avec le FEADER : on ne peut pas choisir librement deux financements pour une même dépense. Demandez confirmation du régime applicable à l’investissement et du moment où il peut être engagé. Ne diffusez pas le plafond de cette aide comme une prime générale à la plantation.",
+      "exemple": "Une pépinière projetant de moderniser sa production doit chiffrer capacité, qualité sanitaire et besoins de maintenance. Pour le domaine client, l’effet est indirect : cette aide à un fournisseur n’est pas une recette à inscrire dans son propre plan de plantation.",
+      "sources": [
+        [
+          "Région Sud — aide aux pépinières viticoles",
+          "https://www.maregionsud.fr/vos-aides/detail/aide-a-linvestissement-des-pepinieres-viticoles-regionales"
+        ],
+        [
+          "Ministère — dispositifs régionaux",
+          "https://agriculture.gouv.fr/les-aides-des-regions"
+        ]
+      ],
+      "mots": "paca provence alpes cote azur pepinieriste plants",
+      "article": "aide-pepinieres-sud-viticulture.html",
+      "verifie": "2026-10-28"
+    },
+    {
+      "id": "garantie-siagi",
+      "titre": "Grand Est : fonds de garantie agricole Région–SIAGI",
+      "etape": "investissement",
+      "type": "credit",
+      "territoire": [
+        "ges"
+      ],
+      "statut": "permanent",
+      "calendrier": "Demande transmise par la banque à la SIAGI ; conditions et enveloppe à confirmer.",
+      "financeur": "Région Grand Est + SIAGI",
+      "resume": "Faciliter un emprunt d’installation, reprise ou développement. La garantie protège le prêteur selon son contrat ; le prêt reste à rembourser.",
+      "beneficiaires": "La fiche régionale vise notamment les entreprises agricoles et viticoles implantées en Grand Est, dans les catégories et exclusions du règlement. Les situations de difficulté ou de procédure collective demandent une attention particulière et peuvent être exclues.",
+      "soutien": "La garantie peut atteindre 70 % du crédit selon la fiche, partagée entre Région et SIAGI ; la part régionale est gratuite pour l’emprunteur. Le prêt, sa durée et son objet doivent entrer dans les limites en vigueur. Les montants figurant dans d’anciennes versions de documents doivent être confirmés par la banque.",
+      "demarche": "Présentez le projet à la banque avec le plan de financement et les comptes ou prévisions. Demandez explicitement l’examen de la garantie régionale SIAGI et le coût total des garanties restantes. La banque transmet la demande : le domaine ne dépose pas une demande de subvention d’investissement ordinaire.",
+      "vigilance": "Une garantie de 70 % n’est pas une remise de 70 % de la dette. Comparez les sûretés personnelles encore exigées, les frais et les conditions de remboursement. Une garantie ne rend pas soutenable un prêt que les ventes futures ne pourront pas rembourser.",
+      "exemple": "Pour une reprise, séparez le financement des actifs, des stocks et du fonds de roulement. Demandez comment chacun entre dans le prêt garanti, puis testez un scénario de ventes lentes. La garantie peut faciliter l’accès au crédit sans diminuer le besoin de revenu de l’exploitation.",
+      "sources": [
+        [
+          "Grand Est — fonds de garantie Agriculture / SIAGI",
+          "https://www.grandest.fr/vos-aides-regionales/fonds-de-garantie-agriculture-region-grand-est-siagi/"
+        ],
+        [
+          "Pays de la Loire — autre fonds régional SIAGI, règles distinctes",
+          "https://www.paysdelaloire.fr/les-aides/fonds-regional-de-garantie-artisanat-commerce-agriculture-la-siagi"
+        ]
+      ],
+      "mots": "siagi garantie banque reprise investissement tresorerie",
+      "article": "aide-garantie-siagi-viticulture.html",
+      "verifie": "2026-10-28"
+    },
+    {
+      "id": "dpb-reserve",
+      "titre": "PAC : DPB, aide de base et réserve à l’installation",
+      "etape": "exploitation",
+      "type": "subvention",
+      "territoire": [
+        "metropole"
+      ],
+      "statut": "campagne",
+      "calendrier": "Déclaration annuelle Telepac ; campagne de demandes 2026 terminée, calendrier suivant à vérifier.",
+      "financeur": "Union européenne / FEAGA — État, DDT(M), ASP",
+      "resume": "Les paiements découplés dépendent notamment de droits et de surfaces admissibles. Posséder des vignes ne garantit pas un paiement.",
+      "beneficiaires": "Il faut respecter la définition d’agriculteur actif et les règles d’admissibilité de la campagne. L’activation de droits à paiement de base nécessite des droits détenus et des hectares admissibles. L’installation sur un vignoble ne crée pas automatiquement un portefeuille de DPB.",
+      "soutien": "La réserve peut attribuer des droits dans les situations prévues, notamment pour de jeunes ou nouveaux agriculteurs. Elle fait l’objet de conditions et formulaires distincts. L’aide redistributive et les autres paiements découplés obéissent également à leurs propres règles et plafonds.",
+      "demarche": "Lors d’une reprise, faites inventorier les droits, leurs titulaires et les transferts à réaliser, séparément des baux et des autorisations viticoles. Consultez la notice annuelle puis la DDT(M) sur l’admissibilité des surfaces et l’accès éventuel à la réserve. Conservez les preuves et les formulaires datés.",
+      "vigilance": "Une parcelle déclarable n’est pas nécessairement une parcelle qui déclenchera tous les paiements. Les conditions et dates des transferts, de la réserve et de la déclaration de surfaces ne sont pas interchangeables. Pour l’outre-mer, vérifiez les régimes territoriaux : ce résumé ne transpose pas le système métropolitain à chaque DOM.",
+      "exemple": "Avant d’intégrer une recette PAC au financement d’une reprise, demandez une ventilation par aide et par droit. Comparez ce montant avec les relevés du cédant, sans supposer que sa situation personnelle et les droits de sa société seront les vôtres.",
+      "sources": [
+        [
+          "Telepac — notices et formulaires 2026",
+          "https://www1.telepac.agriculture.gouv.fr/telepac/aide/formulaires2026.action"
+        ],
+        [
+          "Telepac — notice aides découplées 2026",
+          "https://www.telepac.agriculture.gouv.fr/telepac/pdf/tas/2026/Dossier-PAC-2026_notice_aides-decouplees.pdf"
+        ],
+        [
+          "Ministère — paiements directs découplés",
+          "https://agriculture.gouv.fr/les-paiements-directs-decouples"
+        ]
+      ],
+      "mots": "pac dpb reserve paiement base redistributive telepac",
+      "article": "aide-dpb-reserve-viticulture.html",
+      "verifie": "2026-10-28"
+    },
+    {
+      "id": "tode",
+      "titre": "TO-DE : exonérations pour l’emploi saisonnier agricole",
+      "etape": "exploitation",
+      "type": "fiscal",
+      "territoire": [
+        "fr"
+      ],
+      "statut": "permanent",
+      "calendrier": "Régime pérennisé ; barème et conditions à vérifier pour chaque paie et contrat.",
+      "financeur": "Sécurité sociale agricole / MSA",
+      "resume": "Un allègement de cotisations patronales pour certains travailleurs occasionnels. Le contrat vendanges ne suffit pas à lui seul.",
+      "beneficiaires": "L’employeur, le salarié, le contrat et les tâches doivent entrer dans le champ des travailleurs occasionnels et demandeurs d’emploi défini par le dispositif. La MSA apprécie les conditions ; les emplois permanents et les situations exclues ne deviennent pas admissibles parce qu’ils se déroulent dans un domaine.",
+      "soutien": "L’exonération dépend de la rémunération et comporte une dégressivité ainsi qu’une limite de durée. Le dispositif a été pérennisé, mais le coût final de l’emploi reste composé de rémunération et de cotisations non exonérées. Comparez-le avec les autres allègements applicables au salarié.",
+      "demarche": "Avant le recrutement, faites vérifier le contrat, la tâche prévue et le nombre de jours déjà utilisé chez l’employeur. Lors de la paie, contrôlez l’application dans la DSN et le calcul MSA. Conservez les éléments permettant d’expliquer les périodes et les rémunérations retenues.",
+      "vigilance": "Ne cumulez pas deux allègements incompatibles sur les mêmes cotisations. Une hausse de rémunération, des heures supplémentaires ou un changement de tâche peuvent modifier le résultat. Un budget calculé avec l’exonération maximale pour tous les saisonniers risque de sous-estimer le coût réel des vendanges.",
+      "exemple": "Pour préparer la campagne, comparez le coût complet par équipe et par journée dans plusieurs hypothèses de durée. Faites valider les paramètres de paie avant l’arrivée des salariés ; les corrections après les vendanges sont plus difficiles à expliquer et à rapprocher du chantier.",
+      "sources": [
+        [
+          "MSA — exonérations travailleurs occasionnels",
+          "https://www.msa.fr/lfp/employeur/exonerations-travailleurs-occasionnels"
+        ],
+        [
+          "MSA — cotisations et règles sociales",
+          "https://www.msa.fr/lfp/exploitant/vos-cotisations-en-clair-questions-reponses"
+        ]
+      ],
+      "mots": "to de tode saisonniers vendanges embauche cotisations employeur",
+      "article": "aide-tode-viticulture.html",
+      "verifie": "2026-10-28"
+    },
+    {
+      "id": "vivea",
+      "titre": "VIVEA : financer les formations du chef d’exploitation",
+      "etape": "exploitation",
+      "type": "conseil",
+      "territoire": [
+        "fr"
+      ],
+      "statut": "permanent",
+      "calendrier": "Formations et fonds disponibles en 2026 ; plafond personnel annuel actuel de 2 000 €.",
+      "financeur": "Fonds mutualisé VIVEA ; cofinancements publics selon les actions",
+      "resume": "Une prise en charge de formations pour les contributeurs admissibles, généralement via l’organisme de formation.",
+      "beneficiaires": "VIVEA vérifie le statut de contributeur et la situation au regard de la contribution formation auprès de la MSA ou de la CGSS. Les personnes en parcours d’installation relèvent de conditions particulières ; elles ne disposent pas automatiquement du même financement qu’un chef d’exploitation déjà affilié.",
+      "soutien": "Les critères 2026 affichent un plafond de 2 000 € par personne et par année civile, sous réserve de fonds et de priorités. Le plafond n’est pas un virement libre à dépenser : une formation, son contenu et son financement sont instruits selon les règles VIVEA. Un reste à charge peut subsister.",
+      "demarche": "Avant l’inscription, demandez à l’organisme le financement prévu, le montant restant à payer et les justificatifs. Vérifiez votre contribution et le solde mobilisable. Pour une installation en cours, faites préciser les justificatifs de parcours et la recherche préalable d’autres financements éventuellement exigée.",
+      "vigilance": "Les anciens documents mentionnant 3 000 € ne correspondent plus au plafond des formations débutant à compter du 9 janvier 2026. Ne confondez pas formation du dirigeant, formation des salariés via OCAPIAT et conseil individuel financé par une autre aide.",
+      "exemple": "Choisissez une formation à partir d’un besoin concret : construire un prix de revient, conduire un changement de pratiques ou mieux organiser le chai. Préparez un cas du domaine et prévoyez du temps pour mettre en pratique, afin que la dépense de formation ait un effet observable.",
+      "sources": [
+        [
+          "VIVEA — critères de prise en charge 2026",
+          "https://vivea.fr/chef-dentreprise-agricole/nos-criteres-de-prise-en-charge/"
+        ],
+        [
+          "VIVEA — ajustements du 9 janvier 2026",
+          "https://vivea.fr/ajustements2026/"
+        ],
+        [
+          "VIVEA — questions fréquentes 2026",
+          "https://vivea.fr/questions-frequentes-2026/"
+        ]
+      ],
+      "mots": "formation chef exploitation vivea competence installation",
+      "article": "aide-vivea-viticulture.html",
+      "verifie": "2026-10-28"
+    },
+    {
+      "id": "apprentissage-ocapiat",
+      "titre": "Apprentissage et formation des salariés : aides et OCAPIAT",
+      "etape": "exploitation",
+      "type": "subvention",
+      "territoire": [
+        "fr"
+      ],
+      "statut": "ouvert",
+      "calendrier": "Aides apprentissage selon date du contrat ; dispositif 2026 jusqu’au 31 décembre pour les contrats concernés.",
+      "financeur": "État / ASP ; OCAPIAT pour les financements formation",
+      "resume": "Distinguer la prime d’embauche d’un apprenti, le financement du CFA et la prise en charge de formations des salariés.",
+      "beneficiaires": "Le montant de l’aide à l’apprentissage dépend de la date de conclusion, du diplôme, de l’effectif et de situations spécifiques, dont le handicap. Le régime décrit par le ministère pour les contrats conclus à compter du 8 mars 2026 ne doit pas être appliqué à un contrat signé sous une période précédente.",
+      "soutien": "Pour les entreprises de moins de 250 salariés, les aides 2026 diffèrent selon le niveau préparé. La prise en charge du coût pédagogique versée au CFA n’est pas une prime supplémentaire librement encaissée par le domaine. Les formations des salariés relèvent de règles OCAPIAT séparées et d’enveloppes disponibles.",
+      "demarche": "Avant de signer, faites préciser par le CFA ou OCAPIAT le niveau du diplôme, les frais restant à l’employeur, le financement pédagogique et l’aide employeur attendue. Vérifiez le dépôt du contrat et les données de paie nécessaires à son versement. Pour une formation courte, demandez l’accord de prise en charge avant de l’engager.",
+      "vigilance": "N’additionnez pas aide unique et aide exceptionnelle comme deux primes pour le même contrat. Le salaire, le temps d’encadrement, les équipements et d’éventuelles contributions au financement pédagogique restent à chiffrer. Une simulation fondée seulement sur la prime d’embauche ne décrit pas le coût réel.",
+      "exemple": "Pour un apprenti au chai, prévoyez qui l’encadre, les périodes au CFA et les tâches de campagne compatibles avec son cursus. Comparez ce planning aux besoins de vendanges et d’élevage, puis établissez un coût mensuel net des versements réellement attendus.",
+      "sources": [
+        [
+          "Ministère du Travail — aides aux employeurs d’apprentis, règles 2026",
+          "https://travail-emploi.gouv.fr/laide-aux-employeurs-qui-recrutent-en-apprentissage"
+        ],
+        [
+          "OCAPIAT — changements de mars 2026",
+          "https://capverslalternance.ocapiat.fr/aides-apprentissage-du-nouveau-en-mars-2026/"
+        ],
+        [
+          "OCAPIAT — règles de prise en charge 2026, version septembre",
+          "https://www.ocapiat.fr/wp-content/uploads/Regles-de-prise-en-charge-2026.pdf"
+        ]
+      ],
+      "mots": "apprenti alternance formation salarie ocapiat cfa",
+      "article": "aide-apprentissage-ocapiat-viticulture.html",
+      "verifie": "2026-10-28"
+    },
+    {
+      "id": "remplacement",
+      "titre": "Crédit d’impôt pour le remplacement de l’exploitant",
+      "etape": "exploitation",
+      "type": "fiscal",
+      "territoire": [
+        "fr"
+      ],
+      "statut": "permanent",
+      "calendrier": "Dépenses éligibles jusqu’au 31 décembre 2027 selon l’article 200 undecies en vigueur.",
+      "financeur": "État / crédit d’impôt",
+      "resume": "Une aide au remplacement temporaire, avec une condition de présence quotidienne qui exclut toute généralisation à l’ensemble des vignerons.",
+      "beneficiaires": "Le texte vise les contribuables dont l’activité agricole requiert une présence quotidienne sur l’exploitation tout au long de l’année. Cette condition doit être justifiée : être chef d’un domaine viticole ne permet pas, à lui seul, de la tenir pour remplie.",
+      "soutien": "Le crédit est calculé sur des dépenses admissibles dans les limites de durée et de coût prévues. Des modalités particulières existent selon le motif d’absence. Le dispositif ne prend pas en charge n’importe quelle prestation extérieure et exige notamment que le remplacement ne soit pas déjà financé dans un autre cadre législatif.",
+      "demarche": "Avant de réserver un remplacement, faites examiner votre situation et le motif de l’absence par le comptable ou le service fiscal. Demandez au prestataire les justificatifs de dates, de nature de la prestation et de paiement. Utilisez ensuite le formulaire fiscal actuel et conservez le calcul.",
+      "vigilance": "Les montants publiés dans une fiche destinée à l’élevage ne prouvent pas l’éligibilité d’un domaine de vigne. Une prestation de travaux viticoles programmés n’est pas nécessairement un remplacement de l’exploitant au sens du texte. Séparez la facture commerciale et la justification du droit fiscal.",
+      "exemple": "Si votre exploitation associe vigne et autre activité agricole nécessitant une présence quotidienne, exposez le fonctionnement réel de l’ensemble. Documentez ce qui impose la présence, ce que le remplaçant réalise et la période concernée, plutôt que de vous appuyer sur une simple étiquette de production.",
+      "sources": [
+        [
+          "Légifrance — article 200 undecies, version 2026",
+          "https://www.legifrance.gouv.fr/codes/id/LEGIARTI000053544004/2026-02-21"
+        ],
+        [
+          "Impôts — formulaire 2079-RTA-SD",
+          "https://www.impots.gouv.fr/formulaire/2079-rta-sd/credit-dimpot-en-faveur-du-remplacement-temporaire-de-lexploitant-agricole"
+        ]
+      ],
+      "mots": "conges remplacement maladie credit impot",
+      "article": "aide-remplacement-viticulture.html",
+      "verifie": "2026-10-28"
+    },
+    {
+      "id": "leader",
+      "titre": "LEADER : vente directe, accueil et projets ruraux",
+      "etape": "exploitation",
+      "type": "subvention",
+      "territoire": [
+        "fr"
+      ],
+      "statut": "local",
+      "calendrier": "Appels et sélection du groupe d’action locale ; pas de date nationale unique.",
+      "financeur": "Union européenne / FEADER + cofinanceurs publics locaux",
+      "resume": "Des projets inscrits dans une stratégie locale de développement rural, selon le GAL et ses fiches-actions.",
+      "beneficiaires": "Les porteurs publics ou privés doivent relever du territoire et des catégories prévues par le groupe d’action locale. Un caveau, un projet d’œnotourisme, un circuit court ou une coopération peut être examiné si la fiche-action le permet. La seule présence en zone rurale ne crée pas un droit.",
+      "soutien": "Le taux, les dépenses, les planchers et les cofinancements dépendent du programme local. LEADER n’est pas un prêt à consommer identique dans tous les territoires. Une aide publique complémentaire peut entrer dans le montage ; ses règles et celles du régime d’aide doivent être vérifiées avant de compter le financement.",
+      "demarche": "Identifiez le GAL couvrant la commune du projet et contactez son équipe d’animation avec une note courte : public visé, dépenses, partenaires et calendrier. Demandez la fiche-action, les dates de comité et le moment où les dépenses peuvent commencer. Préparez les devis et le plan de financement avec l’animateur.",
+      "vigilance": "Le calendrier de sélection d’un GAL n’est pas le calendrier d’un appel destiné aux entreprises. Un ancien appel régional de sélection des GAL peut être clos alors que le programme local finance encore des projets. Vérifiez aussi les contraintes propres à l’activité agricole et aux aides d’État.",
+      "exemple": "Pour une offre de visites, distinguez production du vin, aménagement d’accueil et action collective territoriale. Le projet peut être pertinent pour un dispositif rural sans que tous les travaux du chai soient admissibles. Chiffrez aussi le fonctionnement après la subvention.",
+      "sources": [
+        [
+          "Europe en France — LEADER et territoires ruraux",
+          "https://www.europe-en-france.gouv.fr/fr/leader-accompagne-territoires-ruraux"
+        ],
+        [
+          "Réseau européen PAC — outils et groupes locaux",
+          "https://eu-cap-network.ec.europa.eu/tools_fr"
+        ],
+        [
+          "Europe Île-de-France — exemple de projets LEADER",
+          "https://www.europeidf.fr/jai-un-projet/appels-a-projets/projets-leader-contribuant-au-developpement-rural-francilien"
+        ]
+      ],
+      "mots": "leader gal oenotourisme accueil caveau tourisme vente directe rural",
+      "article": "aide-leader-viticulture.html",
+      "verifie": "2026-10-28"
+    },
+    {
+      "id": "promotion-tiers",
+      "titre": "Promotion des vins dans les pays tiers : appel 2026",
+      "etape": "exploitation",
+      "type": "subvention",
+      "territoire": [
+        "fr"
+      ],
+      "statut": "ouvert",
+      "calendrier": "Dépôt du 10 septembre au 4 novembre 2026 à midi ; actions prévues en 2027.",
+      "financeur": "Union européenne / FEAGA — FranceAgriMer",
+      "resume": "Un appel pour la promotion vitivinicole hors Union européenne, avec préparation des accès au téléservice à anticiper.",
+      "beneficiaires": "Les entreprises et structures collectives doivent respecter les catégories du programme. Les vins et actions promus répondent à des critères spécifiques, notamment les catégories de vins admises. Un budget de publicité en France ou un déplacement commercial quelconque ne devient pas éligible par sa seule finalité de vente.",
+      "soutien": "Le financement porte sur des dépenses et programmes retenus pour les actions 2027. La décision 2026 et la FAQ actualisée précisent les catégories, modalités et justificatifs. Le taux et les limites doivent être lus dans ces documents plutôt que repris d’un ancien appel.",
+      "demarche": "Vérifiez rapidement votre compte et l’accès au service : FranceAgriMer demande d’anticiper les démarches d’inscription. Préparez un programme par marché, action et coût, puis les pièces de la structure. Une demande commencée doit être validée dans les délais, et non simplement enregistrée en brouillon.",
+      "vigilance": "Le 4 novembre à midi clôt le dépôt de cet appel ; ce n’est pas une date d’exécution des actions. Conservez des preuves exploitables des prestations et paiements. Faites distinguer ce programme sectoriel du programme européen AGRIP, dont les candidats et contraintes sont différents.",
+      "exemple": "Un domaine préparant un salon dans un pays tiers peut comparer dépense isolée et programme cohérent : marché visé, distribution, actions de suivi et capacité à fournir. L’aide éventuelle réduit le coût admissible, mais ne garantit ni débouché ni retour commercial.",
+      "sources": [
+        [
+          "FranceAgriMer — promotion pays tiers AAP 2026, décision et FAQ",
+          "https://www.franceagrimer.fr/aides/promotion-pays-tiers-appel-projets-2026"
+        ],
+        [
+          "FranceAgriMer — programme européen général de promotion",
+          "https://www.franceagrimer.fr/aides/aide-la-promotion-des-produits-agricoles-sur-le-marche-interieur-et-dans-les-pays-tiers"
+        ]
+      ],
+      "mots": "export promotion salon pays tiers international 2027",
+      "article": "aide-promotion-tiers-viticulture.html",
+      "verifie": "2026-10-28"
+    },
+    {
+      "id": "agrip",
+      "titre": "AGRIP : programmes européens collectifs de promotion",
+      "etape": "exploitation",
+      "type": "subvention",
+      "territoire": [
+        "fr"
+      ],
+      "statut": "clos",
+      "calendrier": "Appel 2026 : dépôt terminé le 23 avril 2026 ; prochaine édition à vérifier.",
+      "financeur": "Union européenne — politique de promotion agricole",
+      "resume": "Un programme de promotion encadré, plutôt destiné à des organismes admissibles et projets collectifs qu’à une dépense isolée de domaine.",
+      "beneficiaires": "Les catégories de candidats et la représentativité sont définies par les appels européens. Dans ce programme, une action sur le vin doit être associée à un autre produit agricole ou alimentaire selon les conditions indiquées. Une entreprise viticole ne doit pas confondre sa participation à une action avec la qualité d’organisme candidat.",
+      "soutien": "Les programmes simples et multiples suivent leurs modalités de gestion et de cofinancement. La présentation FranceAgriMer renvoie aux appels, règlements et guides pertinents. Les budgets annoncés à l’échelle européenne ne correspondent pas à une enveloppe accessible individuellement à chaque domaine.",
+      "demarche": "Rapprochez-vous de votre organisme de filière ou d’un collectif susceptible de porter un programme. Définissez produits, marchés et actions avant de chiffrer. Vérifiez les appels et le statut des participants, puis la répartition des coûts, des preuves et des responsabilités.",
+      "vigilance": "L’appel 2026 est clos aux nouvelles candidatures. N’utilisez pas sa date de fin de programme comme une date de dépôt. Distinguez AGRIP de la promotion sectorielle des vins dans les pays tiers : un projet peut relever de cadres très différents et les mêmes coûts ne doivent pas être financés deux fois.",
+      "exemple": "Un collectif associant produits alimentaires et vins peut étudier un programme européen si sa structure est admissible. Un domaine qui souhaite seulement être présent sur un salon doit d’abord rechercher le programme sectoriel ou l’accompagnement export correspondant à sa situation.",
+      "sources": [
+        [
+          "FranceAgriMer — promotion des produits agricoles, appels 2026",
+          "https://www.franceagrimer.fr/aides/aide-la-promotion-des-produits-agricoles-sur-le-marche-interieur-et-dans-les-pays-tiers"
+        ],
+        [
+          "Ministère — répartition des instruments PAC",
+          "https://agriculture.gouv.fr/les-aides-des-regions"
+        ]
+      ],
+      "mots": "agrip enjoy europe collectif promotion interprofession",
+      "article": "aide-agrip-viticulture.html",
+      "verifie": "2026-10-28"
+    },
+    {
+      "id": "assurance-prospection",
+      "titre": "Assurance prospection : avance et risque à l’export",
+      "etape": "exploitation",
+      "type": "credit",
+      "territoire": [
+        "fr"
+      ],
+      "statut": "permanent",
+      "calendrier": "Instruction par Bpifrance Assurance Export ; contrat et budget de prospection à valider.",
+      "financeur": "État — Bpifrance Assurance Export",
+      "resume": "Une assurance publique soutenant la prospection internationale, avec remboursement contractuel : ce n’est pas une subvention définitivement acquise.",
+      "beneficiaires": "L’offre cible les entreprises françaises entrant dans ses critères de chiffre d’affaires, d’ancienneté des comptes et d’activité commercialisée. Certains secteurs et opérations sont exclus. Un jeune domaine sans historique commercial doit faire vérifier l’accès avant d’engager sa prospection.",
+      "soutien": "Le contrat couvre une part du budget de prospection accepté, avec une quotité dépendant du dossier. Une indemnité peut être avancée ; une part minimale est remboursable, puis le remboursement dépend notamment des résultats export selon les clauses. La prime et les conditions financières font partie du coût.",
+      "demarche": "Présentez marchés visés, produits déjà vendus, budget de prospection, comptes et capacité financière. Demandez une simulation complète des flux : avance, prime, période de prospection, franchise, remboursements minimaux et remboursement selon ventes. Comparez-la à un financement bancaire sans assurance.",
+      "vigilance": "Ne classez pas l’indemnité comme une aide non remboursable. Le financement ne garantit pas le succès commercial et ne couvre pas toute dépense décidée après coup. Vérifiez aussi les conséquences des ventes déjà réalisées et l’articulation avec les autres soutiens à l’export.",
+      "exemple": "Pour une entrée sur deux marchés, chiffrez salons, déplacements, adaptation commerciale et suivi. Testez un scénario de ventes faibles pour savoir quelles sommes devront néanmoins être remboursées. Le domaine doit pouvoir absorber cet engagement en cas de résultat inférieur aux prévisions.",
+      "sources": [
+        [
+          "Bpifrance Assurance Export — assurance prospection",
+          "https://assurance-export.bpifrance.fr/offre/assurance-prospection/"
+        ],
+        [
+          "Bpifrance Assurance Export — garanties publiques à l’export",
+          "https://assurance-export.bpifrance.fr/"
+        ]
+      ],
+      "mots": "export prospection avance remboursable bpifrance garantie",
+      "article": "aide-assurance-prospection-viticulture.html",
+      "verifie": "2026-10-28"
+    },
+    {
+      "id": "credit-cuma",
+      "titre": "Crédit d’impôt 2026 pour les dépenses de mécanisation en CUMA",
+      "etape": "exploitation",
+      "type": "fiscal",
+      "territoire": [
+        "fr"
+      ],
+      "statut": "permanent",
+      "calendrier": "Dépenses engagées du 21 février 2026 au 31 décembre 2028 ; déclaration fiscale et de minimis à vérifier.",
+      "financeur": "État / crédit d’impôt",
+      "resume": "Un nouveau crédit sur certaines factures d’utilisation du matériel d’une CUMA agréée dont l’exploitation est adhérente.",
+      "beneficiaires": "L’article 244 quater K vise les entreprises agricoles au bénéfice réel ou dans certaines exonérations. L’adhésion à une CUMA agréée s’apprécie au 31 décembre de l’année des dépenses. Les coûts doivent correspondre aux utilisations de machines et matériels entrant dans le texte, facturées au prorata de l’engagement.",
+      "soutien": "Le taux est de 7,5 %, dans la limite de 3 000 € par entreprise et année civile. Une règle spécifique existe pour les GAEC, dans la limite de 10 000 €. Les autres aides reçues sur les mêmes dépenses réduisent l’assiette. Le crédit relève des règles de minimis applicables à l’activité.",
+      "demarche": "Demandez à la CUMA une ventilation permettant d’identifier les dépenses concernées. Avec le comptable, séparez la période admissible en 2026, les utilisations facturées et les autres frais. Préparez les preuves d’adhésion et le relevé des aides de minimis, puis vérifiez le formulaire déclaratif effectivement publié pour l’année.",
+      "vigilance": "Le crédit porte sur des dépenses de l’entreprise adhérente, pas sur le prix total d’achat d’une machine par la coopérative. Une ligne de facture ne doit pas être retenue seulement parce qu’elle provient d’une CUMA. Les factures comportant d’autres services nécessitent une ventilation justifiée.",
+      "exemple": "Pour décider entre achat et matériel partagé, comparez d’abord les coûts complets, la disponibilité aux périodes de pointe et les engagements d’usage. Ajoutez ensuite l’avantage fiscal confirmé. Le crédit ne corrige pas un problème de calendrier ou un outil indisponible au moment du chantier.",
+      "sources": [
+        [
+          "Légifrance — article 244 quater K en vigueur",
+          "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000053543998/2026-04-17"
+        ],
+        [
+          "Impôts — nouveautés de la loi de finances 2026",
+          "https://www.impots.gouv.fr/www2/fichiers/documentation/brochure/ir_2026/pdf_som/nouveautes.pdf"
+        ]
+      ],
+      "mots": "cuma credit impot mecanisation collective 7.5 materiel partage",
+      "article": "aide-credit-cuma-viticulture.html",
+      "verifie": "2026-10-28"
+    },
+    {
+      "id": "diversification-35",
+      "titre": "Ille-et-Vilaine : diversification, transformation et vente directe",
+      "etape": "exploitation",
+      "type": "subvention",
+      "territoire": [
+        "bre"
+      ],
+      "statut": "local",
+      "calendrier": "Dossier auprès du Département ; conditions actuelles et disponibilité à confirmer avant engagement.",
+      "financeur": "Département d’Ille-et-Vilaine",
+      "resume": "Un exemple d’aide départementale à la diversification, utile pour chercher aussi les soutiens locaux au-delà des grands programmes.",
+      "beneficiaires": "Le Département vise notamment les agriculteurs à titre principal ou en installation progressive, des personnes morales agricoles et certains groupements. Les projets de transformation, de vente directe et d’accueil doivent répondre aux catégories de la fiche. Un domaine viticole doit faire confirmer l’admissibilité de son activité et de ses dépenses.",
+      "soutien": "Le montant et les limites se lisent dans la fiche de dispositif et la notice actuelle. Des règles spécifiques concernent notamment le matériel d’occasion. L’objectif de diversification ne permet pas de présenter tout investissement du domaine comme une dépense admissible.",
+      "demarche": "Envoyez au service agricole une description du projet et demandez la fiche, le formulaire et les annexes à jour. Préparez les devis, les modalités de propriété ou d’usage et le tableau des dépenses. Vérifiez les conditions de début des travaux et les autres aides déjà sollicitées.",
+      "vigilance": "Une aide départementale ne s’étend pas à toute la Bretagne. Les appels régionaux et LEADER peuvent compléter la recherche mais ne se cumulent pas sans contrôle. Pour un accueil public, les obligations d’accessibilité, de sécurité et d’exploitation restent à traiter indépendamment de la subvention.",
+      "exemple": "Pour un espace de vente, séparez aménagement, matériel, communication et charges de fonctionnement. Comparez la fréquentation réaliste, les ventes supplémentaires et le temps de présence requis. Le bon projet doit conserver son intérêt après la fin du financement des travaux.",
+      "sources": [
+        [
+          "Ille-et-Vilaine — aide à la diversification et documents",
+          "https://www.ille-et-vilaine.fr/les-aides-du-departement/aide-la-diversification"
+        ],
+        [
+          "Bretagne — portail des financements européens",
+          "https://europe.bzh"
+        ]
+      ],
+      "mots": "bretagne ille et vilaine 35 vente directe accueil diversification caveau",
+      "article": "aide-diversification-35-viticulture.html",
+      "verifie": "2026-10-28"
+    },
+    {
+      "id": "ecoregime",
+      "titre": "Écorégime : voies d’accès et cultures permanentes",
+      "etape": "transition",
+      "type": "subvention",
+      "territoire": [
+        "metropole"
+      ],
+      "statut": "campagne",
+      "calendrier": "Demande annuelle Telepac ; campagne 2026 terminée. Prochaine campagne à préparer.",
+      "financeur": "Union européenne / FEAGA — PAC",
+      "resume": "Un paiement lié aux conditions environnementales de la PAC. Les pratiques viticoles doivent être examinées dans l’ensemble de l’exploitation.",
+      "beneficiaires": "Le demandeur doit remplir les conditions générales d’accès aux paiements concernés et celles de la voie d’écorégime choisie. Pratiques, certification et infrastructures agroécologiques répondent à des critères distincts. La présence de vignes enherbées ne suffit pas à conclure seule à un droit.",
+      "soutien": "Les cultures permanentes possèdent des exigences particulières, notamment autour de la couverture de l’interrang pour la voie des pratiques. Les niveaux de paiement et leur accès se lisent dans la notice annuelle ; un taux d’enherbement ou une certification ne doivent pas être utilisés hors du cadre de campagne.",
+      "demarche": "Avant la déclaration, faites l’inventaire des surfaces par catégorie et de vos certifications valides. Comparez les voies possibles avec la DDT(M) ou un conseiller PAC et conservez les preuves des pratiques. Vérifiez les conséquences d’une nouvelle parcelle, d’une conversion bio ou d’une évolution de certification.",
+      "vigilance": "La cohérence avec CAB, MAEC et autres financements doit être contrôlée. Les règles de cumul peuvent porter sur une pratique ou une surface précise ; elles ne se résument pas à dire que toutes les aides environnementales s’additionnent. Ne promettez pas une recette par hectare sans déterminer la voie effectivement accessible.",
+      "exemple": "Pour un domaine mixant vignes et terres arables, examinez le système complet. Un changement intéressant pour la vigne peut rester insuffisant pour une condition portant sur une autre catégorie de surfaces : la simulation doit donc couvrir toutes les activités déclarées.",
+      "sources": [
+        [
+          "Ministère — paiements découplés et écorégime",
+          "https://agriculture.gouv.fr/les-paiements-directs-decouples"
+        ],
+        [
+          "Telepac — notices 2026",
+          "https://www1.telepac.agriculture.gouv.fr/telepac/aide/formulaires2026.action"
+        ]
+      ],
+      "mots": "ecoregime enherbement interrang hve bio certification",
+      "article": "aide-ecoregime-viticulture.html",
+      "verifie": "2026-10-28"
+    },
+    {
+      "id": "cab",
+      "titre": "Conversion à l’agriculture biologique : aide CAB",
+      "etape": "transition",
+      "type": "subvention",
+      "territoire": [
+        "fr"
+      ],
+      "statut": "campagne",
+      "calendrier": "Déclaration annuelle PAC ; nouveaux engagements 2026 déposés au printemps. Cadre territorial à vérifier.",
+      "financeur": "Union européenne / FEADER + État et autres cofinanceurs",
+      "resume": "Un soutien aux engagements de conversion biologique, à distinguer du crédit d’impôt bio et de la certification.",
+      "beneficiaires": "L’exploitant et les surfaces doivent respecter les conditions de campagne et les engagements biologiques. La notification à l’Agence Bio et le contrat avec un certificateur sont des démarches différentes de la demande d’aide. Les conditions territoriales, plafonds et priorités de financement doivent être vérifiés auprès de l’instructeur.",
+      "soutien": "L’aide est liée aux surfaces et catégories de production admissibles. Les notices 2026 distinguent les engagements CAB, généralement de cinq ans en Hexagone, des autres mesures agroenvironnementales. Un barème d’une autre culture ou d’un ancien programme ne permet pas de calculer la recette de vos vignes.",
+      "demarche": "Avant de convertir, rapprochez calendrier agronomique, début d’engagement, certification et dépôt PAC. Demandez quelles pièces prouvent chaque étape et comment sont traitées les entrées progressives de parcelles. Préparez un suivi annuel des surfaces, des pratiques et des certificats.",
+      "vigilance": "Le cumul avec crédit bio, écorégime, MAEC ou un soutien de l’agence de l’eau doit être examiné précisément. Le crédit bio comporte notamment son propre plafond de cumul avec les aides conversion/maintien. La conversion peut produire des coûts et une transition commerciale avant les premiers encaissements d’aide.",
+      "exemple": "Pour convertir un domaine en deux vagues de parcelles, construisez une chronologie par îlot : engagement, contrôle, vendange et commercialisation. Ce tableau permet de distinguer les surfaces aidées, les coûts techniques et les lots de vins selon leur statut.",
+      "sources": [
+        [
+          "Telepac — présentation MAEC/BIO 2026",
+          "https://www.telepac.agriculture.gouv.fr/telepac/pdf/tas/2026/Dossier-PAC-2026_telepac_presentation-MAEC-BIO.pdf"
+        ],
+        [
+          "Ministère — instruction MAEC et bio 2026",
+          "https://info.agriculture.gouv.fr/boagri/instruction-2026-527"
+        ],
+        [
+          "Légifrance — cumul avec le crédit bio",
+          "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000053561953/2026-06-20"
+        ]
+      ],
+      "mots": "cab conversion bio biologique maintien mab",
+      "article": "aide-cab-viticulture.html",
+      "verifie": "2026-10-28"
+    },
+    {
+      "id": "maec",
+      "titre": "MAEC : engagements agroenvironnementaux et climatiques",
+      "etape": "transition",
+      "type": "subvention",
+      "territoire": [
+        "fr"
+      ],
+      "statut": "local",
+      "calendrier": "Mesures, durée et enveloppe propres au territoire ; demandes PAC 2026 déposées au printemps.",
+      "financeur": "FEADER + État, Régions, agences de l’eau et autres cofinanceurs selon mesure",
+      "resume": "Une rémunération d’engagements précis, accessibles sur des territoires et selon des cahiers des charges déterminés.",
+      "beneficiaires": "L’exploitation doit relever d’une mesure effectivement ouverte sur son territoire ou d’un dispositif approprié. Le cahier des charges définit les pratiques, surfaces, plafonds et contrôles. Le simple choix de réduire les intrants ne crée pas un droit à une MAEC nationale identique partout.",
+      "soutien": "La durée des nouveaux engagements varie : les notices 2026 présentent notamment des engagements de trois ans, avec exceptions territoriales et dispositifs particuliers. Il serait inexact d’annoncer systématiquement cinq ans pour toutes les MAEC. Le paiement dépend du respect de l’engagement et des règles de la mesure.",
+      "demarche": "Identifiez l’opérateur agroenvironnemental de votre territoire et demandez les mesures accessibles aux vignes. Faites chiffrer le changement de pratiques et ses contraintes avant de signer. Conservez le cahier des charges correspondant à la campagne d’entrée, puis organisez les preuves annuelles demandées.",
+      "vigilance": "La compatibilité avec CAB, écorégime et PSE se vérifie à l’échelle des pratiques et des surfaces. Ne multipliez pas les aides supposées couvrir le même engagement. Une cession, un arrachage, une modification de parcellaire ou un arrêt de pratique peut avoir des conséquences sur le contrat.",
+      "exemple": "Pour un engagement sur les herbicides ou l’enherbement, rapprochez le cahier de culture des obligations du contrat. Une organisation simple des interventions, dates et parcelles évite de reconstituer les justificatifs plusieurs années après le début de l’engagement.",
+      "sources": [
+        [
+          "Telepac — engagements MAEC/BIO 2026 et durées",
+          "https://www.telepac.agriculture.gouv.fr/telepac/pdf/tas/2026/Dossier-PAC-2026_telepac_presentation-MAEC-BIO.pdf"
+        ],
+        [
+          "Ministère — instruction 2026-527, rectifiée en octobre",
+          "https://info.agriculture.gouv.fr/boagri/instruction-2026-527"
+        ],
+        [
+          "Ministère — répartition des compétences PAC",
+          "https://agriculture.gouv.fr/les-aides-des-regions"
+        ]
+      ],
+      "mots": "maec agroenvironnement biodiversite intrants territoire",
+      "article": "aide-maec-viticulture.html",
+      "verifie": "2026-10-28"
+    },
+    {
+      "id": "credit-bio",
+      "titre": "Crédit d’impôt agriculture biologique",
+      "etape": "transition",
+      "type": "fiscal",
+      "territoire": [
+        "fr"
+      ],
+      "statut": "permanent",
+      "calendrier": "Dispositif prorogé jusqu’à l’année 2028 ; déclaration annuelle sous conditions.",
+      "financeur": "État / crédit d’impôt",
+      "resume": "4 500 € sous conditions, avec un plafond spécifique de cumul avec les aides conversion/maintien et le respect du de minimis.",
+      "beneficiaires": "Au moins 40 % des recettes agricoles doivent provenir du mode de production biologique au titre de l’année concernée. La simple ouverture d’un dossier de conversion ne suffit pas à démontrer ce seuil. Les recettes, le statut de production et les règles propres à la structure doivent être documentés.",
+      "soutien": "L’article 244 quater L en vigueur fixe le crédit à 4 500 €. La somme du crédit et des aides à la conversion ou au maintien visées par le texte est plafonnée à 5 000 € : le crédit est donc réduit si nécessaire. Les GAEC relèvent de règles particulières de transparence ; le de minimis doit aussi être contrôlé.",
+      "demarche": "Préparez un état annuel des recettes et des aides bio, ainsi que les justificatifs de certification. Faites calculer le crédit par le comptable sur l’année pertinente, puis vérifiez les déclarations et le traitement des aides encore en cours de paiement. Conservez le détail du seuil de recettes.",
+      "vigilance": "Les montants proposés dans un amendement parlementaire ne sont pas nécessairement ceux de la loi publiée. En octobre 2026, le texte en vigueur retient 4 500 €, pas les revalorisations qui ont pu être débattues. Une prorogation jusqu’en 2028 ne supprime pas les conditions annuelles.",
+      "exemple": "Un domaine mêlant lots bio et non bio doit pouvoir expliquer ses recettes par activité et statut. Construisez ce suivi dès les ventes plutôt qu’à la clôture. Comparez ensuite le crédit demandé au montant des aides conversion/maintien à retenir dans le calcul du cumul.",
+      "sources": [
+        [
+          "Légifrance — article 244 quater L, loi de finances 2026",
+          "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000053561953/2026-06-20"
+        ],
+        [
+          "BOFiP — crédit agriculture biologique, mise à jour juin 2026",
+          "https://bofip.impots.gouv.fr/bofip/1585-PGP.html/identifiant%3DBOI-BA-RICI-20-40-20260603"
+        ]
+      ],
+      "mots": "credit impot bio 4500 5000 biologique",
+      "article": "aide-credit-bio-viticulture.html",
+      "verifie": "2026-10-28"
+    },
+    {
+      "id": "credit-hve",
+      "titre": "Crédit d’impôt HVE : première certification et renouvellement",
+      "etape": "transition",
+      "type": "fiscal",
+      "territoire": [
+        "fr"
+      ],
+      "statut": "permanent",
+      "calendrier": "Premières certifications obtenues en 2026 couvertes par la prorogation ; avantage unique sous conditions.",
+      "financeur": "État / crédit d’impôt",
+      "resume": "Le renouvellement d’une certification ne crée pas un nouveau crédit. Vérifier la première date et les aides déjà obtenues.",
+      "beneficiaires": "Le dispositif concerne les exploitations répondant aux conditions de certification haute valeur environnementale et aux périodes définies par la loi. La prorogation aux premières certifications 2026 élargit la période d’entrée ; elle ne réouvre pas un droit annuel aux exploitations déjà bénéficiaires.",
+      "soutien": "Le crédit est un avantage fiscal unique soumis aux conditions et plafonds applicables, notamment ceux liés au de minimis et aux éventuels cumuls. Le BOFiP a précisé en avril 2026 que le renouvellement ne permet pas de bénéficier à nouveau du crédit déjà accordé.",
+      "demarche": "Rassemblez premier certificat, renouvellements, déclarations fiscales antérieures et relevé des aides. Demandez au comptable de vérifier si un crédit a déjà été obtenu ou transmis dans une opération sur l’exploitation. Faites distinguer coût de l’audit, frais de certification et montant de l’avantage fiscal.",
+      "vigilance": "Une certification utile pour l’écorégime ou un appel régional n’entraîne pas automatiquement un crédit d’impôt nouveau. Les dispositifs utilisent parfois des dates ou niveaux distincts. Vérifiez séparément le droit fiscal et l’usage de la certification dans un autre programme.",
+      "exemple": "Avant de décider une certification, comparez ses exigences, coûts récurrents et effets commerciaux attendus. Intégrez un éventuel crédit unique uniquement après confirmation ; ne le reproduisez pas dans chaque budget annuel pour rentabiliser artificiellement le parcours.",
+      "sources": [
+        [
+          "BOFiP — crédit HVE, conditions actualisées avril 2026",
+          "https://bofip.impots.gouv.fr/bofip/14698-PGP.html/identifiant%3DBOI-BA-RICI-20-110-20260408"
+        ],
+        [
+          "BOFiP — renouvellement et absence de nouveau crédit",
+          "https://bofip.impots.gouv.fr/bofip/14481-PGP.html/identifiant%3DBOI-RES-BA-000183-20260408"
+        ]
+      ],
+      "mots": "hve haute valeur environnementale certification impot renouvellement",
+      "article": "aide-credit-hve-viticulture.html",
+      "verifie": "2026-10-28"
+    },
+    {
+      "id": "tfnb-bio",
+      "titre": "Exonération locale de TFNB pour les parcelles bio",
+      "etape": "transition",
+      "type": "fiscal",
+      "territoire": [
+        "fr"
+      ],
+      "statut": "local",
+      "calendrier": "Sous délibération locale ; justificatifs annuels à adresser avant le 1er janvier selon le texte.",
+      "financeur": "Communes et intercommunalités / fiscalité foncière",
+      "resume": "Une exonération de cinq ans peut exister là où la collectivité l’a votée. Elle n’est pas automatique pour toute parcelle certifiée.",
+      "beneficiaires": "L’article 1395 G prévoit une faculté pour les communes et intercommunalités, pour les catégories de propriétés visées et exploitées selon le mode biologique. Il faut donc vérifier à la fois la parcelle, son engagement et l’existence d’une délibération applicable dans la commune.",
+      "soutien": "L’exonération porte sur la part de la collectivité qui l’a adoptée et pour la durée prévue. La date de première attestation biologique détermine le départ du mécanisme. Des règles d’articulation avec d’autres exonérations de TFNB et le de minimis agricole s’appliquent.",
+      "demarche": "Interrogez la commune et le service fiscal avec les références cadastrales et la première attestation du certificateur. Préparez la liste annuelle des parcelles et le justificatif demandé avant l’échéance. Si les terres sont louées, organisez la circulation des informations avec le propriétaire.",
+      "vigilance": "Un certificat bio ne suffit pas à conclure que l’avis foncier doit être nul. Les parts concernées, les autres prélèvements et le traitement d’un changement de conduite doivent être examinés. Ne confondez pas cet avantage local avec le crédit bio ou le dégrèvement propre aux jeunes agriculteurs.",
+      "exemple": "Pour un domaine réparti sur plusieurs communes, tenez un tableau des délibérations, dates d’entrée et parcelles. Deux îlots conduits de manière identique peuvent avoir un traitement fiscal différent en raison de la décision locale applicable.",
+      "sources": [
+        [
+          "Légifrance — article 1395 G, conditions et déclaration",
+          "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000028449607"
+        ],
+        [
+          "Service public — taxe foncière non bâtie",
+          "https://entreprendre.service-public.gouv.fr/vosdroits/F31638"
+        ]
+      ],
+      "mots": "tfnb bio taxe fonciere commune exoneration parcelles",
+      "article": "aide-tfnb-bio-viticulture.html",
+      "verifie": "2026-10-28"
+    },
+    {
+      "id": "avenir-bio",
+      "titre": "Fonds Avenir Bio : structurer une filière collective",
+      "etape": "transition",
+      "type": "subvention",
+      "territoire": [
+        "fr"
+      ],
+      "statut": "clos",
+      "calendrier": "Appel 2026 clos le 22 juin 2026 à midi ; aucune nouvelle candidature à cet appel.",
+      "financeur": "État — Agence Bio",
+      "resume": "Un fonds de structuration de filières associant amont et aval, distinct de l’aide à la conversion d’un domaine.",
+      "beneficiaires": "Le projet doit répondre aux conditions du Fonds Avenir Bio, notamment sa dimension de filière et son organisation partenariale. Un investissement isolé de domaine n’est pas équivalent à une structuration réunissant production, transformation et débouchés.",
+      "soutien": "L’appel 2026 possède un texte, une enveloppe et des limites propres. Les dépenses, engagements et partenaires sont instruits dans ce cadre. Les montants d’un appel précédent ou d’une FAQ non actualisée ne doivent pas être repris pour promettre un soutien identique.",
+      "demarche": "Préparez les besoins de chaque maillon, les engagements commerciaux, les investissements et la gouvernance du collectif. Avant une prochaine candidature, demandez à l’Agence Bio le texte effectivement ouvert et les étapes de dépôt. Distinguez les coûts portés par chaque partenaire et le financement du fonctionnement après le projet.",
+      "vigilance": "La page d’appel et le téléservice de clôture établissent la fin des candidatures de juin 2026. Une FAQ mentionnant une autre date ou d’anciens plafonds ne doit pas conduire à annoncer l’appel ouvert. Un projet préparé peut servir à une prochaine édition, mais sa reconduction n’est pas acquise.",
+      "exemple": "Un groupement de vignerons et un opérateur de commercialisation peuvent réfléchir ensemble à des volumes, des outils et des débouchés. Commencez par vérifier la réalité des engagements économiques ; une subvention de structuration ne remplace pas un marché pour les volumes supplémentaires.",
+      "sources": [
+        [
+          "Agence Bio — Fonds Avenir Bio et texte d’appel 2026",
+          "https://www.agencebio.org/vos-outils/fonds-avenir-bio/"
+        ],
+        [
+          "Téléservice officiel — clôture de l’appel 2026",
+          "https://demarche.numerique.gouv.fr/fermeture/appel-a-projets-fonds-avenir-bio-2026"
+        ]
+      ],
+      "mots": "avenir bio collectif filiere transformation commercialisation",
+      "article": "aide-avenir-bio-viticulture.html",
+      "verifie": "2026-10-28"
+    },
+    {
+      "id": "agences-eau",
+      "titre": "Agences de l’eau : pratiques, matériel et protection des ressources",
+      "etape": "transition",
+      "type": "subvention",
+      "territoire": [
+        "metropole"
+      ],
+      "statut": "local",
+      "calendrier": "12es programmes 2025–2030 ; appels et priorités à vérifier auprès de l’agence du bassin.",
+      "financeur": "Agences de l’eau ; cofinancements publics selon dispositif",
+      "resume": "Des soutiens territorialisés à l’agroécologie et à l’eau. Le bassin hydrographique compte autant que la région administrative.",
+      "beneficiaires": "Les agences soutiennent des opérations correspondant aux objectifs de leur programme et à leurs zones prioritaires. Captages, masses d’eau, type de pratiques et porteur du projet peuvent conditionner l’accès. L’appartenance à une région viticole n’entraîne pas une admissibilité générale.",
+      "soutien": "Les outils peuvent concerner investissements, conseil, conversion biologique, mesures agroenvironnementales ou projets collectifs. Le taux et la voie de financement dépendent du bassin et de l’appel ; certains soutiens transitent par un autre programme ou un maître d’ouvrage.",
+      "demarche": "Identifiez l’agence compétente pour la parcelle ou le projet, puis l’animateur de captage ou de territoire. Présentez le changement visé, les surfaces, les coûts et les autres aides envisagées. Demandez si la demande est individuelle, collective ou portée dans un appel régional FEADER.",
+      "vigilance": "La carte administrative des Régions n’est pas celle des bassins. Ne cumulez pas mécaniquement un taux agence et un taux régional : ils peuvent être deux parts d’un même financement ou viser les mêmes coûts. Une aide d’investissement ne vaut pas autorisation de prélèvement ou de rejet.",
+      "exemple": "Pour un projet réduisant les pollutions diffuses, documentez la pratique de départ et le résultat attendu. Si plusieurs domaines partagent le même enjeu, examinez une démarche collective avec l’animateur avant de limiter la recherche à un achat individuel.",
+      "sources": [
+        [
+          "Agences de l’eau — moyens d’action et bassins",
+          "https://www.lesagencesdeleau.fr/les-agences-de-leau/moyens-dactions"
+        ],
+        [
+          "Agences de l’eau — fiche agriculture de février 2026",
+          "https://www.lesagencesdeleau.fr/sites/default/files/medias/documents/AE-fiche-AGRI-v%2016%2002%202026.pdf"
+        ],
+        [
+          "Rhône-Méditerranée-Corse — fiches du 12e programme",
+          "https://www.eaurmc.fr/upload/docs/application/pdf/2025-01/recueil-fiches.pdf"
+        ]
+      ],
+      "mots": "eau captage pollution effluents pesticides bassin sobriete",
+      "article": "aide-agences-eau-viticulture.html",
+      "verifie": "2026-10-28"
+    },
+    {
+      "id": "pse",
+      "titre": "Paiements pour services environnementaux : contrats territoriaux",
+      "etape": "transition",
+      "type": "subvention",
+      "territoire": [
+        "metropole"
+      ],
+      "statut": "local",
+      "calendrier": "Projets territoriaux existants ; expérimentation prolongée jusqu’en 2027, accès local à confirmer.",
+      "financeur": "Agences de l’eau et porteurs territoriaux / aide publique",
+      "resume": "Une rémunération de services environnementaux mesurés dans un projet local, sans droit automatique à un paiement national par hectare.",
+      "beneficiaires": "Les agriculteurs participent à des projets portés par des collectivités, syndicats d’eau ou autres maîtres d’ouvrage admissibles. Le territoire, les indicateurs et les engagements sont définis par le projet. Il faut contacter le porteur local pour savoir si de nouvelles exploitations peuvent entrer.",
+      "soutien": "La rémunération dépend des services et résultats observés selon le cadre du PSE : gestion de structures paysagères ou du système de production, notamment. L’existence d’une expérimentation nationale jusqu’en 2027 n’implique pas que chaque projet recrute de nouveaux bénéficiaires jusqu’à cette date.",
+      "demarche": "Recherchez un projet couvrant vos parcelles puis demandez le contrat, ses indicateurs, sa durée et ses modalités de contrôle. Établissez l’état initial et vérifiez la compatibilité avec vos engagements PAC. Faites préciser les conséquences d’une cession ou d’une modification des surfaces.",
+      "vigilance": "Ne confondez pas paiement public PSE, vente privée de crédits carbone et prime commerciale d’un acheteur. Le cumul avec MAEC, bio ou un autre paiement pour la même pratique doit être vérifié. Les services déjà présents et les améliorations peuvent être traités différemment.",
+      "exemple": "Un domaine entretenant des haies et des couverts peut présenter son système au porteur local. La question utile n’est pas seulement le tarif : il faut savoir quelles parcelles entrent, comment le résultat est mesuré et quels changements deviennent contractuels.",
+      "sources": [
+        [
+          "Ministère de la Transition écologique — PSE publics",
+          "https://www.ecologie.gouv.fr/politiques-publiques/paiements-services-environnementaux-publics"
+        ],
+        [
+          "Agences de l’eau — soutiens agricoles 2026",
+          "https://www.lesagencesdeleau.fr/sites/default/files/medias/documents/AE-fiche-AGRI-v%2016%2002%202026.pdf"
+        ]
+      ],
+      "mots": "pse services environnementaux haies biodiversite carbone",
+      "article": "aide-pse-viticulture.html",
+      "verifie": "2026-10-28"
+    },
+    {
+      "id": "haies",
+      "titre": "Haies, biodiversité et réduction des intrants : rechercher le bon appel",
+      "etape": "transition",
+      "type": "subvention",
+      "territoire": [
+        "fr"
+      ],
+      "statut": "local",
+      "calendrier": "Plusieurs guichets nationaux de planification sont clos ; appels territoriaux distincts à vérifier.",
+      "financeur": "État, Régions, agences de l’eau, FEADER selon le dispositif",
+      "resume": "Une famille de soutiens à rechercher par opération et territoire, sans annoncer les anciens guichets écologiques comme encore ouverts.",
+      "beneficiaires": "Plantation de haies, accompagnement, matériel de substitution aux pesticides et investissements collectifs relèvent de cadres distincts. Le porteur, la zone, le cahier technique et la liste des dépenses déterminent l’admissibilité. Certains programmes financent un opérateur accompagnant les exploitations.",
+      "soutien": "Le ministère publie un état des dispositifs de planification écologique ; plusieurs volets y sont signalés clos. Des aides régionales ou de bassin peuvent avoir d’autres périodes. Une enveloppe annoncée dans un plan national ne permet pas de déduire qu’un domaine peut déposer aujourd’hui.",
+      "demarche": "Décrivez d’abord l’opération : implantation, entretien, conseil, remplacement d’un usage phytosanitaire ou équipement partagé. Consultez ensuite DRAAF, Région et agence de l’eau. Demandez la version du cahier des charges, les essences ou équipements admis et le moment autorisé d’engagement.",
+      "vigilance": "Une plantation aidée peut imposer maintien et entretien. Vérifiez accès, servitudes, entretien futur et compatibilité avec les pratiques. Pour un équipement, ne transposez pas les barèmes d’un guichet FranceAgriMer 2024 à un appel 2026 ; il peut être terminé ou avoir changé de liste.",
+      "exemple": "Pour une haie de bord de vigne, préparez un plan, la longueur, les essences et l’entretien prévu sur plusieurs années. Comparez le bénéfice attendu et les contraintes de passage des engins avant de choisir un dispositif sur le seul montant de la prime.",
+      "sources": [
+        [
+          "Ministère — état des financements de la planification écologique",
+          "https://agriculture.gouv.fr/les-dispositifs-de-financement-agriculture-alimentation-de-la-planification-ecologique"
+        ],
+        [
+          "Agences de l’eau — agriculture et solutions fondées sur la nature",
+          "https://www.lesagencesdeleau.fr/sites/default/files/medias/documents/AE-fiche-AGRI-v%2016%2002%202026.pdf"
+        ],
+        [
+          "Ministère — aides des Régions",
+          "https://agriculture.gouv.fr/les-aides-des-regions"
+        ]
+      ],
+      "mots": "haie pacte ecophyto phytosanitaire pesticide biodiversite robotique",
+      "article": "aide-haies-viticulture.html",
+      "verifie": "2026-10-28"
+    },
+    {
+      "id": "ademe-energie",
+      "titre": "ADEME : études énergétiques et chaleur renouvelable",
+      "etape": "transition",
+      "type": "subvention",
+      "territoire": [
+        "fr"
+      ],
+      "statut": "local",
+      "calendrier": "Catalogues 2026 ; admissibilité technique et ouverture auprès de la direction régionale ADEME.",
+      "financeur": "État — ADEME / Fonds Chaleur selon opération",
+      "resume": "Des études ou projets énergétiques ciblés, à vérifier selon l’activité du chai. Pas de prime générale à tout équipement photovoltaïque.",
+      "beneficiaires": "Les conditions varient entre étude de performance énergétique, décarbonation d’activité industrielle et production de chaleur renouvelable. Une activité exclusivement tertiaire ne remplit pas les critères d’un appel industriel. L’activité de vinification et le périmètre technique du chai doivent être présentés à l’ADEME.",
+      "soutien": "Le catalogue 2026 comprend notamment les contrats chaleur renouvelable et certaines études de faisabilité. Les bénéficiaires, exigences d’étude, seuils et soutiens sont propres à chaque fiche. Un financement d’étude n’est pas une décision de financement des travaux qui pourraient en résulter.",
+      "demarche": "Préparez factures d’énergie, procédés, températures utiles et contraintes de production. Contactez la direction régionale avec ces données avant de commander une étude ou un équipement. Demandez le dispositif adapté et les qualifications attendues du prestataire.",
+      "vigilance": "Séparez économies d’énergie, production de chaleur et production d’électricité : les guichets ne sont pas interchangeables. Vérifiez si les aides publiques ou certificats d’économies d’énergie doivent être déclarés ou déduits. Le dimensionnement doit rester justifié par les besoins réels, après réduction des consommations.",
+      "exemple": "Pour un chai utilisant chauffage et froid à des périodes différentes, commencez par cartographier les besoins. Une solution intéressante sur un poste peut devenir trop grande sur l’année. L’étude doit comparer des scénarios et expliquer le coût complet avant tout choix d’équipement.",
+      "sources": [
+        [
+          "ADEME — contrat chaleur renouvelable 2026",
+          "https://agirpourlatransition.ademe.fr/entreprises/aides-financieres/catalogue/2026/contrat-chaleur-renouvelable"
+        ],
+        [
+          "ADEME — études industrielles de performance énergétique et décarbonation",
+          "https://agirpourlatransition.ademe.fr/entreprises/aides-financieres/catalogue/2026/etudes-de-faisabilite-de-performance-energetique-ou-de-decarbonation-dentreprises-industrielles"
+        ]
+      ],
+      "mots": "ademe chaleur froid energie biomasse solaire decarbonation audit",
+      "article": "aide-ademe-energie-viticulture.html",
+      "verifie": "2026-10-28"
+    },
+    {
+      "id": "conseil-rse-grand-est",
+      "titre": "Grand Est : conseil RSE de la filière vitivinicole",
+      "etape": "transition",
+      "type": "conseil",
+      "territoire": [
+        "ges"
+      ],
+      "statut": "ouvert",
+      "calendrier": "Appel du 1er juin au 2 novembre 2026 ; prestataires habilités et crédits disponibles.",
+      "financeur": "Région Grand Est + Union européenne / FEADER",
+      "resume": "Un conseil individuel soutenu pour les entreprises vitivinicoles. L’aide est demandée par le prestataire habilité, pas librement encaissée par le domaine.",
+      "beneficiaires": "Les entreprises de la filière ayant leur siège en Grand Est peuvent recevoir les conseils prévus dans le cadre de l’appel. Le prestataire doit respecter son habilitation et les conditions de dépôt. L’entreprise bénéficiaire du conseil et l’organisme qui reçoit l’aide n’ont pas le même rôle.",
+      "soutien": "Deux formats de conseil sont présentés, avec forfaits et taux distincts pour sensibilisation et approfondissement. Un taux de prise en charge ne signifie pas que le domaine reçoit ce forfait sur son compte. Faites préciser le reste à charge et les prestations incluses dans la convention.",
+      "demarche": "Contactez un prestataire habilité et exposez vos enjeux : pratiques, organisation, conditions de travail ou relations commerciales. Demandez un programme, des livrables et le coût restant à payer. Vérifiez que la demande peut être déposée avant la clôture et selon le calendrier exigé.",
+      "vigilance": "Le 2 novembre est proche ; ne confondez pas prise de contact et dépôt validé. Un diagnostic RSE n’est pas automatiquement une certification et ne garantit pas l’accès à d’autres aides. Demandez comment les résultats seront utilisés et qui conserve les données collectées.",
+      "exemple": "Pour un petit domaine, choisissez un périmètre utilisable : quelques priorités, un responsable et des indicateurs. Un conseil financé est utile s’il débouche sur des décisions suivies ; un document volumineux sans mise en œuvre ne justifie pas le temps mobilisé.",
+      "sources": [
+        [
+          "Beeurope Grand Est — conseil RSE vitivinicole, appel et modalités",
+          "https://beeurope.grandest.fr/aides/appel-a-projets-feader-conseil-aux-entreprises-de-la-filiere-viti-vinicoles-du-grand-est-en-matiere-de-rse/"
+        ],
+        [
+          "Grand Est — catalogue des aides agricoles",
+          "https://www.grandest.fr/aides/?competence=12392"
+        ]
+      ],
+      "mots": "grand est rse conseil champagne alsace lorraine",
+      "article": "aide-conseil-rse-grand-est-viticulture.html",
+      "verifie": "2026-10-28"
+    },
+    {
+      "id": "assurance-recolte",
+      "titre": "Assurance multirisque climatique : aide à la prime",
+      "etape": "risques",
+      "type": "indemnite",
+      "territoire": [
+        "metropole"
+      ],
+      "statut": "campagne",
+      "calendrier": "Contrat et demande annuelle PAC ; calendrier de la prochaine campagne à préparer avec l’assureur.",
+      "financeur": "Union européenne / FEADER + État selon le cadre",
+      "resume": "Un soutien au coût de certains contrats d’assurance récolte. Le niveau de prime éligible ne couvre pas toutes les garanties commerciales.",
+      "beneficiaires": "Le contrat doit répondre aux critères de l’assurance récolte subventionnable. Les surfaces assurées, les catégories de cultures et les garanties sont encadrées. Pour la vigne, l’assureur et le demandeur doivent vérifier le périmètre exigé, pas seulement la parcelle jugée la plus exposée.",
+      "soutien": "Le soutien peut atteindre 70 % de la prime admissible. Ce taux ne signifie pas que l’État rembourse 70 % de toutes les options ou de toute facture d’assurance. Franchise, capital assuré, rendement de référence et exclusions modifient la protection et le coût restant au domaine.",
+      "demarche": "Demandez un devis décomposant prime admissible à la subvention et garanties hors assiette. Comparez plusieurs scénarios de pertes, puis vérifiez la demande annuelle Telepac et la transmission des justificatifs. Conservez le contrat, les déclarations de surfaces et les preuves de paiement.",
+      "vigilance": "Une assurance souscrite après un sinistre ne protège pas rétroactivement la récolte. Une demande PAC et un contrat doivent être cohérents. La solidarité nationale pour les pertes exceptionnelles suit un autre étage du dispositif : elle ne supprime pas l’intérêt d’analyser la franchise et la couverture privée.",
+      "exemple": "Pour juger un contrat, partez de la trésorerie nécessaire après une récolte fortement réduite. Testez le délai d’indemnisation et la perte non couverte en plus du prix de la prime. Le contrat le moins cher peut laisser un reste à charge incompatible avec les échéances du domaine.",
+      "sources": [
+        [
+          "Ministère — FAQ assurance récolte",
+          "https://agriculture.gouv.fr/assurance-recolte-reponses-aux-questions-frequemment-posees"
+        ],
+        [
+          "Telepac — notices et formulaires assurance 2026",
+          "https://www1.telepac.agriculture.gouv.fr/telepac/aide/formulaires2026.action"
+        ]
+      ],
+      "mots": "mrc assurance recolte gel grele secheresse prime 70",
+      "article": "aide-assurance-recolte-viticulture.html",
+      "verifie": "2026-10-28"
+    },
+    {
+      "id": "isn",
+      "titre": "Indemnisation de solidarité nationale : pertes climatiques exceptionnelles",
+      "etape": "risques",
+      "type": "indemnite",
+      "territoire": [
+        "metropole"
+      ],
+      "statut": "local",
+      "calendrier": "Après événement et selon procédure de reconnaissance/déclaration ; délais propres au sinistre.",
+      "financeur": "État / solidarité nationale",
+      "resume": "Le dernier étage de couverture des pertes climatiques, distinct des anciennes calamités pour les récoltes assurables.",
+      "beneficiaires": "Le risque, la culture et le niveau de perte doivent entrer dans les conditions légales. Pour la viticulture, le déclenchement de l’étage de solidarité intervient au-delà du seuil prévu pour cette production. Les démarches diffèrent selon l’assurance et l’interlocuteur de l’exploitation.",
+      "soutien": "Le seuil de pertes viticoles de cet étage est de 50 %. Pour les non-assurés, le taux de prise en charge est réduit selon les campagnes : la FAQ ministérielle indique 28 % en 2026. Ce pourcentage s’applique à la part de perte relevant de cet étage, pas à toute la récolte perdue.",
+      "demarche": "Après le sinistre, contactez l’interlocuteur compétent sans attendre les vendanges finales pour connaître les délais de déclaration. Conservez dates, parcelles, rendements historiques et justificatifs de pertes. Vérifiez la procédure annoncée par la préfecture et les pièces demandées à votre catégorie de demandeur.",
+      "vigilance": "Ne calculez pas une indemnité en appliquant directement 28 % au chiffre d’affaires manquant. Le rendement de référence, les seuils et la valorisation de la perte suivent un cadre précis. Une trésorerie d’urgence ne doit pas dépendre d’un montant d’indemnisation encore incertain.",
+      "exemple": "Après un gel important, suivez dans un même dossier constatations, déclarations, volume final et échanges avec l’assureur ou l’administration. Séparez les pertes de récolte des dégâts aux équipements : ils ne relèvent pas nécessairement du même mécanisme.",
+      "sources": [
+        [
+          "Ministère — articulation assurance et solidarité nationale",
+          "https://agriculture.gouv.fr/assurance-recolte-reponses-aux-questions-frequemment-posees"
+        ],
+        [
+          "Ministère — gestion des risques en agriculture",
+          "https://agriculture.gouv.fr/la-gestion-des-risques-en-agriculture"
+        ]
+      ],
+      "mots": "isn fngra calamites gel grele secheresse non assure",
+      "article": "aide-isn-viticulture.html",
+      "verifie": "2026-10-28"
+    },
+    {
+      "id": "prets-consolidation",
+      "titre": "Prêts de consolidation 2026 : garantie et coût de commission",
+      "etape": "risques",
+      "type": "credit",
+      "territoire": [
+        "fr"
+      ],
+      "statut": "ouvert",
+      "calendrier": "Demande FranceAgriMer jusqu’au 26 février 2027 ; prêts concernés mis en place du 21 février au 31 décembre 2026.",
+      "financeur": "État — Bpifrance, banques et FranceAgriMer",
+      "resume": "Un prêt bancaire garanti et une prise en charge de certaines commissions de garantie. Le capital reste une dette à rembourser.",
+      "beneficiaires": "Les exploitations et certaines coopératives doivent satisfaire aux conditions économiques et d’endettement du dispositif 2026. Une attestation comptable est requise. Les modalités ont été assouplies ; les critères d’un ancien prêt de crise 2025 ne doivent pas être utilisés sans vérifier le texte actuel.",
+      "soutien": "Le mécanisme prévoit des prêts de consolidation sur cinq à douze ans, avec une garantie publique pouvant couvrir 70 %. Pour une exploitation, le plafond des prêts et la base sur laquelle la commission est prise en charge diffèrent : FranceAgriMer mentionne une base de commission limitée à 200 000 € de prêt, même lorsque le financement admissible est supérieur.",
+      "demarche": "Commencez par la banque et le comptable pour établir la faisabilité, l’objet de consolidation et les ratios demandés. Identifiez le prêt, la garantie et les justificatifs de commission, puis préparez la demande FranceAgriMer dans son propre calendrier. Demandez une simulation avec et sans soutien.",
+      "vigilance": "Le guichet 2026 n’efface ni la dette ni les intérêts du prêt. La date de mise en place bancaire et celle de dépôt de la prise en charge sont différentes. Les conditions des coopératives ne se transposent pas aux exploitations individuelles ; le service instructeur doit confirmer le cas applicable.",
+      "exemple": "Un réétalement peut réduire l’échéance annuelle tout en augmentant le coût total. Comparez durée, taux, garanties personnelles, trésorerie libérée et capacité de remboursement dans un scénario prudent de ventes. L’objectif doit être une exploitation viable après consolidation.",
+      "sources": [
+        [
+          "FranceAgriMer — prêts de consolidation 2026 et commissions Bpifrance",
+          "https://www.franceagrimer.fr/aides/prets-de-consolidation-2026-prise-en-charge-des-commissions-de-garanties-operees-par-bpi"
+        ],
+        [
+          "Ministère — prolongation et assouplissement 2026",
+          "https://agriculture.gouv.fr/prolongation-et-assouplissement-des-prets-de-restructuration-garantis-par-bpifrance-en-2026"
+        ]
+      ],
+      "mots": "gretea pret garanti bpi consolidation tresorerie restructuration dette",
+      "article": "aide-prets-consolidation-viticulture.html",
+      "verifie": "2026-10-28"
+    },
+    {
+      "id": "msa-difficultes",
+      "titre": "MSA : échéancier et prise en charge de cotisations",
+      "etape": "risques",
+      "type": "fiscal",
+      "territoire": [
+        "fr"
+      ],
+      "statut": "permanent",
+      "calendrier": "Examen individuel auprès de la caisse ; enveloppes et critères de prise en charge variables.",
+      "financeur": "MSA / action sociale et dispositifs publics selon situation",
+      "resume": "Échelonner une dette et obtenir une prise en charge sont deux décisions différentes. Il faut contacter la caisse avant de laisser les impayés s’accumuler.",
+      "beneficiaires": "La caisse examine la difficulté, la viabilité et la situation déclarative. Les modalités de paiement peuvent concerner employeurs et non-salariés selon leur dossier. Une prise en charge partielle de cotisations repose sur des critères et disponibilités ; elle n’est pas acquise à toute exploitation en baisse de revenu.",
+      "soutien": "Un échéancier décale des paiements mais ne supprime pas leur montant. Une prise en charge peut réduire les cotisations retenues selon la décision. Les deux mécanismes doivent donc apparaître sur des lignes différentes dans le plan de trésorerie.",
+      "demarche": "Préparez les derniers appels, les dettes, les déclarations à jour et une prévision de trésorerie réaliste. Exposez l’origine de la difficulté et les actions déjà engagées avec la banque ou les autres créanciers. Demandez quelles cotisations peuvent être concernées et comment déposer un dossier complet.",
+      "vigilance": "Pour un employeur, le paiement des parts salariales et les obligations déclaratives constituent des points particuliers à vérifier. Ne cessez pas de déclarer parce qu’un report est demandé. Une demande en cours n’équivaut pas à l’accord d’un échéancier ou à une suspension de toutes les procédures.",
+      "exemple": "Après une baisse de récolte, construisez un calendrier mensuel intégrant les ventes réellement encaissables. Une proposition soutenable vaut mieux qu’une mensualité trop élevée immédiatement renégociée. Faites confirmer par écrit les échéances, les conditions et la conduite à tenir en cas d’écart.",
+      "sources": [
+        [
+          "MSA — cotisations et prise en charge en difficulté",
+          "https://www.msa.fr/lfp/exploitant/vos-cotisations-en-clair-questions-reponses"
+        ],
+        [
+          "MSA — échéancier de paiement employeur",
+          "https://www.msa.fr/lfp/employeurs/echeancier-paiement"
+        ],
+        [
+          "DRIAAF — dispositifs pour les agriculteurs en difficulté",
+          "https://driaaf.ile-de-france.agriculture.gouv.fr/accompagnement-et-dispositifs-d-aide-pour-les-agriculteurs-a4447.html"
+        ]
+      ],
+      "mots": "msa pec cotisations report echeancier dette sociale",
+      "article": "aide-msa-difficultes-viticulture.html",
+      "verifie": "2026-10-28"
+    },
+    {
+      "id": "audit-global",
+      "titre": "Audit global d’une exploitation en difficulté",
+      "etape": "risques",
+      "type": "conseil",
+      "territoire": [
+        "fr"
+      ],
+      "statut": "permanent",
+      "calendrier": "Demande et validation auprès de la DDT(M), selon crédits et conditions du dispositif.",
+      "financeur": "État — dispositif d’accompagnement des exploitations en difficulté",
+      "resume": "Un diagnostic économique, financier, technique et social pour orienter le redressement ou la réorientation.",
+      "beneficiaires": "Le cadre du code rural prévoit des conditions relatives à l’exploitant et à l’activité. La DDT(M) vérifie l’entrée dans le dispositif et les modalités de réalisation de l’audit. Une exploitation en difficulté doit être orientée avant de commander une prestation supposée financée.",
+      "soutien": "Le soutien concerne le coût de l’audit admissible selon le dispositif, pas la totalité des dettes révélées par l’étude. Le diagnostic prépare l’examen des pistes : réorganisation, accompagnement, AREA ou réinsertion professionnelle. Il ne préjuge pas de l’accord d’une aide suivante.",
+      "demarche": "Contactez la DDT(M) avec une description courte de la situation, puis demandez l’accord préalable et le choix du prestataire. Préparez comptes, dettes, stocks, échéances, surfaces et perspectives de ventes. Faites préciser la restitution attendue et les personnes associées au diagnostic.",
+      "vigilance": "Un audit privé commandé sans respecter le parcours n’est pas automatiquement pris en charge. Il faut aussi distinguer difficultés temporaires de trésorerie et déséquilibre durable du modèle. Le diagnostic doit s’appuyer sur des volumes vendables et des prix crédibles, pas seulement sur la valeur théorique des stocks.",
+      "exemple": "Un domaine peut présenter un résultat comptable acceptable mais manquer de liquidités à cause du stock et des délais clients. Organisez ces données avant l’audit pour permettre une discussion sur les causes, puis demandez un plan d’actions avec responsables et dates.",
+      "sources": [
+        [
+          "Service public — demande d’aide à l’audit global",
+          "https://entreprendre.service-public.gouv.fr/vosdroits/R50653"
+        ],
+        [
+          "Légifrance — aides aux exploitations agricoles en difficulté",
+          "https://www.legifrance.gouv.fr/codes/id/LEGISCTA000020150298"
+        ],
+        [
+          "DRIAAF — parcours de soutien",
+          "https://driaaf.ile-de-france.agriculture.gouv.fr/accompagnement-et-dispositifs-d-aide-pour-les-agriculteurs-a4447.html"
+        ]
+      ],
+      "mots": "audit global diagnostic difficulte dettes ddt",
+      "article": "aide-audit-global-viticulture.html",
+      "verifie": "2026-10-28"
+    },
+    {
+      "id": "area",
+      "titre": "AREA : aide à la relance des exploitations agricoles",
+      "etape": "risques",
+      "type": "subvention",
+      "territoire": [
+        "fr"
+      ],
+      "statut": "permanent",
+      "calendrier": "Après diagnostic et instruction DDT(M) ; conditions de redressement et crédits à vérifier.",
+      "financeur": "État — aide à la relance des exploitations agricoles",
+      "resume": "Un dispositif encadré pour des exploitations dont le redressement est possible, avec plan et contreparties.",
+      "beneficiaires": "L’accès repose sur les conditions du code rural et les instructions de mise en œuvre : situation du chef d’exploitation, activité, difficultés et perspectives de redressement. Il ne s’agit pas d’une compensation automatique de toute baisse de chiffre d’affaires.",
+      "soutien": "La nature et le montant des soutiens sont instruits dans un plan de restructuration et d’accompagnement. L’aide peut porter sur les charges admises dans le cadre fixé ; elle ne transforme pas l’ensemble des dettes en subvention. Le diagnostic préalable est un élément important du parcours.",
+      "demarche": "Demandez à la DDT(M) si le dispositif correspond à votre situation et quelles démarches doivent précéder la demande. Réunissez comptes, engagements bancaires et sociaux, prévisions et conclusions du diagnostic. Faites apparaître les efforts des créanciers et les changements de gestion nécessaires.",
+      "vigilance": "Une aide de relance ne remplace pas un financement durable. Le respect du plan et les engagements pris doivent être suivis après la décision. Avant toute cession, changement juridique ou investissement majeur, vérifiez les conséquences avec l’instructeur et les professionnels qui vous accompagnent.",
+      "exemple": "Pour un domaine surendetté, comparez maintien à l’identique, réduction de charges, évolution commerciale et réorientation partielle. Le scénario soutenu doit expliquer comment l’exploitation retrouve une capacité de remboursement, même sans compter sur une nouvelle aide exceptionnelle l’année suivante.",
+      "sources": [
+        [
+          "Légifrance — cadre des aides aux exploitations en difficulté",
+          "https://www.legifrance.gouv.fr/codes/id/LEGISCTA000020150298"
+        ],
+        [
+          "DRIAAF — AREA, audit et réinsertion",
+          "https://driaaf.ile-de-france.agriculture.gouv.fr/accompagnement-et-dispositifs-d-aide-pour-les-agriculteurs-a4447.html"
+        ],
+        [
+          "Préfecture des Pyrénées-Atlantiques — dispositifs de l’État",
+          "https://www.pyrenees-atlantiques.gouv.fr/Actions-de-l-Etat/Agriculture-foret-et-developpement-rural/Les-aides-agricoles/Accompagnement-des-Agriculteurs-en-Difficulte/Les-dispositifs-d-aides-de-l-Etat-aux-agriculteurs-en-difficulte"
+        ]
+      ],
+      "mots": "area relance redressement restructuration difficulte",
+      "article": "aide-area-viticulture.html",
+      "verifie": "2026-10-28"
+    },
+    {
+      "id": "fmse",
+      "titre": "FMSE : programmes sanitaires de la section viticulture",
+      "etape": "risques",
+      "type": "indemnite",
+      "territoire": [
+        "fr"
+      ],
+      "statut": "local",
+      "calendrier": "Programmes ciblés et périodes d’indemnisation ; vérifier le programme effectivement ouvert.",
+      "financeur": "Fonds mutualisé FMSE ; concours publics selon programme agréé",
+      "resume": "Un soutien pour certains événements sanitaires admissibles. L’adhésion et le respect des obligations sanitaires restent déterminants.",
+      "beneficiaires": "Les exploitations doivent respecter le cahier des charges de la section et les conditions du programme concerné, dont les contributions requises. La flavescence dorée et d’autres situations sanitaires répondent à des règles propres. Un arrachage sanitaire ne crée pas automatiquement un droit à indemnisation.",
+      "soutien": "Le FMSE publie des programmes, leurs événements couverts et leurs conditions. Leur agrément et leur période doivent être vérifiés. Les pertes retenues, coûts admissibles et modalités de calcul ne sont pas les mêmes qu’une prime nationale d’arrachage définitif.",
+      "demarche": "Après une obligation sanitaire, conservez notifications, parcelles, preuves d’exécution et justificatifs de coûts. Contactez le FMSE ou le relais désigné pour identifier le programme et son calendrier. Vérifiez les obligations de déclaration et les preuves de respect des mesures prescrites.",
+      "vigilance": "L’indemnisation ne dispense pas d’appliquer les mesures sanitaires. Une exploitation qui ne respecte pas les obligations peut compromettre sa recevabilité. N’additionnez pas les indemnisations et aides portant sur la même perte sans vérifier les règles de cumul.",
+      "exemple": "Classez le dossier sanitaire séparément du plan de replantation : origine du foyer, intervention prescrite, dépenses et conséquence sur la production. Vous pourrez alors distinguer indemnisation d’une perte, coût de remise en production et éventuelle aide à l’investissement.",
+      "sources": [
+        [
+          "FMSE — programmes par section",
+          "https://www.fmse.fr/les-programmes/les-programmes-par-section/"
+        ],
+        [
+          "FMSE — conditions d’éligibilité",
+          "https://www.fmse.fr/les-programmes/les-conditions-deligibilite/"
+        ],
+        [
+          "FMSE — cahier des charges viticulture 2025–2027",
+          "https://www.fmse.fr/wp-content/uploads/2025/07/Cahier-des-charges-Viti.pdf"
+        ]
+      ],
+      "mots": "fmse flavescence doree sanitaire arrachage maladie",
+      "article": "aide-fmse-viticulture.html",
+      "verifie": "2026-10-28"
+    },
+    {
+      "id": "tfnb-sinistre",
+      "titre": "TFNB : dégrèvement pour perte de récolte",
+      "etape": "risques",
+      "type": "fiscal",
+      "territoire": [
+        "fr"
+      ],
+      "statut": "local",
+      "calendrier": "Après sinistre, réclamation et délais à vérifier immédiatement auprès des impôts et de la mairie.",
+      "financeur": "État / dégrèvement fiscal",
+      "resume": "Un allègement foncier possible en cas de pertes de récoltes sur pied, distinct de l’assurance récolte.",
+      "beneficiaires": "Les pertes résultant des événements et situations prévus par le régime de TFNB doivent être constatées et documentées. La propriété concernée, la nature du dommage et le calendrier sont à examiner avec le service fiscal. Une baisse du prix du vin n’est pas une perte de récolte sur pied.",
+      "soutien": "Le dégrèvement dépend de la perte retenue et de l’imposition correspondante. Il ne rembourse pas la totalité du chiffre d’affaires manquant. Des démarches collectives peuvent exister après un événement touchant un territoire ; elles ne dispensent pas de vérifier la prise en compte des parcelles du domaine.",
+      "demarche": "Contactez rapidement mairie et service des impôts pour connaître la procédure et le délai. Préparez références cadastrales, surfaces, nature du sinistre et éléments de constat. Pour des terres louées, coordonnez la demande et la répercussion du dégrèvement avec le propriétaire.",
+      "vigilance": "Ne supposez pas qu’une déclaration à l’assureur vaut réclamation fiscale. Dégrèvement JA, exonération bio et perte de récolte ont des objets différents. Gardez la trace des montants réellement accordés pour éviter qu’un avantage figurant sur l’avis du propriétaire soit oublié dans le décompte au fermier.",
+      "exemple": "Après un épisode de grêle, rassemblez un dossier par commune puis rapprochez les réponses fiscales des autres démarches. Vous pourrez vérifier quelles parcelles ont été traitées et quels éléments restent à produire, sans confondre les décisions de l’assureur et de l’administration.",
+      "sources": [
+        [
+          "Service public — TFNB et dégrèvements",
+          "https://entreprendre.service-public.gouv.fr/vosdroits/F31638"
+        ],
+        [
+          "Collectivités locales — taxes foncières et pertes de récoltes",
+          "https://www.collectivites-locales.gouv.fr/taxes-foncieres"
+        ]
+      ],
+      "mots": "tfnb perte recolte gel grele calamite taxe fonciere",
+      "article": "aide-tfnb-sinistre-viticulture.html",
+      "verifie": "2026-10-28"
+    },
+    {
+      "id": "urgence-jeunes-viti",
+      "titre": "Fonds d’urgence viticole 2026 : jeunes installés touchés par la crise",
+      "etape": "risques",
+      "type": "subvention",
+      "territoire": [
+        "fr"
+      ],
+      "statut": "local",
+      "calendrier": "Mesure exceptionnelle 2026 ; fenêtre départementale à vérifier, aucune ouverture nationale continue présumée.",
+      "financeur": "État — préfectures et services agricoles",
+      "resume": "Une mesure ciblée sur certains jeunes installés et pertes d’activité, dont le calendrier dépend du guichet annoncé localement.",
+      "beneficiaires": "La présentation officielle vise notamment des exploitants installés entre 2020 et 2024, âgés de quarante ans au plus à l’installation, à titre principal, et répondant aux critères de pertes prévus. Les conditions exactes et pièces sont celles du guichet départemental.",
+      "soutien": "Le fonds intervient dans un cadre exceptionnel de crise. La présentation nationale ou régionale n’est pas un accusé d’ouverture permanent. Les critères de pertes, le calcul du soutien, les enveloppes et les conditions de cumul doivent être repris de la notice effectivement applicable à la demande.",
+      "demarche": "Demandez à la DDT(M) si une demande est encore recevable ou si la campagne est close. Préparez date d’installation, statut, données de chiffre d’affaires et récoltes selon les références imposées. Utilisez le téléservice local indiqué et conservez sa preuve de dépôt.",
+      "vigilance": "Un article de mars annonçant l’ouverture ne prouve pas qu’un dépôt reste possible en octobre. Cette fiche reste signalée à calendrier territorial à vérifier, afin de ne pas présenter un soutien de crise comme une recette certaine pour tous les jeunes vignerons.",
+      "exemple": "Pour examiner votre situation, préparez plusieurs années de récoltes et de ventes sans choisir vous-même la référence la plus favorable. Faites appliquer la notice par l’instructeur et distinguez le besoin de trésorerie immédiat d’un versement exceptionnel encore hypothétique.",
+      "sources": [
+        [
+          "DRAAF Occitanie — fonds d’urgence jeunes installés viticoles 2026",
+          "https://draaf.occitanie.agriculture.gouv.fr/ouverture-du-dispositif-fonds-d-urgence-viticole-pour-soutenir-les-a9560.html"
+        ],
+        [
+          "DRIAAF — accompagnement et aides aux exploitations en difficulté",
+          "https://driaaf.ile-de-france.agriculture.gouv.fr/accompagnement-et-dispositifs-d-aide-pour-les-agriculteurs-a4447.html"
+        ]
+      ],
+      "mots": "fonds urgence jeune installe crise viticole 2020 2024",
+      "article": "aide-urgence-jeunes-viti-viticulture.html",
+      "verifie": "2026-10-28"
+    },
+    {
+      "id": "distillation-crise",
+      "titre": "Distillation de crise 2026 : dossiers engagés et suivi",
+      "etape": "risques",
+      "type": "subvention",
+      "territoire": [
+        "fr"
+      ],
+      "statut": "clos",
+      "calendrier": "Nouveaux engagements clos le 30 juin 2026 à midi ; suites selon contrats et décision modifiée le 8 octobre.",
+      "financeur": "État — FranceAgriMer",
+      "resume": "Une mesure exceptionnelle sur des vins admissibles et des engagements validés. Aucune nouvelle livraison librement aidée ne doit être promise.",
+      "beneficiaires": "Le dispositif vise les opérateurs et distillateurs répondant aux conditions de la décision, pour les catégories et stocks de vins concernés. Les vins rouges et rosés, les références de stock et les contrats sont encadrés. La décision actuelle et le dossier accepté déterminent le périmètre réel.",
+      "soutien": "Le soutien des opérateurs et celui des distillateurs constituent des composantes distinctes. Le simple dépôt d’un engagement ne remplace pas le contrat admissible ni la preuve d’exécution. Les volumes et paiements sont contrôlés selon la décision et ses modifications.",
+      "demarche": "Si vous êtes engagé, rapprochez contrat, volumes, justificatifs et calendrier actualisé avec le distillateur et FranceAgriMer. Consultez la décision modificative du 8 octobre 2026 avant de reprendre une date de livraison ou de paiement figurant dans un article ancien.",
+      "vigilance": "La date de suivi administratif d’un dossier n’est pas une réouverture des engagements. Ne livrez pas un lot en supposant qu’il sera pris en charge rétroactivement. Distinguez aussi cette mesure exceptionnelle du soutien régulier à la distillation des sous-produits viniques.",
+      "exemple": "Dans le suivi du domaine, identifiez les lots concernés, les sorties de stock et le produit attendu. Comparez les encaissements réellement notifiés avec le besoin de financement ; une sortie de volume peut réduire le stock sans combler immédiatement toute la trésorerie manquante.",
+      "sources": [
+        [
+          "FranceAgriMer — distillation de crise 2026 et décisions actualisées",
+          "https://www.franceagrimer.fr/aides/aide-la-distillation-de-crise-2026"
+        ],
+        [
+          "FranceAgriMer — distillation des sous-produits, autre dispositif",
+          "https://www.franceagrimer.fr/aides/soutien-la-distillation-des-sous-produits-viniques-psn-2023-2027"
+        ]
+      ],
+      "mots": "distillation crise rouge rose stock engagement 2026",
+      "article": "aide-distillation-crise-viticulture.html",
+      "verifie": "2026-10-28"
+    },
+    {
+      "id": "dep",
+      "titre": "Déduction pour épargne de précaution : préparer les mauvaises campagnes",
+      "etape": "risques",
+      "type": "fiscal",
+      "territoire": [
+        "fr"
+      ],
+      "statut": "permanent",
+      "calendrier": "Règles fiscales actualisées en août 2026 ; choix à examiner à la clôture avec le comptable.",
+      "financeur": "État / mécanisme fiscal des bénéfices agricoles",
+      "resume": "Un outil de lissage fiscal associé à une épargne et à des conditions d’utilisation. Ce n’est pas une aide versée en cas de sinistre.",
+      "beneficiaires": "La DEP concerne les exploitations relevant du régime et des conditions de l’article 73 du CGI. Le bénéfice, l’épargne constituée et les déductions déjà pratiquées limitent l’usage du mécanisme. Il ne suffit pas d’ouvrir un compte bancaire portant ce nom pour créer un droit fiscal.",
+      "soutien": "Les plafonds sont indexés et les règles ont été actualisées en 2026. Les sommes déduites peuvent être utilisées, selon le cadre légal, pour des dépenses professionnelles au cours des dix exercices suivants. La reprise fiscale et ses éventuelles dispositions particulières doivent être anticipées.",
+      "demarche": "Demandez au comptable un état des DEP par année : montant déduit, épargne liée, utilisation et date limite de reprise. Comparez une déduction nouvelle avec les besoins de trésorerie réels. Vérifiez les obligations de suivi et les règles applicables aux stocks si cette modalité est envisagée.",
+      "vigilance": "Une baisse d’impôt immédiate peut être suivie d’une reprise dans un exercice ultérieur. Ne présentez pas la DEP comme une indemnité gratuite ou une subvention climatique. Son intérêt dépend de la capacité d’épargne et de l’évolution du résultat fiscal.",
+      "exemple": "Après une bonne campagne, comparez remboursement de dette, investissement et réserve de précaution. Testez le financement d’une récolte faible avant de bloquer une part trop importante des liquidités dans un projet. L’outil fiscal doit soutenir cette décision, pas la remplacer.",
+      "sources": [
+        [
+          "BOFiP — utilisation de la DEP, 12 août 2026",
+          "https://bofip.impots.gouv.fr/bofip/11685-PGP.html/identifiant%3DBOI-BA-BASE-30-45-30-20260812"
+        ],
+        [
+          "BOFiP — plafonds DEP 2026",
+          "https://bofip.impots.gouv.fr/bofip/11683-PGP.html/identifiant%3DBOI-BA-BASE-30-45-20-20260812"
+        ]
+      ],
+      "mots": "dep epargne precaution fiscalite stock lissage revenu",
+      "article": "aide-dep-viticulture.html",
+      "verifie": "2026-10-28"
+    },
+    {
+      "id": "transmission-conseil",
+      "titre": "Transmission : diagnostic, conseil et préparation du départ",
+      "etape": "transmission",
+      "type": "conseil",
+      "territoire": [
+        "fr"
+      ],
+      "statut": "local",
+      "calendrier": "Anticiper plusieurs années ; actions AITA locales en 2026, accueil renforcé annoncé pour 2027.",
+      "financeur": "État / AITA ; acteurs territoriaux selon prestation",
+      "resume": "Des conseils et diagnostics peuvent aider le cédant à préparer le domaine et sa recherche de repreneur.",
+      "beneficiaires": "Les actions de transmission financées varient selon la région et les prestataires habilités. Diagnostic d’exploitation, conseil stratégique et accompagnement ne suivent pas nécessairement le même public ni les mêmes conditions. Les règles liées à l’âge ou au départ doivent être lues dans l’action actuelle.",
+      "soutien": "La MSA invite à anticiper le départ et la déclaration d’intention de cessation d’activité agricole. Le diagnostic peut être soutenu dans un programme AITA local. Une prestation financée ne constitue pas une prime générale de départ et ne fixe pas la valeur de vente du domaine.",
+      "demarche": "Préparez date de départ souhaitée, parcellaire, baux, société, stocks et outils. Contactez le point d’accueil et la MSA pour le calendrier, puis demandez quels diagnostics peuvent être pris en charge. Faites préciser les démarches de retraite et les informations à transmettre au répertoire ou aux acteurs de l’installation.",
+      "vigilance": "Le service renforcé annoncé pour le 1er janvier 2027 ne doit pas être présenté comme déjà généralisé en octobre 2026. Les aides déjà reçues peuvent encore imposer un maintien d’activité ou d’investissement : vérifiez-les avant de signer une cession ou de modifier la structure.",
+      "exemple": "Pour rendre un domaine transmissible, distinguez ce qui sera vendu, loué ou conservé. Un repreneur doit comprendre surfaces, engagements, stocks et charges. Un dossier clair peut révéler un besoin de réorganisation avant même la recherche d’un acquéreur.",
+      "sources": [
+        [
+          "MSA — cessation et transmission d’activité",
+          "https://www.msa.fr/lfp/cessation-transmission-activite"
+        ],
+        [
+          "Préfecture de la Sarthe — diagnostics et transmission 2026",
+          "https://www.sarthe.gouv.fr/layout/set/print/Actions-de-l-Etat/Agriculture-foret-et-developpement-rural/Aides-a-l-agriculture/L-Installation-en-Agriculture-dispositif-AITA/Installation-Transmission-Appel-a-projets-aides-aux-conseils-AITA-2026-volets-4-et-5"
+        ],
+        [
+          "DRAAF Occitanie — AITA",
+          "https://draaf.occitanie.agriculture.gouv.fr/l-accompagnement-a-l-installation-transmission-en-agriculture-aita-r612.html"
+        ]
+      ],
+      "mots": "transmission retraite cession cedi diagnostic dic aa",
+      "article": "aide-transmission-conseil-viticulture.html",
+      "verifie": "2026-10-28"
+    },
+    {
+      "id": "fiscalite-transmission",
+      "titre": "Transmission du domaine : exonérations et fiscalité du départ",
+      "etape": "transmission",
+      "type": "fiscal",
+      "territoire": [
+        "fr"
+      ],
+      "statut": "permanent",
+      "calendrier": "À préparer avant la signature ; règles différentes pour vente, donation, société et foncier.",
+      "financeur": "État / fiscalité des transmissions",
+      "resume": "Les allègements dépendent de l’opération et de ses conditions. La transmission d’un domaine ne bénéficie pas d’une exonération universelle.",
+      "beneficiaires": "La vente d’une entreprise individuelle agricole relevant de l’impôt sur le revenu peut entrer dans l’exonération de plus-values liée au départ à la retraite, sous les conditions de l’article 151 septies A. L’administration rappelle notamment l’ancienneté d’activité et le calendrier entre cession, cessation des fonctions et retraite.",
+      "soutien": "Une donation ou succession relève d’autres mécanismes, pouvant concerner l’entreprise ou les biens ruraux. Le régime Dutreil et les allègements sur certains baux ne doivent pas être confondus avec l’exonération de la plus-value de cession. Chacun exige ses propres conditions et engagements.",
+      "demarche": "Avant tout accord définitif, faites dresser par le notaire et le comptable la liste des biens et droits transmis : terres, bâtiments, matériels, stocks, parts et activité. Demandez une simulation par opération et un calendrier des conditions à respecter avant et après signature.",
+      "vigilance": "Une exonération peut ne pas couvrir les mêmes biens ou tous les prélèvements. Une vente des seuls actifs, une cession de parts et une donation n’ont pas le même traitement. N’utilisez pas un taux ou un seuil isolé pour estimer le montant net qui restera au cédant.",
+      "exemple": "Pour une transmission familiale, comparez plusieurs scénarios documentés et leurs engagements durables. Faites apparaître impôts, droits, frais, financement du repreneur et revenu du cédant. L’objectif est que chacun comprenne les obligations au-delà de la date de signature.",
+      "sources": [
+        [
+          "Impôts — cession d’entreprise individuelle et départ à la retraite, actualisé le 27 octobre 2026",
+          "https://www.impots.gouv.fr/professionnel/questions/je-cede-mon-entreprise-individuelle-pour-partir-en-retraite-devrai-je-payer"
+        ],
+        [
+          "Impôts — transmission à titre gratuit",
+          "https://www.impots.gouv.fr/professionnel/transmission-titre-gratuit"
+        ],
+        [
+          "MSA — calendrier cessation et transmission",
+          "https://www.msa.fr/lfp/cessation-transmission-activite"
+        ]
+      ],
+      "mots": "dutreil donation succession plus value retraite foncier transmission",
+      "article": "aide-fiscalite-transmission-viticulture.html",
+      "verifie": "2026-10-28"
+    },
+    {
+      "id": "reorientation-naq",
+      "titre": "Nouvelle-Aquitaine : réorientation des exploitations viticoles",
+      "etape": "transmission",
+      "type": "subvention",
+      "territoire": [
+        "naq"
+      ],
+      "statut": "ouvert",
+      "calendrier": "Date limite affichée : 31 décembre 2026 ; dossier, crédits et éligibilité à confirmer.",
+      "financeur": "Région Nouvelle-Aquitaine",
+      "resume": "Accompagner une diversification ou réorientation productive. Ce financement est distinct de la prime nationale d’arrachage.",
+      "beneficiaires": "Le dispositif vise les exploitations viticoles entrant dans les catégories agricoles et conditions régionales prévues. La nature du projet de réorientation et des investissements est déterminante. Réduire une surface de vigne n’ouvre pas, à lui seul, un droit à la totalité des soutiens régionaux.",
+      "soutien": "L’aide accompagne les dépenses et objectifs retenus par la Région. Le règlement fixe l’assiette, les conditions et les plafonds. Il ne s’agit pas de reproduire un forfait d’arrachage par hectare ni de compenser automatiquement toute perte de revenu liée au changement de production.",
+      "demarche": "Présentez à la Région la situation viticole, la production envisagée, les débouchés, les équipements et le calendrier. Faites vérifier les dépenses admissibles et les autres aides engagées, puis préparez un plan économique de la nouvelle activité. Demandez quand les engagements peuvent commencer.",
+      "vigilance": "Les obligations de l’arrachage national, les autorisations, les baux et les engagements environnementaux continuent de s’appliquer selon leur cadre. La subvention à la réorientation n’efface pas les conséquences d’un précédent financement. Faites examiner les cumuls et la cohérence du calendrier avant de commander.",
+      "exemple": "Pour remplacer une partie du vignoble par une autre production, chiffrez formation, préparation du sol, équipements, temps de travail et première vente. La décision doit reposer sur des débouchés crédibles ; la prime éventuelle ne garantit pas la rentabilité de la nouvelle activité.",
+      "sources": [
+        [
+          "Nouvelle-Aquitaine — réorientation des exploitations viticoles",
+          "https://les-aides.nouvelle-aquitaine.fr/economie-et-emploi/aide-la-reorientation-des-exploitations-viticoles"
+        ],
+        [
+          "FranceAgriMer — arrachage définitif 2026, autre dispositif",
+          "https://www.franceagrimer.fr/aides/aide-nationale-larrachage-definitif-de-vignes-2026"
+        ]
+      ],
+      "mots": "nouvelle aquitaine reorientation diversification reconversion arrachage",
+      "article": "aide-reorientation-naq-viticulture.html",
+      "verifie": "2026-10-28"
+    },
+    {
+      "id": "arp",
+      "titre": "ARP : aide à la réinsertion professionnelle après difficulté",
+      "etape": "transmission",
+      "type": "subvention",
+      "territoire": [
+        "fr"
+      ],
+      "statut": "permanent",
+      "calendrier": "Instruction DDT(M) ; conditions de cessation et parcours à examiner avant engagement.",
+      "financeur": "État — accompagnement des agriculteurs en difficulté",
+      "resume": "Un dispositif de sortie professionnelle encadré pour certaines exploitations en difficulté, distinct d’une retraite ou d’un simple changement de cépage.",
+      "beneficiaires": "L’aide à la réinsertion professionnelle relève du parcours des exploitants en difficulté et de conditions spécifiques de cessation et de situation du demandeur. La DDT(M) apprécie la recevabilité et les engagements. Une réorientation choisie ou une cession ordinaire n’entre pas automatiquement dans ce cadre.",
+      "soutien": "Les soutiens et accompagnements sont définis par le dispositif et la décision individuelle. Une éventuelle aide au départ ou à la mobilité doit être confirmée dans sa version actuelle. Elle ne couvre pas l’ensemble des pertes ni tous les coûts de changement de métier.",
+      "demarche": "Avant de cesser l’activité, contactez la DDT(M) pour examiner le parcours, les pièces et l’ordre des démarches. Faites préciser les effets sur le statut social, les engagements d’aides antérieures et les possibilités de formation. Préparez un budget personnel de transition en plus du budget de cessation.",
+      "vigilance": "Ne présumez pas que la vente ou l’arrachage déjà effectué permettra une demande rétroactive. Les conditions de sortie et les obligations après aide sont importantes. Coordonnez administration, MSA, comptable et organisme d’emploi afin de ne pas découvrir une incompatibilité après la cessation.",
+      "exemple": "Pour un exploitant envisageant de quitter une activité devenue non viable, construisez un calendrier comprenant droits sociaux, règlement des dettes, fin des baux, stocks et projet professionnel suivant. L’aide éventuelle est un élément de ce parcours, pas son unique financement.",
+      "sources": [
+        [
+          "DRIAAF — audit, AREA et réinsertion professionnelle",
+          "https://driaaf.ile-de-france.agriculture.gouv.fr/accompagnement-et-dispositifs-d-aide-pour-les-agriculteurs-a4447.html"
+        ],
+        [
+          "Préfecture des Pyrénées-Atlantiques — dispositifs et notice ARP",
+          "https://www.pyrenees-atlantiques.gouv.fr/Actions-de-l-Etat/Agriculture-foret-et-developpement-rural/Les-aides-agricoles/Accompagnement-des-Agriculteurs-en-Difficulte/Les-dispositifs-d-aides-de-l-Etat-aux-agriculteurs-en-difficulte"
+        ]
+      ],
+      "mots": "arp reinsertion professionnelle cessation reconversion metier difficulte",
+      "article": "aide-arp-viticulture.html",
+      "verifie": "2026-10-28"
+    },
+    {
+      "id": "arrachage",
+      "titre": "Arrachage définitif 2026 : paiement des dossiers acceptés",
+      "etape": "transmission",
+      "type": "subvention",
+      "territoire": [
+        "metropole"
+      ],
+      "statut": "paiement",
+      "calendrier": "PARCEL au plus tard le 1er février 2027 ; paiement unique avant le 1er mars 2027 à midi. AMI clos.",
+      "financeur": "État — FranceAgriMer",
+      "resume": "4 000 €/ha éligible pour les bénéficiaires déjà acceptés, avec engagements durables. Aucun nouveau dossier libre au guichet de paiement.",
+      "beneficiaires": "Seuls les opérateurs ayant participé à l’appel à manifestation d’intérêt et reçu une décision d’octroi peuvent déposer le paiement. Les surfaces, le CVI, le SIRET et l’exécution doivent correspondre au dossier. L’AMI est clos et la demande d’aide ne peut pas être modifiée librement.",
+      "soutien": "La décision fixe un forfait de 4 000 € par hectare éligible effectivement arraché, dans la limite des surfaces notifiées. L’arrachage aidé ne génère pas d’autorisation de replantation ; le demandeur ne peut pas demander de plantations nouvelles pendant les dix campagnes suivant celle de l’arrachage. Ce choix engage donc bien au-delà de la trésorerie immédiate.",
+      "demarche": "Rapprochez décision, parcelles CVI et travaux réalisés. Déclarez dans PARCEL avec le code spécifique « arrachage aidé 2026-2027 » au plus tard le 1er février 2027. Après l’ensemble des arrachages et déclarations, validez la demande unique de paiement avant le 1er mars 2027 à midi et conservez l’accusé.",
+      "vigilance": "Les arracheurs totaux et partiels n’ont pas les mêmes seuils de réalisation ; des sanctions existent si les engagements ne sont pas tenus. Une demande seulement initialisée n’est pas déposée. Les modifications CVI après le dépôt peuvent ne pas être prises en compte : vérifiez le rapprochement avant validation.",
+      "exemple": "Le montant doit être confronté aux coûts des travaux, aux dettes et à la perte de capacité de production. Pour une réorientation, construisez un plan indépendant pour la nouvelle activité et vérifiez ses financements ; la prime ne garantit ni l’accès à une autre aide ni le revenu futur.",
+      "sources": [
+        [
+          "FranceAgriMer — paiement et échéances 2026–2027",
+          "https://www.franceagrimer.fr/aides/aide-nationale-larrachage-definitif-de-vignes-2026"
+        ],
+        [
+          "FranceAgriMer — décision INTV-GPASV-2026-47, montant, engagements et sanctions",
+          "https://www.franceagrimer.fr/sites/default/files/2026-06/INTV-GPASV-2026-47%20Arra%20Publi.pdf"
+        ]
+      ],
+      "mots": "arrachage definitif 4000 hectare parcel cvi paiement sortie vigne",
+      "article": "aide-arrachage-viticulture.html",
+      "verifie": "2026-10-28"
+    }
+  ]
+}

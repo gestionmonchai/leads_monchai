@@ -132,6 +132,9 @@ jobs:
             file/manifest.json > /tmp/manifest.json
           mv /tmp/manifest.json file/manifest.json
 
+          node site/outils/harmoniser-article.cjs "site/$SLUG.html" site/actualites-reglementaires.html
+          python site/outils/verifier-coherence.py site --strict
+
           echo "--- Contrôles (bloquants) ---"
           grep -q "monchai.fr/$SLUG.html" site/sitemap.xml || { echo "::error::URL absente du sitemap"; exit 1; }
           ! grep -q "{{DATE" "site/$SLUG.html" || { echo "::error::Dates non remplacées dans la page"; exit 1; }

@@ -26,3 +26,8 @@ jobs:
 
       - name: Composants des futurs articles
         run: node --test outils/test-harmoniser-article.cjs
+
+      - name: Démonstration viticole, liens et absence de transmission
+        run: |
+          node --check demonstration/site.js
+          node outils/verifier-demonstration.cjs .

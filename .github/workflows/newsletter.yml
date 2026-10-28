@@ -1,0 +1,55 @@
+name: Préparer la lettre réglementaire du lundi
+on:
+  schedule:
+    - cron: '23 13 * * 5' # vendredi : brouillon pour le lundi, jamais d'envoi
+  workflow_dispatch:
+    inputs:
+      edition:
+        description: 'Date du lundi (AAAA-MM-JJ), vide = prochain lundi'
+        type: string
+        default: ''
+permissions:
+  contents: read
+concurrency:
+  group: newsletter-reglementaire
+  cancel-in-progress: false
+jobs:
+  brouillon:
+    if: vars.NEWSLETTER_BREVO_ACTIVE == 'true'
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Choisir une édition existante
+        id: edition
+        env:
+          EDITION_DEMANDEE: ${{ inputs.edition }}
+        run: |
+          python - <<'PY'
+          from datetime import datetime, timedelta
+          from zoneinfo import ZoneInfo
+          from pathlib import Path
+          import os, re
+          today = datetime.now(ZoneInfo('Europe/Paris')).date()
+          monday = today + timedelta(days=(7 - today.weekday()) % 7 or 7)
+          edition = os.environ.get('EDITION_DEMANDEE') or monday.isoformat()
+          if not re.fullmatch(r'\d{4}-\d{2}-\d{2}', edition):
+              raise SystemExit('Date invalide')
+          path = Path('outils/newsletter/editions') / (edition + '.json')
+          if not path.is_file():
+              raise SystemExit('Aucune édition relue disponible : aucun brouillon ni envoi')
+          with open(os.environ['GITHUB_OUTPUT'], 'a') as output:
+              output.write(f'fichier={path.as_posix()}\n')
+          PY
+      - name: Créer un brouillon après validation (aucun envoi)
+        env:
+          EDITION: ${{ steps.edition.outputs.fichier }}
+          BREVO_API_KEY: ${{ secrets.BREVO_API_KEY }}
+          BREVO_LIST_ID: ${{ vars.BREVO_LIST_ID }}
+          BREVO_SENDER_EMAIL: ${{ vars.BREVO_SENDER_EMAIL }}
+        run: python outils/newsletter/lettre.py "$EDITION" --sortie "$RUNNER_TEMP/lettre" --creer-brouillon
+      - name: Rappeler l'action restante
+        run: echo 'Brouillon disponible dans Brevo. Vérifier le rendu, la liste et le quota du lundi, puis programmer lundi à 09 h Europe/Paris. Aucun envoi effectué par ce workflow.' >> "$GITHUB_STEP_SUMMARY"

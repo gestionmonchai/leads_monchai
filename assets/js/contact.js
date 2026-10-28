@@ -48,12 +48,13 @@
 
   /* ---------- 1. Objet de la demande ----------
      Une aide par objet, sous le menu. Pour la newsletter, le message devient
-     facultatif et la case est cochée : il n'y a rien d'autre à dire. */
+     facultatif ; la case reste à cocher volontairement. */
   var AIDES = {
     demo:        'Indiquez vos disponibilités et ce que vous aimeriez voir en priorité : parcelles, cave, stocks, facturation, DRM…',
     essai:       'Dites-nous en quelques mots votre activité et vos outils actuels, nous revenons vers vous rapidement.',
     api:         'Précisez l’outil ou le service à connecter, et les données à échanger : clients, produits, stocks, factures…',
-    newsletter:  'Rien d’autre à remplir : validez, et vous recevrez les prochaines nouvelles de Mon Chai.',
+    newsletter:  'Cette demande concerne les nouvelles du logiciel. Pour la lettre réglementaire du lundi, ouvrez le lien dédié dans le pied de page. Cochez votre accord pour demander la newsletter du logiciel.',
+    installation: 'Indiquez le SIREN du domaine, votre date d’installation ou de reprise et votre rôle. N’envoyez ni pièce d’identité ni dossier DJA complet. Nous confirmons par écrit l’éligibilité et les dates avant souscription.',
     tarifs:      'Posez votre question : essai gratuit, nombre d’utilisateurs, facturation, résiliation…',
     formation:   'Indiquez les modules à prendre en main et les fichiers à reprendre : clients, produits, tarifs, parcelles…',
     assistance:  'Décrivez ce qui bloque, en précisant le module concerné : nous vous répondons directement.',
@@ -208,6 +209,9 @@
       if (objet.value === 'newsletter') {
         succesTitre.textContent = 'Votre demande d’inscription a été transmise.';
         succesTexte.textContent = 'L’équipe traitera votre demande pour l’adresse ' + mail + '.';
+      } else if (objet.value === 'installation') {
+        succesTitre.textContent = 'Votre demande d’offre installation a été transmise.';
+        succesTexte.textContent = 'L’équipe vérifiera votre éligibilité et vous confirmera par écrit le tarif et les dates avant toute souscription. Aucune remise ni facturation n’a été appliquée.';
       } else {
         succesTitre.textContent = 'Votre message est bien parti.';
         succesTexte.textContent = 'L’équipe Mon Chai vous répond directement, par e-mail, à l’adresse ' + mail + '.'

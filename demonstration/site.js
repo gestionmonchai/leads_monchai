@@ -1,7 +1,7 @@
 'use strict';
 (() => {
   const wines = {
-    roche: { name: 'La Roche', type: 'Rouge · 2025 · 75 cl', price: 1800, image: 'assets/cuvee-rouge.svg', story: '#assemblage', profile: 'Fruit noir, épices douces, tanins souples.', pairing: 'Légumes rôtis, champignons, cuisine mijotée.', service: '16–18 °C', description: 'Dans ce scénario, La Roche prolonge le travail des essais d’assemblage : chercher le fruit et la tenue en bouche, goûter à plusieurs, reprendre le choix. Cette cuvée et ses caractéristiques sont imaginaires.' },
+    roche: { name: 'La Roche', type: 'Rouge · 2025 · 75 cl', price: 1800, image: 'assets/cuvee-rouge.svg?v=demo1', story: '#assemblage', profile: 'Fruit noir, épices douces, tanins souples.', pairing: 'Légumes rôtis, champignons, cuisine mijotée.', service: '16–18 °C', description: 'Dans ce scénario, La Roche prolonge le travail des essais d’assemblage : chercher le fruit et la tenue en bouche, goûter à plusieurs, reprendre le choix. Cette cuvée et ses caractéristiques sont imaginaires.' },
     aube: { name: 'L’Aube', type: 'Blanc · 2025 · 75 cl', price: 1600, image: 'assets/cuvee-blanc.svg', story: '#recolte', profile: 'Agrumes, fleurs blanches, fraîcheur.', pairing: 'Poisson grillé, fromage frais, légumes croquants.', service: '10–12 °C', description: 'Cette cuvée imaginaire permet de relier la fraîcheur recherchée dans un blanc au choix du moment de récolte. Retrouvez les observations et les contraintes du chapitre, sans y voir la fiche technique d’un vin réel.' }
   };
   const money = cents => new Intl.NumberFormat('fr-FR', { style: 'currency', currency: 'EUR' }).format(cents / 100);

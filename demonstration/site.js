@@ -1,21 +1,15 @@
 'use strict';
 (() => {
   const wines = {
-    roche: { name: 'La Roche', type: 'Rouge · 2024 · 75 cl', price: 1800, image: 'assets/cuvee-rouge.svg', profile: 'Fruit noir, épices douces, tanins souples.', pairing: 'Légumes rôtis, champignons, cuisine mijotée.', service: '16–18 °C', description: 'Une cuvée imaginaire tout en profondeur. Le fruit ouvre la conversation, les notes épicées la prolongent. Un rouge pensé pour les grandes tablées et les repas qui prennent leur temps.' },
-    aube: { name: 'L’Aube', type: 'Blanc · 2025 · 75 cl', price: 1600, image: 'assets/cuvee-blanc.svg', profile: 'Agrumes, fleurs blanches, fraîcheur.', pairing: 'Poisson grillé, fromage frais, légumes croquants.', service: '10–12 °C', description: 'La clarté d’un matin, la vivacité d’un premier rayon de soleil. Ce blanc imaginaire explore les agrumes et les fleurs blanches, avec une finale fraîche et délicate.' },
-    echappee: { name: 'L’Échappée', type: 'Rosé · 2025 · 75 cl', price: 1400, image: 'assets/cuvee-rose.svg', profile: 'Petits fruits rouges, notes florales.', pairing: 'Salade estivale, légumes grillés, cuisine méditerranéenne.', service: '8–10 °C', description: 'Un rosé imaginaire pour accompagner la simplicité des beaux jours. De petits fruits rouges, une touche florale et le plaisir d’un repas partagé à l’ombre.' }
-  };
-  const articles = {
-    vigne: { title: 'Chaque saison a son geste.', paragraphs: ['Le vignoble ne se raconte pas seulement au moment des vendanges. Il se lit dans les jours courts de l’hiver, quand le geste de taille prépare la saison suivante. Il se devine au printemps, quand les bourgeons invitent à observer avant d’intervenir.', 'L’été donne un autre rythme. Regarder les feuilles, suivre la maturité des baies, comprendre ce que le temps imprime au raisin : autant de façons d’accompagner le vivant. Puis vient le choix de la récolte, qui appartient à chaque lieu et à chaque vigneron.', 'Les Aulnes sont un domaine fictif. Sur votre site, ce carnet donnerait la parole à vos pratiques réelles, à vos choix et aux personnes qui les font vivre. Des textes courts, des images à vous, une histoire qui continue au fil des saisons.'] },
-    table: { title: 'Le plaisir des accords simples.', paragraphs: ['Un accord commence souvent par ce qui est déjà sur la table : une belle tomate, une poêlée de champignons, un poisson grillé. On peut chercher un écho entre la fraîcheur d’un plat et celle d’un vin, ou laisser une texture en rencontrer une autre.', 'Dans cette collection imaginaire, L’Aube accompagne la légèreté d’une cuisine végétale. La Roche évoque les saveurs rôties et mijotées. L’Échappée imagine une table d’été, à partager sans cérémonie.', 'Ces cuvées sont fictives : ces accords illustrent une manière de présenter vos conseils. Votre site pourrait proposer vos recettes, vos températures de service et les occasions que vous associez à chaque vin.'] }
+    roche: { name: 'La Roche', type: 'Rouge · 2025 · 75 cl', price: 1800, image: 'assets/cuvee-rouge.svg', story: '#assemblage', profile: 'Fruit noir, épices douces, tanins souples.', pairing: 'Légumes rôtis, champignons, cuisine mijotée.', service: '16–18 °C', description: 'Dans ce scénario, La Roche prolonge le travail des essais d’assemblage : chercher le fruit et la tenue en bouche, goûter à plusieurs, reprendre le choix. Cette cuvée et ses caractéristiques sont imaginaires.' },
+    aube: { name: 'L’Aube', type: 'Blanc · 2025 · 75 cl', price: 1600, image: 'assets/cuvee-blanc.svg', story: '#recolte', profile: 'Agrumes, fleurs blanches, fraîcheur.', pairing: 'Poisson grillé, fromage frais, légumes croquants.', service: '10–12 °C', description: 'Cette cuvée imaginaire permet de relier la fraîcheur recherchée dans un blanc au choix du moment de récolte. Retrouvez les observations et les contraintes du chapitre, sans y voir la fiche technique d’un vin réel.' }
   };
   const money = cents => new Intl.NumberFormat('fr-FR', { style: 'currency', currency: 'EUR' }).format(cents / 100);
   const cart = new Map(); // Démonstration éphémère : ni stockage local ni service distant.
   const cartDialog = document.querySelector('#cart-dialog');
   const productDialog = document.querySelector('#product-dialog');
   const visitDialog = document.querySelector('#visit-dialog');
-  const articleDialog = document.querySelector('#article-dialog');
-  const dialogs = [cartDialog, productDialog, visitDialog, articleDialog];
+  const dialogs = [cartDialog, productDialog, visitDialog];
   const lastFocus = new WeakMap();
   const toast = document.querySelector('.toast');
   let toastTimer;
@@ -59,7 +53,7 @@
   function renderCart() {
     const count = [...cart.values()].reduce((sum, q) => sum + q, 0);
     document.querySelectorAll('[data-cart-count]').forEach(node => { node.textContent = count; });
-    document.querySelector('[data-cart]').setAttribute('aria-label', `Ouvrir le panier, ${count} bouteille${count > 1 ? 's' : ''}`);
+    document.querySelector('[data-cart]').setAttribute('aria-label', `Panier, ${count} bouteille${count > 1 ? 's' : ''}`);
     const list = document.querySelector('#cart-lines');
     list.replaceChildren();
     document.querySelector('.cart-summary').hidden = count === 0;
@@ -133,6 +127,7 @@
     document.querySelector('#product-title').textContent = wine.name;
     document.querySelector('#product-type').textContent = wine.type;
     document.querySelector('#product-description').textContent = wine.description;
+    document.querySelector('#product-story').href = wine.story;
     document.querySelector('#product-profile').textContent = wine.profile;
     document.querySelector('#product-pairing').textContent = wine.pairing;
     document.querySelector('#product-service').textContent = wine.service;
@@ -148,6 +143,16 @@
     result.textContent = `${wines[activeWine].name} : ${cart.get(activeWine)} bouteille(s) dans votre panier simulé.`;
     result.setAttribute('role', 'status');
   });
+  document.querySelector('#product-story').addEventListener('click', event => {
+    const target = document.querySelector(event.currentTarget.getAttribute('href'));
+    productDialog.close();
+    // Après le retour normal au déclencheur, déplacer le focus vers le récit choisi.
+    requestAnimationFrame(() => {
+      target.tabIndex = -1;
+      target.focus({ preventScroll: true });
+      target.scrollIntoView({ block: 'start', behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth' });
+    });
+  });
   document.querySelector('#simulate-order').addEventListener('click', () => {
     const result = document.querySelector('#order-result');
     result.replaceChildren(make('strong', '', 'Vous venez d’essayer le parcours de commande.'), document.createTextNode('Sur votre futur site, cette étape pourrait transmettre une demande au domaine ou mener à un paiement. Ici, aucune commande n’a été envoyée et rien n’a été débité.'));
@@ -155,17 +160,6 @@
     result.scrollIntoView({ block: 'nearest' });
   });
 
-  const filters = document.querySelector('.filters');
-  filters.hidden = false;
-  filters.querySelectorAll('button').forEach(button => button.addEventListener('click', () => {
-    filters.querySelectorAll('button').forEach(item => item.setAttribute('aria-pressed', String(item === button)));
-    let count = 0;
-    document.querySelectorAll('[data-wine]').forEach(card => {
-      card.hidden = button.dataset.filter !== 'tous' && card.dataset.color !== button.dataset.filter;
-      if (!card.hidden) count += 1;
-    });
-    document.querySelector('[data-filter-status]').textContent = `${count} cuvée${count > 1 ? 's' : ''} affichée${count > 1 ? 's' : ''}.`;
-  }));
   const menuButton = document.querySelector('.menu-toggle');
   const menu = document.querySelector('.navigation');
   function closeMenu() {
@@ -208,16 +202,22 @@
     result.hidden = false;
     result.scrollIntoView({ block: 'nearest' });
   });
-  document.querySelectorAll('[data-article]').forEach(link => link.addEventListener('click', event => {
-    event.preventDefault();
-    const article = articles[link.dataset.article];
-    document.querySelector('#article-title').textContent = article.title;
-    document.querySelector('#article-body').replaceChildren(...article.paragraphs.map(text => make('p', '', text)));
-    open(articleDialog, link);
-  }));
-  document.querySelector('[data-discover]').addEventListener('click', () => articleDialog.close());
-  document.querySelectorAll('.article-fallback').forEach(node => { node.hidden = true; });
+  // Le sommaire reste une navigation d'ancres native ; son état actif est un complément visuel.
+  const chapterLinks = [...document.querySelectorAll('.year-navigation nav a')];
+  if ('IntersectionObserver' in window) {
+    const observer = new IntersectionObserver(entries => {
+      const visible = entries.filter(entry => entry.isIntersecting).sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top)[0];
+      if (!visible) return;
+      chapterLinks.forEach(link => {
+        const current = link.hash === `#${visible.target.id}`;
+        link.classList.toggle('is-current', current);
+        if (current) link.setAttribute('aria-current', 'location'); else link.removeAttribute('aria-current');
+      });
+    }, { rootMargin: '-20% 0px -55% 0px' });
+    document.querySelectorAll('[data-chapter]').forEach(section => observer.observe(section));
+  }
   // Les fonctions interactives ne deviennent cliquables qu’après initialisation.
+  document.body.classList.add('js-ready');
   document.querySelectorAll('[data-cart], [data-add], [data-detail], [data-visit], .menu-toggle').forEach(button => { button.disabled = false; });
   renderCart();
 })();

@@ -8,11 +8,11 @@
 <script>
 window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}
 (function(){
-  function etat(c){var a=c&&c.audience?'granted':'denied',t=c&&c.tiers?'granted':'denied';return{analytics_storage:a,ad_storage:t,ad_user_data:t,ad_personalization:t};}
+  function etat(c){var a=c&&c.audience===true?'granted':'denied',t='denied';return{analytics_storage:a,ad_storage:t,ad_user_data:t,ad_personalization:t};}
   var d=etat(null);d.wait_for_update=500;gtag('consent','default',d);
   function chargerPlusTard(){if(document.readyState==='complete'){if(window.monchaiChargerGtm)window.monchaiChargerGtm();}else{window.addEventListener('load',function(){setTimeout(function(){if(window.monchaiChargerGtm)window.monchaiChargerGtm();},0);},{once:true});}}
-  try{var c=JSON.parse(localStorage.getItem('monchai_cookie_consent'));if(c&&c.ts&&Date.now()-c.ts<15724800000){gtag('consent','update',etat(c));if(c.audience||c.tiers)chargerPlusTard();}}catch(e){}
-  window.addEventListener('monchai:consent',function(e){gtag('consent','update',etat(e.detail));dataLayer.push({event:'monchai_consentement'});if(e.detail&&(e.detail.audience||e.detail.tiers))chargerPlusTard();});
+  try{var c=JSON.parse(localStorage.getItem('monchai_cookie_consent'));if(c&&typeof c.ts==='number'&&Number.isFinite(c.ts)&&c.ts<=Date.now()&&Date.now()-c.ts<15724800000&&typeof c.audience==='boolean'&&typeof c.tiers==='boolean'){gtag('consent','update',etat(c));if(c.audience===true)chargerPlusTard();}}catch(e){}
+  window.addEventListener('monchai:consent',function(e){gtag('consent','update',etat(e.detail));dataLayer.push({event:'monchai_consentement'});if(e.detail&&e.detail.audience===true)chargerPlusTard();});
 })();
 </script>
 <!-- Google Tag Manager, chargé seulement après un accord (mesure d'audience ou
@@ -41,6 +41,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <link rel="stylesheet" href="assets/css/header.css">
 <link rel="stylesheet" href="assets/css/actus.css">
 <link rel="stylesheet" href="legal.css">
+<link rel="stylesheet" href="assets/css/footer-commun.css?v=20261028-footer">
 </head>
 <body class="corps-actus">
 <div class="site-header site-header--page">
@@ -142,177 +143,116 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   </header>
 </div>
 <main class="legal">
-  <h1>Politique de confidentialité</h1>
-<p class="maj">Dernière mise à jour : 23 octobre 2026</p>
-<p>La présente politique de confidentialité a pour objectif d’informer les visiteurs du site, les prospects, les personnes demandant un essai gratuit, les clients et les utilisateurs de Mon Chai sur la manière dont leurs données personnelles sont collectées et traitées.</p>
-<p>Elle s’applique au site accessible à l’adresse monchai.fr, à la plateforme Mon Chai, à l’application mobile Mon Chai Notes (section 16) ainsi qu’aux échanges réalisés avec l’équipe Mon Chai.</p>
-<h2>1. Responsable du traitement</h2>
-<p>Le responsable des traitements décrits dans la présente politique est :</p>
-<p>HALLAIS &amp; BERTHELOT<br> Société par actions simplifiée au capital de 1 000 euros<br> Siège social : 5 rue Pierre-Joseph Colin, 35000 Rennes<br> SIREN : 100 858 547<br> RCS Rennes : 100 858 547<br> Nom commercial : Mon Chai</p>
-<p>Adresse électronique : contact@monchai.fr<br> Téléphone : +33 (0)6 76 20 59 67</p>
-<p>HALLAIS &amp; BERTHELOT n’a pas désigné de délégué à la protection des données. Toute question relative aux données personnelles peut être adressée à contact@monchai.fr.</p>
-<h2>2. Champ d’application</h2>
-<p>La présente politique concerne les données personnelles pour lesquelles HALLAIS &amp; BERTHELOT agit en qualité de responsable du traitement, notamment les données des :</p>
-<ul><li>visiteurs du site</li><li>personnes utilisant les formulaires de contact</li><li>personnes demandant un essai gratuit</li><li>prospects et interlocuteurs professionnels</li><li>clients et utilisateurs de Mon Chai</li><li>personnes échangeant avec le service d’assistance</li></ul>
-<p>Lorsque les exploitants utilisent Mon Chai pour enregistrer des données relatives à leurs propres clients, salariés, fournisseurs ou contacts, l’exploitant reste responsable du traitement de ces données. HALLAIS &amp; BERTHELOT intervient alors en qualité de sous-traitant, conformément aux CGUV et aux engagements contractuels applicables.</p>
-<h2>3. Données collectées</h2>
-<h3>Données communiquées directement</h3>
-<p>Selon les formulaires et les services utilisés, Mon Chai peut collecter :</p>
-<ul><li>nom et prénom</li><li>adresse électronique professionnelle</li><li>numéro de téléphone</li><li>fonction professionnelle</li><li>nom du domaine ou de la structure</li><li>adresse de l’exploitation</li><li>SIREN ou SIRET</li><li>région, appellation et activité professionnelle</li><li>taille de l’exploitation et nombre de salariés</li><li>informations renseignées dans les formulaires</li><li>contenu des demandes adressées à Mon Chai</li><li>préférences de communication</li><li>informations nécessaires à la facturation</li></ul>
-<p>Les données de carte bancaire ne sont pas conservées directement par HALLAIS &amp; BERTHELOT. Elles sont traitées par le prestataire de paiement utilisé par Mon Chai - CMB ARKEA - CITELIS.</p>
-<h3>Données collectées lors de l’utilisation du site ou du logiciel</h3>
-<p>Mon Chai peut également collecter :</p>
-<ul><li>adresse IP</li><li>date et heure de connexion</li><li>type de navigateur et appareil utilisé</li><li>journaux techniques et journaux de sécurité</li><li>actions réalisées dans le compte</li><li>informations relatives aux erreurs et incidents techniques</li><li>données relatives à l’utilisation des fonctionnalités</li><li>choix exprimés concernant les cookies</li></ul>
-<p>Ces informations sont utilisées uniquement dans la mesure nécessaire au fonctionnement, à la sécurité et à l’amélioration du service.</p>
-<h2>4. Finalités et bases légales</h2>
-<h3>Gestion des demandes de contact</h3>
-<p>Les données sont utilisées pour :</p>
-<ul><li>répondre aux demandes</li><li>fournir des renseignements sur Mon Chai</li><li>organiser un échange, une démonstration ou un rendez-vous</li></ul>
-<p>Le traitement repose sur les mesures précontractuelles prises à la demande de la personne et sur l’intérêt légitime de HALLAIS &amp; BERTHELOT à répondre aux sollicitations professionnelles.</p>
-<h3>Inscription à l’essai gratuit</h3>
-<p>Les données sont utilisées pour :</p>
-<ul><li>recevoir et étudier les demandes d’inscription</li><li>vérifier l’existence et l’activité professionnelle de la structure</li><li>vérifier l’éligibilité à l’essai</li><li>prévenir les inscriptions frauduleuses ou abusives</li><li>créer un accès à Mon Chai</li><li>organiser la formation et l’accompagnement</li><li>recueillir les retours des utilisateurs</li></ul>
-<p>Le traitement repose sur les mesures précontractuelles demandées par le candidat ainsi que sur l’intérêt légitime de HALLAIS &amp; BERTHELOT à sécuriser et organiser l’essai gratuit.</p>
-<h3>Vérification du SIRET</h3>
-<p>Le numéro SIRET peut être comparé aux informations figurant dans des bases publiques officielles afin de vérifier :</p>
-<ul><li>l’existence de la structure</li><li>son état d’activité</li><li>son secteur d’activité</li><li>la cohérence des informations fournies</li></ul>
-<p>Cette vérification repose sur l’intérêt légitime de HALLAIS &amp; BERTHELOT à réserver le service aux professionnels concernés et à prévenir les usages frauduleux.</p>
-<h3>Création et gestion des comptes</h3>
-<p>Les données sont utilisées pour :</p>
-<ul><li>créer et administrer les comptes</li><li>authentifier les utilisateurs</li><li>attribuer les droits d’accès</li><li>fournir les fonctionnalités de Mon Chai</li><li>assurer le suivi de l’abonnement</li><li>permettre la suppression ou la restitution des données</li></ul>
-<p>Ces traitements sont nécessaires à l’exécution du contrat conclu avec l’exploitant.</p>
-<h3>Assistance et relation client</h3>
-<p>Les données sont utilisées pour :</p>
-<ul><li>répondre aux demandes d’assistance</li><li>diagnostiquer et résoudre les incidents</li><li>accompagner les utilisateurs</li><li>conserver l’historique des échanges utiles</li></ul>
-<p>Ces traitements reposent sur l’exécution du contrat et sur l’intérêt légitime de HALLAIS &amp; BERTHELOT à améliorer la qualité de son assistance.</p>
-<h3>Facturation et paiement</h3>
-<p>Les données sont utilisées pour :</p>
-<ul><li>gérer les abonnements</li><li>émettre les factures</li><li>enregistrer les paiements</li><li>traiter les éventuels impayés</li><li>respecter les obligations comptables et fiscales</li></ul>
-<p>Ces traitements reposent sur l’exécution du contrat et sur les obligations légales applicables à HALLAIS &amp; BERTHELOT.</p>
-<h3>Sécurité et prévention des abus</h3>
-<p>Les données techniques et journaux peuvent être utilisés pour :</p>
-<ul><li>protéger les comptes</li><li>identifier les tentatives d’accès non autorisées</li><li>prévenir la fraude</li><li>détecter les anomalies</li><li>assurer la disponibilité et l’intégrité du service</li><li>conserver les éléments nécessaires à la preuve d’un incident</li></ul>
-<p>Ces traitements reposent sur l’intérêt légitime de HALLAIS &amp; BERTHELOT à sécuriser ses services, ses données et celles de ses utilisateurs.</p>
-<h3>Amélioration de Mon Chai</h3>
-<p>Les informations d’utilisation et les retours des utilisateurs peuvent être utilisés pour :</p>
-<ul><li>identifier les fonctionnalités utiles</li><li>corriger les erreurs</li><li>améliorer l’ergonomie</li><li>développer de nouvelles fonctionnalités</li><li>produire des statistiques internes</li></ul>
-<p>Lorsque cela est possible, les données utilisées à cette fin sont agrégées ou anonymisées.</p>
-<h3>Communications commerciales et newsletter</h3>
-<p>Lorsque la personne s’inscrit volontairement à la newsletter, son adresse électronique est utilisée pour lui envoyer des informations concernant Mon Chai.</p>
-<p>Ce traitement repose sur son consentement. Ce consentement peut être retiré à tout moment grâce au lien de désinscription présent dans chaque message.</p>
-<p>Mon Chai peut également adresser à ses clients professionnels des informations concernant des services similaires ou directement liés à leur activité, sur le fondement de son intérêt légitime, sous réserve de leur permettre de s’y opposer simplement et gratuitement.</p>
-<h2>5. Caractère obligatoire des informations</h2>
-<p>Les champs signalés par un astérisque dans les formulaires sont obligatoires.</p>
-<p>Sans ces informations, Mon Chai peut être dans l’impossibilité :</p>
-<ul><li>de répondre à une demande</li><li>de vérifier l’éligibilité à l’essai gratuit</li><li>de créer un compte</li><li>de fournir les services demandés</li><li>de gérer correctement un abonnement</li></ul>
-<p>Les autres champs sont facultatifs et permettent uniquement de mieux comprendre les besoins de la personne.</p>
-<h2>6. Origine des données</h2>
-<p>Les données sont principalement collectées directement auprès des personnes concernées.</p>
-<p>Certaines informations professionnelles peuvent être vérifiées ou complétées à partir de sources publiques, notamment les registres officiels relatifs aux entreprises et établissements.</p>
-<h2>7. Destinataires des données</h2>
-<p>Les données sont accessibles uniquement :</p>
-<ul><li>aux dirigeants et membres habilités de HALLAIS &amp; BERTHELOT</li><li>aux personnes chargées du support, de la relation client et de la facturation</li><li>aux prestataires techniques intervenant pour le compte de Mon Chai</li><li>aux autorités administratives ou judiciaires lorsqu’une obligation légale l’impose</li></ul>
-<p>Les prestataires peuvent notamment comprendre :</p>
-<ul><li>OVHcloud, pour l’hébergement de la plateforme et des données</li><li>Citélis (Crédit Mutuel de Bretagne), pour le traitement des paiements</li><li>Hubspot et Brevo, pour les messages transactionnels, <br>la gestion des contacts et formulaires</li><li>Google Calendar, pour la réservation des formations</li><li>HubSpot, lorsque son code de suivi est activé, pour la mesure de l’utilisation du site et le suivi des interactions</li><li>Hubspot, sous réserve des choix exprimés concernant les cookies</li></ul>
-<p>un outil interne de gestion du consentement aux cookies</p>
-<p>Les prestataires ne reçoivent que les informations nécessaires à l’exécution de leurs missions et sont soumis à des obligations de confidentialité et de sécurité.</p>
-<h2>8. Transferts en dehors de l’Espace économique européen</h2>
-<p>Mon Chai privilégie les prestataires et infrastructures situés dans l’Union européenne ou dans l’Espace économique européen.</p>
-<p>Certains prestataires peuvent néanmoins être établis ou disposer d’entités situées en dehors de cet espace.</p>
-<p>Lorsque des données sont transférées en dehors de l’Espace économique européen, HALLAIS &amp; BERTHELOT veille à ce que le transfert repose sur un mécanisme reconnu par la réglementation applicable, notamment :</p>
-<ul><li>une décision d’adéquation de la Commission européenne</li><li>les clauses contractuelles types adoptées par la Commission européenne</li><li>des garanties contractuelles et techniques complémentaires appropriées</li></ul>
-<h2>9. Durées de conservation</h2>
-<p>Les données ne sont conservées que pendant une durée proportionnée à leur finalité. La CNIL rappelle que les données ne peuvent pas être conservées indéfiniment et que les documents de facturation doivent notamment être conservés dix ans.</p>
-<h3>Demandes de contact et prospects</h3>
-<p>Les données sont conservées pendant une durée maximale de trois ans à compter du dernier contact émanant de la personne.</p>
-<h3>Demandes d’essai acceptées</h3>
-<p>Les données sont conservées pendant la durée de l’essai puis, si la personne devient utilisatrice ou cliente, pendant la durée de la relation contractuelle.</p>
-<h3>Demandes d’essai refusées ou abandonnées</h3>
-<p>Les informations liées à la demande sont conservées pendant six mois à compter de la décision ou de l’abandon, afin de gérer les éventuelles contestations et prévenir les demandes abusives.</p>
-<p>Lorsque la personne a séparément accepté de recevoir des communications commerciales, son adresse peut être conservée pendant trois ans à compter du dernier contact.</p>
-<h3>Données des comptes utilisateurs</h3>
-<p>Les données sont conservées pendant la durée de la relation contractuelle.</p>
-<p>En cas de suppression du compte ou de résiliation, les données opérationnelles sont supprimées ou rendues au client dans un délai maximal de 30 jours, sauf données devant être conservées pour répondre à une obligation légale ou assurer la défense des droits de HALLAIS &amp; BERTHELOT.</p>
-<p>Les données résiduelles présentes dans les sauvegardes sont supprimées lors de leur cycle normal de renouvellement, dans un délai maximal de douze mois.</p>
-<h3>Documents comptables et factures</h3>
-<p>Les factures et documents comptables sont conservés pendant dix ans à compter de la clôture de l’exercice concerné.</p>
-<h3>Contrats et éléments de preuve</h3>
-<p>Les contrats, acceptations des CGUV et éléments nécessaires à la défense des droits de la société peuvent être archivés pendant la durée de prescription applicable, généralement cinq ans après la fin de la relation contractuelle.</p>
-<h3>Demandes d’assistance</h3>
-<p>Les échanges avec l’assistance sont conservés pendant la durée nécessaire au traitement de la demande puis, lorsque cela est justifié, pendant une durée maximale de cinq ans à des fins de preuve.</p>
-<h3>Journaux techniques et de sécurité</h3>
-<p>Les journaux nécessaires à la sécurité du service sont conservés pendant une durée maximale de douze mois, sauf lorsqu’une durée supérieure est nécessaire à l’analyse d’un incident ou à la défense de droits en justice.</p>
-<h3>Prospection commerciale</h3>
-<p>Les données utilisées à des fins de prospection peuvent être conservées pendant trois ans à compter de leur collecte ou du dernier contact émanant du prospect. La CNIL recommande cette durée pour les prospects et pour les anciens clients après la fin de la relation commerciale.</p>
-<h3>Opposition à la prospection</h3>
-<p>Les informations strictement nécessaires pour respecter une opposition à la prospection peuvent être conservées dans une liste d’exclusion pendant au moins trois ans.</p>
-<h2>10. Sécurité</h2>
-<p>HALLAIS &amp; BERTHELOT met en œuvre des mesures techniques et organisationnelles adaptées afin de protéger les données contre :</p>
-<ul><li>la destruction</li><li>la perte</li><li>l’altération</li><li>la divulgation non autorisée</li><li>l’accès non autorisé</li><li>toute autre forme de traitement illicite</li></ul>
-<p>Ces mesures comprennent notamment, selon les besoins :</p>
-<ul><li>le chiffrement des communications</li><li>la gestion des droits d’accès</li><li>l’utilisation de mots de passe sécurisés</li><li>la journalisation des accès</li><li>les sauvegardes</li><li>la supervision des infrastructures</li><li>la limitation des accès aux seules personnes habilitées</li><li>des procédures de gestion des incidents</li></ul>
-<p>Aucun système informatique ne pouvant garantir une sécurité absolue, HALLAIS &amp; BERTHELOT adapte régulièrement ses mesures de protection aux risques identifiés.</p>
-<h2>11. Droits des personnes</h2>
-<p>Selon la base légale et les circonstances du traitement, chaque personne peut exercer :</p>
-<ul><li>son droit d’accès</li><li>son droit de rectification</li><li>son droit à l’effacement</li><li>son droit à la limitation du traitement</li><li>son droit d’opposition</li><li>son droit à la portabilité, lorsqu’il est applicable</li><li>son droit de retirer son consentement à tout moment</li><li>son droit de définir des directives relatives au sort de ses données après son décès</li></ul>
-<p>Le retrait du consentement ne remet pas en cause la licéité des traitements effectués avant ce retrait.</p>
-<p>La demande peut être adressée à :</p>
-<p>contact@monchai.fr</p>
-<p>ou par courrier à :</p>
-<p>HALLAIS &amp; BERTHELOT<br> 5 rue Pierre-Joseph Colin<br> 35000 Rennes</p>
-<p>La demande doit préciser l’objet du droit exercé et comporter les informations permettant d’identifier la personne concernée.</p>
-<p>Un justificatif d’identité peut être demandé uniquement lorsqu’il existe un doute raisonnable sur l’identité du demandeur.</p>
-<p>HALLAIS &amp; BERTHELOT répond aux demandes dans les délais prévus par la réglementation, en principe dans un délai d’un mois.</p>
-<h2>12. Réclamation auprès de la CNIL</h2>
-<p>Toute personne estimant que ses droits ne sont pas respectés peut adresser une réclamation à la Commission nationale de l’informatique et des libertés (CNIL).</p>
-<p>La personne est néanmoins invitée à contacter préalablement HALLAIS &amp; BERTHELOT afin que la société puisse examiner et résoudre sa demande.</p>
-<h2>13. Vérification automatisée des inscriptions</h2>
-<p>Lors d’une demande d’inscription à l’essai gratuit, certaines informations peuvent être vérifiées automatiquement, notamment :</p>
-<ul><li>la validité du format du SIRET</li><li>l’existence et l’état d’activité de la structure</li><li>la correspondance entre l’activité déclarée et les critères d’accès au service</li></ul>
-<p>Cette vérification permet de préqualifier la demande.</p>
-<p>Les situations ambiguës ou non reconnues automatiquement peuvent faire l’objet d’une vérification humaine.</p>
-<p>Aucune décision produisant des effets juridiques ou affectant significativement la personne n’est prise exclusivement sur la base de ce traitement automatisé.</p>
-<h2>14. Cookies et autres traceurs</h2>
-<p>Le site peut utiliser des cookies ou technologies similaires.</p>
-<h3>Cookies strictement nécessaires</h3>
-<p>Ces cookies permettent notamment :</p>
-<ul><li>le fonctionnement technique du site</li><li>la mémorisation des choix de confidentialité</li><li>la sécurisation des formulaires</li><li>l’authentification</li><li>la conservation d’une session utilisateur</li></ul>
-<p>Ils ne nécessitent pas de consentement lorsqu’ils sont strictement nécessaires au service demandé.</p>
-<h3>Cookies de mesure d’audience</h3>
-<p>Des cookies peuvent être utilisés afin de mesurer la fréquentation et les performances du site.</p>
-<p>Selon leur configuration, ils peuvent nécessiter le consentement de l’utilisateur. Certains outils de mesure d’audience peuvent être exemptés de consentement lorsqu’ils respectent strictement les conditions fixées par la CNIL.</p>
-<h3>Cookies liés à des services tiers</h3>
-<p>Des cookies peuvent également être déposés par des services tiers, notamment lors de l’intégration :</p>
-<ul><li>de vidéos</li><li>de cartes</li><li>de formulaires externes</li><li>de boutons de réseaux sociaux</li><li>d’outils publicitaires ou de suivi de campagne</li></ul>
-<p>Lorsqu’un consentement est requis, ces services ne sont activés qu’après l’accord de l’utilisateur.</p>
-<p>L’utilisateur peut à tout moment modifier son choix grâce au lien « Gérer mes cookies » accessible depuis le pied de page.</p>
-<p>Les choix d’acceptation ou de refus peuvent être conservés pendant six mois avant que l’utilisateur soit à nouveau sollicité. La CNIL considère actuellement cette durée comme une bonne pratique.</p>
-<h2>15. Modification de la politique</h2>
-<p>La présente politique peut être modifiée afin de tenir compte :</p>
-<ul><li>d’une évolution des services</li><li>de l’ajout ou du remplacement d’un prestataire</li><li>d’une évolution réglementaire</li><li>d’un changement dans les traitements réalisés</li></ul>
-<p>La date de dernière mise à jour figure en haut de la page.</p>
-<p>En cas de modification importante concernant les utilisateurs de Mon Chai, ceux-ci pourront être informés par courrier électronique ou par une notification dans le logiciel.</p>
-<h2 id="mon-chai-notes">16. Application mobile « Mon Chai Notes » (Android)</h2>
+<h1>Confidentialité et traitement des données</h1>
+<p class="maj">Version préparée le 28 octobre 2026</p>
+<p>Cette politique concerne le site monchai.fr, l’application Mon Chai, son assistant, ses connecteurs et l’application Android Mon Chai Notes. Elle explique quelles données sont utilisées, pour quelles raisons, à qui elles sont transmises et comment exercer vos droits.</p>
+<nav class="legal-summary" aria-label="Sommaire de la confidentialité"><strong>Comprendre vos données</strong><ul><li><a href="#responsabilites">Qui est responsable ?</a></li><li><a href="#traitements">Données, finalités et bases légales</a></li><li><a href="#destinataires">Prestataires et transferts</a></li><li><a href="#conservation">Conservation et suppression</a></li><li><a href="#vos-droits">Exercer vos droits</a></li><li><a href="#cookies">Cookies et préférences</a></li><li><a href="#assistant-connecteurs">Assistant et connexions à une IA externe</a></li><li><a href="#mon-chai-notes">Mon Chai Notes sur Android</a></li></ul></nav>
+
+<h2 id="responsabilites">1. Qui est responsable des traitements ?</h2>
+<p><strong>HALLAIS &amp; BERTHELOT</strong>, SAS au capital de 1 000 euros, SIREN et RCS Rennes 100 858 547, 5 rue Pierre-Joseph Colin, 35000 Rennes, édite Mon Chai. Contact pour les données personnelles : <a href="mailto:contact@monchai.fr">contact@monchai.fr</a> ; téléphone : <a href="tel:+33676205967">+33 (0)6 76 20 59 67</a>.</p>
+<p>La société est responsable des traitements nécessaires à ses relations avec les visiteurs, prospects, clients et utilisateurs : demandes de contact, gestion des comptes, relation contractuelle, assistance, sécurité et communications.</p>
+<p>Pour les données que votre exploitation enregistre sur ses clients, fournisseurs, contacts ou collaborateurs, <strong>l’exploitation détermine les finalités et reste responsable de traitement</strong>. HALLAIS &amp; BERTHELOT intervient pour son compte comme sous-traitant. L’exploitation doit informer les personnes concernées et disposer d’une base légale. Les obligations de sous-traitance doivent être définies dans l’accord contractuel applicable au service.</p>
+
+<h2 id="traitements">2. Quelles données utilisons-nous, et pourquoi ?</h2>
+<h3>Contact, démonstration et demande d’accès</h3>
+<p>Selon le formulaire, nous recevons vos prénom, nom, e-mail professionnel, téléphone facultatif, domaine, SIRET, activité, outil actuel, priorité ou message. Ces données servent à répondre à votre demande, vérifier l’éligibilité professionnelle et organiser l’accès ou l’accompagnement. La base légale est la réalisation de mesures précontractuelles à votre demande ; la prévention des abus relève de notre intérêt légitime à protéger le service. Le formulaire de contact de l’application peut également enregistrer l’adresse IP et la date de la demande.</p>
+<p>Les champs marqués d’un astérisque sont nécessaires au traitement de la demande ; sans eux, nous ne pouvons pas la traiter. Les autres sont facultatifs. La lecture de cette politique et la demande de contact ne valent pas inscription à une communication commerciale.</p>
+<h3>Comptes, organisations et sécurité</h3>
+<p>Nous traitons l’identité, les coordonnées, la fonction, l’appartenance aux domaines, les rôles, les invitations, les préférences, les preuves d’acceptation des conditions et les données nécessaires à l’authentification. Les mots de passe sont enregistrés sous forme d’empreinte, non en clair. Selon les moyens activés, des données de double authentification, clés d’accès et appareils autorisés sont également traitées. Les traces techniques comprennent notamment IP, navigateur, dates et actions de sécurité.</p>
+<p>La fourniture du compte repose sur l’exécution du contrat pour le titulaire ou sur l’intérêt légitime à permettre aux collaborateurs habilités d’utiliser le service de leur exploitation. La protection contre les accès illicites et la recherche d’incidents relèvent de notre intérêt légitime à sécuriser le service.</p>
+<h3>Données du domaine et pièces jointes</h3>
+<p>Vos saisies, imports et pièces peuvent comprendre des noms de clients, adresses, coordonnées, factures, règlements, données de collaborateurs et informations sur les opérations de l’exploitation. Nous les hébergeons, organisons et restituons pour le compte de l’exploitation, dans les limites des droits attribués à chaque utilisateur. Les partages avec une autre organisation, exports et envois de documents transmettent les données sélectionnées aux destinataires choisis. Vérifiez ces destinataires avant de confirmer un partage.</p>
+<h3>Assistance et accès de support</h3>
+<p>Les demandes, messages, pièces jointes et informations de diagnostic servent à résoudre les difficultés et assurer le suivi de l’assistance. Ils sont accessibles aux personnes habilitées à traiter la demande. Les fichiers transmis au support peuvent contenir les données de votre exploitation : limitez-les à ce qui est utile. Ce traitement repose sur le contrat et sur notre intérêt légitime à assurer le suivi et la sécurité de l’assistance.</p>
+<h3>Facturation et obligations légales</h3>
+<p>Les informations contractuelles, de facturation et de règlement sont utilisées pour fournir le service et respecter les obligations comptables et fiscales. Les formulaires de contact et de demande d’accès ne demandent aucune donnée de carte bancaire. Les données de vos propres clients présentes dans vos factures relèvent des traitements de votre exploitation.</p>
+<h3>Newsletter et communications</h3>
+<p>Une demande d’information n’autorise pas, à elle seule, l’envoi d’une newsletter. L’inscription volontaire à celle-ci repose sur votre consentement, que vous pouvez retirer par le lien de désinscription du message ou en écrivant à <a href="mailto:contact@monchai.fr">contact@monchai.fr</a>. La prospection professionnelle en rapport avec l’activité peut reposer sur l’intérêt légitime, avec possibilité d’opposition simple et gratuite. Les messages nécessaires au compte ou au contrat restent distincts des messages commerciaux.</p>
+
+<h2 id="origine">3. Origine des informations et décisions automatisées</h2>
+<p>Les données proviennent de vos saisies, des informations fournies par le responsable de votre domaine, de vos invitations et imports, de votre utilisation du service et, pour la vérification professionnelle, des registres publics d’entreprises. Une vérification de SIRET peut contrôler la structure et son activité. Vous pouvez contacter l’équipe pour faire examiner une difficulté d’éligibilité ou rectifier une information. Les suggestions de l’assistant et de Mon Chai Notes doivent être relues avant validation ; elles ne remplacent pas vos décisions professionnelles.</p>
+
+<h2 id="destinataires">4. Qui reçoit les données ?</h2>
+<p>Les données sont accessibles aux utilisateurs autorisés par leur domaine, aux personnes habilitées de HALLAIS &amp; BERTHELOT et aux prestataires nécessaires à chaque fonction. Les autorités peuvent en être destinataires lorsqu’une obligation légale l’impose. Un destinataire choisi pour un export ou un partage reçoit les informations incluses dans ce document.</p>
+<ul>
+<li><strong>OVHcloud</strong> : hébergement de l’application et des données métier.</li>
+<li><strong>GitHub Pages / GitHub</strong> : hébergement et diffusion du site public ; réception des données techniques nécessaires à la consultation, dont l’adresse IP. <a href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement">Politique de GitHub</a>.</li>
+<li><strong>EmailJS</strong> : transmission des formulaires du site public vers la messagerie de l’équipe ; les champs du formulaire sont transmis à ce service. Le composant utilisé pour l’envoi est distribué par <strong>jsDelivr</strong>. <a href="https://www.emailjs.com/legal/privacy-policy/">Politique d’EmailJS</a>.</li>
+<li><strong>Prestataire de messagerie</strong> : acheminement et conservation des échanges avec l’équipe et des messages nécessaires au service. Le destinataire de votre message est HALLAIS &amp; BERTHELOT.</li>
+<li><strong>HubSpot</strong> : mesure de l’utilisation du site après accord à la catégorie « Mesure d’audience ». <a href="https://legal.hubspot.com/privacy-policy">Politique de HubSpot</a>.</li>
+<li><strong>Google Tag Manager</strong> : gestion des balises de mesure sur les pages qui l’utilisent, après accord à la mesure d’audience. <strong>Google Calendar</strong> : réservation d’un rendez-vous lorsque vous ouvrez le lien de prise de rendez-vous. <a href="https://policies.google.com/privacy?hl=fr">Politique de Google</a>.</li>
+<li><strong>Instagram / Meta</strong> : affichage des publications intégrées après accord à la catégorie « Services tiers ». Sans cet accord, un lien permet de consulter Instagram directement. <a href="https://privacycenter.instagram.com/policy/">Politique d’Instagram</a>.</li>
+<li><strong>Fournisseur de l’assistant externe que vous connectez</strong> : réception des questions et résultats que vous demandez à transmettre ; voir la section consacrée aux connecteurs.</li>
+</ul>
+<p>Un lien vers un service externe ouvre un service soumis à ses propres conditions. Vous pouvez consulter le site public et contacter l’équipe sans accepter la mesure d’audience ni les publications Instagram intégrées.</p>
+
+<h2 id="transferts">5. Transferts en dehors de l’Espace économique européen</h2>
+<p>L’hébergement de l’application chez OVHcloud ne signifie pas que tous les services du site sont traités exclusivement en France. EmailJS indique traiter les données aux États-Unis et prévoir des clauses contractuelles types pour les transferts européens. GitHub, Google, HubSpot, Meta et le fournisseur d’IA externe peuvent également impliquer des traitements hors de l’Espace économique européen, selon le service utilisé et son contrat.</p>
+<p>Vous pouvez demander à <a href="mailto:contact@monchai.fr">contact@monchai.fr</a> les informations sur les destinataires et les garanties applicables à votre traitement, ainsi qu’une copie de ces garanties lorsqu’elle peut être communiquée. Les traitements hors EEE doivent être encadrés par un mécanisme prévu au chapitre V du RGPD : décision d’adéquation applicable ou garanties appropriées, dont les clauses contractuelles types et les mesures complémentaires nécessaires.</p>
+
+<h2 id="conservation">6. Conservation, restitution et suppression</h2>
+<p>La suppression d’un compte, la suppression d’une organisation, la révocation d’un appareil et l’effacement d’une pièce métier ont des effets différents. Une facture émise ou une trace nécessaire à un registre ne disparaît pas automatiquement lorsqu’un utilisateur quitte le domaine. Les données nécessaires à une obligation légale ou à la défense de droits peuvent être conservées avec un accès limité.</p>
+<ul>
+<li><strong>Demandes de contact et prospects</strong> : au plus trois ans après le dernier contact émanant de la personne ; les échanges devenus contractuels suivent les règles du contrat ou de la preuve.</li>
+<li><strong>Compte et données opérationnelles du domaine</strong> : pendant la fourniture du service, puis traitement de la restitution et de l’effacement à la clôture, sous réserve des documents et preuves à conserver. Adressez la demande à l’équipe pour organiser son périmètre et obtenir confirmation du résultat.</li>
+<li><strong>Factures et pièces comptables</strong> : dix ans pour les obligations comptables applicables ; les autres registres suivent leurs obligations propres.</li>
+<li><strong>Journaux techniques et de sécurité ordinaires de l’application</strong> : durée standard de 90 jours ; les traces nécessaires aux documents et registres métier sont conservées au moins dix ans. Une conservation liée à un incident ou un litige peut se prolonger tant qu’elle est nécessaire.</li>
+<li><strong>Échanges avec l’assistant interne</strong> : durée standard de 30 jours.</li>
+<li><strong>Fichiers temporaires d’import</strong> : durée standard de sept jours ; rapports et historique de traitement : 30 jours. Les données importées et validées deviennent des données du domaine et suivent leur durée propre.</li>
+<li><strong>Journal du connecteur IA externe</strong> : durée standard de 90 jours ; connexions révoquées : douze mois pour la sécurité.</li>
+<li><strong>Preuves de choix de consentement enregistrées par l’application</strong> : durée standard d’un an ; le choix conservé dans le navigateur du site public expire après six mois.</li>
+<li><strong>Assistance et preuves contractuelles</strong> : pendant le traitement et la relation, puis conservation limitée aux éléments nécessaires à la preuve selon la prescription applicable, généralement cinq ans.</li>
+<li><strong>Sauvegardes</strong> : les données résiduelles suivent le cycle de renouvellement des copies ; une suppression dans la base active ne supprime pas instantanément toutes les sauvegardes. Les données effacées ne doivent pas être remises en exploitation lors d’une restauration. L’équipe peut préciser le cycle applicable à votre demande.</li>
+</ul>
+<p>Les durées propres aux contenus et appareils Mon Chai Notes sont précisées dans sa section. La durée de conservation chez un assistant externe dépend également du contrat et des paramètres de votre compte auprès de son fournisseur.</p>
+
+<h2 id="vos-droits">7. Comment exercer vos droits ?</h2>
+<p>Selon le traitement et sa base légale, vous disposez des droits d’accès, rectification, effacement, limitation, opposition, portabilité et retrait de votre consentement, ainsi que du droit de définir des directives relatives à vos données après votre décès. Le retrait n’affecte pas les traitements licites déjà effectués.</p>
+<p>Écrivez à <a href="mailto:contact@monchai.fr?subject=Exercice%20de%20mes%20droits%20sur%20mes%20donn%C3%A9es">contact@monchai.fr</a>, ou par courrier à HALLAIS &amp; BERTHELOT, 5 rue Pierre-Joseph Colin, 35000 Rennes. Précisez le droit souhaité, l’adresse de votre compte et, si nécessaire, le domaine concerné. <strong>N’envoyez jamais votre mot de passe.</strong> Un justificatif d’identité n’est demandé qu’en cas de doute raisonnable sur votre identité.</p>
+<p>Nous répondons en principe dans un délai d’un mois. Si la complexité ou le nombre des demandes justifie une prolongation, nous vous en informons dans ce premier mois ; cette prolongation ne dépasse pas deux mois supplémentaires. Les éventuelles limites à une demande sont expliquées.</p>
+<p>Pour une donnée saisie par une exploitation sur un client ou un collaborateur, vous pouvez vous adresser à cette exploitation ; nous l’assistons dans le cadre de notre mission de sous-traitant. Vous pouvez déposer une réclamation auprès de la <a href="https://www.cnil.fr/fr/plaintes">CNIL</a>, sans obligation de contacter préalablement Mon Chai.</p>
+
+<h2 id="cookies">8. Cookies et stockage dans le navigateur</h2>
+<p>Le site public mémorise les choix de cookies pendant six mois. Les préférences fonctionnelles et mécanismes de protection des formulaires restent distincts des outils de mesure. Dans l’application, les cookies de session et de protection des formulaires sont nécessaires à la connexion et à la sécurité ; la session standard dure au plus 24 heures, avec expiration possible plus courte selon les réglages de sécurité.</p>
+<p><strong>Mesure d’audience</strong> : HubSpot et, sur les pages concernées, Google Tag Manager sont chargés après votre accord à cette catégorie. <strong>Services tiers</strong> : cette catégorie permet les publications Instagram intégrées ; elle ne constitue pas une autorisation publicitaire. Les deux catégories peuvent être refusées séparément. Les cookies effectivement déposés par un fournisseur dépendent du service activé et de sa configuration.</p>
+<p>Utilisez « Gérer mes cookies » dans le pied de page pour refuser, accepter ou modifier les catégories, puis enregistrer votre choix. Le retrait s’applique aux chargements et traitements futurs ; les données déjà transmises restent soumises à vos droits et aux obligations du destinataire. Si le navigateur refuse le stockage, votre choix ne peut pas être mémorisé pour une prochaine page.</p>
+
+<h2 id="assistant-connecteurs">9. Assistant interne et connexion à ChatGPT ou Claude</h2>
+<p>L’assistant interne traite votre question, le contexte nécessaire à la réponse et les résultats autorisés pour votre domaine. Les échanges peuvent être journalisés pour le diagnostic et l’évaluation de la qualité pendant la durée indiquée plus haut. Le moteur de recherche d’aide est entraîné sur une banque de procédures maintenue par l’équipe ; ne saisissez pas de mots de passe ni d’informations sensibles inutiles dans vos questions.</p>
+<p>Lorsque vous connectez un assistant externe, comme ChatGPT ou Claude, celui-ci reçoit les informations demandées dans le périmètre que vous autorisez. Cela peut comprendre des données de clients, factures, stocks ou collaborateurs. <strong>Le fait qu’une donnée soit hébergée en France dans Mon Chai ne signifie pas que sa consultation par cet assistant reste en France.</strong> Vérifiez les conditions, la conservation et les paramètres d’utilisation des données de votre fournisseur avant de connecter le domaine.</p>
+<p>La rubrique « Connecteur ChatGPT / Claude » de l’administration permet de consulter et révoquer les connexions. La révocation empêche de nouveaux accès par cette connexion ; elle ne retire pas les réponses et données déjà transmises au fournisseur externe.</p>
+
+<h2 id="securite">10. Sécurité et évolution de la politique</h2>
+<p>Les mesures comprennent les communications chiffrées, les contrôles d’accès par organisation et par rôle, la protection de l’authentification, la journalisation et les sauvegardes. Les accès de support sont limités aux personnes habilitées. Aucun système ne garantit une sécurité absolue ; les incidents et demandes de droits sont traités par l’équipe.</p>
+<p>La date de version figure en haut du document. Une évolution importante des traitements est portée à la connaissance des personnes concernées par un moyen adapté. Cette politique décrit l’information des personnes ; elle ne remplace ni les conditions du service ni l’accord de sous-traitance applicable aux données de votre exploitation.</p>
+
+<h2 id="mon-chai-notes">11. Application mobile « Mon Chai Notes » (Android)</h2>
 <p>Mon Chai Notes permet aux utilisateurs de Mon Chai de préparer leurs saisies de terrain, à la voix ou au clavier, puis de les envoyer dans leur compte Mon Chai après les avoir vérifiées. Lorsque la facturation est ouverte pour leur exploitation, elle permet aussi de consulter les factures impayées, d’enregistrer un règlement reçu et, depuis la version 1.0.6, de dicter une facture qui est enregistrée en brouillon. L’application est réservée aux utilisateurs disposant d’un compte Mon Chai.</p>
 <h3>Connexion</h3>
 <p>La connexion se fait sur la page de connexion de Mon Chai, dans le navigateur du téléphone : l’application ne voit jamais le mot de passe. Elle reçoit en retour des jetons de session, conservés dans le stockage sécurisé du téléphone (Android Keystore). Pour afficher le téléphone dans la page « Téléphones » de Mon Chai et permettre de le déconnecter à distance, l’application transmet un identifiant d’appareil tiré au hasard, la marque et le modèle du téléphone (par exemple « Google Pixel 8 ») et sa version.</p>
 <h3>Enregistrements de la voix</h3>
 <p>Le micro n’est utilisé que lorsque l’utilisateur appuie sur le bouton d’enregistrement, et l’autorisation d’Android est demandée au premier usage ; sans elle, la saisie au clavier reste possible. Un enregistrement dure au plus 90 secondes. Il est envoyé, chiffré (HTTPS), aux serveurs de Mon Chai hébergés par OVHcloud, où il est transcrit en texte par un logiciel installé sur ces serveurs : aucun service tiers ni aucune intelligence artificielle extérieure ne reçoit la voix. L’enregistrement n’est pas conservé : le serveur le supprime dès la transcription terminée, et le téléphone dès qu’elle a réussi.</p>
 <h3>Texte transcrit et saisies</h3>
-<p>Le texte transcrit est conservé 30 jours sur les serveurs, puis supprimé automatiquement. Une saisie validée par l’utilisateur (transfert de vin, traitement, vendange, analyse, note, règlement d’une facture, facture en brouillon) devient une donnée de son exploitation, au même titre qu’une saisie faite sur le site, et suit les durées de la section 9. Pour la traçabilité, chaque envoi est inscrit dans un journal (utilisateur, exploitation, téléphone, type de saisie, date, début du texte d’origine limité à 500 caractères), conservé 180 jours.</p>
+<p>Le texte transcrit est conservé 30 jours sur les serveurs, puis supprimé automatiquement. Une saisie validée par l’utilisateur (transfert de vin, traitement, vendange, analyse, note, règlement d’une facture, facture en brouillon) devient une donnée de son exploitation, au même titre qu’une saisie faite sur le site, et suit les durées de la section 6. Pour la traçabilité, chaque envoi est inscrit dans un journal (utilisateur, exploitation, téléphone, type de saisie, date, début du texte d’origine limité à 500 caractères), conservé 180 jours.</p>
 <h3>Factures et règlements</h3>
-<p>Lorsque la facturation est ouverte pour l’exploitation, l’application affiche les factures impayées et ce que doit chaque client : ces informations sont lues dans Mon Chai à chaque consultation et ne sont pas conservées sur le téléphone. Pour retrouver un client, une facture ou un vin, le nom ou le numéro tapé est envoyé aux serveurs de Mon Chai, qui renvoient les résultats ; il n’est pas enregistré dans la base de données, mais peut figurer dans les journaux techniques des serveurs (section 9). Un règlement enregistré par l’utilisateur (facture, montant, mode de paiement, date, numéro de chèque ou référence) devient une donnée de son exploitation, au même titre qu’un règlement saisi sur le site. Depuis la version 1.0.6, l’utilisateur peut aussi dicter une facture : le client, les vins, leurs quantités et une note facultative sont envoyés aux serveurs de Mon Chai, qui calculent les prix et la TVA et enregistrent la facture en brouillon dans le compte de l’exploitation, sans numéro officiel ; elle se relit et s’émet sur le site. L’application en montre un résumé (client, nombre de lignes, total estimé), gardé sur le téléphone avec la saisie jusqu’à la déconnexion. Les données relatives aux clients de l’exploitation relèvent de la responsabilité de l’exploitant (section 2). L’application n’affiche ni le prix des vins ni les factures elles-mêmes.</p>
+<p>Lorsque la facturation est ouverte pour l’exploitation, l’application affiche les factures impayées et ce que doit chaque client : ces informations sont lues dans Mon Chai à chaque consultation et ne sont pas conservées sur le téléphone. Pour retrouver un client, une facture ou un vin, le nom ou le numéro tapé est envoyé aux serveurs de Mon Chai, qui renvoient les résultats ; il n’est pas enregistré dans la base de données, mais peut figurer dans les journaux techniques des serveurs (section 6). Un règlement enregistré par l’utilisateur (facture, montant, mode de paiement, date, numéro de chèque ou référence) devient une donnée de son exploitation, au même titre qu’un règlement saisi sur le site. Depuis la version 1.0.6, l’utilisateur peut aussi dicter une facture : le client, les vins, leurs quantités et une note facultative sont envoyés aux serveurs de Mon Chai, qui calculent les prix et la TVA et enregistrent la facture en brouillon dans le compte de l’exploitation, sans numéro officiel ; elle se relit et s’émet sur le site. L’application en montre un résumé (client, nombre de lignes, total estimé), gardé sur le téléphone avec la saisie jusqu’à la déconnexion. Les données relatives aux clients de l’exploitation relèvent de la responsabilité de l’exploitant (section 1). L’application n’affiche ni le prix des vins ni les factures elles-mêmes.</p>
 <h3>Ce que l’application ne fait pas</h3>
 <ul><li>pas de publicité, pas de mesure d’audience, pas d’outil de suivi ni de rapport de plantage fourni par un tiers</li><li>pas d’accès à la localisation, aux contacts, aux photos ni aux fichiers du téléphone</li><li>pas de sauvegarde des données de l’application dans le compte Google du téléphone</li></ul>
 <h3>Déconnexion et suppression</h3>
-<p>« Compte › Se déconnecter » ferme la session et efface du téléphone les jetons, les saisies en attente et les enregistrements. Depuis le site, « Déconnecter ce téléphone » coupe aussitôt l’accès du téléphone. Depuis la version 1.0.5, si des saisies validées n’ont pas encore été envoyées au moment d’une déconnexion décidée par le site, l’application ne les efface pas sans le dire : elle les garde sur le téléphone et les montre ; elles partent quand la même personne se reconnecte, ou sont effacées si elle le choisit. Les jetons et les autres données de l’exploitation sont effacés du téléphone. Les sessions révoquées sont conservées douze mois au titre des journaux de sécurité. Les demandes d’accès ou de suppression des données s’exercent comme indiqué à la section 11, à l’adresse contact@monchai.fr.</p>
+<p>« Compte › Se déconnecter » ferme la session et efface du téléphone les jetons, les saisies en attente et les enregistrements. Depuis le site, « Déconnecter ce téléphone » coupe aussitôt l’accès du téléphone. Depuis la version 1.0.5, si des saisies validées n’ont pas encore été envoyées au moment d’une déconnexion décidée par le site, l’application ne les efface pas sans le dire : elle les garde sur le téléphone et les montre ; elles partent quand la même personne se reconnecte, ou sont effacées si elle le choisit. Les jetons et les autres données de l’exploitation sont effacés du téléphone. Les sessions révoquées sont conservées douze mois au titre des journaux de sécurité. Les demandes d’accès ou de suppression des données s’exercent comme indiqué à la section 7, à l’adresse contact@monchai.fr.</p>
+
 </main>
-<footer class="legal-foot">
-  <a href="mentions-legales.html">Mentions légales</a> ·
-  <a href="index.html">Accueil</a> ·
-  <button type="button" class="legal-cookies" data-cookies>Gérer mes cookies</button>
+<footer class="mc-site-footer" aria-label="Informations légales">
+  <div class="mc-site-footer__inner">
+    <div class="mc-site-footer__brand"><a class="mc-site-footer__name" href="index.html"><img src="assets/img/logo-mon-chai-400-20260720.webp" alt="Mon Chai" width="400" height="219" loading="lazy" decoding="async"></a><p>De la vigne à la vente.</p><a href="mailto:contact@monchai.fr">contact@monchai.fr</a><nav class="mc-site-footer__social" aria-label="Mon Chai"><a href="https://www.instagram.com/monchai.fr/" target="_blank" rel="noopener noreferrer">Instagram ↗</a><a href="https://www.linkedin.com/company/monchai" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a></nav></div>
+    <nav aria-label="Le logiciel"><h2>Le logiciel</h2><a href="fonctionnalites.html">Fonctionnalités</a><a href="tarifs.html">Tarifs</a><a href="monchainotes.html">Mon Chai Notes</a></nav>
+    <nav aria-label="Ressources"><h2>Ressources</h2><a href="ressources.html">Guides pratiques</a><a href="faq.html">Questions fréquentes</a><a href="contact.html">Nous contacter</a></nav>
+    <nav class="mc-site-footer__privacy" aria-label="Confidentialité & données"><h2>Confidentialité & données</h2><a href="politique-confidentialite.html">Consulter la politique de confidentialité</a><a href="politique-confidentialite.html#traitements">Traitement des données</a><a href="politique-confidentialite.html#vos-droits">Vos droits</a><button type="button" data-cookies>Gérer mes cookies</button></nav>
+    <div class="mc-site-footer__bottom"><small>© 2026 HALLAIS &amp; BERTHELOT · Imaginé et développé à Rennes</small><nav aria-label="Informations légales"><a href="mentions-legales.html">Mentions légales</a><a href="cgu.html">Conditions générales</a></nav></div>
+  </div>
 </footer>
 <script src="assets/js/header.js"></script>
-<script src="script.js"></script>
+<script src="consent.js?v=20261028-footer" defer></script>
+<script src="assets/js/documents-legaux.js?v=20261028-footer" defer></script>
 </body>
 </html>

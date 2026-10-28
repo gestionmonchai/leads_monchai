@@ -1,0 +1,52 @@
+/* Composant commun aux pages produit, éditoriales et légales. */
+.mc-site-footer{box-sizing:border-box;position:relative;width:100%;height:auto;margin:0;padding:56px 32px 20px;background:#471d29;color:#fff9f4;font:16px/1.6 Inter,system-ui,sans-serif;text-align:left;letter-spacing:normal}
+.mc-site-footer *{box-sizing:border-box}
+.mc-site-footer__inner{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:1.15fr .8fr .85fr 1.35fr;gap:40px}
+.mc-site-footer a,.mc-site-footer button{display:flex;align-items:center;min-height:44px;max-width:100%;padding:6px 0;border:0;background:transparent;color:#f7eae4;font:inherit;font-size:.9em;text-align:left;text-decoration:none;overflow-wrap:anywhere;cursor:pointer}
+.mc-site-footer a:hover,.mc-site-footer button:hover{text-decoration:underline;text-underline-offset:5px;color:#fff}
+.mc-site-footer a:focus-visible,.mc-site-footer button:focus-visible{outline:2px solid #dfb780;outline-offset:4px;border-radius:2px}
+.mc-site-footer h2{margin:0 0 14px;color:#dfb780;font:600 .8em/1.5 Inter,system-ui,sans-serif;letter-spacing:.06em;text-transform:uppercase;border:0;padding:0}
+.mc-site-footer .mc-site-footer__name{min-height:0;display:inline-block;padding:0;color:#fff9f4;font:500 2em/1.2 Georgia,serif;letter-spacing:-.04em}
+.mc-site-footer__name img{display:block;width:160px;height:88px;object-fit:contain;filter:brightness(0) invert(1)}
+.mc-site-footer__name span{color:#dfb780}
+.mc-site-footer__brand p{margin:14px 0 8px;color:#e6cfc8;font-size:.95em}
+.mc-site-footer__social{display:flex;flex-wrap:wrap;gap:16px;margin-top:12px}
+.mc-site-footer__social a{font-size:.8em}
+.mc-site-footer__privacy{padding-left:28px;border-left:1px solid #795059}
+.mc-site-footer__bottom{grid-column:1/-1;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px 32px;border-top:1px solid #795059;padding-top:16px;margin-top:4px}
+.mc-site-footer__bottom small{color:#e6cfc8;font-size:.75em}
+.mc-site-footer__bottom nav{display:flex;flex-wrap:wrap;gap:8px 24px}
+.mc-site-footer__bottom a{font-size:.8em}
+@media(min-width:1200px){
+  /* Compensation du dessin 1920px sur les anciennes pages à scène mise à l'échelle. */
+  body:not(.corps-actus) #page .mc-site-footer{font-size:calc(16px / var(--echelle,1));padding:calc(56px / var(--echelle,1)) calc(40px / var(--echelle,1)) calc(20px / var(--echelle,1))}
+  body:not(.corps-actus) #page .mc-site-footer__inner{max-width:calc(1280px / var(--echelle,1))}
+  body:not(.corps-actus) #page .mc-site-footer a,body:not(.corps-actus) #page .mc-site-footer button{min-height:calc(44px / var(--echelle,1))}
+}
+@media(max-width:1000px){.mc-site-footer__inner{grid-template-columns:repeat(2,minmax(0,1fr));gap:32px}.mc-site-footer__privacy{padding-left:0;border-left:0}}
+@media(max-width:540px){.mc-site-footer{padding:28px 24px 20px}.mc-site-footer__inner{grid-template-columns:repeat(2,minmax(0,1fr));gap:24px}.mc-site-footer__brand,.mc-site-footer__privacy{grid-column:1/-1}.mc-site-footer__privacy{padding-top:24px;border-top:1px solid #795059}.mc-site-footer__bottom{display:block}.mc-site-footer__bottom nav{margin-top:12px}.mc-site-footer h2{margin-bottom:8px}}
+
+/* Lecteur légal natif : un titre, un document, aucun header de site imbriqué. */
+.mc-legal-dialog{width:min(920px,calc(100% - 32px));max-height:calc(100dvh - 32px);margin:auto;padding:0;border:1px solid #d9c6ba;border-radius:16px;background:#fffdfc;color:#211b18;box-shadow:0 24px 90px #211b1833;font:16px/1.65 Inter,system-ui,sans-serif}
+.mc-legal-dialog::backdrop{background:#211b18a6}
+.mc-legal-dialog__head{position:sticky;top:0;z-index:1;display:flex;align-items:center;gap:16px;padding:18px 24px;border-bottom:1px solid #e4d8cf;background:#fffdfc}
+.mc-legal-dialog__head #mc-legal-title{flex:1;margin:0;font:600 1.1rem/1.4 Inter,system-ui,sans-serif;color:#60232b}
+.mc-legal-dialog__head a{font-size:.8rem;color:#60232b}
+.mc-legal-dialog__close{flex-shrink:0;width:44px;height:44px;border:1px solid #dfd3cb;border-radius:50%;background:#fffdfc;color:#60232b;font:24px/1 system-ui;cursor:pointer}
+.mc-legal-dialog__body{padding:24px 32px 40px;overflow-wrap:anywhere}
+.mc-legal-dialog__body .legal{max-width:none;margin:0;padding:0}
+.mc-legal-dialog__body h1{font:600 1.6rem/1.3 Inter,system-ui;color:#60232b;margin:0 0 16px}
+.mc-legal-dialog__body h2{font:600 1.2rem/1.4 Inter,system-ui;color:#60232b;border-top:1px solid #e4d8cf;padding-top:20px;margin:28px 0 12px}
+.mc-legal-dialog__body h3{font-size:1rem;margin:22px 0 8px}
+.mc-legal-dialog__body p{margin:0 0 14px}
+.mc-legal-dialog__body ul{padding-left:24px;margin:0 0 16px}
+.mc-legal-dialog a{color:#7b1e22;text-underline-offset:3px}
+.mc-legal-dialog :focus-visible{outline:2px solid #7b1e22;outline-offset:3px}
+.mc-legal-dialog [id]{scroll-margin-top:110px}
+.legal-summary{padding:20px 24px;background:#f5eee7;border:1px solid #e4d8cf;border-radius:8px;margin:20px 0 28px}
+.legal-summary ul{margin-bottom:0}
+.legal-summary a{display:block;padding:6px 0}
+.legal table,.mc-legal-dialog table{border-collapse:collapse;width:100%;font-size:.9em;margin:16px 0 24px}
+.legal th,.legal td,.mc-legal-dialog th,.mc-legal-dialog td{padding:12px;vertical-align:top;text-align:left;border:1px solid #d9c6ba;overflow-wrap:anywhere}
+.legal th,.mc-legal-dialog th{background:#f5eee7}
+@media(max-width:540px){.mc-legal-dialog{width:calc(100% - 16px);max-height:calc(100dvh - 16px);border-radius:10px}.mc-legal-dialog__head{padding:12px;gap:10px}.mc-legal-dialog__head #mc-legal-title{font-size:.95rem}.mc-legal-dialog__head a{max-width:80px}.mc-legal-dialog__body{padding:20px}.legal table,.mc-legal-dialog table{font-size:.8em}.legal th,.legal td,.mc-legal-dialog th,.mc-legal-dialog td{padding:8px}}

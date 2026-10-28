@@ -13,6 +13,20 @@
 (function () {
   'use strict';
 
+  var sdkEnCours;
+  function chargerEmailJS() {
+    if (window.emailjs) return Promise.resolve();
+    if (sdkEnCours) return sdkEnCours;
+    sdkEnCours = new Promise(function (resolve, reject) {
+      var script = document.createElement('script');
+      script.src = 'https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js';
+      script.onload = resolve;
+      script.onerror = function () { sdkEnCours = null; script.remove(); reject(new Error('envoi')); };
+      document.head.appendChild(script);
+    });
+    return sdkEnCours;
+  }
+
   var CLE_PUBLIQUE = 'SW76TlsTwVd5Z8v8y';
   var SERVICE_ID   = 'service_dmflavl';
   var TEMPLATE_ID  = 'template_yajlaes';
@@ -59,7 +73,7 @@
     aide.hidden = !texte;
 
     var nl = (k === 'newsletter');
-    if (nl) newsletter.checked = true;
+    // Le choix newsletter reste une action explicite, même avec ?objet=newsletter.
     reqMsg.hidden = nl;
     facMsg.hidden = !nl;
     message.required = !nl;
@@ -131,7 +145,7 @@
   function invalide(el) { el.setAttribute('aria-invalid', 'true'); el.focus(); }
   function net(el) { return (el && el.value ? el.value.trim() : ''); }
 
-  form.addEventListener('submit', function (e) {
+  form.addEventListener('submit', async function (e) {
     e.preventDefault();
     cacher();
     ['prenom', 'nom', 'email', 'objet', 'message'].forEach(function (id) { g(id).removeAttribute('aria-invalid'); });
@@ -158,12 +172,14 @@
     if (!objet.value) { afficher('err', 'Merci de choisir l’objet de votre demande.'); invalide(objet); return; }
 
     var nl = newsletter.checked;
+    if (objet.value === 'newsletter' && !nl) { afficher('err', 'Pour demander la newsletter, cochez la case correspondante.'); newsletter.focus(); return; }
     var texte = net(message);
     if (objet.value !== 'newsletter' && !texte) { afficher('err', 'Merci d’écrire votre message.'); invalide(message); return; }
 
-    if (!consent.checked) { afficher('err', 'Merci d’accepter l’utilisation de vos informations pour continuer.'); consent.focus(); return; }
+    if (!consent.checked) { afficher('err', 'Merci de confirmer la lecture des informations sur vos données.'); consent.focus(); return; }
 
-    if (typeof emailjs === 'undefined') { afficher('err', 'Service momentanément indisponible. Réessayez dans un instant ou écrivez-nous à contact@monchai.fr.'); return; }
+    etatBouton(true, 'Envoi…');
+    try { await chargerEmailJS(); } catch (err) { afficher('err', 'Service momentanément indisponible. Réessayez ou écrivez-nous à contact@monchai.fr.'); etatBouton(false); return; }
     if (!ejsPret) { emailjs.init(CLE_PUBLIQUE); ejsPret = true; }
 
     var libelle = libelleObjet();
@@ -190,12 +206,12 @@
     }).then(function () {
       enregistrerRL();
       if (objet.value === 'newsletter') {
-        succesTitre.textContent = 'Votre inscription est enregistrée.';
-        succesTexte.textContent = 'Vous recevrez les prochaines nouvelles de Mon Chai à l’adresse ' + mail + '.';
+        succesTitre.textContent = 'Votre demande d’inscription a été transmise.';
+        succesTexte.textContent = 'L’équipe traitera votre demande pour l’adresse ' + mail + '.';
       } else {
         succesTitre.textContent = 'Votre message est bien parti.';
         succesTexte.textContent = 'L’équipe Mon Chai vous répond directement, par e-mail, à l’adresse ' + mail + '.'
-          + (nl ? ' Votre inscription à la newsletter est enregistrée.' : '');
+          + (nl ? ' Votre demande d’inscription à la newsletter a aussi été transmise.' : '');
       }
       form.hidden = true;
       succes.hidden = false;

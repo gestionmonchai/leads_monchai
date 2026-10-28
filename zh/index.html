@@ -9,11 +9,11 @@
 <script>
 window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}
 (function(){
-  function etat(c){var a=c&&c.audience?'granted':'denied',t=c&&c.tiers?'granted':'denied';return{analytics_storage:a,ad_storage:t,ad_user_data:t,ad_personalization:t};}
+  function etat(c){var a=c&&c.audience===true?'granted':'denied',t='denied';return{analytics_storage:a,ad_storage:t,ad_user_data:t,ad_personalization:t};}
   var d=etat(null);d.wait_for_update=500;gtag('consent','default',d);
   function chargerPlusTard(){if(document.readyState==='complete'){if(window.monchaiChargerGtm)window.monchaiChargerGtm();}else{window.addEventListener('load',function(){setTimeout(function(){if(window.monchaiChargerGtm)window.monchaiChargerGtm();},0);},{once:true});}}
-  try{var c=JSON.parse(localStorage.getItem('monchai_cookie_consent'));if(c&&c.ts&&Date.now()-c.ts<15724800000){gtag('consent','update',etat(c));if(c.audience||c.tiers)chargerPlusTard();}}catch(e){}
-  window.addEventListener('monchai:consent',function(e){gtag('consent','update',etat(e.detail));dataLayer.push({event:'monchai_consentement'});if(e.detail&&(e.detail.audience||e.detail.tiers))chargerPlusTard();});
+  try{var c=JSON.parse(localStorage.getItem('monchai_cookie_consent'));if(c&&typeof c.ts==='number'&&Number.isFinite(c.ts)&&c.ts<=Date.now()&&Date.now()-c.ts<15724800000&&typeof c.audience==='boolean'&&typeof c.tiers==='boolean'){gtag('consent','update',etat(c));if(c.audience===true)chargerPlusTard();}}catch(e){}
+  window.addEventListener('monchai:consent',function(e){gtag('consent','update',etat(e.detail));dataLayer.push({event:'monchai_consentement'});if(e.detail&&e.detail.audience===true)chargerPlusTard();});
 })();
 </script>
 <!-- Google Tag Manager, chargé seulement après un accord (mesure d'audience ou
@@ -141,6 +141,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     #actualite{ background-image:url("../assets/svg/actualite.svg"); }
   }
 </style></noscript>
+<link rel="stylesheet" href="../assets/css/footer-commun.css?v=20261028-footer">
 </head>
 <body class="lang-zh">
 <!-- ================================================================
@@ -717,57 +718,14 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
        identique à celui des 8 pages « Le logiciel ».
        ================================================================ -->
 </main>
-<footer aria-label="页脚" class="pied">
-<div class="pied__haut">
-<div class="pied__marque">
-<p class="pied__nom">Mon Chai</p>
-<p class="pied__sous">葡萄酒软件</p>
-<p class="pied__phrase">庄园的管理,从葡萄园到销售</p>
-<p class="pied__fr">开发并主办于法国</p>
-<div class="pied__suivre">
-<p class="pied__suivre-titre">跟着我们</p>
-<div class="pied__reseaux">
-<a aria-label="Instagram 上跟踪Mon Chai" href="https://www.instagram.com/monchai.fr/" rel="noopener noreferrer" target="_blank"><svg aria-hidden="true" viewbox="0 0 24 24"><rect height="18" rx="5" width="18" x="3" y="3"></rect><circle cx="12" cy="12" r="4"></circle><circle class="pied__reseau-point" cx="17.4" cy="6.7" r="1.1"></circle></svg></a>
-<a aria-label="LinkedIn 上跟踪Mon Chai" href="https://www.linkedin.com/company/monchai" rel="noopener noreferrer" target="_blank"><svg aria-hidden="true" viewbox="0 0 24 24"><path d="M5.2 8.2H2.1V22h3.1V8.2ZM3.7 2A1.8 1.8 0 1 0 3.7 5.6 1.8 1.8 0 0 0 3.7 2ZM22 14.1c0-4.2-2.2-6.2-5.2-6.2-2.4 0-3.5 1.3-4.1 2.2V8.2H9.6V22h3.1v-6.8c0-1.8.3-3.6 2.6-3.6 2.2 0 2.3 2.1 2.3 3.7V22H22v-7.9Z"></path></svg></a>
-</div>
-</div>
-</div>
-<nav aria-label="软件" class="pied__col">
-<h2>软件</h2>
-<ul>
-<li><a href="fonctionnalites.html">全部功能</a></li>
-<li><a href="vigne-vendanges.html">葡萄园与采收</a></li> <li><a href="cave-vinification.html">酒窖与酿造</a></li> <li><a href="mises-conditionnement.html">包装与装瓶</a></li> <li><a href="stocks-tracabilite.html">库存与追溯</a></li> <li><a href="ventes-clients.html">销售、客户与开票</a></li> <li><a href="drm-conformite.html">DRM 与合规</a></li> <li><a href="oenotourisme.html">葡萄酒旅游</a></li>
-<li><a href="#assistant">AI 助手</a></li>
-</ul>
-</nav>
-<nav aria-label="公司" class="pied__col">
-<h2>公司</h2>
-<ul>
-<li><a href="tarifs.html">价格</a></li>
-<li><a href="essai-gratuit.html">免费试用</a></li>
-<li><a href="choisir-logiciel-viticole.html">选择合适的软件</a></li>
-<li><a href="ia-au-service-de-mon-chai.html">连接 ChatGPT 或 Claude</a></li>
-<li><a href="#apropos">关于我们</a></li>
-<li><a href="#faq">常答问题</a></li>
-<li><a href="#actualite">我们的新闻</a></li>
-<li><a href="actualites-reglementaires.html">法规动态</a></li>
-<li><a href="contact.html">联系我们</a></li>
-</ul>
-</nav>
-<nav aria-label="法律 法律" class="pied__col">
-<h2>法律 法律</h2>
-<ul>
-<li><a href="mentions-legales.html">法律声明</a></li>
-<li><a href="politique-confidentialite.html">隐私政策</a></li>
-<li><a href="cgu.html">销售与使用条款</a></li>
-<li><button data-cookies="" type="button">管理我的饼干</button></li>
-</ul>
-</nav>
-</div>
-<div class="pied__bas">
-<p>2026Mon Chai 保留所有权利</p>
-<p>成员 <a href="https://www.lawinetech.com/" rel="noopener" target="_blank">酒科技</a> 和 <a href="https://lepoool.tech/" rel="noopener" target="_blank">Poool</a>被想象出来,在雷恩发展</p>
-</div>
+<footer class="mc-site-footer" aria-label="法律信息">
+  <div class="mc-site-footer__inner">
+    <div class="mc-site-footer__brand"><a class="mc-site-footer__name" href="index.html"><img src="../assets/img/logo-mon-chai-400-20260720.webp" alt="Mon Chai" width="400" height="219" loading="lazy" decoding="async"></a><p>从葡萄园到销售。</p><a href="mailto:contact@monchai.fr">contact@monchai.fr</a><nav class="mc-site-footer__social" aria-label="Mon Chai"><a href="https://www.instagram.com/monchai.fr/" target="_blank" rel="noopener noreferrer">Instagram ↗</a><a href="https://www.linkedin.com/company/monchai" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a></nav></div>
+    <nav aria-label="软件"><h2>软件</h2><a href="fonctionnalites.html">功能</a><a href="tarifs.html">价格</a><a href="../monchainotes.html">Mon Chai Notes</a></nav>
+    <nav aria-label="资源"><h2>资源</h2><a href="actualites-reglementaires.html">实用指南</a><a href="faq.html">常见问题</a><a href="contact.html">联系我们</a></nav>
+    <nav class="mc-site-footer__privacy" aria-label="隐私与数据"><h2>隐私与数据</h2><a href="politique-confidentialite.html">阅读隐私政策</a><a href="../politique-confidentialite.html#traitements">数据处理</a><a href="../politique-confidentialite.html#vos-droits">您的权利</a><button type="button" data-cookies>Cookie 设置</button></nav>
+    <div class="mc-site-footer__bottom"><small>© 2026 HALLAIS &amp; BERTHELOT · 于雷恩设计与开发</small><nav aria-label="法律信息"><a href="mentions-legales.html">法律声明</a><a href="cgu.html">使用条款</a></nav></div>
+  </div>
 </footer>
 </div>
 <!-- ================================================================
@@ -776,43 +734,12 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
      Mesure d'audience + tiers : soumis au consentement. Choix conservé 6 mois,
      réouvrable via « Gérer mes cookies » (footer / pages légales).
      ================================================================ -->
-<div class="cookie" hidden="" id="cookieBanner">
-<div class="cookie__texte">
-<strong>曲曲奇和隐私</strong>
-<p>使用严格必要的饼干 来操作网站。在征得您的同意后, 我们还使用观众测量饼干来改进Mon Chai。 <a href="politique-confidentialite.html">了解更多</a>.</p>
-</div>
-<div class="cookie__actions">
-<button class="cookie__btn cookie__btn--ghost" id="cookieRefus" type="button">拒绝</button>
-<button class="cookie__btn cookie__btn--ghost" id="cookieRegler" type="button">自自定义</button>
-<button class="cookie__btn cookie__btn--plein" id="cookieAccept" type="button">接受一切</button>
-</div>
-</div>
-<div class="cookie-modal" hidden="" id="cookieModal">
-<div class="cookie-modal__fond" data-cookies-fermer=""></div>
-<div aria-label="Cookie 设置" aria-modal="true" class="cookie-modal__boite" role="dialog">
-<button aria-label="关闭" class="cookie-modal__fermer" data-cookies-fermer="">×</button>
-<h2>Cookie 设置</h2>
-<p class="cookie-modal__intro">选择您接受的饼干。 您的选项保留六个月 。</p>
-<label class="cookie-opt">
-<span><strong>绝对必要</strong><br/>现场的运作和安全 一直活跃</span>
-<input checked="" disabled="" type="checkbox"/>
-</label>
-<label class="cookie-opt">
-<span><strong>听询行动</strong><br/>帮助我们了解网站如何用来改进。</span>
-<input id="optAudience" type="checkbox"/>
-</label>
-<label class="cookie-opt">
-<span><strong>第三方服务</strong><br/>外部内容和工具(表格、视频、运动后续行动)。</span>
-<input id="optTiers" type="checkbox"/>
-</label>
-<div class="cookie-modal__pied">
-<button class="cookie__btn cookie__btn--ghost" id="cookieToutRefus" type="button">拒绝一切</button>
-<button class="cookie__btn cookie__btn--plein" id="cookieEnregistrer" type="button">省省我的选择</button>
-</div>
-</div>
-</div>
+
+
 <script src="../assets/js/header.js"></script>
-<script src="../script.js"></script>
+<script src="../script.js?v=20261028-footer"></script>
 <script src="../assets/js/cta-popup.js" defer></script>
+<script src="../consent.js?v=20261028-footer" defer></script>
+<script src="../assets/js/documents-legaux.js?v=20261028-footer" defer></script>
 </body>
 </html>

@@ -9,11 +9,11 @@
 <script>
 window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}
 (function(){
-  function etat(c){var a=c&&c.audience?'granted':'denied',t=c&&c.tiers?'granted':'denied';return{analytics_storage:a,ad_storage:t,ad_user_data:t,ad_personalization:t};}
+  function etat(c){var a=c&&c.audience===true?'granted':'denied',t='denied';return{analytics_storage:a,ad_storage:t,ad_user_data:t,ad_personalization:t};}
   var d=etat(null);d.wait_for_update=500;gtag('consent','default',d);
   function chargerPlusTard(){if(document.readyState==='complete'){if(window.monchaiChargerGtm)window.monchaiChargerGtm();}else{window.addEventListener('load',function(){setTimeout(function(){if(window.monchaiChargerGtm)window.monchaiChargerGtm();},0);},{once:true});}}
-  try{var c=JSON.parse(localStorage.getItem('monchai_cookie_consent'));if(c&&c.ts&&Date.now()-c.ts<15724800000){gtag('consent','update',etat(c));if(c.audience||c.tiers)chargerPlusTard();}}catch(e){}
-  window.addEventListener('monchai:consent',function(e){gtag('consent','update',etat(e.detail));dataLayer.push({event:'monchai_consentement'});if(e.detail&&(e.detail.audience||e.detail.tiers))chargerPlusTard();});
+  try{var c=JSON.parse(localStorage.getItem('monchai_cookie_consent'));if(c&&typeof c.ts==='number'&&Number.isFinite(c.ts)&&c.ts<=Date.now()&&Date.now()-c.ts<15724800000&&typeof c.audience==='boolean'&&typeof c.tiers==='boolean'){gtag('consent','update',etat(c));if(c.audience===true)chargerPlusTard();}}catch(e){}
+  window.addEventListener('monchai:consent',function(e){gtag('consent','update',etat(e.detail));dataLayer.push({event:'monchai_consentement'});if(e.detail&&e.detail.audience===true)chargerPlusTard();});
 })();
 </script>
 <!-- Google Tag Manager, chargé seulement après un accord (mesure d'audience ou
@@ -27,7 +27,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 })(window,document,'script','dataLayer','GTM-NDSQV6T7');};</script>
 <!-- End Google Tag Manager -->
 <meta content="width=device-width, initial-scale=1" name="viewport"/>
-<title>法律通知Mon Chai</title>
+<title>法律声明 | Mon Chai</title>
 <meta content="index, follow, max-image-preview:large, max-snippet:-1" name="robots"/>
 <link href="https://monchai.fr/zh/mentions-legales.html" rel="canonical"/><link href="https://monchai.fr/mentions-legales.html" hreflang="x-default" rel="alternate"/><link href="https://monchai.fr/mentions-legales.html" hreflang="fr" rel="alternate"/><link href="https://monchai.fr/en/mentions-legales.html" hreflang="en" rel="alternate"/><link href="https://monchai.fr/it/mentions-legales.html" hreflang="it" rel="alternate"/><link href="https://monchai.fr/de/mentions-legales.html" hreflang="de" rel="alternate"/><link href="https://monchai.fr/zh/mentions-legales.html" hreflang="zh-Hans" rel="alternate"/>
 
@@ -41,6 +41,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <link href="../assets/css/header.css" rel="stylesheet"/>
 <link href="../assets/css/actus.css" rel="stylesheet"/>
 <link href="../legal.css" rel="stylesheet"/>
+<link rel="stylesheet" href="../assets/css/footer-commun.css?v=20261028-footer">
+<meta name="description" content="Mon Chai 的发布方、托管及联系信息。">
 </head>
 <body class="corps-actus lang-zh">
 <div class="site-header site-header--page">
@@ -120,44 +122,25 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </header>
 </div>
 <main class="legal">
-<h1>法律声明</h1><p class="legal-traduction" role="note">本译文仅供参考，具有法律效力的版本为法文版。</p>
-<p class="maj">最近一次更新更新:2026年7月15日</p>
-<h2>网站编辑器</h2>
-<p>
-<strong>HALLAIS &amp; BERTHELOT 氧化</strong><br/>
-    简化股份公司(SAS),资本为1,000欧元<br/>
-    销售名称:Mon Chai<br/>
-    总部:5 rue Pierre-Joseph Colin, 35 000雷恩<br/>
-    锡瑞尔:100 858 547<br/>
-    RCS Renn:100 858 547<br/>
-    电子邮件: <a href="mailto:contact@monchai.fr">contact@monchai.fr</a><br/>
-    电话:+33 (0)6 76 20 59 67
-  </p>
-<h2>出版主任</h2>
-<p>Denis Bersetlot,HALLAIS &amp; BERTHELOT公司的法律代表。</p>
-<h2>托管</h2>
-<p>
-    网站和Mon Chai平台由下列机构主办: <strong>OVHcloud</strong><br/>
-    资本为50 000 000欧元的SAS,资本为50 000 000欧元,RRCS Lille Métropole 424 761 419 000 45<br/>
-    2 rue Kellermann,59100鲁拜,法国鲁拜克斯<br/>
-<a href="https://www.ovhcloud.com" rel="noopener" target="_blank">www.ovhcloud.com</a>
-</p>
-<h2>知识产权知识产权知识产权</h2>
-<p>网站的所有内容(文字、视觉、标志、布局、软件)属于HALLAIS &amp; BERTHELOT或其伙伴的财产,受知识产权法保护,未经事先书面许可,禁止复制或全部或部分陈述。</p>
-<h2>个人资料 个人资料 个人资料</h2>
-<p>网站和服务的处理中处理个人数据的情况,见我们 <a href="politique-confidentialite.html">隐私政策</a>. 您有获得、纠正、删除和反对的权利,在行使这些权利的过程中可以行使这些权利。 <a href="mailto:contact@monchai.fr">contact@monchai.fr</a>.</p>
-<h2>Cookie</h2>
-<p>网站使用 cookie 详细载于 <a href="politique-confidentialite.html">隐私政策</a>。您可以通过以下按钮随时改变选择。</p>
-<p><button class="legal-cookies" data-cookies="" type="button">管理我的饼干</button></p>
-<h2>联系</h2>
-<p>对于有关网站的任何问题: <a href="mailto:contact@monchai.fr">contact@monchai.fr</a>.</p>
+<h1>法律声明</h1><p class="maj">准备版本：2026年10月28日</p>
+<h2>网站发布方</h2><p><strong>HALLAIS &amp; BERTHELOT</strong><br>SAS · Capital : 1 000 €<br>Mon Chai<br>5 rue Pierre-Joseph Colin, 35000 Rennes, France<br>SIREN / RCS Rennes : 100 858 547<br>TVA / VAT : FR61100858547<br><a href="mailto:contact@monchai.fr">contact@monchai.fr</a><br><a href="tel:+33676205967">+33 (0)6 76 20 59 67</a></p>
+<h2>出版负责人</h2><p>Denis Berthelot · HALLAIS &amp; BERTHELOT</p>
+<h2>公共网站 monchai.fr</h2><p><strong>GitHub Pages · GitHub, Inc.</strong><br>88 Colin P. Kelly Jr. St., San Francisco, CA 94107, United States<br><a href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement">服务商的官方声明</a> · <a href="https://support.github.com/">GitHub Support</a></p>
+<h2>应用与业务数据</h2><p><strong>OVH SAS · OVHcloud</strong><br>RCS Lille Métropole : 424 761 419<br>2 rue Kellermann, 59100 Roubaix, France<br><a href="tel:+33972101007">+33 9 72 10 10 07</a><br><a href="https://www.ovhcloud.com/">www.ovhcloud.com</a></p>
+<h2>知识产权</h2><p>内容和软件受知识产权法律保护。第三方保留其自身内容的权利。</p>
+<h2>个人数据</h2><p>有关处理目的、接收方、保留期限及您的权利，请参阅隐私政策。 <a href="politique-confidentialite.html">隐私政策</a>.</p>
 </main>
-<footer class="legal-foot">
-<a href="politique-confidentialite.html">隐私政策</a> ·
-  <a href="index.html">首页</a> ·
-  <button class="legal-cookies" data-cookies="" type="button">管理我的饼干</button>
+<footer class="mc-site-footer" aria-label="法律信息">
+  <div class="mc-site-footer__inner">
+    <div class="mc-site-footer__brand"><a class="mc-site-footer__name" href="index.html"><img src="../assets/img/logo-mon-chai-400-20260720.webp" alt="Mon Chai" width="400" height="219" loading="lazy" decoding="async"></a><p>从葡萄园到销售。</p><a href="mailto:contact@monchai.fr">contact@monchai.fr</a><nav class="mc-site-footer__social" aria-label="Mon Chai"><a href="https://www.instagram.com/monchai.fr/" target="_blank" rel="noopener noreferrer">Instagram ↗</a><a href="https://www.linkedin.com/company/monchai" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a></nav></div>
+    <nav aria-label="软件"><h2>软件</h2><a href="fonctionnalites.html">功能</a><a href="tarifs.html">价格</a><a href="../monchainotes.html">Mon Chai Notes</a></nav>
+    <nav aria-label="资源"><h2>资源</h2><a href="actualites-reglementaires.html">实用指南</a><a href="faq.html">常见问题</a><a href="contact.html">联系我们</a></nav>
+    <nav class="mc-site-footer__privacy" aria-label="隐私与数据"><h2>隐私与数据</h2><a href="politique-confidentialite.html">阅读隐私政策</a><a href="../politique-confidentialite.html#traitements">数据处理</a><a href="../politique-confidentialite.html#vos-droits">您的权利</a><button type="button" data-cookies>Cookie 设置</button></nav>
+    <div class="mc-site-footer__bottom"><small>© 2026 HALLAIS &amp; BERTHELOT · 于雷恩设计与开发</small><nav aria-label="法律信息"><a href="mentions-legales.html">法律声明</a><a href="cgu.html">使用条款</a></nav></div>
+  </div>
 </footer>
 <script src="../assets/js/header.js"></script>
-<script src="../script.js"></script>
+<script src="../consent.js?v=20261028-footer" defer></script>
+<script src="../assets/js/documents-legaux.js?v=20261028-footer" defer></script>
 </body>
 </html>

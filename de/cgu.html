@@ -9,11 +9,11 @@
 <script>
 window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}
 (function(){
-  function etat(c){var a=c&&c.audience?'granted':'denied',t=c&&c.tiers?'granted':'denied';return{analytics_storage:a,ad_storage:t,ad_user_data:t,ad_personalization:t};}
+  function etat(c){var a=c&&c.audience===true?'granted':'denied',t='denied';return{analytics_storage:a,ad_storage:t,ad_user_data:t,ad_personalization:t};}
   var d=etat(null);d.wait_for_update=500;gtag('consent','default',d);
   function chargerPlusTard(){if(document.readyState==='complete'){if(window.monchaiChargerGtm)window.monchaiChargerGtm();}else{window.addEventListener('load',function(){setTimeout(function(){if(window.monchaiChargerGtm)window.monchaiChargerGtm();},0);},{once:true});}}
-  try{var c=JSON.parse(localStorage.getItem('monchai_cookie_consent'));if(c&&c.ts&&Date.now()-c.ts<15724800000){gtag('consent','update',etat(c));if(c.audience||c.tiers)chargerPlusTard();}}catch(e){}
-  window.addEventListener('monchai:consent',function(e){gtag('consent','update',etat(e.detail));dataLayer.push({event:'monchai_consentement'});if(e.detail&&(e.detail.audience||e.detail.tiers))chargerPlusTard();});
+  try{var c=JSON.parse(localStorage.getItem('monchai_cookie_consent'));if(c&&typeof c.ts==='number'&&Number.isFinite(c.ts)&&c.ts<=Date.now()&&Date.now()-c.ts<15724800000&&typeof c.audience==='boolean'&&typeof c.tiers==='boolean'){gtag('consent','update',etat(c));if(c.audience===true)chargerPlusTard();}}catch(e){}
+  window.addEventListener('monchai:consent',function(e){gtag('consent','update',etat(e.detail));dataLayer.push({event:'monchai_consentement'});if(e.detail&&e.detail.audience===true)chargerPlusTard();});
 })();
 </script>
 <!-- Google Tag Manager, chargé seulement après un accord (mesure d'audience ou
@@ -27,7 +27,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 })(window,document,'script','dataLayer','GTM-NDSQV6T7');};</script>
 <!-- End Google Tag Manager -->
 <meta content="width=device-width, initial-scale=1" name="viewport"/>
-<title>Allgemeine Nutzungsbedingungen | Mon Chai</title>
+<title>Nutzungsbedingungen | Mon Chai</title>
 <meta content="index, follow, max-image-preview:large, max-snippet:-1" name="robots"/>
 <link href="https://monchai.fr/de/cgu.html" rel="canonical"/><link href="https://monchai.fr/cgu.html" hreflang="x-default" rel="alternate"/><link href="https://monchai.fr/cgu.html" hreflang="fr" rel="alternate"/><link href="https://monchai.fr/en/cgu.html" hreflang="en" rel="alternate"/><link href="https://monchai.fr/it/cgu.html" hreflang="it" rel="alternate"/><link href="https://monchai.fr/de/cgu.html" hreflang="de" rel="alternate"/><link href="https://monchai.fr/zh/cgu.html" hreflang="zh-Hans" rel="alternate"/>
 
@@ -41,6 +41,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <link href="../assets/css/header.css" rel="stylesheet"/>
 <link href="../assets/css/actus.css" rel="stylesheet"/>
 <link href="../legal.css" rel="stylesheet"/>
+<link rel="stylesheet" href="../assets/css/footer-commun.css?v=20261028-footer">
+<meta name="description" content="Bedingungen für Mon Chai sowie Rechte und Pflichten gewerblicher Nutzer.">
 </head>
 <body class="corps-actus lang-de">
 <div class="site-header site-header--page">
@@ -240,13 +242,17 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <p>FALLEN SIE IN DER VORLIEGENDEN FRIST ZUM RECHTSABSCHLUSS AN DIE GERICHTSVERTRETUNG DES HOFES ÜBEREINSTIMMT (SICH AUSGEFÜHRTE ZUSTÄNDIGKEIT EINES GERICHTS), NICHT RECHTSVORSCHRIFTEN FÜR VERTEIDIGUNGEN ODER RECHTSANWALTUNGEN, SICH ZUM ZWECK DER URTEILE ODER DER URTEILE IN EINEM RECHTSRECHT AUFGEFÜHRTEN VERFAHREN ODER DER RECHTSVORSCHRIFTEN.</p>
 <p>Kontakt von MON Chai: contact@monchai.fr.</p>
 </main>
-<footer class="legal-foot">
-<a href="politique-confidentialite.html">Datenschutzerklärung</a> ·
-  <a href="mentions-legales.html">Impressum</a> ·
-  <a href="index.html">Startseite</a> ·
-  <button class="legal-cookies" data-cookies="" type="button">Meine Cookies verwalten</button>
+<footer class="mc-site-footer" aria-label="Rechtliche Informationen">
+  <div class="mc-site-footer__inner">
+    <div class="mc-site-footer__brand"><a class="mc-site-footer__name" href="index.html"><img src="../assets/img/logo-mon-chai-400-20260720.webp" alt="Mon Chai" width="400" height="219" loading="lazy" decoding="async"></a><p>Vom Weinberg bis zum Verkauf.</p><a href="mailto:contact@monchai.fr">contact@monchai.fr</a><nav class="mc-site-footer__social" aria-label="Mon Chai"><a href="https://www.instagram.com/monchai.fr/" target="_blank" rel="noopener noreferrer">Instagram ↗</a><a href="https://www.linkedin.com/company/monchai" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a></nav></div>
+    <nav aria-label="Die Software"><h2>Die Software</h2><a href="fonctionnalites.html">Funktionen</a><a href="tarifs.html">Preise</a><a href="../monchainotes.html">Mon Chai Notes</a></nav>
+    <nav aria-label="Ressourcen"><h2>Ressourcen</h2><a href="actualites-reglementaires.html">Praxisleitfäden</a><a href="faq.html">Häufige Fragen</a><a href="contact.html">Kontakt</a></nav>
+    <nav class="mc-site-footer__privacy" aria-label="Datenschutz & Daten"><h2>Datenschutz & Daten</h2><a href="politique-confidentialite.html">Datenschutzerklärung lesen</a><a href="../politique-confidentialite.html#traitements">Datenverarbeitung</a><a href="../politique-confidentialite.html#vos-droits">Ihre Rechte</a><button type="button" data-cookies>Cookie-Einstellungen</button></nav>
+    <div class="mc-site-footer__bottom"><small>© 2026 HALLAIS &amp; BERTHELOT · In Rennes entwickelt</small><nav aria-label="Rechtliche Informationen"><a href="mentions-legales.html">Impressum</a><a href="cgu.html">Nutzungsbedingungen</a></nav></div>
+  </div>
 </footer>
 <script src="../assets/js/header.js"></script>
-<script src="../script.js"></script>
+<script src="../consent.js?v=20261028-footer" defer></script>
+<script src="../assets/js/documents-legaux.js?v=20261028-footer" defer></script>
 </body>
 </html>

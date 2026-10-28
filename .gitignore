@@ -56,6 +56,7 @@ assets/png/
 # un compte de démonstration, et la façon de forger une session. Rien de tout
 # cela n'a sa place sur un site vitrine.
 *.py
+!outils/newsletter/*.py
 !outils/verifier-coherence.py
 !outils/recette-footer-2026-10-28/verifier_navigateur.py
 *.ps1

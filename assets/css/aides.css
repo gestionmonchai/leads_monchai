@@ -89,3 +89,8 @@
 }
 @media(prefers-reduced-motion:reduce) { .aides-catalogue * { scroll-behavior: auto; } }
 @media print { .aides-recherche,.site-header { display: none !important; } .aide-carte { break-inside: avoid; } .aides-cartes { display: block; } }
+
+/* Illustration photographique : dossier lisible, recherche proche. */
+.aides-hero__presentation { grid-template-columns:minmax(0,1fr) minmax(220px,360px); }
+.aides-hero__illustration { width:100%;height:auto;border-radius:10px; }
+@media(max-width:599px) { .aides-hero__presentation { grid-template-columns:1fr; } .aides-hero__illustration { width:100%;max-width:360px;justify-self:start; } }

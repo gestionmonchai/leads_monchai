@@ -7,6 +7,8 @@
 .aides-hero h1 { font: 500 clamp(34px,4.2vw,58px)/1.13 var(--ac-serif); max-width: 920px; margin: 20px 0; }
 .aide-kicker { font: 600 12px/1.6 var(--ac-titre); color: #7b1e22; text-transform: uppercase; letter-spacing: .13em; }
 .aides-chapo { max-width: 76ch; font-size: 18px; }
+.aides-hero__presentation { display: grid; grid-template-columns: minmax(0,1fr) 250px; align-items: center; gap: 32px; }
+.aides-hero__illustration { display: block; width: 100%; height: auto; border-radius: 12px; border: 1px solid #e1cfc0; }
 .aide-meta { color: #55473e; font-size: 13px; }
 .aides-parcours { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 10px; margin-top: 30px; }
 .aides-parcours a { border: 1px solid #d5bca5; border-radius: 9px; padding: 12px; color: #471318; text-decoration: none; min-height: 48px; background: #fffdfb; font-size: 14px; }
@@ -73,6 +75,7 @@
  .aides-parcours { grid-template-columns: 1fr 1fr; }
  .aides-parcours a { font-size: 12px; }
  .aides-chapo { font-size: 16px; }
+ .aides-hero__presentation { grid-template-columns: minmax(0,1fr) 104px; gap: 14px; align-items: start; }
  .aides-cartes,.aides-regles,.aides-portails { grid-template-columns: 1fr; }
  .aide-carte { padding: 20px; }
  .aides-recherche__ligne { gap: 8px; }

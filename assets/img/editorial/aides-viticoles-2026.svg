@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" fill="none">
+  <title>Financer la vie du domaine viticole</title>
+  <desc>Une bourse et des pièces dorées devant des rangs de vigne, dans une palette crème et bordeaux.</desc>
+  <defs>
+    <linearGradient id="fond" x1="160" y1="50" x2="1050" y2="620" gradientUnits="userSpaceOnUse"><stop stop-color="#FFF9F1"/><stop offset="1" stop-color="#F0E3D0"/></linearGradient>
+    <linearGradient id="bourse" x1="440" y1="210" x2="650" y2="510" gradientUnits="userSpaceOnUse"><stop stop-color="#F7DEB0"/><stop offset="1" stop-color="#C78D50"/></linearGradient>
+    <linearGradient id="piece" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#F4D59C"/><stop offset="1" stop-color="#C58C48"/></linearGradient>
+    <pattern id="papier" width="20" height="20" patternUnits="userSpaceOnUse"><circle cx="3" cy="5" r=".8" fill="#744E33" fill-opacity=".07"/><circle cx="14" cy="15" r=".6" fill="#FFFDF7" fill-opacity=".6"/></pattern>
+    <clipPath id="cadre"><path fill="#fff" d="M0 0h1200v630H0z"/></clipPath>
+  </defs>
+  <g clip-path="url(#cadre)">
+    <path fill="url(#fond)" d="M0 0h1200v630H0z"/>
+    <circle cx="800" cy="218" r="153" fill="#FFFDF7" fill-opacity=".72"/>
+    <path d="M-70 403C196 265 349 308 563 368s417-146 744-61v323H-70Z" fill="#DEDDBF"/>
+    <path d="M-70 493C208 302 430 377 643 430s391-125 664-59v259H-70Z" fill="#C7C9A5"/>
+    <path d="M672 453c208-130 375-126 579-37v214H672Z" fill="#B3BB96"/>
+    <g stroke="#7E8D69" stroke-width="6" stroke-linecap="round" opacity=".6">
+      <path d="M805 411c-26 59-31 128-3 219M859 397c0 73 26 153 87 233M914 390c28 71 90 160 186 240M968 394c57 76 130 138 232 195M1026 405c50 48 108 92 174 124"/>
+    </g>
+    <g stroke="#657554" stroke-width="5" stroke-linecap="round" opacity=".8">
+      <path d="m813 449 18 4m-24 42 18 4m-19 41 18 4m-13 42 18 4m42-166 17-2m-4 45 18-1m3 46 18-2m12 45 18-2m-3-142 16-7m12 45 16-7m18 44 16-7m28 42 16-7m-16-129 15-9m29 44 15-9m32 43 15-9"/>
+    </g>
+    <path d="M0 563c196-54 390-42 572-9s376 21 628-5v81H0Z" fill="#ECDBC1"/>
+    <ellipse cx="514" cy="548" rx="264" ry="27" fill="#724C34" fill-opacity=".13"/>
+    <g transform="rotate(8 676 305)">
+      <rect x="602" y="172" width="181" height="267" rx="12" fill="#FFFCF6" stroke="#A88260" stroke-width="3"/>
+      <path d="M628 207h88m-88 19h118m-118 21h73" stroke="#D9C5AD" stroke-width="7" stroke-linecap="round"/>
+      <circle cx="692" cy="326" r="41" fill="#F3E5D0"/>
+      <g fill="#7B1E22"><circle cx="678" cy="316" r="10"/><circle cx="700" cy="316" r="10"/><circle cx="689" cy="335" r="10"/><circle cx="689" cy="353" r="6"/></g>
+      <path d="M689 305c2-18 16-25 30-17-1 13-14 20-30 17Z" fill="#78845E"/>
+    </g>
+    <path d="M433 155c24 10 42 11 65 0 21 14 43 11 65 0l-15 67H449Z" fill="#E9BD7F" stroke="#774A31" stroke-width="4" stroke-linejoin="round"/>
+    <path d="m452 164 13 52m34-51-3 51m46-52-16 52" stroke="#B28049" stroke-width="4" stroke-linecap="round"/>
+    <path d="M446 226c-9 44-76 75-93 159-20 99 34 151 145 151s164-50 145-145c-17-87-84-121-94-165Z" fill="url(#bourse)" stroke="#774A31" stroke-width="5" stroke-linejoin="round"/>
+    <path d="M416 331c-26 29-40 61-39 99m199-99c28 36 40 77 30 119" stroke="#FAE5C0" stroke-width="8" stroke-linecap="round" opacity=".7"/>
+    <path d="M445 220c24 10 80 10 104 0m-105 15c27 8 78 8 104 0" stroke="#7B1E22" stroke-width="10" stroke-linecap="round"/>
+    <path d="M546 228c34-15 67-4 55 14-10 15-39 2-53-12m-1 0c35 17 46 37 53 62m-54-61c4 30-5 48-19 63" stroke="#7B1E22" stroke-width="6" stroke-linecap="round"/>
+    <circle cx="496" cy="400" r="61" fill="#FFF1D6" fill-opacity=".54" stroke="#B68147" stroke-width="2"/>
+    <path d="M517 365c-30-15-48 5-48 35s19 49 48 35m-60-46h49m-49 22h43" stroke="#7B1E22" stroke-width="9" stroke-linecap="round"/>
+    <g stroke="#9B693A" stroke-width="3">
+      <path d="M617 514h105v25c0 18-105 18-105 0Z" fill="#C59250"/><ellipse cx="669.5" cy="514" rx="52.5" ry="14" fill="#F1D296"/>
+      <path d="M617 493h105v21c0 18-105 18-105 0Z" fill="#D6A564"/><ellipse cx="669.5" cy="493" rx="52.5" ry="14" fill="#F6DAA8"/>
+      <path d="M617 472h105v21c0 18-105 18-105 0Z" fill="#D6A564"/><ellipse cx="669.5" cy="472" rx="52.5" ry="14" fill="#F6DAA8"/>
+      <ellipse cx="762" cy="529" rx="35" ry="38" transform="rotate(22 762 529)" fill="url(#piece)"/>
+      <ellipse cx="762" cy="529" rx="26" ry="29" transform="rotate(22 762 529)" stroke="#F9E5BE"/>
+    </g>
+    <path d="m763 514-8 28m-3-22 17 7m-21 4 17 7" stroke="#9B693A" stroke-width="3" stroke-linecap="round"/>
+    <g stroke="#7B1E22" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M281 540c-7-48 6-89 29-111m-24 81c-26 0-42-15-37-40 28 1 42 17 37 40Zm5-35c26 1 42-13 39-37-26-1-44 12-39 37Z" fill="#8B9875"/>
+    </g>
+    <path fill="url(#papier)" d="M0 0h1200v630H0z"/>
+  </g>
+</svg>

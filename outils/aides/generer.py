@@ -54,8 +54,8 @@ scripts='<script src="assets/js/header.js"></script><script src="consent.js?v=20
 
 def page(slug,title,description,content,collection=False):
  header=body_header.replace('href="s-installer-en-viticulture.html" aria-current="page"',f'href="{slug}" aria-current="page"')
- image='assets/img/editorial/aides-viticoles-2026.png' if collection else 'assets/img/pages/vigne-vendanges.jpg'
- image_alt='Une bourse et des pièces devant des rangs de vigne' if collection else 'Vignes du domaine'
+ image='assets/img/editorial/aides-viticoles-photo-2026.jpg' if collection else 'assets/img/pages/vigne-vendanges.jpg'
+ image_alt='Illustration générée : dossier de financement et pièces en euros devant un vignoble' if collection else 'Vignes du domaine'
  schema={'@context':'https://schema.org','@type':'CollectionPage' if collection else 'Article','name':title,'headline':title,'description':description,'url':'https://monchai.fr/'+slug,'inLanguage':'fr','datePublished':DATE,'dateModified':DATE,'author':{'@type':'Organization','name':'Mon Chai'}}
  if collection:
   schema['mainEntity']={'@type':'ItemList','itemListElement':[{'@type':'ListItem','position':i+1,'name':a['titre'],'url':'https://monchai.fr/'+a['article']} for i,a in enumerate(AIDES)]}
@@ -66,7 +66,7 @@ def page(slug,title,description,content,collection=False):
 <meta name="robots" content="index, follow, max-image-preview:large"><link rel="canonical" href="https://monchai.fr/{slug}">
 <meta property="og:type" content="{'website' if collection else 'article'}"><meta property="og:title" content="{e(title)}"><meta property="og:description" content="{e(description)}"><meta property="og:url" content="https://monchai.fr/{slug}"><meta property="og:locale" content="fr_FR"><meta property="og:site_name" content="Mon Chai"><meta property="og:image" content="https://monchai.fr/{image}"><meta property="og:image:alt" content="{image_alt}">
 <link rel="icon" type="image/png" href="assets/img/logo_mon_chai.png"><meta name="theme-color" content="#7B1E22">
-<link rel="stylesheet" href="assets/css/polices.css"><link rel="stylesheet" href="assets/css/header.css"><link rel="stylesheet" href="assets/css/actus.css"><link rel="stylesheet" href="assets/css/couts-editorial.css"><link rel="stylesheet" href="assets/css/footer-commun.css?v=20261028-footer"><link rel="stylesheet" href="assets/css/aides.css?v=20261028{'-illustration' if collection else ''}">
+<link rel="stylesheet" href="assets/css/polices.css"><link rel="stylesheet" href="assets/css/header.css"><link rel="stylesheet" href="assets/css/actus.css"><link rel="stylesheet" href="assets/css/couts-editorial.css"><link rel="stylesheet" href="assets/css/footer-commun.css?v=20261028-footer"><link rel="stylesheet" href="assets/css/aides.css?v=20261028{'-photo' if collection else ''}">
 <script type="application/ld+json">{json.dumps(schema,ensure_ascii=False).replace('</','< /')}</script></head>'''
  return head+header+content+footer+scripts+('<script src="assets/js/aides.js?v=20261028" defer></script>' if collection else '')+'</body></html>\n'
 
@@ -106,7 +106,7 @@ n=len(AIDES)
 content=f'''<main id="contenu" tabindex="-1" class="aides-catalogue">
 <section class="aides-hero"><div class="aides-largeur"><nav class="article__ariane" aria-label="Fil d’Ariane"><a href="index.html">Accueil</a> › <a href="ressources.html">Ressources</a> › Aides aux vignerons</nav>
 <p class="aide-kicker">Le financement, à chaque étape du domaine</p><h1>Aides aux vignerons :<br>de l’installation à l’arrachage</h1>
-<div class="aides-hero__presentation"><p class="aides-chapo">S’installer, planter, investir, employer, changer de pratiques, traverser une crise ou transmettre : retrouvez les soutiens publics dans l’ordre de vie du domaine.</p><img class="aides-hero__illustration" src="assets/img/editorial/aides-viticoles-2026.svg" width="1200" height="630" alt="Une bourse et des pièces devant des rangs de vigne" decoding="async"></div>
+<div class="aides-hero__presentation"><p class="aides-chapo">S’installer, planter, investir, employer, changer de pratiques, traverser une crise ou transmettre : retrouvez les soutiens publics dans l’ordre de vie du domaine.</p><img class="aides-hero__illustration" src="assets/img/editorial/aides-viticoles-photo-2026.webp" width="1200" height="630" alt="Illustration générée : dossier de financement et pièces en euros devant un vignoble" decoding="async"></div>
 <p class="aide-meta">Dossier publié et vérifié le <time datetime="{DATE}">28 octobre 2026</time> · France entière · {n} fiches et portes d’entrée · Sources officielles</p>
 <nav class="aides-parcours" aria-label="Les étapes du domaine">'''+''.join(f'<a href="#{k}"><span>{v[0]}</span> {e(v[1])}</a>' for k,v in ETAPES.items())+'''</nav></div></section>
 <div class="aides-largeur aides-intro"><p><strong>Le bon réflexe :</strong> une aide annoncée, une demande ouverte et un paiement réservé à des bénéficiaires acceptés sont trois situations différentes. Les fiches distinguent subventions, prêts, exonérations, accompagnement et indemnisation.</p><p>Ce panorama couvre les principaux dispositifs nationaux, européens et régionaux utiles à la viticulture, avec des exemples locaux et les portes d’entrée des 18 régions. Il ne garantit pas l’inventaire de tous les appels communaux ni votre éligibilité. <a href="#mode-emploi">Lire les règles de cumul et de dépôt</a> · <a href="#territoires">Consulter les portails régionaux</a>.</p></div>
@@ -146,7 +146,7 @@ for name in ['ressources.html','s-installer-en-viticulture.html','dja-installati
   write(name,s)
 name='actualites-reglementaires.html'
 s=read(name)
-image_carte='<img class="actu-fiche__img" src="assets/img/editorial/aides-viticoles-2026.webp" alt="Une bourse et des pièces devant des rangs de vigne" width="1200" height="630" decoding="async">'
+image_carte='<img class="actu-fiche__img" src="assets/img/editorial/aides-viticoles-photo-2026.webp" alt="Illustration générée : dossier de financement et pièces en euros devant un vignoble" width="1200" height="630" decoding="async">'
 if 'id="dossier-aides"' in s:
  s=re.sub(r'(<article\b[^>]*id="dossier-aides"[^>]*>)(?!\s*<img)',lambda m:m[1]+image_carte,s,count=1)
  write(name,s)

@@ -132,7 +132,8 @@
           ? {x:destination.x+bounds.left,y:destination.y+bounds.top} : destination;
         point=to; figure.style.transform=translate(to);
         if (!motionAllowed() || (Math.abs(to.x-from.x)<1 && Math.abs(to.y-from.y)<1)) { land();return; }
-        const middle = {x:(from.x+to.x)/2,y:Math.min(from.y,to.y)-Math.min(50,canvas.clientHeight*.13)};
+        const baseY=figure.dataset.guideOrigin==='title'?(from.y+to.y)/2:Math.min(from.y,to.y);
+        const middle = {x:(from.x+to.x)/2,y:Math.max(0,baseY-Math.min(50,canvas.clientHeight*.13))};
         const tilt = to.x>=from.x?7:-7;
         figure.dataset.guideState='flying';
         animation=figure.animate([

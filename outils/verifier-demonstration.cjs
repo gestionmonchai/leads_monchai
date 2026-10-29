@@ -5,7 +5,9 @@ const fs = require('node:fs');
 const path = require('node:path');
 const assert = require('node:assert/strict');
 const root = path.resolve(process.argv[2] || '.');
-const folder = path.join(root, 'demonstration');
+const folderName = process.argv[3] || 'demonstration';
+assert.match(folderName, /^[a-z0-9-]+$/, 'Nom de dossier de démonstration invalide');
+const folder = path.join(root, folderName);
 const html = fs.readFileSync(path.join(folder, 'index.html'), 'utf8');
 const css = fs.readFileSync(path.join(folder, 'style.css'), 'utf8');
 const js = fs.readFileSync(path.join(folder, 'site.js'), 'utf8');
@@ -16,6 +18,9 @@ assert.match(html, /name="robots" content="noindex, nofollow"/, 'La fiction ne d
 assert.match(html, /domaine fictif/i);
 assert.match(html, /aucun achat/i);
 assert.match(html, /réservation simulée/i);
+assert.match(html, /class="saas-bridge"/, 'Volet professionnel commun attendu');
+assert.match(html, /Projection — futures API à construire/, 'Les connexions futures doivent être annoncées comme telles');
+assert.match(html, /Cette démo n’est pas connectée au logiciel/, 'Aucune connexion réelle ne doit être suggérée');
 assert.doesNotMatch(js, /\b(?:fetch|XMLHttpRequest|sendBeacon|localStorage|sessionStorage|WebSocket)\b/, 'La démo ne transmet ni ne persiste de données');
 assert.doesNotMatch(html, /<form\b[^>]*\baction\s*=/, 'Aucun destinataire de formulaire dans une simulation');
 let resources = 0;
@@ -36,4 +41,4 @@ function check(ref, from) {
 }
 for (const [, ref] of html.matchAll(/\b(?:src|href)="([^"]+)"/g)) check(ref, path.join(folder, 'index.html'));
 for (const [, ref] of css.matchAll(/url\(['"]?([^)'"\s]+)['"]?\)/g)) check(ref, path.join(folder, 'style.css'));
-console.log(JSON.stringify({demonstration:'OK', ressources_et_liens:resources, identifiants:ids.length, sans_transmission:true, sans_stockage:true}));
+console.log(JSON.stringify({demonstration:'OK', dossier:folderName, ressources_et_liens:resources, identifiants:ids.length, sans_transmission:true, sans_stockage:true}));

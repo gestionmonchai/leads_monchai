@@ -188,8 +188,8 @@ globalThis.HallaisFonctions = {
       "text": "Retrouver les parcelles d’origine, les vendanges, les lots techniques et les mises qui aboutissent au produit fini. Les liens permettent de passer d’une étape à son détail.",
       "href": "/stocks-tracabilite.html",
       "kind": "capture",
-      "image": "assets/captures/trace-produit-detail.png",
-      "proof": "Traçabilité matière · Extrait de fiche produit · Données de test",
+      "image": "assets/captures/trace-produit-fiche.png",
+      "proof": "Fiche produit · Onglet Traçabilité · Capture fournie",
       "availability": "Selon les modules activés",
       "wide": true
     },
@@ -278,7 +278,7 @@ globalThis.HallaisFonctions = {
         "trace-aval",
         "api-catalogue"
       ],
-      "intro": "Un exemple de lecture du logiciel, de l’origine du vin au dossier du lot. Les captures utilisent des données d’essai, distinctes du Domaine Hallais."
+      "intro": "Un exemple de lecture du logiciel, de l’origine du vin au dossier du lot. Les écrans présentés sont distincts du Domaine Hallais."
     },
     "reservation": {
       "label": "Du site à l’accueil au domaine",

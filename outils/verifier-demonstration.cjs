@@ -23,6 +23,28 @@ assert.match(html, /Projection — futures API à construire/, 'Les connexions f
 assert.match(html, /Cette démo n’est pas connectée au logiciel/, 'Aucune connexion réelle ne doit être suggérée');
 assert.doesNotMatch(js, /\b(?:fetch|XMLHttpRequest|sendBeacon|localStorage|sessionStorage|WebSocket)\b/, 'La démo ne transmet ni ne persiste de données');
 assert.doesNotMatch(html, /<form\b[^>]*\baction\s*=/, 'Aucun destinataire de formulaire dans une simulation');
+if (folderName === 'demonstration-2') {
+  const seasonSource = fs.readFileSync(path.join(folder, 'saisons.js'), 'utf8');
+  assert.doesNotMatch(seasonSource, /\b(?:fetch|XMLHttpRequest|sendBeacon|localStorage|sessionStorage|WebSocket)\b/);
+  const sandbox = {};
+  require('node:vm').runInNewContext(seasonSource, sandbox, {timeout:1000});
+  const seasons = sandbox.AulnesSaisons;
+  assert.deepEqual(Array.from(seasons, item => item.id), ['hiver','printemps','ete','automne']);
+  const names = ['vignes','maison','chai','caveau','jardin','eau','recolte'];
+  const escape = text => text.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#x27;');
+  for (const season of seasons) {
+    assert.equal(Object.keys(season.stories).length, 7);
+    for (const name of names) {
+      const story = season.stories[name];
+      for (const field of ['title','p1','p2','people']) assert.ok(story[field]?.trim(), `Récit absent : ${season.id}/${name}/${field}`);
+      assert.ok(html.includes(escape(story.p1)), `Repli sans JS incomplet : ${season.id}/${name}`);
+    }
+  }
+  for (const name of names) assert.equal(new Set(seasons.map(s=>s.stories[name].title)).size, 4);
+  assert.ok(html.indexOf('saisons.js') < html.indexOf('site.js'), 'Données de saison à charger avant la navigation');
+  assert.match(html, /id="pause-season"/);
+  assert.match(css, /prefers-reduced-motion:reduce/);
+}
 let resources = 0;
 function check(ref, from) {
   if (/^(?:https?:|mailto:|tel:|data:)/i.test(ref)) return;

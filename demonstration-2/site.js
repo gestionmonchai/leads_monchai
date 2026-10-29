@@ -230,7 +230,8 @@
   const baseWelcome = welcome.querySelector('h2').innerHTML;
   const baseWelcomeText = welcome.querySelector('p:last-child').textContent;
   let selectedPlace = null;
-  let selectedStep = null;
+  const defaultStep = steps.findIndex(step => step.id === 'automne');
+  let selectedStep = defaultStep;
   let lastRoute = '';
   let drawnSeason = null;
   let motionPaused = false;
@@ -239,7 +240,7 @@
 
   const canvas = document.querySelector('.map-canvas');
   const landscape = canvas.querySelector(':scope > img');
-  const baseAlt = landscape.alt;
+  const baseAlt = landscape.dataset.overviewAlt || landscape.alt;
   const landscapeStatus = document.querySelector('#landscape-status');
   const retryLandscape = document.querySelector('#retry-landscape');
   const landscapeAlts = {
@@ -269,9 +270,9 @@
     }
     landscapeStatus.textContent = `Chargement du paysage : ${steps.find(s => s.id === key).label}…`;
     landscapeStatus.hidden = false;
-    // Une image de l’ancienne saison ne doit pas passer pour la nouvelle.
-    setLandscape('assets/domaine.webp', baseAlt);
     const src = `assets/domaine-${key}.webp`;
+    // Garder le paysage initial s’il correspond déjà à la saison demandée.
+    if (landscape.getAttribute('src') !== src) setLandscape('assets/domaine.webp', baseAlt);
     if (!loadedLandscapes.has(src)) {
       loadedLandscapes.set(src, new Promise((resolve, reject) => {
         const image = new Image();
@@ -475,7 +476,7 @@
   function routeKey() { return `${location.search}|${location.hash}`; }
   function setAddress(place) {
     const url = new URL(location.href);
-    if (selectedStep === null) url.searchParams.delete('saison');
+    if (selectedStep === null) url.searchParams.set('saison', 'ensemble');
     else url.searchParams.set('saison', steps[selectedStep].id);
     url.hash = place ? `lieu-${place}` : 'domaine';
     if (url.href !== location.href) history.pushState(null, '', url);
@@ -610,10 +611,10 @@
     lastRoute = key;
     const season = new URL(location.href).searchParams.get('saison');
     const index = steps.findIndex(step => step.id === season);
-    selectedStep = index < 0 ? null : index;
+    selectedStep = season === 'ensemble' ? null : index < 0 ? defaultStep : index;
     const match = /^#lieu-([a-z]+)$/.exec(location.hash.replace('lieu-maison','lieu-bureau').replace('lieu-recolte','lieu-terrain'));
     if (match && Object.hasOwn(places,match[1])) showPlace(match[1],{address:false,focus});
-    else if (!location.hash && selectedStep !== null) showPlace(steps[selectedStep].place,{address:false,focus});
+    else if (!location.hash && index >= 0) showPlace(steps[selectedStep].place,{address:false,focus});
     else resetMap({address:false,focus:false});
   }
   document.querySelectorAll('[data-place]').forEach(link => link.addEventListener('click',event => {

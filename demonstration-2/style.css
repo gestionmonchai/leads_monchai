@@ -154,7 +154,7 @@ body:not(.js-ready) .story-panel{display:block}
   50%{background-position:calc(var(--halbert-height)*.076744) calc(var(--halbert-height)*-1.293023);clip-path:inset(1% 6.91% 0 0)}
   75%{background-position:calc(var(--halbert-height)*-1.381395) calc(var(--halbert-height)*-1.293023);clip-path:inset(1% 0 0 0)}
 }
-.map-pin.is-guide-next .pin-number{outline:1px dashed var(--olive);outline-offset:4px}
+.map-pin.is-guide-current .pin-number{outline:1px dashed var(--olive);outline-offset:4px}
 .guide-message{display:flex;align-items:baseline;gap:9px;margin:14px 0 0;padding:10px 0;border-block:1px solid var(--line);font:11px/1.65 var(--ui)}
 .guide-signature{font-weight:bold;color:var(--red);flex-shrink:0}.guide-signature::after{content:' ·'}
 @media(max-width:680px){.guide-message{gap:7px;font-size:10px;line-height:1.6}}
@@ -171,3 +171,6 @@ body:not(.js-ready) .story-panel{display:block}
   8%,16%,24%{background-position:calc(var(--halbert-height)*-1.044164) calc(var(--halbert-height)*-.078864)}
   12%,20%{background-position:calc(var(--halbert-height)*-2.198738) calc(var(--halbert-height)*-.078864)}
 }
+
+/* Un repère de départ dans le titre, sans changer sa composition. */
+#halbert-departure{color:inherit;white-space:nowrap}

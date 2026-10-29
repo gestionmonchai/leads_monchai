@@ -36,11 +36,12 @@
     ]
   };
   const invitations = {
-    terrain: 'Je vous attends au 1.1 pour la saisie mobile dans les vignes.',
-    jardin: 'Direction les intrants : rejoignez-moi au 2.',
-    chai: 'Passons au chai. Je vous attends au 3.',
-    bureau: 'Préparons les ventes au bureau : rendez-vous au 4.',
-    caveau: 'Retrouvons les visiteurs au caveau, au 5.'
+    vignes: 'Nous voilà dans les vignes, au 1 : du suivi des parcelles aux vendanges.',
+    terrain: 'Avec vous au 1.1 : découvrez la saisie mobile.',
+    jardin: 'Nous voilà au 2 : les intrants et le suivi des interventions.',
+    chai: 'Avec vous au chai, au 3 : les vins, les opérations et leur suivi.',
+    bureau: 'Nous voilà au bureau, au 4 : préparer les ventes et suivre les clients.',
+    caveau: 'Avec vous au caveau, au 5 : la dégustation et les retours des visiteurs.'
   };
   globalThis.MonChaiGuide = {
     order,
@@ -48,8 +49,8 @@
       const figure = canvas.querySelector('.halbert-guide');
       const message = document.querySelector('.guide-message');
       const caption = document.querySelector('#halbert-caption');
-      let started = false, ready = false, failed = false, visited = 'vignes', target = 'terrain';
-      let animation = null, departure = null, initial = true, point = {x:0,y:0};
+      let started = false, ready = false, failed = false, visited = 'vignes', target = 'vignes';
+      let animation = null, departure = null, point = {x:0,y:0};
       let measuredWidth = 0, measuredHeight = 0;
       const images = [new Image(),new Image()];
       // Le salut est facultatif : son chargement ne bloque jamais le guide.
@@ -59,7 +60,6 @@
       greeting.src='assets/halbert-salut.png';
       let loaded = 0;
       const translate = p => `translate3d(${p.x}px,${p.y}px,0)`;
-      const next = id => order[Math.min(order.indexOf(id)+1,order.length-1)];
       function currentPoint() {
         const transform = getComputedStyle(figure).transform;
         if (animation && transform !== 'none' && globalThis.DOMMatrixReadOnly) {
@@ -114,17 +114,25 @@
         return best;
       }
       function land() {
-        stop(); point=perch(target); figure.style.transform=translate(point);
+        stop(); point=perch(target);
+        figure.style.position='';figure.style.zIndex='';figure.dataset.guideOrigin='map';
+        figure.style.transform=translate(point);
         figure.dataset.guideState=visited==='caveau'?'complete':'waiting';
       }
       function fly() {
         figure.dataset.guideMotion=motionAllowed()?'allowed':'paused';
         if (!started || !ready || failed) return;
         const from = currentPoint(); stop();
-        const to = perch(target);
+        const destination = perch(target);
+        // Le premier vol traverse l'espace entre le titre et la carte.
+        // Son repère est celui de la fenêtre ; les vols suivants restent
+        // dans le repère de la carte pour suivre naturellement son défilement.
+        const bounds=canvas.getBoundingClientRect();
+        const to=figure.dataset.guideOrigin==='title'
+          ? {x:destination.x+bounds.left,y:destination.y+bounds.top} : destination;
         point=to; figure.style.transform=translate(to);
         if (!motionAllowed() || (Math.abs(to.x-from.x)<1 && Math.abs(to.y-from.y)<1)) { land();return; }
-        const middle = {x:(from.x+to.x)/2,y:Math.max(0,Math.min(from.y,to.y)-Math.min(50,canvas.clientHeight*.13))};
+        const middle = {x:(from.x+to.x)/2,y:Math.min(from.y,to.y)-Math.min(50,canvas.clientHeight*.13)};
         const tilt = to.x>=from.x?7:-7;
         figure.dataset.guideState='flying';
         animation=figure.animate([
@@ -132,26 +140,35 @@
           {transform:translate(middle)+` rotate(${tilt}deg)`,offset:.48},
           {transform:translate(to)+' rotate(0deg)'}
         ],{duration:1100,easing:'cubic-bezier(.32,.05,.25,1)'});
-        animation.onfinish=()=>{ animation=null;figure.dataset.guideState=visited==='caveau'?'complete':'waiting'; };
+        animation.onfinish=()=>{ animation=null;land(); };
       }
       function describe() {
-        target=next(visited);
+        target=visited;
         figure.dataset.guideCurrent=visited;
         figure.dataset.guideTarget=target;
-        caption.textContent=visited==='caveau'?'Nous voilà au 5, le caveau. Vous pouvez poursuivre la visite librement.':invitations[target];
-        if (failed) caption.textContent=`Prochaine étape : ${globalThis.MonChaiFonctions.places[target].label}. Les repères restent accessibles.`;
-        canvas.querySelectorAll('.map-pin').forEach(pin=>pin.classList.toggle('is-guide-next',visited!=='caveau' && pin.dataset.place===target));
+        caption.textContent=invitations[target];
+        if (failed) caption.textContent=`Vous explorez : ${globalThis.MonChaiFonctions.places[target].label}. Les repères restent accessibles.`;
+        canvas.querySelectorAll('.map-pin').forEach(pin=>pin.classList.toggle('is-guide-current',pin.dataset.place===target));
       }
       function begin() {
         figure.dataset.guideMotion=motionAllowed()?'allowed':'paused';
         if (!started || !ready) return;
         figure.hidden=false;
-        point=perch(visited);figure.style.transform=translate(point);
+        perch(target);
         figure.dataset.guideState='waiting';
-        if (!motionAllowed()) { land();return; }
-        if (initial) { departure=setTimeout(fly,350);initial=false; }
-        else fly();
+        const title=document.querySelector('#halbert-departure');
+        const bounds=title?.getBoundingClientRect();
+        if (!motionAllowed() || !bounds || bounds.bottom<=0 || bounds.top>=innerHeight) { land();return; }
+        const width=figure.getBoundingClientRect().width,height=figure.getBoundingClientRect().height;
+        // Garder les ailes déployées sous la petite légende au-dessus du titre.
+        point={x:Math.max(6,Math.min(innerWidth-width-6,bounds.right+6)),y:Math.max(6,bounds.bottom-height+7)};
+        figure.style.position='fixed';figure.style.zIndex='6';figure.dataset.guideOrigin='title';
+        figure.style.transform=translate(point);
+        departure=setTimeout(fly,450);
       }
+      addEventListener('scroll',()=>{
+        if (started && ready && figure.dataset.guideOrigin==='title') land();
+      },{passive:true});
       for (const [index,image] of images.entries()) {
         image.onload=()=>{if(failed)return;if(++loaded===images.length){ready=true;figure.dataset.asset='ready';begin();}};
         image.onerror=()=>{failed=true;ready=false;figure.hidden=true;figure.dataset.asset='unavailable';stop();if(started)describe();};
@@ -165,7 +182,7 @@
         },
         advance(id) {
           if (!started || !order.includes(id)) return;
-          visited=id;initial=false;describe();
+          visited=id;describe();
           if (ready) fly();
         },
         reposition() {

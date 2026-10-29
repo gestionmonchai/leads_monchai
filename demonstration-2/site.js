@@ -10,7 +10,8 @@
   const productDialog = document.querySelector('#product-dialog');
   const visitDialog = document.querySelector('#visit-dialog');
   const mcDialog = document.querySelector('#mc-dialog');
-  const dialogs = [cartDialog, productDialog, visitDialog, mcDialog];
+  const filmDialog = document.querySelector('#film-dialog');
+  const dialogs = [cartDialog, productDialog, visitDialog, mcDialog, filmDialog];
   const lastFocus = new WeakMap();
   const toast = document.querySelector('.toast');
   let toastTimer;
@@ -31,7 +32,8 @@
   for (const dialog of dialogs) {
     dialog.addEventListener('close', () => {
       const trigger = lastFocus.get(dialog);
-      if (trigger && trigger.isConnected && !trigger.hidden) trigger.focus({ preventScroll: true });
+      if (trigger && trigger.isConnected && !trigger.hidden && trigger.checkVisibility()) trigger.focus({ preventScroll: true });
+      else if (dialog === filmDialog && trigger?.hasAttribute("data-map-film")) document.querySelector('.map-pin[data-place="jardin"]')?.focus({preventScroll:true});
       else if (dialog === mcDialog && trigger?.dataset.mc) document.querySelector(`.map-pin[data-place="${trigger.dataset.mc}"]`)?.focus({preventScroll:true});
     });
     dialog.querySelectorAll('[data-close]').forEach(button => button.addEventListener('click', () => dialog.close()));
@@ -304,31 +306,38 @@
   const functions = globalThis.AulnesFonctions;
   let mcPlace = 'vignes';
   let mcIndex = 0;
+  let mcWine = null;
   let mcTrigger = null;
   const mcScreen = document.querySelector('#mc-screen');
   const mcImageStatus = document.querySelector('#mc-image-status');
   function positionMc() {
-    const width = canvas.clientWidth, height = canvas.clientHeight;
-    const compact = width < 700;
-    const current = selectedPlace || 'vignes';
-    const centers = Object.entries(places).map(([id, p]) => ({id, x:p[0]/1536*width, y:p[1]/1024*height}));
-    for (const button of canvas.querySelectorAll('[data-mc]')) {
-      const id = button.dataset.mc;
-      button.hidden = compact && id !== current;
-      const center = centers.find(p => p.id === id);
-      const candidates = [[44,0],[-44,0],[0,44],[0,-44]];
-      const score = ([dx,dy]) => {
+    const width=canvas.clientWidth,height=canvas.clientHeight;
+    const compact=width<700,current=selectedPlace || 'vignes';
+    canvas.dataset.compact=String(compact);
+    const centers=Object.entries(places).map(([id,p])=>({id,x:p[0]/1536*width,y:p[1]/1024*height}));
+    const obstacles=centers.map(p=>({...p,w:44,h:44}));
+    const buttons=[...canvas.querySelectorAll('[data-mc], [data-map-film]')];
+    for (const button of buttons) {
+      const film=button.hasAttribute('data-map-film');
+      const id=film?'jardin':button.dataset.mc;
+      button.hidden=compact && (film || id!==current);
+      if (button.hidden) continue;
+      const center=centers.find(p=>p.id===id);
+      const w=film||compact?44:48,h=44,gap=compact?44:46;
+      const candidates=film?[[0,44],[46,44],[-46,44],[0,-44],[46,0],[-46,0]]:[[gap,0],[-gap,0],[0,44],[0,-44],[gap,44],[-gap,44]];
+      const score=([dx,dy])=>{
         const x=center.x+dx,y=center.y+dy;
-        let cost = Math.max(0,22-x,22-y,x+22-width,y+22-height)*10000;
-        for (const pin of centers) cost += Math.max(0,44-Math.abs(pin.x-x))*Math.max(0,44-Math.abs(pin.y-y));
+        let cost=Math.max(0,w/2-x,h/2-y,x+w/2-width,y+h/2-height)*1e6;
+        for (const p of obstacles) cost+=Math.max(0,(w+p.w)/2-Math.abs(p.x-x))*Math.max(0,(h+p.h)/2-Math.abs(p.y-y))*1000;
         return cost;
       };
       candidates.sort((a,b)=>score(a)-score(b));
-      const [dx,dy]=candidates[0];
-      button.style.left=`${center.x+dx}px`;
-      button.style.top=`${center.y+dy}px`;
+      const [dx,dy]=candidates[0],x=center.x+dx,y=center.y+dy;
+      button.style.left=`${x}px`;button.style.top=`${y}px`;
+      obstacles.push({x,y,w,h});
     }
   }
+
   function positionPopover() {
     const rect = mcTrigger?.getBoundingClientRect();
     const width=mcDialog.offsetWidth, height=mcDialog.offsetHeight;
@@ -341,28 +350,44 @@
   function renderMc() {
     const place=functions.places[mcPlace];
     const feature=functions.features[place.slides[mcIndex]];
-    document.querySelector('#mc-place').textContent=place.label;
+    document.querySelector('#mc-place').textContent=mcWine?`${wines[mcWine].name} · ${place.label}`:place.label;
     document.querySelector('#mc-intro').textContent=place.intro;
     document.querySelector('#mc-feature').textContent=feature.title;
     document.querySelector('#mc-description').textContent=feature.text;
-    mcImageStatus.textContent='Chargement de la capture…';
-    mcScreen.hidden=false;
-    mcScreen.alt=`Capture Mon Chai : ${feature.title} ; données de démonstration`;
-    mcScreen.src=feature.image;
+    const status=document.querySelector('#mc-feature-status');
+    status.textContent=feature.availability;
+    status.classList.toggle('is-future',feature.availability.startsWith('À venir'));
+    document.querySelector('#mc-proof').textContent=feature.proof;
     const enlarge=document.querySelector('#mc-enlarge');
-    enlarge.href=feature.image;
-    enlarge.setAttribute('aria-label',`Agrandir la capture ${feature.title}, nouvel onglet`);
+    const schema=document.querySelector('#mc-schema');
+    schema.replaceChildren();
+    schema.hidden=!feature.flow;
+    if (feature.flow) for (const text of feature.flow) schema.append(make('li','',text));
+    enlarge.hidden=!feature.image;
+    mcImageStatus.textContent='';
+    if (feature.image) {
+      mcImageStatus.textContent='Chargement de la capture…';
+      mcScreen.hidden=false;
+      mcScreen.alt=feature.proof;
+      mcScreen.src=feature.image;
+      enlarge.href=feature.image;
+      enlarge.setAttribute('aria-label',`Agrandir la capture ${feature.title}, nouvel onglet`);
+      if (mcScreen.complete && mcScreen.naturalWidth) mcImageStatus.textContent='';
+    }
+    document.querySelector('#mc-play-video').hidden=!feature.video;
     document.querySelector('#mc-discover').href=feature.href;
     document.querySelector('#mc-count').textContent=`${mcIndex+1} / ${place.slides.length}`;
     document.querySelector('#mc-prev').disabled=mcIndex===0;
     document.querySelector('#mc-next').disabled=mcIndex===place.slides.length-1;
-    if (mcScreen.complete && mcScreen.naturalWidth) mcImageStatus.textContent='';
+    document.querySelector('.mc-navigation').hidden=place.slides.length===1;
     if (mcDialog.open) positionPopover();
   }
+
   mcScreen.addEventListener('load',()=>{ mcImageStatus.textContent=''; positionPopover(); });
   mcScreen.addEventListener('error',()=>{ mcScreen.hidden=true; mcImageStatus.textContent='Capture indisponible. Essayez le lien « Agrandir la capture ».'; positionPopover(); });
   document.querySelectorAll('[data-mc]').forEach(button => button.addEventListener('click',()=>{
     mcPlace=button.dataset.mc;
+    mcWine=button.dataset.wine || null;
     mcIndex=0;
     mcTrigger=button;
     renderMc();
@@ -388,6 +413,45 @@
       else if (!event.shiftKey && document.activeElement===last) { event.preventDefault(); first.focus(); }
     }
     if (event.key==='ArrowLeft' || event.key==='ArrowRight') { event.preventDefault(); moveMc(event.key==='ArrowLeft'?-1:1); }
+  });
+
+  const film=document.querySelector('#domain-film');
+  const filmStatus=document.querySelector('#film-status');
+  let returnToMc=false;
+  let filmFailed=false;
+  document.querySelectorAll('[data-film]').forEach(button=>button.addEventListener('click',()=>{
+    returnToMc=mcDialog.open;
+    open(filmDialog,button);
+    filmStatus.textContent='Chargement de la vidéo…';
+    filmStatus.hidden=false;
+    if (filmFailed || film.error) {filmFailed=false;film.load();}
+    film.play().catch(()=>{
+      filmStatus.textContent='La lecture n’a pas démarré. Utilisez la commande de lecture ou le lien direct.';
+      filmStatus.hidden=false;
+    });
+  }));
+  film.addEventListener('playing',()=>{filmStatus.hidden=true;});
+  film.addEventListener('error',()=>{
+    filmFailed=true;
+    filmStatus.textContent='Vidéo indisponible. Vous pouvez lire les étapes ou essayer le lien direct.';
+    filmStatus.hidden=false;
+  },true);
+  filmDialog.addEventListener('close',()=>{
+    film.pause();
+    if (film.readyState) film.currentTime=0;
+    if (returnToMc) {
+      returnToMc=false;
+      open(mcDialog,mcTrigger);
+      positionPopover();
+      document.querySelector('#mc-play-video').focus();
+    }
+  });
+  filmDialog.addEventListener('keydown',event=>{
+    if (event.key!=='Tab') return;
+    const targets=[...filmDialog.querySelectorAll('button:not(:disabled),a[href],video,summary')].filter(node=>node.checkVisibility());
+    const first=targets[0],last=targets[targets.length-1];
+    if (event.shiftKey && document.activeElement===first) {event.preventDefault();last.focus();}
+    else if (!event.shiftKey && document.activeElement===last) {event.preventDefault();first.focus();}
   });
 
   function routeKey() { return `${location.search}|${location.hash}`; }
@@ -560,7 +624,7 @@
   addEventListener('popstate',() => readRoute());
   addEventListener('hashchange',() => readRoute());
   document.body.classList.add('js-ready');
-  document.querySelectorAll('[data-cart], [data-add], [data-detail], [data-visit], .menu-toggle, [data-step], [data-close-place], #clear-season, [data-mc]').forEach(button => { button.disabled = false; });
+  document.querySelectorAll('[data-cart], [data-add], [data-detail], [data-visit], .menu-toggle, [data-step], [data-close-place], #clear-season, [data-mc], [data-film]').forEach(button => { button.disabled = false; });
   renderCart();
   readRoute({focus:Boolean(location.hash.startsWith('#lieu-'))});
   applySeason();

@@ -48,22 +48,31 @@ if (folderName === 'demonstration-2') {
   assert.doesNotMatch(functionSource, /\b(?:fetch|XMLHttpRequest|sendBeacon|localStorage|sessionStorage|WebSocket)\b/);
   require('node:vm').runInNewContext(functionSource, sandbox, {timeout:1000});
   const functions = sandbox.AulnesFonctions;
-  assert.equal(Object.keys(functions.places).length, 7);
-  assert.equal(Object.keys(functions.features).length, 10);
+  assert.equal(Object.keys(functions.places).length, 9);
   assert.ok(html.indexOf('fonctions.js') < html.indexOf('site.js'));
   for (const season of seasons) assert.ok(fs.existsSync(path.join(folder, `assets/domaine-${season.id}.webp`)), 'Paysage absent');
   for (const name of names) {
-    assert.ok(functions.places[name].slides.length >= 2);
+    assert.ok(functions.places[name].slides.length >= 1);
     assert.equal([...html.matchAll(new RegExp(`data-mc="${name}"`, 'g'))].length, 2);
     for (const id of functions.places[name].slides) assert.ok(functions.features[id], `Fonction absente : ${id}`);
   }
+  for (const place of Object.values(functions.places)) for (const id of place.slides) assert.ok(functions.features[id]);
+  assert.equal([...html.matchAll(/data-mc="produits"/g)].length, 2);
+  assert.equal([...html.matchAll(/data-mc="reservation"/g)].length, 1);
   for (const feature of Object.values(functions.features)) {
-    assert.ok(feature.title && feature.text && feature.href);
-    assert.ok(fs.existsSync(path.join(folder, feature.image)));
+    assert.ok(feature.title && feature.text && feature.href && feature.availability && feature.proof);
+    if (feature.kind === 'capture') assert.ok(fs.existsSync(path.join(folder, feature.image)));
+    else { assert.equal(feature.kind, 'schema'); assert.ok(feature.flow.length >= 3); }
+    if (feature.availability.startsWith('À venir')) assert.equal(feature.kind, 'schema', 'Ne pas inventer une capture de la future API');
     assert.ok(html.includes(escape(feature.text)), 'Repli sans JS des fonctions incomplet');
   }
   assert.match(html, /id="mc-dialog"/);
   assert.match(html, /id="retry-landscape"/);
+  assert.match(html, /id="film-dialog"/);
+  assert.match(html, /Lire les étapes de la vidéo/);
+  assert.match(html, /Annonces.*Module pilote/);
+  assert.doesNotMatch(html, /<video[^>]*\bautoplay\b/);
+  assert.deepEqual(Array.from(functions.places.caveau.slides), ['degustation','degustation-retours']);
 }
 let resources = 0;
 function check(ref, from) {
@@ -81,6 +90,6 @@ function check(ref, from) {
   }
   resources++;
 }
-for (const [, ref] of html.matchAll(/\b(?:src|href)="([^"]+)"/g)) check(ref, path.join(folder, 'index.html'));
+for (const [, ref] of html.matchAll(/\b(?:src|href|poster)="([^"]+)"/g)) check(ref, path.join(folder, 'index.html'));
 for (const [, ref] of css.matchAll(/url\(['"]?([^)'"\s]+)['"]?\)/g)) check(ref, path.join(folder, 'style.css'));
 console.log(JSON.stringify({demonstration:'OK', dossier:folderName, ressources_et_liens:resources, identifiants:ids.length, sans_transmission:true, sans_stockage:true}));

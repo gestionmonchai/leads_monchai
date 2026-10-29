@@ -26,3 +26,6 @@ Complément usages du 29 octobre : captures Dégustation, Produits, Lots commerc
 
 
 Domaine Hallais : nom d’exemple choisi par Denis. Extrait original Traçabilité matière retrouvé dans les captures du banc de septembre 2026, création de dégustation historique et registre phytosanitaire de démonstration repris sans retouche. Le logo Mon Chai est conservé entier, sans pastille MC ajoutée.
+
+
+Capture de traçabilité fournie par Denis le 29 octobre 2026 : fiche Cabernet d’Anjou 2022, onglet Traçabilité, image entière 1890 × 1027 reprise sans retouche. Elle remplace l’extrait de fiche historique de septembre ; ses données ne sont pas attribuées au Domaine Hallais.

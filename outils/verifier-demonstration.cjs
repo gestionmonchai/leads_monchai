@@ -80,7 +80,7 @@ if (folderName === 'demonstration-2') {
   assert.doesNotMatch(html, /<video[^>]*\bautoplay\b/);
   assert.deepEqual(Array.from(functions.places.caveau.slides), ['degustation-creation','degustation']);
   assert.deepEqual(Array.from(functions.places.jardin.slides), ['phyto']);
-  assert.match(functions.features['trace-matiere'].image, /trace-produit-detail\.png$/);
+  assert.match(functions.features['trace-matiere'].image, /trace-produit-fiche\.png$/);
   assert.deepEqual(Array.from(functions.places.recolte.slides).slice(0,2), ['annonce-vendanges','annonce-materiel']);
 }
 let resources = 0;

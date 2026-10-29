@@ -1,10 +1,11 @@
 'use strict';
+
 globalThis.MonChaiSaisons = [
   {
     "id": "hiver",
     "label": "Hiver",
     "place": "vignes",
-    "text": "Tailler et tirer les bois dans les rangs. Ouiller les barriques, goûter et essayer des assemblages au chai. Préparer les salons, prospecter et expédier les commandes : plusieurs métiers et plusieurs millésimes avancent ensemble.",
+    "text": "Taille dans les rangs, élevage et assemblages au chai, prospection et salons au bureau : plusieurs métiers et millésimes avancent ensemble.",
     "caption": "Hiver · Taille et tirage des bois, élevage et assemblages, prospection et salons. La neige est une ambiance illustrée.",
     "saas": "En hiver : préparer la sélection de vins publiée, les tarifs et les demandes commerciales issues du site ou des rencontres en salon. Les raccordements aux futures API restent à construire ; les données internes du domaine ne sont pas publiées par défaut.",
     "stories": {
@@ -12,13 +13,13 @@ globalThis.MonChaiSaisons = [
         "title": "Dormance, taille et tirage des bois.",
         "p1": "Après la chute des feuilles, la vigne entre en dormance. Dans les rangs, on taille : choisir les bois et les bourgeons conservés prépare la conduite de la prochaine végétation. Les sarments coupés sont retirés des fils, c’est le tirage des bois.",
         "p2": "Le chantier avance parcelle par parcelle. On reprend aussi les piquets, les fils et le matériel. La taille occupe des journées de travail pendant que les vins des récoltes précédentes continuent leur élevage.",
-        "people": "Une personne trace la coupe, une autre tire les bois ou reprend le palissage. Le temps de formation, la connaissance des ceps et l’état des parcelles changent la façon de répartir le chantier."
+        "people": "Choisir les bois conservés, tirer les sarments coupés et reprendre le palissage ne demandent pas les mêmes gestes. Selon l’organisation du domaine, ces tâches sont réparties ou réalisées par les mêmes personnes."
       },
       "terrain": {
         "title": "Noter les travaux, même en hiver.",
         "p1": "Entre deux passages de taille, il faut garder la parcelle, la date et le travail réalisé. Le téléphone accompagne ce retour du terrain ; il ne remplace ni l’observation ni la transmission entre les personnes.",
-        "p2": "Au chai aussi, les opérations se poursuivent. Une saisie mobile de transfert ou de travail doit être complétée et vérifiée avant son envoi ; la disponibilité d’une fonction dépend des modules activés.",
-        "people": "La personne qui saisit transmet une information à celles et ceux qui organisent la suite. Relire et signaler ce qui manque font partie du travail partagé."
+        "p2": "Les captures présentées ici montrent une fiche de transfert de cave : contenants, volume et date sont relus avant l’envoi. Ce principe de vérification accompagne aussi la transmission du travail entre les personnes.",
+        "people": "Le suivi d’une parcelle peut être repris par une autre personne le lendemain. Des dates et des observations précises permettent ce relais."
       },
       "bureau": {
         "title": "Prospecter, relancer, organiser les salons.",
@@ -39,10 +40,10 @@ globalThis.MonChaiSaisons = [
         "people": "La personne qui tient le stand représente un travail réalisé à plusieurs. Pour promettre une livraison, elle a besoin des informations de celles et ceux qui suivent les stocks, les mises et les expéditions."
       },
       "jardin": {
-        "title": "Retrouver les interventions de l’année.",
-        "p1": "Les produits utilisés et les interventions enregistrées se retrouvent dans le registre phytosanitaire : parcelle, date et quantité. Les décisions de traitement dépendent des observations, des autorisations et de la situation du domaine.",
-        "p2": "Le registre garde la mémoire des usages et permet de préparer un export. Une image de démonstration ne constitue ni un choix de produit ni une recommandation de dose.",
-        "people": "La personne qui réalise le passage et celle qui suit le registre doivent pouvoir retrouver la même intervention et préciser les informations manquantes."
+        "title": "Intrants : faire le bilan de la campagne.",
+        "p1": "Le jardin est ici un repère pour parler des intrants utilisés dans les vignes. En hiver, on reprend les interventions de la campagne écoulée : produits, parcelles, dates et quantités.",
+        "p2": "Ce bilan permet de repérer les informations manquantes avant de préparer la campagne suivante. Le registre conserve les saisies ; les choix de conduite restent au domaine.",
+        "people": "La personne qui reprend le registre a besoin de ce qui a réellement été fait dans les parcelles. Les souvenirs seuls ne suffisent pas toujours à reconstituer une intervention."
       }
     }
   },
@@ -50,21 +51,21 @@ globalThis.MonChaiSaisons = [
     "id": "printemps",
     "label": "Printemps",
     "place": "vignes",
-    "text": "La végétation repart : débourrement, croissance des rameaux, puis floraison. Liage, ébourgeonnage et premiers relevages se croisent avec le suivi des vins, la préparation des mises et les relances commerciales.",
+    "text": "La végétation repart, le risque de gel se surveille. Travaux dans les vignes, suivi des vins et commandes mobilisent les mêmes journées.",
     "caption": "Printemps · Débourrement et travaux en vert ; élevage, préparation des mises et suivi des clients continuent.",
     "saas": "Au printemps : tenir à jour les vins proposés, recevoir les demandes de commande et préparer les demandes de visite. La présentation du catalogue et les futurs raccordements doivent suivre les disponibilités validées par le domaine.",
     "stories": {
       "vignes": {
         "title": "Du débourrement aux travaux en vert.",
         "p1": "Les bourgeons s’ouvrent : c’est le débourrement. Les rameaux et les feuilles se développent. Selon l’avancement des parcelles, on termine le liage des bois et on commence l’ébourgeonnage, qui sélectionne les pousses conservées.",
-        "p2": "Avec la croissance viennent les relevages et le palissage pour accompagner les rameaux. La floraison approche ou commence selon le lieu et l’année. Les observations de végétation et d’état sanitaire font évoluer le programme des passages.",
+        "p2": "Relevage et palissage accompagnent la croissance des rameaux vers la floraison. Un épisode de gel peut modifier la végétation et les volumes attendus ; les observations de parcelle font évoluer l’ordre des passages.",
         "people": "Reconnaître un stade, expliquer les pousses à garder et revenir au bon moment demande de connaître la parcelle. Les consignes se préparent avec les personnes qui feront les rangs."
       },
       "terrain": {
         "title": "Une observation, puis une saisie relue.",
         "p1": "Au débourrement et pendant les travaux en vert, les observations se succèdent. Retrouver le lieu et décrire le passage avant de reprendre les rangs permet de préparer une saisie plus précise.",
-        "p2": "Sur le téléphone, on complète les références et les quantités manquantes, puis on relit. Ce qui a seulement été dicté ne doit pas être confondu avec une opération déjà validée dans le logiciel.",
-        "people": "La personne qui saisit transmet une information à celles et ceux qui organisent la suite. Relire et signaler ce qui manque font partie du travail partagé."
+        "p2": "L’exemple présenté sur le téléphone est un transfert de cave : on complète les références et les quantités, puis on relit. Ce qui a seulement été dicté reste distinct d’une opération validée.",
+        "people": "Une observation signalée dans les rangs et une opération validée sont deux informations différentes. La relecture évite de les confondre."
       },
       "bureau": {
         "title": "Faire tenir les passages et les commandes.",
@@ -85,10 +86,10 @@ globalThis.MonChaiSaisons = [
         "people": "La personne qui fait déguster transmet une commande exploitable à celle qui la prépare. Elle ne promet pas la sortie d’un vin en cours de mise sans avoir vérifié le calendrier avec le chai."
       },
       "jardin": {
-        "title": "Observer, décider, enregistrer.",
-        "p1": "Les produits utilisés et les interventions enregistrées se retrouvent dans le registre phytosanitaire : parcelle, date et quantité. Les décisions de traitement dépendent des observations, des autorisations et de la situation du domaine.",
-        "p2": "Le registre garde la mémoire des usages et permet de préparer un export. Une image de démonstration ne constitue ni un choix de produit ni une recommandation de dose.",
-        "people": "La personne qui réalise le passage et celle qui suit le registre doivent pouvoir retrouver la même intervention et préciser les informations manquantes."
+        "title": "Intrants : observer et garder la trace.",
+        "p1": "Ce jardin dessiné ouvre le suivi des intrants viticoles. Avec la reprise de végétation, les observations et les conditions météo orientent les décisions dans les parcelles.",
+        "p2": "Lorsqu’une intervention est réalisée, on en garde le produit, la parcelle, la date et la quantité. Mon Chai permet de retrouver ces données dans le registre, sans décider du traitement à la place du domaine.",
+        "people": "Observer, décider et intervenir peuvent mobiliser des personnes différentes. Le passage réalisé doit être transmis avec ses références et ses quantités."
       }
     }
   },
@@ -96,21 +97,21 @@ globalThis.MonChaiSaisons = [
     "id": "ete",
     "label": "Été",
     "place": "vignes",
-    "text": "Les baies grossissent, changent de couleur à la véraison et mûrissent. Travaux en vert et suivi de maturité préparent la récolte ; au domaine, l’élevage, les expéditions, les dégustations et la préparation du chai continuent.",
+    "text": "La vigne mûrit sous des conditions parfois chaudes et sèches. Le domaine suit les raisins, accueille les visiteurs et prépare les vendanges.",
     "caption": "Été · Nouaison, véraison et maturation ; travaux de vigne, suivi des vins et préparation des vendanges.",
     "saas": "En été : présenter les vins disponibles et réunir demandes de commande et de visite. Les futures API devront revérifier tarifs et disponibilités ; un agenda de visites, ses capacités et ses confirmations restent à développer.",
     "stories": {
       "vignes": {
         "title": "Nouaison, véraison, maturation.",
         "p1": "Les petites baies issues de la nouaison grossissent. À la véraison, elles changent d’aspect et de couleur, puis la maturation se poursuit. On observe les parcelles, leur état sanitaire et l’évolution du raisin.",
-        "p2": "Relevage, palissage et rognage se poursuivent selon la croissance. L’entretien des sols et, lorsqu’il est choisi, l’effeuillage s’inscrivent dans une conduite précise ; toutes les parcelles ne demandent pas les mêmes gestes.",
+        "p2": "Les travaux en vert se poursuivent selon la croissance et la conduite choisie. Chaleur et manque d’eau peuvent ralentir la végétation ou modifier la maturation ; chaque parcelle demande ses observations.",
         "people": "La personne qui suit les rangs transmet ses observations à celle qui décide de la conduite et de la récolte. Les horaires et la répartition des tâches doivent aussi tenir compte des conditions de travail rencontrées."
       },
       "terrain": {
         "title": "Saisir au rythme des passages.",
         "p1": "Les relevés de maturité et les interventions accompagnent l’été. Les personnes passent d’une parcelle à l’autre ; la date, le lieu et l’opération doivent rester identifiables au retour.",
-        "p2": "La saisie mobile sert à préparer une information à vérifier. L’activité permet ensuite de distinguer ce qui attend une correction de ce qui est synchronisé, sans supposer qu’un envoi a forcément réussi.",
-        "people": "La personne qui saisit transmet une information à celles et ceux qui organisent la suite. Relire et signaler ce qui manque font partie du travail partagé."
+        "p2": "Dans l’exemple de transfert montré ici, l’activité permet de retrouver une saisie à corriger ou synchronisée. Une information préparée sur le téléphone n’est pas encore une opération validée dans le logiciel.",
+        "people": "Quand les journées commencent tôt ou que les parcelles sont éloignées, la saisie doit pouvoir être reprise sans perdre le contexte."
       },
       "bureau": {
         "title": "Rapprocher maturité, équipe et commandes.",
@@ -131,10 +132,10 @@ globalThis.MonChaiSaisons = [
         "people": "La personne qui reçoit passe le relais à celle qui prépare les bouteilles ou le transport. Le travail commercial continue après le départ des visiteurs."
       },
       "jardin": {
-        "title": "Garder les interventions à jour.",
-        "p1": "Les produits utilisés et les interventions enregistrées se retrouvent dans le registre phytosanitaire : parcelle, date et quantité. Les décisions de traitement dépendent des observations, des autorisations et de la situation du domaine.",
-        "p2": "Le registre garde la mémoire des usages et permet de préparer un export. Une image de démonstration ne constitue ni un choix de produit ni une recommandation de dose.",
-        "people": "La personne qui réalise le passage et celle qui suit le registre doivent pouvoir retrouver la même intervention et préciser les informations manquantes."
+        "title": "Intrants : suivre les passages de l’été.",
+        "p1": "Le jardin représente ici les intrants des vignes. Les parcelles évoluent et les conditions aussi : il faut pouvoir distinguer une intervention prévue de celle qui a réellement été réalisée.",
+        "p2": "Au retour, on vérifie le lieu, la date, le produit et la quantité saisis. Le registre permet de relire les passages de la campagne ; une capture ne constitue pas une recommandation de produit ou de dose.",
+        "people": "Avec les horaires décalés et les passages successifs, une information peut manquer. La personne qui intervient et celle qui suit le registre doivent pouvoir la préciser ensemble."
       }
     }
   },
@@ -142,13 +143,13 @@ globalThis.MonChaiSaisons = [
     "id": "automne",
     "label": "Automne",
     "place": "vignes",
-    "text": "Récolter, trier, presser ou encuver, suivre les fermentations et nettoyer. Puis reprendre les salons, les commandes et les expéditions, pendant que la vigne achève son cycle et que les nouveaux vins commencent le leur.",
+    "text": "Récolte et vinifications se croisent avec les ventes de fin d’année. Les apports, les personnes et les anciens millésimes demandent un suivi en parallèle.",
     "caption": "Automne · Vendanges et vinifications, fin du cycle végétatif, salons et commandes de fin d’année.",
     "saas": "En automne : choisir les informations du millésime à publier, maintenir le catalogue des vins effectivement disponibles et faire suivre les demandes commerciales. Ces usages restent une projection des futures connexions, validée par le domaine.",
     "stories": {
       "vignes": {
         "title": "Récolter, puis suivre la fin du cycle.",
-        "p1": "Selon la parcelle et l’année, les vendanges sont en cours ou déjà terminées. En fin d’été puis à l’automne, les rameaux se lignifient — c’est l’aoûtement — et le feuillage vieillit avant de tomber. La vigne se dirige vers la dormance.",
+        "p1": "Selon la parcelle et l’année, les vendanges sont en cours ou déjà terminées. Les rameaux se transforment progressivement en bois — l’aoûtement — tandis que le feuillage vieillit puis tombe. La vigne se dirige vers la dormance.",
         "p2": "La récolte relie les observations de maturité à la coupe, au transport, au tri puis à la réception. Chaque apport doit garder son origine. Les dates dépendent du raisin et du vin recherché ; la fin de végétation et la dormance se préparent pendant que les vinifications commencent.",
         "people": "Celles et ceux qui ont parcouru les rangs connaissent les différences de vigueur, les passages difficiles et les réparations nécessaires. Ces observations nourrissent les décisions de conduite de l’année suivante."
       },
@@ -156,7 +157,7 @@ globalThis.MonChaiSaisons = [
         "title": "Du rang au chai, garder le fil.",
         "p1": "Pendant la récolte, coupe, transport et réception avancent ensemble. Une information mal rattachée à sa parcelle ou à son lot peut compliquer la suite ; les relais doivent rester explicites.",
         "p2": "Au chai, les transferts se multiplient aussi. La fiche individuelle aide à relire contenants, volume et date avant de valider ; le statut de la saisie permet de retrouver ce qui reste à traiter.",
-        "people": "La personne qui saisit transmet une information à celles et ceux qui organisent la suite. Relire et signaler ce qui manque font partie du travail partagé."
+        "people": "La personne qui réceptionne ne dispose pas toujours des mêmes informations que celle qui a récolté. Le lien entre parcelle, apport et lot doit rester lisible."
       },
       "bureau": {
         "title": "Finir les vendanges, reprendre le commerce.",
@@ -177,10 +178,10 @@ globalThis.MonChaiSaisons = [
         "people": "Les informations recueillies au stand ou au caveau doivent revenir au domaine : cuvée, quantité, conditions discutées et suite attendue. La vente dépend ensuite du travail de préparation et d’expédition."
       },
       "jardin": {
-        "title": "Reprendre le registre après la saison.",
-        "p1": "Les produits utilisés et les interventions enregistrées se retrouvent dans le registre phytosanitaire : parcelle, date et quantité. Les décisions de traitement dépendent des observations, des autorisations et de la situation du domaine.",
-        "p2": "Le registre garde la mémoire des usages et permet de préparer un export. Une image de démonstration ne constitue ni un choix de produit ni une recommandation de dose.",
-        "people": "La personne qui réalise le passage et celle qui suit le registre doivent pouvoir retrouver la même intervention et préciser les informations manquantes."
+        "title": "Intrants : reprendre le registre après récolte.",
+        "p1": "Ce repère du jardin renvoie aux intrants utilisés dans les vignes. Après la récolte, on reprend les interventions de la campagne et les informations encore à compléter.",
+        "p2": "La lecture par année ou par parcelle aide à retrouver les usages enregistrés et à préparer un export. Ce bilan conserve la mémoire du travail avant la campagne suivante.",
+        "people": "Les personnes revenues des parcelles peuvent préciser un passage ou une quantité. Ce retour d’expérience relie le registre à ce qui s’est réellement passé dans les rangs."
       }
     }
   }

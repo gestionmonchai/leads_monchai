@@ -142,3 +142,21 @@ body:not(.js-ready) .story-panel{display:block}
 
 .domain-intro .visit-intro{font:11px/1.65 var(--ui);max-width:57ch;margin:9px 0 0;color:var(--muted)}
 .domain-intro>div:first-child{min-width:0}
+
+/* Halbert attend hors des repères ; son vol ne prend jamais la main sur les clics. */
+.halbert-guide{--halbert-height:44px;position:absolute;left:0;top:0;width:calc(var(--halbert-height)*.747159);height:var(--halbert-height);z-index:1;pointer-events:none!important;user-select:none;filter:drop-shadow(0 2px 1px #54341b35);will-change:transform}
+.halbert-pose{position:absolute;left:50%;top:50%;display:block;width:100%;height:100%;transform:translate(-50%,-50%);background-image:url('assets/halbert-sprite.png');background-repeat:no-repeat;background-size:calc(var(--halbert-height)*2.519886) calc(var(--halbert-height)*1.259943);background-position:calc(var(--halbert-height)*-.24858) calc(var(--halbert-height)*-.149148)}
+.halbert-guide[data-guide-state='flying'] .halbert-pose{top:auto;bottom:0;width:calc(var(--halbert-height)*1.581395);height:calc(var(--halbert-height)*1.395349);transform:translateX(-50%);background-image:url('assets/halbert-vol.png');background-size:calc(var(--halbert-height)*2.916279) calc(var(--halbert-height)*2.916279);animation:halbert-wingbeat .48s steps(1,end) infinite}
+/* Quatre poses articulées. Le cadrage aligne le béret et le corps à chaque image. */
+@keyframes halbert-wingbeat{
+  0%,100%{background-position:calc(var(--halbert-height)*.076744) calc(var(--halbert-height)*.104651);clip-path:inset(1% 6.91% 0 0)}
+  25%{background-position:calc(var(--halbert-height)*-1.381395) calc(var(--halbert-height)*.104651);clip-path:inset(1% 0 0 0)}
+  50%{background-position:calc(var(--halbert-height)*.076744) calc(var(--halbert-height)*-1.293023);clip-path:inset(1% 6.91% 0 0)}
+  75%{background-position:calc(var(--halbert-height)*-1.381395) calc(var(--halbert-height)*-1.293023);clip-path:inset(1% 0 0 0)}
+}
+.map-pin.is-guide-next .pin-number{outline:1px dashed var(--olive);outline-offset:4px}
+.guide-message{display:flex;align-items:baseline;gap:9px;margin:14px 0 0;padding:10px 0;border-block:1px solid var(--line);font:11px/1.65 var(--ui)}
+.guide-signature{font-weight:bold;color:var(--red);flex-shrink:0}.guide-signature::after{content:' ·'}
+@media(max-width:680px){.guide-message{gap:7px;font-size:10px;line-height:1.6}}
+@media(hover:none){.map-pin:hover:not(:focus-visible) .pin-label{opacity:0}}
+@media(prefers-reduced-motion:reduce){.halbert-pose{animation:none!important}}

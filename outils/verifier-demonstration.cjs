@@ -55,6 +55,16 @@ if (folderName === 'demonstration-2') {
   assert.doesNotMatch(functionSource, /\b(?:fetch|XMLHttpRequest|sendBeacon|localStorage|sessionStorage|WebSocket)\b/);
   require('node:vm').runInNewContext(functionSource, sandbox, {timeout:1000});
   const functions = sandbox.MonChaiFonctions;
+  const guideSource = fs.readFileSync(path.join(folder,'guide.js'),'utf8');
+  assert.doesNotMatch(guideSource, /\b(?:fetch|XMLHttpRequest|sendBeacon|localStorage|sessionStorage|WebSocket)\b/);
+  require('node:vm').runInNewContext(guideSource,sandbox,{timeout:1000});
+  const tourOrder = ['vignes','terrain','jardin','chai','bureau','caveau'];
+  assert.deepEqual(Array.from(sandbox.MonChaiGuide.order),tourOrder);
+  const pinOrder = [...html.matchAll(/<a\b(?=[^>]*class="map-pin")(?=[^>]*data-place="([^"]+)")[^>]*>/g)].map(m=>m[1]);
+  assert.deepEqual(pinOrder,tourOrder,'Ordre clavier de la visite');
+  for (const [id,label] of Object.entries({vignes:'1 · Les vignes',terrain:'1.1 · Les vignes · saisie mobile',jardin:'2 · Les intrants',chai:'3 · Le chai',bureau:'4 · Le bureau',caveau:'5 · Le caveau'})) assert.equal(functions.places[id].label,label);
+  for (const asset of ['halbert-sprite.png','halbert-vol.png']) assert.ok(fs.existsSync(path.join(folder,'assets',asset)));
+
   assert.equal(Object.keys(functions.places).length, 9);
   assert.ok(html.indexOf('fonctions.js') < html.indexOf('site.js'));
   for (const season of seasons) assert.ok(fs.existsSync(path.join(folder, `assets/domaine-${season.id}.webp`)), 'Paysage absent');

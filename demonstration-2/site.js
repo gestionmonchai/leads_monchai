@@ -227,8 +227,6 @@
     peopleTitle: article.querySelector('.people-note h3').textContent
   }]));
   const baseSaas = document.querySelector('#saas-season').textContent;
-  const baseWelcome = welcome.querySelector('h2').innerHTML;
-  const baseWelcomeText = welcome.querySelector('p:last-child').textContent;
   let selectedPlace = null;
   const defaultStep = steps.findIndex(step => step.id === 'automne');
   let selectedStep = defaultStep;
@@ -538,9 +536,6 @@
       drawnSeason = key;
       buildParticles();
     }
-    if (season) welcome.querySelector('h2').textContent = `${season.label}, lieu par lieu.`;
-    else welcome.querySelector('h2').innerHTML = baseWelcome;
-    welcome.querySelector('p:last-child').textContent = season ? season.text : baseWelcomeText;
     tourContext.hidden = selectedStep === null || selectedPlace === null;
     tourControls.hidden = selectedStep === null || selectedPlace === null;
     document.querySelector('#story-context').textContent = season ? `${season.label.toUpperCase()} · LE DOMAINE, LIEU PAR LIEU` : 'LE DOMAINE, LIEU PAR LIEU';

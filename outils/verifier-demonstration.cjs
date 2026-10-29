@@ -44,6 +44,26 @@ if (folderName === 'demonstration-2') {
   assert.ok(html.indexOf('saisons.js') < html.indexOf('site.js'), 'Données de saison à charger avant la navigation');
   assert.match(html, /id="pause-season"/);
   assert.match(css, /prefers-reduced-motion:reduce/);
+  const functionSource = fs.readFileSync(path.join(folder, 'fonctions.js'), 'utf8');
+  assert.doesNotMatch(functionSource, /\b(?:fetch|XMLHttpRequest|sendBeacon|localStorage|sessionStorage|WebSocket)\b/);
+  require('node:vm').runInNewContext(functionSource, sandbox, {timeout:1000});
+  const functions = sandbox.AulnesFonctions;
+  assert.equal(Object.keys(functions.places).length, 7);
+  assert.equal(Object.keys(functions.features).length, 10);
+  assert.ok(html.indexOf('fonctions.js') < html.indexOf('site.js'));
+  for (const season of seasons) assert.ok(fs.existsSync(path.join(folder, `assets/domaine-${season.id}.webp`)), 'Paysage absent');
+  for (const name of names) {
+    assert.ok(functions.places[name].slides.length >= 2);
+    assert.equal([...html.matchAll(new RegExp(`data-mc="${name}"`, 'g'))].length, 2);
+    for (const id of functions.places[name].slides) assert.ok(functions.features[id], `Fonction absente : ${id}`);
+  }
+  for (const feature of Object.values(functions.features)) {
+    assert.ok(feature.title && feature.text && feature.href);
+    assert.ok(fs.existsSync(path.join(folder, feature.image)));
+    assert.ok(html.includes(escape(feature.text)), 'Repli sans JS des fonctions incomplet');
+  }
+  assert.match(html, /id="mc-dialog"/);
+  assert.match(html, /id="retry-landscape"/);
 }
 let resources = 0;
 function check(ref, from) {

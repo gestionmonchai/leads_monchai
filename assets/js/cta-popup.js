@@ -108,8 +108,7 @@
 
   function signaler(evenement) {
     try {
-      var consentement = JSON.parse(localStorage.getItem('monchai_cookie_consent'));
-      if (!consentement || consentement.audience !== true || !consentement.ts || Date.now() - consentement.ts >= 15724800000) return;
+      if (!window.monchaiConsent || window.monchaiConsent.audience !== true) return;
       (window.dataLayer = window.dataLayer || []).push({ event: evenement, cta_campagne: campagneRecolte ? 'recolte_2026' : 'generale' });
     } catch (e) {}
   }

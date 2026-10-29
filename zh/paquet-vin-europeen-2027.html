@@ -3,29 +3,11 @@
 <html lang="zh-Hans">
 <head>
 <meta charset="utf-8"/>
-<!-- Mode consentement de Google : par défaut, rien n'est mesuré. Le choix du
-     bandeau (consent.js ou script.js, clé monchai_cookie_consent) est appliqué
-     au chargement, puis à chaque changement (événement monchai:consent). -->
-<script>
-window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}
-(function(){
-  function etat(c){var a=c&&c.audience===true?'granted':'denied',t='denied';return{analytics_storage:a,ad_storage:t,ad_user_data:t,ad_personalization:t};}
-  var d=etat(null);d.wait_for_update=500;gtag('consent','default',d);
-  function chargerPlusTard(){if(document.readyState==='complete'){if(window.monchaiChargerGtm)window.monchaiChargerGtm();}else{window.addEventListener('load',function(){setTimeout(function(){if(window.monchaiChargerGtm)window.monchaiChargerGtm();},0);},{once:true});}}
-  try{var c=JSON.parse(localStorage.getItem('monchai_cookie_consent'));if(c&&typeof c.ts==='number'&&Number.isFinite(c.ts)&&c.ts<=Date.now()&&Date.now()-c.ts<15724800000&&typeof c.audience==='boolean'&&typeof c.tiers==='boolean'){gtag('consent','update',etat(c));if(c.audience===true)chargerPlusTard();}}catch(e){}
-  window.addEventListener('monchai:consent',function(e){gtag('consent','update',etat(e.detail));dataLayer.push({event:'monchai_consentement'});if(e.detail&&e.detail.audience===true)chargerPlusTard();});
-})();
-</script>
-<!-- Google Tag Manager, chargé seulement après un accord (mesure d'audience ou
-     services tiers) et après le chargement de la page : sans accord, aucun
-     script Google n'est téléchargé (gain mesuré sur mobile : environ 0,9 s de LCP). -->
-<script>window.monchaiChargerGtm=function(){if(window.monchaiGtmCharge)return;window.monchaiGtmCharge=true;
-(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-NDSQV6T7');};</script>
-<!-- End Google Tag Manager -->
+
+
+
+
+
 <meta content="width=device-width, initial-scale=1, viewport-fit=cover" name="viewport"/>
 <title>欧洲葡萄酒包: 2026-2027年对葡萄酒制造者有什么变化 Mon Chai</title>
 <meta content="重新种植授权增加到8年,脱酒精葡萄酒统一类别、简化标签:2025年底通过的欧洲葡萄酒包的最新情况和2026年12月31日的最后期限。" name="description"/>
@@ -46,67 +28,15 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <meta content="Mon Chai" property="og:site_name"/>
 <link href="../assets/img/favicon-mon-chai-96.png" rel="icon" type="image/png"/>
 <meta content="#7B1E22" name="theme-color"/>
-<script type="application/ld+json">{
-  "@context": "https://schema.org",
-  "@type": "Article",
-  "headline": "欧盟葡萄酒政策一揽子方案：葡萄种植者将面临哪些变化",
-  "description": "重新种植授权增加到8年,脱酒精葡萄酒统一类别、简化标签:2025年底通过的欧洲葡萄酒包的最新情况和2026年12月31日的最后期限。",
-  "inLanguage": "zh-Hans",
-  "articleSection": "标签与装瓶",
-  "datePublished": "2026-08-31",
-  "dateModified": "2026-08-31",
-  "image": "https://monchai.fr/assets/img/pages/conditionnement-mises.jpg",
-  "mainEntityOfPage": "https://monchai.fr/paquet-vin-europeen-2027.html",
-  "author": {
-    "@type": "Organization",
-    "name": "Mon Chai",
-    "url": "https://monchai.fr/"
-  },
-  "publisher": {
-    "@type": "Organization",
-    "name": "Mon Chai",
-    "url": "https://monchai.fr/",
-    "logo": {
-      "@type": "ImageObject",
-      "url": "https://monchai.fr/assets/img/logo_mon_chai.png"
-    }
-  }
-}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "欧盟葡萄酒政策一揽子方案：葡萄种植者将面临哪些变化", "description": "欧盟第2026/471号条例于2026年3月18日生效，但部分条款在更晚的日期适用。采取行动前，应核对具体条款及本酒庄的许可或产品情况。", "inLanguage": "zh-Hans", "articleSection": "标签与装瓶", "datePublished": "2026-08-31", "dateModified": "2026-10-29", "image": "https://monchai.fr/assets/img/pages/conditionnement-mises.jpg", "mainEntityOfPage": "https://monchai.fr/paquet-vin-europeen-2027.html", "author": {"@type": "Organization", "name": "Mon Chai", "url": "https://monchai.fr/"}, "publisher": {"@type": "Organization", "name": "Mon Chai", "url": "https://monchai.fr/", "logo": {"@type": "ImageObject", "url": "https://monchai.fr/assets/img/logo_mon_chai.png"}}}</script>
 <link href="../assets/css/polices.css" rel="stylesheet"/>
 <link href="../assets/css/header.css" rel="stylesheet"/>
 <link href="../assets/css/actus.css" rel="stylesheet"/>
 <link href="../assets/css/pied.css" rel="stylesheet"/>
-<script type="application/ld+json">{
-  "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  "itemListElement": [
-    {
-      "@type": "ListItem",
-      "position": 1,
-      "name": "Accueil",
-      "item": "https://monchai.fr/"
-    },
-    {
-      "@type": "ListItem",
-      "position": 2,
-      "name": "Actualités réglementaires",
-      "item": "https://monchai.fr/actualites-reglementaires.html"
-    },
-    {
-      "@type": "ListItem",
-      "position": 3,
-      "name": "Étiquetage & mises",
-      "item": "https://monchai.fr/actualites-etiquetage-mises.html"
-    },
-    {
-      "@type": "ListItem",
-      "position": 4,
-      "name": "Paquet vin européen : ce qui change pour les vignerons",
-      "item": "https://monchai.fr/paquet-vin-europeen-2027.html"
-    }
-  ]
-}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Accueil", "item": "https://monchai.fr/"}, {"@type": "ListItem", "position": 2, "name": "Actualités réglementaires", "item": "https://monchai.fr/actualites-reglementaires.html"}, {"@type": "ListItem", "position": 3, "name": "Étiquetage & mises", "item": "https://monchai.fr/actualites-etiquetage-mises.html"}, {"@type": "ListItem", "position": 4, "name": "Paquet vin européen : ce qui change pour les vignerons", "item": "https://monchai.fr/paquet-vin-europeen-2027.html"}]}</script>
 <link rel="stylesheet" href="../assets/css/footer-commun.css?v=20261028-footer">
+
+<script src="../assets/js/analytics.js?v=20261029" data-gtm></script>
 </head>
 <body class="corps-actus lang-zh">
 <!-- ============ HEADER (composant partagé, repassé en flux par actus.css) ============ -->
@@ -191,41 +121,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <p class="article__ariane"><a href="index.html">首页</a> › <a href="actualites-reglementaires.html">法规动态</a> › <a href="actualites-etiquetage-mises.html">标签与装瓶</a> 欧美酒包</p>
 <div class="article__meta">
 <a class="actu-tag" href="actualites-etiquetage-mises.html">标签与装瓶</a>
-<span class="actu-date">2026年8月31日发布 5分钟读数</span>
+<span class="actu-date">2026年8月31日发布 5分钟读数 · 更新于2026年10月29日</span>
 </div>
-<h1>欧盟葡萄酒政策一揽子方案：葡萄种植者将面临哪些变化</h1>
-<p class="article__chapo">布鲁塞尔就 <strong>2025年12月4日</strong>2026年初生效的文本:葡萄酒包装彻底改革了欧洲行业规则。软工厂、经销的葡萄酒最终设计,简化标签 — — 以及今年年初不可错过的最后期限。 <strong>2026年12月31日</strong>.</p>
-<div class="essentiel">
-<p class="essentiel__titre">基本要点</p>
-<ul>
-<li>中 <strong>种植授权是可持续的</strong>,并且重新种植授权的有效性从3个增加到 <strong>8年8年</strong>.</li>
-<li>直到 <strong>2026年12月31日</strong>,是有可能 <strong>未经制裁的放弃</strong> 2025年1月1日之前发放的种植授权。</li>
-<li>酒"不低"有 <strong>统一类别</strong> “无酒精”(-0.05%卷)和“酒精含量减少”。</li>
-<li>简化标签: <strong>仅附上强制性资料</strong>,在标签和交叉标签之间不重复。</li>
-</ul>
-</div>
-<h2>欧洲对酒危机的反应</h2>
-<p>2025年春季,面对消费结构下降和生产过剩,欧盟委员会提出了一套措施,以调整酒类市场的共同组织。 经过2025年12月4日的试议协议,改革最终获得通过并公布,以期于2026年初生效。 因此,它的措施适用于当前和随后的宣传运动。</p>
-<h2>种植和重新种植:更加灵活</h2>
-<p>这是以下领域最具体方面之一:</p>
-<ul>
-<li>2045年将取消的种植授权制度是 <strong>年 年</strong>.</li>
-<li>授权书 <strong>补种</strong> 现在有效 <strong>8年8年</strong>3年前:在被打翻之后, 你有时间重新思考内容, 而不失去权利。</li>
-<li>时限 <strong>提交申请</strong> 重新植入后五年内 仍保留着重新植入</li>
-<li>直到 <strong>2026年12月31日</strong>经营者可以 <strong>未经制裁的放弃</strong> 2025年1月1日之前批准的种植许可,他们不打算使用。如果持有休眠许可,现在是时候理清。</li>
-</ul>
-<h2>葡萄不低:最后统一类别</h2>
-<p>没有酒精或酒精含量低的葡萄酒市场在没有共同框架的情况下发展。 <strong>统一名称统一名称</strong> 在整个欧盟联盟:酒可以贴上标签 " <strong>无酒精</strong> "如果不超过0.05%(可能为“0.0”)和 " <strong>酒精含量减少</strong> 委员会尚未采取任何行动修正该指令。</p>
-<p>议事规则的规则的规则》的规则 <strong>闪光葡萄酒</strong> 目前正在修订该框架,以便利用经销或部分经销的葡萄酒来制备。</p>
-<h2>标签:简化条款</h2>
-<p>葡萄酒包装减少了强制性资料的介绍:a <strong>单粘贴</strong> 现在,没有义务重复标签和交叉标签,语言制度就放松了。</p>
-<p>准备下注时要提醒有用的提醒:自2023年12月(欧盟2021/2117条例2023)起,2024年收获生产的葡萄酒必须显示 <strong>元素列表列表内容</strong> 和 <strong>营养宣言</strong> 因此,2026-2027年的注注标签必须把这些最近的义务与新的列报规则结合起来。</p>
-<h2>2027年1月1日之前应做什么</h2>
-<ul>
-<li><strong>审核您的种植授权</strong> - 在2025年1月1日之前批准使用但您不会使用的,在2026年12月31日之前可被放弃,不处以罚款。</li>
-<li><strong>检查下注的标签</strong> :2024年及随后的年年的成分和营养申报(或QR代码),根据新的列报规则必须作出声明。</li>
-<li><strong>如果一个不低项目尝试您</strong>,依靠新的统一名称来设计产品的设计。</li>
-</ul>
+<h1>欧盟葡萄酒改革：酒庄应核对的规则与日期</h1><p class="article__chapo">欧盟第2026/471号条例于2026年3月18日生效，但部分条款在更晚的日期适用。采取行动前，应核对具体条款及本酒庄的许可或产品情况。</p><h2>种植许可</h2><p>许可制度改为长期实行，相关重新种植许可的有效期延长至八年。符合条件、在2025年1月1日前签发的许可，可依规定免罚放弃；须在许可到期前通知主管机构，且最迟不得晚于2026年12月31日。该年末日期不会恢复已经失效的许可。</p><h2>脱醇葡萄酒：两个不同的界限</h2><p>新“无酒精”标示适用于相关类别、酒精度不超过0.5% vol.的产品；附加“0.0%”标示的上限为0.05% vol.。“低酒精”要求酒精度高于0.5% vol.，并且比脱醇前该类别的最低酒精度至少降低30%。</p><p>根据2026年5月22日的勘误，第1条第10项a款的新标签规定自2027年9月19日起适用，同时存在库存过渡条款。核对配料和营养申报义务时，应审查具体产品及生产日期，不能只依据年份。</p><p>请向主管机构核对每份许可的签发日和到期日。制作标签时，应区分现行规则与未来规则，并按具体产品和销售目的地复核。</p><p><strong>官方来源 :</strong> <a href="https://eur-lex.europa.eu/eli/reg/2026/471/oj/fr">UE 2026/471</a> · <a href="https://eur-lex.europa.eu/eli/reg/2026/471/corrigendum/2026-05-22/oj/fr">22/05/2026</a></p>
 <div class="article-cta">
 <p class="article-cta__titre">分批、受管制标签</p>
 <p>Mon Chai中,每场赌注都与它的票价、年久和干物质相关:您总是知道哪个酒类标签在上。如何在不临时的情况下处理新的标签规则?<a href="https://tester.monchai.fr">免费试用</a>：2026年10月31日或之前注册可免费使用至2026年12月31日，2026年11月1日起注册可免费试用30天。</p>
@@ -261,7 +159,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   </div>
 </footer>
 <script src="../assets/js/header.js"></script>
-<script src="../consent.js?v=20261028-footer"></script>
+<script src="../consent.js?v=20261029-ga4"></script>
 <script src="../assets/js/cta-popup.js" defer></script>
 <script src="../assets/js/documents-legaux.js?v=20261028-footer" defer></script>
 </body>

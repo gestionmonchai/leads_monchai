@@ -2,80 +2,31 @@
 <html lang="fr">
 <head>
 <meta charset="utf-8">
-<!-- Mode consentement de Google : par défaut, rien n'est mesuré. Le choix du
-     bandeau (consent.js ou script.js, clé monchai_cookie_consent) est appliqué
-     au chargement, puis à chaque changement (événement monchai:consent). -->
-<script>
-window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}
-(function(){
-  function etat(c){var a=c&&c.audience===true?'granted':'denied',t='denied';return{analytics_storage:a,ad_storage:t,ad_user_data:t,ad_personalization:t};}
-  var d=etat(null);d.wait_for_update=500;gtag('consent','default',d);
-  function chargerPlusTard(){if(document.readyState==='complete'){if(window.monchaiChargerGtm)window.monchaiChargerGtm();}else{window.addEventListener('load',function(){setTimeout(function(){if(window.monchaiChargerGtm)window.monchaiChargerGtm();},0);},{once:true});}}
-  try{var c=JSON.parse(localStorage.getItem('monchai_cookie_consent'));if(c&&typeof c.ts==='number'&&Number.isFinite(c.ts)&&c.ts<=Date.now()&&Date.now()-c.ts<15724800000&&typeof c.audience==='boolean'&&typeof c.tiers==='boolean'){gtag('consent','update',etat(c));if(c.audience===true)chargerPlusTard();}}catch(e){}
-  window.addEventListener('monchai:consent',function(e){gtag('consent','update',etat(e.detail));dataLayer.push({event:'monchai_consentement'});if(e.detail&&e.detail.audience===true)chargerPlusTard();});
-})();
-</script>
-<!-- Google Tag Manager, chargé seulement après un accord (mesure d'audience ou
-     services tiers) et après le chargement de la page : sans accord, aucun
-     script Google n'est téléchargé (gain mesuré sur mobile : environ 0,9 s de LCP). -->
-<script>window.monchaiChargerGtm=function(){if(window.monchaiGtmCharge)return;window.monchaiGtmCharge=true;
-(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-NDSQV6T7');};</script>
-<!-- End Google Tag Manager -->
+
+
+
+
+
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 
-<title>Déclaration de récolte 2026 : dates limites et mode d'emploi | Mon Chai</title>
-<meta name="description" content="Déclaration de récolte 2026 : dates, VENDANGES et circuits par interprofession, dont CIVC, CIVA, BNIC et InterLoire. Guide sourcé.">
+<title>Déclaration de récolte 2026 : dates et démarches | Mon Chai</title>
+<meta name="description" content="Récolte 2026 : identifier votre circuit, préparer les données, contrôler et déposer. 23 fiches d’interprofessions, checklist et sources officielles.">
 <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
 <link rel="canonical" href="https://monchai.fr/declaration-recolte-2026.html">
 
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://monchai.fr/declaration-recolte-2026.html">
-<meta property="og:title" content="Déclaration de récolte 2026 : dates et mode d'emploi">
-<meta property="og:description" content="Déclaration de récolte 2026 : dates, VENDANGES et circuits par interprofession, dont CIVC, CIVA, BNIC et InterLoire. Guide sourcé.">
-<meta property="og:image" content="https://monchai.fr/assets/img/pages/oenotourisme.jpg">
+<meta property="og:title" content="Déclaration de récolte 2026 : dates et démarches">
+<meta property="og:description" content="Récolte 2026 : identifier votre circuit, préparer les données, contrôler et déposer. 23 fiches d’interprofessions, checklist et sources officielles.">
+<meta property="og:image" content="https://monchai.fr/assets/img/pages/vigne-vendanges.jpg">
 <meta property="og:locale" content="fr_FR">
 <meta property="og:site_name" content="Mon Chai">
 
 <link rel="icon" type="image/png" href="assets/img/favicon-mon-chai-96.png">
 <meta name="theme-color" content="#7B1E22">
 
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Article",
-  "headline": "Déclaration de récolte 2026 : dates et mode d'emploi",
-  "description": "Déclaration de récolte 2026 : dates, VENDANGES et circuits par interprofession, dont CIVC, CIVA, BNIC et InterLoire. Guide sourcé.",
-  "inLanguage": "fr",
-  "articleSection": "Douane & déclarations",
-  "datePublished": "2026-10-12",
-  "dateModified": "2026-10-27",
-  "image": "https://monchai.fr/assets/img/pages/oenotourisme.jpg",
-  "mainEntityOfPage": "https://monchai.fr/declaration-recolte-2026.html",
-  "author": { "@type": "Organization", "name": "Mon Chai", "url": "https://monchai.fr/" },
-  "publisher": {
-    "@type": "Organization",
-    "name": "Mon Chai",
-    "url": "https://monchai.fr/",
-    "logo": { "@type": "ImageObject", "url": "https://monchai.fr/assets/img/logo_mon_chai.png" }
-  }
-}
-</script>
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  "itemListElement": [
-    { "@type": "ListItem", "position": 1, "name": "Accueil", "item": "https://monchai.fr/" },
-    { "@type": "ListItem", "position": 2, "name": "Actualités réglementaires", "item": "https://monchai.fr/actualites-reglementaires.html" },
-    { "@type": "ListItem", "position": 3, "name": "Douane & déclarations", "item": "https://monchai.fr/actualites-douane-declarations.html" },
-    { "@type": "ListItem", "position": 4, "name": "Déclaration de récolte 2026 : dates et mode d'emploi" }
-  ]
-}
-</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Déclaration de récolte 2026 : dates et démarches", "description": "Récolte 2026 : identifier votre circuit, préparer les données, contrôler et déposer. 23 fiches d’interprofessions, checklist et sources officielles.", "inLanguage": "fr", "articleSection": "Douane & déclarations", "datePublished": "2026-10-12", "dateModified": "2026-10-29", "image": "https://monchai.fr/assets/img/pages/vigne-vendanges.jpg", "mainEntityOfPage": "https://monchai.fr/declaration-recolte-2026.html", "author": {"@type": "Organization", "name": "Mon Chai", "url": "https://monchai.fr/index.html#apropos"}, "publisher": {"@type": "Organization", "name": "Mon Chai", "url": "https://monchai.fr/", "logo": {"@type": "ImageObject", "url": "https://monchai.fr/assets/img/logo_mon_chai.png"}}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Accueil", "item": "https://monchai.fr/"}, {"@type": "ListItem", "position": 2, "name": "Actualités réglementaires", "item": "https://monchai.fr/actualites-reglementaires.html"}, {"@type": "ListItem", "position": 3, "name": "Douane & déclarations", "item": "https://monchai.fr/actualites-douane-declarations.html"}, {"@type": "ListItem", "position": 4, "name": "Déclaration de récolte 2026 : dates et démarches"}]}</script>
 
 <link rel="stylesheet" href="assets/css/polices.css">
 <link rel="stylesheet" href="assets/css/header.css">
@@ -83,6 +34,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <link rel="stylesheet" href="assets/css/recolte-interprofessions.css?v=20261027-outils">
 <link rel="stylesheet" href="assets/css/pied.css">
 <link rel="stylesheet" href="assets/css/footer-commun.css?v=20261028-footer">
+<link rel="stylesheet" href="assets/css/guides-reglementaires.css?v=20261029">
+
+<script src="assets/js/analytics.js?v=20261029" data-gtm></script>
 </head>
 <body class="corps-actus">
 
@@ -187,334 +141,48 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </div>
 
 <!-- ============ ARTICLE ============ -->
-<main class="article">
-  <p class="article__ariane"><a href="index.html">Accueil</a> › <a href="actualites-reglementaires.html">Actualités réglementaires</a> › <a href="actualites-douane-declarations.html">Douane &amp; déclarations</a> › Déclaration de récolte</p>
-
-  <div class="article__meta">
-    <a class="actu-tag" href="actualites-douane-declarations.html">Douane &amp; déclarations</a>
-    <span class="actu-date">Publié le 12 octobre 2026 · Mis à jour le 27 octobre 2026 · 12 min de lecture</span>
-  </div>
-
-  <h1>Déclaration de récolte 2026&nbsp;: dates et mode d'emploi</h1>
-
-  <p class="article__chapo">Les vendanges à peine rentrées, une échéance approche déjà&nbsp;: la <strong>déclaration de récolte et de production</strong>, à valider en ligne <strong>au plus tard le 10&nbsp;décembre 2026 pour les récoltants et bailleurs vinificateurs relevant du circuit douanier de droit commun</strong>. Elle décrit votre récolte et votre production : ces données sont à rapprocher de vos enregistrements de cave et des démarches de revendication applicables à vos vins.</p>
-  <p><strong>Champagne, Alsace, Cognac, Val de Loire :</strong> des circuits particuliers existent. <a href="#interprofessions">Retrouvez votre interprofession et les consignes de déclaration</a>.</p>
-
-  <div class="essentiel">
-    <p class="essentiel__titre">L'essentiel</p>
-    <ul>
-      <li>Les <strong>récoltants commercialisant leur récolte ou leur production</strong> sont concernés ; la Douane prévoit des dispenses, notamment en l’absence de récolte ou de commercialisation.</li>
-      <li>Dans le circuit douanier, dépôt en ligne via <strong>VENDANGES</strong>. Les ressortissants <strong>CIVC, CIVA et les récoltants BNIC</strong> passent par leur interprofession ; <strong>InterLoire</strong> offre aussi une possibilité de dépôt.</li>
-      <li>Droit commun : <strong>10 décembre 2026 à 23 h 59</strong> pour les récoltants et bailleurs vinificateurs ; <strong>10 janvier 2027 à 23 h 59</strong> pour la production des caves coopératives et négociants-vinificateurs. <strong>En Champagne : voir l’<a href="#recolte-civc">échéance du 5 novembre dans la fiche CIVC</a>.</strong></li>
-      <li>Un <strong>brouillon VENDANGES ne vaut pas dépôt</strong>. Dans ce téléservice, la déclaration déposée reste modifiable jusqu’au <strong>31 juillet 2027</strong> ; cela ne prolonge pas le délai du premier dépôt.</li>
-    </ul>
-  </div>
-
-  <nav class="recolte-sommaire" aria-label="Accès rapide dans le guide">
-    <a href="#interprofessions">Votre interprofession</a>
-    <a href="#checklist-recolte">Checklist à imprimer</a>
-    <a href="#exemple-monchai">Exemple Mon Chai</a>
-  </nav>
-
-  <h2>Ce que contient la déclaration</h2>
-  <p>Pour chaque catégorie de produit (appellation, couleur…)&nbsp;: les <strong>superficies en production</strong>, les <strong>quantités récoltées</strong> et leur <strong>destination</strong>&nbsp;: vinification au domaine, apport en cave coopérative, vente de raisins ou de moûts, quantités livrées à la distillation. En métayage, distinguez votre rôle d’exploitant ou de bailleur vinificateur et renseignez les rubriques correspondantes du téléservice. Préparez vos chiffres à l'avance&nbsp;: pesées d'encuvage, bons d'apport, contrats de vente de raisins.</p>
-
-  <p>Pour les rubriques à remplir selon votre situation, consultez le <a href="https://www.douane.gouv.fr/sites/default/files/2026-09/25/Manuel%20utilisateur%20VENDANGES%20r%C3%A9colte.pdf" target="_blank" rel="noopener noreferrer">manuel officiel VENDANGES 2026 pour les récoltants et récoltants vinificateurs (PDF)</a>.</p>
-
-  <h2>Récolte, revendication et DRM : garder des données cohérentes</h2>
-  <p>Rapprochez les quantités déclarées de vos enregistrements de vendange et de votre <strong>comptabilité matière</strong>. Pour une AOC, la <strong>déclaration de revendication</strong> possède ses propres modalités et délais, définis dans le cahier des charges. Le dépôt de la récolte et cette revendication sont deux démarches à distinguer, comme le rappelle le <a href="https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000019527384" target="_blank" rel="noopener noreferrer">Code rural, article D644-5</a>. Préparez également les données utiles à vos DRM selon le circuit applicable.</p>
-
-  <h2>Anticiper l’échéance de votre circuit de déclaration</h2>
-  <ul>
-    <li><strong>Vérifiez vos accès</strong> au portail douanier ou à votre interprofession dès maintenant&nbsp;: un mot de passe perdu se règle mal dans l'urgence.</li>
-    <li><strong>Rapprochez vos volumes</strong> des pesées réelles avant de saisir&nbsp;: dans VENDANGES, une déclaration déposée peut être modifiée dans les délais prévus. Pour un portail interprofessionnel, consultez ses propres règles.</li>
-    <li><strong>Gardez la cohérence</strong> avec le casier viticole&nbsp;: rapprochez les superficies déclarées de vos parcelles en production et vérifiez les écarts avant le dépôt.</li>
-  </ul>
-
-  <section class="recolte-interpros" aria-labelledby="interprofessions">
-    <h2 id="interprofessions">Déclaration de récolte : trouver votre interprofession</h2>
-    <p>Voici les organismes répertoriés dans l’<a href="https://www.intervin.fr/interprofessions/interprofessions-vinicoles" target="_blank" rel="noopener noreferrer">annuaire des interprofessions vinicoles du CNIV</a>, avec les repères utiles pour votre récolte. Cliquez sur votre vignoble ou votre production pour afficher les démarches et les sources. Vous pouvez ouvrir plusieurs interprofessions pour les comparer.</p>
-    <p class="recolte-repere"><strong>Comment lire ces fiches ?</strong> Les consignes de campagne sont attribuées à leur auteur ; un lien vers le site d’une interprofession sert à retrouver son organisme et ses contacts. Lorsqu’aucun calendrier local 2026 n’est confirmé ici, consultez les consignes de votre espace professionnel. Les dates de droit commun ci-dessus concernent le circuit douanier ; les modalités d’un autre portail ne se déduisent pas de celles de VENDANGES.</p>
-    <details class="recolte-fiche" aria-labelledby="recolte-civc">
-      <summary class="recolte-fiche__resume"><h3 id="recolte-civc" tabindex="-1">Champagne — CIVC / Comité Champagne</h3></summary>
-      <div class="recolte-fiche__contenu">
-        <p class="recolte-fiche__nom">CIVC — Comité interprofessionnel du vin de Champagne</p>
-        <p class="recolte-verification"><span class="recolte-verification__badge recolte-verification__badge--campagne">Document de campagne 2026</span><br>Décision du Comité Champagne reproduite dans un avis public ; modalités sur extranet. <span class="recolte-verification__date">Sources consultées le 27 octobre 2026.</span></p>
-
-      <p><strong>En Champagne, la déclaration de récolte passe par le Comité Champagne.</strong> La décision V.2.2026 du 22 juillet 2026 fixe son dépôt au <strong>5 novembre 2026 au plus tard</strong>. Elle distingue cette formalité de la déclaration d’approvisionnement et de production, attendue au plus tard le 10 décembre 2026.</p><p>Consultez les circulaires de campagne dans votre extranet pour les modalités applicables et les éventuelles mises à jour. N’attendez donc pas l’échéance générale de décembre pour vérifier votre situation.</p>
-      <p class="recolte-fiche__sources"><strong>Sources et accès :</strong> <a href="https://extranet.comitechampagne.fr/" target="_blank" rel="noopener noreferrer">Extranet officiel du Comité Champagne (accès réservé)</a> ; <a href="https://entreprises.lefigaro.fr/comite-interprofessionnel-du-vin-de-champagne-civc-51/entreprise-780385829" target="_blank" rel="noopener noreferrer">Décision V.2.2026 du Comité Champagne, avis du 27 juillet 2026 reproduit par Le Figaro Entreprises</a> ; <a href="https://www.douane.gouv.fr/service-en-ligne/declarations-de-recolteproduction-vendanges" target="_blank" rel="noopener noreferrer">Douane : exception CIVC au circuit VENDANGES</a>.</p>
-      <a class="recolte-retour" href="#interprofessions">Retour à la liste des interprofessions</a>
-
-      </div>
-    </details>
-    <details class="recolte-fiche" aria-labelledby="recolte-civa">
-      <summary class="recolte-fiche__resume"><h3 id="recolte-civa" tabindex="-1">Alsace — CIVA</h3></summary>
-      <div class="recolte-fiche__contenu">
-        <p class="recolte-fiche__nom">CIVA — Comité interprofessionnel des vins d’Alsace</p>
-        <p class="recolte-verification"><span class="recolte-verification__badge recolte-verification__badge--extranet">Calendrier à vérifier sur votre espace professionnel</span><br>Circuit confirmé ; calendrier local 2026 non vérifié publiquement. <span class="recolte-verification__date">Sources consultées le 27 octobre 2026.</span></p>
-
-      <p><strong>Pour les ressortissants du CIVA, le dépôt s’effectue auprès de l’interprofession</strong>, sur le portail VinsAlsace.pro, et non dans VENDANGES. Vérifiez les consignes de récolte 2026 dans votre espace professionnel.</p><p>La déclaration de récolte CIVA et la déclaration de revendication auprès de l’AVA sont deux démarches à distinguer. La documentation AVA explique cette articulation ; son guide 2025 ne doit pas servir de calendrier pour la récolte 2026.</p>
-      <p class="recolte-fiche__sources"><strong>Sources et accès :</strong> <a href="https://www.vinsalsace.pro/" target="_blank" rel="noopener noreferrer">Portail professionnel du CIVA (accès réservé)</a> ; <a href="https://www.vinsalsace.com/fr/contact/" target="_blank" rel="noopener noreferrer">CIVA : contact officiel</a> ; <a href="https://www.douane.gouv.fr/service-en-ligne/declarations-de-recolteproduction-vendanges" target="_blank" rel="noopener noreferrer">Douane : exception CIVA</a> ; <a href="https://ava-aoc.fr/sites/default/files/drev_2025.pdf" target="_blank" rel="noopener noreferrer">AVA : articulation DR et revendication, document 2025 (PDF)</a>.</p>
-      <a class="recolte-retour" href="#interprofessions">Retour à la liste des interprofessions</a>
-
-      </div>
-    </details>
-    <details class="recolte-fiche" aria-labelledby="recolte-bnic">
-      <summary class="recolte-fiche__resume"><h3 id="recolte-bnic" tabindex="-1">Cognac — BNIC</h3></summary>
-      <div class="recolte-fiche__contenu">
-        <p class="recolte-fiche__nom">BNIC — Bureau national interprofessionnel du Cognac</p>
-        <p class="recolte-verification"><span class="recolte-verification__badge recolte-verification__badge--extranet">Calendrier à vérifier sur votre espace professionnel</span><br>Circuit confirmé ; calendrier et modifications locaux à contrôler sur extranet. <span class="recolte-verification__date">Sources consultées le 27 octobre 2026.</span></p>
-
-      <p><strong>Les récoltants ressortissants du BNIC déclarent auprès de leur interprofession.</strong> L’entrée professionnelle est l’extranet eBNIC, accessible depuis pro.cognac.fr.</p><p>Pour la récolte 2026, consultez le calendrier et les règles de validation de cet espace avant de déposer. La possibilité de modifier une déclaration dans VENDANGES jusqu’au 31 juillet suivant ne doit pas être transposée automatiquement au portail BNIC.</p>
-      <p class="recolte-fiche__sources"><strong>Sources et accès :</strong> <a href="https://pro.cognac.fr/" target="_blank" rel="noopener noreferrer">Extranet professionnel eBNIC (accès réservé)</a> ; <a href="https://www.cognac.fr/bnic/accueil/" target="_blank" rel="noopener noreferrer">BNIC : organisme et missions</a> ; <a href="https://www.douane.gouv.fr/service-en-ligne/declarations-de-recolteproduction-vendanges" target="_blank" rel="noopener noreferrer">Douane : circuit de déclaration des récoltants BNIC</a>.</p>
-      <a class="recolte-retour" href="#interprofessions">Retour à la liste des interprofessions</a>
-
-      </div>
-    </details>
-    <details class="recolte-fiche" aria-labelledby="recolte-interloire">
-      <summary class="recolte-fiche__resume"><h3 id="recolte-interloire" tabindex="-1">Val de Loire — InterLoire</h3></summary>
-      <div class="recolte-fiche__contenu">
-        <p class="recolte-fiche__nom">InterLoire — Interprofession des vins du Val de Loire</p>
-        <p class="recolte-verification"><span class="recolte-verification__badge recolte-verification__badge--campagne">Document de campagne 2026</span><br>Consignes professionnelles de campagne ; vérifiez aussi les consignes de votre ODG. <span class="recolte-verification__date">Sources consultées le 27 octobre 2026.</span></p>
-
-      <p><strong>Les ressortissants d’InterLoire peuvent déposer dans VENDANGES ou sur le portail de leur interprofession.</strong> Les conditions d’utilisation de vinsdeloire.pro prévoient des formulaires de déclaration de récolte et de production.</p><p>Les Vignerons Indépendants du Centre Val de Loire rappellent pour 2026 l’échéance du 10 décembre et présentent la saisie sur vinsdeloire.pro lorsque la récolte comporte uniquement des vins du ressort d’InterLoire. En cas de plusieurs productions, vérifiez le circuit adapté avant de saisir. Le Centre-Loire / BIVC possède ses propres outils : voir sa fiche ci-dessous.</p>
-      <p class="recolte-fiche__sources"><strong>Sources et accès :</strong> <a href="https://identification.vinsdeloire.pro/CGU" target="_blank" rel="noopener noreferrer">InterLoire : fonctions du portail déclaratif</a> ; <a href="https://vicvl.fr/news/le-service-en-ligne-vendanges-est-ouvert" target="_blank" rel="noopener noreferrer">Vignerons Indépendants Centre Val de Loire : consignes récolte 2026</a> ; <a href="https://www.douane.gouv.fr/service-en-ligne/declarations-de-recolteproduction-vendanges" target="_blank" rel="noopener noreferrer">Douane : option de dépôt InterLoire</a>.</p>
-      <a class="recolte-retour" href="#interprofessions">Retour à la liste des interprofessions</a>
-
-      </div>
-    </details>
-    <details class="recolte-fiche" aria-labelledby="recolte-anivin">
-      <summary class="recolte-fiche__resume"><h3 id="recolte-anivin" tabindex="-1">Vin De France — ANIVIN de France</h3></summary>
-      <div class="recolte-fiche__contenu">
-        <p class="recolte-fiche__nom">ANIVIN de France — Association nationale interprofessionnelle des vins de France</p>
-        <p class="recolte-verification"><span class="recolte-verification__badge recolte-verification__badge--general">Repère : règle générale des Douanes</span><br>Aucun calendrier local de récolte 2026 spécifique n’est confirmé dans cette fiche. Règle nationale et distinction certification/volumes vérifiées. <span class="recolte-verification__date">Sources consultées le 27 octobre 2026.</span></p>
-
-      <p><strong>Pour la récolte relevant du circuit douanier, utilisez VENDANGES.</strong> Les déclarations de volumes demandées par l’ANIVIN de France constituent une obligation interprofessionnelle distincte.</p><p>Si vous commercialisez du Vin De France avec mention de cépage ou de millésime, consultez aussi les démarches de certification de FranceAgriMer. Une déclaration de récolte ne tient pas lieu de certification.</p>
-      <p class="recolte-fiche__sources"><strong>Sources et accès :</strong> <a href="https://www.vindefrance.com/pro/reglementation" target="_blank" rel="noopener noreferrer">ANIVIN de France : réglementation et déclaration des volumes</a> ; <a href="https://www.franceagrimer.fr/index.php/les-vins-sans-indication-geographique-vsig" target="_blank" rel="noopener noreferrer">FranceAgriMer : démarches VSIG avec cépage ou millésime</a> ; <a href="https://www.douane.gouv.fr/service-en-ligne/declarations-de-recolteproduction-vendanges" target="_blank" rel="noopener noreferrer">Douane : circuit VENDANGES</a>.</p>
-      <a class="recolte-retour" href="#interprofessions">Retour à la liste des interprofessions</a>
-
-      </div>
-    </details>
-    <details class="recolte-fiche" aria-labelledby="recolte-bnia">
-      <summary class="recolte-fiche__resume"><h3 id="recolte-bnia" tabindex="-1">Armagnac — BNIA</h3></summary>
-      <div class="recolte-fiche__contenu">
-        <p class="recolte-fiche__nom">BNIA — Bureau national interprofessionnel de l’Armagnac</p>
-        <p class="recolte-verification"><span class="recolte-verification__badge recolte-verification__badge--general">Repère : règle générale des Douanes</span><br>Aucun calendrier local de récolte 2026 spécifique n’est confirmé dans cette fiche. Règle nationale ; aucun calendrier Armagnac 2026 spécifique affirmé. <span class="recolte-verification__date">Sources consultées le 27 octobre 2026.</span></p>
-
-      <p><strong>La récolte de raisins et le suivi des eaux-de-vie d’Armagnac sont des formalités distinctes.</strong> Pour la déclaration de récolte relevant du droit commun, reportez-vous au circuit VENDANGES décrit plus haut.</p><p>Rapprochez-vous du BNIA pour les formalités propres à l’Armagnac, notamment le suivi des stocks et mouvements d’eaux-de-vie. Ne déduisez pas de la proximité des sigles BNIA et BNIC qu’ils utilisent le même portail de récolte.</p>
-      <p class="recolte-fiche__sources"><strong>Sources et accès :</strong> <a href="https://armagnac.fr/accords-cadres" target="_blank" rel="noopener noreferrer">BNIA : espace professionnel</a> ; <a href="https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000000274471" target="_blank" rel="noopener noreferrer">Légifrance : suivi des stocks et mouvements d’Armagnac</a> ; <a href="https://www.douane.gouv.fr/service-en-ligne/declarations-de-recolteproduction-vendanges" target="_blank" rel="noopener noreferrer">Douane : déclaration de récolte, règle générale</a>.</p>
-      <a class="recolte-retour" href="#interprofessions">Retour à la liste des interprofessions</a>
-
-      </div>
-    </details>
-    <details class="recolte-fiche" aria-labelledby="recolte-inter-beaujolais">
-      <summary class="recolte-fiche__resume"><h3 id="recolte-inter-beaujolais" tabindex="-1">Beaujolais — Inter Beaujolais</h3></summary>
-      <div class="recolte-fiche__contenu">
-        <p class="recolte-fiche__nom">Inter Beaujolais — Interprofession des vins AOC du Beaujolais</p>
-        <p class="recolte-verification"><span class="recolte-verification__badge recolte-verification__badge--general">Repère : règle générale des Douanes</span><br>Aucun calendrier local de récolte 2026 spécifique n’est confirmé dans cette fiche. Règle nationale ; aucune date de sortie primeur non vérifiée ajoutée. <span class="recolte-verification__date">Sources consultées le 27 octobre 2026.</span></p>
-
-      <p><strong>La déclaration de récolte relève du circuit VENDANGES de droit commun.</strong> Pour un vin nouveau ou primeur, vérifiez séparément les formalités de revendication et de mise en marché de votre appellation : la date de dépôt de la récolte ne suffit pas à déterminer la date de commercialisation.</p><p>L’extranet d’Inter Beaujolais fournit notamment les coordonnées du service douanier de la viticulture.</p>
-      <p class="recolte-fiche__sources"><strong>Sources et accès :</strong> <a href="https://extranet.beaujolais.com/dgddi-service-de-la-viticulture-69" target="_blank" rel="noopener noreferrer">Inter Beaujolais : service douanier de la viticulture</a> ; <a href="https://www.douane.gouv.fr/service-en-ligne/declarations-de-recolteproduction-vendanges" target="_blank" rel="noopener noreferrer">Douane : déclaration de récolte</a>.</p>
-      <a class="recolte-retour" href="#interprofessions">Retour à la liste des interprofessions</a>
-
-      </div>
-    </details>
-    <details class="recolte-fiche" aria-labelledby="recolte-ivbd">
-      <summary class="recolte-fiche__resume"><h3 id="recolte-ivbd" tabindex="-1">Bergerac et Duras — IVBD</h3></summary>
-      <div class="recolte-fiche__contenu">
-        <p class="recolte-fiche__nom">IVBD — Interprofession des vins de Bergerac et Duras</p>
-        <p class="recolte-verification"><span class="recolte-verification__badge recolte-verification__badge--campagne">Document de campagne 2026</span><br>Consignes de la fédération des vins de Bergerac et Duras, attribuées dans les sources. <span class="recolte-verification__date">Sources consultées le 27 octobre 2026.</span></p>
-
-      <p><strong>Le dépôt de la récolte passe par VENDANGES.</strong> La Fédération des vins de Bergerac et Duras consacre une rubrique à la récolte 2026, avec une fiche d’information sur ce téléservice et les conditions de production du millésime.</p><p>Utilisez ces documents de la fédération de producteurs pour préparer les quantités et appellations, puis vérifiez séparément la revendication. L’IVBD et la fédération sont deux organismes à distinguer.</p>
-      <p class="recolte-fiche__sources"><strong>Sources et accès :</strong> <a href="https://www.fv-bergerac.fr/recolte/" target="_blank" rel="noopener noreferrer">Fédération des vins de Bergerac et Duras : récolte et fiches 2026</a> ; <a href="https://www.vins-bergeracduras.fr/nos-appellations/monbazillac/" target="_blank" rel="noopener noreferrer">Vins de Bergerac et Duras : site de l’interprofession</a> ; <a href="https://www.douane.gouv.fr/service-en-ligne/declarations-de-recolteproduction-vendanges" target="_blank" rel="noopener noreferrer">Douane : VENDANGES</a>.</p>
-      <a class="recolte-retour" href="#interprofessions">Retour à la liste des interprofessions</a>
-
-      </div>
-    </details>
-    <details class="recolte-fiche" aria-labelledby="recolte-civb">
-      <summary class="recolte-fiche__resume"><h3 id="recolte-civb" tabindex="-1">Bordeaux — CIVB</h3></summary>
-      <div class="recolte-fiche__contenu">
-        <p class="recolte-fiche__nom">CIVB — Conseil interprofessionnel du vin de Bordeaux</p>
-        <p class="recolte-verification"><span class="recolte-verification__badge recolte-verification__badge--campagne">Document de campagne 2026</span><br>Échéances publiées par la FGVB ; consultez les modalités applicables à vos vins. <span class="recolte-verification__date">Sources consultées le 27 octobre 2026.</span></p>
-
-      <p><strong>À Bordeaux, la FGVB confirme pour 2026 le dépôt dans VENDANGES.</strong> Sa communication du 15 septembre rappelle le 10 décembre 2026 pour les récoltants et bailleurs vinificateurs, et le 10 janvier 2027 pour la production des caves coopératives et négociants-vinificateurs.</p><p>Ces consignes proviennent de la Fédération des grands vins de Bordeaux, à distinguer du CIVB. Les démarches de votre ODG restent à vérifier pour la revendication.</p>
-      <p class="recolte-fiche__sources"><strong>Sources et accès :</strong> <a href="https://fgvb.fr/ouverture-du-service-en-ligne-vendanges" target="_blank" rel="noopener noreferrer">FGVB : ouverture et échéances VENDANGES 2026</a> ; <a href="https://www.bordeaux.com/fr/politique-confidentialite/" target="_blank" rel="noopener noreferrer">Bordeaux.com : identification officielle du CIVB</a>.</p>
-      <a class="recolte-retour" href="#interprofessions">Retour à la liste des interprofessions</a>
-
-      </div>
-    </details>
-    <details class="recolte-fiche" aria-labelledby="recolte-bivb">
-      <summary class="recolte-fiche__resume"><h3 id="recolte-bivb" tabindex="-1">Bourgogne — BIVB</h3></summary>
-      <div class="recolte-fiche__contenu">
-        <p class="recolte-fiche__nom">BIVB — Bureau interprofessionnel des vins de Bourgogne</p>
-        <p class="recolte-verification"><span class="recolte-verification__badge recolte-verification__badge--campagne">Document de campagne 2026</span><br>Accompagnement et tutoriels de campagne de la CAVB ; pas de calendrier universel déduit. <span class="recolte-verification__date">Sources consultées le 27 octobre 2026.</span></p>
-
-      <p><strong>La CAVB publie des tutoriels 2026 pour enregistrer la déclaration de récolte dans VENDANGES et préparer les formalités sur Déclar’AOC.</strong> Consultez-les dans cet ordre pour éviter de confondre les deux outils.</p><p>Son information du 7 octobre 2026 annonce aussi une assistance aux déclarations et une échéance au 10 décembre 2026 pour la télédéclaration de production sur Déclar’AOC. La CAVB accompagne les producteurs ; elle ne se confond pas avec le BIVB.</p>
-      <p class="recolte-fiche__sources"><strong>Sources et accès :</strong> <a href="https://www.cavb.fr/actualites/declarations-de-production-2026-tutoriels-douanes-declaraoc" target="_blank" rel="noopener noreferrer">CAVB : tutoriels VENDANGES et Déclar’AOC 2026</a> ; <a href="https://www.cavb.fr/actualites/aide-a-vos-declarations-de-recolte-contacts-et-permanences" target="_blank" rel="noopener noreferrer">CAVB : accompagnement et échéance 2026</a> ; <a href="https://www.vins-bourgogne.fr/" target="_blank" rel="noopener noreferrer">BIVB : site officiel des vins de Bourgogne</a>.</p>
-      <a class="recolte-retour" href="#interprofessions">Retour à la liste des interprofessions</a>
-
-      </div>
-    </details>
-    <details class="recolte-fiche" aria-labelledby="recolte-uivc">
-      <summary class="recolte-fiche__resume"><h3 id="recolte-uivc" tabindex="-1">Cahors et Côtes du Lot — UIVCCL / UIVC</h3></summary>
-      <div class="recolte-fiche__contenu">
-        <p class="recolte-fiche__nom">UIVCCL — Union interprofessionnelle du vin de Cahors et des Côtes du Lot (anciennement UIVC)</p>
-        <p class="recolte-verification"><span class="recolte-verification__badge recolte-verification__badge--general">Repère : règle générale des Douanes</span><br>Aucun calendrier local de récolte 2026 spécifique n’est confirmé dans cette fiche. Nom et périmètre 2025–2027 vérifiés ; droit commun pour la DR. <span class="recolte-verification__date">Sources consultées le 27 octobre 2026.</span></p>
-
-      <p><strong>La déclaration de récolte suit le circuit VENDANGES de droit commun.</strong> L’accord interprofessionnel 2025–2027 utilise le nom UIVCCL et couvre l’AOP Cahors ainsi que l’IGP Côtes du Lot ; l’ancien sigle UIVC reste présent sur certains supports.</p><p>Préparez vos données en distinguant les produits et vérifiez les consignes de l’organisme compétent pour chaque revendication.</p>
-      <p class="recolte-fiche__sources"><strong>Sources et accès :</strong> <a href="https://www.legifrance.gouv.fr/eli/arrete/2025/6/18/AGRT2511511A/jo/texte" target="_blank" rel="noopener noreferrer">Légifrance : accord UIVCCL 2025–2027</a> ; <a href="https://vindecahors.fr/pro/" target="_blank" rel="noopener noreferrer">Vins de Cahors : espace professionnel</a> ; <a href="https://www.douane.gouv.fr/service-en-ligne/declarations-de-recolteproduction-vendanges" target="_blank" rel="noopener noreferrer">Douane : circuit de récolte</a>.</p>
-      <a class="recolte-retour" href="#interprofessions">Retour à la liste des interprofessions</a>
-
-      </div>
-    </details>
-    <details class="recolte-fiche" aria-labelledby="recolte-bivc">
-      <summary class="recolte-fiche__resume"><h3 id="recolte-bivc" tabindex="-1">Centre-Loire — BIVC</h3></summary>
-      <div class="recolte-fiche__contenu">
-        <p class="recolte-fiche__nom">BIVC — Bureau interprofessionnel des vins du Centre</p>
-        <p class="recolte-verification"><span class="recolte-verification__badge recolte-verification__badge--general">Repère : règle générale des Douanes</span><br>Aucun calendrier local de récolte 2026 spécifique n’est confirmé dans cette fiche. Outils locaux distingués ; pas de transposition du calendrier InterLoire. <span class="recolte-verification__date">Sources consultées le 27 octobre 2026.</span></p>
-
-      <p><strong>Le BIVC / Centre-Loire ne doit pas être confondu avec InterLoire.</strong> Pour le dépôt douanier de récolte, suivez le circuit VENDANGES de droit commun.</p><p>Le guide des plateformes du BIVC distingue son portail DRM de la plateforme des ODG et de la FUVC, qui comporte notamment des démarches de récolte et de revendication. Ce guide aide à identifier les outils ; il ne constitue pas un calendrier de campagne 2026.</p>
-      <p class="recolte-fiche__sources"><strong>Sources et accès :</strong> <a href="https://www.vins-centre-loire.com/files/Plateformes_Centre-Loire.pdf" target="_blank" rel="noopener noreferrer">BIVC : guide des plateformes déclaratives (PDF)</a> ; <a href="https://www.vins-centre-loire.com/fr/connexion/" target="_blank" rel="noopener noreferrer">BIVC : espace professionnel (accès réservé)</a> ; <a href="https://www.douane.gouv.fr/service-en-ligne/declarations-de-recolteproduction-vendanges" target="_blank" rel="noopener noreferrer">Douane : dépôt dans VENDANGES</a>.</p>
-      <a class="recolte-retour" href="#interprofessions">Retour à la liste des interprofessions</a>
-
-      </div>
-    </details>
-    <details class="recolte-fiche" aria-labelledby="recolte-civ-corse">
-      <summary class="recolte-fiche__resume"><h3 id="recolte-civ-corse" tabindex="-1">Corse — CIV Corse</h3></summary>
-      <div class="recolte-fiche__contenu">
-        <p class="recolte-fiche__nom">CIV Corse — Conseil interprofessionnel des vins de Corse</p>
-        <p class="recolte-verification"><span class="recolte-verification__badge recolte-verification__badge--general">Repère : règle générale des Douanes</span><br>Aucun calendrier local de récolte 2026 spécifique n’est confirmé dans cette fiche. Identité locale et règle nationale ; calendrier local 2026 non confirmé. <span class="recolte-verification__date">Sources consultées le 27 octobre 2026.</span></p>
-
-      <p><strong>Pour la récolte soumise au droit commun, le dépôt se fait dans VENDANGES.</strong> Le CIV Corse présente sur son site le rôle de l’interprofession et un accès à son espace professionnel.</p><p>Avant la saisie, séparez les volumes par produit et vérifiez auprès de votre ODG les formalités propres à l’AOP ou à l’IGP concernée.</p>
-      <p class="recolte-fiche__sources"><strong>Sources et accès :</strong> <a href="https://www.vinsdecorse.com/fr/lunion-fait-la-force" target="_blank" rel="noopener noreferrer">CIV Corse : organisation et espace professionnel</a> ; <a href="https://www.douane.gouv.fr/service-en-ligne/declarations-de-recolteproduction-vendanges" target="_blank" rel="noopener noreferrer">Douane : règle de dépôt</a>.</p>
-      <a class="recolte-retour" href="#interprofessions">Retour à la liste des interprofessions</a>
-
-      </div>
-    </details>
-    <details class="recolte-fiche" aria-labelledby="recolte-civj">
-      <summary class="recolte-fiche__resume"><h3 id="recolte-civj" tabindex="-1">Jura — CIVJ</h3></summary>
-      <div class="recolte-fiche__contenu">
-        <p class="recolte-fiche__nom">CIVJ — Comité interprofessionnel des vins du Jura</p>
-        <p class="recolte-verification"><span class="recolte-verification__badge recolte-verification__badge--general">Repère : règle générale des Douanes</span><br>Aucun calendrier local de récolte 2026 spécifique n’est confirmé dans cette fiche. Identité confirmée par CNIV ; contenu du site CIVJ non consultable dans notre outil. <span class="recolte-verification__date">Sources consultées le 27 octobre 2026.</span></p>
-
-      <p><strong>Pour le dépôt douanier de récolte, utilisez VENDANGES selon la règle générale.</strong> Le CIVJ est le repère interprofessionnel des vins du Jura dans l’annuaire du CNIV.</p><p>La revendication et les autres formalités de votre appellation demandent une vérification distincte auprès de l’ODG. Consultez ses consignes 2026 avant de reprendre une date trouvée dans un ancien guide.</p>
-      <p class="recolte-fiche__sources"><strong>Sources et accès :</strong> <a href="https://www.intervin.fr/interprofessions/interprofessions-vinicoles" target="_blank" rel="noopener noreferrer">CNIV : identification du CIVJ et de son site</a> ; <a href="https://www.jura-vins.com/" target="_blank" rel="noopener noreferrer">CIVJ : site officiel</a> ; <a href="https://www.douane.gouv.fr/service-en-ligne/declarations-de-recolteproduction-vendanges" target="_blank" rel="noopener noreferrer">Douane : circuit VENDANGES</a>.</p>
-      <a class="recolte-retour" href="#interprofessions">Retour à la liste des interprofessions</a>
-
-      </div>
-    </details>
-    <details class="recolte-fiche" aria-labelledby="recolte-civl">
-      <summary class="recolte-fiche__resume"><h3 id="recolte-civl" tabindex="-1">Languedoc — CIVL</h3></summary>
-      <div class="recolte-fiche__contenu">
-        <p class="recolte-fiche__nom">CIVL — Conseil interprofessionnel des vins du Languedoc</p>
-        <p class="recolte-verification"><span class="recolte-verification__badge recolte-verification__badge--general">Repère : règle générale des Douanes</span><br>Aucun calendrier local de récolte 2026 spécifique n’est confirmé dans cette fiche. Identité/périmètre et règle nationale ; aucun délai local inventé. <span class="recolte-verification__date">Sources consultées le 27 octobre 2026.</span></p>
-
-      <p><strong>La déclaration de récolte relève du circuit VENDANGES de droit commun.</strong> Le CIVL présente les AOP et IGP de son ressort sur son site institutionnel.</p><p>Ne choisissez pas votre organisme sur le seul nom du département : identifiez le produit et l’ODG figurant dans vos documents. Les vins Pays d’Oc relèvent d’Inter Oc, présenté dans une fiche distincte.</p>
-      <p class="recolte-fiche__sources"><strong>Sources et accès :</strong> <a href="https://languedoc-wines.com/qui-sommes-nous/" target="_blank" rel="noopener noreferrer">CIVL : présentation et vins de son ressort</a> ; <a href="https://www.douane.gouv.fr/service-en-ligne/declarations-de-recolteproduction-vendanges" target="_blank" rel="noopener noreferrer">Douane : récolte et production</a>.</p>
-      <a class="recolte-retour" href="#interprofessions">Retour à la liste des interprofessions</a>
-
-      </div>
-    </details>
-    <details class="recolte-fiche" aria-labelledby="recolte-inter-oc">
-      <summary class="recolte-fiche__resume"><h3 id="recolte-inter-oc" tabindex="-1">Pays d’Oc IGP — Inter Oc</h3></summary>
-      <div class="recolte-fiche__contenu">
-        <p class="recolte-fiche__nom">Inter Oc — Interprofession des vins Pays d’Oc IGP</p>
-        <p class="recolte-verification"><span class="recolte-verification__badge recolte-verification__badge--general">Repère : règle générale des Douanes</span><br>Aucun calendrier local de récolte 2026 spécifique n’est confirmé dans cette fiche. Identité et règle nationale ; calendrier de revendication non extrapolé. <span class="recolte-verification__date">Sources consultées le 27 octobre 2026.</span></p>
-
-      <p><strong>Le dépôt douanier de récolte passe par VENDANGES.</strong> Identifiez séparément les volumes destinés à Pays d’Oc IGP et consultez les consignes de l’organisme compétent pour leur revendication.</p><p>Le site officiel Pays d’Oc est le point de repère pour identifier le label et ses interlocuteurs. Ne déduisez pas un délai de revendication 2026 d’une ancienne campagne.</p>
-      <p class="recolte-fiche__sources"><strong>Sources et accès :</strong> <a href="https://www.paysdoc-vin.com/" target="_blank" rel="noopener noreferrer">Pays d’Oc IGP : site officiel</a> ; <a href="https://www.douane.gouv.fr/service-en-ligne/declarations-de-recolteproduction-vendanges" target="_blank" rel="noopener noreferrer">Douane : dépôt de récolte</a>.</p>
-      <a class="recolte-retour" href="#interprofessions">Retour à la liste des interprofessions</a>
-
-      </div>
-    </details>
-    <details class="recolte-fiche" aria-labelledby="recolte-cnpc">
-      <summary class="recolte-fiche__resume"><h3 id="recolte-cnpc" tabindex="-1">Pineau des Charentes — CNPC</h3></summary>
-      <div class="recolte-fiche__contenu">
-        <p class="recolte-fiche__nom">CNPC — Comité national interprofessionnel du Pineau des Charentes</p>
-        <p class="recolte-verification"><span class="recolte-verification__badge recolte-verification__badge--extranet">Calendrier à vérifier sur votre espace professionnel</span><br>Fonction CNPC vérifiée ; renvoi BNIC conditionnel, sans assimiler tous les producteurs. <span class="recolte-verification__date">Sources consultées le 27 octobre 2026.</span></p>
-
-      <p><strong>L’extranet du CNPC met à disposition le formulaire de déclaration de revendication.</strong> Ce document ne doit pas être confondu avec la déclaration de récolte.</p><p>Si votre exploitation relève du BNIC, reportez-vous au circuit de récolte eBNIC décrit plus haut et vérifiez les productions à y déclarer. Pour la revendication du Pineau, consultez les consignes de votre organisme compétent ; n’utilisez pas automatiquement la date d’une autre démarche.</p>
-      <p class="recolte-fiche__sources"><strong>Sources et accès :</strong> <a href="https://www.pineau.fr/fr/extranet" target="_blank" rel="noopener noreferrer">CNPC : extranet et formulaire de revendication</a> ; <a href="https://www.douane.gouv.fr/service-en-ligne/declarations-de-recolteproduction-vendanges" target="_blank" rel="noopener noreferrer">Douane : circuit des récoltants ressortissants du BNIC</a>.</p>
-      <a class="recolte-retour" href="#interprofessions">Retour à la liste des interprofessions</a>
-
-      </div>
-    </details>
-    <details class="recolte-fiche" aria-labelledby="recolte-civp">
-      <summary class="recolte-fiche__resume"><h3 id="recolte-civp" tabindex="-1">Provence — CIVP</h3></summary>
-      <div class="recolte-fiche__contenu">
-        <p class="recolte-fiche__nom">CIVP — Conseil interprofessionnel des vins de Provence</p>
-        <p class="recolte-verification"><span class="recolte-verification__badge recolte-verification__badge--general">Repère : règle générale des Douanes</span><br>Aucun calendrier local de récolte 2026 spécifique n’est confirmé dans cette fiche. Circuit corroboré par le calendrier CIVP ; aucun délai DREV non vérifié ajouté. <span class="recolte-verification__date">Sources consultées le 27 octobre 2026.</span></p>
-
-      <p><strong>Le calendrier vitivinicole des Vins de Provence renvoie à VENDANGES pour la déclaration de récolte et de production.</strong> Il précise que l’ancien service RECOLTE ne reçoit plus les nouveaux dépôts depuis la récolte 2025.</p><p>La déclaration de revendication constitue une autre étape. Vérifiez son délai auprès de votre ODG avant une première commercialisation.</p>
-      <p class="recolte-fiche__sources"><strong>Sources et accès :</strong> <a href="https://calendrier-vitivini.vinsdeprovence.com/evenement/show/53?referer=chronologie" target="_blank" rel="noopener noreferrer">Vins de Provence : fiche de déclaration de récolte et production</a> ; <a href="https://www.douane.gouv.fr/service-en-ligne/declarations-de-recolteproduction-vendanges" target="_blank" rel="noopener noreferrer">Douane : service VENDANGES</a>.</p>
-      <a class="recolte-retour" href="#interprofessions">Retour à la liste des interprofessions</a>
-
-      </div>
-    </details>
-    <details class="recolte-fiche" aria-labelledby="recolte-inter-rhone">
-      <summary class="recolte-fiche__resume"><h3 id="recolte-inter-rhone" tabindex="-1">Vallée du Rhône — Inter Rhône</h3></summary>
-      <div class="recolte-fiche__contenu">
-        <p class="recolte-fiche__nom">Inter Rhône — Interprofession des vins AOC Côtes du Rhône et Vallée du Rhône</p>
-        <p class="recolte-verification"><span class="recolte-verification__badge recolte-verification__badge--general">Repère : règle générale des Douanes</span><br>Aucun calendrier local de récolte 2026 spécifique n’est confirmé dans cette fiche. Identité et distinction DRM/DR ; pas de calendrier local 2026 affirmé. <span class="recolte-verification__date">Sources consultées le 27 octobre 2026.</span></p>
-
-      <p><strong>La récolte suit le circuit VENDANGES de droit commun.</strong> Inter Rhône propose un espace adhérent pour ses informations professionnelles.</p><p>Declarvins est présenté par les interprofessions comme un outil de DRM et de contrats. Son utilisation pour ces démarches ne remplace pas, à elle seule, le dépôt de votre déclaration de récolte.</p>
-      <p class="recolte-fiche__sources"><strong>Sources et accès :</strong> <a href="https://www.vins-rhone.com/fr" target="_blank" rel="noopener noreferrer">Inter Rhône : site officiel et accès adhérent</a> ; <a href="https://www.vinsdeprovence.com/files/ac41c296/chiffres_cles_2024_hd.pdf" target="_blank" rel="noopener noreferrer">Brochure institutionnelle : rôle de Declarvins pour DRM et contrats (PDF)</a> ; <a href="https://www.douane.gouv.fr/service-en-ligne/declarations-de-recolteproduction-vendanges" target="_blank" rel="noopener noreferrer">Douane : dépôt de récolte</a>.</p>
-      <a class="recolte-retour" href="#interprofessions">Retour à la liste des interprofessions</a>
-
-      </div>
-    </details>
-    <details class="recolte-fiche" aria-labelledby="recolte-civr">
-      <summary class="recolte-fiche__resume"><h3 id="recolte-civr" tabindex="-1">Roussillon — CIVR</h3></summary>
-      <div class="recolte-fiche__contenu">
-        <p class="recolte-fiche__nom">CIVR — Conseil interprofessionnel des vins du Roussillon</p>
-        <p class="recolte-verification"><span class="recolte-verification__badge recolte-verification__badge--general">Repère : règle générale des Douanes</span><br>Aucun calendrier local de récolte 2026 spécifique n’est confirmé dans cette fiche. Identité/périmètre et règle nationale ; aucune date locale 2026 extrapolée. <span class="recolte-verification__date">Sources consultées le 27 octobre 2026.</span></p>
-
-      <p><strong>Le dépôt douanier de récolte s’effectue dans VENDANGES selon le droit commun.</strong> Le site du CIVR permet d’identifier l’interprofession et les vins de son ressort.</p><p>Pour préparer la saisie, distinguez vos produits et vérifiez auprès de l’ODG les démarches de revendication. Une échéance de commercialisation d’un vin particulier ne remplace pas la date de dépôt de récolte.</p>
-      <p class="recolte-fiche__sources"><strong>Sources et accès :</strong> <a href="https://www.roussillon.wine/le-civr/" target="_blank" rel="noopener noreferrer">CIVR : présentation officielle</a> ; <a href="https://www.douane.gouv.fr/service-en-ligne/declarations-de-recolteproduction-vendanges" target="_blank" rel="noopener noreferrer">Douane : déclaration de récolte</a>.</p>
-      <a class="recolte-retour" href="#interprofessions">Retour à la liste des interprofessions</a>
-
-      </div>
-    </details>
-    <details class="recolte-fiche" aria-labelledby="recolte-civs">
-      <summary class="recolte-fiche__resume"><h3 id="recolte-civs" tabindex="-1">Savoie — CIVS</h3></summary>
-      <div class="recolte-fiche__contenu">
-        <p class="recolte-fiche__nom">CIVS — Comité interprofessionnel des vins de Savoie</p>
-        <p class="recolte-verification"><span class="recolte-verification__badge recolte-verification__badge--general">Repère : règle générale des Douanes</span><br>Aucun calendrier local de récolte 2026 spécifique n’est confirmé dans cette fiche. Identité et lien actuel vérifiés ; aucune date de revendication affirmée. <span class="recolte-verification__date">Sources consultées le 27 octobre 2026.</span></p>
-
-      <p><strong>La déclaration de récolte suit le circuit VENDANGES de droit commun.</strong> Le CIVS fournit sur son site actuel les coordonnées de l’interprofession.</p><p>Avant de déclarer, identifiez précisément l’appellation ou l’IGP de chaque volume et vérifiez les consignes de revendication auprès de l’ODG concerné. Une recherche « vins de Savoie » ne suffit pas à déterminer toutes les démarches applicables.</p>
-      <p class="recolte-fiche__sources"><strong>Sources et accès :</strong> <a href="https://vindesavoie.fr/contact" target="_blank" rel="noopener noreferrer">CIVS : contact officiel actuel</a> ; <a href="https://www.douane.gouv.fr/service-en-ligne/declarations-de-recolteproduction-vendanges" target="_blank" rel="noopener noreferrer">Douane : circuit de récolte</a>.</p>
-      <a class="recolte-retour" href="#interprofessions">Retour à la liste des interprofessions</a>
-
-      </div>
-    </details>
-    <details class="recolte-fiche" aria-labelledby="recolte-ivse">
-      <summary class="recolte-fiche__resume"><h3 id="recolte-ivse" tabindex="-1">Sud-Est, vins IGP — Intervins Sud-Est</h3></summary>
-      <div class="recolte-fiche__contenu">
-        <p class="recolte-fiche__nom">IVSE — Intervins Sud-Est</p>
-        <p class="recolte-verification"><span class="recolte-verification__badge recolte-verification__badge--general">Repère : règle générale des Douanes</span><br>Aucun calendrier local de récolte 2026 spécifique n’est confirmé dans cette fiche. Identité et fonctions Declarvins ; pas de seuil de réserve ancien transposé. <span class="recolte-verification__date">Sources consultées le 27 octobre 2026.</span></p>
-
-      <p><strong>Pour la déclaration de récolte relevant du droit commun, utilisez VENDANGES.</strong> Intervins Sud-Est dispose d’un site officiel avec un espace adhérent et les dénominations de son ressort.</p><p>La plateforme commune Declarvins concerne notamment les DRM et les contrats. Distinguez ces opérations du dépôt de récolte et des démarches de revendication propres à votre IGP.</p>
-      <p class="recolte-fiche__sources"><strong>Sources et accès :</strong> <a href="https://www.intervins-sudest.org/" target="_blank" rel="noopener noreferrer">Intervins Sud-Est : site officiel et espace adhérent</a> ; <a href="https://www.vinsdeprovence.com/files/ac41c296/chiffres_cles_2024_hd.pdf" target="_blank" rel="noopener noreferrer">Brochure institutionnelle : fonctions de Declarvins (PDF)</a> ; <a href="https://www.douane.gouv.fr/service-en-ligne/declarations-de-recolteproduction-vendanges" target="_blank" rel="noopener noreferrer">Douane : service de récolte</a>.</p>
-      <a class="recolte-retour" href="#interprofessions">Retour à la liste des interprofessions</a>
-
-      </div>
-    </details>
-    <details class="recolte-fiche" aria-labelledby="recolte-ivso">
-      <summary class="recolte-fiche__resume"><h3 id="recolte-ivso" tabindex="-1">Sud-Ouest — IVSO</h3></summary>
-      <div class="recolte-fiche__contenu">
-        <p class="recolte-fiche__nom">IVSO — Interprofession des vins du Sud-Ouest</p>
-        <p class="recolte-verification"><span class="recolte-verification__badge recolte-verification__badge--general">Repère : règle générale des Douanes</span><br>Aucun calendrier local de récolte 2026 spécifique n’est confirmé dans cette fiche. Identité via le site actuel ; règle nationale appliquée sans englober tous les produits du Sud-Ouest. <span class="recolte-verification__date">Sources consultées le 27 octobre 2026.</span></p>
-
-      <p><strong>Pour les récoltes relevant du circuit douanier de droit commun, le dépôt s’effectue dans VENDANGES.</strong> L’IVSO est l’éditeur du site Vignobles du Sud-Ouest.</p><p>Identifiez l’interprofession et l’ODG de chaque produit plutôt que de retenir seulement « Sud-Ouest » : l’Armagnac, Bergerac-Duras et Cahors / Côtes du Lot ont leurs propres organismes, présentés séparément dans ce guide.</p>
-      <p class="recolte-fiche__sources"><strong>Sources et accès :</strong> <a href="https://www.vignobles-sudouest.fr/mentions-legales/" target="_blank" rel="noopener noreferrer">Vignobles du Sud-Ouest : identité officielle de l’IVSO</a> ; <a href="https://www.douane.gouv.fr/service-en-ligne/declarations-de-recolteproduction-vendanges" target="_blank" rel="noopener noreferrer">Douane : règle de dépôt de récolte</a>.</p>
-      <a class="recolte-retour" href="#interprofessions">Retour à la liste des interprofessions</a>
-
-      </div>
-    </details>
-  </section>
-
-
-  <section class="recolte-outils" aria-labelledby="checklist-recolte">
+<main class="article article-couts" id="contenu" tabindex="-1">
+<p class="article__ariane"><a href="index.html">Accueil</a> › <a href="actualites-reglementaires.html">Actualités réglementaires</a> › <a href="actualites-douane-declarations.html">Douane &amp; déclarations</a> › Récolte 2026</p>
+<div class="article__meta"><a class="actu-tag" href="actualites-douane-declarations.html">Douane &amp; déclarations</a><span class="actu-date">Publié le 12 octobre 2026 · Mis à jour le 29 octobre 2026</span></div>
+<h1>Déclaration de récolte 2026 : qui déclare, où et quand ?</h1>
+<p class="article__chapo">Commencez par votre qualité de déclarant et votre circuit : le dépôt de récolte d’un récoltant, la production d’une coopérative et la revendication d’une appellation ne suivent pas toutes la même démarche. Ce guide vous aide à préparer les données, choisir le portail et vérifier le dépôt, avec <a href="#interprofessions">23 fiches d’interprofessions</a>.</p>
+<aside class="essentiel" aria-label="Les repères de la récolte 2026"><p class="essentiel__titre">L’essentiel</p><ul>
+<li><strong>Récoltants et bailleurs vinificateurs du circuit douanier :</strong> au plus tard le 10 décembre 2026 à 23 h 59. <strong>Production des coopératives et négociants-vinificateurs :</strong> au plus tard le 10 janvier 2027 à 23 h 59.</li>
+<li><strong>VENDANGES</strong> dans le circuit douanier. Les ressortissants CIVA, CIVC et les récoltants BNIC déclarent auprès de leur interprofession ; InterLoire offre aussi un circuit de dépôt.</li>
+<li><strong>Champagne :</strong> une échéance de récolte du 5 novembre 2026 figure dans la décision de campagne reproduite dans un avis public. <a href="declaration-recolte-champagne-civc.html">Voir le périmètre et les sources CIVC</a>.</li>
+<li><strong>Un brouillon ne vaut pas dépôt.</strong> Dans VENDANGES, vérifiez le numéro de déclaration et la confirmation ; le maintien du service jusqu’au 31 juillet 2027 ne prolonge pas le délai réglementaire.</li>
+</ul><p class="reg-source">Sources : <a href="https://www.douane.gouv.fr/service-en-ligne/declarations-de-recolteproduction-vendanges">service officiel VENDANGES</a> et références territoriales dans les fiches. Vérification du 29 octobre 2026.</p></aside>
+<nav class="recolte-sommaire" aria-label="Sommaire du guide récolte"><a href="#profil">Votre profil et votre portail</a><a href="#etapes-recolte">Les étapes du dépôt</a><a href="#donnees-recolte">Les données à préparer</a><a href="#demarches-distinctes">Récolte, revendication, DRM</a><a href="#difficultes-recolte">Erreur ou accès bloqué</a><a href="#interprofessions">Trouver votre interprofession</a><a href="#checklist-recolte">Checklist à imprimer</a><a href="#exemple-monchai">Exemple Mon Chai</a></nav>
+<section aria-labelledby="profil"><h2 id="profil">Quelle date et quel portail selon votre situation ?</h2>
+<div class="reg-table-wrap" role="region" aria-label="Profils, circuits et échéances de récolte" tabindex="0"><table class="reg-table"><caption>Récolte 2026 : distinguer le déclarant et la démarche</caption><thead><tr><th scope="col">Votre situation</th><th scope="col">Circuit</th><th scope="col">Échéance à retenir</th></tr></thead><tbody>
+<tr><th scope="row">Récoltant ou bailleur vinificateur relevant du droit commun</th><td>VENDANGES</td><td>10 décembre 2026, 23 h 59</td></tr>
+<tr><th scope="row">Cave coopérative ou négociant-vinificateur : sa propre production</th><td>VENDANGES, hors circuit particulier applicable</td><td>10 janvier 2027, 23 h 59</td></tr>
+<tr><th scope="row">Ressortissant CIVC ou CIVA ; récoltant ressortissant BNIC</th><td>Interprofession compétente</td><td>Consignes du circuit ; voir la fiche dédiée. Ne pas appliquer automatiquement la date nationale.</td></tr>
+<tr><th scope="row">Ressortissant InterLoire</th><td>VENDANGES ou portail InterLoire</td><td>Vérifier les modalités du portail et les productions concernées ; règle nationale pour le dépôt douanier.</td></tr>
+</tbody></table></div>
+<p>La Douane prévoit des dispenses, notamment en l’absence de récolte ou de production et en l’absence de commercialisation. Son <a href="https://www.douane.gouv.fr/demarche/declarer-sa-recolte-et-production">descriptif de démarche</a> donne le périmètre ; le manuel présente aussi une fonctionnalité de déclaration d’absence de récolte. Faites préciser votre situation par le service compétent plutôt que de choisir seul une déclaration à zéro.</p>
+<p>Un apport à une coopérative ne signifie pas que sa déclaration de production remplace votre déclaration de récolte. VENDANGES permet à une cave ou à un négociant d’agir pour un apporteur ou fournisseur <strong>qui lui a donné mandat</strong>. Vérifiez qui dépose et quelle confirmation vous sera remise. <a href="https://www.douane.gouv.fr/sites/default/files/2026-09/25/Manuel%20utilisateur%20VENDANGES%20r%C3%A9colte.pdf">Manuel officiel, rubrique « Déposer une déclaration de récolte sur mandat » (PDF)</a>.</p></section>
+<section aria-labelledby="etapes-recolte"><h2 id="etapes-recolte">Comment préparer, contrôler et déposer votre récolte ?</h2>
+<p>Les étapes ci-dessous décrivent le parcours <strong>par saisie dans VENDANGES</strong> pour les récoltants concernés. Sur un portail interprofessionnel, utilisez la notice de cet organisme. Elles s’appuient sur le <a href="https://www.douane.gouv.fr/sites/default/files/2026-09/25/Manuel%20utilisateur%20VENDANGES%20r%C3%A9colte.pdf">manuel utilisateur officiel de récolte (PDF)</a>.</p>
+<ol class="reg-etapes">
+<li><strong>Vérifier l’accès et l’exploitation.</strong> Connectez-vous depuis douane.gouv.fr avec une habilitation permettant l’écriture, pas seulement la consultation. Contrôlez l’entreprise, le CVI et la campagne affichée. Si l’habilitation ou un site manque, contactez votre service de viticulture avant de commencer.</li>
+<li><strong>Choisir la saisie et préparer les rubriques.</strong> Ouvrez le parcours de saisie de récolte et production, puis commencez ou reprenez le brouillon. Distinguez votre propre récolte et une part reçue comme bailleur vinificateur ; les rubriques diffèrent. L’annexe du manuel explique quelles lignes remplir.</li>
+<li><strong>Renseigner produits et destinations.</strong> Reprenez les catégories de produit, superficies et quantités à partir des justificatifs. Séparez vinification, apports, ventes de raisins ou de moûts et autres destinations qui vous concernent. Renseignez les achats de vendanges et la répartition par site lorsqu’ils s’appliquent.</li>
+<li><strong>Relire le récapitulatif et les anomalies.</strong> Comparez les totaux aux pesées, bons d’apport, ventes et données de cave. Examinez chaque signalement du téléservice ; un message de cohérence ne se résout pas en modifiant un chiffre sans justificatif.</li>
+<li><strong>Effectuer le dépôt.</strong> Après contrôle, certifiez les informations et utilisez l’action de dépôt prévue par VENDANGES. Un enregistrement ou une reprise de brouillon n’accomplit pas cette étape. Le manuel décrit la certification et le bouton de dépôt.</li>
+<li><strong>Conserver la confirmation.</strong> Vérifiez qu’un numéro a été attribué à la déclaration, consultez le dépôt et conservez le message de confirmation envoyé à l’adresse du compte ainsi que les pièces utilisées. Ces éléments sont distincts d’un récapitulatif préparatoire produit par un logiciel.</li>
+</ol>
+<p>Un transfert de fichier est également prévu par VENDANGES, avec ses spécifications propres. N’importez pas un PDF préparatoire comme s’il s’agissait d’un fichier de télédéclaration. Si vous utilisez le mode par fichier, suivez la documentation officielle et vérifiez aussi l’issue effective du dépôt.</p></section>
+<section aria-labelledby="donnees-recolte"><h2 id="donnees-recolte">Quelles surfaces, quantités et pièces préparer ?</h2>
+<ul><li><strong>Identification :</strong> exploitation, CVI, campagne, qualité de déclarant et sites concernés.</li><li><strong>Parcelles et produits :</strong> superficies en production et catégories de vin, appellations, couleurs et codes utiles selon les rubriques applicables.</li><li><strong>Quantités et destinations :</strong> pesées, bons d’apport, achats et ventes de raisins ou de moûts, données de cave et répartition par site.</li><li><strong>Situations particulières :</strong> métayage, mandat ou plusieurs productions, à rapprocher de l’annexe du manuel et des consignes du service.</li></ul>
+<p>Exemple de préparation proposé par Mon Chai : rapprochez chaque bon d’apport de la catégorie et de la destination correspondantes, puis vérifiez que son unité est la même que celle demandée par le téléservice. Une pesée en kilogrammes et un volume en hectolitres ne sont pas interchangeables. Un coefficient d’estimation utilisé au domaine ne devient pas, par sa seule utilisation, un coefficient officiel de déclaration.</p></section>
+<section aria-labelledby="demarches-distinctes"><h2 id="demarches-distinctes">Récolte, revendication et DRM : trois démarches à distinguer</h2>
+<ul><li><strong>Récolte et production :</strong> déclaration annuelle des données de la campagne sur le circuit compétent.</li><li><strong>Revendication :</strong> démarche propre à l’appellation ou à l’indication concernée ; pour l’AOC, le <a href="https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000019527384">Code rural, article D644-5</a>, prévoit ses modalités dans le cahier des charges. Vérifiez les consignes de votre ODG.</li><li><strong>DRM :</strong> relevé périodique des mouvements et stocks selon le statut de l’opérateur. Le <a href="drm-vin-guide.html">guide de la déclaration récapitulative mensuelle</a> détaille la préparation et le dépôt.</li></ul><p>Rapprochez les données, mais conservez une confirmation propre à chaque formalité. La validation de l’une ne suffit pas à établir que les deux autres ont été accomplies.</p></section>
+<section aria-labelledby="difficultes-recolte"><h2 id="difficultes-recolte">Que faire en cas de brouillon, d’erreur ou d’accès bloqué ?</h2>
+<dl class="reg-questions"><dt>La déclaration est seulement enregistrée.</dt><dd>Reprenez le brouillon, terminez les contrôles et déposez. Dans VENDANGES, le journal et la consultation permettent de distinguer brouillon et dépôt.</dd><dt>J’ai modifié une déclaration déjà déposée.</dt><dd>Le manuel demande de déposer aussi la modification : sans ce nouveau dépôt, la version modifiée reste en brouillon. Après le délai réglementaire, un motif de modification est demandé ; la possibilité technique court jusqu’au 31 juillet suivant la récolte. Elle ne régularise pas automatiquement un premier dépôt tardif.</dd><dt>Je n’ai pas accès à la bonne exploitation ou au bon site.</dt><dd>Faites vérifier vos habilitations ou les sites par votre service de viticulture. En cas de difficulté technique, utilisez l’assistance officielle indiquée sur la page du téléservice. Ne communiquez pas vos identifiants à un tiers non habilité.</dd><dt>Je déclare sur un portail interprofessionnel.</dt><dd>Ses règles de validation et de correction s’appliquent. Ne transposez pas le 31 juillet de VENDANGES ni ses libellés d’écran à un autre service.</dd></dl>
+<p class="reg-source">Références : <a href="https://www.douane.gouv.fr/sites/default/files/2026-09/25/Manuel%20utilisateur%20VENDANGES%20r%C3%A9colte.pdf">manuel VENDANGES, accès, dépôt et modification</a> et <a href="https://www.douane.gouv.fr/service-en-ligne/declarations-de-recolteproduction-vendanges">service et assistance officiels</a>.</p></section>
+<section aria-labelledby="interprofessions"><h2 id="interprofessions">Trouver votre interprofession : les 23 fiches de récolte</h2><p>Chaque fiche possède sa propre adresse et décrit son circuit, ses sources et les informations encore à confirmer. Le choix se fait selon vos produits et votre qualité de déclarant, pas seulement selon le département du domaine. Annuaire de référence : <a href="https://www.intervin.fr/interprofessions/interprofessions-vinicoles">CNIV, interprofessions vinicoles</a>.</p><div class="reg-cartes"><article class="reg-carte" aria-labelledby="recolte-civc"><h3 id="recolte-civc" tabindex="-1"><a href="declaration-recolte-champagne-civc.html">Champagne — CIVC / Comité Champagne</a></h3><p>Comité Champagne : circuit interprofessionnel, hors VENDANGES pour ses ressortissants.</p><p><strong>Calendrier :</strong> 5 novembre 2026 pour la récolte selon la décision V.2.2026 reproduite dans un avis public ; vérifier les circulaires et mises à jour dans l’extranet.</p><a href="declaration-recolte-champagne-civc.html">Consulter la fiche Champagne →</a></article><article class="reg-carte" aria-labelledby="recolte-civa"><h3 id="recolte-civa" tabindex="-1"><a href="declaration-recolte-alsace-civa.html">Alsace — CIVA</a></h3><p>Portail VinsAlsace.pro pour les ressortissants du CIVA ; ne pas déposer leur récolte dans VENDANGES.</p><p><strong>Calendrier :</strong> Calendrier local 2026 à confirmer dans l’espace professionnel CIVA ; aucune date de récolte alsacienne n’est affirmée ici.</p><a href="declaration-recolte-alsace-civa.html">Consulter la fiche Alsace →</a></article><article class="reg-carte" aria-labelledby="recolte-bnic"><h3 id="recolte-bnic" tabindex="-1"><a href="declaration-recolte-cognac-bnic.html">Cognac — BNIC</a></h3><p>Circuit de récolte BNIC pour les récoltants ressortissants ; accès professionnel eBNIC.</p><p><strong>Calendrier :</strong> Calendrier 2026 et règles de modification à confirmer auprès du BNIC ; le 31 juillet de VENDANGES n’est pas transposé à eBNIC.</p><a href="declaration-recolte-cognac-bnic.html">Consulter la fiche Cognac →</a></article><article class="reg-carte" aria-labelledby="recolte-interloire"><h3 id="recolte-interloire" tabindex="-1"><a href="declaration-recolte-val-de-loire-interloire.html">Val de Loire — InterLoire</a></h3><p>VENDANGES ou portail InterLoire, selon la situation du ressortissant et les modalités du portail.</p><p><strong>Calendrier :</strong> 10 décembre 2026 pour les récoltants relevant de la règle nationale ; les modalités du portail et les situations de productions multiples sont à vérifier.</p><a href="declaration-recolte-val-de-loire-interloire.html">Consulter la fiche Val de Loire →</a></article><article class="reg-carte" aria-labelledby="recolte-anivin"><h3 id="recolte-anivin" tabindex="-1"><a href="declaration-recolte-vin-de-france-anivin.html">Vin De France — ANIVIN de France</a></h3><p>VENDANGES pour la récolte relevant du droit commun ; déclarations de volumes ANIVIN et certification VSIG à distinguer.</p><p><strong>Calendrier :</strong> Règle douanière : 10 décembre 2026 pour les récoltants et bailleurs vinificateurs ; obligations ANIVIN et certification à examiner séparément.</p><a href="declaration-recolte-vin-de-france-anivin.html">Consulter la fiche Vin De France →</a></article><article class="reg-carte" aria-labelledby="recolte-bnia"><h3 id="recolte-bnia" tabindex="-1"><a href="declaration-recolte-armagnac-bnia.html">Armagnac — BNIA</a></h3><p>VENDANGES pour la récolte relevant du droit commun ; formalités propres aux eaux-de-vie à voir avec le BNIA.</p><p><strong>Calendrier :</strong> Dates nationales de récolte/production selon la qualité de déclarant ; aucun calendrier Armagnac 2026 spécifique n’est extrapolé.</p><a href="declaration-recolte-armagnac-bnia.html">Consulter la fiche Armagnac →</a></article><article class="reg-carte" aria-labelledby="recolte-inter-beaujolais"><h3 id="recolte-inter-beaujolais" tabindex="-1"><a href="declaration-recolte-beaujolais.html">Beaujolais — Inter Beaujolais</a></h3><p>VENDANGES pour la déclaration douanière de récolte relevant du droit commun.</p><p><strong>Calendrier :</strong> 10 décembre 2026 pour les récoltants et bailleurs vinificateurs ; vérifier séparément les dates de revendication et de mise en marché.</p><a href="declaration-recolte-beaujolais.html">Consulter la fiche Beaujolais →</a></article><article class="reg-carte" aria-labelledby="recolte-ivbd"><h3 id="recolte-ivbd" tabindex="-1"><a href="declaration-recolte-bergerac-duras.html">Bergerac et Duras — IVBD</a></h3><p>VENDANGES ; documents de campagne de la Fédération des vins de Bergerac et Duras pour la préparation.</p><p><strong>Calendrier :</strong> Échéance nationale selon la qualité du déclarant ; conditions de production et revendication à vérifier dans les documents 2026 et auprès de l’ODG.</p><a href="declaration-recolte-bergerac-duras.html">Consulter la fiche Bergerac et Duras →</a></article><article class="reg-carte" aria-labelledby="recolte-civb"><h3 id="recolte-civb" tabindex="-1"><a href="declaration-recolte-bordeaux-civb.html">Bordeaux — CIVB</a></h3><p>VENDANGES ; échéances de campagne rappelées par la FGVB, distincte du CIVB.</p><p><strong>Calendrier :</strong> 10 décembre 2026 pour les récoltants et bailleurs vinificateurs ; 10 janvier 2027 pour les coopératives et négociants-vinificateurs, selon le rappel FGVB et la Douane.</p><a href="declaration-recolte-bordeaux-civb.html">Consulter la fiche Bordeaux →</a></article><article class="reg-carte" aria-labelledby="recolte-bivb"><h3 id="recolte-bivb" tabindex="-1"><a href="declaration-recolte-bourgogne-bivb.html">Bourgogne — BIVB</a></h3><p>VENDANGES pour la récolte ; tutoriels CAVB distincts pour VENDANGES et Déclar’AOC.</p><p><strong>Calendrier :</strong> Droit commun pour la récolte ; la CAVB publie aussi une échéance Déclar’AOC du 10 décembre 2026 pour la démarche qu’elle décrit. Vérifier chaque formalité séparément.</p><a href="declaration-recolte-bourgogne-bivb.html">Consulter la fiche Bourgogne →</a></article><article class="reg-carte" aria-labelledby="recolte-uivc"><h3 id="recolte-uivc" tabindex="-1"><a href="declaration-recolte-cahors-cotes-du-lot.html">Cahors et Côtes du Lot — UIVCCL / UIVC</a></h3><p>VENDANGES pour la récolte de droit commun ; distinguer AOP Cahors et IGP Côtes du Lot.</p><p><strong>Calendrier :</strong> Échéance nationale de récolte selon le déclarant ; aucun délai local de revendication 2026 n’est affirmé ici.</p><a href="declaration-recolte-cahors-cotes-du-lot.html">Consulter la fiche Cahors et Côtes du Lot →</a></article><article class="reg-carte" aria-labelledby="recolte-bivc"><h3 id="recolte-bivc" tabindex="-1"><a href="declaration-recolte-centre-loire.html">Centre-Loire — BIVC</a></h3><p>VENDANGES pour le dépôt douanier ; plateformes BIVC/ODG/FUVC à identifier pour les autres démarches.</p><p><strong>Calendrier :</strong> Règle nationale pour la récolte ; le guide des plateformes n’est pas un calendrier de campagne 2026.</p><a href="declaration-recolte-centre-loire.html">Consulter la fiche Centre-Loire →</a></article><article class="reg-carte" aria-labelledby="recolte-civ-corse"><h3 id="recolte-civ-corse" tabindex="-1"><a href="declaration-recolte-corse.html">Corse — CIV Corse</a></h3><p>VENDANGES pour la récolte relevant du droit commun ; interlocuteurs locaux via le CIV Corse et l’ODG.</p><p><strong>Calendrier :</strong> Date nationale selon le déclarant ; calendrier local de revendication 2026 à confirmer auprès de l’organisme compétent.</p><a href="declaration-recolte-corse.html">Consulter la fiche Corse →</a></article><article class="reg-carte" aria-labelledby="recolte-civj"><h3 id="recolte-civj" tabindex="-1"><a href="declaration-recolte-jura.html">Jura — CIVJ</a></h3><p>VENDANGES pour le dépôt douanier de récolte ; CIVJ pour l’identification interprofessionnelle.</p><p><strong>Calendrier :</strong> Échéance nationale selon la qualité de déclarant ; consignes de revendication 2026 auprès de l’ODG.</p><a href="declaration-recolte-jura.html">Consulter la fiche Jura →</a></article><article class="reg-carte" aria-labelledby="recolte-civl"><h3 id="recolte-civl" tabindex="-1"><a href="declaration-recolte-languedoc-civl.html">Languedoc — CIVL</a></h3><p>VENDANGES pour la récolte de droit commun ; le ressort CIVL se vérifie par produit.</p><p><strong>Calendrier :</strong> 10 décembre 2026 pour les récoltants relevant du droit commun ; dates de revendication propres à l’AOP ou l’IGP.</p><a href="declaration-recolte-languedoc-civl.html">Consulter la fiche Languedoc →</a></article><article class="reg-carte" aria-labelledby="recolte-inter-oc"><h3 id="recolte-inter-oc" tabindex="-1"><a href="declaration-recolte-pays-doc-igp.html">Pays d’Oc IGP — Inter Oc</a></h3><p>VENDANGES pour la récolte douanière ; revendication Pays d’Oc à examiner séparément.</p><p><strong>Calendrier :</strong> Échéance de droit commun pour la récolte ; aucun ancien délai de revendication Pays d’Oc n’est transposé à 2026.</p><a href="declaration-recolte-pays-doc-igp.html">Consulter la fiche Pays d’Oc IGP →</a></article><article class="reg-carte" aria-labelledby="recolte-cnpc"><h3 id="recolte-cnpc" tabindex="-1"><a href="declaration-recolte-pineau-charentes.html">Pineau des Charentes — CNPC</a></h3><p>Vérifier le ressort de l’exploitation : circuit BNIC pour les récoltants ressortissants ; revendication Pineau distincte.</p><p><strong>Calendrier :</strong> Calendrier de récolte auprès du BNIC si vous en relevez ; délai de revendication Pineau à confirmer auprès de l’organisme compétent.</p><a href="declaration-recolte-pineau-charentes.html">Consulter la fiche Pineau des Charentes →</a></article><article class="reg-carte" aria-labelledby="recolte-civp"><h3 id="recolte-civp" tabindex="-1"><a href="declaration-recolte-provence-civp.html">Provence — CIVP</a></h3><p>VENDANGES pour la récolte ; le calendrier vitivinicole rappelle le remplacement de RECOLTE.</p><p><strong>Calendrier :</strong> Règle nationale de récolte selon la qualité de déclarant ; échéance de revendication à vérifier pour chaque appellation.</p><a href="declaration-recolte-provence-civp.html">Consulter la fiche Provence →</a></article><article class="reg-carte" aria-labelledby="recolte-inter-rhone"><h3 id="recolte-inter-rhone" tabindex="-1"><a href="declaration-recolte-vallee-rhone-inter-rhone.html">Vallée du Rhône — Inter Rhône</a></h3><p>VENDANGES pour la récolte de droit commun ; Declarvins concerne d’autres démarches, notamment DRM et contrats.</p><p><strong>Calendrier :</strong> Échéance nationale de récolte selon le déclarant ; consignes de revendication à confirmer auprès de l’ODG.</p><a href="declaration-recolte-vallee-rhone-inter-rhone.html">Consulter la fiche Vallée du Rhône →</a></article><article class="reg-carte" aria-labelledby="recolte-civr"><h3 id="recolte-civr" tabindex="-1"><a href="declaration-recolte-roussillon-civr.html">Roussillon — CIVR</a></h3><p>VENDANGES pour la récolte relevant du droit commun ; CIVR pour les interlocuteurs des vins de son ressort.</p><p><strong>Calendrier :</strong> Échéance nationale de récolte ; dates de revendication et de commercialisation à vérifier séparément.</p><a href="declaration-recolte-roussillon-civr.html">Consulter la fiche Roussillon →</a></article><article class="reg-carte" aria-labelledby="recolte-civs"><h3 id="recolte-civs" tabindex="-1"><a href="declaration-recolte-savoie-civs.html">Savoie — CIVS</a></h3><p>VENDANGES pour la récolte douanière ; contact CIVS pour l’identification interprofessionnelle.</p><p><strong>Calendrier :</strong> Date nationale selon le déclarant ; calendrier de revendication 2026 à confirmer selon l’AOP ou l’IGP.</p><a href="declaration-recolte-savoie-civs.html">Consulter la fiche Savoie →</a></article><article class="reg-carte" aria-labelledby="recolte-ivse"><h3 id="recolte-ivse" tabindex="-1"><a href="declaration-recolte-sud-est-igp.html">Sud-Est, vins IGP — Intervins Sud-Est</a></h3><p>VENDANGES pour la récolte douanière ; Declarvins et revendication IGP sont des démarches distinctes.</p><p><strong>Calendrier :</strong> Règle nationale pour la récolte ; aucun ancien seuil ou calendrier de revendication n’est repris sans consigne actuelle.</p><a href="declaration-recolte-sud-est-igp.html">Consulter la fiche Sud-Est, vins IGP →</a></article><article class="reg-carte" aria-labelledby="recolte-ivso"><h3 id="recolte-ivso" tabindex="-1"><a href="declaration-recolte-sud-ouest-ivso.html">Sud-Ouest — IVSO</a></h3><p>VENDANGES pour la récolte de droit commun ; le nom Sud-Ouest ne détermine pas à lui seul l’organisme.</p><p><strong>Calendrier :</strong> Échéance nationale selon le déclarant ; les autres formalités se vérifient par produit et par ODG.</p><a href="declaration-recolte-sud-ouest-ivso.html">Consulter la fiche Sud-Ouest →</a></article></div></section>
+<section class="recolte-outils" aria-labelledby="checklist-recolte">
     <h2 id="checklist-recolte">Votre checklist avant de déclarer la récolte 2026</h2>
     <p>Une liste de préparation à garder sous la main, à adapter à votre situation et à votre circuit de déclaration.</p>
     <ol class="recolte-checklist"><li><strong>Accès et circuit.</strong> Vérifiez votre CVI, votre habilitation et le portail compétent : VENDANGES ou votre circuit interprofessionnel. Notez votre échéance de dépôt.</li>
@@ -527,8 +195,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <p class="recolte-outils__actions"><a href="assets/exemples/checklist-recolte-2026.pdf" download data-recolte-action="checklist_pdf">Télécharger la checklist (PDF, 1 page, 65 Ko)</a></p>
     <p class="recolte-outils__note">Liste éditoriale Mon Chai, préparée à partir du <a href="https://www.douane.gouv.fr/sites/default/files/2026-09/25/Manuel%20utilisateur%20VENDANGES%20r%C3%A9colte.pdf" target="_blank" rel="noopener noreferrer">manuel VENDANGES 2026 des Douanes</a> (accès, saisie, récapitulatif et dépôt), complétée par les distinctions réglementaires sourcées dans cet article. Elle ne remplace pas les consignes de votre portail.</p>
   </section>
-
-  <section class="recolte-outils" aria-labelledby="exemple-monchai">
+<section class="recolte-outils" aria-labelledby="exemple-monchai">
     <h2 id="exemple-monchai">Voir un récapitulatif préparé dans Mon Chai</h2>
     <p>Voici le véritable écran de préparation du logiciel, avec les données fictives du domaine test de la Pierre Blanche. L’exemple partiel de la campagne 2026-2027 contient une réception de <strong>5 000 kg</strong> et un volume <strong>estimé à 37,5 hL</strong> avec un coefficient de 0,75 L/kg.</p>
     <figure class="recolte-exemple">
@@ -541,8 +208,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <p><strong>Ce que cet exemple montre :</strong> un regroupement des vendanges par appellation, cépage et parcelle, avec des volumes mesurés ou estimés et un document imprimable. Il signale aussi un code produit douanier à compléter : l’exemple est volontairement incomplet. Les codes produits, superficies et quantités restent à vérifier avant votre déclaration.</p>
     <p><strong>Ce document est préparatoire.</strong> Il ne constitue ni un formulaire officiel, ni un fichier de télédéclaration, ni une preuve de dépôt. Le dépôt s’effectue sur VENDANGES ou sur le portail interprofessionnel compétent.</p>
   </section>
-
-  <div class="article-cta">
+<div class="article-cta">
     <p class="article-cta__titre">Préparez votre déclaration avec vos données de vendange</p>
     <p>Mon Chai regroupe les vendanges enregistrées pour la campagne et propose un <strong>récapitulatif de préparation imprimable</strong>. Contrôlez les quantités, les éventuelles estimations et les informations manquantes, puis reportez les données nécessaires dans votre déclaration. <strong>Le dépôt officiel s’effectue sur VENDANGES ou auprès de votre interprofession, selon votre situation.</strong></p>
     <div class="article-cta__actions">
@@ -550,27 +216,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       <a class="article-cta__lien" href="vigne-vendanges.html">Découvrir le module Vigne &amp; vendanges</a>
     </div>
   </div>
+<section class="article__sources" aria-labelledby="sources-nationales"><h2 id="sources-nationales">Sources nationales et date de vérification</h2><p>Repères nationaux et parcours relus le 29 octobre 2026. Les références territoriales, leurs limites et le calendrier confirmé ou non confirmé figurent dans chacune des 23 fiches. Les conseils de classement des pièces sont proposés par Mon Chai ; le manuel officiel décrit le téléservice.</p><ul><li><a href="https://www.douane.gouv.fr/demarche/declarer-sa-recolte-et-production">Douane : personnes concernées et dispenses</a></li><li><a href="https://www.douane.gouv.fr/service-en-ligne/declarations-de-recolteproduction-vendanges">Douane : VENDANGES, échéances et circuits particuliers</a></li><li><a href="https://www.douane.gouv.fr/sites/default/files/2026-09/25/Manuel%20utilisateur%20VENDANGES%20r%C3%A9colte.pdf">Douane : manuel utilisateur récolte et production (PDF)</a></li><li><a href="https://www.douane.gouv.fr/sites/default/files/2026-08/12/FAQ%20-%20Vendanges%202026.pdf">Douane : FAQ VENDANGES 2026 (PDF)</a></li><li><a href="https://www.intervin.fr/interprofessions/interprofessions-vinicoles">CNIV : annuaire des interprofessions vinicoles</a></li></ul></section>
+<section class="article__suite"><h2>À lire aussi</h2><ul><li><a href="drm-vin-guide.html">DRM : préparer, contrôler et déposer sa déclaration mensuelle</a></li><li><a href="registre-de-cave-vigneron.html">Registre de cave : garder la trace des mouvements</a></li><li><a href="dae-daes-gamma2-vin.html">DAE, DAES, DSA et GAMMA 2 : choisir le parcours de circulation</a></li></ul></section>
 
-  <section class="article__sources">
-    <h2>Sources nationales et vérification</h2>
-    <p>Repères vérifiés le <time datetime="2026-10-27">27 octobre 2026</time>. Les références propres à chaque organisme figurent dans sa fiche. Les dépôts de récolte, de production, de revendication et les DRM sont des démarches à distinguer. Consultez les consignes de campagne les plus récentes de la Douane ou de votre organisme avant le dépôt.</p>
-    <ul>
-      <li><a href="https://www.douane.gouv.fr/demarche/declarer-sa-recolte-et-production" target="_blank" rel="noopener noreferrer">Douane, Déclarer sa récolte et sa production</a></li>
-      <li><a href="https://www.douane.gouv.fr/service-en-ligne/declarations-de-recolteproduction-vendanges" target="_blank" rel="noopener noreferrer">Douane, Service en ligne VENDANGES</a></li>
-      <li><a href="https://www.douane.gouv.fr/sites/default/files/2026-08/12/FAQ%20-%20Vendanges%202026.pdf" target="_blank" rel="noopener noreferrer">Douane, FAQ VENDANGES 2026 (PDF)</a></li>
-      <li><a href="https://www.intervin.fr/interprofessions/interprofessions-vinicoles" target="_blank" rel="noopener noreferrer">CNIV, annuaire des interprofessions vinicoles</a></li>
-      <li><a href="https://www.douane.gouv.fr/sites/default/files/2026-09/25/Manuel%20utilisateur%20VENDANGES%20r%C3%A9colte.pdf" target="_blank" rel="noopener noreferrer">Douane, manuel utilisateur VENDANGES récolte 2026 (PDF)</a></li>
-      <li><a href="https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000019527384" target="_blank" rel="noopener noreferrer">Code rural, article D644-5 : déclaration de revendication AOC</a></li>
-    </ul>
-  </section>
-
-  <section class="article__suite">
-    <h2>À lire aussi</h2>
-    <ul>
-      <li><a href="drm-vin-guide.html">La DRM du vigneron&nbsp;: qui, quand, comment</a></li>
-      <li><a href="registre-de-cave-vigneron.html">Registre de cave&nbsp;: les entrées-sorties sans prise de tête</a></li>
-    </ul>
-  </section>
 </main>
 
 <!-- ============ PIED DE PAGE (composant partagé) ============ -->
@@ -587,7 +235,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <script src="assets/js/header.js"></script>
 <script src="assets/js/recolte-interprofessions.js" defer></script>
 <script src="assets/js/recolte-outils.js" defer></script>
-<script src="consent.js?v=20261028-footer"></script>
+<script src="consent.js?v=20261029-ga4"></script>
 <script src="assets/js/cta-popup.js?v=20261027-compact" data-campagne="recolte-2026" data-affichage="bandeau" defer></script>
 <script src="assets/js/documents-legaux.js?v=20261028-footer" defer></script>
 </body>

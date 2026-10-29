@@ -3,29 +3,11 @@
 <html lang="it">
 <head>
 <meta charset="utf-8"/>
-<!-- Mode consentement de Google : par défaut, rien n'est mesuré. Le choix du
-     bandeau (consent.js ou script.js, clé monchai_cookie_consent) est appliqué
-     au chargement, puis à chaque changement (événement monchai:consent). -->
-<script>
-window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}
-(function(){
-  function etat(c){var a=c&&c.audience===true?'granted':'denied',t='denied';return{analytics_storage:a,ad_storage:t,ad_user_data:t,ad_personalization:t};}
-  var d=etat(null);d.wait_for_update=500;gtag('consent','default',d);
-  function chargerPlusTard(){if(document.readyState==='complete'){if(window.monchaiChargerGtm)window.monchaiChargerGtm();}else{window.addEventListener('load',function(){setTimeout(function(){if(window.monchaiChargerGtm)window.monchaiChargerGtm();},0);},{once:true});}}
-  try{var c=JSON.parse(localStorage.getItem('monchai_cookie_consent'));if(c&&typeof c.ts==='number'&&Number.isFinite(c.ts)&&c.ts<=Date.now()&&Date.now()-c.ts<15724800000&&typeof c.audience==='boolean'&&typeof c.tiers==='boolean'){gtag('consent','update',etat(c));if(c.audience===true)chargerPlusTard();}}catch(e){}
-  window.addEventListener('monchai:consent',function(e){gtag('consent','update',etat(e.detail));dataLayer.push({event:'monchai_consentement'});if(e.detail&&e.detail.audience===true)chargerPlusTard();});
-})();
-</script>
-<!-- Google Tag Manager, chargé seulement après un accord (mesure d'audience ou
-     services tiers) et après le chargement de la page : sans accord, aucun
-     script Google n'est téléchargé (gain mesuré sur mobile : environ 0,9 s de LCP). -->
-<script>window.monchaiChargerGtm=function(){if(window.monchaiGtmCharge)return;window.monchaiGtmCharge=true;
-(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-NDSQV6T7');};</script>
-<!-- End Google Tag Manager -->
+
+
+
+
+
 <meta content="width=device-width, initial-scale=1, viewport-fit=cover" name="viewport"/>
 <title>Pacchetto europeo del vino: cosa cambia per i viticoltori nel 2026-2027 Mon Chai</title>
 <meta content="Autorizzazioni di reimpianto estese a 8 anni, vini dealcolizzati, etichettatura semplificata: il pacchetto vino europeo e la scadenza del 31 dicembre 2026." name="description"/>
@@ -46,67 +28,15 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <meta content="Mon Chai" property="og:site_name"/>
 <link href="../assets/img/favicon-mon-chai-96.png" rel="icon" type="image/png"/>
 <meta content="#7B1E22" name="theme-color"/>
-<script type="application/ld+json">{
-  "@context": "https://schema.org",
-  "@type": "Article",
-  "headline": "Pacchetto vino europeo: cosa cambia per i viticoltori",
-  "description": "Le autorizzazioni di reimpianto sono aumentate a 8 anni, le categorie armonizzate per i vini dealcolizzati, l'etichettatura semplificata: l'aggiornamento del pacchetto europeo dei vini adottato alla fine del 2025 e il termine del 31 dicembre 2026.",
-  "inLanguage": "it",
-  "articleSection": "Etichettatura e imbottigliamento",
-  "datePublished": "2026-08-31",
-  "dateModified": "2026-08-31",
-  "image": "https://monchai.fr/assets/img/pages/conditionnement-mises.jpg",
-  "mainEntityOfPage": "https://monchai.fr/paquet-vin-europeen-2027.html",
-  "author": {
-    "@type": "Organization",
-    "name": "Mon Chai",
-    "url": "https://monchai.fr/"
-  },
-  "publisher": {
-    "@type": "Organization",
-    "name": "Mon Chai",
-    "url": "https://monchai.fr/",
-    "logo": {
-      "@type": "ImageObject",
-      "url": "https://monchai.fr/assets/img/logo_mon_chai.png"
-    }
-  }
-}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Pacchetto vino europeo: cosa cambia per i viticoltori", "description": "Il regolamento (UE) 2026/471 è entrato in vigore il 18 marzo 2026. Alcune disposizioni si applicano più tardi: prima di decidere, verificare la norma specifica e la situazione della propria autorizzazione o del prodotto.", "inLanguage": "it", "articleSection": "Etichettatura e imbottigliamento", "datePublished": "2026-08-31", "dateModified": "2026-10-29", "image": "https://monchai.fr/assets/img/pages/conditionnement-mises.jpg", "mainEntityOfPage": "https://monchai.fr/paquet-vin-europeen-2027.html", "author": {"@type": "Organization", "name": "Mon Chai", "url": "https://monchai.fr/"}, "publisher": {"@type": "Organization", "name": "Mon Chai", "url": "https://monchai.fr/", "logo": {"@type": "ImageObject", "url": "https://monchai.fr/assets/img/logo_mon_chai.png"}}}</script>
 <link href="../assets/css/polices.css" rel="stylesheet"/>
 <link href="../assets/css/header.css" rel="stylesheet"/>
 <link href="../assets/css/actus.css" rel="stylesheet"/>
 <link href="../assets/css/pied.css" rel="stylesheet"/>
-<script type="application/ld+json">{
-  "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  "itemListElement": [
-    {
-      "@type": "ListItem",
-      "position": 1,
-      "name": "Accueil",
-      "item": "https://monchai.fr/"
-    },
-    {
-      "@type": "ListItem",
-      "position": 2,
-      "name": "Actualités réglementaires",
-      "item": "https://monchai.fr/actualites-reglementaires.html"
-    },
-    {
-      "@type": "ListItem",
-      "position": 3,
-      "name": "Étiquetage & mises",
-      "item": "https://monchai.fr/actualites-etiquetage-mises.html"
-    },
-    {
-      "@type": "ListItem",
-      "position": 4,
-      "name": "Paquet vin européen : ce qui change pour les vignerons",
-      "item": "https://monchai.fr/paquet-vin-europeen-2027.html"
-    }
-  ]
-}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Accueil", "item": "https://monchai.fr/"}, {"@type": "ListItem", "position": 2, "name": "Actualités réglementaires", "item": "https://monchai.fr/actualites-reglementaires.html"}, {"@type": "ListItem", "position": 3, "name": "Étiquetage & mises", "item": "https://monchai.fr/actualites-etiquetage-mises.html"}, {"@type": "ListItem", "position": 4, "name": "Paquet vin européen : ce qui change pour les vignerons", "item": "https://monchai.fr/paquet-vin-europeen-2027.html"}]}</script>
 <link rel="stylesheet" href="../assets/css/footer-commun.css?v=20261028-footer">
+
+<script src="../assets/js/analytics.js?v=20261029" data-gtm></script>
 </head>
 <body class="corps-actus lang-it">
 <!-- ============ HEADER (composant partagé, repassé en flux par actus.css) ============ -->
@@ -191,41 +121,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <p class="article__ariane"><a href="index.html">Home</a> › <a href="actualites-reglementaires.html">Aggiornamenti normativi</a> › <a href="actualites-etiquetage-mises.html">Etichettatura e imbottigliamento</a> › Pacchetto europeo del vino</p>
 <div class="article__meta">
 <a class="actu-tag" href="actualites-etiquetage-mises.html">Etichettatura e imbottigliamento</a>
-<span class="actu-date">Pubblicato il 31 agosto 2026 · 5 min. di lettura</span>
+<span class="actu-date">Pubblicato il 31 agosto 2026 · 5 min. di lettura · Aggiornato il 29 ottobre 2026</span>
 </div>
-<h1>Pacchetto vino europeo: cosa cambia per i viticoltori</h1>
-<p class="article__chapo">Accordo politico raggiunto a Bruxelles sul tema: <strong>4 dicembre 2025</strong>, testi entrati in vigore all'inizio del 2026: il pacchetto vino ha riformato radicalmente le regole europee del settore. Piante soffuse, vini dealcolizzati infine inquadrati, etichettatura semplificata ... e una scadenza da non perdere all'inizio dell'anno. <strong>31 dicembre 2026</strong>.</p>
-<div class="essentiel">
-<p class="essentiel__titre">L'essenziale</p>
-<ul>
-<li>La <strong>Le autorizzazioni di impianto sono sostenibili</strong>, e la validità delle autorizzazioni di reimpianto è aumentata da 3 a <strong>8 anni</strong>.</li>
-<li>Fino <strong>31 dicembre 2026</strong>, è possibile <strong>rinunciare senza sanzioni</strong> autorizzazioni di impianto rilasciate prima del 1o gennaio 2025.</li>
-<li>I vini "no-low" hanno <strong>Categorie armonizzate</strong> "senza alcool" (-0,05% vol.) e "contenuto alcolico ridotto."</li>
-<li>L'etichettatura è semplificata: <strong>apposizione di informazioni obbligatorie solo</strong>, senza ripetizione tra etichetta e cross-label.</li>
-</ul>
-</div>
-<h2>Una risposta europea alla crisi del vino</h2>
-<p>Nella primavera del 2025, di fronte al calo strutturale dei consumi e all'eccedenza di produzione, la Commissione europea ha proposto una serie di misure per adeguare l'organizzazione comune del mercato vitivinicolo. Dopo un accordo a tre del 4 dicembre 2025 la riforma è stata infine adottata e pubblicata, in vista della sua entrata in vigore all'inizio del 2026. Le misure previste si applicano pertanto alle campagne in corso e successive.</p>
-<h2>Piantagione e reimpianto: maggiore flessibilità</h2>
-<p>Questo è uno degli aspetti più concreti per i settori:</p>
-<ul>
-<li>Il regime di autorizzazione all'impianto, che doveva essere estinto entro il 2045, è <strong>Perenne</strong>.</li>
-<li>Le autorizzazioni per <strong>Reimpianto</strong> sono ora validi <strong>8 anni</strong>, contro 3 anni fa: dopo un'estirpazione, hai il tempo di ripensare l'encépagement senza perdere i tuoi diritti.</li>
-<li>Termine per la presentazione delle domande <strong>deposito di una domanda</strong> Il reimpianto rimane 5 anni dopo l'estirpazione.</li>
-<li>Fino <strong>31 dicembre 2026</strong>, gli operatori possono <strong>rinunciare senza sanzioni</strong> autorizzazioni di impianto concesse prima del 1 gennaio 2025 che non intendono utilizzare. Se si dispone di autorizzazioni inattivo, è il momento di risolvere.</li>
-</ul>
-<h2>Vini non bassi: categorie armonizzate</h2>
-<p>Il mercato del vino senza alcool o basso contenuto alcolico si è sviluppato senza un quadro comune. <strong>Denominazione armonizzata</strong> in tutta l'Unione: un vino può essere etichettato " <strong>senza alcool</strong> "se non superiore allo 0,05% vol. (con la possibile "0.0) e " <strong>con un tenore alcolico ridotto</strong> La Commissione non ha ancora adottato alcuna misura per modificare la direttiva.</p>
-<p>Le regole della <strong>Vini spumanti</strong> Il quadro è ora in fase di revisione per consentire l'uso di vini dealcolizzati o parzialmente dealcolizzati nella loro preparazione.</p>
-<h2>Etichettatura: termini semplificati</h2>
-<p>Il pacchetto vino riduce la presentazione delle informazioni obbligatorie: a <strong>Assortimento unico</strong> Ora, senza l'obbligo di ripetere l'etichetta e il marchio incrociato, il regime linguistico è rilassato.</p>
-<p>Ricordiamoci di aver fatto un'utile dichiarazione al momento della preparazione delle vostre scommesse: dal dicembre 2023 (Regolamento UE 2021/217), i vini prodotti dalla vendemmia 2024 devono presentare la <strong>elenco degli ingredienti</strong> e <strong>Dichiarazione nutrizionale</strong> • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • • •</p>
-<h2>Cosa fare prima del 1 gennaio 2027</h2>
-<ul>
-<li><strong>Rivedere le autorizzazioni di impianto</strong> - quelli concessi prima del 1 gennaio 2025 che non userete potranno essere abbandonati senza penalità fino al 31 dicembre 2026.</li>
-<li><strong>Controlla le etichette delle tue prossime scommesse</strong> : ingredienti e dichiarazione nutrizionale (o codice QR) per le annate 2024 e successive, dichiarazioni obbligatorie secondo le nuove regole di presentazione.</li>
-<li><strong>Se un progetto non basso ti tenta</strong>, affidarsi ai nuovi nomi armonizzati per inquadrare il prodotto dal suo design.</li>
-</ul>
+<h1>Pacchetto vino UE: regole e scadenze per i viticoltori</h1><p class="article__chapo">Il regolamento (UE) 2026/471 è entrato in vigore il 18 marzo 2026. Alcune disposizioni si applicano più tardi: prima di decidere, verificare la norma specifica e la situazione della propria autorizzazione o del prodotto.</p><h2>Autorizzazioni di impianto</h2><p>Il regime diventa permanente e la validità delle autorizzazioni di reimpianto interessate passa a otto anni. La rinuncia senza sanzioni alle autorizzazioni ammesse, concesse prima del 1° gennaio 2025, deve essere comunicata prima della loro scadenza e comunque entro il 31 dicembre 2026. Quest’ultima data non riattiva un’autorizzazione già scaduta.</p><h2>Vini dealcolizzati: due soglie diverse</h2><p>La nuova indicazione «zero alcol» riguarda le categorie interessate fino allo 0,5 % vol.; l’indicazione aggiuntiva «0,0 %» richiede un massimo dello 0,05 % vol. «A tenore alcolico ridotto» richiede più dello 0,5 % vol. e una riduzione di almeno il 30 % rispetto al minimo della categoria prima della dealcolizzazione.</p><p>Queste nuove disposizioni di etichettatura si applicano dal 19 settembre 2027 ai sensi dell’articolo 1, punto 10, lettera a), rettificato il 22 maggio 2026. Esistono anche regole transitorie per le scorte. Per ingredienti e valori nutrizionali occorre verificare prodotto e data di produzione: la sola annata non basta.</p><p>Controllare le date di rilascio e scadenza di ogni autorizzazione con l’ente competente. Per l’etichetta, distinguere le regole attuali da quelle future e far verificare il prodotto preciso e il mercato di destinazione.</p><p><strong>Fonti ufficiali :</strong> <a href="https://eur-lex.europa.eu/eli/reg/2026/471/oj/it">UE 2026/471</a> · <a href="https://eur-lex.europa.eu/eli/reg/2026/471/corrigendum/2026-05-22/oj/it">22/05/2026</a></p>
 <div class="article-cta">
 <p class="article-cta__titre">Distacchi, etichette controllate</p>
 <p>In Mon Chai, ogni scommessa è legata al suo lotto, all'annata e alla sostanza secca: si sa sempre quale vino sta andando su quale etichetta. Cosa fare con le nuove regole di etichettatura senza improvvisazione. <a href="https://tester.monchai.fr">Provatelo gratuitamente</a>.</p>
@@ -261,7 +159,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   </div>
 </footer>
 <script src="../assets/js/header.js"></script>
-<script src="../consent.js?v=20261028-footer"></script>
+<script src="../consent.js?v=20261029-ga4"></script>
 <script src="../assets/js/cta-popup.js" defer></script>
 <script src="../assets/js/documents-legaux.js?v=20261028-footer" defer></script>
 </body>

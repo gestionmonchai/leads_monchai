@@ -1,0 +1,471 @@
+{
+  "date": "2026-10-29",
+  "note": "Préparation et questions : méthode Mon Chai ; circuit et calendrier accompagnés des références de interprofessions.json.",
+  "fiches": {
+    "civc": {
+      "slug": "declaration-recolte-champagne-civc.html",
+      "territoire": "Champagne",
+      "organisme": "Comité Champagne (CIVC)",
+      "circuit": "Comité Champagne : circuit interprofessionnel, hors VENDANGES pour ses ressortissants.",
+      "calendrier": "5 novembre 2026 pour la récolte selon la décision V.2.2026 reproduite dans un avis public ; vérifier les circulaires et mises à jour dans l’extranet.",
+      "preparation": [
+        "Séparer la déclaration de récolte de la déclaration d’approvisionnement et de production citée par la décision de campagne.",
+        "Rapprocher vos données d’apport et de pressurage des documents de campagne avant d’ouvrir la déclaration.",
+        "Retrouver dans l’extranet les consignes qui correspondent à votre rôle d’opérateur, plutôt que d’appliquer l’échéance nationale de décembre."
+      ],
+      "questions": [
+        "Quel formulaire et quelle date s’appliquent à mon rôle d’opérateur ?",
+        "Les dernières circulaires du Comité ont-elles modifié une modalité de la décision publiée ?"
+      ],
+      "voisins": [
+        "civa",
+        "bnic"
+      ]
+    },
+    "civa": {
+      "slug": "declaration-recolte-alsace-civa.html",
+      "territoire": "Alsace",
+      "organisme": "CIVA",
+      "circuit": "Portail VinsAlsace.pro pour les ressortissants du CIVA ; ne pas déposer leur récolte dans VENDANGES.",
+      "calendrier": "Calendrier local 2026 à confirmer dans l’espace professionnel CIVA ; aucune date de récolte alsacienne n’est affirmée ici.",
+      "preparation": [
+        "Vérifier l’accès à VinsAlsace.pro et les droits de la personne chargée de la déclaration.",
+        "Classer séparément les données de récolte destinées au CIVA et les pièces demandées pour la revendication auprès de l’AVA.",
+        "Utiliser le guide AVA 2025 pour comprendre l’articulation des démarches, puis chercher les consignes et dates de la campagne 2026."
+      ],
+      "questions": [
+        "Quelle date de récolte 2026 mon espace CIVA affiche-t-il ?",
+        "Quelles étapes distinctes restent à effectuer auprès de l’AVA pour mes vins ?"
+      ],
+      "voisins": [
+        "civc",
+        "bivb"
+      ]
+    },
+    "bnic": {
+      "slug": "declaration-recolte-cognac-bnic.html",
+      "territoire": "Cognac",
+      "organisme": "BNIC",
+      "circuit": "Circuit de récolte BNIC pour les récoltants ressortissants ; accès professionnel eBNIC.",
+      "calendrier": "Calendrier 2026 et règles de modification à confirmer auprès du BNIC ; le 31 juillet de VENDANGES n’est pas transposé à eBNIC.",
+      "preparation": [
+        "Vérifier votre qualité de ressortissant et l’accès au bon compte eBNIC.",
+        "Préparer la ventilation de vos productions et faire confirmer le circuit si le domaine produit aussi du Pineau ou d’autres vins.",
+        "Relever dans l’espace professionnel les états de validation, la confirmation et les règles de rectification applicables."
+      ],
+      "questions": [
+        "Quelles productions de mon exploitation doivent être saisies dans le circuit BNIC ?",
+        "Quel délai et quelle procédure de rectification eBNIC s’appliquent à mon dossier ?"
+      ],
+      "voisins": [
+        "cnpc",
+        "bnia"
+      ]
+    },
+    "interloire": {
+      "slug": "declaration-recolte-val-de-loire-interloire.html",
+      "territoire": "Val de Loire",
+      "organisme": "InterLoire",
+      "circuit": "VENDANGES ou portail InterLoire, selon la situation du ressortissant et les modalités du portail.",
+      "calendrier": "10 décembre 2026 pour les récoltants relevant de la règle nationale ; les modalités du portail et les situations de productions multiples sont à vérifier.",
+      "preparation": [
+        "Lister toutes les productions du domaine avant de choisir le portail ; ne pas traiter automatiquement toute la Loire comme un seul ressort.",
+        "Lire les consignes de vinsdeloire.pro pour les vins d’InterLoire et faire confirmer le circuit en cas de productions hors ressort.",
+        "Conserver une preuve du dépôt de récolte ; une opération de DRM sur le même environnement ne constitue pas cette preuve."
+      ],
+      "questions": [
+        "Toutes mes productions relèvent-elles d’InterLoire ?",
+        "Quel circuit évite un double dépôt et permet de vérifier la bonne réception ?"
+      ],
+      "voisins": [
+        "bivc",
+        "anivin"
+      ]
+    },
+    "anivin": {
+      "slug": "declaration-recolte-vin-de-france-anivin.html",
+      "territoire": "Vin De France",
+      "organisme": "ANIVIN de France",
+      "circuit": "VENDANGES pour la récolte relevant du droit commun ; déclarations de volumes ANIVIN et certification VSIG à distinguer.",
+      "calendrier": "Règle douanière : 10 décembre 2026 pour les récoltants et bailleurs vinificateurs ; obligations ANIVIN et certification à examiner séparément.",
+      "preparation": [
+        "Identifier les volumes commercialisés en Vin De France et les mentions de cépage ou millésime envisagées.",
+        "Rapprocher la récolte douanière des déclarations de volumes demandées par l’ANIVIN sans les assimiler.",
+        "Vérifier auprès de FranceAgriMer les formalités VSIG nécessaires pour les mentions que vous souhaitez commercialiser."
+      ],
+      "questions": [
+        "Mes vins portent-ils une mention de cépage ou de millésime soumise à certification ?",
+        "Quelles déclarations de volumes interprofessionnelles restent distinctes de ma récolte ?"
+      ],
+      "voisins": [
+        "inter-oc",
+        "ivse"
+      ]
+    },
+    "bnia": {
+      "slug": "declaration-recolte-armagnac-bnia.html",
+      "territoire": "Armagnac",
+      "organisme": "BNIA",
+      "circuit": "VENDANGES pour la récolte relevant du droit commun ; formalités propres aux eaux-de-vie à voir avec le BNIA.",
+      "calendrier": "Dates nationales de récolte/production selon la qualité de déclarant ; aucun calendrier Armagnac 2026 spécifique n’est extrapolé.",
+      "preparation": [
+        "Distinguer la récolte de raisins des opérations et stocks d’eaux-de-vie suivis pour l’Armagnac.",
+        "Préparer les informations de production sans reprendre les consignes Cognac sur la seule ressemblance BNIA/BNIC.",
+        "Retrouver auprès du BNIA les accords et formulaires applicables aux opérations d’eaux-de-vie du domaine."
+      ],
+      "questions": [
+        "Quelles données concernent ma récolte de raisins et lesquelles mes eaux-de-vie ?",
+        "Quels accords ou consignes BNIA s’appliquent à mes opérations après la récolte ?"
+      ],
+      "voisins": [
+        "bnic",
+        "ivso"
+      ]
+    },
+    "inter-beaujolais": {
+      "slug": "declaration-recolte-beaujolais.html",
+      "territoire": "Beaujolais",
+      "organisme": "Inter Beaujolais",
+      "circuit": "VENDANGES pour la déclaration douanière de récolte relevant du droit commun.",
+      "calendrier": "10 décembre 2026 pour les récoltants et bailleurs vinificateurs ; vérifier séparément les dates de revendication et de mise en marché.",
+      "preparation": [
+        "Identifier les volumes de chaque appellation et ceux éventuellement destinés à une commercialisation en nouveau ou primeur.",
+        "Séparer le dépôt de récolte des démarches de revendication et de mise en marché propres à chaque vin.",
+        "Utiliser les contacts viticulture de l’extranet pour faire préciser une situation atypique avant le dépôt."
+      ],
+      "questions": [
+        "Mes vins nouveaux ou primeurs ont-ils des formalités à accomplir avant la date de récolte ?",
+        "Quel service peut confirmer mon circuit en cas de production ou d’achat particulier ?"
+      ],
+      "voisins": [
+        "bivb",
+        "inter-rhone"
+      ]
+    },
+    "ivbd": {
+      "slug": "declaration-recolte-bergerac-duras.html",
+      "territoire": "Bergerac et Duras",
+      "organisme": "IVBD / Fédération des vins de Bergerac et Duras",
+      "circuit": "VENDANGES ; documents de campagne de la Fédération des vins de Bergerac et Duras pour la préparation.",
+      "calendrier": "Échéance nationale selon la qualité du déclarant ; conditions de production et revendication à vérifier dans les documents 2026 et auprès de l’ODG.",
+      "preparation": [
+        "Reprendre les fiches de récolte 2026 de la Fédération pour préparer vos catégories de vin et leurs conditions de production.",
+        "Rapprocher apports, vinification et volumes par appellation avant la saisie dans VENDANGES.",
+        "Identifier l’interlocuteur qui répond à votre besoin : l’interprofession IVBD, la Fédération de producteurs ou l’ODG."
+      ],
+      "questions": [
+        "Quelle fiche 2026 correspond à chacune de mes appellations ?",
+        "Quelle démarche de revendication reste à faire après la préparation de la récolte ?"
+      ],
+      "voisins": [
+        "civb",
+        "ivso"
+      ]
+    },
+    "civb": {
+      "slug": "declaration-recolte-bordeaux-civb.html",
+      "territoire": "Bordeaux",
+      "organisme": "CIVB / FGVB",
+      "circuit": "VENDANGES ; échéances de campagne rappelées par la FGVB, distincte du CIVB.",
+      "calendrier": "10 décembre 2026 pour les récoltants et bailleurs vinificateurs ; 10 janvier 2027 pour les coopératives et négociants-vinificateurs, selon le rappel FGVB et la Douane.",
+      "preparation": [
+        "Vérifier si vous déclarez comme récoltant/bailleur vinificateur ou comme cave coopérative/négociant-vinificateur.",
+        "Utiliser l’information FGVB pour le dépôt de récolte et les consignes de votre ODG pour la revendication.",
+        "Rapprocher les volumes par produit des données de cave avant d’enregistrer et de déposer dans VENDANGES."
+      ],
+      "questions": [
+        "Quelle qualité de déclarant et quelle échéance correspondent à mon activité ?",
+        "Quels documents d’appellation et quelle revendication sont à traiter séparément ?"
+      ],
+      "voisins": [
+        "ivbd",
+        "uivc"
+      ]
+    },
+    "bivb": {
+      "slug": "declaration-recolte-bourgogne-bivb.html",
+      "territoire": "Bourgogne",
+      "organisme": "BIVB / CAVB",
+      "circuit": "VENDANGES pour la récolte ; tutoriels CAVB distincts pour VENDANGES et Déclar’AOC.",
+      "calendrier": "Droit commun pour la récolte ; la CAVB publie aussi une échéance Déclar’AOC du 10 décembre 2026 pour la démarche qu’elle décrit. Vérifier chaque formalité séparément.",
+      "preparation": [
+        "Commencer par le tutoriel CAVB de déclaration de récolte dans VENDANGES.",
+        "Examiner ensuite le tutoriel Déclar’AOC et les consignes de votre appellation ; ne pas supposer que la première saisie termine toutes les démarches.",
+        "Préparer les questions à l’assistance CAVB avec vos appellations et les rubriques qui posent difficulté."
+      ],
+      "questions": [
+        "Ai-je terminé la démarche VENDANGES et celle demandée sur Déclar’AOC ?",
+        "Quelles consignes et permanences CAVB concernent mes déclarations 2026 ?"
+      ],
+      "voisins": [
+        "inter-beaujolais",
+        "civj"
+      ]
+    },
+    "uivc": {
+      "slug": "declaration-recolte-cahors-cotes-du-lot.html",
+      "territoire": "Cahors et Côtes du Lot",
+      "organisme": "UIVCCL / UIVC",
+      "circuit": "VENDANGES pour la récolte de droit commun ; distinguer AOP Cahors et IGP Côtes du Lot.",
+      "calendrier": "Échéance nationale de récolte selon le déclarant ; aucun délai local de revendication 2026 n’est affirmé ici.",
+      "preparation": [
+        "Repérer dans vos documents le nom actuel UIVCCL ou l’ancien sigle UIVC.",
+        "Séparer les données AOP Cahors et IGP Côtes du Lot, puis vérifier les consignes de chaque organisme de revendication.",
+        "Ne pas reprendre un calendrier générique du Sud-Ouest pour toutes vos productions."
+      ],
+      "questions": [
+        "Quel produit et quel organisme de revendication figurent sur chacun de mes lots ?",
+        "Les documents reçus sous l’ancien sigle UIVC sont-ils toujours ceux de la campagne actuelle ?"
+      ],
+      "voisins": [
+        "ivso",
+        "ivbd"
+      ]
+    },
+    "bivc": {
+      "slug": "declaration-recolte-centre-loire.html",
+      "territoire": "Centre-Loire",
+      "organisme": "BIVC",
+      "circuit": "VENDANGES pour le dépôt douanier ; plateformes BIVC/ODG/FUVC à identifier pour les autres démarches.",
+      "calendrier": "Règle nationale pour la récolte ; le guide des plateformes n’est pas un calendrier de campagne 2026.",
+      "preparation": [
+        "Identifier les appellations du Centre-Loire sans les assimiler au ressort d’InterLoire.",
+        "Consulter le guide des plateformes pour distinguer l’espace DRM des outils des ODG et de la FUVC.",
+        "Vérifier la preuve de dépôt douanier et les formalités de revendication propres à vos vins."
+      ],
+      "questions": [
+        "Quelle plateforme traite la formalité que je veux réellement accomplir ?",
+        "Mes consignes viennent-elles du BIVC, d’InterLoire ou de l’ODG ?"
+      ],
+      "voisins": [
+        "interloire",
+        "anivin"
+      ]
+    },
+    "civ-corse": {
+      "slug": "declaration-recolte-corse.html",
+      "territoire": "Corse",
+      "organisme": "CIV Corse",
+      "circuit": "VENDANGES pour la récolte relevant du droit commun ; interlocuteurs locaux via le CIV Corse et l’ODG.",
+      "calendrier": "Date nationale selon le déclarant ; calendrier local de revendication 2026 à confirmer auprès de l’organisme compétent.",
+      "preparation": [
+        "Lister les volumes par AOP, IGP ou autre catégorie en reprenant vos documents de production.",
+        "Retrouver l’ODG et les consignes de la campagne pour les vins concernés, sans les déduire du seul lieu du domaine.",
+        "Faire confirmer les situations associant plusieurs dénominations avant la saisie."
+      ],
+      "questions": [
+        "Quelle dénomination et quel ODG correspondent à chaque volume ?",
+        "Quelles démarches locales sont distinctes de mon dépôt dans VENDANGES ?"
+      ],
+      "voisins": [
+        "civp",
+        "anivin"
+      ]
+    },
+    "civj": {
+      "slug": "declaration-recolte-jura.html",
+      "territoire": "Jura",
+      "organisme": "CIVJ",
+      "circuit": "VENDANGES pour le dépôt douanier de récolte ; CIVJ pour l’identification interprofessionnelle.",
+      "calendrier": "Échéance nationale selon la qualité de déclarant ; consignes de revendication 2026 auprès de l’ODG.",
+      "preparation": [
+        "Préparer les quantités et destinations de récolte par appellation et couleur.",
+        "Identifier le bon ODG pour les formalités de revendication et rechercher ses consignes actuelles.",
+        "Conserver séparément les confirmations de récolte et des éventuelles autres démarches."
+      ],
+      "questions": [
+        "Quelle notice de mon ODG concerne la récolte 2026 ?",
+        "Ai-je conservé une confirmation propre à chacune des démarches accomplies ?"
+      ],
+      "voisins": [
+        "bivb",
+        "civs"
+      ]
+    },
+    "civl": {
+      "slug": "declaration-recolte-languedoc-civl.html",
+      "territoire": "Languedoc",
+      "organisme": "CIVL",
+      "circuit": "VENDANGES pour la récolte de droit commun ; le ressort CIVL se vérifie par produit.",
+      "calendrier": "10 décembre 2026 pour les récoltants relevant du droit commun ; dates de revendication propres à l’AOP ou l’IGP.",
+      "preparation": [
+        "Identifier l’AOP ou l’IGP de chaque production avant de choisir les consignes de l’interprofession.",
+        "Séparer les vins Pays d’Oc, qui relèvent de la fiche Inter Oc, des produits du ressort CIVL.",
+        "Vérifier les démarches de l’ODG sans supposer que toutes les productions d’un département suivent les mêmes formalités."
+      ],
+      "questions": [
+        "Mon produit relève-t-il du CIVL ou d’Inter Oc ?",
+        "Quelles démarches de revendication correspondent à chacune de mes AOP/IGP ?"
+      ],
+      "voisins": [
+        "inter-oc",
+        "civr",
+        "ivse"
+      ]
+    },
+    "inter-oc": {
+      "slug": "declaration-recolte-pays-doc-igp.html",
+      "territoire": "Pays d’Oc IGP",
+      "organisme": "Inter Oc",
+      "circuit": "VENDANGES pour la récolte douanière ; revendication Pays d’Oc à examiner séparément.",
+      "calendrier": "Échéance de droit commun pour la récolte ; aucun ancien délai de revendication Pays d’Oc n’est transposé à 2026.",
+      "preparation": [
+        "Distinguer les volumes destinés à Pays d’Oc IGP et leurs éventuelles mentions de cépage ou millésime.",
+        "Rapprocher les produits déclarés des consignes de l’organisme de revendication compétent.",
+        "Si vous produisez aussi en AOP ou en Vin De France, conserver une ventilation et des consignes propres à chaque production."
+      ],
+      "questions": [
+        "Quels volumes sont destinés à Pays d’Oc IGP dans ma déclaration ?",
+        "Quel calendrier 2026 mon organisme de revendication m’a-t-il communiqué ?"
+      ],
+      "voisins": [
+        "civl",
+        "anivin",
+        "ivse"
+      ]
+    },
+    "cnpc": {
+      "slug": "declaration-recolte-pineau-charentes.html",
+      "territoire": "Pineau des Charentes",
+      "organisme": "CNPC",
+      "circuit": "Vérifier le ressort de l’exploitation : circuit BNIC pour les récoltants ressortissants ; revendication Pineau distincte.",
+      "calendrier": "Calendrier de récolte auprès du BNIC si vous en relevez ; délai de revendication Pineau à confirmer auprès de l’organisme compétent.",
+      "preparation": [
+        "Identifier si votre exploitation relève du BNIC et quelles productions doivent figurer dans ce circuit.",
+        "Préparer séparément les données de récolte et les éléments de revendication du Pineau.",
+        "Demander au CNPC ou à l’organisme compétent les formulaires et consignes de campagne actuels ; ne pas reprendre le délai d’une autre démarche."
+      ],
+      "questions": [
+        "Mon exploitation relève-t-elle du circuit de récolte BNIC ?",
+        "Quelles consignes 2026 concernent spécifiquement la revendication du Pineau ?"
+      ],
+      "voisins": [
+        "bnic",
+        "bnia"
+      ]
+    },
+    "civp": {
+      "slug": "declaration-recolte-provence-civp.html",
+      "territoire": "Provence",
+      "organisme": "CIVP",
+      "circuit": "VENDANGES pour la récolte ; le calendrier vitivinicole rappelle le remplacement de RECOLTE.",
+      "calendrier": "Règle nationale de récolte selon la qualité de déclarant ; échéance de revendication à vérifier pour chaque appellation.",
+      "preparation": [
+        "Utiliser VENDANGES pour un nouveau dépôt et réserver l’ancien service RECOLTE à la consultation des campagnes antérieures.",
+        "Séparer la préparation de récolte de la revendication AOP auprès de votre ODG.",
+        "Retrouver les contacts de viticulture et l’assistance OLGA indiqués dans les ressources officielles en cas de difficulté."
+      ],
+      "questions": [
+        "Suis-je dans VENDANGES ou dans un ancien espace de consultation ?",
+        "Quel délai de revendication concerne mes vins avant commercialisation ?"
+      ],
+      "voisins": [
+        "inter-rhone",
+        "ivse"
+      ]
+    },
+    "inter-rhone": {
+      "slug": "declaration-recolte-vallee-rhone-inter-rhone.html",
+      "territoire": "Vallée du Rhône",
+      "organisme": "Inter Rhône",
+      "circuit": "VENDANGES pour la récolte de droit commun ; Declarvins concerne d’autres démarches, notamment DRM et contrats.",
+      "calendrier": "Échéance nationale de récolte selon le déclarant ; consignes de revendication à confirmer auprès de l’ODG.",
+      "preparation": [
+        "Préparer les données de récolte par produit et vérifier les consignes de votre appellation.",
+        "Identifier l’opération effectuée dans Declarvins : une DRM ou un contrat ne vaut pas dépôt de récolte.",
+        "Conserver les confirmations de chaque formalité dans un dossier de campagne commun."
+      ],
+      "questions": [
+        "Quelle formalité suis-je en train d’accomplir dans Declarvins ?",
+        "Quelle preuve établit que ma récolte a été déposée sur le portail compétent ?"
+      ],
+      "voisins": [
+        "ivse",
+        "civp",
+        "inter-beaujolais"
+      ]
+    },
+    "civr": {
+      "slug": "declaration-recolte-roussillon-civr.html",
+      "territoire": "Roussillon",
+      "organisme": "CIVR",
+      "circuit": "VENDANGES pour la récolte relevant du droit commun ; CIVR pour les interlocuteurs des vins de son ressort.",
+      "calendrier": "Échéance nationale de récolte ; dates de revendication et de commercialisation à vérifier séparément.",
+      "preparation": [
+        "Identifier les catégories et appellations des volumes produits dans le Roussillon.",
+        "Rapprocher récolte et données de cave sans reprendre une date de mise en marché comme date de dépôt.",
+        "Demander à l’ODG les consignes propres au produit lorsque plusieurs catégories sont présentes au domaine."
+      ],
+      "questions": [
+        "Quelle date concerne ma récolte et laquelle la commercialisation d’un vin particulier ?",
+        "Quelles pièces de revendication sont attendues pour chaque produit ?"
+      ],
+      "voisins": [
+        "civl",
+        "inter-oc"
+      ]
+    },
+    "civs": {
+      "slug": "declaration-recolte-savoie-civs.html",
+      "territoire": "Savoie",
+      "organisme": "CIVS",
+      "circuit": "VENDANGES pour la récolte douanière ; contact CIVS pour l’identification interprofessionnelle.",
+      "calendrier": "Date nationale selon le déclarant ; calendrier de revendication 2026 à confirmer selon l’AOP ou l’IGP.",
+      "preparation": [
+        "Reprendre la dénomination exacte de chaque vin dans les documents du domaine.",
+        "Identifier l’ODG compétent pour chaque AOP/IGP au lieu d’appliquer une seule consigne « Savoie » à toutes les productions.",
+        "Préparer les écarts éventuels de superficies ou de quantités avant la validation."
+      ],
+      "questions": [
+        "Quel ODG correspond à la dénomination exacte de mon vin ?",
+        "Mes différentes productions nécessitent-elles des consignes distinctes ?"
+      ],
+      "voisins": [
+        "civj",
+        "bivb"
+      ]
+    },
+    "ivse": {
+      "slug": "declaration-recolte-sud-est-igp.html",
+      "territoire": "Sud-Est, vins IGP",
+      "organisme": "Intervins Sud-Est",
+      "circuit": "VENDANGES pour la récolte douanière ; Declarvins et revendication IGP sont des démarches distinctes.",
+      "calendrier": "Règle nationale pour la récolte ; aucun ancien seuil ou calendrier de revendication n’est repris sans consigne actuelle.",
+      "preparation": [
+        "Lister les IGP produites et vérifier qu’elles relèvent d’Intervins Sud-Est.",
+        "Identifier séparément récolte, DRM, contrats et revendication pour éviter une validation dans le mauvais outil.",
+        "Chercher les consignes de l’organisme compétent pour chaque IGP avant de reporter un ancien calendrier."
+      ],
+      "questions": [
+        "Quelle IGP et quel organisme sont compétents pour chacun de mes volumes ?",
+        "Le document validé concerne-t-il ma récolte, ma DRM, un contrat ou ma revendication ?"
+      ],
+      "voisins": [
+        "inter-rhone",
+        "civp",
+        "inter-oc"
+      ]
+    },
+    "ivso": {
+      "slug": "declaration-recolte-sud-ouest-ivso.html",
+      "territoire": "Sud-Ouest",
+      "organisme": "IVSO",
+      "circuit": "VENDANGES pour la récolte de droit commun ; le nom Sud-Ouest ne détermine pas à lui seul l’organisme.",
+      "calendrier": "Échéance nationale selon le déclarant ; les autres formalités se vérifient par produit et par ODG.",
+      "preparation": [
+        "Identifier l’interprofession et l’ODG de chaque produit figurant dans la récolte.",
+        "Utiliser les fiches dédiées pour Armagnac, Bergerac-Duras et Cahors/Côtes du Lot lorsque ces productions vous concernent.",
+        "Préparer une ventilation par produit, puis demander confirmation du circuit en cas de portefeuille mixte."
+      ],
+      "questions": [
+        "Quelles productions relèvent de l’IVSO et lesquelles d’un organisme distinct ?",
+        "Quel interlocuteur doit confirmer mes démarches si je produis plusieurs catégories ?"
+      ],
+      "voisins": [
+        "bnia",
+        "ivbd",
+        "uivc"
+      ]
+    }
+  }
+}

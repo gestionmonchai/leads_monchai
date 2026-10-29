@@ -24,6 +24,9 @@ test('le bloc de consentement suit la référence et ne restaure pas les publici
   const ancien='<html><head>'+bloc+'</head><body><main>Texte</main><footer>Ancien</footer></body></html>';
   const resultat=harmoniser(ancien,reference);
   assert.ok(!resultat.includes('var obsolete=true'));
-  assert.ok(resultat.includes("t='denied'"));
+  assert.ok(resultat.includes('assets/js/analytics.js?v=20261029'));
+  assert.ok(!resultat.includes('monchaiChargerGtm'));
+  assert.equal((resultat.match(/src="assets\/js\/analytics.js/g)||[]).length, 1);
+  assert.ok(!resultat.includes('googletagmanager.com/gtag/js'));
   assert.equal(harmoniser(resultat,reference),resultat);
 });

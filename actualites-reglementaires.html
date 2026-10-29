@@ -2,29 +2,11 @@
 <html lang="fr">
 <head>
 <meta charset="utf-8">
-<!-- Mode consentement de Google : par défaut, rien n'est mesuré. Le choix du
-     bandeau (consent.js ou script.js, clé monchai_cookie_consent) est appliqué
-     au chargement, puis à chaque changement (événement monchai:consent). -->
-<script>
-window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}
-(function(){
-  function etat(c){var a=c&&c.audience===true?'granted':'denied',t='denied';return{analytics_storage:a,ad_storage:t,ad_user_data:t,ad_personalization:t};}
-  var d=etat(null);d.wait_for_update=500;gtag('consent','default',d);
-  function chargerPlusTard(){if(document.readyState==='complete'){if(window.monchaiChargerGtm)window.monchaiChargerGtm();}else{window.addEventListener('load',function(){setTimeout(function(){if(window.monchaiChargerGtm)window.monchaiChargerGtm();},0);},{once:true});}}
-  try{var c=JSON.parse(localStorage.getItem('monchai_cookie_consent'));if(c&&typeof c.ts==='number'&&Number.isFinite(c.ts)&&c.ts<=Date.now()&&Date.now()-c.ts<15724800000&&typeof c.audience==='boolean'&&typeof c.tiers==='boolean'){gtag('consent','update',etat(c));if(c.audience===true)chargerPlusTard();}}catch(e){}
-  window.addEventListener('monchai:consent',function(e){gtag('consent','update',etat(e.detail));dataLayer.push({event:'monchai_consentement'});if(e.detail&&e.detail.audience===true)chargerPlusTard();});
-})();
-</script>
-<!-- Google Tag Manager, chargé seulement après un accord (mesure d'audience ou
-     services tiers) et après le chargement de la page : sans accord, aucun
-     script Google n'est téléchargé (gain mesuré sur mobile : environ 0,9 s de LCP). -->
-<script>window.monchaiChargerGtm=function(){if(window.monchaiGtmCharge)return;window.monchaiGtmCharge=true;
-(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-NDSQV6T7');};</script>
-<!-- End Google Tag Manager -->
+
+
+
+
+
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 
 <title>Actualités réglementaires des vignerons | Mon Chai</title>
@@ -67,6 +49,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </script>
 
 <link rel="stylesheet" href="assets/css/footer-commun.css?v=20261028-footer">
+
+<script src="assets/js/analytics.js?v=20261029" data-gtm></script>
 </head>
 <body class="corps-actus">
 
@@ -197,15 +181,15 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <!-- FILE-ATTENTE : les nouvelles cartes s'insèrent sous cette ligne (workflow publier-article.yml), la plus récente en premier. Ne pas supprimer ce repère. -->
 <article class="actu-fiche" id="dossier-aides" data-categorie="vigne-phyto"><img class="actu-fiche__img" src="assets/img/editorial/aides-viticoles-photo-2026.webp" alt="Illustration générée : dossier de financement et pièces en euros devant un vignoble" width="1200" height="630" decoding="async"><div class="actu-fiche__corps"><p class="actu-date"><time datetime="2026-10-28">28 octobre 2026</time> · Dossier transversal</p><h2 class="actu-fiche__titre"><a href="aides-vignerons.html">Aides aux vignerons : de l’installation à l’arrachage</a></h2><p class="actu-fiche__resume">62 fiches sourcées : installation, investissements, PAC, bio, emploi, risques et transmission. Recherche dédiée par étape et territoire.</p><a class="actu-fiche__lire" href="aides-vignerons.html">Explorer les aides →</a></div></article>
     <article class="actu-fiche" data-categorie="douane-declarations">
-      <a href="dae-daes-gamma2-vin.html" aria-hidden="true" tabindex="-1"><img class="actu-fiche__img" src="assets/img/pages/stocks-tracabilite.jpg" alt="" loading="lazy"></a>
-      <div class="actu-fiche__corps">
-        <a class="actu-tag" href="actualites-douane-declarations.html">Douane &amp; déclarations</a>
-        <span class="actu-date">Publié le 26 octobre 2026</span>
-        <h2 class="actu-fiche__titre"><a href="dae-daes-gamma2-vin.html">DAE, DAES, GAMMA&nbsp;2&nbsp;: expédier du vin en règle</a></h2>
-        <p class="actu-fiche__resume">Chaque expédition de vin circule sous un titre de mouvement : DAE en droits suspendus, DAES en droits acquittés. Le point sur GAMMA 2, qui centralise tout depuis juin 2025.</p>
-        <a class="actu-fiche__lire" href="dae-daes-gamma2-vin.html">Lire l'article&nbsp;→</a>
-      </div>
-    </article>
+<a aria-hidden="true" href="dae-daes-gamma2-vin.html" tabindex="-1"><img alt="" class="actu-fiche__img" loading="lazy" src="assets/img/pages/stocks-tracabilite.jpg"/></a>
+<div class="actu-fiche__corps">
+<a class="actu-tag" href="actualites-douane-declarations.html">Douane &amp; déclarations</a>
+<span class="actu-date">Publié le 26 octobre 2026</span>
+<h2 class="actu-fiche__titre"><a href="dae-daes-gamma2-vin.html">DAE, DAES, DSA : choisir le document de circulation du vin</a></h2>
+<p class="actu-fiche__resume">Destination, destinataire et régime de droits : choisissez le parcours adapté. CRD nationales, vente à distance et formalités GAMMA 2 distinguées.</p>
+<a class="actu-fiche__lire" href="dae-daes-gamma2-vin.html">Lire l'article →</a>
+</div>
+</article>
 <article class="actu-fiche" data-categorie="oenotourisme-vente-directe">
   <a href="investir-leviers-commerciaux-vin.html" aria-hidden="true" tabindex="-1"><img class="actu-fiche__img" src="assets/img/pages/ventes-clients.jpg" alt="" loading="lazy"></a>
   <div class="actu-fiche__corps">
@@ -284,15 +268,15 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </article>
 
     <article class="actu-fiche" data-categorie="douane-declarations">
-      <a href="declaration-recolte-2026.html" aria-hidden="true" tabindex="-1"><img class="actu-fiche__img" src="assets/img/pages/oenotourisme.jpg" alt="" loading="lazy"></a>
-      <div class="actu-fiche__corps">
-        <a class="actu-tag" href="actualites-douane-declarations.html">Douane &amp; déclarations</a>
-        <span class="actu-date">Publié le 12 octobre 2026</span>
-        <h2 class="actu-fiche__titre"><a href="declaration-recolte-2026.html">Déclaration de récolte 2026&nbsp;: dates et mode d'emploi</a></h2>
-        <p class="actu-fiche__resume">Avant le 10 décembre, chaque récoltant déclare superficies, volumes et destinations sur douane.gouv.fr. Qui est concerné, comment remplir, et pourquoi cette déclaration conditionne le reste.</p>
-        <a class="actu-fiche__lire" href="declaration-recolte-2026.html">Lire l'article&nbsp;→</a>
-      </div>
-    </article>
+<a aria-hidden="true" href="declaration-recolte-2026.html" tabindex="-1"><img alt="" class="actu-fiche__img" loading="lazy" src="assets/img/pages/oenotourisme.jpg"/></a>
+<div class="actu-fiche__corps">
+<a class="actu-tag" href="actualites-douane-declarations.html">Douane &amp; déclarations</a>
+<span class="actu-date">Publié le 12 octobre 2026</span>
+<h2 class="actu-fiche__titre"><a href="declaration-recolte-2026.html">Récolte 2026 : dates, portails et étapes de dépôt</a></h2>
+<p class="actu-fiche__resume">Identifiez votre qualité de déclarant et votre portail avant de retenir une date. Procédure, 23 fiches d’interprofessions, checklist et sources.</p>
+<a class="actu-fiche__lire" href="declaration-recolte-2026.html">Lire l'article →</a>
+</div>
+</article>
     <article class="actu-fiche" data-categorie="etiquetage-mises">
       <a href="ppwr-vin-emballages.html" aria-hidden="true" tabindex="-1"><img class="actu-fiche__img" src="assets/img/pages/conditionnement-mises.jpg" alt="" loading="lazy"></a>
       <div class="actu-fiche__corps">
@@ -344,15 +328,15 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       </div>
     </article>
     <article class="actu-fiche" data-categorie="douane-declarations">
-      <a href="drm-vin-guide.html" aria-hidden="true" tabindex="-1"><img class="actu-fiche__img" src="assets/img/pages/drm-conformite.jpg" alt="" loading="lazy"></a>
-      <div class="actu-fiche__corps">
-        <a class="actu-tag" href="actualites-douane-declarations.html">Douane &amp; déclarations</a>
-        <span class="actu-date">Publié le 7 septembre 2026</span>
-        <h2 class="actu-fiche__titre"><a href="drm-vin-guide.html">La DRM&nbsp;: qui doit la déposer, quand et comment</a></h2>
-        <p class="actu-fiche__resume">Chaque mois avant le 10, la déclaration récapitulative mensuelle raconte à la douane ce qui est entré et sorti de votre chai. Le point sur les obligations, CIEL et les pièges classiques.</p>
-        <a class="actu-fiche__lire" href="drm-vin-guide.html">Lire l'article&nbsp;→</a>
-      </div>
-    </article>
+<a aria-hidden="true" href="drm-vin-guide.html" tabindex="-1"><img alt="" class="actu-fiche__img" loading="lazy" src="assets/img/pages/drm-conformite.jpg"/></a>
+<div class="actu-fiche__corps">
+<a class="actu-tag" href="actualites-douane-declarations.html">Douane &amp; déclarations</a>
+<span class="actu-date">Publié le 7 septembre 2026</span>
+<h2 class="actu-fiche__titre"><a href="drm-vin-guide.html">DRM du vin : qui déclare, quand et comment déposer</a></h2>
+<p class="actu-fiche__resume">Entrepositaires agréés : dépôt au plus tard le 10 du mois suivant, avec le report prévu pour un jour non ouvré. Données, contrôles et confirmation du dépôt.</p>
+<a class="actu-fiche__lire" href="drm-vin-guide.html">Lire l'article →</a>
+</div>
+</article>
 
     <article class="actu-fiche" data-categorie="vigne-phyto">
       <a href="registre-phyto-numerique-2027.html" aria-hidden="true" tabindex="-1"><img class="actu-fiche__img" src="assets/img/pages/vigne-vendanges.jpg" alt="" loading="lazy"></a>
@@ -415,7 +399,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 <script src="assets/js/header.js"></script>
 <script src="assets/js/actus-filtres.js"></script>
-<script src="consent.js?v=20261028-footer"></script>
+<script src="consent.js?v=20261029-ga4"></script>
 <script src="assets/js/cta-popup.js" defer></script>
 <script src="assets/js/documents-legaux.js?v=20261028-footer" defer></script>
 </body>

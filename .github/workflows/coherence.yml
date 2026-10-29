@@ -20,7 +20,7 @@ jobs:
         run: python outils/verifier-coherence.py . --strict --output "$RUNNER_TEMP/coherence.json"
       - name: Syntaxe des scripts des parcours modifiés
         run: |
-          for script in accueil.js script.js consent.js assets/js/documents-legaux.js assets/js/contact.js assets/js/aides.js; do
+          for script in accueil.js script.js consent.js assets/js/analytics.js assets/js/documents-legaux.js assets/js/contact.js assets/js/aides.js; do
             node --check "$script"
           done
 

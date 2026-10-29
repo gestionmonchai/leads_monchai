@@ -3,29 +3,11 @@
 <html lang="zh-Hans">
 <head>
 <meta charset="utf-8"/>
-<!-- Mode consentement de Google : par défaut, rien n'est mesuré. Le choix du
-     bandeau (consent.js ou script.js, clé monchai_cookie_consent) est appliqué
-     au chargement, puis à chaque changement (événement monchai:consent). -->
-<script>
-window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}
-(function(){
-  function etat(c){var a=c&&c.audience===true?'granted':'denied',t='denied';return{analytics_storage:a,ad_storage:t,ad_user_data:t,ad_personalization:t};}
-  var d=etat(null);d.wait_for_update=500;gtag('consent','default',d);
-  function chargerPlusTard(){if(document.readyState==='complete'){if(window.monchaiChargerGtm)window.monchaiChargerGtm();}else{window.addEventListener('load',function(){setTimeout(function(){if(window.monchaiChargerGtm)window.monchaiChargerGtm();},0);},{once:true});}}
-  try{var c=JSON.parse(localStorage.getItem('monchai_cookie_consent'));if(c&&typeof c.ts==='number'&&Number.isFinite(c.ts)&&c.ts<=Date.now()&&Date.now()-c.ts<15724800000&&typeof c.audience==='boolean'&&typeof c.tiers==='boolean'){gtag('consent','update',etat(c));if(c.audience===true)chargerPlusTard();}}catch(e){}
-  window.addEventListener('monchai:consent',function(e){gtag('consent','update',etat(e.detail));dataLayer.push({event:'monchai_consentement'});if(e.detail&&e.detail.audience===true)chargerPlusTard();});
-})();
-</script>
-<!-- Google Tag Manager, chargé seulement après un accord (mesure d'audience ou
-     services tiers) et après le chargement de la page : sans accord, aucun
-     script Google n'est téléchargé (gain mesuré sur mobile : environ 0,9 s de LCP). -->
-<script>window.monchaiChargerGtm=function(){if(window.monchaiGtmCharge)return;window.monchaiGtmCharge=true;
-(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-NDSQV6T7');};</script>
-<!-- End Google Tag Manager -->
+
+
+
+
+
 <meta content="width=device-width, initial-scale=1" name="viewport"/>
 <title>隐私与数据 | Mon Chai</title>
 <meta content="index, follow, max-image-preview:large, max-snippet:-1" name="robots"/>
@@ -43,6 +25,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <link href="../legal.css" rel="stylesheet"/>
 <link rel="stylesheet" href="../assets/css/footer-commun.css?v=20261028-footer">
 <meta name="description" content="数据处理、接收方、保留期限、Cookie 和您的权利。更新版本目前提供法语文本。">
+
+<script src="../assets/js/analytics.js?v=20261029" data-gtm></script>
 </head>
 <body class="corps-actus lang-zh">
 <div class="site-header site-header--page">
@@ -199,7 +183,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 <h2 id="cookies">8. Cookies et stockage dans le navigateur</h2>
 <p>Le site public mémorise les choix de cookies pendant six mois. Les préférences fonctionnelles et mécanismes de protection des formulaires restent distincts des outils de mesure. Dans l’application, les cookies de session et de protection des formulaires sont nécessaires à la connexion et à la sécurité ; la session standard dure au plus 24 heures, avec expiration possible plus courte selon les réglages de sécurité.</p>
-<p><strong>Mesure d’audience</strong> : HubSpot et, sur les pages concernées, Google Tag Manager sont chargés après votre accord à cette catégorie. <strong>Services tiers</strong> : cette catégorie permet les publications Instagram intégrées ; elle ne constitue pas une autorisation publicitaire. Les deux catégories peuvent être refusées séparément. Les cookies effectivement déposés par un fournisseur dépendent du service activé et de sa configuration.</p>
+<p><strong>Mesure d’audience</strong> : Google Analytics 4, Google Analytics 4, HubSpot et, sur les pages concernées, Google Tag Manager sont chargés après votre accord à cette catégorie. <strong>Services tiers</strong> : cette catégorie permet les publications Instagram intégrées ; elle ne constitue pas une autorisation publicitaire. Les deux catégories peuvent être refusées séparément. Les cookies effectivement déposés par un fournisseur dépendent du service activé et de sa configuration.</p>
 <p>Utilisez « Gérer mes cookies » dans le pied de page pour refuser, accepter ou modifier les catégories, puis enregistrer votre choix. Le retrait s’applique aux chargements et traitements futurs ; les données déjà transmises restent soumises à vos droits et aux obligations du destinataire. Si le navigateur refuse le stockage, votre choix ne peut pas être mémorisé pour une prochaine page.</p>
 
 <h2 id="assistant-connecteurs">9. Assistant interne et connexion à ChatGPT ou Claude</h2>
@@ -226,7 +210,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <h3>Déconnexion et suppression</h3>
 <p>« Compte › Se déconnecter » ferme la session et efface du téléphone les jetons, les saisies en attente et les enregistrements. Depuis le site, « Déconnecter ce téléphone » coupe aussitôt l’accès du téléphone. Depuis la version 1.0.5, si des saisies validées n’ont pas encore été envoyées au moment d’une déconnexion décidée par le site, l’application ne les efface pas sans le dire : elle les garde sur le téléphone et les montre ; elles partent quand la même personne se reconnecte, ou sont effacées si elle le choisit. Les jetons et les autres données de l’exploitation sont effacés du téléphone. Les sessions révoquées sont conservées douze mois au titre des journaux de sécurité. Les demandes d’accès ou de suppression des données s’exercent comme indiqué à la section 7, à l’adresse contact@monchai.fr.</p>
 </div>
-</main>
+<section id="google-analytics"><h2>Google Analytics 4 et votre choix de cookies</h2><p>Le site public utilise le flux Google Analytics 4 <strong>G-2VZ6WQSB52</strong> pour mesurer la fréquentation et la consultation des pages, sur la base de votre consentement à « Mesure d’audience ». Sans ce choix, la balise Google Analytics n’est pas chargée. Les autorisations publicitaires restent refusées par cette intégration.</p><p>Le chargement peut transmettre à Google des données techniques de connexion et de navigation. L’adresse de page configurée par le site exclut ses paramètres de recherche et son fragment. Les cookies de mesure peuvent comprendre <code>_ga</code> et <code>_ga_2VZ6WQSB52</code> ; cette intégration fixe leur durée maximale à 395 jours, sans prolongation automatique. Votre choix de consentement reste conservé six mois. Les durées de conservation des données dans la propriété Google Analytics dépendent de ses réglages et doivent être vérifiées auprès de l’équipe.</p><p>Vous pouvez refuser aussi facilement qu’accepter, ou retirer votre accord avec « Gérer mes cookies ». Le retrait désactive les envois de cette balise, efface les cookies Google Analytics accessibles au site et recharge la page pour arrêter les scripts déjà chargés. Les données déjà transmises restent soumises à vos droits et aux obligations du destinataire. Google peut impliquer des traitements hors de l’Espace économique européen ; <a href="https://policies.google.com/privacy?hl=fr">consultez sa politique de confidentialité</a> et contactez contact@monchai.fr pour les garanties et réglages applicables.</p></section></main>
 <footer class="mc-site-footer" aria-label="法律信息">
   <div class="mc-site-footer__inner">
     <div class="mc-site-footer__brand"><a class="mc-site-footer__name" href="index.html"><img src="../assets/img/logo-mon-chai-400-20260720.webp" alt="Mon Chai" width="400" height="219" loading="lazy" decoding="async"></a><p>从葡萄园到销售。</p><a href="mailto:contact@monchai.fr">contact@monchai.fr</a><nav class="mc-site-footer__social" aria-label="Mon Chai"><a href="https://www.instagram.com/monchai.fr/" target="_blank" rel="noopener noreferrer">Instagram ↗</a><a href="https://www.linkedin.com/company/monchai" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a></nav></div>
@@ -237,7 +221,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   </div>
 </footer>
 <script src="../assets/js/header.js"></script>
-<script src="../consent.js?v=20261028-footer" defer></script>
+<script src="../consent.js?v=20261029-ga4" defer></script>
 <script src="../assets/js/documents-legaux.js?v=20261028-footer" defer></script>
 </body>
 </html>

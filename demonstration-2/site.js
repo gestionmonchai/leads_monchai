@@ -9,7 +9,8 @@
   const cartDialog = document.querySelector('#cart-dialog');
   const productDialog = document.querySelector('#product-dialog');
   const visitDialog = document.querySelector('#visit-dialog');
-  const dialogs = [cartDialog, productDialog, visitDialog];
+  const mcDialog = document.querySelector('#mc-dialog');
+  const dialogs = [cartDialog, productDialog, visitDialog, mcDialog];
   const lastFocus = new WeakMap();
   const toast = document.querySelector('.toast');
   let toastTimer;
@@ -31,6 +32,7 @@
     dialog.addEventListener('close', () => {
       const trigger = lastFocus.get(dialog);
       if (trigger && trigger.isConnected && !trigger.hidden) trigger.focus({ preventScroll: true });
+      else if (dialog === mcDialog && trigger?.dataset.mc) document.querySelector(`.map-pin[data-place="${trigger.dataset.mc}"]`)?.focus({preventScroll:true});
     });
     dialog.querySelectorAll('[data-close]').forEach(button => button.addEventListener('click', () => dialog.close()));
     dialog.addEventListener('click', event => {
@@ -240,6 +242,148 @@
   let mapVisible = true;
   const moveTo = node => node.scrollIntoView({ block:'start', behavior:reducedMotion.matches ? 'instant' : 'smooth' });
 
+  const canvas = document.querySelector('.map-canvas');
+  const landscape = canvas.querySelector(':scope > img');
+  const baseAlt = landscape.alt;
+  const landscapeStatus = document.querySelector('#landscape-status');
+  const retryLandscape = document.querySelector('#retry-landscape');
+  const landscapeAlts = {
+    hiver: 'Le domaine en hiver : ceps sans feuilles, neige sur les rangs, les terrasses et les toits, arbres défeuillés.',
+    printemps: 'Le domaine au printemps : jeunes pousses vert tendre dans les rangs et feuillage naissant autour des bâtiments.',
+    ete: 'Le domaine en été : vignes au feuillage vert abondant et terrasses ensoleillées.',
+    automne: 'Le domaine en automne : rangs de vigne rouges, cuivrés et ocres, arbres aux couleurs d’automne.'
+  };
+  let landscapeKey = null;
+  let landscapeRequest = 0;
+  const loadedLandscapes = new Map();
+  function setLandscape(src, alt) {
+    landscape.src = src;
+    landscape.alt = alt;
+    document.querySelector('.enlarge-map').href = src;
+  }
+  async function updateLandscape(key, force = false) {
+    if (key === landscapeKey && !force) return;
+    landscapeKey = key;
+    const request = ++landscapeRequest;
+    if (document.activeElement === retryLandscape) document.querySelector(`[data-step="${selectedStep}"]`)?.focus({preventScroll:true});
+    retryLandscape.hidden = true;
+    if (!key) {
+      setLandscape('assets/domaine.webp', baseAlt);
+      landscapeStatus.hidden = true;
+      return;
+    }
+    landscapeStatus.textContent = `Chargement du paysage : ${steps.find(s => s.id === key).label}…`;
+    landscapeStatus.hidden = false;
+    // Une image de l’ancienne saison ne doit pas passer pour la nouvelle.
+    setLandscape('assets/domaine.webp', baseAlt);
+    const src = `assets/domaine-${key}.webp`;
+    if (!loadedLandscapes.has(src)) {
+      loadedLandscapes.set(src, new Promise((resolve, reject) => {
+        const image = new Image();
+        image.onload = () => resolve(src);
+        image.onerror = () => reject(new Error('Paysage indisponible'));
+        image.src = src;
+      }));
+    }
+    try {
+      await loadedLandscapes.get(src);
+      if (request !== landscapeRequest) return;
+      setLandscape(src, landscapeAlts[key]);
+      landscapeStatus.textContent = `Paysage : ${steps.find(s => s.id === key).label}.`;
+      landscapeStatus.hidden = true;
+    } catch {
+      loadedLandscapes.delete(src);
+      if (request !== landscapeRequest) return;
+      setLandscape('assets/domaine.webp', baseAlt);
+      landscapeStatus.textContent = 'Paysage de saison indisponible. La vue générale et les récits restent accessibles.';
+      retryLandscape.hidden = false;
+    }
+  }
+  retryLandscape.addEventListener('click', () => updateLandscape(landscapeKey, true));
+
+  const functions = globalThis.AulnesFonctions;
+  let mcPlace = 'vignes';
+  let mcIndex = 0;
+  let mcTrigger = null;
+  const mcScreen = document.querySelector('#mc-screen');
+  const mcImageStatus = document.querySelector('#mc-image-status');
+  function positionMc() {
+    const width = canvas.clientWidth, height = canvas.clientHeight;
+    const compact = width < 700;
+    const current = selectedPlace || 'vignes';
+    const centers = Object.entries(places).map(([id, p]) => ({id, x:p[0]/1536*width, y:p[1]/1024*height}));
+    for (const button of canvas.querySelectorAll('[data-mc]')) {
+      const id = button.dataset.mc;
+      button.hidden = compact && id !== current;
+      const center = centers.find(p => p.id === id);
+      const candidates = [[44,0],[-44,0],[0,44],[0,-44]];
+      const score = ([dx,dy]) => {
+        const x=center.x+dx,y=center.y+dy;
+        let cost = Math.max(0,22-x,22-y,x+22-width,y+22-height)*10000;
+        for (const pin of centers) cost += Math.max(0,44-Math.abs(pin.x-x))*Math.max(0,44-Math.abs(pin.y-y));
+        return cost;
+      };
+      candidates.sort((a,b)=>score(a)-score(b));
+      const [dx,dy]=candidates[0];
+      button.style.left=`${center.x+dx}px`;
+      button.style.top=`${center.y+dy}px`;
+    }
+  }
+  function positionPopover() {
+    const rect = mcTrigger?.getBoundingClientRect();
+    const width=mcDialog.offsetWidth, height=mcDialog.offsetHeight;
+    const margin=12;
+    const left=innerWidth < 680 ? (innerWidth-width)/2 : Math.max(margin,Math.min((rect?.right || innerWidth/2)+8,innerWidth-width-margin));
+    const top=innerWidth < 680 ? Math.max(margin,(innerHeight-height)/2) : Math.max(margin,Math.min((rect?.top || 100)-20,innerHeight-height-margin));
+    mcDialog.style.left=`${left}px`;
+    mcDialog.style.top=`${top}px`;
+  }
+  function renderMc() {
+    const place=functions.places[mcPlace];
+    const feature=functions.features[place.slides[mcIndex]];
+    document.querySelector('#mc-place').textContent=place.label;
+    document.querySelector('#mc-intro').textContent=place.intro;
+    document.querySelector('#mc-feature').textContent=feature.title;
+    document.querySelector('#mc-description').textContent=feature.text;
+    mcImageStatus.textContent='Chargement de la capture…';
+    mcScreen.hidden=false;
+    mcScreen.alt=`Capture Mon Chai : ${feature.title} ; données de démonstration`;
+    mcScreen.src=feature.image;
+    const enlarge=document.querySelector('#mc-enlarge');
+    enlarge.href=feature.image;
+    enlarge.setAttribute('aria-label',`Agrandir la capture ${feature.title}, nouvel onglet`);
+    document.querySelector('#mc-discover').href=feature.href;
+    document.querySelector('#mc-count').textContent=`${mcIndex+1} / ${place.slides.length}`;
+    document.querySelector('#mc-prev').disabled=mcIndex===0;
+    document.querySelector('#mc-next').disabled=mcIndex===place.slides.length-1;
+    if (mcScreen.complete && mcScreen.naturalWidth) mcImageStatus.textContent='';
+    if (mcDialog.open) positionPopover();
+  }
+  mcScreen.addEventListener('load',()=>{ mcImageStatus.textContent=''; positionPopover(); });
+  mcScreen.addEventListener('error',()=>{ mcScreen.hidden=true; mcImageStatus.textContent='Capture indisponible. Essayez le lien « Agrandir la capture ».'; positionPopover(); });
+  document.querySelectorAll('[data-mc]').forEach(button => button.addEventListener('click',()=>{
+    mcPlace=button.dataset.mc;
+    mcIndex=0;
+    mcTrigger=button;
+    renderMc();
+    open(mcDialog,button);
+    positionPopover();
+  }));
+  function moveMc(delta) {
+    const next=mcIndex+delta;
+    if (next<0 || next>=functions.places[mcPlace].slides.length) return;
+    mcIndex=next;
+    const focused=document.activeElement;
+    renderMc();
+    // Une flèche devenue désactivée ne doit pas laisser le focus hors du dialogue.
+    if (focused.disabled) document.querySelector(delta>0?'#mc-prev':'#mc-next').focus();
+  }
+  document.querySelector('#mc-prev').addEventListener('click',()=>moveMc(-1));
+  document.querySelector('#mc-next').addEventListener('click',()=>moveMc(1));
+  mcDialog.addEventListener('keydown',event=>{
+    if (event.key==='ArrowLeft' || event.key==='ArrowRight') { event.preventDefault(); moveMc(event.key==='ArrowLeft'?-1:1); }
+  });
+
   function routeKey() { return `${location.search}|${location.hash}`; }
   function setAddress(place) {
     const url = new URL(location.href);
@@ -318,6 +462,8 @@
       document.querySelector('#tour-prev').disabled = selectedStep === 0;
       document.querySelector('#tour-next').disabled = selectedStep === steps.length - 1;
     }
+    updateLandscape(key);
+    positionMc();
     updateMotion();
   }
   function showPlace(place, { address=true, focus=true, reveal=false } = {}) {
@@ -395,7 +541,7 @@
   reducedMotion.addEventListener('change',() => { buildParticles(); updateMotion(); });
   smallScreen.addEventListener('change',buildParticles);
   document.addEventListener('visibilitychange',updateMotion);
-  const measureScene = () => scene.style.setProperty('--travel',`${document.querySelector('.map-canvas').clientHeight + 32}px`);
+  const measureScene = () => { scene.style.setProperty('--travel',`${document.querySelector('.map-canvas').clientHeight + 32}px`); positionMc(); if (mcDialog.open) positionPopover(); };
   measureScene();
   addEventListener('resize',measureScene,{passive:true});
   if ('IntersectionObserver' in globalThis) new IntersectionObserver(entries => {
@@ -408,7 +554,7 @@
   addEventListener('popstate',() => readRoute());
   addEventListener('hashchange',() => readRoute());
   document.body.classList.add('js-ready');
-  document.querySelectorAll('[data-cart], [data-add], [data-detail], [data-visit], .menu-toggle, [data-step], [data-close-place], #clear-season').forEach(button => { button.disabled = false; });
+  document.querySelectorAll('[data-cart], [data-add], [data-detail], [data-visit], .menu-toggle, [data-step], [data-close-place], #clear-season, [data-mc]').forEach(button => { button.disabled = false; });
   renderCart();
   readRoute({focus:Boolean(location.hash.startsWith('#lieu-'))});
   applySeason();

@@ -13,3 +13,10 @@ https://creativecommons.org/licenses/by-nd/4.0/
 Instructions officielles jointes : Instructions.pdf.
 
 Pour Démo 2 : Faune Text Regular reprise du lot du 28 octobre ; Faune Display Thin récupérée dans la même archive officielle le 29 octobre 2026. Fichiers intacts, sans sous-ensemble ni conversion.
+
+
+# Illustration saisonnière et logiciel
+
+Carte originale fournie par Denis. Quatre variantes saisonnières générées le 29 octobre 2026 avec l’outil imagegen, en conservant la composition de référence ; conversion WebP sans recadrage. Ces paysages sont imaginaires, sans représentation d’un climat réel.
+
+Logo officiel Mon Chai réutilisé sans modification. Dix captures Mon Chai déjà publiées dans assets/img/captures/, import initial du site au commit 475bed171afb4eafcb68827ec555a92ce19f9e64 (31 août 2026). Images intégrales inchangées, compte fictif SCEA de la Pierre Blanche. Date de prise exacte non retrouvée : elles montrent un état historique du logiciel. Les fonctions dépendent des modules activés ; la démo n’est pas connectée à ces écrans.

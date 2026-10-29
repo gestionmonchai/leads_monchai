@@ -33,7 +33,7 @@
     dialog.addEventListener('close', () => {
       const trigger = lastFocus.get(dialog);
       if (trigger && trigger.isConnected && !trigger.hidden && trigger.checkVisibility()) trigger.focus({ preventScroll: true });
-      else if (dialog === filmDialog && trigger?.hasAttribute("data-map-film")) document.querySelector('.map-pin[data-place="jardin"]')?.focus({preventScroll:true});
+      else if (dialog === filmDialog && trigger?.hasAttribute("data-map-film")) document.querySelector('.map-pin[data-place="recolte"]')?.focus({preventScroll:true});
       else if (dialog === mcDialog && trigger?.dataset.mc) document.querySelector(`.map-pin[data-place="${trigger.dataset.mc}"]`)?.focus({preventScroll:true});
     });
     dialog.querySelectorAll('[data-close]').forEach(button => button.addEventListener('click', () => dialog.close()));
@@ -211,7 +211,7 @@
     vignes: [351, 185], maison: [616, 242], chai: [1054, 349],
     caveau: [512, 556], jardin: [800, 544], eau: [1398, 547], recolte: [1088, 682]
   };
-  const steps = globalThis.AulnesSaisons;
+  const steps = globalThis.HallaisSaisons;
   const panel = document.querySelector('#story-panel');
   const directory = document.querySelector('.places-directory');
   panel.append(directory);
@@ -303,10 +303,9 @@
   }
   retryLandscape.addEventListener('click', () => updateLandscape(landscapeKey, true));
 
-  const functions = globalThis.AulnesFonctions;
+  const functions = globalThis.HallaisFonctions;
   let mcPlace = 'vignes';
   let mcIndex = 0;
-  let mcWine = null;
   let mcTrigger = null;
   const mcScreen = document.querySelector('#mc-screen');
   const mcImageStatus = document.querySelector('#mc-image-status');
@@ -319,11 +318,11 @@
     const buttons=[...canvas.querySelectorAll('[data-mc], [data-map-film]')];
     for (const button of buttons) {
       const film=button.hasAttribute('data-map-film');
-      const id=film?'jardin':button.dataset.mc;
+      const id=film?'recolte':button.dataset.mc;
       button.hidden=compact && (film || id!==current);
       if (button.hidden) continue;
       const center=centers.find(p=>p.id===id);
-      const w=film||compact?44:48,h=44,gap=compact?44:46;
+      const w=film||compact?44:56,h=44,gap=compact?44:50;
       const candidates=film?[[0,44],[46,44],[-46,44],[0,-44],[46,0],[-46,0]]:[[gap,0],[-gap,0],[0,44],[0,-44],[gap,44],[-gap,44]];
       const score=([dx,dy])=>{
         const x=center.x+dx,y=center.y+dy;
@@ -350,8 +349,9 @@
   function renderMc() {
     const place=functions.places[mcPlace];
     const feature=functions.features[place.slides[mcIndex]];
-    document.querySelector('#mc-place').textContent=mcWine?`${wines[mcWine].name} · ${place.label}`:place.label;
+    document.querySelector('#mc-place').textContent=place.label;
     document.querySelector('#mc-intro').textContent=place.intro;
+    mcDialog.classList.toggle('has-wide-capture', Boolean(feature.wide));
     document.querySelector('#mc-feature').textContent=feature.title;
     document.querySelector('#mc-description').textContent=feature.text;
     const status=document.querySelector('#mc-feature-status');
@@ -387,7 +387,6 @@
   mcScreen.addEventListener('error',()=>{ mcScreen.hidden=true; mcImageStatus.textContent='Capture indisponible. Essayez le lien « Agrandir la capture ».'; positionPopover(); });
   document.querySelectorAll('[data-mc]').forEach(button => button.addEventListener('click',()=>{
     mcPlace=button.dataset.mc;
-    mcWine=button.dataset.wine || null;
     mcIndex=0;
     mcTrigger=button;
     renderMc();

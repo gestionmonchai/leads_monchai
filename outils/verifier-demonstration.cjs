@@ -28,7 +28,7 @@ if (folderName === 'demonstration-2') {
   assert.doesNotMatch(seasonSource, /\b(?:fetch|XMLHttpRequest|sendBeacon|localStorage|sessionStorage|WebSocket)\b/);
   const sandbox = {};
   require('node:vm').runInNewContext(seasonSource, sandbox, {timeout:1000});
-  const seasons = sandbox.AulnesSaisons;
+  const seasons = sandbox.HallaisSaisons;
   assert.deepEqual(Array.from(seasons, item => item.id), ['hiver','printemps','ete','automne']);
   const names = ['vignes','maison','chai','caveau','jardin','eau','recolte'];
   const escape = text => text.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#x27;');
@@ -47,7 +47,7 @@ if (folderName === 'demonstration-2') {
   const functionSource = fs.readFileSync(path.join(folder, 'fonctions.js'), 'utf8');
   assert.doesNotMatch(functionSource, /\b(?:fetch|XMLHttpRequest|sendBeacon|localStorage|sessionStorage|WebSocket)\b/);
   require('node:vm').runInNewContext(functionSource, sandbox, {timeout:1000});
-  const functions = sandbox.AulnesFonctions;
+  const functions = sandbox.HallaisFonctions;
   assert.equal(Object.keys(functions.places).length, 9);
   assert.ok(html.indexOf('fonctions.js') < html.indexOf('site.js'));
   for (const season of seasons) assert.ok(fs.existsSync(path.join(folder, `assets/domaine-${season.id}.webp`)), 'Paysage absent');
@@ -57,7 +57,13 @@ if (folderName === 'demonstration-2') {
     for (const id of functions.places[name].slides) assert.ok(functions.features[id], `Fonction absente : ${id}`);
   }
   for (const place of Object.values(functions.places)) for (const id of place.slides) assert.ok(functions.features[id]);
-  assert.equal([...html.matchAll(/data-mc="produits"/g)].length, 2);
+  assert.equal([...html.matchAll(/data-mc="produits"/g)].length, 1);
+  assert.match(html, /Domaine Hallais/);
+  assert.doesNotMatch(html, /aulnes|>\s*MC\s*</i);
+  for (const bottle of ['cuvee-rouge.svg','cuvee-blanc.svg']) assert.doesNotMatch(fs.readFileSync(path.join(folder,'assets',bottle),'utf8'), /aulnes/i);
+  const usedFeatures = Object.values(functions.places).flatMap(place => Array.from(place.slides));
+  assert.equal(new Set(usedFeatures).size, usedFeatures.length, 'Une fonction ne doit pas être répétée dans plusieurs contextes');
+  assert.equal(usedFeatures.length, Object.keys(functions.features).length);
   assert.equal([...html.matchAll(/data-mc="reservation"/g)].length, 1);
   for (const feature of Object.values(functions.features)) {
     assert.ok(feature.title && feature.text && feature.href && feature.availability && feature.proof);
@@ -72,7 +78,10 @@ if (folderName === 'demonstration-2') {
   assert.match(html, /Lire les étapes de la vidéo/);
   assert.match(html, /Annonces.*Module pilote/);
   assert.doesNotMatch(html, /<video[^>]*\bautoplay\b/);
-  assert.deepEqual(Array.from(functions.places.caveau.slides), ['degustation','degustation-retours']);
+  assert.deepEqual(Array.from(functions.places.caveau.slides), ['degustation-creation','degustation']);
+  assert.deepEqual(Array.from(functions.places.jardin.slides), ['phyto']);
+  assert.match(functions.features['trace-matiere'].image, /trace-produit-detail\.png$/);
+  assert.deepEqual(Array.from(functions.places.recolte.slides).slice(0,2), ['annonce-vendanges','annonce-materiel']);
 }
 let resources = 0;
 function check(ref, from) {

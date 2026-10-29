@@ -352,6 +352,7 @@
     document.querySelector('#mc-place').textContent=place.label;
     document.querySelector('#mc-intro').textContent=place.intro;
     mcDialog.classList.toggle('has-wide-capture', Boolean(feature.wide));
+    mcDialog.classList.toggle('has-portrait-capture', Boolean(feature.portrait));
     document.querySelector('#mc-feature').textContent=feature.title;
     document.querySelector('#mc-description').textContent=feature.text;
     const status=document.querySelector('#mc-feature-status');

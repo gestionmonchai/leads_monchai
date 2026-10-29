@@ -210,6 +210,16 @@ globalThis.HallaisFonctions = {
       "image": "assets/captures/registre-phytosanitaire.webp",
       "proof": "Registre phytosanitaire · Données fictives de démonstration",
       "availability": "Selon les modules activés"
+    },
+    "degustation-visiteur": {
+      "title": "Une dégustation courte ou guidée",
+      "text": "La personne choisit une note rapide ou un parcours guidé : la cuvée, l’œil, les deux nez, la bouche, puis son avis. Ces réponses prolongent la rencontre au caveau.",
+      "href": "/oenotourisme.html",
+      "kind": "capture",
+      "image": "assets/captures/degustation-visiteur.png",
+      "portrait": true,
+      "proof": "Parcours visiteur · Capture du site de test · 29 octobre 2026",
+      "availability": "Selon activation du module dégustation"
     }
   },
   "places": {
@@ -243,9 +253,10 @@ globalThis.HallaisFonctions = {
       "label": "Le caveau",
       "slides": [
         "degustation-creation",
+        "degustation-visiteur",
         "degustation"
       ],
-      "intro": "Préparer les vins à faire découvrir et retrouver les retours après la rencontre."
+      "intro": "Préparer les vins à faire découvrir, accompagner la dégustation et retrouver les retours après la rencontre."
     },
     "jardin": {
       "label": "Le jardin",

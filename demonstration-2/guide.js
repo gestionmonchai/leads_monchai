@@ -1,6 +1,40 @@
 'use strict';
 (() => {
   const order = Object.freeze(['vignes','terrain','jardin','chai','bureau','caveau']);
+  // Lignes de pose dans les quatre paysages 1536 × 1024 : les coordonnées
+  // désignent les pieds, jamais le coin de la silhouette. Chaque alternative
+  // reste sur une toiture ou une allée, même quand les boutons prennent plus
+  // de place sur mobile.
+  const perches = {
+    vignes: [
+      ['allee',188,289,211,309], ['allee',267,421,295,446],
+      ['allee',365,480,391,488], ['allee',502,458,523,470]
+    ],
+    terrain: [
+      ['allee',1001,808,1034,826], ['allee',1074,590,1112,606],
+      ['muret',1359,699,1390,705], ['allee',1023,604,1043,614]
+    ],
+    jardin: [
+      ['allee',838,501,858,495], ['allee',949,560,970,548],
+      ['allee',787,596,813,608], ['allee',1015,575,1040,582],
+      ['allee',1119,596,1126,600]
+    ],
+    chai: [
+      ['toit',980,314,1004,322], ['toit',1168,402,1189,384],
+      ['toit',1269,455,1290,461], ['allee',1015,575,1040,610],
+      ['allee',1119,596,1126,600]
+    ],
+    bureau: [
+      ['toit',586,144,623,159], ['toit',673,183,690,188],
+      ['toit',470,258,496,249], ['terrasse',752,366,778,360],
+      ['allee',607,463,622,469], ['allee',568,463,582,474]
+    ],
+    caveau: [
+      ['toit',449,531,478,542], ['toit',600,570,625,559],
+      ['terrasse',545,754,564,749], ['terrasse',530,775,556,780],
+      ['terrasse',470,755,490,768]
+    ]
+  };
   const invitations = {
     terrain: 'Je vous attends au 1.1 pour la saisie mobile dans les vignes.',
     jardin: 'Direction les intrants : rejoignez-moi au 2.',
@@ -41,27 +75,43 @@
       function perch(id) {
         const bounds = canvas.getBoundingClientRect();
         const anchor = canvas.querySelector(`.map-pin[data-place="${id}"]`).getBoundingClientRect();
-        figure.style.setProperty('--halbert-height',`${Math.max(36,Math.min(56,bounds.width*.115))}px`);
-        const width = figure.offsetWidth, height = figure.offsetHeight;
+        figure.style.setProperty('--halbert-height',`${Math.max(36,Math.min(56,bounds.width*.115))*.9}px`);
+        const style=getComputedStyle(figure);
+        const width=parseFloat(style.width),height=parseFloat(style.height);
         const center = {x:(anchor.left+anchor.right)/2-bounds.left,y:(anchor.top+anchor.bottom)/2-bounds.top};
         const obstacles = [...canvas.querySelectorAll('.pin-number,.map-mc:not([hidden]),.map-film:not([hidden])')].map(node => {
           const r = node.getBoundingClientRect();
           return {left:r.left-bounds.left-2,top:r.top-bounds.top-2,right:r.right-bounds.left+2,bottom:r.bottom-bounds.top+2};
         });
         let best = null, bestScore = Infinity;
-        function consider(x,y) {
-          x = Math.max(3,Math.min(x,bounds.width-width-3));
-          y = Math.max(3,Math.min(y,bounds.height-height-3));
+        function consider(surface,footX,footY) {
+          const x=footX*bounds.width/1536-width/2;
+          // Le dessin du salut a sept pixels transparents sous les pieds
+          // pour 634 pixels de hauteur corporelle. Aligner les pieds au sol.
+          const y=footY*bounds.height/1024-height+height*7/634;
+          if (x<3 || y<3 || x+width>bounds.width-3 || y+height>bounds.height-3) return;
           let overlap = 0;
           for (const r of obstacles) overlap += Math.max(0,Math.min(x+width,r.right)-Math.max(x,r.left))*Math.max(0,Math.min(y+height,r.bottom)-Math.max(y,r.top));
           const distance = (x+width/2-center.x)**2+(y+height/2-center.y)**2;
           const score = overlap*1e6+distance;
-          if (score<bestScore) { bestScore=score;best={x,y}; }
+          if (score<bestScore) { bestScore=score;best={x,y,surface,footX,footY}; }
         }
-        for (let y=3;y<=bounds.height-height-3;y+=6) for (let x=3;x<=bounds.width-width-3;x+=6) consider(x,y);
-        consider(center.x-width/2,center.y-height-30);
+        for (const [surface,x1,y1,x2,y2] of perches[id]) {
+          for (let step=0;step<=20;step++) {
+            const t=step/20;
+            consider(surface,x1+(x2-x1)*t,y1+(y2-y1)*t);
+          }
+        }
+        // Conserver une pose physique même dans une taille de carte imprévue.
+        // Les boutons passent au-dessus du guide et restent cliquables.
+        if (!best) {
+          const [surface,footX,footY]=perches[id][0];
+          best={x:footX*bounds.width/1536-width/2,y:footY*bounds.height/1024-height+height*7/634,surface,footX,footY};
+        }
+        figure.dataset.perchSurface=best.surface;
+        figure.dataset.perchFoot=`${best.footX},${best.footY}`;
         measuredWidth=canvas.clientWidth;measuredHeight=canvas.clientHeight;
-        return best || {x:3,y:3};
+        return best;
       }
       function land() {
         stop(); point=perch(target); figure.style.transform=translate(point);

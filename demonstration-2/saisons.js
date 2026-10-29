@@ -1,6 +1,6 @@
 'use strict';
 // Domaine fictif ; les calendriers dépendent des vins, des terroirs et des années.
-globalThis.AulnesSaisons = [
+globalThis.HallaisSaisons = [
   {
     id:'hiver',label:'Hiver',place:'vignes',
     text:'Tailler et tirer les bois dans les rangs. Ouiller les barriques, goûter et essayer des assemblages au chai. Préparer les salons, prospecter et expédier les commandes : plusieurs métiers et plusieurs millésimes avancent ensemble.',

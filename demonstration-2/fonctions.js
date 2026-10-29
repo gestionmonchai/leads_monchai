@@ -1,5 +1,5 @@
 'use strict';
-globalThis.AulnesFonctions = {
+globalThis.HallaisFonctions = {
   "features": {
     "parcelles": {
       "title": "Parcelles",
@@ -83,27 +83,13 @@ globalThis.AulnesFonctions = {
       "availability": "Selon les modules activés"
     },
     "degustation": {
-      "title": "Les sessions de dégustation",
-      "text": "Préparer une sélection de vins, retrouver les sessions au caveau et les retours recueillis pendant les rencontres.",
+      "title": "Retrouver les sessions et les retours",
+      "text": "Consulter les dégustations organisées, leur état et les retours recueillis. La rencontre garde une place dans le suivi du domaine.",
       "href": "/oenotourisme.html",
       "kind": "capture",
       "availability": "Selon les modules activés",
       "image": "assets/captures/degustation-sessions.webp",
       "proof": "Capture historique du logiciel · Données de démonstration"
-    },
-    "degustation-retours": {
-      "title": "Garder une trace de la rencontre",
-      "text": "Partager l’accès à une dégustation et consulter les avis sur les vins présentés. Les retours prolongent la discussion ; ils ne constituent pas une commande.",
-      "href": "/oenotourisme.html",
-      "kind": "schema",
-      "availability": "Selon les modules activés",
-      "flow": [
-        "Vins présentés",
-        "Accès à la session",
-        "Avis des visiteurs",
-        "Retours à consulter"
-      ],
-      "proof": "Schéma explicatif · Parcours à titre d’exemple"
     },
     "annonce-vendanges": {
       "title": "Préparer l’équipe des vendanges",
@@ -149,41 +135,9 @@ globalThis.AulnesFonctions = {
       ],
       "proof": "Schéma explicatif · Parcours à titre d’exemple"
     },
-    "trace-produit": {
-      "title": "Entrer par le produit",
-      "text": "Dans le catalogue, ouvrir la fiche du vin puis son onglet Traçabilité pour retrouver son origine enregistrée. Cette capture montre le point d’entrée, pas le graphe lui-même.",
-      "href": "/stocks-tracabilite.html",
-      "kind": "capture",
-      "availability": "Selon les modules activés",
-      "image": "assets/captures/produits.webp",
-      "proof": "Écran Produits · Point d’entrée vers la fiche et sa traçabilité"
-    },
-    "trace-amont": {
-      "title": "Remonter à l’origine du vin",
-      "text": "Relier le produit à ses mises, aux lots et assemblages, puis aux parcelles et réceptions ou aux achats. Les liens absents restent signalés.",
-      "href": "/stocks-tracabilite.html",
-      "kind": "schema",
-      "availability": "Selon les modules activés",
-      "flow": [
-        "Parcelles, réceptions ou achats",
-        "Lots et assemblages",
-        "Mises et formats",
-        "Produit"
-      ],
-      "proof": "Schéma explicatif · Parcours à titre d’exemple"
-    },
-    "trace-transformations": {
-      "title": "Retrouver ce qui a été fait",
-      "text": "Suivre les opérations, assemblages et manipulations enregistrées. Les mises et lots commerciaux relient ensuite le vin aux produits et aux quantités.",
-      "href": "/stocks-tracabilite.html",
-      "kind": "capture",
-      "availability": "Selon les modules activés",
-      "image": "assets/captures/registre-manipulations.webp",
-      "proof": "Écran Registre des manipulations · Données de démonstration"
-    },
     "trace-aval": {
-      "title": "Suivre les sorties, les pièces et les manques",
-      "text": "Depuis les lots associés au produit, consulter les sorties, quantités, pièces et destinataires connus. Le dossier de lot rassemble amont, manipulations, aval et informations manquantes, avec export CSV ou PDF.",
+      "title": "Le dossier du lot, jusqu’aux sorties",
+      "text": "Depuis les lots liés au vin, retrouver les destinations connues, les quantités et les pièces. Le dossier rassemble aussi les opérations et les informations manquantes, avec export CSV ou PDF.",
       "href": "/stocks-tracabilite.html",
       "kind": "capture",
       "availability": "Selon les modules activés",
@@ -228,6 +182,34 @@ globalThis.AulnesFonctions = {
         "Confirmation par le domaine"
       ],
       "proof": "Projection · Aucune réservation connectée dans cette démo"
+    },
+    "trace-matiere": {
+      "title": "La traçabilité dans la fiche du vin",
+      "text": "Retrouver les parcelles d’origine, les vendanges, les lots techniques et les mises qui aboutissent au produit fini. Les liens permettent de passer d’une étape à son détail.",
+      "href": "/stocks-tracabilite.html",
+      "kind": "capture",
+      "image": "assets/captures/trace-produit-detail.png",
+      "proof": "Traçabilité matière · Extrait de fiche produit · Données de test",
+      "availability": "Selon les modules activés",
+      "wide": true
+    },
+    "degustation-creation": {
+      "title": "Préparer une dégustation",
+      "text": "Nommer la session et sélectionner les vins à faire découvrir au caveau, lors d’un salon ou d’une rencontre professionnelle.",
+      "href": "/oenotourisme.html",
+      "kind": "capture",
+      "image": "assets/captures/degustation-creation.jpeg",
+      "proof": "Créer une session de dégustation · Capture historique, données fictives",
+      "availability": "Selon les modules activés"
+    },
+    "phyto": {
+      "title": "Intrants et registre phytosanitaire",
+      "text": "Retrouver les produits utilisés, les parcelles, les dates et les quantités enregistrées dans les interventions. Filtrer le registre par année ou parcelle et préparer son export. Les données affichées sont fictives.",
+      "href": "/registre-phyto-numerique-2027.html",
+      "kind": "capture",
+      "image": "assets/captures/registre-phytosanitaire.webp",
+      "proof": "Registre phytosanitaire · Données fictives de démonstration",
+      "availability": "Selon les modules activés"
     }
   },
   "places": {
@@ -260,18 +242,17 @@ globalThis.AulnesFonctions = {
     "caveau": {
       "label": "Le caveau",
       "slides": [
-        "degustation",
-        "degustation-retours"
+        "degustation-creation",
+        "degustation"
       ],
-      "intro": "Accueillir les visiteurs, présenter les vins et conserver leurs retours."
+      "intro": "Préparer les vins à faire découvrir et retrouver les retours après la rencontre."
     },
     "jardin": {
       "label": "Le jardin",
       "slides": [
-        "annonce-vendanges",
-        "annonce-materiel"
+        "phyto"
       ],
-      "intro": "Dans la cour, préparer la prochaine équipe et les besoins de matériel avant les journées de récolte."
+      "intro": "Des produits aux interventions enregistrées : retrouver l’usage des intrants et le registre phytosanitaire."
     },
     "eau": {
       "label": "Le bassin",
@@ -283,21 +264,21 @@ globalThis.AulnesFonctions = {
     "recolte": {
       "label": "La récolte",
       "slides": [
+        "annonce-vendanges",
+        "annonce-materiel",
         "suivi-maturite",
         "vendanges"
       ],
-      "intro": "Des observations de maturité aux apports reçus au chai."
+      "intro": "Préparer l’équipe et le matériel, suivre la maturité, puis retrouver les apports reçus au chai."
     },
     "produits": {
       "label": "Du raisin à la bouteille",
       "slides": [
-        "trace-produit",
-        "trace-amont",
-        "trace-transformations",
+        "trace-matiere",
         "trace-aval",
         "api-catalogue"
       ],
-      "intro": "Un parcours de lecture des données enregistrées. La Roche et L’Aube restent fictives ; aucun historique réel ne leur est attribué."
+      "intro": "Un exemple de lecture du logiciel, de l’origine du vin au dossier du lot. Les captures utilisent des données d’essai, distinctes du Domaine Hallais."
     },
     "reservation": {
       "label": "Du site à l’accueil au domaine",

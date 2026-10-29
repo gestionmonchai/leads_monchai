@@ -23,3 +23,6 @@ Logo officiel Mon Chai réutilisé sans modification. Dix captures Mon Chai déj
 
 
 Complément usages du 29 octobre : captures Dégustation, Produits, Lots commerciaux et Registre des manipulations issues des images déjà publiques de Mon Chai, intactes. Vidéo annonces et poster du 26 octobre, données fictives, vidéo muette 26,57 s. Les schémas sont explicatifs et ne reproduisent pas une interface. Les captures exposant un QR, un ancien bouton de commande publique ou des compteurs incohérents ont été écartées.
+
+
+Domaine Hallais : nom d’exemple choisi par Denis. Extrait original Traçabilité matière retrouvé dans les captures du banc de septembre 2026, création de dégustation historique et registre phytosanitaire de démonstration repris sans retouche. Le logo Mon Chai est conservé entier, sans pastille MC ajoutée.

@@ -36,7 +36,6 @@ globalThis.MonChaiFonctions = {
         "Annonce partageable"
       ],
       "proof": "Schéma explicatif · Parcours à titre d’exemple",
-      "video": "annonces",
       "stage": "Préparer le matériel"
     },
     "annonce-vendanges": {
@@ -209,7 +208,7 @@ globalThis.MonChaiFonctions = {
     },
     "degustation-visiteur": {
       "title": "Une dégustation courte ou guidée",
-      "text": "La personne choisit une note rapide ou un parcours guidé : la cuvée, l’œil, les deux nez, la bouche, puis son avis. Ces réponses prolongent la rencontre au caveau.",
+      "text": "La personne choisit une note rapide ou un parcours guidé : observer le vin, découvrir ses arômes avant et après aération, goûter, puis donner son avis. Ces réponses prolongent la rencontre au caveau.",
       "href": "/oenotourisme.html",
       "kind": "capture",
       "image": "assets/captures/degustation-visiteur.png",
@@ -239,24 +238,24 @@ globalThis.MonChaiFonctions = {
       "stage": "Retrouver les interventions"
     },
     "trace-matiere": {
-      "title": "La traçabilité dans la fiche du vin",
+      "title": "La traçabilité dans une fiche de vin",
       "text": "Retrouver les parcelles d’origine, les vendanges, les lots techniques et les mises qui aboutissent au produit fini. Les liens permettent de passer d’une étape à son détail.",
       "href": "/stocks-tracabilite.html",
       "kind": "capture",
       "image": "assets/captures/trace-produit-fiche.png",
-      "proof": "Fiche produit · Onglet Traçabilité · Capture fournie",
+      "proof": "Exemple logiciel · Cabernet d’Anjou 2022 · Onglet Traçabilité",
       "availability": "Selon les modules activés",
       "wide": true,
       "stage": "Remonter à l’origine"
     },
     "trace-aval": {
-      "title": "Le dossier du lot, jusqu’aux sorties",
-      "text": "Depuis les lots liés au vin, retrouver les destinations connues, les quantités et les pièces. Le dossier rassemble aussi les opérations et les informations manquantes, avec export CSV ou PDF.",
+      "title": "Ouvrir le dossier d’un lot",
+      "text": "Depuis cette liste, choisir un lot puis ouvrir son dossier : destinations connues, quantités, pièces et opérations associées. Le dossier détaillé peut être exporté en CSV ou PDF.",
       "href": "/stocks-tracabilite.html",
       "kind": "capture",
       "availability": "Selon les modules activés",
       "image": "assets/captures/lots-commerciaux.webp",
-      "proof": "Écran Lots commerciaux · Entrée vers les destinations et le dossier",
+      "proof": "Liste des lots commerciaux · Point d’entrée vers le dossier détaillé",
       "stage": "Suivre les sorties"
     },
     "api-catalogue": {
@@ -288,8 +287,8 @@ globalThis.MonChaiFonctions = {
       "stage": "Recevoir les ventes"
     },
     "api-reservations": {
-      "title": "Les demandes de visite arrivent dans Mon Chai",
-      "text": "Recevoir la date souhaitée et le nombre de personnes depuis le site, vérifier les places et confirmer la visite dans Mon Chai. L’agenda, ses capacités et cette connexion restent à construire.",
+      "title": "Relier les demandes de visite à Mon Chai",
+      "text": "Une future connexion pourrait transmettre la date souhaitée et le nombre de personnes du site à Mon Chai. L’agenda, les capacités d’accueil et les confirmations restent à développer.",
       "href": "/contact.html",
       "kind": "schema",
       "availability": "À venir · Intégration API",
@@ -327,7 +326,7 @@ globalThis.MonChaiFonctions = {
     },
     "bureau": {
       "label": "2 · Le bureau",
-      "intro": "Préparer la prospection, vérifier ses disponibilités, proposer une sélection et suivre ce qui a été convenu.",
+      "intro": "Reprendre un contact, consulter stocks et règlements en cours, préparer une offre puis suivre les commandes.",
       "slides": [
         "clients",
         "mcp",
@@ -355,14 +354,14 @@ globalThis.MonChaiFonctions = {
     },
     "jardin": {
       "label": "5 · Le jardin",
-      "intro": "Retrouver les produits et les interventions enregistrées, avec leurs parcelles, dates et quantités.",
+      "intro": "Le jardin est un repère illustré pour présenter les intrants utilisés dans les vignes et les interventions du registre phytosanitaire.",
       "slides": [
         "phyto"
       ]
     },
     "produits": {
-      "label": "La Roche · Sa traçabilité",
-      "intro": "De l’origine du vin aux sorties du lot : deux lectures complémentaires. Les écrans présentés sont distincts des cuvées imaginaires du Domaine Mon Chai.",
+      "label": "La Roche · Comprendre la traçabilité",
+      "intro": "La capture montre un Cabernet d’Anjou 2022 de démonstration. Elle illustre le suivi d’un vin, pas l’historique de la cuvée fictive La Roche.",
       "slides": [
         "trace-matiere",
         "trace-aval"
@@ -388,8 +387,8 @@ globalThis.MonChaiFonctions = {
     "annonces": {
       "src": "/assets/video/creez-vos-annonces.mp4",
       "poster": "/assets/img/demo-annonces.webp",
-      "title": "Préparer son annonce.",
-      "context": "AUX VIGNES · PRÉPARER LES MOYENS",
+      "title": "Préparer l’équipe des vendanges.",
+      "context": "AUX VIGNES · LE RECRUTEMENT SAISONNIER",
       "caption": "27 secondes · Film sans son · Données fictives. Annonces : module pilote, selon activation.",
       "duration": "27 s",
       "steps": [
@@ -398,7 +397,7 @@ globalThis.MonChaiFonctions = {
         "Préciser les conditions et relire le récapitulatif.",
         "Confirmer la publication sur le banc de démonstration et consulter la page partageable."
       ],
-      "note": "Film du 26 octobre 2026. Aucune annonce réelle publiée pour ce tournage ; aucune diffusion vers un site tiers promise."
+      "note": "Démonstration du module de recrutement, filmée le 26 octobre 2026. La page d’annonce montrée utilise des données fictives."
     },
     "mcp": {
       "src": "/assets/video/monchai-mcp.mp4",
@@ -419,7 +418,7 @@ globalThis.MonChaiFonctions = {
       "src": "/assets/video/mon-chai-notes.mp4",
       "poster": "/assets/img/demo-mon-chai-notes.webp",
       "title": "Saisir, vérifier, envoyer.",
-      "context": "DANS LES RANGS · LE TRAVAIL SE NOTE",
+      "context": "SUR LE TÉLÉPHONE · LA SAISIE MOBILE",
       "caption": "24 secondes · Mon Chai Notes sur Android · Montage de captures, exemple de transfert de cave.",
       "duration": "24 s",
       "steps": [
@@ -428,7 +427,7 @@ globalThis.MonChaiFonctions = {
         "Compléter et vérifier la fiche de transfert.",
         "Valider l’envoi puis retrouver son statut dans Activité."
       ],
-      "note": "Montage de captures du 26 octobre 2026, pas un enregistrement continu. Exemple de transfert de cave ; aucune saisie n’est envoyée par le film."
+      "note": "Montage de captures Android du 26 octobre 2026, illustrant la dictée, la relecture et l’envoi d’un transfert de cave."
     }
   }
 };

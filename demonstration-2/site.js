@@ -1,8 +1,8 @@
 'use strict';
 (() => {
   const wines = {
-    roche: { name: 'La Roche', type: 'Rouge · 2025 · 75 cl', price: 1800, image: 'assets/bouteille-rouge.jpg', story: '#lieu-chai', profile: 'Fruit noir, épices douces, tanins souples.', pairing: 'Légumes rôtis, champignons, cuisine mijotée.', service: '16–18 °C', description: 'Dans ce scénario, La Roche se construit avec le suivi des lots, les dégustations et les essais d’assemblage. Choisir les proportions engage un goût recherché et des volumes à préparer. Retrouvez au chai le travail qui précède cette bouteille fictive.' },
-    aube: { name: 'L’Aube', type: 'Blanc · 2025 · 75 cl', price: 1600, image: 'assets/bouteille-blanc.jpg', story: '#lieu-vignes', profile: 'Agrumes, fleurs blanches, fraîcheur.', pairing: 'Poisson grillé, fromage frais, légumes croquants.', service: '10–12 °C', description: 'Ce blanc imaginaire relie la fraîcheur recherchée dans le verre au travail dans les vignes et au choix du moment de récolte. Retournez au lieu pour retrouver le début de ce récit.' }
+    roche: { name: 'La Roche', type: 'Rouge · 2025 · 75 cl', price: 1800, image: 'assets/bouteille-rouge.jpg', story: '#lieu-chai', profile: 'Fruit noir, épices douces, tanins souples.', pairing: 'Légumes rôtis, champignons, cuisine mijotée.', service: '16–18 °C', description: 'La Roche raconte le travail du chai : goûter les lots, essayer des assemblages et accompagner l’élevage. Retrouvez ces choix dans la visite du chai.' },
+    aube: { name: 'L’Aube', type: 'Blanc · 2025 · 75 cl', price: 1600, image: 'assets/bouteille-blanc.jpg', story: '#lieu-vignes', profile: 'Agrumes, fleurs blanches, fraîcheur.', pairing: 'Poisson grillé, fromage frais, légumes croquants.', service: '10–12 °C', description: 'L’Aube relie le vin aux observations dans les vignes : suivre la maturité, choisir la récolte et préserver l’équilibre recherché. Revenez dans les rangs pour retrouver le début du parcours.' }
   };
   const money = cents => new Intl.NumberFormat('fr-FR', { style: 'currency', currency: 'EUR' }).format(cents / 100);
   const cart = new Map(); // Démonstration éphémère : ni stockage local ni service distant.
@@ -62,7 +62,7 @@
     document.querySelector('.cart-summary').hidden = count === 0;
     if (!count) {
       const empty = make('div', 'empty-cart');
-      empty.append(make('p', '', 'Votre découverte commence ici.'), make('p', '', 'Ajoutez une cuvée pour essayer le panier.'));
+      empty.append(make('p', '', 'Votre panier est vide.'), make('p', '', 'Ajoutez une cuvée pour essayer le parcours de commande.'));
       list.append(empty);
     }
     for (const [id, quantity] of cart) {
@@ -195,7 +195,7 @@
     const wishedDate = new Date(`${visitDate.value}T12:00:00`);
     const formatted = new Intl.DateTimeFormat('fr-FR', { day: 'numeric', month: 'long', year: 'numeric' }).format(wishedDate);
     const result = document.querySelector('#visit-result');
-    result.replaceChildren(make('strong', '', 'Votre visite, pour l’exemple.'), make('p', '', `${experience.name} · ${experience.duration} · ${formatted} · ${guests} adulte${guests > 1 ? 's' : ''} · ${money(guests * experience.price)} au tarif illustratif.`), make('p', '', 'Ceci est une simulation : aucune réservation n’a été effectuée et aucune information n’a été envoyée. Sur votre futur site, la demande pourrait être confirmée par le domaine.'));
+    result.replaceChildren(make('strong', '', 'Votre demande, pour l’exemple.'), make('p', '', `${experience.name} · ${experience.duration} · ${formatted} · ${guests} adulte${guests > 1 ? 's' : ''} · ${money(guests * experience.price)} au tarif illustratif.`), make('p', '', 'Ceci est une simulation : aucune réservation n’a été effectuée et aucune information n’a été envoyée. Sur votre futur site, la demande pourrait être confirmée par le domaine.'));
     result.hidden = false;
     result.scrollIntoView({ block: 'nearest' });
   });
@@ -371,7 +371,9 @@
     const videoButton=document.querySelector('#mc-play-video');
     videoButton.hidden=!feature.video;
     if(feature.video){videoButton.dataset.film=feature.video;videoButton.textContent=`▶ Voir la vidéo · ${functions.videos[feature.video].duration}`;}
-    document.querySelector('#mc-discover').href=feature.href;
+    const discover=document.querySelector('#mc-discover');
+    discover.href=feature.href;
+    discover.textContent=feature.href==='/contact.html'?'En parler avec Mon Chai ↗':'Découvrir ces fonctions ↗';
     document.querySelector('#mc-count').textContent=`${mcIndex+1} / ${place.slides.length}`;
     document.querySelector('#mc-prev').disabled=mcIndex===0;
     document.querySelector('#mc-next').disabled=mcIndex===place.slides.length-1;

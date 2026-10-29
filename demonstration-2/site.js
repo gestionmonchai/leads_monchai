@@ -610,6 +610,7 @@
     const match = /^#lieu-([a-z]+)$/.exec(location.hash.replace('lieu-maison','lieu-bureau').replace('lieu-recolte','lieu-terrain'));
     if (match && Object.hasOwn(places,match[1])) showPlace(match[1],{address:false,focus});
     else if (!location.hash && index >= 0) showPlace(steps[selectedStep].place,{address:false,focus});
+    else if (!location.hash && selectedStep !== null) showPlace('vignes',{address:false,focus:false});
     else resetMap({address:false,focus:false});
   }
   document.querySelectorAll('[data-place]').forEach(link => link.addEventListener('click',event => {

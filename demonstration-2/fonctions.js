@@ -1,4 +1,5 @@
 'use strict';
+
 globalThis.MonChaiFonctions = {
   "features": {
     "parcelles": {
@@ -134,9 +135,9 @@ globalThis.MonChaiFonctions = {
       "proof": "Schéma explicatif · Préparation de la prospection"
     },
     "mcp": {
-      "title": "Préparer l’échange avec ses données",
-      "text": "Avant de composer une sélection pour un client, consulter les disponibilités. Dans ce film, Claude interroge Mon Chai sur les stocks puis les impayés ; il ne crée ni dégustation ni commande.",
-      "stage": "Vérifier les disponibilités",
+      "title": "Vos stocks et vos impayés, dans Claude",
+      "text": "Quelles cuvées restent disponibles ? Quelles factures attendent un règlement ? Posez vos questions dans Claude : le connecteur MCP consulte les données de Mon Chai et restitue les stocks et les impayés. La vidéo montre ces deux consultations, en 33 secondes.",
+      "stage": "Consulter stocks et impayés",
       "kind": "capture",
       "image": "/assets/img/demo-mcp.webp",
       "video": "mcp",
@@ -402,9 +403,9 @@ globalThis.MonChaiFonctions = {
     "mcp": {
       "src": "/assets/video/monchai-mcp.mp4",
       "poster": "/assets/img/demo-mcp.webp",
-      "title": "Préparer le rendez-vous.",
-      "context": "AU BUREAU · AVANT LA RENCONTRE CLIENT",
-      "caption": "33 secondes · Mon Chai dans Claude · Consultation des stocks et des impayés.",
+      "title": "Interrogez vos stocks et vos impayés.",
+      "context": "MON CHAI DANS CLAUDE · CONNECTEUR MCP",
+      "caption": "33 secondes · Deux consultations dans Claude : les stocks de Mon Chai, puis les factures impayées.",
       "duration": "33 s",
       "steps": [
         "Demander quelles cuvées sont presque épuisées.",
@@ -412,7 +413,7 @@ globalThis.MonChaiFonctions = {
         "Poser une seconde question sur les impayés.",
         "Retrouver les factures et montants concernés dans la réponse."
       ],
-      "note": "Film existant du connecteur MCP en lecture seule. Il ne crée pas de dégustation ni de commande ; son visionnage n’ouvre pas de connexion à vos données."
+      "note": "Connecteur MCP en lecture seule, selon activation. Les réponses utilisent les données consultées dans Mon Chai ; le film présente un exemple d’utilisation."
     },
     "notes": {
       "src": "/assets/video/mon-chai-notes.mp4",

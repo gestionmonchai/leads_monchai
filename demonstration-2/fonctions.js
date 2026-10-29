@@ -315,7 +315,7 @@ globalThis.MonChaiFonctions = {
       ]
     },
     "terrain": {
-      "label": "1.1 · Saisir sur le terrain",
+      "label": "1.1 · Les vignes · saisie mobile",
       "intro": "Une opération faite doit encore devenir une information exploitable par le domaine. Mon Chai Notes accompagne ce passage de la dictée à une saisie vérifiée. Les captures montrent un transfert de cave.",
       "slides": [
         "notes-dictee",
@@ -324,14 +324,11 @@ globalThis.MonChaiFonctions = {
         "notes-activite"
       ]
     },
-    "bureau": {
-      "label": "2 · Le bureau",
-      "intro": "Entre les rencontres et les commandes, il faut pouvoir reprendre ce qui a été convenu. Mon Chai vous aide à préparer la suite avec les contacts, les vins disponibles et les offres enregistrées.",
+    "jardin": {
+      "label": "2 · Les intrants",
+      "intro": "Ce repère présente les intrants utilisés dans les vignes. Ici, l’enjeu est de pouvoir reprendre le suivi des interventions à partir des informations enregistrées.",
       "slides": [
-        "clients",
-        "mcp",
-        "devis",
-        "commandes"
+        "phyto"
       ]
     },
     "chai": {
@@ -343,20 +340,23 @@ globalThis.MonChaiFonctions = {
         "analyses-oenologiques"
       ]
     },
+    "bureau": {
+      "label": "4 · Le bureau",
+      "intro": "Entre les rencontres et les commandes, il faut pouvoir reprendre ce qui a été convenu. Mon Chai vous aide à préparer la suite avec les contacts, les vins disponibles et les offres enregistrées.",
+      "slides": [
+        "clients",
+        "mcp",
+        "devis",
+        "commandes"
+      ]
+    },
     "caveau": {
-      "label": "4 · Le caveau",
+      "label": "5 · Le caveau",
       "intro": "Après une rencontre au caveau, il reste à retrouver les vins goûtés et les avis. Mon Chai organise la session de dégustation, le parcours du visiteur et les retours.",
       "slides": [
         "degustation-creation",
         "degustation-visiteur",
         "degustation"
-      ]
-    },
-    "jardin": {
-      "label": "5 · Le jardin",
-      "intro": "Le jardin est un repère illustré pour les intrants viticoles. Ici, l’enjeu est de pouvoir reprendre le suivi des interventions à partir des informations enregistrées.",
-      "slides": [
-        "phyto"
       ]
     },
     "produits": {

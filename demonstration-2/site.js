@@ -201,8 +201,8 @@
   });
   // Les lieux existent aussi en HTML : les mêmes ancres fonctionnent sans script.
   const places = {
-    vignes: [351, 185], terrain: [1088, 682], bureau: [616, 242],
-    chai: [1054, 349], caveau: [512, 556], jardin: [800, 544]
+    vignes: [351, 185], terrain: [1088, 682], jardin: [800, 544],
+    chai: [1054, 349], bureau: [616, 242], caveau: [512, 556]
   };
   const steps = globalThis.MonChaiSaisons;
   const panel = document.querySelector('#story-panel');
@@ -237,6 +237,7 @@
   const moveTo = node => node.scrollIntoView({ block:'start', behavior:reducedMotion.matches ? 'instant' : 'smooth' });
 
   const canvas = document.querySelector('.map-canvas');
+  const guide = globalThis.MonChaiGuide.create({canvas,motionAllowed:()=>!motionPaused && !reducedMotion.matches && !document.hidden && mapVisible});
   const landscape = canvas.querySelector(':scope > img');
   const baseAlt = landscape.dataset.overviewAlt || landscape.alt;
   const landscapeStatus = document.querySelector('#landscape-status');
@@ -307,7 +308,9 @@
     canvas.dataset.compact=String(compact);
     const centers=Object.entries(places).map(([id,p])=>({id,x:p[0]/1536*width,y:p[1]/1024*height}));
     const obstacles=centers.map(p=>({...p,w:44,h:44}));
-    const buttons=[...canvas.querySelectorAll('[data-mc], [data-map-film]')];
+    // Priorité spatiale conservée, indépendante de l’ordre de tabulation.
+    const placementOrder=['vignes','bureau','chai','caveau','jardin','terrain','film'];
+    const buttons=[...canvas.querySelectorAll('[data-mc], [data-map-film]')].sort((a,b)=>placementOrder.indexOf(a.dataset.mc||'film')-placementOrder.indexOf(b.dataset.mc||'film'));
     for (const button of buttons) {
       const film=button.hasAttribute('data-map-film');
       const id=film?'bureau':button.dataset.mc;
@@ -328,6 +331,7 @@
       button.style.left=`${x}px`;button.style.top=`${y}px`;
       obstacles.push({x,y,w,h});
     }
+    guide.reposition();
   }
 
   function positionPopover() {
@@ -386,6 +390,7 @@
   mcScreen.addEventListener('error',()=>{ mcScreen.hidden=true; mcImageStatus.textContent='Capture indisponible. Essayez le lien « Agrandir la capture ».'; positionPopover(); });
   document.querySelectorAll('[data-mc]').forEach(button => button.addEventListener('click',()=>{
     mcPlace=button.dataset.mc;
+    guide.advance(mcPlace);
     mcIndex=0;
     mcTrigger=button;
     renderMc();
@@ -486,6 +491,7 @@
   function updateMotion() {
     const active = selectedStep !== null;
     const running = active && !motionPaused && !reducedMotion.matches && !document.hidden && mapVisible;
+    guide.syncMotion();
     scene.dataset.running = String(running);
     scene.dataset.paused = String(motionPaused || reducedMotion.matches);
     sceneControls.hidden = !active;
@@ -553,7 +559,7 @@
     positionMc();
     updateMotion();
   }
-  function showPlace(place, { address=true, focus=true, reveal=false } = {}) {
+  function showPlace(place, { address=true, focus=true, reveal=false, advanceGuide=false } = {}) {
     if (!Object.hasOwn(places,place)) return;
     selectedPlace = place;
     welcome.hidden = true;
@@ -569,6 +575,7 @@
     });
     applySeason();
     if (address) setAddress(place);
+    if (advanceGuide) guide.advance(place);
     if (focus) {
       document.querySelector(`#lieu-${place} h2`).focus({preventScroll:true});
       const bounds = panel.getBoundingClientRect();
@@ -611,14 +618,14 @@
     const index = steps.findIndex(step => step.id === season);
     selectedStep = season === 'ensemble' ? null : index < 0 ? defaultStep : index;
     const match = /^#lieu-([a-z]+)$/.exec(location.hash.replace('lieu-maison','lieu-bureau').replace('lieu-recolte','lieu-terrain'));
-    if (match && Object.hasOwn(places,match[1])) showPlace(match[1],{address:false,focus});
+    if (match && Object.hasOwn(places,match[1])) showPlace(match[1],{address:false,focus,advanceGuide:true});
     else if (!location.hash && index >= 0) showPlace(steps[selectedStep].place,{address:false,focus});
     else if (!location.hash && selectedStep !== null) showPlace('vignes',{address:false,focus:false});
     else resetMap({address:false,focus:false});
   }
   document.querySelectorAll('[data-place]').forEach(link => link.addEventListener('click',event => {
     event.preventDefault();
-    showPlace(link.dataset.place,{reveal:Boolean(link.closest('.wine-card'))});
+    showPlace(link.dataset.place,{reveal:Boolean(link.closest('.wine-card')),advanceGuide:true,focus:!(smallScreen.matches && link.closest('.map-canvas'))});
   }));
   document.querySelectorAll('[data-close-place]').forEach(button => button.addEventListener('click',() => resetMap()));
   document.querySelectorAll('[data-step]').forEach(button => button.addEventListener('click',() => chooseSeason(Number(button.dataset.step))));
@@ -646,4 +653,5 @@
   renderCart();
   readRoute({focus:Boolean(location.hash.startsWith('#lieu-'))});
   applySeason();
+  guide.start(selectedPlace || 'vignes');
 })();

@@ -24,6 +24,13 @@ assert.match(html, /Cette démo n’est pas connectée au logiciel/, 'Aucune con
 assert.doesNotMatch(js, /\b(?:fetch|XMLHttpRequest|sendBeacon|localStorage|sessionStorage|WebSocket)\b/, 'La démo ne transmet ni ne persiste de données');
 assert.doesNotMatch(html, /<form\b[^>]*\baction\s*=/, 'Aucun destinataire de formulaire dans une simulation');
 if (folderName === 'demonstration-2') {
+  assert.doesNotMatch(html, /class="(?:site-header|demo-bar|menu-toggle)"/, 'La carte ouvre la page sans en-tête');
+  const sectionOrder = ['domaine','cuvees','rencontre','monchai'].map(id=>html.indexOf(`id="${id}"`));
+  assert.ok(sectionOrder.every((pos,i)=>pos>=0 && (i===0 || pos>sectionOrder[i-1])), 'Ordre du parcours attendu');
+  for (const experience of ['balade','chai','assemblage']) assert.match(html, new RegExp(`data-visit="${experience}"`));
+  assert.match(html, /id="visit-experience"/);
+  assert.equal([...html.matchAll(/data-cart=""/g)].length, 1, 'Un panier près des vins');
+  for (const photo of ['bouteille-rouge.jpg','bouteille-blanc.jpg']) assert.ok(fs.existsSync(path.join(folder,'assets',photo)));
   const seasonSource = fs.readFileSync(path.join(folder, 'saisons.js'), 'utf8');
   assert.doesNotMatch(seasonSource, /\b(?:fetch|XMLHttpRequest|sendBeacon|localStorage|sessionStorage|WebSocket)\b/);
   const sandbox = {};

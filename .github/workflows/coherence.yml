@@ -35,3 +35,9 @@ jobs:
           node --check demonstration-2/saisons.js
           node --check demonstration-2/fonctions.js
           node outils/verifier-demonstration.cjs . demonstration-2
+          node --check demonstration-2-1/site.js
+          node --check demonstration-2-1/guide.js
+          node --check demonstration-2-1/fonctions.js
+          node --check demonstration-2-1/saisons.js
+          node outils/verifier-demonstration.cjs . demonstration-2-1
+          node outils/verifier-demonstration21.cjs .

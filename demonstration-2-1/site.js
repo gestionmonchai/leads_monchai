@@ -1,0 +1,693 @@
+'use strict';
+(() => {
+  const wines = {
+    roche: { name: 'La Roche', type: 'Rouge · 2025 · 75 cl', price: 1800, image: '../demonstration-2/assets/bouteille-rouge.jpg', story: '#lieu-chai', profile: 'Fruit noir, épices douces, tanins souples.', pairing: 'Légumes rôtis, champignons, cuisine mijotée.', service: '16–18 °C', description: 'La Roche raconte le travail du chai : goûter les lots, essayer des assemblages et accompagner l’élevage. Retrouvez ces choix dans la visite du chai.' },
+    aube: { name: 'L’Aube', type: 'Blanc · 2025 · 75 cl', price: 1600, image: '../demonstration-2/assets/bouteille-blanc.jpg', story: '#lieu-vignes', profile: 'Agrumes, fleurs blanches, fraîcheur.', pairing: 'Poisson grillé, fromage frais, légumes croquants.', service: '10–12 °C', description: 'L’Aube relie le vin aux observations dans les vignes : suivre la maturité, choisir la récolte et préserver l’équilibre recherché. Revenez dans les rangs pour retrouver le début du parcours.' }
+  };
+  const money = cents => new Intl.NumberFormat('fr-FR', { style: 'currency', currency: 'EUR' }).format(cents / 100);
+  const cart = new Map(); // Démonstration éphémère : ni stockage local ni service distant.
+  const cartDialog = document.querySelector('#cart-dialog');
+  const productDialog = document.querySelector('#product-dialog');
+  const visitDialog = document.querySelector('#visit-dialog');
+  const mcDialog = document.querySelector('#mc-dialog');
+  const filmDialog = document.querySelector('#film-dialog');
+  const storyDialog=document.querySelector('#story-dialog');
+  const zoomDialog=document.querySelector('#zoom-dialog');
+  const dialogs = [cartDialog, productDialog, visitDialog, mcDialog, filmDialog, storyDialog, zoomDialog];
+  const lastFocus = new WeakMap();
+  const toast = document.querySelector('.toast');
+  let toastTimer;
+  let activeWine = null;
+
+  function announce(message) {
+    clearTimeout(toastTimer);
+    toast.textContent = message;
+    toast.hidden = false;
+    toastTimer = setTimeout(() => { toast.hidden = true; }, 3500);
+  }
+  function open(dialog, trigger) {
+    for (const other of dialogs) if (other.open) other.close();
+    lastFocus.set(dialog, trigger || document.activeElement);
+    dialog.showModal();
+  }
+  for (const dialog of dialogs) {
+    dialog.addEventListener('close', () => {
+      if (dialogs.some(other=>other!==dialog && other.open)) return;
+      const trigger = lastFocus.get(dialog);
+      if (trigger && trigger.isConnected && !trigger.hidden && trigger.checkVisibility()) trigger.focus({ preventScroll: true });
+      else if (dialog === filmDialog && trigger?.hasAttribute("data-map-film")) document.querySelector('.map-pin[data-place="bureau"]')?.focus({preventScroll:true});
+      else if (dialog === mcDialog && trigger?.dataset.mc) document.querySelector(`.map-pin[data-place="${trigger.dataset.mc}"]`)?.focus({preventScroll:true});
+    });
+    dialog.querySelectorAll('[data-close]').forEach(button => button.addEventListener('click', () => dialog.close()));
+    dialog.addEventListener('click', event => {
+      if (event.target !== dialog) return;
+      const r = dialog.getBoundingClientRect();
+      if (event.clientX < r.left || event.clientX > r.right || event.clientY < r.top || event.clientY > r.bottom) dialog.close();
+    });
+  }
+  function make(tag, className, text) {
+    const node = document.createElement(tag);
+    if (className) node.className = className;
+    if (text !== undefined) node.textContent = text;
+    return node;
+  }
+  function invalidateOrder() {
+    const result = document.querySelector('#order-result');
+    result.hidden = true;
+    result.textContent = '';
+  }
+  function renderCart() {
+    const count = [...cart.values()].reduce((sum, q) => sum + q, 0);
+    document.querySelectorAll('[data-cart-count]').forEach(node => { node.textContent = count; });
+    document.querySelector('[data-cart]').setAttribute('aria-label', `Panier, ${count} bouteille${count > 1 ? 's' : ''}`);
+    const list = document.querySelector('#cart-lines');
+    list.replaceChildren();
+    document.querySelector('.cart-summary').hidden = count === 0;
+    if (!count) {
+      const empty = make('div', 'empty-cart');
+      empty.append(make('p', '', 'Votre panier est vide.'), make('p', '', 'Ajoutez une cuvée pour essayer le parcours de commande.'));
+      list.append(empty);
+    }
+    for (const [id, quantity] of cart) {
+      const wine = wines[id];
+      const line = make('div', 'cart-line');
+      const image = make('img');
+      image.src = wine.image;
+      image.alt = '';
+      image.width = 45;
+      image.height = 110;
+      const info = make('div');
+      const title = make('div', 'cart-line-title');
+      title.append(make('h3', '', wine.name), make('span', 'cart-line-price', money(wine.price * quantity)));
+      const row = make('div', 'quantity-row');
+      const controls = make('div', 'quantity-control');
+      const less = make('button', '', '−');
+      less.type = 'button';
+      less.setAttribute('aria-label', `Retirer une bouteille de ${wine.name}`);
+      const output = make('output', '', String(quantity));
+      output.setAttribute('aria-label', `Quantité de ${wine.name}`);
+      const more = make('button', '', '+');
+      more.type = 'button';
+      more.setAttribute('aria-label', `Ajouter une bouteille de ${wine.name}`);
+      more.disabled = quantity >= 24;
+      const remove = make('button', 'remove-line', 'Retirer');
+      remove.type = 'button';
+      remove.setAttribute('aria-label', `Retirer ${wine.name} du panier`);
+      const change = (next, focusLabel) => {
+        if (next <= 0) cart.delete(id); else cart.set(id, Math.min(next, 24));
+        invalidateOrder();
+        renderCart();
+        const focus = [...list.querySelectorAll('button')].find(button => button.getAttribute('aria-label') === focusLabel && !button.disabled);
+        (focus || cartDialog.querySelector('[data-close]')).focus();
+        announce(next <= 0 ? `${wine.name} retiré du panier.` : `${wine.name} : ${Math.min(next, 24)} bouteille${next > 1 ? 's' : ''}.`);
+      };
+      less.addEventListener('click', () => change(quantity - 1, less.getAttribute('aria-label')));
+      more.addEventListener('click', () => change(quantity + 1, more.getAttribute('aria-label')));
+      remove.addEventListener('click', () => change(0, ''));
+      controls.append(less, output, more);
+      row.append(controls, remove);
+      info.append(title, make('p', 'cart-line-type', `${wine.type} · ${money(wine.price)} / bouteille`), row);
+      line.append(image, info);
+      list.append(line);
+    }
+    const total = [...cart.entries()].reduce((sum, [id, q]) => sum + wines[id].price * q, 0);
+    document.querySelector('#cart-total').textContent = money(total);
+  }
+  function addWine(id) {
+    if (!Object.hasOwn(wines, id)) return;
+    const quantity = cart.get(id) || 0;
+    if (quantity >= 24) { announce('La démonstration est limitée à 24 bouteilles par cuvée.'); return; }
+    cart.set(id, quantity + 1);
+    invalidateOrder();
+    renderCart();
+    announce(`${wines[id].name} ajouté au panier. ${quantity + 1} bouteille${quantity > 0 ? 's' : ''} de cette cuvée.`);
+  }
+  document.querySelectorAll('[data-add]').forEach(button => button.addEventListener('click', () => addWine(button.dataset.add)));
+  document.querySelector('[data-cart]').addEventListener('click', event => { renderCart(); open(cartDialog, event.currentTarget); });
+  document.querySelectorAll('[data-detail]').forEach(button => button.addEventListener('click', () => {
+    activeWine = button.dataset.detail;
+    const wine = wines[activeWine];
+    const image = document.querySelector('#product-image');
+    image.src = wine.image;
+    image.alt = `Photographie de bouteille illustrant la cuvée fictive ${wine.name}`;
+    document.querySelector('#product-title').textContent = wine.name;
+    document.querySelector('#product-type').textContent = wine.type;
+    document.querySelector('#product-description').textContent = wine.description;
+    document.querySelector('#product-story').href = wine.story;
+    document.querySelector('#product-profile').textContent = wine.profile;
+    document.querySelector('#product-pairing').textContent = wine.pairing;
+    document.querySelector('#product-service').textContent = wine.service;
+    document.querySelector('.product-disclaimer').textContent = 'Cuvée fictive · Achat simulé';
+    const price = document.querySelector('#product-price');
+    price.replaceChildren(document.createTextNode(`${money(wine.price)} `), make('small', '', 'TTC / bouteille de 75 cl'));
+    document.querySelector('#product-add').setAttribute('aria-label', `Ajouter ${wine.name} au panier`);
+    open(productDialog, button);
+  }));
+  document.querySelector('#product-add').addEventListener('click', () => {
+    addWine(activeWine);
+    const result = document.querySelector('.product-disclaimer');
+    result.textContent = `${wines[activeWine].name} : ${cart.get(activeWine)} bouteille(s) dans votre panier simulé.`;
+    result.setAttribute('role', 'status');
+  });
+  document.querySelector('#product-story').addEventListener('click', event => {
+    event.preventDefault();
+    const place = event.currentTarget.hash.replace('#lieu-', '');
+    productDialog.close();
+    requestAnimationFrame(() => {
+      showPlace(place, { focus: true, reveal: true });
+    });
+  });
+  document.querySelector('#simulate-order').addEventListener('click', () => {
+    const result = document.querySelector('#order-result');
+    result.replaceChildren(make('strong', '', 'Vous venez d’essayer le parcours de commande.'), document.createTextNode('Sur votre futur site, cette étape pourrait transmettre une demande au domaine ou mener à un paiement. Ici, aucune commande n’a été envoyée et rien n’a été débité.'));
+    result.hidden = false;
+    result.scrollIntoView({ block: 'nearest' });
+  });
+
+  // La visite commence directement sur la carte, sans menu supérieur.
+  const experiences = {
+    balade: {name:'Balade & dégustation', duration:'1 h 30', price:1800},
+    chai: {name:'Du chai au verre', duration:'1 h', price:1200},
+    assemblage: {name:'Autour de l’assemblage', duration:'2 h', price:3500}
+  };
+  const visitExperience = document.querySelector('#visit-experience');
+  function refreshVisit() {
+    const experience = experiences[visitExperience.value];
+    document.querySelector('#visit-summary').textContent = `${experience.name} · ${experience.duration} · ${money(experience.price)} par adulte, tarif fictif.`;
+    document.querySelector('#visit-total').textContent = money(Number(document.querySelector('#visit-guests').value) * experience.price);
+    document.querySelector('#visit-result').hidden = true;
+  }
+  visitExperience.addEventListener('change', refreshVisit);
+  refreshVisit();
+  const visitDate = document.querySelector('#visit-date');
+  const date = new Date();
+  const minimum = new Date(date.getFullYear(), date.getMonth(), date.getDate() + 1);
+  const iso = d => `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
+  visitDate.min = iso(minimum);
+  document.querySelectorAll('[data-visit]').forEach(button => button.addEventListener('click', event => { visitExperience.value = button.dataset.visit; refreshVisit(); open(visitDialog, event.currentTarget); }));
+  document.querySelector('#visit-guests').addEventListener('change', event => {
+    refreshVisit();
+  });
+  visitDate.addEventListener('input', () => { document.querySelector('#visit-result').hidden = true; });
+  document.querySelector('#visit-form').addEventListener('submit', event => {
+    event.preventDefault();
+    const form = event.currentTarget;
+    if (!form.reportValidity()) return;
+    const experience = experiences[visitExperience.value];
+    const guests = Number(document.querySelector('#visit-guests').value);
+    const wishedDate = new Date(`${visitDate.value}T12:00:00`);
+    const formatted = new Intl.DateTimeFormat('fr-FR', { day: 'numeric', month: 'long', year: 'numeric' }).format(wishedDate);
+    const result = document.querySelector('#visit-result');
+    result.replaceChildren(make('strong', '', 'Votre demande, pour l’exemple.'), make('p', '', `${experience.name} · ${experience.duration} · ${formatted} · ${guests} adulte${guests > 1 ? 's' : ''} · ${money(guests * experience.price)} au tarif illustratif.`), make('p', '', 'Ceci est une simulation : aucune réservation n’a été effectuée et aucune information n’a été envoyée. Sur votre futur site, la demande pourrait être confirmée par le domaine.'));
+    result.hidden = false;
+    result.scrollIntoView({ block: 'nearest' });
+  });
+  // Les lieux existent aussi en HTML : les mêmes ancres fonctionnent sans script.
+  const places = {
+    vignes: [351, 185], terrain: [1088, 682], jardin: [265, 430],
+    chai: [1054, 349], bureau: [616, 242], caveau: [512, 556]
+  };
+  const steps = globalThis.MonChaiSaisons;
+  const panel = document.querySelector('#story-panel');
+  const directory = document.querySelector('.places-directory');
+  // Le répertoire reste sous la carte, hors de la fiche modale.
+  const toolbar = document.querySelector('.story-toolbar');
+  const welcome = document.querySelector('#panel-welcome');
+  const tourContext = document.querySelector('#tour-context');
+  const tourControls = document.querySelector('.tour-controls');
+  const backMap = document.querySelector('.back-map');
+  const scene = document.querySelector('.map-area');
+  const particles = document.querySelector('.season-particles');
+  const sceneControls = document.querySelector('.scene-controls');
+  const pauseButton = document.querySelector('#pause-season');
+  const seasonStatus = document.querySelector('#season-status');
+  const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');
+  const smallScreen = matchMedia('(max-width:680px)');
+  const baseStories = new Map([...document.querySelectorAll('[data-story]')].map(article => [article.dataset.story, {
+    title: article.querySelector('h2').innerHTML,
+    paragraphs: [...article.querySelectorAll(':scope > p:not(.place-index)')].map(p => p.textContent),
+    people: article.querySelector('.people-note p').textContent,
+    peopleTitle: article.querySelector('.people-note h3').textContent
+  }]));
+  const baseSaas = document.querySelector('#saas-season').textContent;
+  let selectedPlace = null;
+  const defaultStep = steps.findIndex(step => step.id === 'automne');
+  let selectedStep = defaultStep;
+  let lastRoute = '';
+  let drawnSeason = null;
+  let motionPaused = false;
+  let mapVisible = true;
+  const moveTo = node => node.scrollIntoView({ block:'start', behavior:reducedMotion.matches ? 'instant' : 'smooth' });
+
+  const canvas = document.querySelector('.map-canvas');
+  const guide = globalThis.MonChaiGuide.create({canvas,motionAllowed:()=>selectedStep!==null && !motionPaused && !reducedMotion.matches && !document.hidden && mapVisible});
+  const landscape = canvas.querySelector(':scope > img');
+  const baseAlt = landscape.dataset.overviewAlt || landscape.alt;
+  const landscapeStatus = document.querySelector('#landscape-status');
+  const retryLandscape = document.querySelector('#retry-landscape');
+  const landscapeAlts = {
+    hiver: 'Le domaine en hiver : ceps sans feuilles, neige sur les rangs, les terrasses et les toits, arbres défeuillés.',
+    printemps: 'Le domaine au printemps : jeunes pousses vert tendre dans les rangs et feuillage naissant autour des bâtiments.',
+    ete: 'Le domaine en été : vignes au feuillage vert abondant et terrasses ensoleillées.',
+    automne: 'Le domaine en automne : rangs de vigne rouges, cuivrés et ocres, arbres aux couleurs d’automne.'
+  };
+  let landscapeKey = null;
+  let landscapeRequest = 0;
+  const loadedLandscapes = new Map();
+  function setLandscape(src, alt) {
+    landscape.src = src;
+    landscape.alt = alt;
+    document.querySelector('.enlarge-map').href = src;
+  }
+  async function updateLandscape(key, force = false) {
+    if (key === landscapeKey && !force) return;
+    landscapeKey = key;
+    const request = ++landscapeRequest;
+    if (document.activeElement === retryLandscape) document.querySelector(`[data-step="${selectedStep}"]`)?.focus({preventScroll:true});
+    retryLandscape.hidden = true;
+    if (!key) {
+      setLandscape('../demonstration-2/assets/domaine.webp', baseAlt);
+      landscapeStatus.hidden = true;
+      return;
+    }
+    landscapeStatus.textContent = `Chargement du paysage : ${steps.find(s => s.id === key).label}…`;
+    landscapeStatus.hidden = false;
+    const src = `../demonstration-2/assets/domaine-${key}.webp`;
+    // Garder le paysage initial s’il correspond déjà à la saison demandée.
+    if (landscape.getAttribute('src') !== src) setLandscape('../demonstration-2/assets/domaine.webp', baseAlt);
+    if (!loadedLandscapes.has(src)) {
+      loadedLandscapes.set(src, new Promise((resolve, reject) => {
+        const image = new Image();
+        image.onload = () => resolve(src);
+        image.onerror = () => reject(new Error('Paysage indisponible'));
+        image.src = src;
+      }));
+    }
+    try {
+      await loadedLandscapes.get(src);
+      if (request !== landscapeRequest) return;
+      setLandscape(src, landscapeAlts[key]);
+      landscapeStatus.textContent = `Paysage : ${steps.find(s => s.id === key).label}.`;
+      landscapeStatus.hidden = true;
+    } catch {
+      loadedLandscapes.delete(src);
+      if (request !== landscapeRequest) return;
+      setLandscape('../demonstration-2/assets/domaine.webp', baseAlt);
+      landscapeStatus.textContent = 'Paysage de saison indisponible. La vue générale et les récits restent accessibles.';
+      retryLandscape.hidden = false;
+    }
+  }
+  retryLandscape.addEventListener('click', () => updateLandscape(landscapeKey, true));
+
+  const functions = globalThis.MonChaiFonctions;
+  let mcPlace = 'vignes';
+  let mcIndex = 0;
+  const rememberedFeatures = new Map();
+  let mcTrigger = null;
+  const mcScreen = document.querySelector('#mc-screen');
+  const mcImageStatus = document.querySelector('#mc-image-status');
+  function positionMc() {
+    const width=canvas.clientWidth,height=canvas.clientHeight;
+    const compact=width<700;
+    canvas.dataset.compact=String(compact);
+    const centers=Object.entries(places).map(([id,p])=>({id,x:p[0]/1536*width,y:p[1]/1024*height}));
+    const obstacles=centers.map(p=>({...p,w:44,h:44}));
+    // Priorité spatiale conservée, indépendante de l’ordre de tabulation.
+    const placementOrder=['vignes','bureau','chai','caveau','jardin','terrain','film'];
+    const buttons=[...canvas.querySelectorAll('[data-mc], [data-map-film]')].sort((a,b)=>placementOrder.indexOf(a.dataset.mc||'film')-placementOrder.indexOf(b.dataset.mc||'film'));
+    for (const button of buttons) {
+      const film=button.hasAttribute('data-map-film');
+      const id=film?'bureau':button.dataset.mc;
+      // Les six accès Mon Chai restent découvrables sans sélectionner un récit.
+      button.hidden=compact && film;
+      if (button.hidden) continue;
+      const center=centers.find(p=>p.id===id);
+      const w=film||compact?44:56,h=44,gap=compact?44:50;
+      const candidates=[];
+      for(const radius of [gap,62,84,108])for(let angle=0;angle<8;angle++){
+        candidates.push([Math.cos(angle*Math.PI/4)*radius,Math.sin(angle*Math.PI/4)*radius]);
+      }
+      const score=([dx,dy])=>{
+        const x=center.x+dx,y=center.y+dy;
+        let cost=Math.max(0,w/2-x,h/2-y,x+w/2-width,y+h/2-height)*1e6;
+        for (const p of obstacles) cost+=Math.max(0,(w+p.w)/2-Math.abs(p.x-x))*Math.max(0,(h+p.h)/2-Math.abs(p.y-y))*1000;
+        return cost;
+      };
+      candidates.sort((a,b)=>score(a)-score(b));
+      const [dx,dy]=candidates[0],x=center.x+dx,y=center.y+dy;
+      button.style.left=`${x}px`;button.style.top=`${y}px`;
+      obstacles.push({x,y,w,h});
+    }
+    guide.reposition();
+  }
+
+  function positionPopover() {
+    // Le panneau utilise une fenêtre centrée, pas un popover étroit ancré au logo.
+    mcDialog.style.removeProperty('left');mcDialog.style.removeProperty('top');
+  }
+  function renderMc() {
+    const place=functions.places[mcPlace];
+    const feature=functions.features[place.slides[mcIndex]];
+    rememberedFeatures.set(mcPlace,mcIndex);
+    document.querySelector('#mc-observation').textContent=feature.observation;
+    document.querySelector('#mc-conditions').textContent=feature.conditions;
+    document.querySelector('.feature-conditions').open=false;
+    document.querySelector('#mc-place').textContent=place.label;
+    document.querySelector('#mc-intro').textContent=place.intro;
+    mcDialog.classList.toggle('has-wide-capture', Boolean(feature.wide));
+    mcDialog.classList.toggle('has-portrait-capture', Boolean(feature.portrait));
+    document.querySelector('#mc-sequence').textContent=`Fonction ${mcIndex+1} / ${place.slides.length} · ${feature.stage}`;
+    document.querySelector('#mc-feature').textContent=feature.title;
+    document.querySelector('#mc-description').textContent=feature.text;
+    const status=document.querySelector('#mc-feature-status');
+    status.textContent=feature.availability;
+    status.classList.toggle('is-future',feature.availability.startsWith('Projet'));
+    document.querySelector('#mc-proof').textContent=feature.proof;
+    const enlarge=document.querySelector('#mc-enlarge');
+    const schema=document.querySelector('#mc-schema');
+    mcScreen.hidden=!feature.image;
+    schema.replaceChildren();
+    schema.hidden=!feature.flow;
+    if (feature.flow) for (const text of feature.flow) schema.append(make('li','',text));
+    enlarge.hidden=!feature.image;
+    mcImageStatus.textContent='';
+    if (feature.image) {
+      mcImageStatus.textContent='Chargement de la capture…';
+      mcScreen.hidden=false;
+      mcScreen.alt=feature.proof;
+      mcScreen.hidden=false;
+      mcScreen.src=feature.image;
+      enlarge.href=feature.image;
+      enlarge.setAttribute('aria-label',`Agrandir la capture ${feature.title}`);
+      if (mcScreen.complete && mcScreen.naturalWidth) mcImageStatus.textContent='';
+    }
+    const videoButton=document.querySelector('#mc-play-video');
+    videoButton.hidden=!feature.video;
+    if(feature.video){videoButton.dataset.film=feature.video;videoButton.textContent=`▶ Voir la vidéo · ${functions.videos[feature.video].duration}`;}
+    const discover=document.querySelector('#mc-discover');
+    discover.href=feature.href;
+    discover.textContent=feature.href==='/contact.html'?'En parler avec Mon Chai ↗':'Découvrir ces fonctions ↗';
+    document.querySelector('#mc-count').textContent=`${mcIndex+1} / ${place.slides.length}`;
+    document.querySelector('#mc-prev').disabled=mcIndex===0;
+    document.querySelector('#mc-next').disabled=mcIndex===place.slides.length-1;
+    document.querySelector('.mc-navigation').hidden=place.slides.length===1;
+    if (mcDialog.open) positionPopover();
+  }
+
+  mcScreen.addEventListener('load',()=>{ mcImageStatus.textContent=''; positionPopover(); });
+  mcScreen.addEventListener('error',()=>{ mcScreen.hidden=true; mcImageStatus.textContent='Capture indisponible. Essayez le lien « Agrandir la capture ».'; positionPopover(); });
+  document.querySelectorAll('[data-mc]').forEach(button => button.addEventListener('click',()=>{
+    mcPlace=button.dataset.mc;
+    const mapPlace=Object.hasOwn(places,mcPlace)?mcPlace:({produits:'chai',ventes:'bureau',reservation:'caveau'}[mcPlace]);
+    if(mapPlace)showPlace(mapPlace,{focus:false,openStory:false,advanceGuide:true});
+    const requested=functions.places[mcPlace].slides.indexOf(button.dataset.startFeature);
+    mcIndex=requested>=0?requested:(rememberedFeatures.get(mcPlace)||0);
+    mcTrigger=button;
+    renderMc();
+    open(mcDialog,button);
+    document.querySelector('.proof-scroll').scrollTop=0;
+    positionPopover();
+  }));
+  function moveMc(delta) {
+    const next=mcIndex+delta;
+    if (next<0 || next>=functions.places[mcPlace].slides.length) return;
+    mcIndex=next;
+    document.querySelector('.proof-scroll').scrollTop=0;
+    const focused=document.activeElement;
+    renderMc();
+    // Une flèche devenue désactivée ne doit pas laisser le focus hors du dialogue.
+    if (focused.disabled) document.querySelector(delta>0?'#mc-prev':'#mc-next').focus();
+  }
+  document.querySelector('#mc-prev').addEventListener('click',()=>moveMc(-1));
+  document.querySelector('#mc-next').addEventListener('click',()=>moveMc(1));
+  mcDialog.addEventListener('keydown',event=>{
+    if (event.key==='Tab') {
+      const targets=[...mcDialog.querySelectorAll('button:not(:disabled),a[href]')].filter(node=>node.checkVisibility());
+      const first=targets[0], last=targets[targets.length-1];
+      if (event.shiftKey && document.activeElement===first) { event.preventDefault(); last.focus(); }
+      else if (!event.shiftKey && document.activeElement===last) { event.preventDefault(); first.focus(); }
+    }
+    if (event.key==='ArrowLeft' || event.key==='ArrowRight') { event.preventDefault(); moveMc(event.key==='ArrowLeft'?-1:1); }
+  });
+
+  const zoomImage=document.querySelector('#zoom-image');
+  const zoomStatus=document.querySelector('#zoom-status');
+  zoomImage.addEventListener('load',()=>{zoomStatus.hidden=true;});
+  zoomImage.addEventListener('error',()=>{zoomStatus.hidden=false;zoomStatus.textContent='Image indisponible. Fermez pour retrouver l’explication, ou essayez le fichier complet.';});
+  document.querySelector('#mc-enlarge').addEventListener('click',event=>{
+    event.preventDefault();
+    const feature=functions.features[functions.places[mcPlace].slides[mcIndex]];
+    if(!feature.image)return;
+    zoomStatus.hidden=false;zoomStatus.textContent='Chargement de la capture…';
+    const image=zoomImage;image.src=feature.image;image.alt=feature.proof;
+    if(image.complete&&image.naturalWidth)zoomStatus.hidden=true;
+    document.querySelector('#zoom-title').textContent=feature.title;
+    document.querySelector('#zoom-file').href=feature.image;
+    lastFocus.set(zoomDialog,event.currentTarget);zoomDialog.showModal();
+    document.querySelector('.zoom-scroll').scrollTop=0;
+    document.querySelector('.zoom-scroll').scrollLeft=0;
+  });
+  zoomDialog.addEventListener('close',()=>{if(mcDialog.open)document.querySelector('#mc-enlarge').focus({preventScroll:true});});
+  const film=document.querySelector('#domain-film');
+  const filmStatus=document.querySelector('#film-status');
+  let returnToMc=false;
+  let filmFailed=false;
+  let activeFilm=null;
+  document.querySelectorAll('[data-film]').forEach(button=>button.addEventListener('click',()=>{
+    const key=button.dataset.film || 'annonces';
+    const video=functions.videos[key];
+    if(!video)return;
+    returnToMc=mcDialog.open;
+    film.pause();
+    filmDialog.dataset.video=key;
+    filmDialog.querySelector('.eyebrow').textContent=video.context;
+    document.querySelector('#film-title').textContent=video.title;
+    filmDialog.querySelector('.film-caption').textContent=video.caption;
+    const direct=filmDialog.querySelector('.film-direct');
+    direct.href=video.src;
+    const transcript=filmDialog.querySelector('.film-transcript');
+    transcript.open=false;
+    transcript.querySelector('ol').replaceChildren(...video.steps.map(step=>make('li','',step)));
+    transcript.querySelector('p').textContent=video.note;
+    open(filmDialog,button);
+    filmStatus.textContent='Chargement de la vidéo…';
+    filmStatus.hidden=false;
+    if(activeFilm!==key || filmFailed || film.error){
+      activeFilm=key;filmFailed=false;
+      film.poster=video.poster;
+      film.setAttribute('aria-label',video.title);
+      film.querySelector('source').src=video.src;
+      film.load();
+    }
+    film.play().catch(()=>{
+      filmStatus.textContent='La lecture n’a pas démarré. Utilisez la commande de lecture ou le lien direct.';
+      filmStatus.hidden=false;
+    });
+  }));
+
+  film.addEventListener('playing',()=>{filmStatus.hidden=true;});
+  film.addEventListener('error',()=>{
+    filmFailed=true;
+    filmStatus.textContent='Vidéo indisponible. Vous pouvez lire les étapes ou essayer le lien direct.';
+    filmStatus.hidden=false;
+  },true);
+  filmDialog.addEventListener('close',()=>{
+    film.pause();
+    if (film.readyState) film.currentTime=0;
+    if (returnToMc) {
+      returnToMc=false;
+      open(mcDialog,mcTrigger);
+      positionPopover();
+      document.querySelector('#mc-play-video').focus();
+    }
+  });
+  filmDialog.addEventListener('keydown',event=>{
+    if (event.key!=='Tab') return;
+    const targets=[...filmDialog.querySelectorAll('button:not(:disabled),a[href],video,summary')].filter(node=>node.checkVisibility());
+    const first=targets[0],last=targets[targets.length-1];
+    if (event.shiftKey && document.activeElement===first) {event.preventDefault();last.focus();}
+    else if (!event.shiftKey && document.activeElement===last) {event.preventDefault();first.focus();}
+  });
+
+  function routeKey() { return `${location.search}|${location.hash}`; }
+  function setAddress(place) {
+    const url = new URL(location.href);
+    if (selectedStep === null) url.searchParams.set('saison', 'ensemble');
+    else url.searchParams.set('saison', steps[selectedStep].id);
+    url.hash = place ? `lieu-${place}` : 'domaine';
+    if (url.href !== location.href) history.pushState(null, '', url);
+    lastRoute = routeKey();
+  }
+  function updateMotion() {
+    const active = selectedStep !== null;
+    const running = active && !motionPaused && !reducedMotion.matches && !document.hidden && mapVisible;
+    guide.syncMotion();
+    scene.dataset.running = String(running);
+    scene.dataset.paused = String(motionPaused || reducedMotion.matches);
+    sceneControls.hidden = !active;
+    pauseButton.disabled = reducedMotion.matches;
+    pauseButton.setAttribute('aria-pressed', String(motionPaused || reducedMotion.matches));
+    pauseButton.textContent = reducedMotion.matches ? 'Mouvements réduits' : motionPaused ? 'Reprendre les animations' : 'Mettre les animations en pause';
+    const label = active ? steps[selectedStep].label : 'Vue d’ensemble';
+    const motion = !active ? 'Choisissez une saison pour faire évoluer les récits.'
+      : reducedMotion.matches ? 'Décor immobile selon votre préférence de mouvements réduits.'
+      : motionPaused ? 'Animations en pause.' : 'Ambiance illustrée animée.';
+    seasonStatus.textContent = `${label} · ${motion}`;
+  }
+  function buildParticles() {
+    particles.replaceChildren();
+    if (selectedStep === null || reducedMotion.matches) return;
+    const count = smallScreen.matches ? 16 : 28;
+    const summer = steps[selectedStep].id === 'ete';
+    const fragment = document.createDocumentFragment();
+    for (let index = 0; index < count; index += 1) {
+      const p = document.createElement('i');
+      p.className = 'season-particle';
+      // Répartition déterministe : pas de calcul à chaque image de l'animation.
+      p.style.setProperty('--left', `${5 + ((index * 37) % 90)}%`);
+      p.style.setProperty('--size', `${summer ? 2 + index % 3 : 4 + index % 5}px`);
+      p.style.setProperty('--duration', `${summer ? 17 + index % 8 : 10 + index % 9}s`);
+      p.style.setProperty('--delay', `${-((index * 2.7) % 19)}s`);
+      p.style.setProperty('--drift', `${(index % 2 ? 1 : -1) * (22 + index % 7 * 9)}px`);
+      p.style.setProperty('--turn', `${index % 2 ? 230 : -190}deg`);
+      p.style.setProperty('--tone', String(index % 3));
+      fragment.append(p);
+    }
+    particles.append(fragment);
+  }
+  function applySeason() {
+    const season = selectedStep === null ? null : steps[selectedStep];
+    const key = season?.id || '';
+    scene.dataset.season = key;
+    document.querySelectorAll('[data-step]').forEach(button => button.setAttribute('aria-pressed', String(Number(button.dataset.step) === selectedStep)));
+    document.querySelector('#map-description').textContent = season ? season.caption : 'Une carte imaginée, six portes d’entrée. Les numéros racontent le travail ; Mon Chai montre les outils.';
+    document.querySelector('#saas-season').textContent = season ? season.saas : baseSaas;
+    for (const article of document.querySelectorAll('[data-story]')) {
+      const story = season?.stories[article.dataset.story];
+      const base = baseStories.get(article.dataset.story);
+      const title = article.querySelector('h2');
+      if (story) title.textContent = story.title; else title.innerHTML = base.title;
+      article.querySelectorAll(':scope > p:not(.place-index)').forEach((p,index) => { p.textContent = story ? [story.p1,story.p2][index] : base.paragraphs[index]; });
+      article.querySelector('.people-note p').textContent = story ? story.people : base.people;
+      article.querySelector('.people-note h3').textContent = story ? story.peopleTitle : base.peopleTitle;
+    }
+    if (key !== drawnSeason) {
+      drawnSeason = key;
+      buildParticles();
+    }
+    tourContext.hidden = selectedStep === null || selectedPlace === null;
+    tourControls.hidden = selectedStep === null || selectedPlace === null;
+    document.querySelector('#story-context').textContent = season ? `${season.label.toUpperCase()} · LE DOMAINE, LIEU PAR LIEU` : 'LE DOMAINE, LIEU PAR LIEU';
+    if (season) {
+      document.querySelector('#tour-label').textContent = `${selectedStep + 1} / 4 · ${season.label.toUpperCase()}`;
+      document.querySelector('#tour-text').textContent = season.text;
+      document.querySelector('#tour-count').textContent = `${selectedStep + 1} / 4`;
+      document.querySelector('#tour-prev').disabled = selectedStep === 0;
+      document.querySelector('#tour-next').disabled = selectedStep === steps.length - 1;
+    }
+    updateLandscape(key);
+    positionMc();
+    updateMotion();
+  }
+  function showPlace(place, { address=true, focus=true, reveal=false, advanceGuide=false, openStory=true } = {}) {
+    if (!Object.hasOwn(places,place)) return;
+    selectedPlace = place;
+    welcome.hidden = true;
+    toolbar.hidden = false;
+    backMap.hidden = false;
+    panel.classList.add('has-selection');
+    directory.open = false;
+    document.querySelectorAll('[data-story]').forEach(article => article.classList.toggle('is-active',article.dataset.story === place));
+    document.querySelectorAll('.map-pin, .places-directory a').forEach(link => {
+      const current = link.dataset.place === place;
+      link.classList.toggle('is-active',current);
+      if (current) link.setAttribute('aria-current','location'); else link.removeAttribute('aria-current');
+    });
+    applySeason();
+    if (address) setAddress(place);
+    if (advanceGuide) guide.advance(place);
+    if (openStory) {
+      if (!storyDialog.open) open(storyDialog,document.activeElement);
+      storyDialog.scrollTop=0;
+      if (focus) document.querySelector(`#lieu-${place} h2`).focus({preventScroll:true});
+    }
+  }
+  function resetMap({ address=true, focus=true, overview=false } = {}) {
+    const previous = selectedPlace;
+    if (!overview) {
+      if(storyDialog.open)storyDialog.close();
+      if(address)setAddress(previous);
+      return;
+    }
+    if(storyDialog.open)storyDialog.close();
+    selectedPlace = null;
+    if (overview) selectedStep = null;
+    welcome.hidden = false;
+    toolbar.hidden = true;
+    backMap.hidden = true;
+    panel.classList.remove('has-selection');
+    directory.open = true;
+    document.querySelectorAll('[data-story]').forEach(article => article.classList.remove('is-active'));
+    document.querySelectorAll('.map-pin, .places-directory a').forEach(link => {
+      link.classList.remove('is-active');
+      link.removeAttribute('aria-current');
+    });
+    applySeason();
+    if (address) setAddress(null);
+    if (focus) {
+      const target = overview ? document.querySelector('[data-step]') : previous ? document.querySelector(`.map-pin[data-place="${previous}"]`) : document.querySelector('.map-pin');
+      target.focus({preventScroll:true});
+      moveTo(overview ? document.querySelector('.year-path') : scene);
+    }
+  }
+  function chooseSeason(step) {
+    if (!steps[step]) return;
+    selectedStep = step;
+    // Le bouton garde le focus : sur mobile, la carte animée reste devant le récit.
+    showPlace(selectedPlace || steps[step].place,{focus:false,openStory:storyDialog.open});
+  }
+  function readRoute({ focus=true } = {}) {
+    const key = routeKey();
+    if (key === lastRoute) return;
+    lastRoute = key;
+    const season = new URL(location.href).searchParams.get('saison');
+    const index = steps.findIndex(step => step.id === season);
+    selectedStep = season === 'ensemble' ? null : index < 0 ? defaultStep : index;
+    const match = /^#lieu-([a-z]+)$/.exec(location.hash.replace('lieu-maison','lieu-bureau').replace('lieu-recolte','lieu-terrain'));
+    if (match && Object.hasOwn(places,match[1])) showPlace(match[1],{address:false,focus,advanceGuide:true});
+    else if (!location.hash && index >= 0) showPlace(steps[selectedStep].place,{address:false,focus,openStory:false});
+    else if (!location.hash && selectedStep !== null) showPlace('vignes',{address:false,focus:false,openStory:false});
+    else resetMap({address:false,focus:false});
+  }
+  document.querySelectorAll('[data-place]').forEach(link => link.addEventListener('click',event => {
+    event.preventDefault();
+    showPlace(link.dataset.place,{advanceGuide:true,focus:true});
+  }));
+  document.querySelectorAll('[data-close-place]').forEach(button => button.addEventListener('click',() => resetMap()));
+  document.querySelectorAll('[data-step]').forEach(button => button.addEventListener('click',() => chooseSeason(Number(button.dataset.step))));
+  document.querySelector('#tour-prev').addEventListener('click',() => { if (selectedStep > 0) chooseSeason(selectedStep - 1); });
+  document.querySelector('#tour-next').addEventListener('click',() => { if (selectedStep !== null && selectedStep < steps.length - 1) chooseSeason(selectedStep + 1); });
+  document.querySelector('#clear-season').addEventListener('click',() => resetMap({overview:true}));
+  pauseButton.addEventListener('click',() => { motionPaused = !motionPaused; updateMotion(); });
+  reducedMotion.addEventListener('change',() => { buildParticles(); updateMotion(); });
+  smallScreen.addEventListener('change',buildParticles);
+  document.addEventListener('visibilitychange',updateMotion);
+  const measureScene = () => { scene.style.setProperty('--travel',`${document.querySelector('.map-canvas').clientHeight + 32}px`); positionMc(); if (mcDialog.open) positionPopover(); };
+  measureScene();
+  addEventListener('resize',measureScene,{passive:true});
+  if ('IntersectionObserver' in globalThis) new IntersectionObserver(entries => {
+    mapVisible = entries[0].isIntersecting;
+    updateMotion();
+  },{threshold:0}).observe(document.querySelector('.map-canvas'));
+  document.addEventListener('keydown',event => {
+    if (event.key === 'Escape' && !event.defaultPrevented && selectedPlace && !dialogs.some(dialog => dialog.open)) resetMap();
+  });
+  addEventListener('popstate',() => readRoute());
+  addEventListener('hashchange',() => readRoute());
+  document.body.classList.add('js-ready');
+  document.querySelectorAll('[data-cart], [data-add], [data-detail], [data-visit], [data-step], [data-close-place], #clear-season, [data-mc], [data-film]').forEach(button => { button.disabled = false; });
+  renderCart();
+  readRoute({focus:Boolean(location.hash.startsWith('#lieu-'))});
+  applySeason();
+  guide.start(selectedPlace || 'vignes');
+})();

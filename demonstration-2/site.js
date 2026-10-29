@@ -1,8 +1,8 @@
 'use strict';
 (() => {
   const wines = {
-    roche: { name: 'La Roche', type: 'Rouge · 2025 · 75 cl', price: 1800, image: 'assets/cuvee-rouge.svg', story: '#lieu-chai', profile: 'Fruit noir, épices douces, tanins souples.', pairing: 'Légumes rôtis, champignons, cuisine mijotée.', service: '16–18 °C', description: 'Dans ce scénario, La Roche se construit avec le suivi des lots, les dégustations et les essais d’assemblage. Choisir les proportions engage un goût recherché et des volumes à préparer. Retrouvez au chai le travail qui précède cette bouteille fictive.' },
-    aube: { name: 'L’Aube', type: 'Blanc · 2025 · 75 cl', price: 1600, image: 'assets/cuvee-blanc.svg', story: '#lieu-vignes', profile: 'Agrumes, fleurs blanches, fraîcheur.', pairing: 'Poisson grillé, fromage frais, légumes croquants.', service: '10–12 °C', description: 'Ce blanc imaginaire relie la fraîcheur recherchée dans le verre au travail dans les vignes et au choix du moment de récolte. Retournez au lieu pour retrouver le début de ce récit.' }
+    roche: { name: 'La Roche', type: 'Rouge · 2025 · 75 cl', price: 1800, image: 'assets/bouteille-rouge.jpg', story: '#lieu-chai', profile: 'Fruit noir, épices douces, tanins souples.', pairing: 'Légumes rôtis, champignons, cuisine mijotée.', service: '16–18 °C', description: 'Dans ce scénario, La Roche se construit avec le suivi des lots, les dégustations et les essais d’assemblage. Choisir les proportions engage un goût recherché et des volumes à préparer. Retrouvez au chai le travail qui précède cette bouteille fictive.' },
+    aube: { name: 'L’Aube', type: 'Blanc · 2025 · 75 cl', price: 1600, image: 'assets/bouteille-blanc.jpg', story: '#lieu-vignes', profile: 'Agrumes, fleurs blanches, fraîcheur.', pairing: 'Poisson grillé, fromage frais, légumes croquants.', service: '10–12 °C', description: 'Ce blanc imaginaire relie la fraîcheur recherchée dans le verre au travail dans les vignes et au choix du moment de récolte. Retournez au lieu pour retrouver le début de ce récit.' }
   };
   const money = cents => new Intl.NumberFormat('fr-FR', { style: 'currency', currency: 'EUR' }).format(cents / 100);
   const cart = new Map(); // Démonstration éphémère : ni stockage local ni service distant.
@@ -24,7 +24,6 @@
     toastTimer = setTimeout(() => { toast.hidden = true; }, 3500);
   }
   function open(dialog, trigger) {
-    closeMenu();
     for (const other of dialogs) if (other.open) other.close();
     lastFocus.set(dialog, trigger || document.activeElement);
     dialog.showModal();
@@ -127,7 +126,7 @@
     const wine = wines[activeWine];
     const image = document.querySelector('#product-image');
     image.src = wine.image;
-    image.alt = `Illustration de la cuvée ${wine.name}`;
+    image.alt = `Photographie de bouteille illustrant la cuvée fictive ${wine.name}`;
     document.querySelector('#product-title').textContent = wine.name;
     document.querySelector('#product-type').textContent = wine.type;
     document.querySelector('#product-description').textContent = wine.description;
@@ -162,47 +161,41 @@
     result.scrollIntoView({ block: 'nearest' });
   });
 
-  const menuButton = document.querySelector('.menu-toggle');
-  const menu = document.querySelector('.navigation');
-  function closeMenu() {
-    menu.classList.remove('is-open');
-    menuButton.setAttribute('aria-expanded', 'false');
-    menuButton.setAttribute('aria-label', 'Ouvrir le menu');
-    menuButton.querySelector('span').textContent = '+';
+  // La visite commence directement sur la carte, sans menu supérieur.
+  const experiences = {
+    balade: {name:'Balade & dégustation', duration:'1 h 30', price:1800},
+    chai: {name:'Du chai au verre', duration:'1 h', price:1200},
+    assemblage: {name:'Autour de l’assemblage', duration:'2 h', price:3500}
+  };
+  const visitExperience = document.querySelector('#visit-experience');
+  function refreshVisit() {
+    const experience = experiences[visitExperience.value];
+    document.querySelector('#visit-summary').textContent = `${experience.name} · ${experience.duration} · ${money(experience.price)} par adulte, tarif fictif.`;
+    document.querySelector('#visit-total').textContent = money(Number(document.querySelector('#visit-guests').value) * experience.price);
+    document.querySelector('#visit-result').hidden = true;
   }
-  menuButton.addEventListener('click', () => {
-    const expanded = menuButton.getAttribute('aria-expanded') !== 'true';
-    menu.classList.toggle('is-open', expanded);
-    menuButton.setAttribute('aria-expanded', String(expanded));
-    menuButton.setAttribute('aria-label', expanded ? 'Fermer le menu' : 'Ouvrir le menu');
-    menuButton.querySelector('span').textContent = expanded ? '−' : '+';
-  });
-  menu.querySelectorAll('a').forEach(link => link.addEventListener('click', closeMenu));
-  document.addEventListener('keydown', event => {
-    if (event.key === 'Escape' && menu.classList.contains('is-open')) { event.preventDefault(); closeMenu(); menuButton.focus(); }
-  });
-  matchMedia('(max-width:760px)').addEventListener('change', closeMenu);
-
+  visitExperience.addEventListener('change', refreshVisit);
+  refreshVisit();
   const visitDate = document.querySelector('#visit-date');
   const date = new Date();
   const minimum = new Date(date.getFullYear(), date.getMonth(), date.getDate() + 1);
   const iso = d => `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
   visitDate.min = iso(minimum);
-  document.querySelector('[data-visit]').addEventListener('click', event => open(visitDialog, event.currentTarget));
+  document.querySelectorAll('[data-visit]').forEach(button => button.addEventListener('click', event => { visitExperience.value = button.dataset.visit; refreshVisit(); open(visitDialog, event.currentTarget); }));
   document.querySelector('#visit-guests').addEventListener('change', event => {
-    document.querySelector('#visit-total').textContent = money(Number(event.target.value) * 1800);
-    document.querySelector('#visit-result').hidden = true;
+    refreshVisit();
   });
   visitDate.addEventListener('input', () => { document.querySelector('#visit-result').hidden = true; });
   document.querySelector('#visit-form').addEventListener('submit', event => {
     event.preventDefault();
     const form = event.currentTarget;
     if (!form.reportValidity()) return;
+    const experience = experiences[visitExperience.value];
     const guests = Number(document.querySelector('#visit-guests').value);
     const wishedDate = new Date(`${visitDate.value}T12:00:00`);
     const formatted = new Intl.DateTimeFormat('fr-FR', { day: 'numeric', month: 'long', year: 'numeric' }).format(wishedDate);
     const result = document.querySelector('#visit-result');
-    result.replaceChildren(make('strong', '', 'Votre visite, pour l’exemple.'), make('p', '', `${formatted} · ${guests} adulte${guests > 1 ? 's' : ''} · ${money(guests * 1800)} au tarif illustratif.`), make('p', '', 'Ceci est une simulation : aucune réservation n’a été effectuée et aucune information n’a été envoyée. Sur votre futur site, la demande pourrait être confirmée par le domaine.'));
+    result.replaceChildren(make('strong', '', 'Votre visite, pour l’exemple.'), make('p', '', `${experience.name} · ${experience.duration} · ${formatted} · ${guests} adulte${guests > 1 ? 's' : ''} · ${money(guests * experience.price)} au tarif illustratif.`), make('p', '', 'Ceci est une simulation : aucune réservation n’a été effectuée et aucune information n’a été envoyée. Sur votre futur site, la demande pourrait être confirmée par le domaine.'));
     result.hidden = false;
     result.scrollIntoView({ block: 'nearest' });
   });
@@ -644,12 +637,12 @@
     updateMotion();
   },{threshold:0}).observe(document.querySelector('.map-canvas'));
   document.addEventListener('keydown',event => {
-    if (event.key === 'Escape' && !event.defaultPrevented && selectedPlace && !dialogs.some(dialog => dialog.open) && !menu.classList.contains('is-open')) resetMap();
+    if (event.key === 'Escape' && !event.defaultPrevented && selectedPlace && !dialogs.some(dialog => dialog.open)) resetMap();
   });
   addEventListener('popstate',() => readRoute());
   addEventListener('hashchange',() => readRoute());
   document.body.classList.add('js-ready');
-  document.querySelectorAll('[data-cart], [data-add], [data-detail], [data-visit], .menu-toggle, [data-step], [data-close-place], #clear-season, [data-mc], [data-film]').forEach(button => { button.disabled = false; });
+  document.querySelectorAll('[data-cart], [data-add], [data-detail], [data-visit], [data-step], [data-close-place], #clear-season, [data-mc], [data-film]').forEach(button => { button.disabled = false; });
   renderCart();
   readRoute({focus:Boolean(location.hash.startsWith('#lieu-'))});
   applySeason();

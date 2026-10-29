@@ -303,7 +303,7 @@
   const mcImageStatus = document.querySelector('#mc-image-status');
   function positionMc() {
     const width=canvas.clientWidth,height=canvas.clientHeight;
-    const compact=width<700,current=selectedPlace || 'vignes';
+    const compact=width<700;
     canvas.dataset.compact=String(compact);
     const centers=Object.entries(places).map(([id,p])=>({id,x:p[0]/1536*width,y:p[1]/1024*height}));
     const obstacles=centers.map(p=>({...p,w:44,h:44}));
@@ -311,7 +311,8 @@
     for (const button of buttons) {
       const film=button.hasAttribute('data-map-film');
       const id=film?'bureau':button.dataset.mc;
-      button.hidden=compact && (film || id!==current);
+      // Les six accès Mon Chai restent découvrables sans sélectionner un récit.
+      button.hidden=compact && film;
       if (button.hidden) continue;
       const center=centers.find(p=>p.id===id);
       const w=film||compact?44:56,h=44,gap=compact?44:50;

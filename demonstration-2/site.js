@@ -381,6 +381,12 @@
   document.querySelector('#mc-prev').addEventListener('click',()=>moveMc(-1));
   document.querySelector('#mc-next').addEventListener('click',()=>moveMc(1));
   mcDialog.addEventListener('keydown',event=>{
+    if (event.key==='Tab') {
+      const targets=[...mcDialog.querySelectorAll('button:not(:disabled),a[href]')].filter(node=>node.checkVisibility());
+      const first=targets[0], last=targets[targets.length-1];
+      if (event.shiftKey && document.activeElement===first) { event.preventDefault(); last.focus(); }
+      else if (!event.shiftKey && document.activeElement===last) { event.preventDefault(); first.focus(); }
+    }
     if (event.key==='ArrowLeft' || event.key==='ArrowRight') { event.preventDefault(); moveMc(event.key==='ArrowLeft'?-1:1); }
   });
 

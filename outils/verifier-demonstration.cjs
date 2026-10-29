@@ -78,7 +78,7 @@ if (folderName === 'demonstration-2') {
   assert.match(html, /Lire les étapes de la vidéo/);
   assert.match(html, /Annonces.*Module pilote/);
   assert.doesNotMatch(html, /<video[^>]*\bautoplay\b/);
-  assert.deepEqual(Array.from(functions.places.caveau.slides), ['degustation-creation','degustation']);
+  assert.deepEqual(Array.from(functions.places.caveau.slides), ['degustation-creation','degustation-visiteur','degustation']);
   assert.deepEqual(Array.from(functions.places.jardin.slides), ['phyto']);
   assert.match(functions.features['trace-matiere'].image, /trace-produit-fiche\.png$/);
   assert.deepEqual(Array.from(functions.places.recolte.slides).slice(0,2), ['annonce-vendanges','annonce-materiel']);

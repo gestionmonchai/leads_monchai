@@ -29,3 +29,6 @@ Domaine Hallais : nom d’exemple choisi par Denis. Extrait original Traçabilit
 
 
 Capture de traçabilité fournie par Denis le 29 octobre 2026 : fiche Cabernet d’Anjou 2022, onglet Traçabilité, image entière 1890 × 1027 reprise sans retouche. Elle remplace l’extrait de fiche historique de septembre ; ses données ne sont pas attribuées au Domaine Hallais.
+
+
+Parcours visiteur de dégustation : capture directe de l’accueil sur le site de test indiqué par Denis, le 29 octobre 2026, sans retouche. Les étapes 1 à 7 ont été consultées sans envoi de note. L’étape Merci exige un envoi confirmé et n’a pas été simulée. Aucun lien de session ni jeton n’est diffusé par la démonstration.

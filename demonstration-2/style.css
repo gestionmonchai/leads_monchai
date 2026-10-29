@@ -61,3 +61,7 @@ dialog.film-dialog{width:480px;padding:25px;max-height:calc(100dvh - 24px)}.film
 .product-explainer{display:flex;gap:25px;justify-content:space-between;align-items:center;padding:20px 0;margin-bottom:22px;border-top:1px solid #babda4;border-bottom:1px solid #babda4}.product-explainer>div>p:last-child{font-size:16px;margin-top:7px}.product-explainer .mc-entry{margin:0;flex-shrink:0}.product-explainer .mc-entry>span:last-child{max-width:210px}
 dialog.mc-popover.has-wide-capture{width:760px}.has-wide-capture #mc-enlarge img{height:auto;max-height:420px;aspect-ratio:auto}.has-wide-capture #mc-description{max-width:65ch}
 @media(max-width:680px){.product-explainer{align-items:start;flex-direction:column;gap:15px;padding:20px 0}.product-explainer>div>p:last-child{font-size:16px}.product-explainer .mc-entry{font-size:12px}.product-explainer .mc-entry>span:last-child{max-width:none}.has-wide-capture #mc-enlarge img{min-height:120px;object-fit:contain}}
+
+/* Capture du parcours visiteur, en portrait et toujours agrandissable. */
+.has-portrait-capture #mc-enlarge img{height:340px;aspect-ratio:auto;object-fit:contain}
+@media(max-height:800px){.has-portrait-capture #mc-enlarge img{height:260px}}

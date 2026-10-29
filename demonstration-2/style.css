@@ -54,10 +54,10 @@ dialog.film-dialog{width:480px;padding:25px;max-height:calc(100dvh - 24px)}.film
 @media(max-width:680px){dialog.film-dialog{padding:22px 18px}.mc-entry{font-size:10px}.mc-popover .mc-slide h3{font-size:14px}.map-help{max-width:320px;line-height:1.7}}
 #domain-film{color:#fffaf1}
 
-/* Logo officiel seul, sans badge ni sigle ajouté. */
-.mc-button{width:56px;min-width:56px;height:44px}.mc-logo,.mc-button>span.mc-logo{width:48px;height:30px;border:0;border-radius:0;box-shadow:none;background:transparent url('assets/logo-monchai.png') center/contain no-repeat}
-.mc-button:hover>span.mc-logo,.mc-button:focus-visible>span.mc-logo{border:0;box-shadow:none;background-color:transparent;filter:brightness(.88)}
-.map-canvas[data-compact='true'] .map-mc{width:44px;min-width:44px}.map-canvas[data-compact='true'] .mc-logo{width:40px;height:26px}.mc-entry .mc-logo{width:58px;height:34px}
+/* Logo officiel seul, détaché du paysage par un fond beige opaque. */
+.mc-button{width:56px;min-width:56px;height:44px;border:1px solid #c6ad8c;border-radius:6px;background:#fff4e3;box-shadow:0 2px 6px #3e342633}.mc-logo,.mc-button>span.mc-logo{width:48px;height:30px;border:0;border-radius:0;box-shadow:none;background:transparent url('assets/logo-monchai.png') center/contain no-repeat}
+.mc-button:hover,.mc-button:focus-visible{background:#f5e6cf;border-color:var(--red)}.mc-button:hover>span.mc-logo,.mc-button:focus-visible>span.mc-logo{border:0;box-shadow:none;background-color:transparent;filter:none}
+.map-canvas[data-compact='true'] .map-mc{width:44px;min-width:44px}.map-canvas[data-compact='true'] .mc-logo{width:40px;height:26px}.mc-entry .mc-logo{width:58px;height:40px;background-color:#fff4e3;background-size:50px auto;border:1px solid #c6ad8c;border-radius:6px;box-shadow:0 2px 6px #3e342633}.mc-entry:hover .mc-logo,.mc-entry:focus-visible .mc-logo{background-color:#f5e6cf;border-color:var(--red)}
 .product-explainer{display:flex;gap:25px;justify-content:space-between;align-items:center;padding:20px 0;margin-bottom:22px;border-top:1px solid #babda4;border-bottom:1px solid #babda4}.product-explainer>div>p:last-child{font-size:16px;margin-top:7px}.product-explainer .mc-entry{margin:0;flex-shrink:0}.product-explainer .mc-entry>span:last-child{max-width:210px}
 dialog.mc-popover.has-wide-capture{width:760px}.has-wide-capture #mc-enlarge img{height:auto;max-height:420px;aspect-ratio:auto}.has-wide-capture #mc-description{max-width:65ch}
 @media(max-width:680px){.product-explainer{align-items:start;flex-direction:column;gap:15px;padding:20px 0}.product-explainer>div>p:last-child{font-size:16px}.product-explainer .mc-entry{font-size:12px}.product-explainer .mc-entry>span:last-child{max-width:none}.has-wide-capture #mc-enlarge img{min-height:120px;object-fit:contain}}

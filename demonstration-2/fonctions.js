@@ -4,7 +4,7 @@ globalThis.MonChaiFonctions = {
   "features": {
     "parcelles": {
       "title": "Définir ses parcelles",
-      "text": "Délimiter une parcelle ou une sous-zone sur le fond cadastral et renseigner ses caractéristiques. Chaque parcelle devient le point de départ des travaux à suivre.",
+      "text": "Deux zones d’une même parcelle ne se conduisent pas toujours de la même façon. Sur le fond cadastral, Mon Chai permet de définir parcelles et sous-zones avec leurs caractéristiques, pour identifier précisément le lieu des travaux.",
       "image": "assets/captures/parcelle-parametrage.jpeg",
       "stage": "Définir",
       "kind": "capture",
@@ -15,7 +15,7 @@ globalThis.MonChaiFonctions = {
     },
     "journal-cultural": {
       "title": "Retrouver les interventions",
-      "text": "Après les passages dans les rangs, retrouver les dates, les parcelles et les travaux enregistrés. Cette vue d’ensemble complète les fiches de saisie du point 1.1.",
+      "text": "Quand les passages se succèdent, difficile de reconstituer la saison de mémoire. Le journal Mon Chai réunit dates, parcelles et travaux enregistrés pour retrouver l’historique des interventions.",
       "href": "/vigne-vendanges.html",
       "image": "assets/captures/journal-cultural.webp",
       "kind": "capture",
@@ -25,7 +25,7 @@ globalThis.MonChaiFonctions = {
     },
     "annonce-materiel": {
       "title": "Chercher ou proposer du matériel",
-      "text": "Exprimer un besoin de matériel viticole ou proposer un équipement à vendre, louer ou prêter : cuve, pompe, pressoir ou matériel des rangs.",
+      "text": "Quand il manque une pompe ou qu’un équipement peut être prêté, les caractéristiques et les conditions doivent être claires. Dans le pilote Annonces, préparez une page à partager pour préciser ce que vous cherchez ou proposez.",
       "href": "/contact.html",
       "kind": "schema",
       "availability": "Annonces · Module pilote, selon activation",
@@ -40,7 +40,7 @@ globalThis.MonChaiFonctions = {
     },
     "annonce-vendanges": {
       "title": "Préparer l’équipe des vendanges",
-      "text": "Décrire le poste, l’effectif recherché, le lieu et les conditions ; relire l’annonce avant de créer une page partageable.",
+      "text": "Le poste, le lieu et les conditions des vendanges doivent être clairs pour les candidats. Le pilote Annonces vous aide à les préciser, à relire l’annonce puis à partager une page.",
       "href": "/contact.html",
       "kind": "schema",
       "availability": "Annonces · Module pilote, selon activation",
@@ -56,7 +56,7 @@ globalThis.MonChaiFonctions = {
     },
     "suivi-maturite": {
       "title": "Suivi de maturité",
-      "text": "Rassembler les relevés de maturité pour accompagner la décision de récolte. Les mesures restent à interpréter au domaine.",
+      "text": "Choisir la date de récolte demande de reprendre les relevés au fil des passages. Mon Chai les rassemble pour suivre l’évolution de la maturité ; l’interprétation des mesures et la décision restent au domaine.",
       "href": "/vigne-vendanges.html",
       "image": "assets/captures/suivi-maturite.webp",
       "kind": "capture",
@@ -66,7 +66,7 @@ globalThis.MonChaiFonctions = {
     },
     "vendanges": {
       "title": "Vendanges",
-      "text": "Retrouver les réceptions, les poids et les encuvages pour suivre le passage du raisin au chai.",
+      "text": "Pendant les réceptions, perdre le lien entre un apport et son encuvage complique le suivi du vin. Mon Chai rassemble les réceptions, les poids et les encuvages pour retrouver le parcours enregistré du raisin.",
       "href": "/vigne-vendanges.html",
       "image": "assets/captures/vendanges.webp",
       "kind": "capture",
@@ -76,7 +76,7 @@ globalThis.MonChaiFonctions = {
     },
     "notes-dictee": {
       "title": "Dicter une opération",
-      "text": "Décrire le travail réalisé depuis le téléphone. Mon Chai Notes prépare une saisie à relire ; le film et les écrans montrent ici un exemple de transfert de cave.",
+      "text": "Une opération à noter alors que la suivante vous attend déjà : dictez ce qui a été fait depuis votre téléphone. Mon Chai Notes prépare une saisie à relire.",
       "image": "assets/captures/notes-dictee.png",
       "stage": "Dicter",
       "kind": "capture",
@@ -88,7 +88,7 @@ globalThis.MonChaiFonctions = {
     },
     "notes-completer": {
       "title": "Compléter la fiche",
-      "text": "Retrouver une fiche individuelle avec les informations manquantes signalées. Préciser les références et les quantités avant la vérification.",
+      "text": "Une dictée peut laisser une référence ou une quantité à préciser. Mon Chai Notes signale les informations manquantes dans la fiche : vous la complétez avant de passer à la vérification.",
       "image": "assets/captures/notes-completer.png",
       "stage": "Compléter",
       "kind": "capture",
@@ -99,7 +99,7 @@ globalThis.MonChaiFonctions = {
     },
     "notes-verifier": {
       "title": "Vérifier, puis envoyer",
-      "text": "Relire les contenants, le volume et la date. Modifier si nécessaire, puis valider l’envoi dans l’application. Cette capture ne déclenche aucune opération.",
+      "text": "Un contenant, un volume ou une date mal repris peuvent modifier le sens d’une opération. Mon Chai Notes vous laisse relire et corriger la fiche avant de valider son envoi dans l’application.",
       "image": "assets/captures/notes-verifier.png",
       "stage": "Vérifier et envoyer",
       "kind": "capture",
@@ -110,7 +110,7 @@ globalThis.MonChaiFonctions = {
     },
     "notes-activite": {
       "title": "Retrouver le statut de sa saisie",
-      "text": "Consulter l’activité pour distinguer une saisie à vérifier, en attente, à corriger ou synchronisée. L’exemple affiché concerne un transfert enregistré.",
+      "text": "Après l’envoi, comment savoir si la saisie a été prise en compte ? L’activité de Mon Chai Notes distingue les éléments à vérifier, en attente, à corriger ou synchronisés ; vous retrouvez ce qu’il reste à reprendre.",
       "image": "assets/captures/notes-activite.png",
       "stage": "Retrouver le statut",
       "kind": "capture",
@@ -121,7 +121,7 @@ globalThis.MonChaiFonctions = {
     },
     "clients": {
       "title": "Préparer le prochain contact",
-      "text": "Avant un appel ou un salon, retrouver le contact et reprendre ses attentes : vins recherchés, échantillons et rendez-vous à préparer. La rencontre suivante part de ce qui a déjà été convenu.",
+      "text": "Après un salon, une relance est plus utile quand on retrouve ce qui a été convenu. Dans Mon Chai, reprenez le contact, les vins recherchés et les échantillons à prévoir pour préparer la prochaine rencontre.",
       "stage": "Reprendre le contact",
       "kind": "schema",
       "flow": [
@@ -135,7 +135,7 @@ globalThis.MonChaiFonctions = {
     },
     "mcp": {
       "title": "Vos stocks et vos impayés, dans Claude",
-      "text": "Quelles cuvées restent disponibles ? Quelles factures attendent un règlement ? Posez vos questions dans Claude : le connecteur MCP consulte les données de Mon Chai et restitue les stocks et les impayés. La vidéo montre ces deux consultations, en 33 secondes.",
+      "text": "Avant une proposition ou une relance, il faut retrouver les stocks et les factures impayées. Posez la question dans Claude : le connecteur MCP consulte les données de Mon Chai et restitue ces informations, en lecture seule.",
       "stage": "Consulter stocks et impayés",
       "kind": "capture",
       "image": "/assets/img/demo-mcp.webp",
@@ -147,7 +147,7 @@ globalThis.MonChaiFonctions = {
     },
     "devis": {
       "title": "Préparer une offre individuelle",
-      "text": "Sélectionner le destinataire, les vins, les quantités et les prix dans un devis. Relire les conditions avant de partager l’offre avec le client.",
+      "text": "Les prix et quantités convenus doivent devenir une offre que le client peut relire. Dans Mon Chai, préparez un devis avec le destinataire, les vins, les quantités, les prix et les conditions avant de le partager.",
       "image": "assets/captures/devis-individuel.webp",
       "stage": "Faire une offre",
       "kind": "capture",
@@ -158,7 +158,7 @@ globalThis.MonChaiFonctions = {
     },
     "commandes": {
       "title": "Retrouver les commandes convenues",
-      "text": "Retrouver les commandes et leurs montants pour suivre ce qui a été convenu avec les clients.",
+      "text": "Après plusieurs échanges, il faut retrouver la commande convenue et son montant. Mon Chai rassemble les commandes clients pour reprendre le suivi commercial à partir de ce qui a été enregistré.",
       "href": "/ventes-clients.html",
       "image": "assets/captures/commandes.webp",
       "kind": "capture",
@@ -168,7 +168,7 @@ globalThis.MonChaiFonctions = {
     },
     "plan-cave": {
       "title": "Plan de cave",
-      "text": "Voir les cuves et leur remplissage pour situer les vins dans les contenants.",
+      "text": "Avant de déplacer un vin ou de préparer une réception, il faut savoir quels contenants sont occupés. Le plan de cave Mon Chai montre les cuves et leur remplissage pour situer les vins.",
       "href": "/cave-vinification.html",
       "image": "assets/captures/plan-cave.webp",
       "kind": "capture",
@@ -178,7 +178,7 @@ globalThis.MonChaiFonctions = {
     },
     "operations-cave": {
       "title": "Journal des opérations",
-      "text": "Retrouver les opérations de cave et les lots concernés dans un même journal.",
+      "text": "Pour reprendre le suivi d’un lot, il faut comprendre ce qui a déjà été fait. Le journal Mon Chai rassemble les opérations de cave et les lots concernés pour retrouver les interventions enregistrées avant de préparer la suite.",
       "href": "/cave-vinification.html",
       "image": "assets/captures/operations-cave.webp",
       "kind": "capture",
@@ -188,7 +188,7 @@ globalThis.MonChaiFonctions = {
     },
     "analyses-oenologiques": {
       "title": "Analyses œnologiques",
-      "text": "Consulter les mesures et les états de surveillance des lots pour préparer les échanges et les décisions de cave.",
+      "text": "Avant un échange avec l’œnologue, il faut retrouver les mesures du bon lot. Mon Chai rassemble les analyses et les états de surveillance pour préparer cet échange avec les résultats enregistrés.",
       "href": "/cave-vinification.html",
       "image": "assets/captures/analyses-oenologiques.webp",
       "kind": "capture",
@@ -198,7 +198,7 @@ globalThis.MonChaiFonctions = {
     },
     "degustation-creation": {
       "title": "Préparer une dégustation",
-      "text": "Nommer la session et sélectionner les vins à faire découvrir au caveau, lors d’un salon ou d’une rencontre professionnelle.",
+      "text": "Quand plusieurs vins et millésimes se succèdent, chaque avis doit rester associé à la bonne cuvée. Créez une session Mon Chai avec son nom et sa sélection de vins pour situer chaque dégustation.",
       "href": "/oenotourisme.html",
       "kind": "capture",
       "image": "assets/captures/degustation-creation.jpeg",
@@ -208,7 +208,7 @@ globalThis.MonChaiFonctions = {
     },
     "degustation-visiteur": {
       "title": "Une dégustation courte ou guidée",
-      "text": "La personne choisit une note rapide ou un parcours guidé : observer le vin, découvrir ses arômes avant et après aération, goûter, puis donner son avis. Ces réponses prolongent la rencontre au caveau.",
+      "text": "Tout le monde n’a ni le même temps ni les mêmes mots pour parler d’un vin. Mon Chai propose une note rapide ou un parcours guidé — observation, arômes, bouche et avis — pour recueillir le ressenti de chacun.",
       "href": "/oenotourisme.html",
       "kind": "capture",
       "image": "assets/captures/degustation-visiteur.png",
@@ -219,7 +219,7 @@ globalThis.MonChaiFonctions = {
     },
     "degustation": {
       "title": "Retrouver les sessions et les retours",
-      "text": "Consulter les dégustations organisées, leur état et les retours recueillis. La rencontre garde une place dans le suivi du domaine.",
+      "text": "Une fois les visiteurs repartis, les impressions recueillies peuvent être difficiles à retrouver. Mon Chai conserve les sessions et leurs retours pour reprendre la lecture des avis après la dégustation.",
       "href": "/oenotourisme.html",
       "kind": "capture",
       "availability": "Selon les modules activés",
@@ -229,7 +229,7 @@ globalThis.MonChaiFonctions = {
     },
     "phyto": {
       "title": "Intrants et registre phytosanitaire",
-      "text": "Retrouver les produits utilisés, les parcelles, les dates et les quantités enregistrées dans les interventions. Filtrer le registre par année ou parcelle et préparer son export. Les données affichées sont fictives.",
+      "text": "Reconstituer une intervention après la saison demande de retrouver produit, parcelle, date et quantité. Le registre Mon Chai rassemble les données enregistrées, avec des filtres par année ou parcelle et un export pour reprendre cet historique.",
       "href": "/registre-phyto-numerique-2027.html",
       "kind": "capture",
       "image": "assets/captures/registre-phytosanitaire.webp",
@@ -239,7 +239,7 @@ globalThis.MonChaiFonctions = {
     },
     "trace-matiere": {
       "title": "La traçabilité dans une fiche de vin",
-      "text": "Retrouver les parcelles d’origine, les vendanges, les lots techniques et les mises qui aboutissent au produit fini. Les liens permettent de passer d’une étape à son détail.",
+      "text": "Pour expliquer d’où vient une bouteille, il faut remonter plusieurs étapes. Dans la fiche du vin, Mon Chai relie parcelles, vendanges, lots techniques et mises : vous pouvez ouvrir le détail des liens enregistrés jusqu’au produit fini.",
       "href": "/stocks-tracabilite.html",
       "kind": "capture",
       "image": "assets/captures/trace-produit-fiche.png",
@@ -250,7 +250,7 @@ globalThis.MonChaiFonctions = {
     },
     "trace-aval": {
       "title": "Ouvrir le dossier d’un lot",
-      "text": "Depuis cette liste, choisir un lot puis ouvrir son dossier : destinations connues, quantités, pièces et opérations associées. Le dossier détaillé peut être exporté en CSV ou PDF.",
+      "text": "Un lot est parti : à quels destinataires et avec quelles pièces ? Depuis la liste, ouvrez son dossier pour retrouver les destinations, quantités et opérations enregistrées, puis exporter ces éléments en CSV ou PDF.",
       "href": "/stocks-tracabilite.html",
       "kind": "capture",
       "availability": "Selon les modules activés",
@@ -260,7 +260,7 @@ globalThis.MonChaiFonctions = {
     },
     "api-catalogue": {
       "title": "Vos vins, du logiciel au site",
-      "text": "Une sélection de produits, formats et prix pourrait alimenter le site depuis Mon Chai. Vous choisiriez ce qui devient public ; les disponibilités et les règles de mise à jour resteraient à définir.",
+      "text": "Quand un prix change, le reprendre sur le site et dans le logiciel crée une double mise à jour. Une future API pourrait publier une sélection de vins, formats et tarifs depuis Mon Chai, selon des règles à construire.",
       "href": "/contact.html",
       "kind": "schema",
       "availability": "À venir · Intégration API",
@@ -274,7 +274,7 @@ globalThis.MonChaiFonctions = {
     },
     "api-commandes": {
       "title": "Les ventes du site dans le même suivi",
-      "text": "Après le choix d’un vin sur votre site, les commandes validées pourraient rejoindre vos ventes dans Mon Chai. Les quantités seraient mises à jour selon des règles de validation à construire avec vous.",
+      "text": "Ressaisir dans le logiciel une commande reçue sur le site, c’est entrer deux fois les mêmes informations. Une future API pourrait transmettre les commandes validées à Mon Chai et mettre à jour les quantités selon des règles à construire.",
       "href": "/contact.html",
       "kind": "schema",
       "availability": "À venir · Intégration API",
@@ -288,7 +288,7 @@ globalThis.MonChaiFonctions = {
     },
     "api-reservations": {
       "title": "Relier les demandes de visite à Mon Chai",
-      "text": "Une future connexion pourrait transmettre la date souhaitée et le nombre de personnes du site à Mon Chai. L’agenda, les capacités d’accueil et les confirmations restent à développer.",
+      "text": "Entre les demandes reçues sur le site et l’accueil au domaine, il faut retrouver date et nombre de personnes. Une future API pourrait les réunir dans Mon Chai ; agenda, capacités et confirmations restent à développer.",
       "href": "/contact.html",
       "kind": "schema",
       "availability": "À venir · Intégration API",
@@ -304,7 +304,7 @@ globalThis.MonChaiFonctions = {
   "places": {
     "vignes": {
       "label": "1 · Les vignes",
-      "intro": "Définir la parcelle, suivre les travaux, préparer les moyens, décider de la récolte puis réceptionner.",
+      "intro": "Les travaux se succèdent, les moyens se préparent et la date de récolte se précise. L’enjeu : garder le fil de chaque parcelle jusqu’à l’entrée du raisin au chai.",
       "slides": [
         "parcelles",
         "journal-cultural",
@@ -316,7 +316,7 @@ globalThis.MonChaiFonctions = {
     },
     "terrain": {
       "label": "1.1 · Saisir sur le terrain",
-      "intro": "Du travail réalisé à une saisie vérifiée. Mon Chai Notes accompagne la saisie mobile ; les écrans montrent un exemple de transfert de cave.",
+      "intro": "Une opération faite doit encore devenir une information exploitable par le domaine. Mon Chai Notes accompagne ce passage de la dictée à une saisie vérifiée. Les captures montrent un transfert de cave.",
       "slides": [
         "notes-dictee",
         "notes-completer",
@@ -326,7 +326,7 @@ globalThis.MonChaiFonctions = {
     },
     "bureau": {
       "label": "2 · Le bureau",
-      "intro": "Reprendre un contact, consulter stocks et règlements en cours, préparer une offre puis suivre les commandes.",
+      "intro": "Entre les rencontres et les commandes, il faut pouvoir reprendre ce qui a été convenu. Mon Chai vous aide à préparer la suite avec les contacts, les vins disponibles et les offres enregistrées.",
       "slides": [
         "clients",
         "mcp",
@@ -336,7 +336,7 @@ globalThis.MonChaiFonctions = {
     },
     "chai": {
       "label": "3 · Le chai",
-      "intro": "Situer les vins, suivre leur travail au chai puis partager les mesures qui éclairent les décisions.",
+      "intro": "Les vins évoluent pendant que de nouvelles opérations se préparent. Pour décider de la suite, il faut retrouver leur emplacement, leur historique et leurs mesures.",
       "slides": [
         "plan-cave",
         "operations-cave",
@@ -345,7 +345,7 @@ globalThis.MonChaiFonctions = {
     },
     "caveau": {
       "label": "4 · Le caveau",
-      "intro": "Préparer les vins à faire découvrir, accompagner la dégustation et retrouver les retours après la rencontre.",
+      "intro": "Après une rencontre au caveau, il reste à retrouver les vins goûtés et les avis. Mon Chai organise la session de dégustation, le parcours du visiteur et les retours.",
       "slides": [
         "degustation-creation",
         "degustation-visiteur",
@@ -354,7 +354,7 @@ globalThis.MonChaiFonctions = {
     },
     "jardin": {
       "label": "5 · Le jardin",
-      "intro": "Le jardin est un repère illustré pour présenter les intrants utilisés dans les vignes et les interventions du registre phytosanitaire.",
+      "intro": "Le jardin est un repère illustré pour les intrants viticoles. Ici, l’enjeu est de pouvoir reprendre le suivi des interventions à partir des informations enregistrées.",
       "slides": [
         "phyto"
       ]
@@ -369,7 +369,7 @@ globalThis.MonChaiFonctions = {
     },
     "ventes": {
       "label": "L’Aube · La vente sur votre site",
-      "intro": "Une future liaison entre les vins publiés, les commandes du site et votre suivi commercial dans Mon Chai.",
+      "intro": "Quand le site et le logiciel sont mis à jour séparément, chaque vente et chaque tarif demandent d’être repris. Ces futures API viseraient à relier le catalogue et les commandes à Mon Chai.",
       "slides": [
         "api-catalogue",
         "api-commandes"
@@ -377,7 +377,7 @@ globalThis.MonChaiFonctions = {
     },
     "reservation": {
       "label": "Du site à l’accueil au domaine",
-      "intro": "Comment une future demande de visite pourrait rejoindre votre organisation dans Mon Chai.",
+      "intro": "Recevoir une demande en ligne, puis organiser l’accueil : deux moments à raccorder. Cette future connexion viserait à réunir les demandes dans Mon Chai avant leur confirmation par le domaine.",
       "slides": [
         "api-reservations"
       ]

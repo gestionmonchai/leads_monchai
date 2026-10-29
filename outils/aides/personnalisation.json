@@ -1,0 +1,1151 @@
+{
+  "date_editoriale": "2026-10-29",
+  "note": "Titres, questions de préparation et liens : propositions éditoriales Mon Chai. Les conditions restent dans contenus.py avec leurs références et dates propres.",
+  "fiches": {
+    "outremer": {
+      "titres": ["Quel territoire et quelle production agricole ?", "POSEI et FEADER : quels soutiens distinguer ?", "Vérifier les listes de produits auprès de la DAAF", "Une aide ultramarine ne s’applique pas à tout projet viticole", "Construire le financement à partir du territoire réel"],
+      "questions": ["Le raisin ou le produit de mon activité figure-t-il dans la liste du programme ?", "Quel service et quelle campagne concernent mon territoire ?", "Quelles dépenses et quels bénéficiaires relèvent du POSEI ou du FEADER ?"],
+      "liens": ["pcae-regions", "dja", "secheresse"]
+    },
+    "nouveaux-agriculteurs": {
+      "titres": [
+        "S’installer hors DJA : quel parcours régional ?",
+        "Dotation, trésorerie ou équipement : quel volet ?",
+        "Faire examiner une reconversion viticole",
+        "Âge et production : les limites de chaque règlement",
+        "Préparer un scénario avec et sans dotation"
+      ],
+      "questions": [
+        "Quel âge et quelle date d’installation le règlement retient-il ?",
+        "Le volet régional couvre-t-il réellement mon projet de vigne ?",
+        "Quels engagements et versements figureraient dans ma décision ?"
+      ],
+      "liens": [
+        "dja",
+        "aita",
+        "installation-locale"
+      ]
+    },
+    "aita": {
+      "titres": [
+        "À quelle action d’accompagnement accéder ?",
+        "Conseil financé et reste à charge",
+        "Trouver un opérateur habilité avant la prestation",
+        "Distinguer accueil, étude et dotation",
+        "Préparer le premier entretien de reprise"
+      ],
+      "questions": [
+        "Quelle action AITA répond à mon besoin précis ?",
+        "Quel opérateur est habilité et qui recevra le financement ?",
+        "La prestation doit-elle être autorisée avant sa commande ?"
+      ],
+      "liens": [
+        "dja",
+        "transmission-conseil",
+        "nouveaux-agriculteurs"
+      ]
+    },
+    "msa-jeunes": {
+      "titres": [
+        "Affiliation, âge et activité : les conditions MSA",
+        "Quelles cotisations restent à payer ?",
+        "Demander une estimation à sa caisse MSA",
+        "Ne pas confondre DJA, ACRE et exonération JA",
+        "Lire son échéancier de premières années"
+      ],
+      "questions": [
+        "Quelle date d’affiliation et quel statut ma caisse retient-elle ?",
+        "Quelles lignes de mon appel de cotisations seront exonérées ?",
+        "Comment cette exonération s’articule-t-elle avec l’ACRE ?"
+      ],
+      "liens": [
+        "dja",
+        "acre",
+        "acja"
+      ]
+    },
+    "acre": {
+      "titres": [
+        "Créateur agricole : vérifier l’accès à l’ACRE",
+        "Un allègement de cotisations, pas un capital",
+        "Préparer la démarche auprès de la MSA",
+        "ACRE et exonération JA : vérifier l’articulation",
+        "Documenter une création en société"
+      ],
+      "questions": [
+        "Mon parcours et mon contrôle de la société satisfont-ils aux critères ?",
+        "Quelle procédure et quelle date limite ma caisse applique-t-elle ?",
+        "Quels effets sur mes cotisations et sur une demande d’ARCE ?"
+      ],
+      "liens": [
+        "msa-jeunes",
+        "arce-are",
+        "dja"
+      ]
+    },
+    "arce-are": {
+      "titres": [
+        "Droits chômage et création : qui peut choisir ?",
+        "Capital ARCE ou complément mensuel ARE",
+        "Obtenir deux simulations pour le même projet",
+        "Conditions du second versement et revenus déclarés",
+        "Financer la vie personnelle pendant l’élevage"
+      ],
+      "questions": [
+        "Quel reliquat et quelles règles s’appliquent à mes droits ?",
+        "Quelles conditions faut-il réunir pour le second versement ?",
+        "Comment mes revenus agricoles modifieraient-ils le maintien de l’ARE ?"
+      ],
+      "liens": [
+        "acre",
+        "dja",
+        "nouveaux-agriculteurs"
+      ]
+    },
+    "abattement-jeunes": {
+      "titres": [
+        "Installation aidée et bénéfice agricole au réel",
+        "Réduction du bénéfice imposable : quel effet ?",
+        "Réunir les justificatifs pour la liasse fiscale",
+        "Période d’abattement et année de la dotation",
+        "Séparer bénéfice comptable, fiscal et trésorerie"
+      ],
+      "questions": [
+        "Quelles périodes de mon activité entrent dans l’abattement ?",
+        "Quelle aide d’installation et quel régime fiscal ouvrent le droit ?",
+        "Comment le calcul apparaît-il dans ma déclaration de bénéfices ?"
+      ],
+      "liens": [
+        "dja",
+        "tfnb-jeunes",
+        "dep"
+      ]
+    },
+    "tfnb-jeunes": {
+      "titres": [
+        "Jeune exploitant et propriétaire : qui agit ?",
+        "Part nationale et complément voté localement",
+        "Préparer la déclaration 6711-SD par commune",
+        "Fermage et répercussion du dégrèvement",
+        "Suivre les parcelles pendant la période d’aide"
+      ],
+      "questions": [
+        "Quelles parcelles et quels bailleurs doivent figurer dans la déclaration ?",
+        "La commune a-t-elle voté un complément et pour quelle part ?",
+        "Comment le dégrèvement sera-t-il répercuté dans le fermage ?"
+      ],
+      "liens": [
+        "dja",
+        "tfnb-bio",
+        "tfnb-sinistre"
+      ]
+    },
+    "installation-locale": {
+      "titres": [
+        "Première installation dans le Finistère",
+        "Distinguer forfait départemental et complément CUMA",
+        "Contacter le Département avec son parcours régional",
+        "Un exemple local ne vaut pas barème national",
+        "Rechercher les autres financeurs du territoire"
+      ],
+      "questions": [
+        "Mon installation et mon siège relèvent-ils de cette aide départementale ?",
+        "Quel volet peut être examiné avec ou sans DJA ?",
+        "Quelles conditions particulières s’appliquent au complément CUMA ?"
+      ],
+      "liens": [
+        "dja",
+        "nouveaux-agriculteurs",
+        "credit-cuma"
+      ]
+    },
+    "restructuration": {
+      "titres": [
+        "Quelles opérations de vignoble peuvent être examinées ?",
+        "Distinguer aide et paiement de la campagne 2025–2026",
+        "Préparer CVI, autorisations et travaux futurs",
+        "Restructuration, replantation et arrachage définitif",
+        "Décrire un changement de cépage ou de conduite"
+      ],
+      "questions": [
+        "Quelle opération et quelle campagne correspondent à mon projet ?",
+        "Quels contrôles et justificatifs faut-il prévoir avant les travaux ?",
+        "Mon autorisation de replantation est-elle compatible avec le projet aidé ?"
+      ],
+      "liens": [
+        "arrachage",
+        "plantations-occitanie",
+        "investissement-chai"
+      ]
+    },
+    "investissement-chai": {
+      "titres": [
+        "Quelles entreprises et dépenses du chai sont concernées ?",
+        "Calculer l’aide sur les dépenses retenues",
+        "Suivre un dossier déjà accepté ou préparer un futur appel",
+        "Changement de matériel et obligations après paiement",
+        "Séparer cuverie, bâtiment et commercialisation"
+      ],
+      "questions": [
+        "Quelles lignes du devis ont été retenues dans ma décision ?",
+        "Faut-il une autorisation avant de changer le matériel ou le calendrier ?",
+        "Quelles factures et preuves de paiement attend le téléservice ?"
+      ],
+      "liens": [
+        "pcae-regions",
+        "ademe-energie",
+        "restructuration"
+      ]
+    },
+    "secheresse": {
+      "titres": [
+        "Matériel d’irrigation et outil de pilotage : quel projet ?",
+        "Assiette admissible et taux conditionnels",
+        "Vérifier l’eau et les équipements avant commande",
+        "Subvention et autorisation de prélèvement sont distinctes",
+        "Construire un projet d’irrigation pilotée"
+      ],
+      "questions": [
+        "Le matériel et l’OAD envisagés figurent-ils dans les listes actuelles ?",
+        "Quelles validations sur la ressource et les prélèvements sont requises ?",
+        "Quelle date autorise l’engagement de la dépense ?"
+      ],
+      "liens": [
+        "hydraulique-ara",
+        "agences-eau",
+        "pcae-regions"
+      ]
+    },
+    "pcae-regions": {
+      "titres": [
+        "Quel appel régional pour quel porteur ?",
+        "FEADER régional et investissement vitivinicole",
+        "Partir de la fonction de chaque dépense",
+        "Début des dépenses, sélection et double financement",
+        "Construire un tableau de dépenses par dispositif"
+      ],
+      "questions": [
+        "Quel appel et quelle annexe couvrent les matériels de mon projet ?",
+        "La vigne, le chai et la vente relèvent-ils du même guichet ?",
+        "Quelle date d’admissibilité et quel cofinancement dois-je prévoir ?"
+      ],
+      "liens": [
+        "investissement-chai",
+        "pcae-pays-loire",
+        "pve-nouvelle-aquitaine"
+      ]
+    },
+    "plantations-occitanie": {
+      "titres": [
+        "Nouveaux exploitants : quel projet de plantation ?",
+        "Cadre régional et limite de surface annoncée",
+        "Vérifier la période de dépôt et l’accès Euro-PAC",
+        "Autorisation de planter et aide : deux décisions",
+        "Préparer le calendrier d’une nouvelle parcelle"
+      ],
+      "questions": [
+        "Mon statut correspond-il à celui de nouvel exploitant du dispositif ?",
+        "Quelle période de dépôt est effectivement ouverte sur Euro-PAC ?",
+        "Quelle autorisation de plantation joindre au dossier ?"
+      ],
+      "liens": [
+        "restructuration",
+        "dja",
+        "pcae-regions"
+      ]
+    },
+    "pcae-pays-loire": {
+      "titres": [
+        "Quel projet végétal dans les Pays de la Loire ?",
+        "Ce que prévoit l’appel régional 2026",
+        "Préparer étude, autodiagnostic et formation",
+        "Campagne close : ne pas engager sur un ancien règlement",
+        "Distinguer préparation du projet et achat"
+      ],
+      "questions": [
+        "Quelles annexes de matériel visent mon projet viticole ?",
+        "Quel diagnostic ou quelle formation doit précéder le dossier ?",
+        "Un futur appel reprend-il ces règles ou faut-il attendre sa publication ?"
+      ],
+      "liens": [
+        "pcae-regions",
+        "investissement-chai",
+        "secheresse"
+      ]
+    },
+    "petits-equipements-bfc": {
+      "titres": [
+        "Quels petits équipements en Bourgogne-Franche-Comté ?",
+        "Assiette, taux et majoration : trois calculs",
+        "Présenter des devis dans les limites du dispositif",
+        "Ne pas transformer une majoration en points de taux",
+        "Calculer le reste à charge d’un petit achat"
+      ],
+      "questions": [
+        "Chaque équipement figure-t-il dans la liste admissible ?",
+        "La majoration porte-t-elle sur le montant d’aide ou sur le taux ?",
+        "Quels justificatifs et quelle date d’engagement sont retenus ?"
+      ],
+      "liens": [
+        "pcae-regions",
+        "credit-cuma",
+        "investissement-chai"
+      ]
+    },
+    "modernisation-idf": {
+      "titres": [
+        "Quelle exploitation francilienne peut candidater ?",
+        "Taux de base et majorations conditionnelles",
+        "Préparer le dossier de modernisation 2026",
+        "Vérifier l’assiette avant d’appliquer un pourcentage",
+        "Chiffrer séparément dépenses retenues et exclues"
+      ],
+      "questions": [
+        "Mon siège et mon projet relèvent-ils de l’appel francilien ?",
+        "Quelles pièces justifient une éventuelle majoration ?",
+        "Quand puis-je signer les devis sans compromettre le dossier ?"
+      ],
+      "liens": [
+        "pcae-regions",
+        "investissement-chai",
+        "diversification-35"
+      ]
+    },
+    "pve-nouvelle-aquitaine": {
+      "titres": [
+        "Quels projets végétaux pour l’appel 2026–2027 ?",
+        "Dépenses retenues et sélection régionale",
+        "Lire les annexes avant de choisir le matériel",
+        "Un intitulé environnemental ne suffit pas",
+        "Décrire l’objectif technique de chaque équipement"
+      ],
+      "questions": [
+        "L’équipement exact figure-t-il dans l’annexe de cet appel ?",
+        "Quels critères de sélection et justificatifs concernent mon domaine ?",
+        "Comment traiter une dépense déjà envisagée dans un autre financement ?"
+      ],
+      "liens": [
+        "pcae-regions",
+        "agences-eau",
+        "reorientation-naq"
+      ]
+    },
+    "hydraulique-ara": {
+      "titres": [
+        "Quel porteur collectif pour l’infrastructure ?",
+        "Assiette et cofinancements hydrauliques",
+        "Monter un projet collectif et ses autorisations",
+        "Financement, ressource et droit de l’eau",
+        "Répartir les charges d’un investissement partagé"
+      ],
+      "questions": [
+        "Le maître d’ouvrage entre-t-il dans les catégories admises ?",
+        "Quelles autorisations et études doivent précéder les travaux ?",
+        "Comment seront répartis propriété, entretien et coûts entre usagers ?"
+      ],
+      "liens": [
+        "secheresse",
+        "agences-eau",
+        "pcae-regions"
+      ]
+    },
+    "pepinieres-sud": {
+      "titres": [
+        "Une aide aux pépinières, pas à tout acheteur de plants",
+        "Taux, plancher et plafond régional",
+        "Anticiper la demande avant l’engagement",
+        "Vérifier activité, cumul et enveloppe annuelle",
+        "Présenter les investissements de pépinière"
+      ],
+      "questions": [
+        "Mon activité de pépinière répond-elle au dispositif régional ?",
+        "Quel délai faut-il respecter avant la commande ?",
+        "Quels postes du devis et quelles autres aides sont admissibles ?"
+      ],
+      "liens": [
+        "plantations-occitanie",
+        "restructuration",
+        "pcae-regions"
+      ]
+    },
+    "dpb-reserve": {
+      "titres": [
+        "Surfaces, droits et agriculteur actif",
+        "Aide de base et attribution par la réserve",
+        "Vérifier le portefeuille DPB avant Telepac",
+        "Une vigne ne crée pas automatiquement un droit",
+        "Préparer une première déclaration PAC"
+      ],
+      "questions": [
+        "Quels hectares admissibles et quels droits sont retenus pour mon exploitation ?",
+        "Puis-je déposer une demande à la réserve et avec quelles pièces ?",
+        "Comment l’attribution de droits s’articule-t-elle avec l’ACJA ?"
+      ],
+      "liens": [
+        "acja",
+        "ecoregime",
+        "dja"
+      ]
+    },
+    "acja": {
+      "titres": [
+        "Jeune agriculteur : vérifier les critères PAC",
+        "Un complément de revenu distinct de la DJA",
+        "Préparer la demande annuelle et ses pièces",
+        "Droits de base et critères d’installation",
+        "Distinguer dotation régionale et paiements directs"
+      ],
+      "questions": [
+        "Mon âge et ma date d’installation satisfont-ils à la notice annuelle ?",
+        "Ai-je les droits à l’aide de base requis pour l’ACJA ?",
+        "Quelles pièces et quelle durée d’accès sont retenues pour mon dossier ?"
+      ],
+      "liens": [
+        "dja",
+        "dpb-reserve",
+        "msa-jeunes"
+      ]
+    },
+    "ecoregime": {
+      "titres": [
+        "Quelle voie d’accès pour les cultures permanentes ?",
+        "Niveaux de paiement et exigences de campagne",
+        "Préparer les justificatifs de la voie choisie",
+        "Enherbement et certification : lire le cadre annuel",
+        "Choisir une voie cohérente avec le vignoble"
+      ],
+      "questions": [
+        "Quelle voie de l’écorégime correspond à mes pratiques et surfaces ?",
+        "Quels justificatifs de couverture ou de certification conserver ?",
+        "Quels paiements et cumuls sont prévus par la notice de campagne ?"
+      ],
+      "liens": [
+        "dpb-reserve",
+        "cab",
+        "maec"
+      ]
+    },
+    "tode": {
+      "titres": [
+        "Quels contrats et salariés saisonniers ?",
+        "Exonération, dégressivité et cotisations restantes",
+        "Préparer contrat, paie et déclaration sociale",
+        "Comparer les allègements sans les additionner à tort",
+        "Budgéter le coût complet des vendangeurs"
+      ],
+      "questions": [
+        "Le contrat et l’activité du salarié ouvrent-ils le dispositif ?",
+        "Quel calcul de rémunération et quelle durée maximale s’appliquent ?",
+        "Quel allègement est le plus adapté et comment corriger une paie ?"
+      ],
+      "liens": [
+        "apprentissage-ocapiat",
+        "msa-difficultes",
+        "remplacement"
+      ]
+    },
+    "vivea": {
+      "titres": [
+        "Quel chef d’exploitation peut mobiliser VIVEA ?",
+        "Plafond personnel et reste à charge de formation",
+        "Vérifier le financement avant l’inscription",
+        "Une enveloppe n’est pas un droit de tirage libre",
+        "Choisir une formation utile à l’activité du domaine"
+      ],
+      "questions": [
+        "Suis-je à jour des conditions de contribution et de statut ?",
+        "Quel montant reste disponible pour cette formation précise ?",
+        "Qui dépose la demande et quel reste à charge sera facturé ?"
+      ],
+      "liens": [
+        "aita",
+        "apprentissage-ocapiat",
+        "transmission-conseil"
+      ]
+    },
+    "apprentissage-ocapiat": {
+      "titres": [
+        "Apprenti et salarié : deux parcours de financement",
+        "Aide employeur et financement pédagogique",
+        "Vérifier contrat, niveau et interlocuteur OCAPIAT",
+        "Ne pas additionner aide au CFA et prime au domaine",
+        "Préparer le budget d’un recrutement en alternance"
+      ],
+      "questions": [
+        "Quelle règle correspond à la date et au niveau du contrat ?",
+        "Quel financement est versé à l’employeur et lequel au CFA ?",
+        "Quelles déclarations et conditions de maintien de l’aide suivre ?"
+      ],
+      "liens": [
+        "tode",
+        "vivea",
+        "msa-difficultes"
+      ]
+    },
+    "remplacement": {
+      "titres": [
+        "Quelles absences et quelles activités ouvrent le crédit ?",
+        "Dépenses, durée et plafond du remplacement",
+        "Conserver les preuves de la prestation et de l’absence",
+        "Vérifier les autres prises en charge du remplacement",
+        "Chiffrer une absence avec le service de remplacement"
+      ],
+      "questions": [
+        "Le motif de mon absence et mon activité satisfont-ils au texte ?",
+        "Quelles dépenses et quels justificatifs entrent dans le calcul ?",
+        "Le remplacement a-t-il déjà bénéficié d’une autre prise en charge ?"
+      ],
+      "liens": [
+        "tode",
+        "vivea",
+        "credit-bio"
+      ]
+    },
+    "leader": {
+      "titres": [
+        "Projet rural et territoire d’un groupe d’action locale",
+        "Dépenses et cofinancements du programme local",
+        "Présenter le projet au GAL avant engagement",
+        "Calendrier local et sélection du projet",
+        "Monter un projet de vente ou d’accueil au domaine"
+      ],
+      "questions": [
+        "Quel GAL et quelle fiche-action couvrent le lieu du projet ?",
+        "Quelles dépenses et quels cofinancements publics sont nécessaires ?",
+        "Quel calendrier de sélection et de paiement faut-il financer ?"
+      ],
+      "liens": [
+        "diversification-35",
+        "pcae-regions",
+        "investissement-chai"
+      ]
+    },
+    "promotion-tiers": {
+      "titres": [
+        "Quels opérateurs et actions dans les pays tiers ?",
+        "Programme retenu et dépenses de promotion",
+        "Préparer les actions 2027 dans l’appel 2026",
+        "Marchés hors UE et justificatifs des opérations",
+        "Documenter un budget export par action"
+      ],
+      "questions": [
+        "Quel pays et quel type d’action sont couverts par la décision ?",
+        "Quels engagements et justificatifs doit comporter mon programme ?",
+        "Comment distinguer les coûts déjà soutenus par un autre dispositif export ?"
+      ],
+      "liens": [
+        "assurance-prospection",
+        "agrip",
+        "leader"
+      ]
+    },
+    "agrip": {
+      "titres": [
+        "Un programme collectif, avec quels porteurs ?",
+        "Programmes simples ou multiples : quel montage ?",
+        "Construire le partenariat avant un futur appel",
+        "L’enveloppe européenne n’est pas une aide individuelle",
+        "Répartir rôles, dépenses et preuves entre partenaires"
+      ],
+      "questions": [
+        "Notre organisation et nos produits peuvent-ils porter un programme ?",
+        "S’agit-il d’un programme simple ou multiple et qui l’instruit ?",
+        "Quelles actions, contributions et preuves sont attendues des partenaires ?"
+      ],
+      "liens": [
+        "promotion-tiers",
+        "assurance-prospection",
+        "avenir-bio"
+      ]
+    },
+    "assurance-prospection": {
+      "titres": [
+        "Quel projet export présenter à Bpifrance ?",
+        "Avance, prime et part remboursable",
+        "Faire valider le budget et le contrat de prospection",
+        "Assurance prospection et subvention sont différentes",
+        "Tester l’effort commercial sur un marché étranger"
+      ],
+      "questions": [
+        "Quelle part de mon budget export peut être couverte ?",
+        "Quel remboursement minimal et quelles obligations prévoit le contrat ?",
+        "Comment les recettes export et les autres aides modifient-elles le calcul ?"
+      ],
+      "liens": [
+        "promotion-tiers",
+        "agrip",
+        "prets-consolidation"
+      ]
+    },
+    "credit-cuma": {
+      "titres": [
+        "Adhésion CUMA et dépenses de mécanisation concernées",
+        "Taux, plafond annuel et règle GAEC",
+        "Isoler les dépenses admissibles dans la comptabilité",
+        "Autres aides et de minimis : ajuster l’assiette",
+        "Rapprocher factures CUMA et déclaration fiscale"
+      ],
+      "questions": [
+        "Quelles lignes des factures CUMA sont admissibles au crédit ?",
+        "Quel plafond s’applique à mon entreprise ou à mon GAEC ?",
+        "Quelles autres aides doivent être déduites et déclarées ?"
+      ],
+      "liens": [
+        "installation-locale",
+        "petits-equipements-bfc",
+        "dep"
+      ]
+    },
+    "cab": {
+      "titres": [
+        "Quelles surfaces et quel engagement de conversion ?",
+        "Paiement surfacique et catégorie de production",
+        "Préparer certification et déclaration PAC",
+        "Engagement bio, aides fiscales et cumul",
+        "Financer la transition d’une parcelle viticole"
+      ],
+      "questions": [
+        "Quelle date de conversion et quelles parcelles sont admissibles ?",
+        "Quelle durée et quel cahier des charges correspondent à mon engagement ?",
+        "Comment l’aide CAB s’articule-t-elle avec le crédit d’impôt bio ?"
+      ],
+      "liens": [
+        "credit-bio",
+        "maec",
+        "ecoregime"
+      ]
+    },
+    "maec": {
+      "titres": [
+        "Quelle mesure agroenvironnementale sur le territoire ?",
+        "Durée, paiement et obligations de la mesure",
+        "Prendre contact avec l’opérateur territorial",
+        "Des engagements différents selon le dispositif",
+        "Suivre les preuves des pratiques contractualisées"
+      ],
+      "questions": [
+        "Quelle mesure et quel opérateur couvrent mes parcelles ?",
+        "Quelle durée et quels objectifs sont exigés dans cet engagement ?",
+        "Quelles conséquences entraîne une modification du parcellaire ou des pratiques ?"
+      ],
+      "liens": [
+        "cab",
+        "ecoregime",
+        "agences-eau"
+      ]
+    },
+    "credit-bio": {
+      "titres": [
+        "Part d’activité biologique et critères fiscaux",
+        "Montant du crédit et plafonnement avec les aides bio",
+        "Rapprocher aides reçues et déclaration fiscale",
+        "Conversion, GAEC et de minimis : vérifier les cumuls",
+        "Calculer l’avantage fiscal sans le confondre avec la CAB"
+      ],
+      "questions": [
+        "Quelle part de mes recettes provient des activités biologiques retenues ?",
+        "Quelles aides CAB ou maintien entrent dans le plafond de cumul ?",
+        "Quelles règles de transparence et de minimis concernent ma structure ?"
+      ],
+      "liens": [
+        "cab",
+        "tfnb-bio",
+        "credit-hve"
+      ]
+    },
+    "credit-hve": {
+      "titres": [
+        "Première certification HVE : quelle période ?",
+        "Un avantage fiscal unique sous conditions",
+        "Réunir le certificat et les justificatifs fiscaux",
+        "Un renouvellement ne crée pas un nouveau crédit",
+        "Distinguer coût de certification et aide fiscale"
+      ],
+      "questions": [
+        "Ma certification est-elle une première certification éligible ?",
+        "L’entreprise a-t-elle déjà bénéficié de ce crédit ?",
+        "Quels plafonds de cumul et de minimis doivent être contrôlés ?"
+      ],
+      "liens": [
+        "ecoregime",
+        "credit-bio",
+        "maec"
+      ]
+    },
+    "tfnb-bio": {
+      "titres": [
+        "Parcelles bio et délibération de la collectivité",
+        "Quelle part de taxe peut être exonérée ?",
+        "Coordonner propriétaire et exploitant avant la déclaration",
+        "Première attestation et autres exonérations",
+        "Suivre les parcelles et la répercussion au fermage"
+      ],
+      "questions": [
+        "La collectivité a-t-elle adopté l’exonération pour ces parcelles ?",
+        "Quelle attestation et quelle date font commencer le dispositif ?",
+        "Comment l’exonération s’articule-t-elle avec celle d’un jeune agriculteur ?"
+      ],
+      "liens": [
+        "tfnb-jeunes",
+        "credit-bio",
+        "cab"
+      ]
+    },
+    "avenir-bio": {
+      "titres": [
+        "Un projet de filière avec quels partenaires ?",
+        "Investissements et engagements de l’appel collectif",
+        "Préparer un partenariat pour une future candidature",
+        "Appel clos et absence de reconduction garantie",
+        "Organiser l’approvisionnement et les débouchés bio"
+      ],
+      "questions": [
+        "Quels partenaires et engagements structurent notre projet de filière ?",
+        "Quelles dépenses de chaque partenaire pourraient être retenues ?",
+        "Quel futur appel publié permettrait réellement de candidater ?"
+      ],
+      "liens": [
+        "cab",
+        "agrip",
+        "investissement-chai"
+      ]
+    },
+    "agences-eau": {
+      "titres": [
+        "Quel bassin et quel territoire prioritaire ?",
+        "Aides directes ou financement via un programme",
+        "Identifier l’agence et le bon appel",
+        "Eau, pratiques agricoles et autorisations",
+        "Relier l’investissement à un objectif de ressource"
+      ],
+      "questions": [
+        "De quelle agence et de quel territoire prioritaire relèvent mes parcelles ?",
+        "L’aide est-elle directe ou portée par un programme partenaire ?",
+        "Quelles obligations et preuves de résultat sont attachées au financement ?"
+      ],
+      "liens": [
+        "secheresse",
+        "maec",
+        "pse"
+      ]
+    },
+    "pse": {
+      "titres": [
+        "Quel contrat territorial de services environnementaux ?",
+        "Paiement, indicateurs et engagements contractuels",
+        "Contacter le porteur du projet territorial",
+        "Certification et contrat PSE ne sont pas équivalents",
+        "Évaluer les pratiques et leur coût de maintien"
+      ],
+      "questions": [
+        "Un projet PSE couvre-t-il réellement mon exploitation ?",
+        "Quels indicateurs et quelles obligations prévoit le contrat proposé ?",
+        "Quelles aides ou engagements déjà souscrits doivent être déclarés ?"
+      ],
+      "liens": [
+        "maec",
+        "agences-eau",
+        "ecoregime"
+      ]
+    },
+    "haies": {
+      "titres": [
+        "Quel appel pour les haies ou la biodiversité ?",
+        "Dépenses et accompagnement selon le programme",
+        "Faire diagnostiquer le projet avant les travaux",
+        "L’intitulé écologique ne rend pas toute dépense admissible",
+        "Planifier plantation, entretien et objectifs du domaine"
+      ],
+      "questions": [
+        "Quel appel couvre le lieu et le type de plantation envisagés ?",
+        "Quels diagnostics, plants et travaux figurent dans les dépenses admises ?",
+        "Quelles obligations d’entretien et de maintien devront être respectées ?"
+      ],
+      "liens": [
+        "agences-eau",
+        "maec",
+        "pcae-regions"
+      ]
+    },
+    "ademe-energie": {
+      "titres": [
+        "Quelle activité et quel projet énergétique ?",
+        "Étude de faisabilité ou investissement de chaleur",
+        "Présenter les données énergétiques à l’ADEME",
+        "Le financement d’une étude ne décide pas les travaux",
+        "Comparer besoins thermiques et solutions du chai"
+      ],
+      "questions": [
+        "Quelle fiche ADEME correspond à mon activité et à mon projet ?",
+        "Quelles études doivent précéder un investissement ?",
+        "Quels coûts de fonctionnement et cofinancements intégrer à la comparaison ?"
+      ],
+      "liens": [
+        "investissement-chai",
+        "pcae-regions",
+        "agences-eau"
+      ]
+    },
+    "conseil-rse-grand-est": {
+      "titres": [
+        "Entreprises vitivinicoles et prestataires habilités",
+        "Quel format de conseil et quel reste à charge ?",
+        "Préparer la demande avant la prestation RSE",
+        "Convention, enveloppe et calendrier de l’appel",
+        "Choisir un accompagnement selon les besoins du domaine"
+      ],
+      "questions": [
+        "Quel format de conseil répond à mon besoin et à mon statut ?",
+        "Le prestataire envisagé est-il habilité pour cet appel ?",
+        "Quelle part sera facturée au domaine et à quel moment ?"
+      ],
+      "liens": [
+        "vivea",
+        "pcae-regions",
+        "transmission-conseil"
+      ]
+    },
+    "assurance-recolte": {
+      "titres": [
+        "Quel contrat multirisque climatique peut être soutenu ?",
+        "Prime admissible et coût restant au domaine",
+        "Coordonner contrat et demande annuelle PAC",
+        "Franchise, rendement et exclusions de garantie",
+        "Comparer des garanties sur les mêmes hypothèses"
+      ],
+      "questions": [
+        "Quelle part de la prime est admissible à la subvention ?",
+        "Quels rendements, capitaux et franchises servent au calcul des pertes ?",
+        "Qui gère mon indemnisation selon le niveau de perte ?"
+      ],
+      "liens": [
+        "isn",
+        "tfnb-sinistre",
+        "dep"
+      ]
+    },
+    "isn": {
+      "titres": [
+        "Pertes exceptionnelles : quel étage d’indemnisation ?",
+        "Seuil viticole et part de perte prise en charge",
+        "Identifier l’interlocuteur et déclarer le sinistre",
+        "Assuré ou non : les règles ne sont pas identiques",
+        "Reconstituer le rendement et les justificatifs de perte"
+      ],
+      "questions": [
+        "Quel rendement de référence et quel seuil sont retenus pour mon sinistre ?",
+        "Quel interlocuteur et quel délai s’appliquent à ma situation d’assurance ?",
+        "Sur quelle fraction de perte le taux de prise en charge est-il calculé ?"
+      ],
+      "liens": [
+        "assurance-recolte",
+        "tfnb-sinistre",
+        "msa-difficultes"
+      ]
+    },
+    "prets-consolidation": {
+      "titres": [
+        "Quel emprunteur et quels prêts de consolidation ?",
+        "Garantie publique et commission prise en charge",
+        "Coordonner banque et dossier FranceAgriMer",
+        "Garantie, dette et aide à la commission",
+        "Tester un nouvel échéancier de remboursement"
+      ],
+      "questions": [
+        "Mon prêt et sa date de mise en place entrent-ils dans le dispositif ?",
+        "Quelle base de commission est retenue pour la prise en charge ?",
+        "Quel coût total et quelles échéances restent dus après consolidation ?"
+      ],
+      "liens": [
+        "msa-difficultes",
+        "audit-global",
+        "dep"
+      ]
+    },
+    "msa-difficultes": {
+      "titres": [
+        "Exploitant ou employeur : contacter sa caisse",
+        "Échéancier et prise en charge : deux effets différents",
+        "Présenter la trésorerie et les cotisations dues",
+        "Une demande ne suspend pas seule les échéances",
+        "Suivre séparément dettes reportées et aides accordées"
+      ],
+      "questions": [
+        "Quel service de ma caisse doit examiner mon dossier ?",
+        "S’agit-il d’un report de paiement ou d’une prise en charge accordée ?",
+        "Quelles échéances et obligations restent à respecter pendant l’examen ?"
+      ],
+      "liens": [
+        "prets-consolidation",
+        "audit-global",
+        "area"
+      ]
+    },
+    "audit-global": {
+      "titres": [
+        "Quelle exploitation peut solliciter un audit ?",
+        "Un diagnostic financé, pas une reprise des dettes",
+        "Faire valider l’audit et son prestataire",
+        "L’audit ne garantit pas l’aide suivante",
+        "Préparer dettes, trésorerie et scénarios de redressement"
+      ],
+      "questions": [
+        "Quelles conditions et quel prestataire sont admis par la DDT(M) ?",
+        "Qui valide la mission et le financement avant son lancement ?",
+        "Quelles suites peuvent être étudiées à partir du diagnostic ?"
+      ],
+      "liens": [
+        "area",
+        "arp",
+        "prets-consolidation"
+      ]
+    },
+    "area": {
+      "titres": [
+        "Quel redressement pour une exploitation en difficulté ?",
+        "Les soutiens du plan instruit",
+        "Passer du diagnostic au plan de restructuration",
+        "Charges admises et engagements du bénéficiaire",
+        "Suivre un plan de relance dans la durée"
+      ],
+      "questions": [
+        "Quelles conditions économiques le diagnostic doit-il établir ?",
+        "Quelles charges et quelles mesures peuvent entrer dans le plan ?",
+        "Quels engagements et points de suivi conditionnent l’accompagnement ?"
+      ],
+      "liens": [
+        "audit-global",
+        "msa-difficultes",
+        "arp"
+      ]
+    },
+    "fmse": {
+      "titres": [
+        "Quel événement sanitaire et quelle affiliation ?",
+        "Programme, pertes et coûts retenus",
+        "Vérifier la section et la période d’indemnisation",
+        "Ne pas confondre sanitaire, climat et arrachage national",
+        "Classer les preuves du préjudice sanitaire"
+      ],
+      "questions": [
+        "Quel programme agréé couvre précisément l’événement subi ?",
+        "Quelles conditions d’affiliation et de respect du cahier des charges s’appliquent ?",
+        "Quelles pertes, pièces et dates sont retenues dans le dossier ?"
+      ],
+      "liens": [
+        "assurance-recolte",
+        "isn",
+        "arrachage"
+      ]
+    },
+    "tfnb-sinistre": {
+      "titres": [
+        "Propriétaire et exploitant après une perte de récolte",
+        "Un dégrèvement de taxe, pas de chiffre d’affaires",
+        "Vérifier immédiatement la démarche fiscale",
+        "Démarche collective et parcelles réellement prises en compte",
+        "Rapprocher avis foncier, perte et fermage"
+      ],
+      "questions": [
+        "Une procédure collective couvre-t-elle mes parcelles ?",
+        "Quel délai et quels justificatifs faut-il produire pour la perte ?",
+        "Comment le dégrèvement sera-t-il répercuté au fermier ?"
+      ],
+      "liens": [
+        "isn",
+        "assurance-recolte",
+        "tfnb-jeunes"
+      ]
+    },
+    "urgence-jeunes-viti": {
+      "titres": [
+        "Quels jeunes installés dans le dispositif territorial ?",
+        "Une mesure exceptionnelle et une enveloppe limitée",
+        "Consulter la notice du département",
+        "Annonce du fonds et ouverture réelle du dépôt",
+        "Documenter installation, pertes et aides déjà reçues"
+      ],
+      "questions": [
+        "Quelle notice et quelle date limite s’appliquent dans mon département ?",
+        "Quels critères d’installation et de pertes dois-je démontrer ?",
+        "Quelles autres aides doivent être déclarées pour vérifier le cumul ?"
+      ],
+      "liens": [
+        "dja",
+        "msa-difficultes",
+        "prets-consolidation"
+      ]
+    },
+    "distillation-crise": {
+      "titres": [
+        "Opérateur et distillateur : quels dossiers déjà engagés ?",
+        "Deux composantes de soutien à distinguer",
+        "Suivre contrats, livraisons et preuves d’exécution",
+        "Un engagement commencé ne vaut pas dossier accepté",
+        "Rapprocher volumes contractualisés et sorties de cave"
+      ],
+      "questions": [
+        "Quel engagement et quel contrat ont été effectivement acceptés ?",
+        "Quelles dates et pièces résultent de la décision modifiée ?",
+        "Comment les volumes livrés et les paiements sont-ils rapprochés ?"
+      ],
+      "liens": [
+        "arrachage",
+        "prets-consolidation",
+        "audit-global"
+      ]
+    },
+    "dep": {
+      "titres": [
+        "Quel bénéfice agricole peut ouvrir la déduction ?",
+        "Déduction, plafonds et reprise fiscale",
+        "Préparer le choix avec la clôture comptable",
+        "Utilisation des sommes et exercices suivants",
+        "Séparer réserve de trésorerie et économie d’impôt"
+      ],
+      "questions": [
+        "Quel plafond et quelle épargne sont retenus pour mon exercice ?",
+        "Quelles dépenses et quelles dates permettent l’utilisation de la DEP ?",
+        "Quel effet aura la reprise sur mes prochains bénéfices imposables ?"
+      ],
+      "liens": [
+        "assurance-recolte",
+        "prets-consolidation",
+        "abattement-jeunes"
+      ]
+    },
+    "garantie-siagi": {
+      "titres": [
+        "Quel projet agricole dans le Grand Est ?",
+        "Quotité garantie et coût du crédit",
+        "Faire examiner le prêt par la banque et la SIAGI",
+        "Une garantie ne rembourse pas le capital à votre place",
+        "Comparer les engagements et sûretés demandés"
+      ],
+      "questions": [
+        "Quel objet et quelle durée de prêt sont admissibles ?",
+        "Quelle part est garantie et quelles sûretés restent demandées ?",
+        "Quel coût total du crédit et de la garantie sera facturé ?"
+      ],
+      "liens": [
+        "prets-consolidation",
+        "pcae-regions",
+        "dja"
+      ]
+    },
+    "diversification-35": {
+      "titres": [
+        "Quel projet de diversification en Ille-et-Vilaine ?",
+        "Assiette et soutien du Département",
+        "Présenter transformation ou vente directe avant engagement",
+        "Matériel d’occasion et autres dépenses particulières",
+        "Séparer outil de production et nouvel atelier"
+      ],
+      "questions": [
+        "Le projet et le siège répondent-ils au règlement départemental ?",
+        "Quelles dépenses, y compris d’occasion, peuvent être retenues ?",
+        "Comment le dossier s’articule-t-il avec LEADER ou un appel régional ?"
+      ],
+      "liens": [
+        "leader",
+        "pcae-regions",
+        "investissement-chai"
+      ]
+    },
+    "transmission-conseil": {
+      "titres": [
+        "Quel accompagnement pour préparer la transmission ?",
+        "Diagnostic financé et démarches de cessation",
+        "Anticiper le parcours avec la MSA et les opérateurs",
+        "Conseil, valeur de vente et prime de départ",
+        "Réunir foncier, stocks, engagements et calendrier"
+      ],
+      "questions": [
+        "Quel interlocuteur doit recevoir ma déclaration de cessation ?",
+        "Quel diagnostic peut être financé avant le projet de cession ?",
+        "Comment coordonner calendrier MSA, repreneur et engagements d’aide ?"
+      ],
+      "liens": [
+        "aita",
+        "fiscalite-transmission",
+        "arp"
+      ]
+    },
+    "fiscalite-transmission": {
+      "titres": [
+        "Vente, donation ou succession : quel régime examiner ?",
+        "Plus-value, transmission gratuite et biens ruraux",
+        "Faire chiffrer les scénarios avant la signature",
+        "Chaque exonération possède ses propres conditions",
+        "Comparer conséquences fiscales et calendrier du départ"
+      ],
+      "questions": [
+        "Quels actifs et quelle forme de transmission sont concernés ?",
+        "Quelles conditions et durées d’engagement s’appliquent à chaque régime ?",
+        "Comment coordonner date de cession et départ à la retraite ?"
+      ],
+      "liens": [
+        "transmission-conseil",
+        "tfnb-jeunes",
+        "arp"
+      ]
+    },
+    "reorientation-naq": {
+      "titres": [
+        "Quel projet de réorientation viticole en Nouvelle-Aquitaine ?",
+        "Dépenses et objectifs retenus par la Région",
+        "Présenter le projet avant de compter le soutien",
+        "Réorientation et prime d’arrachage : deux logiques",
+        "Construire les recettes et coûts de la nouvelle activité"
+      ],
+      "questions": [
+        "Mon projet de nouvelle activité entre-t-il dans le règlement régional ?",
+        "Quelles dépenses et quelles dates d’engagement sont retenues ?",
+        "Quels engagements antérieurs ou aides à l’arrachage affectent le projet ?"
+      ],
+      "liens": [
+        "arrachage",
+        "pcae-regions",
+        "audit-global"
+      ]
+    },
+    "arp": {
+      "titres": [
+        "Quelle cessation dans un parcours de réinsertion ?",
+        "Aide au départ ou à la mobilité : vérifier la décision",
+        "Préparer le parcours avec la DDT(M)",
+        "Conditions de cessation et engagements personnels",
+        "Établir le budget du changement de métier"
+      ],
+      "questions": [
+        "Quelles conditions de difficulté et de cessation dois-je établir ?",
+        "Quels soutiens et engagements sont effectivement proposés dans mon cas ?",
+        "Comment coordonner droits sociaux, formation et calendrier de départ ?"
+      ],
+      "liens": [
+        "audit-global",
+        "area",
+        "transmission-conseil"
+      ]
+    },
+    "arrachage": {
+      "titres": [
+        "Qui peut demander le paiement après l’AMI 2026 ?",
+        "Forfait par hectare et engagements de plantation",
+        "Déclarer dans PARCEL puis demander le paiement unique",
+        "Surfaces notifiées, réalisation et risques de sanction",
+        "Chiffrer la sortie du vignoble ou la réorientation"
+      ],
+      "questions": [
+        "Les surfaces réalisées et déclarées correspondent-elles à la notification ?",
+        "Toutes les déclarations PARCEL sont-elles finalisées avant le paiement unique ?",
+        "Quels engagements sur les plantations et seuils de réalisation me concernent ?"
+      ],
+      "liens": [
+        "restructuration",
+        "reorientation-naq",
+        "transmission-conseil"
+      ]
+    }
+  }
+}

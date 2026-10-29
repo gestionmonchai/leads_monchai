@@ -3,29 +3,11 @@
 <html lang="en">
 <head>
 <meta charset="utf-8"/>
-<!-- Mode consentement de Google : par défaut, rien n'est mesuré. Le choix du
-     bandeau (consent.js ou script.js, clé monchai_cookie_consent) est appliqué
-     au chargement, puis à chaque changement (événement monchai:consent). -->
-<script>
-window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}
-(function(){
-  function etat(c){var a=c&&c.audience===true?'granted':'denied',t='denied';return{analytics_storage:a,ad_storage:t,ad_user_data:t,ad_personalization:t};}
-  var d=etat(null);d.wait_for_update=500;gtag('consent','default',d);
-  function chargerPlusTard(){if(document.readyState==='complete'){if(window.monchaiChargerGtm)window.monchaiChargerGtm();}else{window.addEventListener('load',function(){setTimeout(function(){if(window.monchaiChargerGtm)window.monchaiChargerGtm();},0);},{once:true});}}
-  try{var c=JSON.parse(localStorage.getItem('monchai_cookie_consent'));if(c&&typeof c.ts==='number'&&Number.isFinite(c.ts)&&c.ts<=Date.now()&&Date.now()-c.ts<15724800000&&typeof c.audience==='boolean'&&typeof c.tiers==='boolean'){gtag('consent','update',etat(c));if(c.audience===true)chargerPlusTard();}}catch(e){}
-  window.addEventListener('monchai:consent',function(e){gtag('consent','update',etat(e.detail));dataLayer.push({event:'monchai_consentement'});if(e.detail&&e.detail.audience===true)chargerPlusTard();});
-})();
-</script>
-<!-- Google Tag Manager, chargé seulement après un accord (mesure d'audience ou
-     services tiers) et après le chargement de la page : sans accord, aucun
-     script Google n'est téléchargé (gain mesuré sur mobile : environ 0,9 s de LCP). -->
-<script>window.monchaiChargerGtm=function(){if(window.monchaiGtmCharge)return;window.monchaiGtmCharge=true;
-(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-NDSQV6T7');};</script>
-<!-- End Google Tag Manager -->
+
+
+
+
+
 <meta content="width=device-width, initial-scale=1, viewport-fit=cover" name="viewport"/>
 <title>European wine package: what changes for winemakers in 2026-2027 Mon Chai</title>
 <meta content="Replanting authorisations extended to 8 years, de-alcoholised wines, simplified labelling: the European wine package and the 31 December 2026 deadline." name="description"/>
@@ -46,67 +28,15 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <meta content="Mon Chai" property="og:site_name"/>
 <link href="../assets/img/favicon-mon-chai-96.png" rel="icon" type="image/png"/>
 <meta content="#7B1E22" name="theme-color"/>
-<script type="application/ld+json">{
-  "@context": "https://schema.org",
-  "@type": "Article",
-  "headline": "EU wine package: what changes for winegrowers",
-  "description": "Replanting authorisations increased to 8 years, harmonised categories for de-alcoholised wines, simplified labelling: the update on the European wine package adopted at the end of 2025 and the deadline of 31 December 2026.",
-  "inLanguage": "en",
-  "articleSection": "Labelling & bottling",
-  "datePublished": "2026-08-31",
-  "dateModified": "2026-08-31",
-  "image": "https://monchai.fr/assets/img/pages/conditionnement-mises.jpg",
-  "mainEntityOfPage": "https://monchai.fr/paquet-vin-europeen-2027.html",
-  "author": {
-    "@type": "Organization",
-    "name": "Mon Chai",
-    "url": "https://monchai.fr/"
-  },
-  "publisher": {
-    "@type": "Organization",
-    "name": "Mon Chai",
-    "url": "https://monchai.fr/",
-    "logo": {
-      "@type": "ImageObject",
-      "url": "https://monchai.fr/assets/img/logo_mon_chai.png"
-    }
-  }
-}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "EU wine package: what changes for winegrowers", "description": "Regulation (EU) 2026/471 entered into force on 18 March 2026. Some measures apply later: check the provision and the circumstances of your authorisation or product before acting.", "inLanguage": "en", "articleSection": "Labelling & bottling", "datePublished": "2026-08-31", "dateModified": "2026-10-29", "image": "https://monchai.fr/assets/img/pages/conditionnement-mises.jpg", "mainEntityOfPage": "https://monchai.fr/paquet-vin-europeen-2027.html", "author": {"@type": "Organization", "name": "Mon Chai", "url": "https://monchai.fr/"}, "publisher": {"@type": "Organization", "name": "Mon Chai", "url": "https://monchai.fr/", "logo": {"@type": "ImageObject", "url": "https://monchai.fr/assets/img/logo_mon_chai.png"}}}</script>
 <link href="../assets/css/polices.css" rel="stylesheet"/>
 <link href="../assets/css/header.css" rel="stylesheet"/>
 <link href="../assets/css/actus.css" rel="stylesheet"/>
 <link href="../assets/css/pied.css" rel="stylesheet"/>
-<script type="application/ld+json">{
-  "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  "itemListElement": [
-    {
-      "@type": "ListItem",
-      "position": 1,
-      "name": "Accueil",
-      "item": "https://monchai.fr/"
-    },
-    {
-      "@type": "ListItem",
-      "position": 2,
-      "name": "Actualités réglementaires",
-      "item": "https://monchai.fr/actualites-reglementaires.html"
-    },
-    {
-      "@type": "ListItem",
-      "position": 3,
-      "name": "Étiquetage & mises",
-      "item": "https://monchai.fr/actualites-etiquetage-mises.html"
-    },
-    {
-      "@type": "ListItem",
-      "position": 4,
-      "name": "Paquet vin européen : ce qui change pour les vignerons",
-      "item": "https://monchai.fr/paquet-vin-europeen-2027.html"
-    }
-  ]
-}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Accueil", "item": "https://monchai.fr/"}, {"@type": "ListItem", "position": 2, "name": "Actualités réglementaires", "item": "https://monchai.fr/actualites-reglementaires.html"}, {"@type": "ListItem", "position": 3, "name": "Étiquetage & mises", "item": "https://monchai.fr/actualites-etiquetage-mises.html"}, {"@type": "ListItem", "position": 4, "name": "Paquet vin européen : ce qui change pour les vignerons", "item": "https://monchai.fr/paquet-vin-europeen-2027.html"}]}</script>
 <link rel="stylesheet" href="../assets/css/footer-commun.css?v=20261028-footer">
+
+<script src="../assets/js/analytics.js?v=20261029" data-gtm></script>
 </head>
 <body class="corps-actus lang-en">
 <!-- ============ HEADER (composant partagé, repassé en flux par actus.css) ============ -->
@@ -191,41 +121,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <p class="article__ariane"><a href="index.html">Home</a> › <a href="actualites-reglementaires.html">Regulatory updates</a> › <a href="actualites-etiquetage-mises.html">Labelling &amp; bottling</a> › European wine package</p>
 <div class="article__meta">
 <a class="actu-tag" href="actualites-etiquetage-mises.html">Labelling &amp; bottling</a>
-<span class="actu-date">Published on August 31, 2026 · 5 min reading</span>
+<span class="actu-date">Published on August 31, 2026 · 5 min reading · Updated 29 October 2026</span>
 </div>
-<h1>EU wine package: what changes for winegrowers</h1>
-<p class="article__chapo">Political agreement reached in Brussels on <strong>4 December 2025</strong>, texts which came into force at the beginning of 2026: the wine package radically reformed the European rules of the sector. Soft plants, dealcoholized wines finally framed, simplified labelling — and a deadline not to be missed at the beginning of the year. <strong>31 December 2026</strong>.</p>
-<div class="essentiel">
-<p class="essentiel__titre">The essentials</p>
-<ul>
-<li>The <strong>planting authorisations are sustainable</strong>, and the validity of replanting authorizations is increased from 3 to <strong>8 years</strong>.</li>
-<li>Until <strong>31 December 2026</strong>, it is possible to <strong>forgone without sanction</strong> planting authorisations granted before 1 January 2025.</li>
-<li>The "no-low" wines have <strong>Harmonized categories</strong> "alcohol-free" (-0.05% vol.) and "reduced alcohol content".</li>
-<li>Labelling is simplified: <strong>affixing of mandatory information only</strong>, without repetition between label and cross-label.</li>
-</ul>
-</div>
-<h2>A European response to the wine crisis</h2>
-<p>In the spring of 2025, in the face of the structural decline in consumption and the surplus in production, the European Commission proposed a set of measures to adapt the common organisation of the wine market. After a trialogue agreement on 4 December 2025, the reform was finally adopted and published, with a view to its entry into force at the beginning of 2026. Its measures therefore apply to the current and subsequent campaigns.</p>
-<h2>Planting and replanting: more flexibility</h2>
-<p>This is one of the most concrete aspects for the areas:</p>
-<ul>
-<li>The planting authorisation regime, which was to be extinguished by 2045, is <strong>Perennial</strong>.</li>
-<li>The authorisations for <strong>replanting</strong> are now valid <strong>8 years</strong>, against 3 years ago: after a grubbing up, you have time to rethink encépagement without losing your rights.</li>
-<li>The time limit for <strong>filing an application</strong> replanting remains 5 years after grubbing up.</li>
-<li>Until <strong>31 December 2026</strong>, operators may <strong>forgone without sanction</strong> planting authorizations granted before January 1, 2025 that they do not intend to use. If you hold dormant authorizations, it is time to sort out.</li>
-</ul>
-<h2>Wines no-low: finally harmonized categories</h2>
-<p>The market for wine without alcohol or low alcohol content developed without a common framework. <strong>Harmonized names</strong> throughout the Union: a wine can be labelled " <strong>alcohol-free</strong> "if not more than 0.05% vol. (with the possible "0.0") and " <strong>with a reduced alcohol content</strong> The Commission has not yet taken any action to amend the Directive.</p>
-<p>The rules of the <strong>sparkling wines</strong> The framework is now being revised to allow the use of dealcoholized or partially dealcoholized wines in their preparation.</p>
-<h2>Labelling: simplified terms</h2>
-<p>The wine package reduces the presentation of the mandatory information: a <strong>Single affixing</strong> Now, without the obligation to repeat the label and the cross-label, the language regime is relaxed.</p>
-<p>Useful reminder when preparing your bets: since December 2023 (Regulation EU 2021/2117), wines produced from harvest 2024 must display the <strong>list of ingredients</strong> and <strong>Nutrition declaration</strong> — on the label or via an electronic label (QR code). Your 2026-2027 bet labels must therefore combine these recent obligations with the new presentation rules.</p>
-<h2>What to do before January 1, 2027</h2>
-<ul>
-<li><strong>Review your planting authorizations</strong> - those granted before January 1, 2025 that you will not use may be abandoned without penalty until December 31, 2026.</li>
-<li><strong>Check the labels of your next bets</strong> : ingredients and nutrition declaration (or QR code) for the 2024 and subsequent vintages, mandatory statements according to the new presentation rules.</li>
-<li><strong>If a no-low project tries you</strong>, rely on the new harmonized names to frame the product from its design.</li>
-</ul>
+<h1>EU wine package: rules and dates for winegrowers</h1><p class="article__chapo">Regulation (EU) 2026/471 entered into force on 18 March 2026. Some measures apply later: check the provision and the circumstances of your authorisation or product before acting.</p><h2>Planting authorisations</h2><p>The regime becomes permanent and the validity of the replanting authorisations concerned extends to eight years. The waiver without penalties for qualifying authorisations granted before 1 January 2025 must be notified before the authorisation expires, and no later than 31 December 2026. The year-end deadline does not revive an expired authorisation.</p><h2>Dealcoholised wines: two different thresholds</h2><p>The new “alcohol-free” wording covers the relevant categories at no more than 0.5% vol.; the additional “0.0%” wording uses a 0.05% vol. ceiling. “Reduced alcohol” requires more than 0.5% vol. and at least a 30% reduction from the minimum strength of the category before dealcoholisation.</p><p>These new labelling provisions apply from 19 September 2027 under Article 1(10)(a), as corrected on 22 May 2026. Transitional stock rules also apply. Check the exact product and production date for ingredient and nutrition obligations; vintage alone is insufficient.</p><p>Check each authorisation’s grant and expiry dates with the competent body. For a label, distinguish the current rules from the future framework and have the exact product and destination reviewed.</p><p><strong>Official sources :</strong> <a href="https://eur-lex.europa.eu/eli/reg/2026/471/oj/en">UE 2026/471</a> · <a href="https://eur-lex.europa.eu/eli/reg/2026/471/corrigendum/2026-05-22/oj/en">22/05/2026</a></p>
 <div class="article-cta">
 <p class="article-cta__titre">Detachments, controlled labels</p>
 <p>In Mon Chai, each bet is linked to its lot, vintage and dry matter: you always know which wine is going on which label. What to do with the new labelling rules without improvisation. <a href="https://tester.monchai.fr">Test for free</a>: until 31 December 2026 for any sign-up on or before 31 October, 30 days for any sign-up from 1 November.</p>
@@ -261,7 +159,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   </div>
 </footer>
 <script src="../assets/js/header.js"></script>
-<script src="../consent.js?v=20261028-footer"></script>
+<script src="../consent.js?v=20261029-ga4"></script>
 <script src="../assets/js/cta-popup.js" defer></script>
 <script src="../assets/js/documents-legaux.js?v=20261028-footer" defer></script>
 </body>

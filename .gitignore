@@ -109,3 +109,9 @@ desktop.ini
 # Génération reproductible des fiches ; outils exclus de l’artefact Pages.
 !outils/aides/contenus.py
 !outils/aides/generer.py
+!outils/editorial/generer-guides.py
+!outils/editorial/integrer-analytics.py
+!outils/editorial/finaliser-sources.py
+!outils/editorial/finaliser-metadonnees.py
+!outils/editorial/corriger-articles-secondaires.py
+!outils/editorial/corriger-traductions.py

@@ -9,8 +9,14 @@ import json
 import math
 import re
 import sys
+from datetime import date
 from pathlib import Path
 from contenus import AIDES, DATE, ETAPES, REGIONS, STATUTS, TYPES
+
+MODIFIED = '2026-10-29'
+PERSONNALISATION = json.loads((Path(__file__).parent / 'personnalisation.json').read_text(encoding='utf-8'))['fiches']
+PAR_ID = {a['id']: a for a in AIDES}
+assert set(PERSONNALISATION) == set(PAR_ID) - {'dja'}, 'Chaque fiche générée possède sa préparation spécifique.'
 
 ROOT=Path(sys.argv[1]).resolve()
 AIDES.sort(key=lambda a:list(ETAPES).index(a['etape']))
@@ -25,6 +31,11 @@ def territoire(a):
  if a['territoire']==['fr']: return 'France — conditions locales et statut à vérifier'
  if a['territoire']==['metropole']: return 'Métropole — cadre territorial à vérifier, Corse comprise selon dispositif'
  return ', '.join(REG[r] for r in a['territoire'])
+
+def date_fr(value):
+ d=date.fromisoformat(value)
+ mois=['janvier','février','mars','avril','mai','juin','juillet','août','septembre','octobre','novembre','décembre']
+ return f'{d.day} {mois[d.month-1]} {d.year}'
 
 # Ajouter une porte d'entrée à tous les footers, en conservant leur identité par langue.
 for directory in ['', 'en', 'de', 'it', 'zh']:
@@ -50,13 +61,13 @@ for directory in ['', 'en', 'de', 'it', 'zh']:
 template=read('s-installer-en-viticulture.html')
 body_header=template[template.index('<body'):template.index('<main')]
 footer=re.search(r'<footer\b[^>]*>[\s\S]*?</footer>',template)[0]
-scripts='<script src="assets/js/header.js"></script><script src="consent.js?v=20261028-footer"></script><script src="assets/js/documents-legaux.js?v=20261028-footer" defer></script>'
+scripts='<script src="assets/js/header.js"></script><script src="consent.js?v=20261029-ga4"></script><script src="assets/js/documents-legaux.js?v=20261028-footer" defer></script>'
 
 def page(slug,title,description,content,collection=False):
  header=body_header.replace('href="s-installer-en-viticulture.html" aria-current="page"',f'href="{slug}" aria-current="page"')
  image='assets/img/editorial/aides-viticoles-photo-2026.jpg' if collection else 'assets/img/pages/vigne-vendanges.jpg'
  image_alt='Illustration générée : dossier de financement et pièces en euros devant un vignoble' if collection else 'Vignes du domaine'
- schema={'@context':'https://schema.org','@type':'CollectionPage' if collection else 'Article','name':title,'headline':title,'description':description,'url':'https://monchai.fr/'+slug,'inLanguage':'fr','datePublished':DATE,'dateModified':DATE,'author':{'@type':'Organization','name':'Mon Chai'}}
+ schema={'@context':'https://schema.org','@type':'CollectionPage' if collection else 'Article','name':title,'headline':title,'description':description,'url':'https://monchai.fr/'+slug,'inLanguage':'fr','datePublished':DATE,'dateModified':MODIFIED,'author':{'@type':'Organization','name':'Mon Chai','url':'https://monchai.fr/index.html#apropos'},'publisher':{'@type':'Organization','name':'Mon Chai','url':'https://monchai.fr/','logo':{'@type':'ImageObject','url':'https://monchai.fr/assets/img/logo_mon_chai.png'}},'image':'https://monchai.fr/'+image,'mainEntityOfPage':'https://monchai.fr/'+slug}
  if collection:
   schema['mainEntity']={'@type':'ItemList','itemListElement':[{'@type':'ListItem','position':i+1,'name':a['titre'],'url':'https://monchai.fr/'+a['article']} for i,a in enumerate(AIDES)]}
  else: schema['wordCount']=len(re.sub('<[^>]+>',' ',content).split())
@@ -67,7 +78,9 @@ def page(slug,title,description,content,collection=False):
 <meta property="og:type" content="{'website' if collection else 'article'}"><meta property="og:title" content="{e(title)}"><meta property="og:description" content="{e(description)}"><meta property="og:url" content="https://monchai.fr/{slug}"><meta property="og:locale" content="fr_FR"><meta property="og:site_name" content="Mon Chai"><meta property="og:image" content="https://monchai.fr/{image}"><meta property="og:image:alt" content="{image_alt}">
 <link rel="icon" type="image/png" href="assets/img/logo_mon_chai.png"><meta name="theme-color" content="#7B1E22">
 <link rel="stylesheet" href="assets/css/polices.css"><link rel="stylesheet" href="assets/css/header.css"><link rel="stylesheet" href="assets/css/actus.css"><link rel="stylesheet" href="assets/css/couts-editorial.css"><link rel="stylesheet" href="assets/css/footer-commun.css?v=20261028-footer"><link rel="stylesheet" href="assets/css/aides.css?v=20261028{'-photo' if collection else ''}">
-<script type="application/ld+json">{json.dumps(schema,ensure_ascii=False).replace('</','< /')}</script></head>'''
+<script type="application/ld+json">{json.dumps(schema,ensure_ascii=False).replace('</','< /')}</script>
+<script type="application/ld+json">{json.dumps({'@context':'https://schema.org','@type':'BreadcrumbList','itemListElement':[{'@type':'ListItem','position':1,'name':'Accueil','item':'https://monchai.fr/'},{'@type':'ListItem','position':2,'name':'Aides aux vignerons','item':'https://monchai.fr/aides-vignerons.html'}]+([] if collection else [{'@type':'ListItem','position':3,'name':title,'item':'https://monchai.fr/'+slug}])},ensure_ascii=False)}</script></head>'''
+ head=head.replace('</head>','<script src="assets/js/analytics.js?v=20261029"></script></head>')
  return head+header+content+footer+scripts+('<script src="assets/js/aides.js?v=20261028" defer></script>' if collection else '')+'</body></html>\n'
 
 def source(a,index=0):
@@ -75,24 +88,25 @@ def source(a,index=0):
  return f'<a href="{e(url)}">{e(nom)}</a>'
 
 def detail(a):
- sections=[('beneficiaires','Qui peut examiner ce dispositif ?',a['beneficiaires'],0),('soutien','Quel soutien et quel effet financier ?',a['soutien'],0),('demarche','Comment préparer la démarche ?',a['demarche'],None),('vigilance','Cumul, calendrier et points de vigilance',a['vigilance'],1),('cas-domaine','L’appliquer au projet du domaine',a['exemple'],None)]
+ perso=PERSONNALISATION[a['id']]
+ sections=[(ident,titre,a[champ],reference) for (ident,champ,reference),titre in zip([('beneficiaires','beneficiaires',0),('soutien','soutien',0),('demarche','demarche',0),('vigilance','vigilance',None),('cas-domaine','exemple',None)],perso['titres'])]
  text=' '.join(a[k] for k in ('resume','beneficiaires','soutien','demarche','vigilance','exemple'))
  minutes=max(3,math.ceil((len(text.split())+180)/220))
  c=f'''<main class="article article-couts aide-detail" id="contenu" tabindex="-1">
 <nav class="article__ariane" aria-label="Fil d’Ariane"><a href="index.html">Accueil</a> › <a href="aides-vignerons.html">Aides aux vignerons</a> › {e(ETAPES[a['etape']][1])}</nav>
 <p class="aide-kicker">{e(ETAPES[a['etape']][1])} · {e(TYPES[a['type']])}</p>
-<h1>{e(a['titre'])}</h1><p class="aide-meta">Par Mon Chai · Publié et vérifié le <time datetime="{DATE}">28 octobre 2026</time> · {minutes} min de lecture</p><p class="article__chapo">{e(a['resume'])}</p>
-<aside class="aide-repere" aria-label="Situation vérifiée du dispositif"><p class="aide-statut aide-statut--{a['statut']}">{e(STATUTS[a['statut']])}</p><p><strong>Calendrier :</strong> {e(a['calendrier'])}</p><p><strong>Territoire :</strong> {e(territoire(a))}</p><p><strong>Financeur / gestionnaire :</strong> {e(a['financeur'])}</p><p>Situation au 28 octobre 2026. Confirmez l’ouverture et les règles actuelles auprès de l’instructeur avant toute démarche. <a href="#sources">Lire les sources primaires</a>.</p></aside>
+<h1>{e(a['titre'])}</h1><p class="aide-meta">Par <a href="index.html#apropos">Mon Chai</a> · Publié le <time datetime="{DATE}">28 octobre 2026</time> · Structure et parcours mis à jour le <time datetime="{MODIFIED}">29 octobre 2026</time> · {minutes} min de lecture</p><p class="article__chapo">{e(a['resume'])}</p>
+<aside class="aide-repere" aria-label="Situation vérifiée du dispositif"><p class="aide-statut aide-statut--{a['statut']}">{e(STATUTS[a['statut']])}</p><p><strong>Calendrier :</strong> {e(a['calendrier'])}</p><p><strong>Territoire :</strong> {e(territoire(a))}</p><p><strong>Financeur / gestionnaire :</strong> {e(a['financeur'])}</p><p>Repères du dispositif vérifiés le {date_fr(a['verifie'])}. Confirmez l’ouverture et les règles actuelles auprès de l’instructeur avant toute démarche. <a href="#sources">Lire les sources primaires</a>.</p></aside>
 <nav class="article-sommaire" aria-label="Sommaire de la fiche"><strong>Dans cette fiche</strong><ol>'''+''.join(f'<li><a href="#{i}">{e(t)}</a></li>' for i,t,_,_ in sections)+'''<li><a href="#preparer">Les questions à emporter</a></li><li><a href="#sources">Sources et date de contrôle</a></li></ol></nav>'''
  for ident,titre,par,index in sections:
   c+=f'<section aria-labelledby="{ident}"><h2 id="{ident}">{e(titre)}</h2><p>{e(par)}</p>'
-  if index is not None: c+=f'<p class="aide-reference">Référence : {source(a,index)}. Le texte applicable et la décision individuelle précisent les conditions.</p>'
-  else: c+='<p class="aide-reference">Méthode de préparation proposée par Mon Chai ; elle ne remplace pas la notice du dispositif.</p>'
+  if index is not None: c+=f'<p class="aide-reference">Source du dispositif : {source(a,index)}.</p>'
+  elif ident=='vigilance': c+='<p class="aide-reference">Références de contrôle : '+ ' ; '.join(source(a,i) for i in range(len(a['sources'])))+'.</p>'
+  else: c+='<p class="aide-reference">Application et préparation proposées par Mon Chai, à adapter au dossier.</p>'
   c+='</section>'
- c+='''<section aria-labelledby="preparer"><h2 id="preparer">Les questions à emporter au rendez-vous</h2>
-<ul><li>Mon statut, mon activité et la localisation du projet entrent-ils dans ce dispositif et cette campagne ?</li><li>Quelle démarche doit précéder la signature d’un devis, la réalisation d’une prestation ou une modification de mon activité ?</li><li>Quels montants sont admissibles, quelles pièces faut-il produire et quel financement restera à ma charge ?</li><li>Comment déclarer mes autres aides et vérifier le cumul, y compris le de minimis si ce régime s’applique ?</li><li>Quelles obligations, échéances et possibilités de contrôle subsistent après la décision ou le paiement ?</li></ul>
-<p>Conservez le règlement daté, les réponses de l’instructeur et l’accusé de dépôt. Distinguez toujours montant envisagé, montant accordé et somme effectivement encaissée. Un accord de principe ou un dossier commencé ne suffit pas à constater un droit.</p></section>'''
- c+=f'<section class="article__sources" aria-labelledby="sources"><h2 id="sources">Sources et date de contrôle</h2><p>Sources primaires consultées le 28 octobre 2026. Les dates et conditions peuvent évoluer ; les liens ci-dessous permettent de vérifier la version actuelle.</p><ul>'
+ c+='<section aria-labelledby="preparer"><h2 id="preparer">Les questions à poser pour ce dispositif</h2><ul>'+''.join('<li>'+e(q)+'</li>' for q in perso['questions'])+'</ul><p>Ces questions de préparation sont proposées par Mon Chai. Pour les vérifications communes de calendrier, de cumul et de trésorerie, consultez le <a href="aides-vignerons.html#mode-emploi">mode d’emploi des aides</a>.</p></section>'
+ c+='<section aria-labelledby="comparer"><h2 id="comparer">À comparer selon votre projet</h2><p>Ces fiches répondent à des questions voisines ; leur rapprochement ne signifie pas que les soutiens sont cumulables.</p><ul>'+''.join(f'<li><a href="{e(PAR_ID[ident]["article"])}">{e(PAR_ID[ident]["titre"])}</a></li>' for ident in perso['liens'])+'</ul></section>'
+ c+=f'<section class="article__sources" aria-labelledby="sources"><h2 id="sources">Sources et date de contrôle</h2><p>Repères du dispositif vérifiés le {date_fr(a["verifie"])} ; titres, questions de préparation et liens actualisés le 29 octobre 2026. Les dates et conditions peuvent évoluer ; les liens ci-dessous permettent de vérifier la version actuelle.</p><ul>'
  c+=''.join(f'<li><a href="{e(u)}">{e(n)}</a></li>' for n,u in a['sources'])
  c+='</ul><p>Cette fiche fournit des repères généraux pour une exploitation viticole. Elle ne constitue ni une simulation individuelle ni une garantie d’attribution. Les propositions de préparation et de gestion sont celles de Mon Chai.</p></section>'
  c+=f'<nav class="aide-suite" aria-label="Continuer le dossier"><a href="aides-vignerons.html#{a["etape"]}">← Revenir à l’étape « {e(ETAPES[a["etape"]][1])} »</a><a href="aides-vignerons.html#recherche">Rechercher une autre aide</a></nav></main>'
@@ -124,7 +138,7 @@ for key,(num,title,desc) in ETAPES.items():
  content+=f'<section class="aides-etape" id="{key}" aria-labelledby="titre-{key}"><header class="aides-etape__titre"><span>{num}</span><div><h2 id="titre-{key}">{e(title)}</h2><p>{e(desc)}</p></div></header><div class="aides-cartes">'
  for a in (x for x in AIDES if x['etape']==key):
   data=' '.join(a[k] for k in ('titre','resume','mots','financeur','calendrier'))+' '+territoire(a)
-  content+=f'''<article class="aide-carte" data-aide="{a['id']}" data-texte="{e(data)}" data-etape="{key}" data-territoire="{' '.join(a['territoire'])}" data-type="{a['type']}" data-statut="{a['statut']}"><p class="aide-type">{e(TYPES[a['type']])}</p><h3><a href="{a['article']}">{e(a['titre'])}</a></h3><p>{e(a['resume'])}</p><p class="aide-statut aide-statut--{a['statut']}">{e(STATUTS[a['statut']])}</p><p class="aide-calendrier">{e(a['calendrier'])}</p><p class="aide-territoire">{e(territoire(a))}</p><p class="aide-financeur">{e(a['financeur'])}</p><div class="aide-carte__bas"><a class="aide-lire" href="{a['article']}" aria-label="Lire la fiche : {e(a['titre'])}">Fiche détaillée →</a><a href="{e(a['sources'][0][1])}" class="aide-source">Source officielle ↗</a></div><p class="aide-date">Vérifié le 28 octobre 2026</p></article>'''
+  content+=f'''<article class="aide-carte" data-aide="{a['id']}" data-texte="{e(data)}" data-etape="{key}" data-territoire="{' '.join(a['territoire'])}" data-type="{a['type']}" data-statut="{a['statut']}"><p class="aide-type">{e(TYPES[a['type']])}</p><h3><a href="{a['article']}">{e(a['titre'])}</a></h3><p>{e(a['resume'])}</p><p class="aide-statut aide-statut--{a['statut']}">{e(STATUTS[a['statut']])}</p><p class="aide-calendrier">{e(a['calendrier'])}</p><p class="aide-territoire">{e(territoire(a))}</p><p class="aide-financeur">{e(a['financeur'])}</p><div class="aide-carte__bas"><a class="aide-lire" href="{a['article']}" aria-label="Lire la fiche : {e(a['titre'])}">Fiche détaillée →</a><a href="{e(a['sources'][0][1])}" class="aide-source">Source officielle ↗</a></div><p class="aide-date">Vérifié le {date_fr(a['verifie'])}</p></article>'''
  content+='</div></section>'
 content+='''</div><section class="aides-largeur aides-mode" id="mode-emploi" aria-labelledby="titre-mode"><p class="aide-kicker">Avant le dossier</p><h2 id="titre-mode">Quatre vérifications avant de compter sur une aide</h2>
 <div class="aides-regles"><section><h3>01 · Identifier le bon bénéficiaire</h3><p>Domaine, associé, propriétaire, CUMA, prestataire ou distillateur : celui qui bénéficie économiquement d’un soutien n’est pas toujours celui qui dépose. Vérifiez aussi le territoire, l’activité, la campagne et le statut.</p></section>

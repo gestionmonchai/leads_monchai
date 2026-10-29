@@ -479,8 +479,8 @@
           "https://agriculture.gouv.fr/les-aides-des-regions"
         ],
         [
-          "Pays de la Loire — exemple PCAE végétal 2026",
-          "https://territoires.paysdelaloire.fr/les-aides/feader-pcae-vegetal"
+          "Pays de la Loire — règlement PCAE végétal 2026 (PDF)",
+          "https://www.paysdelaloire.fr/sites/default/files/aides/e647d0df-2274-11ea-99a9-7f7d626ef79c/accompagnement_appel-a-projets-2026-pcae-vegetal_e647d0df_ri.pdf"
         ],
         [
           "Commission européenne — portails territoriaux",
@@ -489,7 +489,7 @@
       ],
       "mots": "pcae pve feader cuma materiel modernisation innovation robot desherbage mecanique",
       "article": "aide-pcae-regions-viticulture.html",
-      "verifie": "2026-10-28"
+      "verifie": "2026-10-29"
     },
     {
       "id": "plantations-occitanie",
@@ -541,8 +541,12 @@
       "exemple": "Pour remplacer un désherbage chimique par du matériel mécanique, documentez les parcelles, les passages, la capacité de traction et le temps de travail. Comparez achat individuel, prestation et CUMA ; l’aide ne doit pas masquer un équipement surdimensionné ou des charges nouvelles.",
       "sources": [
         [
-          "Région — PCAE végétal et règlement 2026",
-          "https://territoires.paysdelaloire.fr/les-aides/feader-pcae-vegetal"
+          "Région — règlement PCAE végétal 2026 (PDF)",
+          "https://www.paysdelaloire.fr/sites/default/files/aides/e647d0df-2274-11ea-99a9-7f7d626ef79c/accompagnement_appel-a-projets-2026-pcae-vegetal_e647d0df_ri.pdf"
+        ],
+        [
+          "Région — calendrier FEADER des appels 2026",
+          "https://transport.paysdelaloire.fr/mon-conseil-regional/les-missions/europe/solliciter-les-fonds-europeens/feader"
         ],
         [
           "Ministère — organisation des aides régionales",
@@ -551,7 +555,7 @@
       ],
       "mots": "pays de la loire pcae intercep desherbage",
       "article": "aide-pcae-pays-loire-viticulture.html",
-      "verifie": "2026-10-28"
+      "verifie": "2026-10-29"
     },
     {
       "id": "petits-equipements-bfc",
@@ -566,7 +570,7 @@
       "financeur": "Région Bourgogne-Franche-Comté",
       "resume": "Une aide régionale à des petits investissements identifiés, avec majorations conditionnelles.",
       "beneficiaires": "La fiche régionale définit les exploitations et les équipements concernés. Le soutien ne vise pas tout achat courant et exclut notamment le simple remplacement à l’identique selon ses conditions. L’activité viticole et le matériel envisagé doivent être rapprochés des catégories prévues.",
-      "soutien": "La fiche annonce une assiette de dépenses hors taxes comprise entre 2 000 et 10 000 € et un taux de base de 20 %. La majoration de 25 % du montant d’aide pour certaines situations n’est pas une hausse de vingt-cinq points du taux : les deux calculs sont très différents.",
+      "soutien": "La fiche régionale annonce une assiette hors taxes comprise entre 2 000 et 10 000 € et un taux de 20 %. Elle indique que ce taux peut être porté à 25 % pour un agriculteur installé depuis moins de cinq ans ou pour les ateliers certifiés en agriculture biologique ou en conversion. Il s’agit d’un taux de 25 % appliqué aux dépenses retenues, pas de vingt-cinq points à ajouter au taux de base.",
       "demarche": "Identifiez le matériel avec un devis détaillé et demandez confirmation de sa catégorie. Préparez les justificatifs du statut et, si vous sollicitez une majoration, ceux de l’installation récente ou de la situation biologique. Faites préciser les règles d’engagement et de paiement dans le règlement applicable à votre demande.",
       "vigilance": "Le plafond de dépenses n’est pas une somme versée. Vérifiez le traitement des frais annexes, de l’occasion, de la TVA et des autres aides. En cas de projet comprenant plusieurs achats, ne le découpez pas artificiellement pour multiplier les financements sans validation.",
       "exemple": "Pour un outil de travail du sol, comparez le coût annuel complet avec une prestation ou l’usage d’un outil partagé. Une petite subvention peut réduire le prix d’achat sans compenser un temps d’utilisation trop faible ou des besoins de maintenance sous-estimés.",
@@ -582,7 +586,7 @@
       ],
       "mots": "bourgogne franche comte petit materiel investissement",
       "article": "aide-petits-equipements-bfc-viticulture.html",
-      "verifie": "2026-10-28"
+      "verifie": "2026-10-29"
     },
     {
       "id": "modernisation-idf",
@@ -1047,23 +1051,23 @@
       "financeur": "État / crédit d’impôt",
       "resume": "Un nouveau crédit sur certaines factures d’utilisation du matériel d’une CUMA agréée dont l’exploitation est adhérente.",
       "beneficiaires": "L’article 244 quater K vise les entreprises agricoles au bénéfice réel ou dans certaines exonérations. L’adhésion à une CUMA agréée s’apprécie au 31 décembre de l’année des dépenses. Les coûts doivent correspondre aux utilisations de machines et matériels entrant dans le texte, facturées au prorata de l’engagement.",
-      "soutien": "Le taux est de 7,5 %, dans la limite de 3 000 € par entreprise et année civile. Une règle spécifique existe pour les GAEC, dans la limite de 10 000 €. Les autres aides reçues sur les mêmes dépenses réduisent l’assiette. Le crédit relève des règles de minimis applicables à l’activité.",
+      "soutien": "Le BOFiP du 5 août 2026 fixe le taux à 7,5 % des dépenses admissibles, avec un plafond de 3 000 € par entreprise et année civile. Pour les GAEC, le plafond de 3 000 € est multiplié par le nombre d’associés, sans dépasser 10 000 € par an. Les aides publiques reçues sur les mêmes dépenses diminuent l’assiette ; les règles de minimis applicables doivent être respectées.",
       "demarche": "Demandez à la CUMA une ventilation permettant d’identifier les dépenses concernées. Avec le comptable, séparez la période admissible en 2026, les utilisations facturées et les autres frais. Préparez les preuves d’adhésion et le relevé des aides de minimis, puis vérifiez le formulaire déclaratif effectivement publié pour l’année.",
       "vigilance": "Le crédit porte sur des dépenses de l’entreprise adhérente, pas sur le prix total d’achat d’une machine par la coopérative. Une ligne de facture ne doit pas être retenue seulement parce qu’elle provient d’une CUMA. Les factures comportant d’autres services nécessitent une ventilation justifiée.",
       "exemple": "Pour décider entre achat et matériel partagé, comparez d’abord les coûts complets, la disponibilité aux périodes de pointe et les engagements d’usage. Ajoutez ensuite l’avantage fiscal confirmé. Le crédit ne corrige pas un problème de calendrier ou un outil indisponible au moment du chantier.",
       "sources": [
         [
-          "Légifrance — article 244 quater K en vigueur",
-          "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000053543998/2026-04-17"
+          "BOFiP — mécanisation collective, champ, assiette et plafonds",
+          "https://bofip.impots.gouv.fr/bofip/15076-PGP.html/identifiant%3DBOI-BA-RICI-20-120-20260805"
         ],
         [
-          "Impôts — nouveautés de la loi de finances 2026",
-          "https://www.impots.gouv.fr/www2/fichiers/documentation/brochure/ir_2026/pdf_som/nouveautes.pdf"
+          "Légifrance — article 244 quater K en vigueur",
+          "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000053543998/2026-04-17"
         ]
       ],
       "mots": "cuma credit impot mecanisation collective 7.5 materiel partage",
       "article": "aide-credit-cuma-viticulture.html",
-      "verifie": "2026-10-28"
+      "verifie": "2026-10-29"
     },
     {
       "id": "diversification-35",

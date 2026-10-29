@@ -3,29 +3,11 @@
 <html lang="zh-Hans">
 <head>
 <meta charset="utf-8"/>
-<!-- Mode consentement de Google : par défaut, rien n'est mesuré. Le choix du
-     bandeau (consent.js ou script.js, clé monchai_cookie_consent) est appliqué
-     au chargement, puis à chaque changement (événement monchai:consent). -->
-<script>
-window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}
-(function(){
-  function etat(c){var a=c&&c.audience===true?'granted':'denied',t='denied';return{analytics_storage:a,ad_storage:t,ad_user_data:t,ad_personalization:t};}
-  var d=etat(null);d.wait_for_update=500;gtag('consent','default',d);
-  function chargerPlusTard(){if(document.readyState==='complete'){if(window.monchaiChargerGtm)window.monchaiChargerGtm();}else{window.addEventListener('load',function(){setTimeout(function(){if(window.monchaiChargerGtm)window.monchaiChargerGtm();},0);},{once:true});}}
-  try{var c=JSON.parse(localStorage.getItem('monchai_cookie_consent'));if(c&&typeof c.ts==='number'&&Number.isFinite(c.ts)&&c.ts<=Date.now()&&Date.now()-c.ts<15724800000&&typeof c.audience==='boolean'&&typeof c.tiers==='boolean'){gtag('consent','update',etat(c));if(c.audience===true)chargerPlusTard();}}catch(e){}
-  window.addEventListener('monchai:consent',function(e){gtag('consent','update',etat(e.detail));dataLayer.push({event:'monchai_consentement'});if(e.detail&&e.detail.audience===true)chargerPlusTard();});
-})();
-</script>
-<!-- Google Tag Manager, chargé seulement après un accord (mesure d'audience ou
-     services tiers) et après le chargement de la page : sans accord, aucun
-     script Google n'est téléchargé (gain mesuré sur mobile : environ 0,9 s de LCP). -->
-<script>window.monchaiChargerGtm=function(){if(window.monchaiGtmCharge)return;window.monchaiGtmCharge=true;
-(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-NDSQV6T7');};</script>
-<!-- End Google Tag Manager -->
+
+
+
+
+
 <meta content="width=device-width, initial-scale=1, viewport-fit=cover" name="viewport"/>
 <title>2027年强制实施的数字植保记录：葡萄种植者指南 | Mon Chai</title>
 <meta content="2027年1月1日,工厂注册成为所有葡萄酒的数字化登记:接受的形式、2027-2029过渡日历和早在2026年运动之前为准备你的庄园提供咨询意见。" name="description"/>
@@ -46,67 +28,15 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <meta content="Mon Chai" property="og:site_name"/>
 <link href="../assets/img/favicon-mon-chai-96.png" rel="icon" type="image/png"/>
 <meta content="#7B1E22" name="theme-color"/>
-<script type="application/ld+json">{
-  "@context": "https://schema.org",
-  "@type": "Article",
-  "headline": "数字植物卫生登记:自2027年1月1日起强制",
-  "description": "2027年1月1日,工厂登记册成为所有持有的数字化登记:接受格式、2027-2029过渡日历和早在2026年运动之前准备的提示。",
-  "inLanguage": "zh-Hans",
-  "articleSection": "葡萄园与植保",
-  "datePublished": "2026-08-31",
-  "dateModified": "2026-08-31",
-  "image": "https://monchai.fr/assets/img/pages/vigne-vendanges.jpg",
-  "mainEntityOfPage": "https://monchai.fr/registre-phyto-numerique-2027.html",
-  "author": {
-    "@type": "Organization",
-    "name": "Mon Chai",
-    "url": "https://monchai.fr/"
-  },
-  "publisher": {
-    "@type": "Organization",
-    "name": "Mon Chai",
-    "url": "https://monchai.fr/",
-    "logo": {
-      "@type": "ImageObject",
-      "url": "https://monchai.fr/assets/img/logo_mon_chai.png"
-    }
-  }
-}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "数字植物卫生登记:自2027年1月1日起强制", "description": "2027年1月1日,工厂登记册成为所有持有的数字化登记:接受格式、2027-2029过渡日历和早在2026年运动之前准备的提示。", "inLanguage": "zh-Hans", "articleSection": "葡萄园与植保", "datePublished": "2026-08-31", "dateModified": "2026-10-29", "image": "https://monchai.fr/assets/img/pages/vigne-vendanges.jpg", "mainEntityOfPage": "https://monchai.fr/registre-phyto-numerique-2027.html", "author": {"@type": "Organization", "name": "Mon Chai", "url": "https://monchai.fr/"}, "publisher": {"@type": "Organization", "name": "Mon Chai", "url": "https://monchai.fr/", "logo": {"@type": "ImageObject", "url": "https://monchai.fr/assets/img/logo_mon_chai.png"}}}</script>
 <link href="../assets/css/polices.css" rel="stylesheet"/>
 <link href="../assets/css/header.css" rel="stylesheet"/>
 <link href="../assets/css/actus.css" rel="stylesheet"/>
 <link href="../assets/css/pied.css" rel="stylesheet"/>
-<script type="application/ld+json">{
-  "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  "itemListElement": [
-    {
-      "@type": "ListItem",
-      "position": 1,
-      "name": "Accueil",
-      "item": "https://monchai.fr/"
-    },
-    {
-      "@type": "ListItem",
-      "position": 2,
-      "name": "Actualités réglementaires",
-      "item": "https://monchai.fr/actualites-reglementaires.html"
-    },
-    {
-      "@type": "ListItem",
-      "position": 3,
-      "name": "Vigne & phyto",
-      "item": "https://monchai.fr/actualites-vigne-phyto.html"
-    },
-    {
-      "@type": "ListItem",
-      "position": 4,
-      "name": "Registre phytosanitaire numérique : obligatoire au 1ᵉʳ janvier 2027",
-      "item": "https://monchai.fr/registre-phyto-numerique-2027.html"
-    }
-  ]
-}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Accueil", "item": "https://monchai.fr/"}, {"@type": "ListItem", "position": 2, "name": "Actualités réglementaires", "item": "https://monchai.fr/actualites-reglementaires.html"}, {"@type": "ListItem", "position": 3, "name": "Vigne & phyto", "item": "https://monchai.fr/actualites-vigne-phyto.html"}, {"@type": "ListItem", "position": 4, "name": "Registre phytosanitaire numérique : obligatoire au 1ᵉʳ janvier 2027", "item": "https://monchai.fr/registre-phyto-numerique-2027.html"}]}</script>
 <link rel="stylesheet" href="../assets/css/footer-commun.css?v=20261028-footer">
+
+<script src="../assets/js/analytics.js?v=20261029" data-gtm></script>
 </head>
 <body class="corps-actus lang-zh">
 <!-- ============ HEADER (composant partagé, repassé en flux par actus.css) ============ -->
@@ -191,7 +121,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <p class="article__ariane"><a href="index.html">首页</a> › <a href="actualites-reglementaires.html">法规动态</a> › <a href="actualites-vigne-phyto.html">葡萄园与植保</a> 数字植物卫生登记簿</p>
 <div class="article__meta">
 <a class="actu-tag" href="actualites-vigne-phyto.html">葡萄园与植保</a>
-<span class="actu-date">2026年8月31日发表 4分钟读数</span>
+<span class="actu-date">2026年8月31日发表 4分钟读数 · 更新于2026年10月29日</span>
 </div>
 <h1>数字植保记录：自 2027 年 1 月 1 日起强制实施</h1>
 <p class="article__chapo">登记文件现在正处于最后一场运动之中。 <strong>2027年1月1日</strong>包括葡萄酒厂在内的所有农场都必须保持其植物健康治疗登记簿,以数字格式“机器可读”的方式登记。 原定2026年支付的债务已经推迟一年:尽量利用这笔债务来做好准备。</p>
@@ -210,16 +140,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <h2>谁关心?</h2>
 <p>植物保护产品的所有专业用户:葡萄种植者、农民、销售者、农业工作企业.有机耕作或环境认证也不例外:一旦应用加工产品,必须登记注册。</p>
 <p>对于葡萄酒厂,实际上,每个地块的每个段落都必须在数字登记册中:葡萄的处理,但在必要时还要除草或处理房舍。</p>
-<h2>登记册应包含什么内容</h2>
-<p>实质上,没有什么改变或几乎任何东西:这就是你已经记录的信息。</p>
-<ul>
-<li>上 <strong>应用产品</strong> (贸易名称)</li>
-<li>环 <strong>日期日期</strong> 申请的时间;</li>
-<li>环 <strong>剂量剂量</strong> 使用;</li>
-<li>环 <strong>处理的包裹或区域</strong> 及其表面;</li>
-<li>环 <strong>文化文化文化</strong> 有关。</li>
-</ul>
-<p>新的特点涉及 <strong>格式格式格式</strong> 这些信息必须存储在机器可读文件,即计算机可读文件中。</p>
+<h2>登记册应包含什么内容</h2><p>记录内容从2026年起已经变化。应记录产品及许可标识、数量、剂量、日期、处理地块的地理标识与面积、作物或区域用途，以及有机生产情况。在规定要求时，还需记录生育阶段、开始和结束时间及提前重新进入地块的信息。助剂和承包作业也有专门要求。请以法国2025年12月24日法令附件核对字段和数据格式；仅有Excel或CSV扩展名不能证明合规。</p><p><a href="https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000053228465">官方来源 : 24/12/2025</a></p>
 <h2>接受何种格式?</h2>
 <p>国家不需要软件。您可以保留您的注册:</p>
 <ul>
@@ -291,7 +212,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   </div>
 </footer>
 <script src="../assets/js/header.js"></script>
-<script src="../consent.js?v=20261028-footer"></script>
+<script src="../consent.js?v=20261029-ga4"></script>
 <script src="../assets/js/cta-popup.js" defer></script>
 <script src="../assets/js/documents-legaux.js?v=20261028-footer" defer></script>
 </body>

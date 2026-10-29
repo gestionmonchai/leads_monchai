@@ -16,19 +16,22 @@ function harmoniser(article, reference) {
   }
   unique(article, footer, 'footer article');
   let resultat = article.replace(footer, () => nouveau);
-  // Ne pas réintroduire l'ancien octroi publicitaire via Instagram depuis la file.
-  if (article.includes('monchaiChargerGtm')) {
-    unique(article, consentement, 'consentement article');
-    const actuel = unique(reference, consentement, 'consentement de référence');
-    resultat = resultat.replace(consentement, () => actuel);
-  }
+  // Les anciens articles en attente reprennent le chargement conditionnel courant.
+  resultat = resultat.replace(consentement, '');
+  resultat = resultat.replace(/<noscript\b[^>]*>[\s\S]*?googletagmanager\.com\/ns\.html[\s\S]*?<\/noscript>/g, '');
+  resultat = resultat.replace(/<script\b[^>]*>[\s\S]*?<\/script>/g, bloc =>
+    /monchaiChargerGtm|GTM-NDSQV6T7|googletagmanager\.com\/(?:gtag|gtm)|assets\/js\/analytics\.js/.test(bloc) ||
+    (/gtag\(/.test(bloc) && /(?:consent|config)/.test(bloc)) ? '' : bloc);
+  const analytics = unique(reference, /<script\b[^>]*src="assets\/js\/analytics\.js[^\"]*"[^>]*><\/script>/g, 'mesure de référence');
   resultat = resultat.replace(/<link\b[^>]*href=["']assets\/css\/footer-commun\.css[^"']*["'][^>]*>\s*/g, '');
   if (!resultat.includes('</head>') || !resultat.includes('</body>')) throw new Error('Document incomplet');
   resultat = resultat.replace('</head>', '<link rel="stylesheet" href="assets/css/footer-commun.css?v=20261028-footer">\n</head>');
+  resultat = resultat.replace('</head>', analytics + '\n</head>');
   for (const fichier of ['consent.js', 'assets/js/documents-legaux.js']) {
     const rx = new RegExp('<script\\b[^>]*src=["\\\']' + fichier.replaceAll('.', '\\.') + '(?:\\?[^"\\\']*)?["\\\'][^>]*>\\s*</script>\\s*', 'g');
     resultat = resultat.replace(rx, '');
-    resultat = resultat.replace('</body>', `<script src="${fichier}?v=20261028-footer" defer></script>\n</body>`);
+    const version = fichier === 'consent.js' ? '20261029-ga4' : '20261028-footer';
+    resultat = resultat.replace('</body>', `<script src="${fichier}?v=${version}" defer></script>\n</body>`);
   }
   return resultat;
 }

@@ -1,0 +1,36 @@
+/* Parcours documentaires : lecture, tableaux et liens sans dépendance JS. */
+.article h2[id], .article h3[id] { scroll-margin-top: 120px; }
+.reg-table-wrap { max-width: 100%; overflow-x: auto; margin: 24px 0; border: 1px solid var(--ac-bord, #ddd3c9); border-radius: 12px; }
+.reg-table { width: 100%; border-collapse: collapse; font-size: 15px; line-height: 1.6; }
+.reg-table caption { padding: 14px 16px; text-align: left; font-weight: 700; background: #f8f4ee; }
+.reg-table th, .reg-table td { padding: 14px 16px; text-align: left; vertical-align: top; border-bottom: 1px solid #ddd3c9; overflow-wrap: break-word; }
+.reg-table thead { background: #f8f4ee; }
+.reg-table tbody th { width: 29%; font-weight: 600; }
+.reg-table tr:last-child th, .reg-table tr:last-child td { border-bottom: 0; }
+.article .reg-source { font-size: 14px; line-height: 1.65; color: #594b43; }
+.reg-source a { overflow-wrap: anywhere; }
+.reg-etapes { padding-left: 28px; }
+.reg-etapes li { margin-bottom: 18px; padding-left: 5px; }
+.reg-questions dt { margin: 22px 0 8px; font-weight: 700; }
+.reg-questions dd { margin: 0; }
+.reg-cartes { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; margin: 24px 0; }
+.article .reg-carte { padding: 20px; border: 1px solid var(--ac-bord, #ddd3c9); border-radius: 12px; background: #fff; }
+.article .reg-carte h3 { margin: 0 0 12px; font-size: 18px; line-height: 1.45; }
+.article .reg-carte p { font-size: 15px; line-height: 1.65; margin: 10px 0; }
+.reg-carte > a:last-child { display: inline-flex; align-items: center; min-height: 44px; font-weight: 600; }
+.reg-fiche-repere { padding: 18px 22px; background: #f8f4ee; border-left: 4px solid #7b1e22; border-radius: 8px; margin: 24px 0; }
+.article .reg-fiche-repere p { margin: 8px 0; }
+.reg-table-wrap:focus-visible, .article a:focus-visible { outline: 3px solid #7b1e22; outline-offset: 4px; }
+@media (max-width: 600px) {
+  .reg-cartes { grid-template-columns: 1fr; }
+  .reg-table { font-size: 14px; min-width: 560px; }
+  .reg-table th, .reg-table td { padding: 12px; }
+  .reg-fiche-repere { padding: 14px 16px; }
+}
+@media print {
+  .reg-table-wrap { overflow: visible; }
+  .reg-table { min-width: 0; }
+  .reg-cartes { display: block; }
+  .reg-carte { break-inside: avoid; margin: 12px 0; }
+  .article-cta { display: none; }
+}

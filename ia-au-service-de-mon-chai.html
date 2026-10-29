@@ -2,29 +2,11 @@
 <html lang="fr">
 <head>
 <meta charset="utf-8">
-<!-- Mode consentement de Google : par défaut, rien n'est mesuré. Le choix du
-     bandeau (consent.js ou script.js, clé monchai_cookie_consent) est appliqué
-     au chargement, puis à chaque changement (événement monchai:consent). -->
-<script>
-window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}
-(function(){
-  function etat(c){var a=c&&c.audience===true?'granted':'denied',t='denied';return{analytics_storage:a,ad_storage:t,ad_user_data:t,ad_personalization:t};}
-  var d=etat(null);d.wait_for_update=500;gtag('consent','default',d);
-  function chargerPlusTard(){if(document.readyState==='complete'){if(window.monchaiChargerGtm)window.monchaiChargerGtm();}else{window.addEventListener('load',function(){setTimeout(function(){if(window.monchaiChargerGtm)window.monchaiChargerGtm();},0);},{once:true});}}
-  try{var c=JSON.parse(localStorage.getItem('monchai_cookie_consent'));if(c&&typeof c.ts==='number'&&Number.isFinite(c.ts)&&c.ts<=Date.now()&&Date.now()-c.ts<15724800000&&typeof c.audience==='boolean'&&typeof c.tiers==='boolean'){gtag('consent','update',etat(c));if(c.audience===true)chargerPlusTard();}}catch(e){}
-  window.addEventListener('monchai:consent',function(e){gtag('consent','update',etat(e.detail));dataLayer.push({event:'monchai_consentement'});if(e.detail&&e.detail.audience===true)chargerPlusTard();});
-})();
-</script>
-<!-- Google Tag Manager, chargé seulement après un accord (mesure d'audience ou
-     services tiers) et après le chargement de la page : sans accord, aucun
-     script Google n'est téléchargé (gain mesuré sur mobile : environ 0,9 s de LCP). -->
-<script>window.monchaiChargerGtm=function(){if(window.monchaiGtmCharge)return;window.monchaiGtmCharge=true;
-(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-NDSQV6T7');};</script>
-<!-- End Google Tag Manager -->
+
+
+
+
+
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 
 <title>Connecter ChatGPT ou Claude à son logiciel viticole | Mon Chai</title>
@@ -256,6 +238,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 .ia-faq p{ margin:10px 0 4px; font-size:15.5px; line-height:1.6; }
 </style>
 <link rel="stylesheet" href="assets/css/footer-commun.css?v=20261028-footer">
+
+<script src="assets/js/analytics.js?v=20261029" data-gtm></script>
 </head>
 <body class="corps-actus">
 
@@ -584,7 +568,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </footer>
 
 <script src="assets/js/header.js"></script>
-<script src="consent.js?v=20261028-footer"></script>
+<script src="consent.js?v=20261029-ga4"></script>
 <script src="assets/js/cta-popup.js" defer></script>
 <script src="assets/js/documents-legaux.js?v=20261028-footer" defer></script>
 </body>

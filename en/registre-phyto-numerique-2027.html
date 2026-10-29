@@ -3,29 +3,11 @@
 <html lang="en">
 <head>
 <meta charset="utf-8"/>
-<!-- Mode consentement de Google : par défaut, rien n'est mesuré. Le choix du
-     bandeau (consent.js ou script.js, clé monchai_cookie_consent) est appliqué
-     au chargement, puis à chaque changement (événement monchai:consent). -->
-<script>
-window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}
-(function(){
-  function etat(c){var a=c&&c.audience===true?'granted':'denied',t='denied';return{analytics_storage:a,ad_storage:t,ad_user_data:t,ad_personalization:t};}
-  var d=etat(null);d.wait_for_update=500;gtag('consent','default',d);
-  function chargerPlusTard(){if(document.readyState==='complete'){if(window.monchaiChargerGtm)window.monchaiChargerGtm();}else{window.addEventListener('load',function(){setTimeout(function(){if(window.monchaiChargerGtm)window.monchaiChargerGtm();},0);},{once:true});}}
-  try{var c=JSON.parse(localStorage.getItem('monchai_cookie_consent'));if(c&&typeof c.ts==='number'&&Number.isFinite(c.ts)&&c.ts<=Date.now()&&Date.now()-c.ts<15724800000&&typeof c.audience==='boolean'&&typeof c.tiers==='boolean'){gtag('consent','update',etat(c));if(c.audience===true)chargerPlusTard();}}catch(e){}
-  window.addEventListener('monchai:consent',function(e){gtag('consent','update',etat(e.detail));dataLayer.push({event:'monchai_consentement'});if(e.detail&&e.detail.audience===true)chargerPlusTard();});
-})();
-</script>
-<!-- Google Tag Manager, chargé seulement après un accord (mesure d'audience ou
-     services tiers) et après le chargement de la page : sans accord, aucun
-     script Google n'est téléchargé (gain mesuré sur mobile : environ 0,9 s de LCP). -->
-<script>window.monchaiChargerGtm=function(){if(window.monchaiGtmCharge)return;window.monchaiGtmCharge=true;
-(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-NDSQV6T7');};</script>
-<!-- End Google Tag Manager -->
+
+
+
+
+
 <meta content="width=device-width, initial-scale=1, viewport-fit=cover" name="viewport"/>
 <title>Mandatory numerical plant protection register in 2027: the winemaker's guide Mon Chai</title>
 <meta content="On 1 January 2027 the plant protection register goes digital for every wine estate: accepted formats and the 2027-2029 transition timetable." name="description"/>
@@ -46,67 +28,15 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <meta content="Mon Chai" property="og:site_name"/>
 <link href="../assets/img/favicon-mon-chai-96.png" rel="icon" type="image/png"/>
 <meta content="#7B1E22" name="theme-color"/>
-<script type="application/ld+json">{
-  "@context": "https://schema.org",
-  "@type": "Article",
-  "headline": "Digital Phytosanitary Registry: Mandatory as of January 1, 2027",
-  "description": "On 1 January 2027, the plant register becomes digital for all holdings: accepted formats, transition calendar 2027-2029 and tips for preparing as early as the 2026 campaign.",
-  "inLanguage": "en",
-  "articleSection": "Vineyard & plant protection",
-  "datePublished": "2026-08-31",
-  "dateModified": "2026-08-31",
-  "image": "https://monchai.fr/assets/img/pages/vigne-vendanges.jpg",
-  "mainEntityOfPage": "https://monchai.fr/registre-phyto-numerique-2027.html",
-  "author": {
-    "@type": "Organization",
-    "name": "Mon Chai",
-    "url": "https://monchai.fr/"
-  },
-  "publisher": {
-    "@type": "Organization",
-    "name": "Mon Chai",
-    "url": "https://monchai.fr/",
-    "logo": {
-      "@type": "ImageObject",
-      "url": "https://monchai.fr/assets/img/logo_mon_chai.png"
-    }
-  }
-}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Digital Phytosanitary Registry: Mandatory as of January 1, 2027", "description": "On 1 January 2027, the plant register becomes digital for all holdings: accepted formats, transition calendar 2027-2029 and tips for preparing as early as the 2026 campaign.", "inLanguage": "en", "articleSection": "Vineyard & plant protection", "datePublished": "2026-08-31", "dateModified": "2026-10-29", "image": "https://monchai.fr/assets/img/pages/vigne-vendanges.jpg", "mainEntityOfPage": "https://monchai.fr/registre-phyto-numerique-2027.html", "author": {"@type": "Organization", "name": "Mon Chai", "url": "https://monchai.fr/"}, "publisher": {"@type": "Organization", "name": "Mon Chai", "url": "https://monchai.fr/", "logo": {"@type": "ImageObject", "url": "https://monchai.fr/assets/img/logo_mon_chai.png"}}}</script>
 <link href="../assets/css/polices.css" rel="stylesheet"/>
 <link href="../assets/css/header.css" rel="stylesheet"/>
 <link href="../assets/css/actus.css" rel="stylesheet"/>
 <link href="../assets/css/pied.css" rel="stylesheet"/>
-<script type="application/ld+json">{
-  "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  "itemListElement": [
-    {
-      "@type": "ListItem",
-      "position": 1,
-      "name": "Accueil",
-      "item": "https://monchai.fr/"
-    },
-    {
-      "@type": "ListItem",
-      "position": 2,
-      "name": "Actualités réglementaires",
-      "item": "https://monchai.fr/actualites-reglementaires.html"
-    },
-    {
-      "@type": "ListItem",
-      "position": 3,
-      "name": "Vigne & phyto",
-      "item": "https://monchai.fr/actualites-vigne-phyto.html"
-    },
-    {
-      "@type": "ListItem",
-      "position": 4,
-      "name": "Registre phytosanitaire numérique : obligatoire au 1ᵉʳ janvier 2027",
-      "item": "https://monchai.fr/registre-phyto-numerique-2027.html"
-    }
-  ]
-}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Accueil", "item": "https://monchai.fr/"}, {"@type": "ListItem", "position": 2, "name": "Actualités réglementaires", "item": "https://monchai.fr/actualites-reglementaires.html"}, {"@type": "ListItem", "position": 3, "name": "Vigne & phyto", "item": "https://monchai.fr/actualites-vigne-phyto.html"}, {"@type": "ListItem", "position": 4, "name": "Registre phytosanitaire numérique : obligatoire au 1ᵉʳ janvier 2027", "item": "https://monchai.fr/registre-phyto-numerique-2027.html"}]}</script>
 <link rel="stylesheet" href="../assets/css/footer-commun.css?v=20261028-footer">
+
+<script src="../assets/js/analytics.js?v=20261029" data-gtm></script>
 </head>
 <body class="corps-actus lang-en">
 <!-- ============ HEADER (composant partagé, repassé en flux par actus.css) ============ -->
@@ -191,7 +121,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <p class="article__ariane"><a href="index.html">Home</a> › <a href="actualites-reglementaires.html">Regulatory updates</a> › <a href="actualites-vigne-phyto.html">Vineyard &amp; plant protection</a> › Digital Phytosanitary Register</p>
 <div class="article__meta">
 <a class="actu-tag" href="actualites-vigne-phyto.html">Vineyard &amp; plant protection</a>
-<span class="actu-date">Published on August 31, 2026 · 4 min reading</span>
+<span class="actu-date">Published on August 31, 2026 · 4 min reading · Updated 29 October 2026</span>
 </div>
 <h1>Digital plant-protection register: mandatory from 1 January 2027</h1>
 <p class="article__chapo">The paper register is now in its last campaign. <strong>1 January 2027</strong>, all farms, including wineries, will have to keep their register of plant health treatments in a digital format "machine-readable". The obligation, originally planned for 2026, has been postponed for a year: as much as take advantage of it to prepare calmly.</p>
@@ -210,16 +140,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <h2>Who's concerned?</h2>
 <p>All professional users of plant protection products: wine growers, farmers, marketers, agricultural work enterprises... Organic farming or environmental certification are no exception: once a processing product is applied, it must be registered.</p>
 <p>For a winery, in practice, each passage on each plot must be in the digital register: treatments of the vine, but also weeding or treatment of premises where necessary.</p>
-<h2>What the register should contain</h2>
-<p>In substance, nothing changes or almost anything: this is the information you already record.</p>
-<ul>
-<li>on <strong>product applied</strong> (trade name)</li>
-<li>the <strong>date</strong> and the time of application;</li>
-<li>the <strong>dose</strong> used;</li>
-<li>the <strong>parcel or area treated</strong> and its surface;</li>
-<li>the <strong>culture</strong> concerned.</li>
-</ul>
-<p>The new features concern the <strong>format</strong> This information will have to be stored in a machine-readable file, i.e. computer-readable.</p>
+<h2>What the register should contain</h2><p>The content already changes in 2026. Record the product and authorisation identifiers, quantity, dose, date, geographical identification and area treated, crop or use of the area, and organic status. Where required, add growth stage, start and end times and early re-entry information. Adjuvants and work by contractors also have specific rules. Use the annexes of the French order of 24 December 2025 to check required fields and data formats. A file extension alone does not demonstrate compliance.</p><p><a href="https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000053228465">Official sources : 24/12/2025</a></p>
 <h2>What formats will be accepted?</h2>
 <p>No software is required by the state. You can keep your registry:</p>
 <ul>
@@ -291,7 +212,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   </div>
 </footer>
 <script src="../assets/js/header.js"></script>
-<script src="../consent.js?v=20261028-footer"></script>
+<script src="../consent.js?v=20261029-ga4"></script>
 <script src="../assets/js/cta-popup.js" defer></script>
 <script src="../assets/js/documents-legaux.js?v=20261028-footer" defer></script>
 </body>

@@ -2,86 +2,40 @@
 <html lang="fr">
 <head>
 <meta charset="utf-8">
-<!-- Mode consentement de Google : par défaut, rien n'est mesuré. Le choix du
-     bandeau (consent.js ou script.js, clé monchai_cookie_consent) est appliqué
-     au chargement, puis à chaque changement (événement monchai:consent). -->
-<script>
-window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}
-(function(){
-  function etat(c){var a=c&&c.audience===true?'granted':'denied',t='denied';return{analytics_storage:a,ad_storage:t,ad_user_data:t,ad_personalization:t};}
-  var d=etat(null);d.wait_for_update=500;gtag('consent','default',d);
-  function chargerPlusTard(){if(document.readyState==='complete'){if(window.monchaiChargerGtm)window.monchaiChargerGtm();}else{window.addEventListener('load',function(){setTimeout(function(){if(window.monchaiChargerGtm)window.monchaiChargerGtm();},0);},{once:true});}}
-  try{var c=JSON.parse(localStorage.getItem('monchai_cookie_consent'));if(c&&typeof c.ts==='number'&&Number.isFinite(c.ts)&&c.ts<=Date.now()&&Date.now()-c.ts<15724800000&&typeof c.audience==='boolean'&&typeof c.tiers==='boolean'){gtag('consent','update',etat(c));if(c.audience===true)chargerPlusTard();}}catch(e){}
-  window.addEventListener('monchai:consent',function(e){gtag('consent','update',etat(e.detail));dataLayer.push({event:'monchai_consentement'});if(e.detail&&e.detail.audience===true)chargerPlusTard();});
-})();
-</script>
-<!-- Google Tag Manager, chargé seulement après un accord (mesure d'audience ou
-     services tiers) et après le chargement de la page : sans accord, aucun
-     script Google n'est téléchargé (gain mesuré sur mobile : environ 0,9 s de LCP). -->
-<script>window.monchaiChargerGtm=function(){if(window.monchaiGtmCharge)return;window.monchaiGtmCharge=true;
-(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-NDSQV6T7');};</script>
-<!-- End Google Tag Manager -->
+
+
+
+
+
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 
-<title>DRM du vigneron : qui, quand, comment la déposer | Mon Chai</title>
-<meta name="description" content="Qui doit déposer une DRM, avant quelle date, sur quel portail ? Le guide pratique de la déclaration récapitulative mensuelle du vigneron : CIEL, comptabilité matière, pertes et erreurs courantes.">
+<title>DRM vin : déclaration récapitulative mensuelle, étapes et dépôt | Mon Chai</title>
+<meta name="description" content="DRM du vin : qui déclare, quand, sur quel portail et avec quelles données ? Étapes de contrôle, dépôt, confirmation et correction, avec sources douanières.">
 <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
 <link rel="canonical" href="https://monchai.fr/drm-vin-guide.html">
 
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://monchai.fr/drm-vin-guide.html">
-<meta property="og:title" content="La DRM du vigneron : qui, quand, comment">
-<meta property="og:description" content="Qui doit déposer une DRM, avant quelle date, sur quel portail ? Le guide pratique de la déclaration récapitulative mensuelle du vigneron : CIEL, comptabilité matière, pertes et erreurs courantes.">
-<meta property="og:image" content="https://monchai.fr/assets/img/pages/drm-conformite.jpg">
+<meta property="og:title" content="DRM vin : déclaration récapitulative mensuelle, étapes et dépôt">
+<meta property="og:description" content="DRM du vin : qui déclare, quand, sur quel portail et avec quelles données ? Étapes de contrôle, dépôt, confirmation et correction, avec sources douanières.">
+<meta property="og:image" content="https://monchai.fr/assets/img/pages/vigne-vendanges.jpg">
 <meta property="og:locale" content="fr_FR">
 <meta property="og:site_name" content="Mon Chai">
 
 <link rel="icon" type="image/png" href="assets/img/favicon-mon-chai-96.png">
 <meta name="theme-color" content="#7B1E22">
 
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Article",
-  "headline": "La DRM du vigneron : qui, quand, comment",
-  "description": "Qui doit déposer une DRM, avant quelle date, sur quel portail ? Le guide pratique de la déclaration récapitulative mensuelle du vigneron : CIEL, comptabilité matière, pertes et erreurs courantes.",
-  "inLanguage": "fr",
-  "articleSection": "Douane & déclarations",
-  "datePublished": "2026-09-07",
-  "dateModified": "2026-10-27",
-  "image": "https://monchai.fr/assets/img/pages/drm-conformite.jpg",
-  "mainEntityOfPage": "https://monchai.fr/drm-vin-guide.html",
-  "author": { "@type": "Organization", "name": "Mon Chai", "url": "https://monchai.fr/" },
-  "publisher": {
-    "@type": "Organization",
-    "name": "Mon Chai",
-    "url": "https://monchai.fr/",
-    "logo": { "@type": "ImageObject", "url": "https://monchai.fr/assets/img/logo_mon_chai.png" }
-  }
-}
-</script>
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  "itemListElement": [
-    { "@type": "ListItem", "position": 1, "name": "Accueil", "item": "https://monchai.fr/" },
-    { "@type": "ListItem", "position": 2, "name": "Actualités réglementaires", "item": "https://monchai.fr/actualites-reglementaires.html" },
-    { "@type": "ListItem", "position": 3, "name": "Douane & déclarations", "item": "https://monchai.fr/actualites-douane-declarations.html" },
-    { "@type": "ListItem", "position": 4, "name": "La DRM du vigneron : qui, quand, comment" }
-  ]
-}
-</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "DRM vin : déclaration récapitulative mensuelle, étapes et dépôt", "description": "DRM du vin : qui déclare, quand, sur quel portail et avec quelles données ? Étapes de contrôle, dépôt, confirmation et correction, avec sources douanières.", "inLanguage": "fr", "articleSection": "Douane & déclarations", "datePublished": "2026-09-07", "dateModified": "2026-10-29", "image": "https://monchai.fr/assets/img/pages/vigne-vendanges.jpg", "mainEntityOfPage": "https://monchai.fr/drm-vin-guide.html", "author": {"@type": "Organization", "name": "Mon Chai", "url": "https://monchai.fr/index.html#apropos"}, "publisher": {"@type": "Organization", "name": "Mon Chai", "url": "https://monchai.fr/", "logo": {"@type": "ImageObject", "url": "https://monchai.fr/assets/img/logo_mon_chai.png"}}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Accueil", "item": "https://monchai.fr/"}, {"@type": "ListItem", "position": 2, "name": "Actualités réglementaires", "item": "https://monchai.fr/actualites-reglementaires.html"}, {"@type": "ListItem", "position": 3, "name": "Douane & déclarations", "item": "https://monchai.fr/actualites-douane-declarations.html"}, {"@type": "ListItem", "position": 4, "name": "DRM vin : déclaration récapitulative mensuelle, étapes et dépôt"}]}</script>
 
 <link rel="stylesheet" href="assets/css/polices.css">
 <link rel="stylesheet" href="assets/css/header.css">
 <link rel="stylesheet" href="assets/css/actus.css">
 <link rel="stylesheet" href="assets/css/pied.css">
 <link rel="stylesheet" href="assets/css/footer-commun.css?v=20261028-footer">
+<link rel="stylesheet" href="assets/css/guides-reglementaires.css?v=20261029">
+
+<script src="assets/js/analytics.js?v=20261029" data-gtm></script>
 </head>
 <body class="corps-actus">
 
@@ -186,68 +140,23 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </div>
 
 <!-- ============ ARTICLE ============ -->
-<main class="article">
-  <p class="article__ariane"><a href="index.html">Accueil</a> › <a href="actualites-reglementaires.html">Actualités réglementaires</a> › <a href="actualites-douane-declarations.html">Douane &amp; déclarations</a> › La DRM du vigneron</p>
+<main class="article article-couts" id="contenu" tabindex="-1">
+<p class="article__ariane"><a href="index.html">Accueil</a> › <a href="actualites-reglementaires.html">Actualités réglementaires</a> › <a href="actualites-douane-declarations.html">Douane &amp; déclarations</a> › DRM</p>
+<div class="article__meta"><a class="actu-tag" href="actualites-douane-declarations.html">Douane &amp; déclarations</a><span class="actu-date">Publié le 7 septembre 2026 · Mis à jour le 29 octobre 2026</span></div>
+<h1>Déclaration récapitulative mensuelle (DRM) du vin : qui déclare et comment ?</h1>
+<p class="article__chapo">La DRM rapproche vos mouvements de produits alcooliques et, le cas échéant, les droits d’accise dus. Pour la préparer, partez de votre statut et de votre période, puis contrôlez les stocks avant de déposer sur le portail compétent. Voici les étapes et les vérifications à garder sous la main.</p>
+<aside class="essentiel" aria-label="Les repères de la DRM"><p class="essentiel__titre">L’essentiel</p><ul><li>La démarche douanière vise les <strong>entrepositaires agréés</strong>, avec un dépôt mensuel.</li><li>Échéance : <strong>au plus tard le 10 du mois suivant</strong> ; si le 10 est un samedi, dimanche ou jour férié, la Douane prévoit le report au jour ouvré suivant.</li><li>Le dépôt s’effectue dans <strong>CIEL</strong>, ou selon la solution interprofessionnelle reliée à CIEL qui vous concerne. Un dépôt dans un outil et sa transmission doivent être distingués.</li><li>Préparation, validation de déclaration et paiement sont des étapes différentes. <strong>Un fichier téléchargé depuis Mon Chai ne prouve pas le dépôt officiel.</strong></li></ul><p class="reg-source">Référence : <a href="https://www.douane.gouv.fr/demarche/deposer-une-declaration-recapitulative-mensuelle-drm">Douane : déposer une DRM</a>. Repères relus le 29 octobre 2026.</p></aside>
+<nav class="recolte-sommaire" aria-label="Sommaire DRM"><a href="#qui-drm">Qui déclare ?</a><a href="#quand-drm">Quand et où ?</a><a href="#donnees-drm">Les données</a><a href="#etapes-drm">Le dépôt</a><a href="#erreurs-drm">Erreurs et difficultés</a><a href="#sources-drm">Sources</a></nav>
+<section aria-labelledby="qui-drm"><h2 id="qui-drm">Qui doit déposer une DRM ?</h2><p>La Douane indique qu’un entrepositaire agréé doit déposer une DRM une fois par mois. Pour un domaine, c’est donc le <strong>statut douanier de l’activité</strong> qu’il faut vérifier ; le seul fait de produire ou vendre du raisin ne suffit pas à décrire toutes ses obligations. Faites confirmer votre situation et le compte concerné par votre bureau de douane gestionnaire.</p><p>Si vous relevez d’une déclaration mensuelle, ne traitez pas un mois sans vente comme une dispense automatique : des stocks, des pertes ou d’autres mouvements peuvent subsister. Vérifiez avec le service compétent la déclaration attendue pour une période réellement sans mouvement. <a href="https://www.douane.gouv.fr/demarche/deposer-une-declaration-recapitulative-mensuelle-drm">Périmètre de la démarche officielle</a>.</p></section>
+<section aria-labelledby="quand-drm"><h2 id="quand-drm">Quand et où déposer ?</h2><p>Les opérations du mois M sont déclarées au plus tard le 10 du mois M+1, avec le report prévu pour un jour non ouvré. Exemple : les mouvements de janvier sont à déclarer au plus tard le 10 février, sous réserve de ce report. Ne reprenez pas un calendrier annuel ancien pour déterminer la date de votre mois actuel.</p><p>CIEL est le service des contributions indirectes en ligne. La FAQ douanière distingue aussi les interprofessions qui ont une solution informatique reliée à CIEL. Si vous utilisez un portail interprofessionnel, vérifiez son périmètre, le compte, l’état de transmission et les éventuelles validations restant à effectuer. Le nom du bassin ne suffit pas à garantir qu’un format d’export sera accepté.</p><p class="reg-source">Sources : <a href="https://www.douane.gouv.fr/demarche/deposer-une-declaration-recapitulative-mensuelle-drm">échéance DRM</a>, <a href="https://www.douane.gouv.fr/service-en-ligne/contributions-indirectes-en-ligne-alcools-ciel">service CIEL</a>, <a href="https://www.douane.gouv.fr/fiche/service-en-ligne-ciel-foire-aux-questions">FAQ CIEL, interprofessions et modalités de paiement</a>.</p></section>
+<section aria-labelledby="donnees-drm"><h2 id="donnees-drm">Quelles données réunir avant la saisie ?</h2><p>Préparez votre comptabilité matière et les pièces des mouvements : <a href="registre-de-cave-vigneron.html">registre de cave</a>, réceptions, ventes, expéditions, retours, opérations de cave et pertes. Classez les quantités par produits et catégories réellement demandés par votre déclaration. Les données de <a href="declaration-recolte-2026.html">récolte et de production</a> servent au rapprochement des entrées de campagne.</p><div class="reg-table-wrap" role="region" aria-label="Préparer le rapprochement de stocks" tabindex="0"><table class="reg-table"><caption>Rapprochement préparatoire proposé par Mon Chai, pour un même produit et une même unité</caption><thead><tr><th scope="col">Repère</th><th scope="col">Pièces à rapprocher</th></tr></thead><tbody><tr><th scope="row">Stock au début de la période</th><td>Stock reporté de la déclaration précédente et comptabilité matière</td></tr><tr><th scope="row">Entrées et sorties du mois</th><td>Pièces des achats, récoltes, ventes, retours et mouvements applicables</td></tr><tr><th scope="row">Pertes et régularisations</th><td>Opération, date, motif et justificatif ; pas un montant choisi pour annuler l’écart</td></tr><tr><th scope="row">Stock final</th><td>Stock initial + entrées − sorties et rapprochement aux enregistrements</td></tr></tbody></table></div>
+<p>Exemple fictif de contrôle de quantité : pour une même catégorie, 120 hL au départ + 15 hL d’entrées − 20 hL de sorties donnent 115 hL. Ce calcul ne décide pas à lui seul dans quelles rubriques fiscales ranger les mouvements ; une transformation ou un changement de catégorie demande aussi un suivi adapté.</p><p>La FAQ CIEL distingue les données DRM de celles de la déclaration annuelle d’inventaire, notamment pour certains taux de pertes. Ne transposez pas un taux annuel de DAI à toutes les lignes mensuelles. La précision et les unités sont celles attendues par votre déclaration ; la FAQ demande le report des volumes sans arrondi, jusqu’à cinq décimales. <a href="https://www.douane.gouv.fr/fiche/service-en-ligne-ciel-foire-aux-questions">FAQ CIEL : produits, volumes, stocks et DAI</a>.</p></section>
+<section aria-labelledby="etapes-drm"><h2 id="etapes-drm">Les étapes pour contrôler puis déposer la DRM</h2><p>Ce parcours de préparation est proposé par Mon Chai à partir des démarches et de la FAQ douanières. Les libellés d’écran et étapes de votre portail peuvent différer.</p><ol class="reg-etapes"><li><strong>Identifier le bon compte et le mois.</strong> Vérifiez l’exploitation, le statut douanier, la période de référence et votre habilitation. Pour une première utilisation, demandez au bureau gestionnaire l’accès et, si besoin, l’environnement de formation CIEL.</li><li><strong>Rassembler les mouvements avant de saisir.</strong> Rapprochez les pièces du mois et le report de stock précédent. Séparez les régimes de droits et les produits selon les rubriques demandées ; gardez les unités cohérentes.</li><li><strong>Préparer la déclaration sur le circuit compétent.</strong> Saisissez les données ou utilisez uniquement un import compatible avec le portail et votre profil. Un fichier d’un autre téléservice ne devient pas compatible parce qu’il porte le même sigle DTI+.</li><li><strong>Contrôler stocks et droits avant validation.</strong> Examinez les écarts, les pertes et les informations de liquidation. Revenez aux pièces en cas d’anomalie ; faites confirmer une rubrique incertaine par votre service plutôt que de compenser au hasard.</li><li><strong>Valider et vérifier le résultat.</strong> Suivez les étapes finales du portail, dont le choix du compte de paiement lorsqu’il est demandé. Contrôlez que la déclaration est effectivement validée ou reçue selon le circuit ; un brouillon ou un export n’établit pas ce résultat.</li><li><strong>Classer la déclaration et suivre le paiement.</strong> Conservez les éléments de confirmation disponibles et les justificatifs. Les sommes dues sont recouvrées par la DGFiP selon les modalités applicables ; la date limite de déclaration ne suffit pas à déterminer une échéance de paiement particulière.</li></ol><p class="reg-source">Références : <a href="https://www.douane.gouv.fr/demarche/deposer-une-declaration-recapitulative-mensuelle-drm">dépôt mensuel</a> et <a href="https://www.douane.gouv.fr/fiche/service-en-ligne-ciel-foire-aux-questions">FAQ CIEL : formation, validation, interprofessions et paiement</a>.</p></section>
+<section aria-labelledby="erreurs-drm"><h2 id="erreurs-drm">Erreur de stock, déclaration validée ou accès indisponible</h2><dl class="reg-questions"><dt>Un stock reporté est erroné.</dt><dd>La FAQ CIEL décrit une régularisation par les rubriques d’autres entrées ou sorties, avec observation. Si l’erreur touche la liquidation, elle demande aussi de contacter le service gestionnaire. N’appliquez pas cette procédure à un autre portail sans vérifier ses consignes.</dd><dt>Je veux modifier une déclaration précédente.</dt><dd>La FAQ CIEL exclut la modification en ligne après la date limite de dépôt, ainsi que lorsqu’une déclaration de la période suivante a déjà été validée. Sa disponibilité dépend aussi du système comptable. Lorsqu’elle n’est plus disponible en ligne, rapprochez-vous du bureau gestionnaire ; ne supposez pas qu’une édition dans votre logiciel modifie le dépôt officiel.</dd><dt>CIEL est indisponible.</dt><dd>La Douane demande de se rapprocher de son service et de se reconnecter régulièrement. Suivez ses consignes et conservez les éléments de votre difficulté. Son descriptif prévoit le dépôt dans CIEL à son rétablissement sans déclaration papier de remplacement pour ce cas ; ne confondez pas panne du service et difficulté d’accès personnelle.</dd><dt>J’utilise une passerelle interprofessionnelle.</dt><dd>Identifiez à quelle étape se situe le blocage : préparation, transmission, réception ou validation. Demandez l’aide du portail ou du bureau compétent avec la période et le message d’erreur, sans divulguer votre mot de passe.</dd></dl><p class="reg-source">Sources : <a href="https://www.douane.gouv.fr/fiche/service-en-ligne-ciel-foire-aux-questions">FAQ CIEL, stocks et modifications</a> et <a href="https://www.douane.gouv.fr/demarche/deposer-une-declaration-recapitulative-mensuelle-drm">démarche DRM, indisponibilité</a>.</p></section>
+<div class="article-cta"><p class="article-cta__titre">Préparez et contrôlez votre DRM dans Mon Chai</p><p>Rapprochez les mouvements enregistrés et examinez les écarts. Les exports proposés dépendent des formats disponibles et de la configuration du domaine : vérifiez le circuit et le format attendus. Le dépôt officiel reste à effectuer sur le portail compétent ; enregistrer un dépôt dans Mon Chai ne transmet pas la déclaration aux Douanes ou à votre interprofession.</p><div class="article-cta__actions"><a class="article-cta__btn" href="https://tester.monchai.fr">Essayer gratuitement pendant 30 jours</a><a class="article-cta__lien" href="drm-conformite.html">Découvrir le module DRM &amp; conformité</a></div></div>
+<section class="article__sources" aria-labelledby="sources-drm"><h2 id="sources-drm">Sources et vérification</h2><p>Sources officielles relues le 29 octobre 2026. La FAQ comprend des rubriques de 2024 : ses anciens exemples de calendrier ne constituent pas un calendrier 2026. La démarche et le service officiels restent les points d’entrée pour votre dossier.</p><ul><li><a href="https://www.douane.gouv.fr/demarche/deposer-une-declaration-recapitulative-mensuelle-drm">Douane : déposer une DRM, périmètre, échéance et indisponibilité</a></li><li><a href="https://www.douane.gouv.fr/service-en-ligne/contributions-indirectes-en-ligne-alcools-ciel">Douane : service CIEL et accès</a></li><li><a href="https://www.douane.gouv.fr/fiche/service-en-ligne-ciel-foire-aux-questions">Douane : FAQ CIEL, produits, stocks, corrections, formation et paiement</a></li></ul></section>
+<section class="article__suite"><h2>À lire aussi</h2><ul><li><a href="declaration-recolte-2026.html">Récolte 2026 : procédure et fiches d’interprofessions</a></li><li><a href="registre-de-cave-vigneron.html">Registre de cave et enregistrement des mouvements</a></li><li><a href="dae-daes-gamma2-vin.html">Circulation du vin : DAE, DAES, DSA et GAMMA 2</a></li></ul></section>
 
-  <div class="article__meta">
-    <a class="actu-tag" href="actualites-douane-declarations.html">Douane &amp; déclarations</a>
-    <span class="actu-date">Publié le 7 septembre 2026 · Mis à jour le 27 octobre 2026 · 4 min de lecture</span>
-  </div>
-
-  <h1>La DRM du vigneron&nbsp;: qui, quand, comment</h1>
-
-  <p class="article__chapo">Chaque mois, la <strong>déclaration récapitulative mensuelle</strong> raconte à la douane ce qui est entré et sorti de votre chai. C'est la colonne vertébrale des obligations déclaratives du domaine&nbsp;: bien tenue, elle se remplit en quelques minutes&nbsp;; négligée, elle devient la source de tous les écarts. Le point complet.</p>
-
-  <div class="essentiel">
-    <p class="essentiel__titre">L'essentiel</p>
-    <ul>
-      <li>La DRM se dépose <strong>au plus tard le 10 du mois suivant</strong> la période déclarée (reporté au jour ouvré suivant si le 10 tombe un week-end ou un jour férié).</li>
-      <li>Elle concerne les <strong>entrepositaires agréés</strong>&nbsp;: récoltants vinificateurs, caves coopératives, négociants.</li>
-      <li>Elle se télédéclare sur <strong>CIEL</strong> (douane.gouv.fr) ou via le portail de votre interprofession&nbsp;: <strong>Demat'Vin</strong> en Bourgogne, <strong>Interloire</strong> en Val de Loire, <strong>CIVA</strong> en Alsace, <strong>CIVC</strong> en Champagne.</li>
-      <li>Même un mois <strong>sans aucun mouvement</strong> doit être déclaré.</li>
-    </ul>
-  </div>
-
-  <h2>À quoi sert la DRM&nbsp;?</h2>
-  <p>La DRM est le relevé mensuel de votre <strong>comptabilité matière</strong>&nbsp;: pour chaque catégorie de produit (AOP, IGP, sans IG, par couleur…), elle récapitule le stock de début de mois, les entrées (récolte, achats, retours), les sorties (ventes en droits acquittés ou suspendus, exportations, pertes) et le stock final. C'est sur cette base que sont <strong>liquidés les droits d'accise</strong>, et c'est elle que la douane rapproche de vos déclarations de récolte et de stock en cas de contrôle.</p>
-
-  <p>Au moment des vendanges, rapprochez ces entrées des données de votre récolte : notre <a href="declaration-recolte-2026.html">guide de la déclaration de récolte 2026</a> rassemble les circuits par interprofession, une checklist et un exemple de récapitulatif préparatoire.</p>
-
-  <h2>Quand et où la déposer&nbsp;?</h2>
-  <p>La déclaration du mois M se dépose <strong>au plus tard le 10 du mois M+1</strong>, en ligne&nbsp;: soit directement sur le téléservice <strong>CIEL</strong> (Contributions Indirectes En Ligne) de douane.gouv.fr, soit via le portail déclaratif de votre interprofession, qui la transmet à la douane. Selon le bassin, ce portail s'appelle <strong>Demat'Vin</strong> en Bourgogne, <strong>Interloire</strong> en Val de Loire, <strong>CIVA</strong> en Alsace ou <strong>CIVC</strong> en Champagne, et le format de fichier attendu n'est pas le même d'un canal à l'autre. Côté paiement, les opérateurs suivant la campagne viticole peuvent bénéficier de l'<strong>échéance annuelle</strong>&nbsp;: les droits se règlent alors en une fois, lors de la dernière déclaration de la campagne. Depuis 2024, les sommes dues se règlent auprès de la <strong>DGFiP</strong> et non plus de la douane.</p>
-
-  <h2>Les pièges classiques</h2>
-  <ul>
-    <li><strong>L'écart de stock inexpliqué</strong>&nbsp;: le stock final déclaré doit se déduire des mouvements du mois. Un écart répété attire l'attention en contrôle.</li>
-    <li><strong>Les pertes oubliées</strong>&nbsp;: évaporation, casse, soutirages… Les pertes doivent apparaître dans la DRM, dans la limite des taux annuels admis.</li>
-    <li><strong>Le mois «&nbsp;sans rien&nbsp;»</strong>&nbsp;: pas de vente en janvier ne veut pas dire pas de DRM en février. La déclaration néant reste due.</li>
-    <li><strong>La ressaisie de dernière minute</strong>&nbsp;: reconstituer un mois de mouvements le 9 au soir est la meilleure façon de se tromper. La DRM se prépare au fil de l'eau, depuis le registre de cave.</li>
-  </ul>
-
-  <div class="article-cta">
-    <p class="article-cta__titre">Préparez et contrôlez votre DRM dans Mon Chai</p>
-    <p>Dans Mon Chai, préparez votre DRM à partir des mouvements enregistrés et contrôlez la cohérence des entrées, sorties et stocks. Les exports proposés dépendent des formats disponibles et de la configuration de votre domaine : vérifiez le canal et le format attendus avant de télécharger votre fichier. Le dépôt officiel reste à effectuer sur le portail compétent ; enregistrer un dépôt dans Mon Chai ne transmet pas la déclaration aux Douanes ou à votre interprofession.</p>
-    <div class="article-cta__actions">
-      <a class="article-cta__btn" href="https://tester.monchai.fr">Essayer gratuitement pendant 30 jours</a>
-      <a class="article-cta__lien" href="drm-conformite.html">Découvrir le module DRM &amp; conformité</a>
-    </div>
-  </div>
-
-  <section class="article__sources">
-    <h2>Sources</h2>
-    <ul>
-      <li><a href="https://www.douane.gouv.fr/service-en-ligne/contributions-indirectes-en-ligne-alcools-ciel" target="_blank" rel="noopener noreferrer">Douane — Contributions Indirectes En Ligne (CIEL)</a></li>
-      <li><a href="https://www.douane.gouv.fr/fiche/service-en-ligne-ciel-foire-aux-questions" target="_blank" rel="noopener noreferrer">Douane — Service en ligne CIEL, foire aux questions</a></li>
-    </ul>
-  </section>
-
-  <section class="article__suite">
-    <h2>À lire aussi</h2>
-    <ul>
-      <li><a href="registre-phyto-numerique-2027.html">Registre phytosanitaire numérique&nbsp;: obligatoire au 1ᵉʳ&nbsp;janvier 2027</a></li>
-      <li><a href="facturation-electronique-viticulture.html">Facturation électronique&nbsp;: le calendrier 2026-2027 des domaines viticoles</a></li>
-    </ul>
-  </section>
 </main>
 
 <!-- ============ PIED DE PAGE (composant partagé) ============ -->
@@ -262,7 +171,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </footer>
 
 <script src="assets/js/header.js"></script>
-<script src="consent.js?v=20261028-footer"></script>
+<script src="consent.js?v=20261029-ga4"></script>
 <script src="assets/js/cta-popup.js" defer></script>
 <script src="assets/js/documents-legaux.js?v=20261028-footer" defer></script>
 </body>

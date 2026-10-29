@@ -4,8 +4,7 @@
   var organismes = ['civc','civa','bnic','interloire','anivin','bnia','inter-beaujolais','ivbd','civb','bivb','uivc','bivc','civ-corse','civj','civl','inter-oc','cnpc','civp','inter-rhone','civr','civs','ivse','ivso'];
   function mesurer(event, champs) {
     try {
-      var consentement = JSON.parse(localStorage.getItem('monchai_cookie_consent'));
-      if (!consentement || consentement.audience !== true || !consentement.ts || Date.now() - consentement.ts >= 15724800000) return;
+      if (!window.monchaiConsent || window.monchaiConsent.audience !== true) return;
       (window.dataLayer = window.dataLayer || []).push(Object.assign({event:event, contenu:'recolte_2026'}, champs));
     } catch (e) { /* Lecture et téléchargements restent disponibles. */ }
   }

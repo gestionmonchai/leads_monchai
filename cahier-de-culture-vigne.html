@@ -2,29 +2,11 @@
 <html lang="fr">
 <head>
 <meta charset="utf-8">
-<!-- Mode consentement de Google : par défaut, rien n'est mesuré. Le choix du
-     bandeau (consent.js ou script.js, clé monchai_cookie_consent) est appliqué
-     au chargement, puis à chaque changement (événement monchai:consent). -->
-<script>
-window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}
-(function(){
-  function etat(c){var a=c&&c.audience===true?'granted':'denied',t='denied';return{analytics_storage:a,ad_storage:t,ad_user_data:t,ad_personalization:t};}
-  var d=etat(null);d.wait_for_update=500;gtag('consent','default',d);
-  function chargerPlusTard(){if(document.readyState==='complete'){if(window.monchaiChargerGtm)window.monchaiChargerGtm();}else{window.addEventListener('load',function(){setTimeout(function(){if(window.monchaiChargerGtm)window.monchaiChargerGtm();},0);},{once:true});}}
-  try{var c=JSON.parse(localStorage.getItem('monchai_cookie_consent'));if(c&&typeof c.ts==='number'&&Number.isFinite(c.ts)&&c.ts<=Date.now()&&Date.now()-c.ts<15724800000&&typeof c.audience==='boolean'&&typeof c.tiers==='boolean'){gtag('consent','update',etat(c));if(c.audience===true)chargerPlusTard();}}catch(e){}
-  window.addEventListener('monchai:consent',function(e){gtag('consent','update',etat(e.detail));dataLayer.push({event:'monchai_consentement'});if(e.detail&&e.detail.audience===true)chargerPlusTard();});
-})();
-</script>
-<!-- Google Tag Manager, chargé seulement après un accord (mesure d'audience ou
-     services tiers) et après le chargement de la page : sans accord, aucun
-     script Google n'est téléchargé (gain mesuré sur mobile : environ 0,9 s de LCP). -->
-<script>window.monchaiChargerGtm=function(){if(window.monchaiGtmCharge)return;window.monchaiGtmCharge=true;
-(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-NDSQV6T7');};</script>
-<!-- End Google Tag Manager -->
+
+
+
+
+
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 
 <title>Cahier de culture de la vigne : les enregistrements obligatoires | Mon Chai</title>
@@ -43,45 +25,16 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <link rel="icon" type="image/png" href="assets/img/favicon-mon-chai-96.png">
 <meta name="theme-color" content="#7B1E22">
 
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Article",
-  "headline": "Cahier de culture : l'enregistrement des pratiques qui protège vos aides",
-  "description": "Cahier de culture et conditionnalité PAC : quelles interventions enregistrer à la parcelle (phyto, fertilisation), sous quel format, combien de temps les conserver et ce qu'un contrôle vérifie.",
-  "inLanguage": "fr",
-  "articleSection": "Vigne & phyto",
-  "datePublished": "2026-10-05",
-  "dateModified": "2026-10-05",
-  "image": "https://monchai.fr/assets/img/pages/vigne-vendanges.jpg",
-  "mainEntityOfPage": "https://monchai.fr/cahier-de-culture-vigne.html",
-  "author": { "@type": "Organization", "name": "Mon Chai", "url": "https://monchai.fr/" },
-  "publisher": {
-    "@type": "Organization",
-    "name": "Mon Chai",
-    "url": "https://monchai.fr/",
-    "logo": { "@type": "ImageObject", "url": "https://monchai.fr/assets/img/logo_mon_chai.png" }
-  }
-}
-</script>
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  "itemListElement": [
-    { "@type": "ListItem", "position": 1, "name": "Accueil", "item": "https://monchai.fr/" },
-    { "@type": "ListItem", "position": 2, "name": "Actualités réglementaires", "item": "https://monchai.fr/actualites-reglementaires.html" },
-    { "@type": "ListItem", "position": 3, "name": "Vigne & phyto", "item": "https://monchai.fr/actualites-vigne-phyto.html" },
-    { "@type": "ListItem", "position": 4, "name": "Cahier de culture : l'enregistrement des pratiques qui protège vos aides" }
-  ]
-}
-</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Cahier de culture : l'enregistrement des pratiques qui protège vos aides", "description": "Cahier de culture et conditionnalité PAC : quelles interventions enregistrer à la parcelle (phyto, fertilisation), sous quel format, combien de temps les conserver et ce qu'un contrôle vérifie.", "inLanguage": "fr", "articleSection": "Vigne & phyto", "datePublished": "2026-10-05", "dateModified": "2026-10-29", "image": "https://monchai.fr/assets/img/pages/vigne-vendanges.jpg", "mainEntityOfPage": "https://monchai.fr/cahier-de-culture-vigne.html", "author": {"@type": "Organization", "name": "Mon Chai", "url": "https://monchai.fr/"}, "publisher": {"@type": "Organization", "name": "Mon Chai", "url": "https://monchai.fr/", "logo": {"@type": "ImageObject", "url": "https://monchai.fr/assets/img/logo_mon_chai.png"}}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Accueil", "item": "https://monchai.fr/"}, {"@type": "ListItem", "position": 2, "name": "Actualités réglementaires", "item": "https://monchai.fr/actualites-reglementaires.html"}, {"@type": "ListItem", "position": 3, "name": "Vigne & phyto", "item": "https://monchai.fr/actualites-vigne-phyto.html"}, {"@type": "ListItem", "position": 4, "name": "Cahier de culture : l'enregistrement des pratiques qui protège vos aides"}]}</script>
 
 <link rel="stylesheet" href="assets/css/polices.css">
 <link rel="stylesheet" href="assets/css/header.css">
 <link rel="stylesheet" href="assets/css/actus.css">
 <link rel="stylesheet" href="assets/css/pied.css">
 <link rel="stylesheet" href="assets/css/footer-commun.css?v=20261028-footer">
+
+<script src="assets/js/analytics.js?v=20261029" data-gtm></script>
 </head>
 <body class="corps-actus">
 
@@ -191,20 +144,20 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
   <div class="article__meta">
     <a class="actu-tag" href="actualites-vigne-phyto.html">Vigne &amp; phyto</a>
-    <span class="actu-date">Publié le 5 octobre 2026 · 4 min de lecture</span>
+    <span class="actu-date">Publié le 5 octobre 2026 · 4 min de lecture · Mis à jour le 29 octobre 2026</span>
   </div>
 
   <h1>Cahier de culture&nbsp;: l'enregistrement qui protège vos aides</h1>
 
-  <p class="article__chapo">Derrière le mot «&nbsp;cahier de culture&nbsp;» se cache une obligation bien réelle&nbsp;: la <strong>conditionnalité des aides PAC</strong> impose d'enregistrer les pratiques à la parcelle, traitements phytosanitaires et fertilisation en tête. Le jour du contrôle, un cahier absent ou mal tenu peut coûter une partie des aides de l'année.</p>
+  <p class="article__chapo">Le cahier de culture rassemble les preuves de vos interventions. Les obligations viennent de plusieurs textes : produits phytopharmaceutiques, hygiène des productions et, pour la fertilisation azotée, règles applicables à vos parcelles et à votre zone. La conditionnalité PAC contrôle certaines de ces exigences.</p>
 
   <div class="essentiel">
     <p class="essentiel__titre">L'essentiel</p>
     <ul>
-      <li>La conditionnalité PAC exige un <strong>registre phytosanitaire</strong> et un <strong>cahier d'enregistrement de la fertilisation azotée</strong>.</li>
+      <li>Le registre phytopharmaceutique et les enregistrements de fertilisation répondent à des <strong>obligations distinctes</strong> ; vérifiez celles de votre exploitation et, notamment, les règles nitrates en zone vulnérable.</li>
       <li>Chaque intervention est rattachée à une <strong>parcelle identifiée</strong>, avec culture et cépage.</li>
       <li>Pour un traitement&nbsp;: <strong>nom commercial complet</strong> du produit, <strong>dose</strong>, <strong>date</strong>, et la date de récolte de la parcelle.</li>
-      <li>Les enregistrements se conservent au moins <strong>5&nbsp;campagnes</strong>&nbsp;; tout format est admis (papier ou numérique)… jusqu'à l'obligation de registre phyto <strong>numérique</strong> au 1ᵉʳ&nbsp;janvier 2027.</li>
+      <li>Le registre phytopharmaceutique se conserve <strong>cinq ans</strong>. Son contenu évolue dès 2026 et sa conversion électronique devient obligatoire en 2027, avec le calendrier transitoire prévu par l’arrêté. Les autres pièces suivent leurs propres règles de conservation.</li>
     </ul>
   </div>
 
@@ -212,10 +165,10 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   <p>Pour chaque parcelle ou îlot cultural&nbsp;: l'identification (référence PAC ou cadastrale), la culture et sa variété, pour nous le cépage. Puis, au fil de la campagne&nbsp;: chaque <strong>traitement phytosanitaire</strong> (produit avec son nom commercial exact, dose en l/ha ou kg/ha, date d'application), les <strong>apports de fertilisants azotés</strong> (nature, quantité, date), la <strong>date de récolte</strong>, et l'apparition éventuelle d'organismes nuisibles. Ces exigences recoupent largement celles du registre phytosanitaire&nbsp;: bien organisé, un seul enregistrement alimente les deux.</p>
 
   <h2>Ce qu'un contrôle vérifie</h2>
-  <p>Le contrôleur rapproche le cahier de la réalité&nbsp;: factures d'achat de produits, stock du local phyto, surfaces déclarées à la PAC. L'absence de cahier ou sa non-tenue au jour du contrôle entraîne une <strong>réduction des aides</strong> de l'année concernée, au-delà des suites propres à la réglementation phytosanitaire. La règle d'or&nbsp;: un enregistrement fait <strong>le jour de l'intervention</strong> est incontestable&nbsp;; un cahier reconstitué la veille du contrôle se voit.</p>
+<p>Les pièces et pratiques sont rapprochées selon les règles et la grille de contrôle applicables. Une anomalie peut entraîner des conséquences sur les aides ; le résultat dépend de sa qualification et des dispositions en vigueur. Saisir une intervention rapidement facilite la fiabilité et la vérification, sans rendre l’enregistrement incontestable. Conservez aussi les justificatifs et la trace des corrections. <a href="https://www.telepac.agriculture.gouv.fr/telepac/aide/conditionnalite.action">Télépac : fiches et grilles de conditionnalité 2026</a>.</p>
 
   <h2>Préparer 2027 dès maintenant</h2>
-  <p>Au 1ᵉʳ&nbsp;janvier 2027, le volet phytosanitaire du cahier devra être tenu dans un <strong>format numérique lisible par machine</strong>. Autant basculer tout le cahier de culture en numérique d'un coup&nbsp;: mêmes données, un seul outil, et des exports prêts pour chaque dispositif (PAC, HVE, bio).</p>
+<p>Pour le volet phytopharmaceutique, contrôlez dès maintenant les champs de l’arrêté du 24 décembre 2025 et la structure d’export. Un logiciel ou un tableur doit couvrir les données et le format requis ; son nom ne prouve pas la conformité. Le <a href="registre-phyto-numerique-2027.html">guide du registre numérique</a> précise le calendrier. <a href="https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000053228465">Texte de référence</a>.</p>
 
   <div class="article-cta">
     <p class="article-cta__titre">Le journal des travaux qui remplit vos registres</p>
@@ -228,7 +181,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
   <section class="article__sources">
     <h2>Sources</h2>
-    <ul>
+    <ul><li><a href="https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000053228465">Arrêté français du registre phytopharmaceutique</a></li><li><a href="https://www.telepac.agriculture.gouv.fr/telepac/aide/conditionnalite.action">Télépac : conditionnalité 2026</a></li>
       <li><a href="https://www.cogedis.com/actualites/cahier-enregistrement-pratiques-registre-phytosanitaire/" target="_blank" rel="noopener noreferrer">Cogedis, Le cahier d'enregistrement des pratiques et le registre phytosanitaire</a></li>
       <li><a href="https://hautsdefrance.chambres-agriculture.fr/fileadmin/user_upload/249_chambres_dagriculture_des_hauts-de-france_/RUBR_SINFORMER/Cahier_d_enregistrement_des_pratiques_-_registre_phyto.pdf" target="_blank" rel="noopener noreferrer">Chambres d'agriculture des Hauts-de-France, Cahier d'enregistrement des pratiques</a></li>
     </ul>
@@ -255,7 +208,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </footer>
 
 <script src="assets/js/header.js"></script>
-<script src="consent.js?v=20261028-footer"></script>
+<script src="consent.js?v=20261029-ga4"></script>
 <script src="assets/js/cta-popup.js" defer></script>
 <script src="assets/js/documents-legaux.js?v=20261028-footer" defer></script>
 </body>

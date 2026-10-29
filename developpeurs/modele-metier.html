@@ -2,29 +2,11 @@
 <html lang="fr">
 <head>
   <meta charset="utf-8">
-<!-- Mode consentement de Google : par défaut, rien n'est mesuré. Le choix du
-     bandeau (consent.js ou script.js, clé monchai_cookie_consent) est appliqué
-     au chargement, puis à chaque changement (événement monchai:consent). -->
-<script>
-window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}
-(function(){
-  function etat(c){var a=c&&c.audience?'granted':'denied',t=c&&c.tiers?'granted':'denied';return{analytics_storage:a,ad_storage:t,ad_user_data:t,ad_personalization:t};}
-  var d=etat(null);d.wait_for_update=500;gtag('consent','default',d);
-  function chargerPlusTard(){if(document.readyState==='complete'){if(window.monchaiChargerGtm)window.monchaiChargerGtm();}else{window.addEventListener('load',function(){setTimeout(function(){if(window.monchaiChargerGtm)window.monchaiChargerGtm();},0);},{once:true});}}
-  try{var c=JSON.parse(localStorage.getItem('monchai_cookie_consent'));if(c&&c.ts&&Date.now()-c.ts<15724800000){gtag('consent','update',etat(c));if(c.audience||c.tiers)chargerPlusTard();}}catch(e){}
-  window.addEventListener('monchai:consent',function(e){gtag('consent','update',etat(e.detail));dataLayer.push({event:'monchai_consentement'});if(e.detail&&(e.detail.audience||e.detail.tiers))chargerPlusTard();});
-})();
-</script>
-<!-- Google Tag Manager, chargé seulement après un accord (mesure d'audience ou
-     services tiers) et après le chargement de la page : sans accord, aucun
-     script Google n'est téléchargé (gain mesuré sur mobile : environ 0,9 s de LCP). -->
-<script>window.monchaiChargerGtm=function(){if(window.monchaiGtmCharge)return;window.monchaiGtmCharge=true;
-(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-NDSQV6T7');};</script>
-<!-- End Google Tag Manager -->
+
+
+
+
+
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <link rel="icon" type="image/png" href="../assets/img/favicon-mon-chai-96.png">
   <title>Modèle métier — Documentation développeurs Mon Chai</title>
@@ -34,6 +16,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   <meta name="theme-color" content="#7B1E22">
   
   <link rel="stylesheet" href="developpeurs.css">
+
+<script src="../assets/js/analytics.js?v=20261029" data-gtm></script>
 </head>
 <body>
   <a class="dv-evitement" href="#contenu">Aller au contenu</a>
@@ -187,6 +171,6 @@ de votre côté, laissez Mon Chai la tenir.</p>
       <span>Une question : <a href="mailto:contact@monchai.fr">contact@monchai.fr</a> · <a href="contact.html">Contact et support</a></span>
     </div>
   </footer>
-<script src="../consent.js"></script>
+<script src="../consent.js?v=20261029-ga4"></script>
 </body>
 </html>

@@ -3,29 +3,11 @@
 <html lang="de">
 <head>
 <meta charset="utf-8"/>
-<!-- Mode consentement de Google : par défaut, rien n'est mesuré. Le choix du
-     bandeau (consent.js ou script.js, clé monchai_cookie_consent) est appliqué
-     au chargement, puis à chaque changement (événement monchai:consent). -->
-<script>
-window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}
-(function(){
-  function etat(c){var a=c&&c.audience===true?'granted':'denied',t='denied';return{analytics_storage:a,ad_storage:t,ad_user_data:t,ad_personalization:t};}
-  var d=etat(null);d.wait_for_update=500;gtag('consent','default',d);
-  function chargerPlusTard(){if(document.readyState==='complete'){if(window.monchaiChargerGtm)window.monchaiChargerGtm();}else{window.addEventListener('load',function(){setTimeout(function(){if(window.monchaiChargerGtm)window.monchaiChargerGtm();},0);},{once:true});}}
-  try{var c=JSON.parse(localStorage.getItem('monchai_cookie_consent'));if(c&&typeof c.ts==='number'&&Number.isFinite(c.ts)&&c.ts<=Date.now()&&Date.now()-c.ts<15724800000&&typeof c.audience==='boolean'&&typeof c.tiers==='boolean'){gtag('consent','update',etat(c));if(c.audience===true)chargerPlusTard();}}catch(e){}
-  window.addEventListener('monchai:consent',function(e){gtag('consent','update',etat(e.detail));dataLayer.push({event:'monchai_consentement'});if(e.detail&&e.detail.audience===true)chargerPlusTard();});
-})();
-</script>
-<!-- Google Tag Manager, chargé seulement après un accord (mesure d'audience ou
-     services tiers) et après le chargement de la page : sans accord, aucun
-     script Google n'est téléchargé (gain mesuré sur mobile : environ 0,9 s de LCP). -->
-<script>window.monchaiChargerGtm=function(){if(window.monchaiGtmCharge)return;window.monchaiGtmCharge=true;
-(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-NDSQV6T7');};</script>
-<!-- End Google Tag Manager -->
+
+
+
+
+
 <meta content="width=device-width, initial-scale=1, viewport-fit=cover" name="viewport"/>
 <title>Digitales Pflanzenschutzregister 2027: der Leitfaden für Winzer | Mon Chai</title>
 <meta content="Ab 1. Januar 2027 wird das Pflanzenschutzregister für alle Weinbaubetriebe digital: akzeptierte Formate und Übergangszeitplan 2027-2029." name="description"/>
@@ -46,67 +28,15 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <meta content="Mon Chai" property="og:site_name"/>
 <link href="../assets/img/favicon-mon-chai-96.png" rel="icon" type="image/png"/>
 <meta content="#7B1E22" name="theme-color"/>
-<script type="application/ld+json">{
-  "@context": "https://schema.org",
-  "@type": "Article",
-  "headline": "Digitales Pflanzenschutzregister: Pflicht zum 1. Januar 2027",
-  "description": "Am 1. Januar 2027 wird das Pflanzengesundheitsregister für alle Betriebe digital: akzeptierte Formate, Übergangszeitplan 2027-2029 und Beratung zur Vorbereitung auf das Wirtschaftsjahr 2026.",
-  "inLanguage": "de",
-  "articleSection": "Weinberg & Pflanzenschutz",
-  "datePublished": "2026-08-31",
-  "dateModified": "2026-08-31",
-  "image": "https://monchai.fr/assets/img/pages/vigne-vendanges.jpg",
-  "mainEntityOfPage": "https://monchai.fr/registre-phyto-numerique-2027.html",
-  "author": {
-    "@type": "Organization",
-    "name": "Mon Chai",
-    "url": "https://monchai.fr/"
-  },
-  "publisher": {
-    "@type": "Organization",
-    "name": "Mon Chai",
-    "url": "https://monchai.fr/",
-    "logo": {
-      "@type": "ImageObject",
-      "url": "https://monchai.fr/assets/img/logo_mon_chai.png"
-    }
-  }
-}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Digitales Pflanzenschutzregister: Pflicht zum 1. Januar 2027", "description": "Am 1. Januar 2027 wird das Pflanzengesundheitsregister für alle Betriebe digital: akzeptierte Formate, Übergangszeitplan 2027-2029 und Beratung zur Vorbereitung auf das Wirtschaftsjahr 2026.", "inLanguage": "de", "articleSection": "Weinberg & Pflanzenschutz", "datePublished": "2026-08-31", "dateModified": "2026-10-29", "image": "https://monchai.fr/assets/img/pages/vigne-vendanges.jpg", "mainEntityOfPage": "https://monchai.fr/registre-phyto-numerique-2027.html", "author": {"@type": "Organization", "name": "Mon Chai", "url": "https://monchai.fr/"}, "publisher": {"@type": "Organization", "name": "Mon Chai", "url": "https://monchai.fr/", "logo": {"@type": "ImageObject", "url": "https://monchai.fr/assets/img/logo_mon_chai.png"}}}</script>
 <link href="../assets/css/polices.css" rel="stylesheet"/>
 <link href="../assets/css/header.css" rel="stylesheet"/>
 <link href="../assets/css/actus.css" rel="stylesheet"/>
 <link href="../assets/css/pied.css" rel="stylesheet"/>
-<script type="application/ld+json">{
-  "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  "itemListElement": [
-    {
-      "@type": "ListItem",
-      "position": 1,
-      "name": "Accueil",
-      "item": "https://monchai.fr/"
-    },
-    {
-      "@type": "ListItem",
-      "position": 2,
-      "name": "Actualités réglementaires",
-      "item": "https://monchai.fr/actualites-reglementaires.html"
-    },
-    {
-      "@type": "ListItem",
-      "position": 3,
-      "name": "Vigne & phyto",
-      "item": "https://monchai.fr/actualites-vigne-phyto.html"
-    },
-    {
-      "@type": "ListItem",
-      "position": 4,
-      "name": "Registre phytosanitaire numérique : obligatoire au 1ᵉʳ janvier 2027",
-      "item": "https://monchai.fr/registre-phyto-numerique-2027.html"
-    }
-  ]
-}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Accueil", "item": "https://monchai.fr/"}, {"@type": "ListItem", "position": 2, "name": "Actualités réglementaires", "item": "https://monchai.fr/actualites-reglementaires.html"}, {"@type": "ListItem", "position": 3, "name": "Vigne & phyto", "item": "https://monchai.fr/actualites-vigne-phyto.html"}, {"@type": "ListItem", "position": 4, "name": "Registre phytosanitaire numérique : obligatoire au 1ᵉʳ janvier 2027", "item": "https://monchai.fr/registre-phyto-numerique-2027.html"}]}</script>
 <link rel="stylesheet" href="../assets/css/footer-commun.css?v=20261028-footer">
+
+<script src="../assets/js/analytics.js?v=20261029" data-gtm></script>
 </head>
 <body class="corps-actus lang-de">
 <!-- ============ HEADER (composant partagé, repassé en flux par actus.css) ============ -->
@@ -191,7 +121,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <p class="article__ariane"><a href="index.html">Startseite</a> › <a href="actualites-reglementaires.html">Regulatorische Neuigkeiten</a> › <a href="actualites-vigne-phyto.html">Weinberg &amp; Pflanzenschutz</a> › Digitales Pflanzengesundheitsregister</p>
 <div class="article__meta">
 <a class="actu-tag" href="actualites-vigne-phyto.html">Weinberg &amp; Pflanzenschutz</a>
-<span class="actu-date">Veröffentlicht am 31. August 2026 · 4 Minuten Lesezeit</span>
+<span class="actu-date">Veröffentlicht am 31. August 2026 · 4 Minuten Lesezeit · Aktualisiert am 29. Oktober 2026</span>
 </div>
 <h1>Digitales Pflanzenschutzregister: ab 1. Januar 2027 verpflichtend</h1>
 <p class="article__chapo">Das Papierregister ist die letzte Kampagne. <strong>1. Januar 2027</strong>, alle Betriebe, einschließlich Weinbaugebiete, müssen ihr Verzeichnis der Pflanzenschutzmittel in einem maschinenlesbaren Format führen ^ . Die ursprünglich für 2026 vorgesehene Verpflichtung wurde um ein Jahr verschoben; sie wird zur Vorbereitung auf die neue Verordnung genutzt.</p>
@@ -210,16 +140,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <h2>Wer ist betroffen?</h2>
 <p>Alle gewerblichen Verwender von Pflanzenschutzmitteln: Weinbauern, Landwirten, Gemüsebauern, landwirtschaftlichen Betrieben... Betriebe im ökologischen Landbau oder unter Umweltzertifizierung sind keine Ausnahme: Sobald ein Verarbeitungserzeugnis angewendet wird, muss es registriert werden.</p>
 <p>Für einen Weinbaubereich muss sich jeder Übergang auf jedem Grundstück im digitalen Register befinden: Behandlung der Rebe, aber auch Entweidung oder gegebenenfalls Behandlung der Räumlichkeiten.</p>
-<h2>Was das Register enthalten muss</h2>
-<p>Im Grunde ändert sich nichts oder fast nichts: das sind die Informationen, die Sie bereits angeben. Für jeden Eingriff:</p>
-<ul>
-<li>am <strong>Erzeugnis</strong> (Handelsbezeichnung)</li>
-<li>las <strong>Datum</strong> und Zeitpunkt der Anwendung;</li>
-<li>las <strong>Dosis</strong> verwendet ;</li>
-<li>las <strong>Grundstück oder behandeltes Gebiet</strong> und seine Oberfläche;</li>
-<li>las <strong>Kultur</strong> • die betreffenden Personen.</li>
-</ul>
-<p>Die neue <strong>Format</strong> : Diese Informationen müssen in einer maschinenlesbaren Datei gespeichert werden, d. h. in elektronischer Form einsatzfähig.</p>
+<h2>Was das Register enthalten muss</h2><p>Der Inhalt ändert sich bereits 2026. Erfassen Sie Produkt- und Zulassungskennungen, Menge, Aufwandmenge, Datum, geografische Kennzeichnung und behandelte Fläche, Kultur beziehungsweise Flächennutzung sowie den ökologischen Status. Je nach Vorgabe kommen Entwicklungsstadium, Beginn und Ende der Anwendung sowie Angaben zum vorzeitigen Wiederbetreten hinzu. Für Zusatzstoffe und Dienstleistungen gelten ebenfalls Regeln. Die Anhänge der französischen Verordnung vom 24. Dezember 2025 bestimmen Felder und Datenformate. Eine Dateiendung allein belegt keine Konformität.</p><p><a href="https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000053228465">Amtliche Quellen : 24/12/2025</a></p>
 <h2>Welche Formate werden akzeptiert?</h2>
 <p>Keine Software wird vom Staat vorgeschrieben. Sie können Ihr Register führen:</p>
 <ul>
@@ -291,7 +212,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   </div>
 </footer>
 <script src="../assets/js/header.js"></script>
-<script src="../consent.js?v=20261028-footer"></script>
+<script src="../consent.js?v=20261029-ga4"></script>
 <script src="../assets/js/cta-popup.js" defer></script>
 <script src="../assets/js/documents-legaux.js?v=20261028-footer" defer></script>
 </body>

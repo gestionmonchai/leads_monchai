@@ -14,7 +14,7 @@ const js = fs.readFileSync(path.join(folder, 'site.js'), 'utf8');
 const ids = [...html.matchAll(/\bid="([^"]+)"/g)].map(m => m[1]);
 assert.equal(new Set(ids).size, ids.length, 'Identifiant HTML dupliqué');
 assert.equal([...html.matchAll(/<h1\b/g)].length, 1, 'Un seul titre principal attendu');
-assert.match(html, /name="robots" content="noindex, nofollow"/, 'La fiction ne doit pas être indexée');
+assert.match(html, /<meta(?=[^>]*name="robots")(?=[^>]*content="noindex, nofollow")/, 'La fiction ne doit pas être indexée');
 assert.match(html, /domaine fictif/i);
 assert.match(html, /aucun achat/i);
 assert.match(html, /réservation simulée/i);
@@ -28,12 +28,12 @@ if (folderName === 'demonstration-2') {
   assert.doesNotMatch(seasonSource, /\b(?:fetch|XMLHttpRequest|sendBeacon|localStorage|sessionStorage|WebSocket)\b/);
   const sandbox = {};
   require('node:vm').runInNewContext(seasonSource, sandbox, {timeout:1000});
-  const seasons = sandbox.HallaisSaisons;
+  const seasons = sandbox.MonChaiSaisons;
   assert.deepEqual(Array.from(seasons, item => item.id), ['hiver','printemps','ete','automne']);
-  const names = ['vignes','maison','chai','caveau','jardin','eau','recolte'];
+  const names = ['vignes','terrain','bureau','chai','caveau','jardin'];
   const escape = text => text.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#x27;');
   for (const season of seasons) {
-    assert.equal(Object.keys(season.stories).length, 7);
+    assert.equal(Object.keys(season.stories).length, 6);
     for (const name of names) {
       const story = season.stories[name];
       for (const field of ['title','p1','p2','people']) assert.ok(story[field]?.trim(), `Récit absent : ${season.id}/${name}/${field}`);
@@ -47,7 +47,7 @@ if (folderName === 'demonstration-2') {
   const functionSource = fs.readFileSync(path.join(folder, 'fonctions.js'), 'utf8');
   assert.doesNotMatch(functionSource, /\b(?:fetch|XMLHttpRequest|sendBeacon|localStorage|sessionStorage|WebSocket)\b/);
   require('node:vm').runInNewContext(functionSource, sandbox, {timeout:1000});
-  const functions = sandbox.HallaisFonctions;
+  const functions = sandbox.MonChaiFonctions;
   assert.equal(Object.keys(functions.places).length, 9);
   assert.ok(html.indexOf('fonctions.js') < html.indexOf('site.js'));
   for (const season of seasons) assert.ok(fs.existsSync(path.join(folder, `assets/domaine-${season.id}.webp`)), 'Paysage absent');
@@ -58,8 +58,8 @@ if (folderName === 'demonstration-2') {
   }
   for (const place of Object.values(functions.places)) for (const id of place.slides) assert.ok(functions.features[id]);
   assert.equal([...html.matchAll(/data-mc="produits"/g)].length, 1);
-  assert.match(html, /Domaine Hallais/);
-  assert.doesNotMatch(html, /aulnes|>\s*MC\s*</i);
+  assert.match(html, /Domaine Mon Chai/);
+  assert.doesNotMatch(html, /hallais|aulnes|>\s*MC\s*</i);
   for (const bottle of ['cuvee-rouge.svg','cuvee-blanc.svg']) assert.doesNotMatch(fs.readFileSync(path.join(folder,'assets',bottle),'utf8'), /aulnes/i);
   const usedFeatures = Object.values(functions.places).flatMap(place => Array.from(place.slides));
   assert.equal(new Set(usedFeatures).size, usedFeatures.length, 'Une fonction ne doit pas être répétée dans plusieurs contextes');
@@ -67,7 +67,7 @@ if (folderName === 'demonstration-2') {
   assert.equal([...html.matchAll(/data-mc="reservation"/g)].length, 1);
   for (const feature of Object.values(functions.features)) {
     assert.ok(feature.title && feature.text && feature.href && feature.availability && feature.proof);
-    if (feature.kind === 'capture') assert.ok(fs.existsSync(path.join(folder, feature.image)));
+    if (feature.kind === 'capture') assert.ok(fs.existsSync(path.join(feature.image.startsWith('/')?root:folder, feature.image)));
     else { assert.equal(feature.kind, 'schema'); assert.ok(feature.flow.length >= 3); }
     if (feature.availability.startsWith('À venir')) assert.equal(feature.kind, 'schema', 'Ne pas inventer une capture de la future API');
     assert.ok(html.includes(escape(feature.text)), 'Repli sans JS des fonctions incomplet');
@@ -81,7 +81,18 @@ if (folderName === 'demonstration-2') {
   assert.deepEqual(Array.from(functions.places.caveau.slides), ['degustation-creation','degustation-visiteur','degustation']);
   assert.deepEqual(Array.from(functions.places.jardin.slides), ['phyto']);
   assert.match(functions.features['trace-matiere'].image, /trace-produit-fiche\.png$/);
-  assert.deepEqual(Array.from(functions.places.recolte.slides).slice(0,2), ['annonce-vendanges','annonce-materiel']);
+  assert.deepEqual(Array.from(functions.places.vignes.slides), ['parcelles','journal-cultural','annonce-materiel','annonce-vendanges','suivi-maturite','vendanges']);
+  assert.deepEqual(Array.from(functions.places.terrain.slides), ['notes-dictee','notes-completer','notes-verifier','notes-activite']);
+  assert.deepEqual(Array.from(functions.places.bureau.slides), ['clients','mcp','devis','commandes']);
+  assert.deepEqual(Array.from(functions.places.ventes.slides), ['api-catalogue','api-commandes']);
+  assert.equal([...html.matchAll(/data-mc="ventes"/g)].length, 1);
+  assert.doesNotMatch(html, /href="\/demonstration\/"|data-place="eau"|data-mc="eau"|lieu-eau|Le bassin/);
+  for (const feature of Object.values(functions.features)) assert.ok(feature.stage);
+  for (const video of Object.values(functions.videos)) {
+    assert.ok(fs.existsSync(path.join(root,video.src)));
+    assert.ok(fs.existsSync(path.join(root,video.poster)));
+    assert.ok(video.steps.length >= 3);
+  }
 }
 let resources = 0;
 function check(ref, from) {

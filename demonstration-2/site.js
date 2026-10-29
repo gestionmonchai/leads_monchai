@@ -33,7 +33,7 @@
     dialog.addEventListener('close', () => {
       const trigger = lastFocus.get(dialog);
       if (trigger && trigger.isConnected && !trigger.hidden && trigger.checkVisibility()) trigger.focus({ preventScroll: true });
-      else if (dialog === filmDialog && trigger?.hasAttribute("data-map-film")) document.querySelector('.map-pin[data-place="recolte"]')?.focus({preventScroll:true});
+      else if (dialog === filmDialog && trigger?.hasAttribute("data-map-film")) document.querySelector('.map-pin[data-place="bureau"]')?.focus({preventScroll:true});
       else if (dialog === mcDialog && trigger?.dataset.mc) document.querySelector(`.map-pin[data-place="${trigger.dataset.mc}"]`)?.focus({preventScroll:true});
     });
     dialog.querySelectorAll('[data-close]').forEach(button => button.addEventListener('click', () => dialog.close()));
@@ -208,10 +208,10 @@
   });
   // Les lieux existent aussi en HTML : les mêmes ancres fonctionnent sans script.
   const places = {
-    vignes: [351, 185], maison: [616, 242], chai: [1054, 349],
-    caveau: [512, 556], jardin: [800, 544], eau: [1398, 547], recolte: [1088, 682]
+    vignes: [351, 185], terrain: [1088, 682], bureau: [616, 242],
+    chai: [1054, 349], caveau: [512, 556], jardin: [800, 544]
   };
-  const steps = globalThis.HallaisSaisons;
+  const steps = globalThis.MonChaiSaisons;
   const panel = document.querySelector('#story-panel');
   const directory = document.querySelector('.places-directory');
   panel.append(directory);
@@ -303,7 +303,7 @@
   }
   retryLandscape.addEventListener('click', () => updateLandscape(landscapeKey, true));
 
-  const functions = globalThis.HallaisFonctions;
+  const functions = globalThis.MonChaiFonctions;
   let mcPlace = 'vignes';
   let mcIndex = 0;
   let mcTrigger = null;
@@ -318,7 +318,7 @@
     const buttons=[...canvas.querySelectorAll('[data-mc], [data-map-film]')];
     for (const button of buttons) {
       const film=button.hasAttribute('data-map-film');
-      const id=film?'recolte':button.dataset.mc;
+      const id=film?'bureau':button.dataset.mc;
       button.hidden=compact && (film || id!==current);
       if (button.hidden) continue;
       const center=centers.find(p=>p.id===id);
@@ -353,6 +353,7 @@
     document.querySelector('#mc-intro').textContent=place.intro;
     mcDialog.classList.toggle('has-wide-capture', Boolean(feature.wide));
     mcDialog.classList.toggle('has-portrait-capture', Boolean(feature.portrait));
+    document.querySelector('#mc-sequence').textContent=`Étape ${mcIndex+1} / ${place.slides.length} · ${feature.stage}`;
     document.querySelector('#mc-feature').textContent=feature.title;
     document.querySelector('#mc-description').textContent=feature.text;
     const status=document.querySelector('#mc-feature-status');
@@ -375,7 +376,9 @@
       enlarge.setAttribute('aria-label',`Agrandir la capture ${feature.title}, nouvel onglet`);
       if (mcScreen.complete && mcScreen.naturalWidth) mcImageStatus.textContent='';
     }
-    document.querySelector('#mc-play-video').hidden=!feature.video;
+    const videoButton=document.querySelector('#mc-play-video');
+    videoButton.hidden=!feature.video;
+    if(feature.video){videoButton.dataset.film=feature.video;videoButton.textContent=`▶ Voir la vidéo · ${functions.videos[feature.video].duration}`;}
     document.querySelector('#mc-discover').href=feature.href;
     document.querySelector('#mc-count').textContent=`${mcIndex+1} / ${place.slides.length}`;
     document.querySelector('#mc-prev').disabled=mcIndex===0;
@@ -419,17 +422,39 @@
   const filmStatus=document.querySelector('#film-status');
   let returnToMc=false;
   let filmFailed=false;
+  let activeFilm=null;
   document.querySelectorAll('[data-film]').forEach(button=>button.addEventListener('click',()=>{
+    const key=button.dataset.film || 'annonces';
+    const video=functions.videos[key];
+    if(!video)return;
     returnToMc=mcDialog.open;
+    film.pause();
+    filmDialog.dataset.video=key;
+    filmDialog.querySelector('.eyebrow').textContent=video.context;
+    document.querySelector('#film-title').textContent=video.title;
+    filmDialog.querySelector('.film-caption').textContent=video.caption;
+    const direct=filmDialog.querySelector('.film-direct');
+    direct.href=video.src;
+    const transcript=filmDialog.querySelector('.film-transcript');
+    transcript.open=false;
+    transcript.querySelector('ol').replaceChildren(...video.steps.map(step=>make('li','',step)));
+    transcript.querySelector('p').textContent=video.note;
     open(filmDialog,button);
     filmStatus.textContent='Chargement de la vidéo…';
     filmStatus.hidden=false;
-    if (filmFailed || film.error) {filmFailed=false;film.load();}
+    if(activeFilm!==key || filmFailed || film.error){
+      activeFilm=key;filmFailed=false;
+      film.poster=video.poster;
+      film.setAttribute('aria-label',video.title);
+      film.querySelector('source').src=video.src;
+      film.load();
+    }
     film.play().catch(()=>{
       filmStatus.textContent='La lecture n’a pas démarré. Utilisez la commande de lecture ou le lien direct.';
       filmStatus.hidden=false;
     });
   }));
+
   film.addEventListener('playing',()=>{filmStatus.hidden=true;});
   film.addEventListener('error',()=>{
     filmFailed=true;
@@ -504,7 +529,7 @@
     const key = season?.id || '';
     scene.dataset.season = key;
     document.querySelectorAll('[data-step]').forEach(button => button.setAttribute('aria-pressed', String(Number(button.dataset.step) === selectedStep)));
-    document.querySelector('#map-description').textContent = season ? season.caption : 'Une carte imaginée, sept portes d’entrée. Les repères ouvrent le récit de chaque lieu.';
+    document.querySelector('#map-description').textContent = season ? season.caption : 'Une carte imaginée, six portes d’entrée. Les numéros racontent le travail ; Mon Chai montre les outils.';
     document.querySelector('#saas-season').textContent = season ? season.saas : baseSaas;
     for (const article of document.querySelectorAll('[data-story]')) {
       const story = season?.stories[article.dataset.story];
@@ -593,7 +618,7 @@
     const season = new URL(location.href).searchParams.get('saison');
     const index = steps.findIndex(step => step.id === season);
     selectedStep = index < 0 ? null : index;
-    const match = /^#lieu-([a-z]+)$/.exec(location.hash);
+    const match = /^#lieu-([a-z]+)$/.exec(location.hash.replace('lieu-maison','lieu-bureau').replace('lieu-recolte','lieu-terrain'));
     if (match && Object.hasOwn(places,match[1])) showPlace(match[1],{address:false,focus});
     else if (!location.hash && selectedStep !== null) showPlace(steps[selectedStep].place,{address:false,focus});
     else resetMap({address:false,focus:false});

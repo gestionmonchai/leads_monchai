@@ -32,3 +32,6 @@ Capture de traçabilité fournie par Denis le 29 octobre 2026 : fiche Cabernet d
 
 
 Parcours visiteur de dégustation : capture directe de l’accueil sur le site de test indiqué par Denis, le 29 octobre 2026, sans retouche. Les étapes 1 à 7 ont été consultées sans envoi de note. L’étape Merci exige un envoi confirmé et n’a pas été simulée. Aucun lien de session ni jeton n’est diffusé par la démonstration.
+
+
+Domaine Mon Chai — refonte du parcours du 29 octobre 2026. Marque officielle Mon Chai utilisée avec le nom de domaine fictif choisi par Denis. Captures supplémentaires reprises sans retouche : paramétrage cadastral de parcelles de test (archive de mai), formulaire individuel de devis et quatre écrans Android Mon Chai Notes (dictée, fiche à compléter, vérification d’un transfert et activité). Les écrans Android illustrent un transfert de cave et ne sont pas présentés comme un traitement viticole. Films existants réutilisés : annonces, Mon Chai Notes et consultation MCP dans Claude (stocks puis impayés, 33 s). Sources et empreintes des nouvelles captures conservées dans le lot documentaire correspondant.

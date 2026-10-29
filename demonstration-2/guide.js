@@ -18,6 +18,11 @@
       let animation = null, departure = null, initial = true, point = {x:0,y:0};
       let measuredWidth = 0, measuredHeight = 0;
       const images = [new Image(),new Image()];
+      // Le salut est facultatif : son chargement ne bloque jamais le guide.
+      const greeting = new Image();
+      greeting.onload=()=>{figure.dataset.greeting='ready';};
+      greeting.onerror=()=>{figure.dataset.greeting='unavailable';};
+      greeting.src='assets/halbert-salut.png';
       let loaded = 0;
       const translate = p => `translate3d(${p.x}px,${p.y}px,0)`;
       const next = id => order[Math.min(order.indexOf(id)+1,order.length-1)];
@@ -63,6 +68,7 @@
         figure.dataset.guideState=visited==='caveau'?'complete':'waiting';
       }
       function fly() {
+        figure.dataset.guideMotion=motionAllowed()?'allowed':'paused';
         if (!started || !ready || failed) return;
         const from = currentPoint(); stop();
         const to = perch(target);
@@ -87,6 +93,7 @@
         canvas.querySelectorAll('.map-pin').forEach(pin=>pin.classList.toggle('is-guide-next',visited!=='caveau' && pin.dataset.place===target));
       }
       function begin() {
+        figure.dataset.guideMotion=motionAllowed()?'allowed':'paused';
         if (!started || !ready) return;
         figure.hidden=false;
         point=perch(visited);figure.style.transform=translate(point);
@@ -115,6 +122,7 @@
           if (started && ready && (measuredWidth!==canvas.clientWidth || measuredHeight!==canvas.clientHeight)) land();
         },
         syncMotion() {
+          figure.dataset.guideMotion=motionAllowed()?'allowed':'paused';
           if (started && ready && !motionAllowed()) land();
         }
       };

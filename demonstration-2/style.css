@@ -160,3 +160,14 @@ body:not(.js-ready) .story-panel{display:block}
 @media(max-width:680px){.guide-message{gap:7px;font-size:10px;line-height:1.6}}
 @media(hover:none){.map-pin:hover:not(:focus-visible) .pin-label{opacity:0}}
 @media(prefers-reduced-motion:reduce){.halbert-pose{animation:none!important}}
+
+/* Un petit signe de présence, puis six secondes de repos. */
+.halbert-guide{width:calc(var(--halbert-height)*1.198738)}
+.halbert-pose{width:calc(var(--halbert-height)*.747159)}
+.halbert-guide[data-greeting='ready']:is([data-guide-state='waiting'],[data-guide-state='complete']) .halbert-pose{top:auto;bottom:0;width:calc(var(--halbert-height)*1.198738);height:calc(var(--halbert-height)*1.025237);transform:translateX(-50%);background-image:url('assets/halbert-salut.png');background-size:calc(var(--halbert-height)*3.425868) calc(var(--halbert-height)*1.141956);background-position:calc(var(--halbert-height)*.029969) calc(var(--halbert-height)*-.078864);clip-path:inset(0 0 0 7.24%)}
+.halbert-guide[data-greeting='ready'][data-guide-motion='allowed']:is([data-guide-state='waiting'],[data-guide-state='complete']) .halbert-pose{animation:halbert-hello 8s steps(1,end) infinite}
+@keyframes halbert-hello{
+  0%,28%,100%{background-position:calc(var(--halbert-height)*.029969) calc(var(--halbert-height)*-.078864)}
+  8%,16%,24%{background-position:calc(var(--halbert-height)*-1.044164) calc(var(--halbert-height)*-.078864)}
+  12%,20%{background-position:calc(var(--halbert-height)*-2.198738) calc(var(--halbert-height)*-.078864)}
+}

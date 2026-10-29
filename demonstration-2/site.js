@@ -207,94 +207,148 @@
     vignes: [351, 185], maison: [616, 242], chai: [1054, 349],
     caveau: [512, 556], jardin: [800, 544], eau: [1398, 547], recolte: [1088, 682]
   };
-  const steps = [
-    { label: 'Hiver', place: 'vignes', text: 'Tailler, transmettre le geste, préparer ce qui poussera. Pendant ce temps, un autre millésime continue son élevage.' },
-    { label: 'Printemps', place: 'eau', text: 'Observer ce qui change et revoir le programme. Les prévisions, l’état des parcelles et l’organisation se rencontrent.' },
-    { label: 'Vendanges', place: 'recolte', text: 'Choisir le moment, réunir l’équipe, accompagner le raisin de la parcelle au chai.' },
-    { label: 'Au chai', place: 'chai', text: 'Suivre les lots, goûter et assembler. Le travail du vin se poursuit alors que la vigne prépare déjà la suite.' }
-  ];
+  const steps = globalThis.AulnesSaisons;
   const panel = document.querySelector('#story-panel');
   const directory = document.querySelector('.places-directory');
-  // En HTML seul, la liste précède les récits ; le panneau interactif la range ensuite en bas.
   panel.append(directory);
   const toolbar = document.querySelector('.story-toolbar');
   const welcome = document.querySelector('#panel-welcome');
   const tourContext = document.querySelector('#tour-context');
   const tourControls = document.querySelector('.tour-controls');
   const backMap = document.querySelector('.back-map');
+  const scene = document.querySelector('.map-area');
+  const particles = document.querySelector('.season-particles');
+  const sceneControls = document.querySelector('.scene-controls');
+  const pauseButton = document.querySelector('#pause-season');
+  const seasonStatus = document.querySelector('#season-status');
+  const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');
+  const smallScreen = matchMedia('(max-width:680px)');
+  const baseStories = new Map([...document.querySelectorAll('[data-story]')].map(article => [article.dataset.story, {
+    title: article.querySelector('h2').innerHTML,
+    paragraphs: [...article.querySelectorAll(':scope > p:not(.place-index)')].map(p => p.textContent),
+    people: article.querySelector('.people-note p').textContent,
+    peopleTitle: article.querySelector('.people-note h3').textContent
+  }]));
+  const baseSaas = document.querySelector('#saas-season').textContent;
+  const baseWelcome = welcome.querySelector('h2').innerHTML;
+  const baseWelcomeText = welcome.querySelector('p:last-child').textContent;
   let selectedPlace = null;
   let selectedStep = null;
   let lastRoute = '';
-  const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');
-  const moveTo = node => node.scrollIntoView({ block: 'start', behavior: reducedMotion.matches ? 'instant' : 'smooth' });
+  let drawnSeason = null;
+  let motionPaused = false;
+  let mapVisible = true;
+  const moveTo = node => node.scrollIntoView({ block:'start', behavior:reducedMotion.matches ? 'instant' : 'smooth' });
 
-  function routeKey() { return `${location.hash}|${history.state?.demo2?.step ?? ''}`; }
-  function setAddress(place, step) {
-    const hash = place ? `#lieu-${place}` : '#domaine';
-    const state = { ...(history.state || {}), demo2: { place, step } };
-    if (location.hash !== hash || history.state?.demo2?.step !== step) history.pushState(state, '', hash);
+  function routeKey() { return `${location.search}|${location.hash}`; }
+  function setAddress(place) {
+    const url = new URL(location.href);
+    if (selectedStep === null) url.searchParams.delete('saison');
+    else url.searchParams.set('saison', steps[selectedStep].id);
+    url.hash = place ? `lieu-${place}` : 'domaine';
+    if (url.href !== location.href) history.pushState(null, '', url);
     lastRoute = routeKey();
   }
-  function setRouteLine(step) {
-    let path = '';
-    if (step !== null && step > 0) {
-      const points = steps.slice(0, step + 1).map(item => places[item.place]);
-      path = `M ${points[0][0]} ${points[0][1]}`;
-      for (let index = 1; index < points.length; index += 1) {
-        const [x0, y0] = points[index - 1];
-        const [x1, y1] = points[index];
-        path += ` Q ${(x0 + x1) / 2} ${Math.min(y0, y1) - 70}, ${x1} ${y1}`;
-      }
-    }
-    document.querySelector('#route-path').setAttribute('d', path);
-    document.querySelector('#map-description').textContent = path
-      ? 'Les pointillés relient les étapes du récit, sans indiquer un chemin de visite.'
-      : 'Une carte imaginée, sept portes d’entrée. Les repères ouvrent le récit de chaque lieu.';
+  function updateMotion() {
+    const active = selectedStep !== null;
+    const running = active && !motionPaused && !reducedMotion.matches && !document.hidden && mapVisible;
+    scene.dataset.running = String(running);
+    scene.dataset.paused = String(motionPaused || reducedMotion.matches);
+    sceneControls.hidden = !active;
+    pauseButton.disabled = reducedMotion.matches;
+    pauseButton.setAttribute('aria-pressed', String(motionPaused || reducedMotion.matches));
+    pauseButton.textContent = reducedMotion.matches ? 'Mouvements réduits' : motionPaused ? 'Reprendre les animations' : 'Mettre les animations en pause';
+    const label = active ? steps[selectedStep].label : 'Vue d’ensemble';
+    const motion = !active ? 'Choisissez une saison pour faire évoluer les récits.'
+      : reducedMotion.matches ? 'Décor immobile selon votre préférence de mouvements réduits.'
+      : motionPaused ? 'Animations en pause.' : 'Ambiance illustrée animée.';
+    seasonStatus.textContent = `${label} · ${motion}`;
   }
-  function showPlace(place, { step = null, address = true, focus = true, reveal = false } = {}) {
-    if (!Object.hasOwn(places, place)) return;
+  function buildParticles() {
+    particles.replaceChildren();
+    if (selectedStep === null || reducedMotion.matches) return;
+    const count = smallScreen.matches ? 16 : 28;
+    const summer = steps[selectedStep].id === 'ete';
+    const fragment = document.createDocumentFragment();
+    for (let index = 0; index < count; index += 1) {
+      const p = document.createElement('i');
+      p.className = 'season-particle';
+      // Répartition déterministe : pas de calcul à chaque image de l'animation.
+      p.style.setProperty('--left', `${5 + ((index * 37) % 90)}%`);
+      p.style.setProperty('--size', `${summer ? 2 + index % 3 : 4 + index % 5}px`);
+      p.style.setProperty('--duration', `${summer ? 17 + index % 8 : 10 + index % 9}s`);
+      p.style.setProperty('--delay', `${-((index * 2.7) % 19)}s`);
+      p.style.setProperty('--drift', `${(index % 2 ? 1 : -1) * (22 + index % 7 * 9)}px`);
+      p.style.setProperty('--turn', `${index % 2 ? 230 : -190}deg`);
+      p.style.setProperty('--tone', String(index % 3));
+      fragment.append(p);
+    }
+    particles.append(fragment);
+  }
+  function applySeason() {
+    const season = selectedStep === null ? null : steps[selectedStep];
+    const key = season?.id || '';
+    scene.dataset.season = key;
+    document.querySelectorAll('[data-step]').forEach(button => button.setAttribute('aria-pressed', String(Number(button.dataset.step) === selectedStep)));
+    document.querySelector('#map-description').textContent = season ? season.caption : 'Une carte imaginée, sept portes d’entrée. Les repères ouvrent le récit de chaque lieu.';
+    document.querySelector('#saas-season').textContent = season ? season.saas : baseSaas;
+    for (const article of document.querySelectorAll('[data-story]')) {
+      const story = season?.stories[article.dataset.story];
+      const base = baseStories.get(article.dataset.story);
+      const title = article.querySelector('h2');
+      if (story) title.textContent = story.title; else title.innerHTML = base.title;
+      article.querySelectorAll(':scope > p:not(.place-index)').forEach((p,index) => { p.textContent = story ? [story.p1,story.p2][index] : base.paragraphs[index]; });
+      article.querySelector('.people-note p').textContent = story ? story.people : base.people;
+      article.querySelector('.people-note h3').textContent = story ? 'Les personnes et les décisions' : base.peopleTitle;
+    }
+    if (key !== drawnSeason) {
+      drawnSeason = key;
+      buildParticles();
+    }
+    if (season) welcome.querySelector('h2').textContent = `${season.label}, lieu par lieu.`;
+    else welcome.querySelector('h2').innerHTML = baseWelcome;
+    welcome.querySelector('p:last-child').textContent = season ? season.text : baseWelcomeText;
+    tourContext.hidden = selectedStep === null || selectedPlace === null;
+    tourControls.hidden = selectedStep === null || selectedPlace === null;
+    document.querySelector('#story-context').textContent = season ? `${season.label.toUpperCase()} · LE DOMAINE, LIEU PAR LIEU` : 'LE DOMAINE, LIEU PAR LIEU';
+    if (season) {
+      document.querySelector('#tour-label').textContent = `${selectedStep + 1} / 4 · ${season.label.toUpperCase()}`;
+      document.querySelector('#tour-text').textContent = season.text;
+      document.querySelector('#tour-count').textContent = `${selectedStep + 1} / 4`;
+      document.querySelector('#tour-prev').disabled = selectedStep === 0;
+      document.querySelector('#tour-next').disabled = selectedStep === steps.length - 1;
+    }
+    updateMotion();
+  }
+  function showPlace(place, { address=true, focus=true, reveal=false } = {}) {
+    if (!Object.hasOwn(places,place)) return;
     selectedPlace = place;
-    selectedStep = Number.isInteger(step) && steps[step]?.place === place ? step : null;
     welcome.hidden = true;
     toolbar.hidden = false;
     backMap.hidden = false;
     panel.classList.add('has-selection');
     directory.open = false;
-    document.querySelectorAll('[data-story]').forEach(article => article.classList.toggle('is-active', article.dataset.story === place));
+    document.querySelectorAll('[data-story]').forEach(article => article.classList.toggle('is-active',article.dataset.story === place));
     document.querySelectorAll('.map-pin, .places-directory a').forEach(link => {
       const current = link.dataset.place === place;
-      link.classList.toggle('is-active', current);
-      if (current) link.setAttribute('aria-current', 'location'); else link.removeAttribute('aria-current');
+      link.classList.toggle('is-active',current);
+      if (current) link.setAttribute('aria-current','location'); else link.removeAttribute('aria-current');
     });
-    document.querySelectorAll('[data-step]').forEach(button => button.setAttribute('aria-pressed', String(Number(button.dataset.step) === selectedStep)));
-    tourContext.hidden = selectedStep === null;
-    tourControls.hidden = selectedStep === null;
-    document.querySelector('#story-context').textContent = selectedStep === null ? 'LE DOMAINE, LIEU PAR LIEU' : 'AU FIL DE L’ANNÉE';
-    if (selectedStep !== null) {
-      document.querySelector('#tour-label').textContent = `${selectedStep + 1} / 4 · ${steps[selectedStep].label.toUpperCase()}`;
-      document.querySelector('#tour-text').textContent = steps[selectedStep].text;
-      document.querySelector('#tour-count').textContent = `${selectedStep + 1} / 4`;
-      document.querySelector('#tour-prev').disabled = selectedStep === 0;
-      document.querySelector('#tour-next').disabled = selectedStep === steps.length - 1;
-    }
-    setRouteLine(selectedStep);
-    if (address) setAddress(place, selectedStep);
+    applySeason();
+    if (address) setAddress(place);
     if (focus) {
-      const title = document.querySelector(`#lieu-${place} h2`);
-      title.focus({ preventScroll: true });
+      document.querySelector(`#lieu-${place} h2`).focus({preventScroll:true});
       const bounds = panel.getBoundingClientRect();
-      if (reveal || matchMedia('(max-width:680px)').matches || bounds.top < -30 || bounds.top > innerHeight * .7) moveTo(panel);
+      if (reveal || smallScreen.matches || bounds.top < -30 || bounds.top > innerHeight * .7) moveTo(panel);
     }
   }
-  function resetMap({ address = true, focus = true } = {}) {
+  function resetMap({ address=true, focus=true, overview=false } = {}) {
     const previous = selectedPlace;
     selectedPlace = null;
-    selectedStep = null;
+    if (overview) selectedStep = null;
     welcome.hidden = false;
     toolbar.hidden = true;
     backMap.hidden = true;
-    tourContext.hidden = true;
-    tourControls.hidden = true;
     panel.classList.remove('has-selection');
     directory.open = true;
     document.querySelectorAll('[data-story]').forEach(article => article.classList.remove('is-active'));
@@ -302,49 +356,60 @@
       link.classList.remove('is-active');
       link.removeAttribute('aria-current');
     });
-    document.querySelectorAll('[data-step]').forEach(button => button.setAttribute('aria-pressed', 'false'));
-    setRouteLine(null);
-    if (address) setAddress(null, null);
+    applySeason();
+    if (address) setAddress(null);
     if (focus) {
-      const pin = previous ? document.querySelector(`.map-pin[data-place="${previous}"]`) : document.querySelector('.map-pin');
-      pin.focus({ preventScroll: true });
-      moveTo(document.querySelector('.map-area'));
+      const target = overview ? document.querySelector('[data-step]') : previous ? document.querySelector(`.map-pin[data-place="${previous}"]`) : document.querySelector('.map-pin');
+      target.focus({preventScroll:true});
+      moveTo(overview ? document.querySelector('.year-path') : scene);
     }
   }
-  function readRoute({ focus = true } = {}) {
+  function chooseSeason(step) {
+    if (!steps[step]) return;
+    selectedStep = step;
+    // Le bouton garde le focus : sur mobile, la carte animée reste devant le récit.
+    showPlace(selectedPlace || steps[step].place,{focus:false});
+  }
+  function readRoute({ focus=true } = {}) {
     const key = routeKey();
     if (key === lastRoute) return;
     lastRoute = key;
+    const season = new URL(location.href).searchParams.get('saison');
+    const index = steps.findIndex(step => step.id === season);
+    selectedStep = index < 0 ? null : index;
     const match = /^#lieu-([a-z]+)$/.exec(location.hash);
-    if (match && Object.hasOwn(places, match[1])) {
-      const step = history.state?.demo2?.step;
-      showPlace(match[1], { step, address: false, focus });
-    } else resetMap({ address: false, focus: false });
+    if (match && Object.hasOwn(places,match[1])) showPlace(match[1],{address:false,focus});
+    else if (!location.hash && selectedStep !== null) showPlace(steps[selectedStep].place,{address:false,focus});
+    else resetMap({address:false,focus:false});
   }
-  document.querySelectorAll('[data-place]').forEach(link => link.addEventListener('click', event => {
+  document.querySelectorAll('[data-place]').forEach(link => link.addEventListener('click',event => {
     event.preventDefault();
-    showPlace(link.dataset.place, { reveal: Boolean(link.closest('.wine-card')) });
+    showPlace(link.dataset.place,{reveal:Boolean(link.closest('.wine-card'))});
   }));
-  document.querySelectorAll('[data-close-place]').forEach(button => button.addEventListener('click', () => resetMap()));
-  document.querySelectorAll('[data-step]').forEach(button => button.addEventListener('click', () => {
-    const step = Number(button.dataset.step);
-    showPlace(steps[step].place, { step, reveal: true });
-  }));
-  document.querySelector('#tour-prev').addEventListener('click', () => {
-    if (selectedStep > 0) showPlace(steps[selectedStep - 1].place, { step: selectedStep - 1 });
-  });
-  document.querySelector('#tour-next').addEventListener('click', () => {
-    if (selectedStep !== null && selectedStep < steps.length - 1) showPlace(steps[selectedStep + 1].place, { step: selectedStep + 1 });
-  });
-  document.addEventListener('keydown', event => {
+  document.querySelectorAll('[data-close-place]').forEach(button => button.addEventListener('click',() => resetMap()));
+  document.querySelectorAll('[data-step]').forEach(button => button.addEventListener('click',() => chooseSeason(Number(button.dataset.step))));
+  document.querySelector('#tour-prev').addEventListener('click',() => { if (selectedStep > 0) chooseSeason(selectedStep - 1); });
+  document.querySelector('#tour-next').addEventListener('click',() => { if (selectedStep !== null && selectedStep < steps.length - 1) chooseSeason(selectedStep + 1); });
+  document.querySelector('#clear-season').addEventListener('click',() => resetMap({overview:true}));
+  pauseButton.addEventListener('click',() => { motionPaused = !motionPaused; updateMotion(); });
+  reducedMotion.addEventListener('change',() => { buildParticles(); updateMotion(); });
+  smallScreen.addEventListener('change',buildParticles);
+  document.addEventListener('visibilitychange',updateMotion);
+  const measureScene = () => scene.style.setProperty('--travel',`${document.querySelector('.map-canvas').clientHeight + 32}px`);
+  measureScene();
+  addEventListener('resize',measureScene,{passive:true});
+  if ('IntersectionObserver' in globalThis) new IntersectionObserver(entries => {
+    mapVisible = entries[0].isIntersecting;
+    updateMotion();
+  },{threshold:0}).observe(document.querySelector('.map-canvas'));
+  document.addEventListener('keydown',event => {
     if (event.key === 'Escape' && !event.defaultPrevented && selectedPlace && !dialogs.some(dialog => dialog.open) && !menu.classList.contains('is-open')) resetMap();
   });
-  addEventListener('popstate', () => readRoute());
-  addEventListener('hashchange', () => readRoute());
-  // Les fonctions interactives ne deviennent cliquables qu’après initialisation.
+  addEventListener('popstate',() => readRoute());
+  addEventListener('hashchange',() => readRoute());
   document.body.classList.add('js-ready');
-  document.querySelectorAll('[data-cart], [data-add], [data-detail], [data-visit], .menu-toggle').forEach(button => { button.disabled = false; });
-  document.querySelectorAll('[data-step], [data-close-place]').forEach(button => { button.disabled = false; });
+  document.querySelectorAll('[data-cart], [data-add], [data-detail], [data-visit], .menu-toggle, [data-step], [data-close-place], #clear-season').forEach(button => { button.disabled = false; });
   renderCart();
-  readRoute({ focus: Boolean(location.hash.startsWith('#lieu-')) });
+  readRoute({focus:Boolean(location.hash.startsWith('#lieu-'))});
+  applySeason();
 })();

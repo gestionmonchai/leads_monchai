@@ -210,7 +210,6 @@
   panel.append(directory);
   const toolbar = document.querySelector('.story-toolbar');
   const welcome = document.querySelector('#panel-welcome');
-  const tourContext = document.querySelector('#tour-context');
   const tourControls = document.querySelector('.tour-controls');
   const backMap = document.querySelector('.back-map');
   const scene = document.querySelector('.map-area');
@@ -545,12 +544,9 @@
       drawnSeason = key;
       buildParticles();
     }
-    tourContext.hidden = selectedStep === null || selectedPlace === null;
     tourControls.hidden = selectedStep === null || selectedPlace === null;
     document.querySelector('#story-context').textContent = season ? `${season.label.toUpperCase()} · LE DOMAINE, LIEU PAR LIEU` : 'LE DOMAINE, LIEU PAR LIEU';
     if (season) {
-      document.querySelector('#tour-label').textContent = `${selectedStep + 1} / 4 · ${season.label.toUpperCase()}`;
-      document.querySelector('#tour-text').textContent = season.text;
       document.querySelector('#tour-count').textContent = `${selectedStep + 1} / 4`;
       document.querySelector('#tour-prev').disabled = selectedStep === 0;
       document.querySelector('#tour-next').disabled = selectedStep === steps.length - 1;

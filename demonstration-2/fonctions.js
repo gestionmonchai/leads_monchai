@@ -304,7 +304,7 @@ globalThis.MonChaiFonctions = {
   "places": {
     "vignes": {
       "label": "1 · Les vignes",
-      "intro": "Les travaux se succèdent, les moyens se préparent et la date de récolte se précise. L’enjeu : garder le fil de chaque parcelle jusqu’à l’entrée du raisin au chai.",
+      "intro": "Un passage oublié ou un apport mal rattaché complique la suite. Mon Chai aide à retrouver les travaux, les relevés et les réceptions enregistrés, de la parcelle à l'entrée du raisin au chai.",
       "slides": [
         "parcelles",
         "journal-cultural",
@@ -316,7 +316,7 @@ globalThis.MonChaiFonctions = {
     },
     "terrain": {
       "label": "1.1 · Les vignes · saisie mobile",
-      "intro": "Une opération faite doit encore devenir une information exploitable par le domaine. Mon Chai Notes accompagne ce passage de la dictée à une saisie vérifiée. Les captures montrent un transfert de cave.",
+      "intro": "Les opérations sont faites, mais leur saisie attend. Depuis le téléphone, Mon Chai Notes prépare une fiche à relire puis à envoyer. Les captures montrent un transfert de cave.",
       "slides": [
         "notes-dictee",
         "notes-completer",
@@ -326,14 +326,14 @@ globalThis.MonChaiFonctions = {
     },
     "jardin": {
       "label": "2 · Les intrants",
-      "intro": "Ce repère présente les intrants utilisés dans les vignes. Ici, l’enjeu est de pouvoir reprendre le suivi des interventions à partir des informations enregistrées.",
+      "intro": "Retrouver une intervention plusieurs mois après demande produit, parcelle, date et quantité. Le registre Mon Chai rassemble les informations enregistrées pour reprendre ce suivi.",
       "slides": [
         "phyto"
       ]
     },
     "chai": {
       "label": "3 · Le chai",
-      "intro": "Les vins évoluent pendant que de nouvelles opérations se préparent. Pour décider de la suite, il faut retrouver leur emplacement, leur historique et leurs mesures.",
+      "intro": "Où est ce vin, qu'a-t-on déjà fait et quelles mesures a-t-on relevées ? Mon Chai permet de reprendre l'emplacement, les opérations et les analyses des lots avant de préparer la suite.",
       "slides": [
         "plan-cave",
         "operations-cave",
@@ -342,7 +342,7 @@ globalThis.MonChaiFonctions = {
     },
     "bureau": {
       "label": "4 · Le bureau",
-      "intro": "Entre les rencontres et les commandes, il faut pouvoir reprendre ce qui a été convenu. Mon Chai vous aide à préparer la suite avec les contacts, les vins disponibles et les offres enregistrées.",
+      "intro": "Après un salon ou plusieurs échanges, il faut retrouver ce qui a été convenu. Mon Chai rassemble contacts, devis et commandes ; stocks et impayés sont aussi consultables dans la vidéo MCP.",
       "slides": [
         "clients",
         "mcp",
@@ -352,7 +352,7 @@ globalThis.MonChaiFonctions = {
     },
     "caveau": {
       "label": "5 · Le caveau",
-      "intro": "Après une rencontre au caveau, il reste à retrouver les vins goûtés et les avis. Mon Chai organise la session de dégustation, le parcours du visiteur et les retours.",
+      "intro": "Une fois les visiteurs partis, les avis peuvent être difficiles à rattacher aux bonnes cuvées. Mon Chai organise la session, le parcours de dégustation et les retours pour les retrouver ensuite.",
       "slides": [
         "degustation-creation",
         "degustation-visiteur",
@@ -361,7 +361,7 @@ globalThis.MonChaiFonctions = {
     },
     "produits": {
       "label": "La Roche · Comprendre la traçabilité",
-      "intro": "La capture montre un Cabernet d’Anjou 2022 de démonstration. Elle illustre le suivi d’un vin, pas l’historique de la cuvée fictive La Roche.",
+      "intro": "Un client demande l'origine d'un vin : comment remonter ses étapes ? La capture montre la traçabilité d'un Cabernet d'Anjou 2022 de démonstration, distinct de la cuvée fictive La Roche.",
       "slides": [
         "trace-matiere",
         "trace-aval"
@@ -369,7 +369,7 @@ globalThis.MonChaiFonctions = {
     },
     "ventes": {
       "label": "L’Aube · La vente sur votre site",
-      "intro": "Quand le site et le logiciel sont mis à jour séparément, chaque vente et chaque tarif demandent d’être repris. Ces futures API viseraient à relier le catalogue et les commandes à Mon Chai.",
+      "intro": "Un tarif à reprendre sur deux outils, une commande à ressaisir : le site et le logiciel demandent un double suivi. Les futures API viseraient à relier catalogue et commandes à Mon Chai ; cette connexion reste à construire.",
       "slides": [
         "api-catalogue",
         "api-commandes"
@@ -377,7 +377,7 @@ globalThis.MonChaiFonctions = {
     },
     "reservation": {
       "label": "Du site à l’accueil au domaine",
-      "intro": "Recevoir une demande en ligne, puis organiser l’accueil : deux moments à raccorder. Cette future connexion viserait à réunir les demandes dans Mon Chai avant leur confirmation par le domaine.",
+      "intro": "Une demande arrive sur le site, puis il faut retrouver date et nombre de personnes pour préparer l'accueil. Une future API viserait à réunir ces demandes dans Mon Chai ; agenda, capacités et confirmations restent à développer.",
       "slides": [
         "api-reservations"
       ]

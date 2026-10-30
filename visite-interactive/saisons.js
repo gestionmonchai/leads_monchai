@@ -36,7 +36,7 @@ globalThis.MonChaiSaisons = [
       "bureau": {
         "title": "Partir au salon avec les bonnes informations.",
         "p1": "Avant de proposer un vin ou de relancer un client, il faut retrouver les stocks, les échanges et les éventuels impayés. Préparer cela pendant que les travaux du domaine continuent multiplie les informations à reprendre.",
-        "p2": "Mon Chai réunit le suivi des contacts, des devis et des commandes. La vidéo montre aussi comment demander dans Claude quelles cuvées sont presque épuisées, puis retrouver les factures impayées, en lecture seule selon activation.",
+        "p2": "Mon Chai réunit le suivi des contacts, des devis et des commandes. Avec le connecteur MCP, interrogez aussi votre assistant IA sur les données accessibles du domaine, en lecture seule selon vos droits. La vidéo illustre deux questions sur les stocks et les impayés ; le chiffre d’affaires fait aussi partie des consultations possibles.",
         "people": "Celui ou celle qui part vendre laisse des tâches à reprendre sur place. Le planning relie les rendez-vous commerciaux aux personnes qui taillent, suivent les vins et préparent les colis."
       },
       "caveau": {
@@ -82,7 +82,7 @@ globalThis.MonChaiSaisons = [
       "bureau": {
         "title": "Reprendre une relance après le salon.",
         "p1": "Un client demande un devis pour des vins goûtés quelques semaines plus tôt. Il faut retrouver la sélection convenue, vérifier les quantités disponibles et reprendre les prix avant de répondre.",
-        "p2": "Dans Mon Chai, passez du contact et des informations de stock à un devis, puis au suivi de la commande. Le film MCP montre la consultation des stocks et des impayés dans Claude : deux informations utiles avant une proposition ou une relance.",
+        "p2": "Dans Mon Chai, passez du contact et des informations de stock à un devis, puis au suivi de la commande. Le connecteur MCP permet aussi d’interroger les données accessibles depuis votre assistant IA. Le film en montre un exemple dans Claude, avec deux questions sur les stocks et les impayés.",
         "people": "Une nouvelle commande et un chantier à avancer peuvent solliciter les mêmes mains. Le planning rend l’arbitrage visible : qui part dans les vignes, qui prépare les bouteilles et qui répond au client ?"
       },
       "caveau": {
@@ -128,7 +128,7 @@ globalThis.MonChaiSaisons = [
       "bureau": {
         "title": "Répondre au client avec le bon stock.",
         "p1": "Les commandes continuent pendant la préparation des vendanges. Avant de promettre une quantité ou une livraison, il faut retrouver les vins disponibles et les engagements déjà enregistrés.",
-        "p2": "Mon Chai rassemble devis et commandes clients pour reprendre ce suivi. Avec le connecteur MCP présenté dans la vidéo, vous pouvez aussi consulter dans Claude les stocks puis les factures impayées, en lecture seule selon activation.",
+        "p2": "Mon Chai rassemble devis et commandes clients pour reprendre ce suivi. Le connecteur MCP permet aussi d’interroger vos données en langage naturel depuis votre assistant IA, en lecture seule selon vos droits. Stocks, factures et chiffre d’affaires font partie des consultations possibles ; la vidéo présente deux exemples.",
         "people": "La même personne peut préparer une expédition puis organiser un chantier. Les engagements commerciaux et les journées de récolte doivent être discutés avec celles et ceux qui les réaliseront."
       },
       "caveau": {
@@ -174,7 +174,7 @@ globalThis.MonChaiSaisons = [
       "bureau": {
         "title": "Suivre les commandes pendant les vinifications.",
         "p1": "Les ventes de fin d'année reprennent alors que le chai et les nouveaux vins demandent encore de l'attention. Il faut retrouver les commandes convenues, les stocks disponibles et les règlements à relancer.",
-        "p2": "Mon Chai rassemble contacts, devis et commandes pour reprendre les engagements enregistrés. La vidéo MCP montre aussi la consultation des stocks et des impayés dans Claude, en lecture seule, avant de préparer une proposition ou une relance.",
+        "p2": "Mon Chai rassemble contacts, devis et commandes pour reprendre les engagements enregistrés. Le connecteur MCP permet aussi d’interroger les données accessibles depuis votre assistant IA, en lecture seule selon vos droits. La vidéo montre deux exemples de questions dans Claude, sur les stocks et les impayés.",
         "people": "La personne qui organise les vendanges peut aussi devoir partir vendre. Les relais au chai et pour les commandes se préparent avant ce départ ; l’activité commerciale ne suspend pas le suivi des nouveaux vins."
       },
       "caveau": {
@@ -186,3 +186,4 @@ globalThis.MonChaiSaisons = [
     }
   }
 ];
+

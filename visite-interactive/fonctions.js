@@ -134,15 +134,15 @@ globalThis.MonChaiFonctions = {
       "proof": "Schéma explicatif · Préparation de la prospection"
     },
     "mcp": {
-      "title": "Vos stocks et vos impayés, dans Claude",
-      "text": "Avant une proposition ou une relance, il faut retrouver les stocks et les factures impayées. Posez la question dans Claude : le connecteur MCP consulte les données de Mon Chai et restitue ces informations, en lecture seule.",
-      "stage": "Consulter stocks et impayés",
+      "title": "Posez vos questions à Mon Chai depuis Claude",
+      "text": "Besoin d’une réponse sans parcourir plusieurs écrans ? Le connecteur MCP permet à votre assistant IA d’interroger Mon Chai en langage naturel : stocks, factures ou chiffre d’affaires, selon les outils disponibles et vos droits. La vidéo montre deux exemples de questions, sur les stocks et les impayés.",
+      "stage": "Interroger vos données",
       "kind": "capture",
       "image": "/assets/img/demo-mcp.webp",
       "video": "mcp",
       "href": "/#nouveautes",
       "availability": "Connecteur en lecture seule, selon activation",
-      "proof": "Film Mon Chai dans Claude · Stocks et impayés · 33 s",
+      "proof": "Exemple MCP dans Claude · Stocks et impayés · 33 s",
       "portrait": true
     },
     "devis": {
@@ -342,7 +342,7 @@ globalThis.MonChaiFonctions = {
     },
     "bureau": {
       "label": "4 · Le bureau",
-      "intro": "Après un salon ou plusieurs échanges, il faut retrouver ce qui a été convenu. Mon Chai rassemble contacts, devis et commandes ; stocks et impayés sont aussi consultables dans la vidéo MCP.",
+      "intro": "Après un salon ou plusieurs échanges, il faut retrouver ce qui a été convenu. Mon Chai rassemble contacts, devis et commandes. Le connecteur MCP permet aussi d’interroger vos données depuis votre assistant IA ; la vidéo en montre un exemple.",
       "slides": [
         "clients",
         "mcp",
@@ -402,9 +402,9 @@ globalThis.MonChaiFonctions = {
     "mcp": {
       "src": "/assets/video/monchai-mcp.mp4",
       "poster": "/assets/img/demo-mcp.webp",
-      "title": "Interrogez vos stocks et vos impayés.",
+      "title": "Posez vos questions à Mon Chai depuis Claude.",
       "context": "MON CHAI DANS CLAUDE · CONNECTEUR MCP",
-      "caption": "33 secondes · Deux consultations dans Claude : les stocks de Mon Chai, puis les factures impayées.",
+      "caption": "33 secondes · Un exemple du connecteur MCP dans Claude : deux questions sur les stocks et les impayés. Vous pouvez aussi interroger les autres données accessibles, comme le chiffre d’affaires.",
       "duration": "33 s",
       "steps": [
         "Demander quelles cuvées sont presque épuisées.",
@@ -412,7 +412,7 @@ globalThis.MonChaiFonctions = {
         "Poser une seconde question sur les impayés.",
         "Retrouver les factures et montants concernés dans la réponse."
       ],
-      "note": "Connecteur MCP en lecture seule, selon activation. Les réponses utilisent les données consultées dans Mon Chai ; le film présente un exemple d’utilisation."
+      "note": "Le connecteur MCP permet d’interroger les données accessibles de Mon Chai depuis votre assistant IA, en lecture seule et selon vos droits. Les stocks et les impayés illustrés ici sont deux exemples d’utilisation. Les questions possibles dépendent des outils disponibles et de l’activation du connecteur."
     },
     "notes": {
       "src": "/assets/video/mon-chai-notes.mp4",
@@ -431,3 +431,4 @@ globalThis.MonChaiFonctions = {
     }
   }
 };
+

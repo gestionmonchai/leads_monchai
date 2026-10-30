@@ -247,9 +247,21 @@
     if (!halbertBubble.matches(':popover-open')) return;
     const anchor=halbertButton.getBoundingClientRect();
     const width=halbertBubble.offsetWidth,height=halbertBubble.offsetHeight;
-    const left=Math.max(12,Math.min(innerWidth-width-12,anchor.left+anchor.width/2-width/2));
-    const above=anchor.top-height-14;
-    const top=above>=12?above:Math.max(12,Math.min(innerHeight-height-12,anchor.bottom+14));
+    const gap=17,margin=12;
+    const centerX=anchor.left+anchor.width/2,centerY=anchor.top+anchor.height*.4;
+    let left,top,side;
+    if (anchor.right+gap+width<=innerWidth-margin) {
+      side='right';left=anchor.right+gap;top=Math.max(margin,Math.min(innerHeight-height-margin,centerY-height*.45));
+    } else if (anchor.left-gap-width>=margin) {
+      side='left';left=anchor.left-gap-width;top=Math.max(margin,Math.min(innerHeight-height-margin,centerY-height*.45));
+    } else {
+      side=anchor.top-height-gap>=margin?'above':'below';
+      left=Math.max(margin,Math.min(innerWidth-width-margin,centerX-width*.3));
+      top=side==='above'?anchor.top-height-gap:Math.max(margin,Math.min(innerHeight-height-margin,anchor.bottom+gap));
+    }
+    halbertBubble.dataset.side=side;
+    halbertBubble.style.setProperty('--tail-x',Math.max(24,Math.min(width-24,centerX-left))+'px');
+    halbertBubble.style.setProperty('--tail-y',Math.max(24,Math.min(height-24,centerY-top))+'px');
     halbertBubble.style.left=left+'px';halbertBubble.style.top=top+'px';
   }
   function closeHalbert({focus=false}={}) {

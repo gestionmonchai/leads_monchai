@@ -23,7 +23,12 @@ assert.match(html, /Projection — futures API à construire/, 'Les connexions f
 assert.match(html, /Cette démo n’est pas connectée au logiciel/, 'Aucune connexion réelle ne doit être suggérée');
 assert.doesNotMatch(js, /\b(?:fetch|XMLHttpRequest|sendBeacon|localStorage|sessionStorage|WebSocket)\b/, 'La démo ne transmet ni ne persiste de données');
 assert.doesNotMatch(html, /<form\b[^>]*\baction\s*=/, 'Aucun destinataire de formulaire dans une simulation');
-if (folderName === 'demonstration-2') {
+if (folderName === 'visite-interactive') {
+  assert.match(html, /<link(?=[^>]*rel="canonical")(?=[^>]*href="https:\/\/monchai\.fr\/visite-interactive\/")/, 'URL canonique de la visite attendue');
+  const legacyRedirect = fs.readFileSync(path.join(root, 'demonstration-2', 'index.html'), 'utf8');
+  assert.match(legacyRedirect, /http-equiv="refresh"[^>]*url=https:\/\/monchai\.fr\/visite-interactive\//i, 'Redirection de repli attendue depuis l’ancienne URL');
+  assert.match(legacyRedirect, /window\.location\.replace\(destination\)/, 'L’ancienne URL doit remplacer l’historique du navigateur');
+  assert.match(legacyRedirect, /rel="canonical" href="https:\/\/monchai\.fr\/visite-interactive\//, 'Canonique attendue sur l’ancienne URL');
   assert.doesNotMatch(html, /class="(?:site-header|demo-bar|menu-toggle)"/, 'La carte ouvre la page sans en-tête');
   const sectionOrder = ['domaine','cuvees','rencontre','monchai'].map(id=>html.indexOf(`id="${id}"`));
   assert.ok(sectionOrder.every((pos,i)=>pos>=0 && (i===0 || pos>sectionOrder[i-1])), 'Ordre du parcours attendu');

@@ -144,7 +144,7 @@ body:not(.js-ready) .story-panel{display:block}
 .domain-intro>div:first-child{min-width:0}
 
 /* Halbert attend hors des repères ; son vol ne prend jamais la main sur les clics. */
-.halbert-guide{--halbert-height:44px;position:absolute;left:0;top:0;width:calc(var(--halbert-height)*.747159);height:var(--halbert-height);z-index:1;pointer-events:none!important;user-select:none;filter:drop-shadow(0 2px 1px #54341b35);will-change:transform}
+.halbert-guide{--halbert-height:44px;position:absolute;left:0;top:0;width:calc(var(--halbert-height)*.747159);height:var(--halbert-height);z-index:1;pointer-events:auto;user-select:none;filter:drop-shadow(0 2px 1px #54341b35);will-change:transform}
 .halbert-pose{position:absolute;left:50%;top:50%;display:block;width:100%;height:100%;transform:translate(-50%,-50%);background-image:url('assets/halbert-sprite.png');background-repeat:no-repeat;background-size:calc(var(--halbert-height)*2.519886) calc(var(--halbert-height)*1.259943);background-position:calc(var(--halbert-height)*-.24858) calc(var(--halbert-height)*-.149148)}
 .halbert-guide[data-guide-state='flying'] .halbert-pose{top:auto;bottom:0;width:calc(var(--halbert-height)*1.581395);height:calc(var(--halbert-height)*1.395349);transform:translateX(-50%);background-image:url('assets/halbert-vol.png');background-size:calc(var(--halbert-height)*2.916279) calc(var(--halbert-height)*2.916279);animation:halbert-wingbeat .48s steps(1,end) infinite}
 /* Quatre poses articulées. Le cadrage aligne le béret et le corps à chaque image. */
@@ -174,3 +174,32 @@ body:not(.js-ready) .story-panel{display:block}
 
 /* Un repère de départ dans le titre, sans changer sa composition. */
 #halbert-departure{color:inherit;white-space:nowrap}
+
+/* Le personnage est le point d’entrée ; les explications restent dans sa bulle. */
+.halbert-guide{border:0;padding:0;margin:0;background:none;color:inherit;cursor:pointer;touch-action:manipulation;z-index:3}
+.halbert-guide::after{content:'';position:absolute;inset:-5px;min-width:44px;min-height:44px}
+.halbert-guide:focus-visible{outline:2px solid var(--red);outline-offset:6px;border-radius:12px}
+.halbert-pose{pointer-events:none}
+.halbert-guide[aria-expanded='true'] .halbert-pose{animation-play-state:paused}
+.guide-message,#map-description,#season-status{position:absolute!important;width:1px!important;height:1px!important;padding:0!important;margin:-1px!important;overflow:hidden!important;clip-path:inset(50%)!important;white-space:nowrap!important;border:0!important}
+.season-readout{margin:0;border:0;padding:0;min-height:0}
+.scene-controls{position:absolute;top:0;right:155px;margin:0}
+.scene-controls #pause-season{display:grid;place-items:center;width:36px;min-height:36px;padding:0;border:0;font-size:12px}
+.scene-controls #clear-season{display:none}
+.js-ready .tour-controls,.js-ready .back-map,.js-ready .story-panel.has-selection .places-directory{display:none}
+.domain-map figcaption{margin:0;padding:0}
+.halbert-bubble{position:fixed;inset:auto;margin:0;width:min(330px,calc(100vw - 24px));max-height:calc(100dvh - 24px);overflow-y:auto;padding:24px;border:1px solid #cdbba0;border-radius:18px;background:#fff8eb;color:var(--ink);box-shadow:0 12px 40px #49342126;font:15px/1.6 var(--text)}
+.halbert-bubble::backdrop{background:transparent}
+.halbert-bubble .eyebrow{font-size:8px;color:var(--red);margin:0 20px 10px 0}
+.halbert-bubble h2{font:27px/1.15 var(--text);margin:0 10px 12px 0}
+.halbert-bubble>p:not(.eyebrow){margin:0;font:14px/1.65 var(--ui)}
+.halbert-bubble-close{position:absolute;right:9px;top:6px;width:36px;height:36px;border:0;background:none;color:var(--ink);font-size:24px;cursor:pointer}
+.halbert-bubble-actions{display:grid;gap:8px;margin-top:20px}
+.halbert-bubble-actions a{display:flex;justify-content:space-between;align-items:center;gap:12px;min-height:44px;padding:10px 13px;border:1px solid var(--red);border-radius:7px;color:var(--red);text-decoration:none;font:12px/1.5 var(--ui)}
+.halbert-bubble-actions .halbert-demo{background:var(--red);color:#fff8eb}
+.halbert-bubble-actions a:hover{filter:brightness(.92)}
+.story-scroll-hint{display:none}
+@media(max-width:850px){.story-scroll-hint:not([hidden]){display:grid;place-items:center;position:absolute;right:2px;bottom:4px;width:44px;height:44px;border:0;background:none;color:var(--red);cursor:pointer;animation:story-hint 1.7s ease-in-out 3}.map-area:has(.story-scroll-hint:not([hidden])){padding-bottom:42px}.scene-controls{right:144px}.halbert-bubble{padding:21px}}
+@keyframes story-hint{0%,100%{transform:translateY(0)}50%{transform:translateY(5px)}}
+@media(prefers-reduced-motion:reduce){.story-scroll-hint{animation:none!important}}
+

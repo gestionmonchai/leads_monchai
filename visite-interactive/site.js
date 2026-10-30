@@ -219,6 +219,7 @@
   const seasonStatus = document.querySelector('#season-status');
   const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');
   const smallScreen = matchMedia('(max-width:680px)');
+  const stackedMap = matchMedia('(max-width:850px)');
   const baseStories = new Map([...document.querySelectorAll('[data-story]')].map(article => [article.dataset.story, {
     title: article.querySelector('h2').innerHTML,
     paragraphs: [...article.querySelectorAll(':scope > p:not(.place-index)')].map(p => p.textContent),
@@ -237,6 +238,50 @@
 
   const canvas = document.querySelector('.map-canvas');
   const guide = globalThis.MonChaiGuide.create({canvas,motionAllowed:()=>!motionPaused && !reducedMotion.matches && !document.hidden && mapVisible});
+
+  const halbertButton=canvas.querySelector('.halbert-guide');
+  const halbertBubble=document.querySelector('#halbert-bubble');
+  const scrollHint=document.querySelector('.story-scroll-hint');
+  let hintRequested=false;
+  function positionHalbertBubble() {
+    if (!halbertBubble.matches(':popover-open')) return;
+    const anchor=halbertButton.getBoundingClientRect();
+    const width=halbertBubble.offsetWidth,height=halbertBubble.offsetHeight;
+    const left=Math.max(12,Math.min(innerWidth-width-12,anchor.left+anchor.width/2-width/2));
+    const above=anchor.top-height-14;
+    const top=above>=12?above:Math.max(12,Math.min(innerHeight-height-12,anchor.bottom+14));
+    halbertBubble.style.left=left+'px';halbertBubble.style.top=top+'px';
+  }
+  function closeHalbert({focus=false}={}) {
+    if (halbertBubble.matches(':popover-open')) halbertBubble.hidePopover();
+    if (focus) halbertButton.focus({preventScroll:true});
+  }
+  halbertButton.addEventListener('click',()=>{
+    if (halbertBubble.matches(':popover-open')) {closeHalbert();return;}
+    halbertBubble.showPopover();positionHalbertBubble();
+    halbertButton.setAttribute('aria-expanded','true');
+    halbertBubble.querySelector('[data-close-halbert]').focus({preventScroll:true});
+  });
+  halbertBubble.addEventListener('toggle',event=>{
+    halbertButton.setAttribute('aria-expanded',String(event.newState==='open'));
+  });
+  halbertBubble.querySelector('[data-close-halbert]').addEventListener('click',()=>closeHalbert({focus:true}));
+  halbertBubble.addEventListener('keydown',event=>{
+    if (event.key==='Escape') {event.preventDefault();event.stopPropagation();closeHalbert({focus:true});}
+  });
+  function updateScrollHint() {
+    const heading=selectedPlace?document.querySelector('#lieu-'+selectedPlace+' h2'):null;
+    scrollHint.hidden=!(hintRequested && stackedMap.matches && heading && heading.getBoundingClientRect().top>innerHeight-80);
+  }
+  scrollHint.addEventListener('click',()=>{
+    hintRequested=false;scrollHint.hidden=true;
+    document.querySelector('#lieu-'+selectedPlace+' h2')?.focus({preventScroll:true});
+    moveTo(panel);
+  });
+  addEventListener('scroll',()=>{updateScrollHint();positionHalbertBubble();},{passive:true});
+  addEventListener('resize',()=>{updateScrollHint();positionHalbertBubble();},{passive:true});
+  canvas.addEventListener('halbert-landed',positionHalbertBubble);
+
   const landscape = canvas.querySelector(':scope > img');
   const baseAlt = landscape.dataset.overviewAlt || landscape.alt;
   const landscapeStatus = document.querySelector('#landscape-status');
@@ -496,7 +541,10 @@
     sceneControls.hidden = !active;
     pauseButton.disabled = reducedMotion.matches;
     pauseButton.setAttribute('aria-pressed', String(motionPaused || reducedMotion.matches));
-    pauseButton.textContent = reducedMotion.matches ? 'Mouvements réduits' : motionPaused ? 'Reprendre les animations' : 'Mettre les animations en pause';
+    const pauseLabel = reducedMotion.matches ? 'Mouvements réduits' : motionPaused ? 'Reprendre les animations' : 'Mettre les animations en pause';
+    pauseButton.textContent = motionPaused || reducedMotion.matches ? '▷' : 'Ⅱ';
+    pauseButton.setAttribute('aria-label',pauseLabel);
+    pauseButton.title=pauseLabel;
     const label = active ? steps[selectedStep].label : 'Vue d’ensemble';
     const motion = !active ? 'Choisissez une saison pour faire évoluer les récits.'
       : reducedMotion.matches ? 'Décor immobile selon votre préférence de mouvements réduits.'
@@ -557,6 +605,8 @@
   }
   function showPlace(place, { address=true, focus=true, reveal=false, advanceGuide=false } = {}) {
     if (!Object.hasOwn(places,place)) return;
+    closeHalbert();
+    hintRequested=false;scrollHint.hidden=true;
     selectedPlace = place;
     welcome.hidden = true;
     toolbar.hidden = false;
@@ -579,6 +629,8 @@
     }
   }
   function resetMap({ address=true, focus=true, overview=false } = {}) {
+    closeHalbert();
+    hintRequested=false;scrollHint.hidden=true;
     const previous = selectedPlace;
     selectedPlace = null;
     if (overview) selectedStep = null;
@@ -621,7 +673,8 @@
   }
   document.querySelectorAll('[data-place]').forEach(link => link.addEventListener('click',event => {
     event.preventDefault();
-    showPlace(link.dataset.place,{reveal:Boolean(link.closest('.wine-card')),advanceGuide:true,focus:!(smallScreen.matches && link.closest('.map-canvas'))});
+    showPlace(link.dataset.place,{reveal:Boolean(link.closest('.wine-card')),advanceGuide:true,focus:!(stackedMap.matches && link.closest('.map-canvas'))});
+    if (stackedMap.matches && link.closest('.map-canvas')) {hintRequested=true;requestAnimationFrame(updateScrollHint);}
   }));
   document.querySelectorAll('[data-close-place]').forEach(button => button.addEventListener('click',() => resetMap()));
   document.querySelectorAll('[data-step]').forEach(button => button.addEventListener('click',() => chooseSeason(Number(button.dataset.step))));
@@ -640,7 +693,7 @@
     updateMotion();
   },{threshold:0}).observe(document.querySelector('.map-canvas'));
   document.addEventListener('keydown',event => {
-    if (event.key === 'Escape' && !event.defaultPrevented && selectedPlace && !dialogs.some(dialog => dialog.open)) resetMap();
+    if (event.key === 'Escape' && !halbertBubble.matches(':popover-open') && !event.defaultPrevented && selectedPlace && !dialogs.some(dialog => dialog.open)) resetMap();
   });
   addEventListener('popstate',() => readRoute());
   addEventListener('hashchange',() => readRoute());
@@ -651,3 +704,4 @@
   applySeason();
   guide.start(selectedPlace || 'vignes');
 })();
+

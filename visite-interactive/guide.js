@@ -118,6 +118,7 @@
         figure.style.position='';figure.style.zIndex='';figure.dataset.guideOrigin='map';
         figure.style.transform=translate(point);
         figure.dataset.guideState=visited==='caveau'?'complete':'waiting';
+        canvas.dispatchEvent(new Event('halbert-landed'));
       }
       function fly() {
         figure.dataset.guideMotion=motionAllowed()?'allowed':'paused';
@@ -197,3 +198,4 @@
     }
   };
 })();
+

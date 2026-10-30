@@ -31,7 +31,7 @@ jobs:
         run: |
           node --check demonstration/site.js
           node outils/verifier-demonstration.cjs .
-          node --check demonstration-2/site.js
-          node --check demonstration-2/saisons.js
-          node --check demonstration-2/fonctions.js
-          node outils/verifier-demonstration.cjs . demonstration-2
+          node --check visite-interactive/site.js
+          node --check visite-interactive/saisons.js
+          node --check visite-interactive/fonctions.js
+          node outils/verifier-demonstration.cjs . visite-interactive

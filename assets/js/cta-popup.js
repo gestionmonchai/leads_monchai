@@ -67,15 +67,23 @@
   }
   if (dejaVue()) return;
 
+  // Reprise du modèle « Pop-up inscription » : vignoble estompé, crème,
+  // titre sans empattement bordeaux/cuivre et boutons en pilule.
+  var photo = new URL('assets/img/hero-fond-960.webp', racine).href;
+  var logo = new URL('assets/img/logo-header-344.webp', racine).href;
+  var signatures = {fr: 'Pensé avec les vignerons', en: 'Built with winegrowers', de: 'Mit Winzern entwickelt', it: 'Creato con i viticoltori', zh: '与葡萄种植者共同打造'};
   var CSS = [
-    '.mc-cta{position:fixed;right:24px;bottom:24px;z-index:290;box-sizing:border-box;width:min(390px,calc(100vw - 32px));max-height:calc(100dvh - 48px);overflow:auto;padding:24px;background:#FFFCF8;border:1px solid #E7D3BC;border-top:3px solid #A85D35;border-radius:16px;box-shadow:0 16px 48px #47131826;color:#2E2826;font-family:Inter,system-ui,sans-serif;animation:mc-cta-entree .25s ease-out;}',
-    '.mc-cta[hidden]{display:none}.mc-cta *{box-sizing:border-box}.mc-cta__fermer{position:absolute;top:4px;right:4px;width:44px;height:44px;border:0;border-radius:50%;background:transparent;color:#7B1E22;font:26px/1 system-ui;cursor:pointer}.mc-cta__fermer:hover{background:#F8EFE4}',
-    '.mc-cta__titre{margin:0 22px 10px 0;font:600 23px/1.25 "Playfair Display",Georgia,serif;color:#7B1E22}.mc-cta__texte{margin:0 0 18px;font-size:14px;line-height:1.55}.mc-cta__actions{display:grid;gap:8px}',
-    '.mc-cta__btn{display:flex;align-items:center;justify-content:center;min-height:44px;padding:10px 14px;border:1px solid #7B1E22;border-radius:24px;background:#7B1E22;color:#fff;text-decoration:none;text-align:center;font-size:14px;font-weight:600;line-height:1.35}.mc-cta__btn:hover{background:#5F171B}.mc-cta__btn--secondaire{background:transparent;color:#7B1E22}.mc-cta__btn--secondaire:hover{background:#F8EFE4}',
-    '.mc-cta__note{margin:12px 0 0;color:#625650;font-size:12px;line-height:1.4;text-align:center}.mc-cta :focus-visible{outline:3px solid #7B1E22;outline-offset:3px}',
-    '@keyframes mc-cta-entree{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}',
-    '@media(max-width:639px){.mc-cta{left:12px;right:12px;bottom:max(12px,env(safe-area-inset-bottom));width:auto;max-height:45dvh;padding:18px 16px 14px;border-radius:14px}.mc-cta__titre{font-size:19px;margin-bottom:8px;padding-right:8px}.mc-cta__texte{font-size:13px;line-height:1.4;margin-bottom:12px}.mc-cta__note{display:none}.mc-cta__actions{gap:6px}}',
-    '@media(prefers-reduced-motion:reduce){.mc-cta{animation:none}}@media print{.mc-cta{display:none!important}}'
+    '.mc-cta{position:fixed;right:24px;bottom:24px;z-index:290;display:grid;grid-template-columns:132px minmax(0,1fr);box-sizing:border-box;width:min(510px,calc(100vw - 40px));max-height:calc(100dvh - 48px);overflow:auto;background:#FBF8F2;border:1px solid #EADCC9;border-radius:24px;box-shadow:0 24px 70px #47131830,0 4px 16px #4713180c;color:#433C35;font-family:Inter,system-ui,sans-serif;animation:mc-cta-entree .3s cubic-bezier(.2,.9,.3,1);isolation:isolate}',
+    '.mc-cta[hidden]{display:none}.mc-cta *{box-sizing:border-box}.mc-cta__visuel{position:relative;min-height:100%;background:linear-gradient(180deg,#F5F0E8 0%,#F5F0E8E8 23%,#F5F0E855 65%,#F5F0E826 100%),url("' + photo + '") 45% bottom/auto 100%;border-right:1px solid #EADCC9}.mc-cta__logo{position:absolute;top:28px;left:14px;width:104px;height:auto;mix-blend-mode:multiply}.mc-cta__visuel:after{content:"";position:absolute;left:24px;right:24px;top:85px;height:1px;background:#C9915966}',
+    '.mc-cta__contenu{min-width:0;padding:28px 26px 22px}.mc-cta__signature{margin:0 22px 14px 0;color:#8F5D31;font:600 9px/1.5 Poppins,Inter,sans-serif;letter-spacing:.12em;text-transform:uppercase}.mc-cta__titre{margin:0 0 14px;font:600 25px/1.17 Poppins,Inter,system-ui,sans-serif;letter-spacing:-.8px;color:#7B1E22}.mc-cta__titre span{color:#A46C38}.mc-cta__texte{margin:0 0 22px;color:#5B524A;font-size:13px;line-height:1.65}',
+    '.mc-cta__fermer{position:absolute;z-index:2;top:6px;right:6px;display:grid;place-items:center;width:44px;height:44px;border:0;border-radius:50%;background:transparent;color:#7B1E22;font:24px/1 system-ui;cursor:pointer}.mc-cta__fermer:hover{background:#7B1E2209}.mc-cta__actions{display:grid;gap:9px}',
+    '.mc-cta__btn{display:flex;align-items:center;justify-content:center;gap:12px;min-height:46px;padding:11px 14px;border:1px solid #7B1E22;border-radius:30px;background:#7B1E22;color:#fff;text-decoration:none;text-align:center;font-size:13px;font-weight:600;line-height:1.4;box-shadow:0 7px 18px #7B1E2226;transition:background .2s,box-shadow .2s}.mc-cta__btn:hover{background:#64181C;box-shadow:0 9px 22px #7B1E2233}.mc-cta__fleche{font-size:20px;line-height:1;font-weight:400}.mc-cta__btn--secondaire{background:transparent;border-color:#D8BFA7;color:#7B1E22;box-shadow:none}.mc-cta__btn--secondaire:hover{background:#F4EBDF;box-shadow:none}',
+    '.mc-cta__note{margin:18px 0 0;padding-top:13px;border-top:1px solid #E7D8C5;color:#76695E;font-size:10px;line-height:1.4;text-align:center}.mc-cta :focus-visible{outline:3px solid #7B1E22;outline-offset:3px}',
+    '@keyframes mc-cta-entree{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}',
+    '@media(max-width:639px){.mc-cta{left:12px;right:12px;bottom:max(12px,env(safe-area-inset-bottom));width:auto;grid-template-columns:1fr;max-height:45dvh;border-radius:20px}.mc-cta__visuel{min-height:52px;background:linear-gradient(90deg,#F5F0E8 8%,#F5F0E8DD 38%,#F5F0E822 100%),url("' + photo + '") 75% 48%/cover;border-right:0;border-bottom:1px solid #E7D8C5}.mc-cta__logo{top:8px;left:18px;width:108px}.mc-cta__visuel:after{display:none}.mc-cta__contenu{padding:16px 18px 18px}.mc-cta__signature{display:none}.mc-cta__titre{font-size:21px;line-height:1.2;letter-spacing:-.6px;margin-bottom:10px}.mc-cta__texte{font-size:12px;line-height:1.5;margin-bottom:16px}.mc-cta__actions{gap:7px}.mc-cta__btn{min-height:44px;padding:10px 12px;font-size:13px}.mc-cta__note{display:none}.mc-cta__fermer{top:4px;right:4px;background:#FBF8F2E8}}',
+    '@media(max-width:360px){.mc-cta__contenu{padding:14px}.mc-cta__titre{font-size:19px}.mc-cta__visuel{min-height:46px}.mc-cta__logo{top:7px;width:98px}}',
+    '@media(max-height:700px) and (max-width:639px){.mc-cta{max-height:55dvh}}',
+    '@media(prefers-reduced-motion:reduce){.mc-cta,.mc-cta__btn{animation:none;transition:none}}@media print{.mc-cta{display:none!important}}'
   ].join('\n');
 
   var carte = null, precedent = null, timer = null, terminee = false;
@@ -111,11 +119,13 @@
     carte.setAttribute('aria-live', 'polite');
     // Tous les textes viennent du catalogue statique ci-dessus.
     carte.innerHTML = '<button type="button" class="mc-cta__fermer" aria-label="' + T.fermer + '">&times;</button>' +
-      '<h2 class="mc-cta__titre" id="mcCtaTitre">' + T.titre + '</h2>' +
+      '<div class="mc-cta__visuel" aria-hidden="true"><img class="mc-cta__logo" src="' + logo + '" alt="" width="344" height="111"></div>' +
+      '<div class="mc-cta__contenu"><p class="mc-cta__signature">' + (signatures[langue] || signatures.fr) + '</p>' +
+      '<h2 class="mc-cta__titre" id="mcCtaTitre">' + T.titre.replace('Mon Chai', '<span>Mon Chai</span>') + '</h2>' +
       '<p class="mc-cta__texte" id="mcCtaTexte">' + T.texte + '</p>' +
-      '<div class="mc-cta__actions"><a class="mc-cta__btn" href="https://tester.monchai.fr" data-mc-cta="essai">' + T.essai + '</a>' +
+      '<div class="mc-cta__actions"><a class="mc-cta__btn" href="https://tester.monchai.fr" data-mc-cta="essai">' + T.essai + '<span class="mc-cta__fleche" aria-hidden="true">&rarr;</span></a>' +
       '<a class="mc-cta__btn mc-cta__btn--secondaire" data-mc-cta="demo">' + T.demo + '</a></div>' +
-      '<p class="mc-cta__note">' + T.note + '</p>';
+      '<p class="mc-cta__note">' + T.note + '</p></div>';
     carte.querySelector('[data-mc-cta="demo"]').href = contact.href;
     carte.querySelector('.mc-cta__fermer').addEventListener('click', fermer);
     carte.querySelectorAll('[data-mc-cta]').forEach(function (a) {

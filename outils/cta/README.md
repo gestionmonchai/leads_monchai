@@ -2,7 +2,7 @@
 
 Modification du 2 novembre 2026 : `assets/js/cta-popup.js` remplace la carte
 générique par une invitation adaptée à la rubrique. Les pages existantes
-chargent la version `20261102-contextes`. Les fiches d'aides sont aussi couvertes.
+chargent la version `20261102-modele`. Les fiches d'aides sont aussi couvertes.
 
 ## Comportement et UX/UI
 
@@ -28,12 +28,19 @@ chargent la version `20261102-contextes`. Les fiches d'aides sont aussi couverte
 - Fréquence : une apparition par rubrique et par session d'onglet, quel que
   soit le changement de langue. Le stockage indisponible n'empêche pas le
   fonctionnement ; la limitation reste alors valable pour le document courant.
-- Responsive : carte en bas à droite sur ordinateur, marges de 12 px et hauteur
-  maximale de 45 % de l'écran sur téléphone ; défilement interne si nécessaire.
+- Responsive : carte en bas à droite sur ordinateur (510 px, volet visuel et
+  contenu), marges de 12 px sur téléphone et volet visuel converti en bandeau.
+  Hauteur maximale de 45 % de l'écran, 55 % sur les téléphones de moins de
+  700 px de haut ; défilement interne si nécessaire.
 - Accessibilité : fermeture et liens d'au moins 44 px, focus visible, annonce
   polie, pas de déplacement de focus à l'apparition. Si le focus est dans la
   carte à la fermeture, il revient au contenu. Mouvement réduit respecté.
-- Cohérence : crème, bordeaux, cuivre et polices du site existant.
+- Cohérence : reprise du modèle local « Pop-up inscription.png » : fond crème,
+  vigne estompée dans un volet, titre Poppins bordeaux et accent cuivre,
+  séparateurs fins, boutons en pilule et ombre diffuse. Les visuels et le logo
+  proviennent des assets déjà publiés. Sans image chargée, le fond crème et le
+  texte restent lisibles. Les images décoratives sont masquées aux lecteurs
+  d'écran. Le bouton principal porte une flèche décorative.
 - Exclusions : contact, essai, documents légaux, Mon Chai Notes, développeurs,
   démonstrations, visite interactive et pages incluses dans une iframe.
 - Observabilité : `cta_popup_affiche`, `cta_popup_essai`, `cta_popup_demo`,

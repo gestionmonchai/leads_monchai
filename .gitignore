@@ -57,6 +57,7 @@ assets/png/
 # cela n'a sa place sur un site vitrine.
 *.py
 !outils/verifier-coherence.py
+!outils/cta/verifier_navigateur.py
 !outils/recette-footer-2026-10-28/verifier_navigateur.py
 *.ps1
 *.sh

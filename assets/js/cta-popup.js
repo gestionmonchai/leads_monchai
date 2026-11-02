@@ -1,212 +1,161 @@
-/* =========================================================
-   Mon Chai : carte d'appel à l'action (13/10/2026, texte de Denis du 14/10)
-   Une carte discrète, jamais en plein écran : en bas à droite sur
-   ordinateur, panneau bas compact sur téléphone (Google pénalise les
-   interstitiels qui masquent le contenu sur mobile).
-
-   Elle apparaît au premier des trois signaux : 25 s sur la page, la moitié
-   de la page lue, ou la souris qui sort par le haut (intention de départ).
-   Jamais tant que le bandeau de cookies attend une réponse. Au plus une
-   fois par semaine, et plus du tout pendant 30 jours après un clic.
-
-   Trois périodes, sans retouche manuelle :
-   - jusqu'au 31/10/2026 : offre de lancement (gratuit jusqu'au 31/12) ;
-   - du 1/11 au 31/12/2026 (FIN_OFFRE → FIN_ANNEE) : 30 jours d'essai, reprise
-     et formation offertes, bouton « Essayer Mon Chai » ;
-   - à partir du 1/1/2027 : 30 jours d'essai seuls, prix sans « Puis ».
-
-   Le HTML et le CSS vivent ici : toute page qui charge ce script est
-   couverte. Textes selon <html lang>. Événements envoyés à GTM :
-   cta_popup_affiche, cta_popup_essai, cta_popup_ferme.
-   ========================================================= */
+/* Mon Chai : petites invitations contextuelles, 20 secondes après l'ouverture.
+   Une apparition par rubrique et par session ; un clic sur une action suspend
+   toutes les invitations pour la session. Aucun déclenchement au défilement.
+   La carte attend la fin du choix de cookies, des modales et de la saisie.
+   Les événements de mesure restent soumis au consentement d'audience. */
 (function () {
-  if (window.self !== window.top) return;
+  'use strict';
+  if (window.self !== window.top || window.monchaiCtaContextuelle) return;
+  window.monchaiCtaContextuelle = true;
 
-  var JOUR = 86400000;
-  var APP = 'https://tester.monchai.fr';
-  var FIN_OFFRE = new Date('2026-11-01T00:00:00+01:00');
   var balise = document.currentScript;
-  var affichageBandeau = !!balise && balise.getAttribute('data-affichage') === 'bandeau';
-  var campagneRecolte = Date.now() < FIN_OFFRE.getTime() && !!balise &&
-    balise.getAttribute('data-campagne') === 'recolte-2026';
-  var CLE = campagneRecolte ? 'monchai_cta_recolte_2026_vu' : 'monchai_cta_vu';
-
-  try {
-    var vu = JSON.parse(localStorage.getItem(CLE));
-    if (vu && vu.ts && Date.now() - vu.ts < (vu.clic ? 30 : 7) * JOUR) return;
-  } catch (e) {}
-
-  var TEXTES = {
-    fr: { titre: 'Et si vous réduisiez vos coûts de gestion ?', accroche: 'Moins d’abonnements, moins de ressaisies, moins de temps perdu.', texte: 'Centralisez toute la gestion de votre domaine, de la vigne à la facturation, dans un seul logiciel simple et abordable.', badge: 'Offre de lancement', offre: 'Gratuit jusqu’au 31 décembre 2026 pour toute inscription jusqu’au 31 octobre 2026.', coche1: 'Reprise de vos données et formation offertes', coche2: 'Sans engagement ni carte bancaire', bouton: 'Je profite de l’offre', boutonApres: 'Essayer Mon Chai', prix: 'Puis 59 € HT/mois ou 590 € HT/an.', prixApres: '59 € HT/mois ou 590 € HT/an.', plus_tard: 'Plus tard', fermer: 'Fermer' },
-    en: { titre: 'What if you cut your management costs?', accroche: 'Fewer subscriptions, less re-keying, less wasted time.', texte: 'Bring all of your estate’s management together, from vineyard to invoicing, in one simple and affordable software.', badge: 'Launch offer', offre: 'Free until 31 December 2026 for any sign-up on or before 31 October 2026.', coche1: 'Free data import and training', coche2: 'No commitment, no credit card', bouton: 'Claim the offer', boutonApres: 'Try Mon Chai', prix: 'Then €59 excl. VAT/month or €590 excl. VAT/year.', prixApres: '€59 excl. VAT/month or €590 excl. VAT/year.', plus_tard: 'Later', fermer: 'Close' },
-    de: { titre: 'Wie wäre es, Ihre Verwaltungskosten zu senken?', accroche: 'Weniger Abos, weniger doppelte Eingaben, weniger verlorene Zeit.', texte: 'Bündeln Sie die gesamte Verwaltung Ihres Weinguts, vom Weinberg bis zur Rechnung, in einer einzigen einfachen und günstigen Software.', badge: 'Einführungsangebot', offre: 'Kostenlos bis 31. Dezember 2026 bei Anmeldung bis einschließlich 31. Oktober 2026.', coche1: 'Datenübernahme und Schulung kostenlos', coche2: 'Ohne Verpflichtung und ohne Kreditkarte', bouton: 'Angebot nutzen', boutonApres: 'Mon Chai testen', prix: 'Danach 59 € zzgl. MwSt./Monat oder 590 € zzgl. MwSt./Jahr.', prixApres: '59 € zzgl. MwSt./Monat oder 590 € zzgl. MwSt./Jahr.', plus_tard: 'Später', fermer: 'Schließen' },
-    it: { titre: 'E se riduceste i costi di gestione?', accroche: 'Meno abbonamenti, meno doppie digitazioni, meno tempo perso.', texte: 'Riunite tutta la gestione della vostra azienda, dalla vigna alla fatturazione, in un unico software semplice e conveniente.', badge: 'Offerta di lancio', offre: 'Gratis fino al 31 dicembre 2026 per ogni iscrizione entro il 31 ottobre 2026.', coche1: 'Importazione dei dati e formazione offerte', coche2: 'Senza impegno né carta di credito', bouton: 'Approfitto dell’offerta', boutonApres: 'Prova Mon Chai', prix: 'Poi 59 € IVA esclusa/mese o 590 € IVA esclusa/anno.', prixApres: '59 € IVA esclusa/mese o 590 € IVA esclusa/anno.', plus_tard: 'Più tardi', fermer: 'Chiudi' },
-    zh: { titre: '何不降低您的管理成本？', accroche: '更少的订阅，更少的重复录入，更少的时间浪费。', texte: '将酒庄从葡萄园到开票的全部管理，集中到一款简单实惠的软件中。', badge: '首发优惠', offre: '2026年10月31日或之前注册，可免费使用至2026年12月31日。', coche1: '免费数据导入和培训', coche2: '无需承诺，无需银行卡', bouton: '立即享受优惠', boutonApres: '试用 Mon Chai', prix: '之后每月59欧元（不含税）或每年590欧元（不含税）。', prixApres: '每月59欧元（不含税）或每年590欧元（不含税）。', plus_tard: '稍后', fermer: '关闭' }
-  };
-  // Inscriptions du 1er novembre au 31 décembre 2026 : 30 jours d'essai,
-  // reprise des données et formation toujours offertes (décision du 14/10).
-  var TEXTES_NOV = {
-    fr: { badge: 'Jusqu’au 31 décembre', offre: 'Inscription à partir du 1er novembre : 30 jours d’essai gratuit.', essai30: '30 jours d’essai gratuit' },
-    en: { badge: 'Until 31 December', offre: 'Sign up from 1 November: 30-day free trial.', essai30: '30-day free trial' },
-    de: { badge: 'Bis 31. Dezember', offre: 'Anmeldung ab 1. November: 30 Tage kostenlos testen.', essai30: '30 Tage kostenlos testen' },
-    it: { badge: 'Fino al 31 dicembre', offre: 'Iscrizione dal 1° novembre: 30 giorni di prova gratuita.', essai30: '30 giorni di prova gratuita' },
-    zh: { badge: '至12月31日', offre: '11月1日起注册：免费试用30天。', essai30: '免费试用30天' }
-  };
+  if (!balise || !balise.src) return;
+  var racine = new URL('../../', balise.src);
+  var chemin = decodeURIComponent(window.location.pathname).slice(racine.pathname.length);
   var langue = (document.documentElement.lang || 'fr').slice(0, 2).toLowerCase();
+  var nom = chemin.replace(/^(en|de|it|zh)\//, '').replace(/\/$/, '/index.html');
+  // Ne pas interrompre un parcours déjà engagé ou les documents légaux.
+  if (/^(contact|essai-gratuit|cgu|mentions-legales|politique-confidentialite|monchainotes)\.html$/.test(nom) ||
+      /^(demonstration(?:-2)?|visite-interactive|developpeurs)\//.test(nom)) return;
+
+  var CONTEXTES = [
+    ['recolte', /^declaration-recolte(?:-|\.)/, 'Votre déclaration de récolte dans Mon Chai', 'Regroupez vos vendanges et préparez votre récapitulatif de récolte dans un seul outil.'],
+    ['tarifs', /^tarifs\.html$/, 'Découvrez les économies possibles avec Mon Chai', 'Comparez le coût de vos outils actuels avec une gestion réunie dans Mon Chai, selon les besoins de votre domaine.'],
+    ['drm', /^(drm-|dae-daes-|actualites-douane-)/, 'Votre DRM se prépare au fil du travail', 'Retrouvez vos mouvements de cave et préparez votre déclaration mensuelle dans Mon Chai.'],
+    ['vigne', /^(vigne-vendanges|cahier-de-culture|registre-phyto|ift-viticulture|actualites-vigne)/, 'De vos parcelles à vos vendanges', 'Parcelles, interventions et réceptions de vendanges : retrouvez le suivi de votre vigne dans Mon Chai.'],
+    ['cave', /^(cave-vinification|registre-de-cave|actualites-cave)/, 'Votre cave, un suivi clair au quotidien', 'Retrouvez vos cuves, vos lots et vos opérations de vinification dans un même logiciel.'],
+    ['stocks', /^(stocks-tracabilite|tracabilite-lots)/, 'Savez-vous où en sont vos stocks ?', 'Suivez vos vins, vos bouteilles et leurs mouvements dans Mon Chai.'],
+    ['mises', /^(mises-conditionnement|actualites-etiquetage|ppwr-vin)/, 'Préparez votre prochaine mise dans Mon Chai', 'Reliez votre mise en bouteille aux lots, aux matières sèches et au suivi des stocks.'],
+    ['ventes', /^(ventes-clients|vente-directe|facturation-electronique|actualites-ventes)/, 'De votre client à votre facture', 'Retrouvez vos clients, vos ventes et vos documents commerciaux dans un seul outil.'],
+    ['couts', /^(cout-|cout-de-|charges-indirectes|marge-vin|investir-leviers|activations-locales)/, 'Comprenez le coût de vos vins', 'Rassemblez vos données de production et de vente pour suivre vos coûts et vos marges dans Mon Chai.'],
+    ['oenotourisme', /^(oenotourisme|actualites-oenotourisme)/, 'Reliez vos dégustations à vos ventes', 'Découvrez comment Mon Chai accompagne vos dégustations et le suivi de vos clients.'],
+    ['assistant', /^(ia-au-service|ce-que-votre-assistant)/, 'Un assistant pour vous guider dans Mon Chai', 'Posez votre question et retrouvez les étapes pour avancer dans le logiciel.'],
+    ['migration', /^(changer-de-logiciel|choisir-logiciel)/, 'Et si vous passiez à Mon Chai ?', 'Échangeons sur vos outils, vos données à reprendre et les besoins de votre domaine.'],
+    ['aides', /^(aide-|aides-|dja-|s-installer)/, 'Un outil simple pour gérer votre domaine', 'Découvrez Mon Chai et échangeons sur votre organisation et vos besoins.']
+  ];
+  var contexte = CONTEXTES.filter(function (c) { return c[1].test(nom); })[0] ||
+    ['generale', null, 'Et si votre gestion devenait plus simple ?', 'De la vigne à la vente, découvrez un logiciel accessible, construit avec les vignerons.'];
+
+  // Les pages traduites gardent une invitation entièrement dans leur langue.
+  var TEXTES = {
+    fr: { titre: contexte[2], texte: contexte[3], essai: 'Essayer Mon Chai', demo: 'Demander une démonstration', fermer: 'Fermer cette invitation', note: 'Découvrez Mon Chai à votre rythme.' },
+    en: { titre: 'Simplify your estate management', texte: 'From vineyard to sales, discover one accessible tool built with winegrowers.', essai: 'Try Mon Chai', demo: 'Request a demonstration', fermer: 'Close this invitation', note: 'Discover Mon Chai at your own pace.' },
+    de: { titre: 'Verwalten Sie Ihr Weingut einfacher', texte: 'Vom Weinberg bis zum Verkauf: Entdecken Sie eine zugängliche Software, gemeinsam mit Winzern entwickelt.', essai: 'Mon Chai testen', demo: 'Vorführung anfragen', fermer: 'Diese Einladung schließen', note: 'Entdecken Sie Mon Chai in Ihrem eigenen Tempo.' },
+    it: { titre: 'Semplifica la gestione della tua azienda', texte: 'Dalla vigna alla vendita, scopri un software accessibile, sviluppato con i viticoltori.', essai: 'Prova Mon Chai', demo: 'Richiedi una dimostrazione', fermer: 'Chiudi questo invito', note: 'Scopri Mon Chai al tuo ritmo.' },
+    zh: { titre: '让酒庄管理更简单', texte: '从葡萄园到销售，了解与葡萄种植者共同打造的实用软件。', essai: '试用 Mon Chai', demo: '申请演示', fermer: '关闭此邀请', note: '按照自己的节奏了解 Mon Chai。' }
+  };
   var T = TEXTES[langue] || TEXTES.fr;
-  if (campagneRecolte) {
-    // Message limité à l’article de récolte, pendant l’offre de lancement.
-    T = {
-      titre: 'Votre déclaration de récolte 2026, gratuitement',
-      accroche: 'Inscrivez-vous au plus tard le 31 octobre.',
-      texte: 'Regroupez vos vendanges et éditez votre récapitulatif pour préparer votre déclaration de récolte.',
-      badge: 'Offre récolte 2026',
-      offre: 'Inscription jusqu’au 31 octobre 2026 : Mon Chai gratuit jusqu’au 31 décembre 2026.',
-      coche1: 'Vos volumes de vendange regroupés',
-      coche2: 'Sans carte bancaire ni engagement',
-      bouton: 'Préparer ma déclaration gratuitement',
-      prix: TEXTES.fr.prix,
-      plus_tard: TEXTES.fr.plus_tard,
-      fermer: TEXTES.fr.fermer
-    };
+  var contact = new URL((TEXTES[langue] && langue !== 'fr' ? langue + '/' : '') + 'contact.html?objet=demo#formulaire', racine);
+  var CLE = 'monchai_cta_contextes_v1';
+  var memoire = { vus: [], pause: false };
+  function etat() {
+    try {
+      var lu = JSON.parse(sessionStorage.getItem(CLE));
+      if (lu && Array.isArray(lu.vus)) memoire = lu;
+    } catch (e) {}
+    return memoire;
   }
-  var N = TEXTES_NOV[langue] || TEXTES_NOV.fr;
-  var FIN_ANNEE = new Date('2027-01-01T00:00:00+01:00');
-  var offreValable = Date.now() < FIN_OFFRE.getTime();
-  var periodeNovDec = !offreValable && Date.now() < FIN_ANNEE.getTime();
-  if (affichageBandeau && langue === 'fr') {
-    T = Object.assign({}, T, { titre: campagneRecolte ? 'Préparez votre récolte 2026' : 'Préparez votre récolte avec Mon Chai' });
+  function dejaVue() {
+    var e = etat();
+    return e.pause || e.vus.indexOf(contexte[0]) !== -1;
   }
+  function memoriser(action) {
+    var e = etat();
+    if (e.vus.indexOf(contexte[0]) === -1) e.vus.push(contexte[0]);
+    if (action) e.pause = true;
+    try { sessionStorage.setItem(CLE, JSON.stringify(e)); } catch (erreur) {}
+  }
+  if (dejaVue()) return;
 
   var CSS = [
-    '.mc-cta{position:fixed;right:24px;bottom:24px;z-index:290;width:min(390px,calc(100vw - 32px));max-height:calc(100vh - 48px);overflow-y:auto;box-sizing:border-box;padding:26px 24px 18px;background:#FFFCF8;border:1px solid #E7D3BC;border-radius:18px;box-shadow:0 24px 60px rgba(71,19,24,.22);font-family:"Inter",system-ui,-apple-system,sans-serif;color:#2E2826;opacity:0;transform:translateY(16px);transition:opacity .35s ease,transform .35s ease;}',
-    '.mc-cta.est-visible{opacity:1;transform:none;}',
-    '.mc-cta[hidden]{display:none;}',
-    '.mc-cta__fermer{position:absolute;top:10px;right:10px;width:34px;height:34px;border:0;border-radius:50%;background:transparent;color:#7B1E22;font-size:22px;line-height:1;cursor:pointer;}',
-    '.mc-cta__fermer:hover{background:rgba(123,30,34,.07);}',
-    '.mc-cta__titre{margin:0 0 8px;padding-right:26px;font:600 22px/1.25 "Playfair Display",Georgia,serif;color:#7B1E22;}',
-    '.mc-cta__accroche{margin:0 0 6px;font-size:14.5px;line-height:1.5;font-weight:600;color:#2E2826;}',
-    '.mc-cta__texte{margin:0 0 14px;font-size:14px;line-height:1.55;color:#4E4440;}',
-    '.mc-cta__offre{margin:0 0 12px;padding:12px 14px;border-radius:12px;background:#F8EFE4;border:1px solid #E7D3BC;}',
-    '.mc-cta__badge{display:inline-block;margin:0 0 6px;padding:4px 10px;border-radius:999px;background:#7B1E22;color:#fff;font:700 10.5px/1.3 "Poppins","Inter",sans-serif;letter-spacing:.08em;text-transform:uppercase;}',
-    '.mc-cta__offre p{margin:0;font-size:14px;line-height:1.45;font-weight:600;color:#7B1E22;}',
-    '.mc-cta__coches{margin:0 0 16px;padding:0;list-style:none;}',
-    '.mc-cta__coches li{position:relative;padding-left:22px;font-size:13.5px;line-height:1.6;color:#2E2826;}',
-    '.mc-cta__coches li::before{content:"\\2713";position:absolute;left:0;top:0;color:#A85D35;font-weight:700;}',
-    '.mc-cta__btn{display:flex;align-items:center;justify-content:center;min-height:48px;padding:0 18px;border-radius:999px;background:#C99159;color:#fff;font:600 15.5px/1.2 "Poppins","Inter",sans-serif;text-decoration:none;text-align:center;box-sizing:border-box;transition:background .18s ease;}',
-    '.mc-cta__btn:hover{background:#b87f4a;}',
-    '.mc-cta__prix{margin:10px 0 0;text-align:center;font-size:12.5px;line-height:1.4;color:#6E625C;}',
-    '.mc-cta__plus-tard{display:block;margin:8px auto 0;padding:4px 8px;border:0;background:none;color:#6E625C;font:inherit;font-size:12.5px;text-decoration:underline;cursor:pointer;}',
-    '.mc-cta__essai{display:none;}',
-    '@media(max-width:639px){.mc-cta--bandeau .mc-cta__essai{display:block;margin:0 0 8px;font-size:12px;}}',
-    '@media (max-width:639px){.mc-cta{left:0;right:0;bottom:0;width:100%;max-height:70vh;border-radius:18px 18px 0 0;border-bottom:0;padding:18px 18px calc(10px + env(safe-area-inset-bottom));}.mc-cta__titre{font-size:18.5px;margin-bottom:6px;}.mc-cta__accroche{font-size:13.5px;}.mc-cta__texte{display:none;}.mc-cta__offre{padding:10px 12px;margin-bottom:10px;}.mc-cta__offre p{font-size:13px;}.mc-cta__coches{margin-bottom:12px;}.mc-cta__coches li{font-size:13px;}.mc-cta__btn{min-height:46px;font-size:15px;}.mc-cta__prix{margin-top:8px;}.mc-cta__plus-tard{margin-top:4px;}}',
-    '@media (max-width:639px){.mc-cta--bandeau{padding:12px 16px calc(10px + env(safe-area-inset-bottom));max-height:40vh;}.mc-cta--bandeau .mc-cta__titre{font:600 16px/1.3 "Inter",sans-serif;margin:0 0 6px;}.mc-cta--bandeau .mc-cta__accroche,.mc-cta--bandeau .mc-cta__texte,.mc-cta--bandeau .mc-cta__coches,.mc-cta--bandeau .mc-cta__badge,.mc-cta--bandeau .mc-cta__plus-tard{display:none;}.mc-cta--bandeau .mc-cta__offre{padding:0;margin:0 28px 8px 0;border:0;background:none;}.mc-cta--bandeau .mc-cta__offre p{font-size:12px;font-weight:500;line-height:1.4;}.mc-cta--bandeau .mc-cta__btn{min-height:44px;font-size:14px;background:#7B1E22;}.mc-cta--bandeau .mc-cta__prix{font-size:11px;margin-top:6px;}.mc-cta--bandeau .mc-cta__fermer{width:44px;height:44px;top:3px;right:3px;}.mc-cta--bandeau .mc-cta__titre{padding-right:36px;}}',
-    '.mc-cta :focus-visible{outline:2px solid #7B1E22;outline-offset:3px;}',
-    '@media print{.mc-cta{display:none!important;}}',
-    '@media (prefers-reduced-motion:reduce){.mc-cta{transition:none;transform:none;}}'
+    '.mc-cta{position:fixed;right:24px;bottom:24px;z-index:290;box-sizing:border-box;width:min(390px,calc(100vw - 32px));max-height:calc(100dvh - 48px);overflow:auto;padding:24px;background:#FFFCF8;border:1px solid #E7D3BC;border-top:3px solid #A85D35;border-radius:16px;box-shadow:0 16px 48px #47131826;color:#2E2826;font-family:Inter,system-ui,sans-serif;animation:mc-cta-entree .25s ease-out;}',
+    '.mc-cta[hidden]{display:none}.mc-cta *{box-sizing:border-box}.mc-cta__fermer{position:absolute;top:4px;right:4px;width:44px;height:44px;border:0;border-radius:50%;background:transparent;color:#7B1E22;font:26px/1 system-ui;cursor:pointer}.mc-cta__fermer:hover{background:#F8EFE4}',
+    '.mc-cta__titre{margin:0 22px 10px 0;font:600 23px/1.25 "Playfair Display",Georgia,serif;color:#7B1E22}.mc-cta__texte{margin:0 0 18px;font-size:14px;line-height:1.55}.mc-cta__actions{display:grid;gap:8px}',
+    '.mc-cta__btn{display:flex;align-items:center;justify-content:center;min-height:44px;padding:10px 14px;border:1px solid #7B1E22;border-radius:24px;background:#7B1E22;color:#fff;text-decoration:none;text-align:center;font-size:14px;font-weight:600;line-height:1.35}.mc-cta__btn:hover{background:#5F171B}.mc-cta__btn--secondaire{background:transparent;color:#7B1E22}.mc-cta__btn--secondaire:hover{background:#F8EFE4}',
+    '.mc-cta__note{margin:12px 0 0;color:#625650;font-size:12px;line-height:1.4;text-align:center}.mc-cta :focus-visible{outline:3px solid #7B1E22;outline-offset:3px}',
+    '@keyframes mc-cta-entree{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}',
+    '@media(max-width:639px){.mc-cta{left:12px;right:12px;bottom:max(12px,env(safe-area-inset-bottom));width:auto;max-height:45dvh;padding:18px 16px 14px;border-radius:14px}.mc-cta__titre{font-size:19px;margin-bottom:8px;padding-right:8px}.mc-cta__texte{font-size:13px;line-height:1.4;margin-bottom:12px}.mc-cta__note{display:none}.mc-cta__actions{gap:6px}}',
+    '@media(prefers-reduced-motion:reduce){.mc-cta{animation:none}}@media print{.mc-cta{display:none!important}}'
   ].join('\n');
 
+  var carte = null, precedent = null, timer = null, terminee = false;
   function signaler(evenement) {
-    try {
-      if (!window.monchaiConsent || window.monchaiConsent.audience !== true) return;
-      (window.dataLayer = window.dataLayer || []).push({ event: evenement, cta_campagne: campagneRecolte ? 'recolte_2026' : 'generale' });
-    } catch (e) {}
+    if (!window.monchaiConsent || window.monchaiConsent.audience !== true) return;
+    (window.dataLayer = window.dataLayer || []).push({ event: evenement, cta_campagne: contexte[0] });
   }
-  function memoriser(clic) {
-    try {
-      var etat = JSON.stringify({ ts: Date.now(), clic: !!clic });
-      localStorage.setItem(CLE, etat);
-      // Évite une seconde sollicitation générale après la campagne récolte.
-      if (campagneRecolte) localStorage.setItem('monchai_cta_vu', etat);
-    } catch (e) {}
+  function fermer() {
+    if (!carte || carte.hidden) return;
+    var focusDedans = carte.contains(document.activeElement);
+    carte.hidden = true;
+    if (focusDedans) {
+      var cible = precedent && precedent.isConnected && precedent !== document.body ? precedent : document.querySelector('main h1, h1, main');
+      if (cible) {
+        var ancien = cible.getAttribute('tabindex');
+        cible.setAttribute('tabindex', '-1');
+        cible.focus({ preventScroll: true });
+        if (ancien === null) cible.removeAttribute('tabindex');
+        else cible.setAttribute('tabindex', ancien);
+      }
+    }
+    signaler('cta_popup_ferme');
   }
-
-  var carte = null, affichee = false;
-
   function construire() {
     var style = document.createElement('style');
     style.textContent = CSS;
     document.head.appendChild(style);
-
-    carte = document.createElement('div');
-    carte.className = 'mc-cta' + (affichageBandeau ? ' mc-cta--bandeau' : '');
-    carte.setAttribute('data-campagne', campagneRecolte ? 'recolte-2026' : 'generale');
-    carte.hidden = true;
-    carte.setAttribute('role', 'dialog');
-    carte.setAttribute('aria-modal', 'false');
+    carte = document.createElement('aside');
+    carte.className = 'mc-cta';
+    carte.setAttribute('data-campagne', contexte[0]);
     carte.setAttribute('aria-labelledby', 'mcCtaTitre');
-    carte.innerHTML =
-      '<button type="button" class="mc-cta__fermer" aria-label="' + T.fermer + '">&times;</button>' +
-      '<p class="mc-cta__titre" id="mcCtaTitre">' + T.titre + '</p>' +
-      '<p class="mc-cta__accroche">' + T.accroche + '</p>' +
-      '<p class="mc-cta__texte">' + T.texte + '</p>' +
-      (offreValable ? '<div class="mc-cta__offre"><span class="mc-cta__badge">' + T.badge + '</span><p>' + T.offre + '</p></div>' : '') +
-      (periodeNovDec ? '<div class="mc-cta__offre"><span class="mc-cta__badge">' + N.badge + '</span><p>' + N.offre + '</p></div>' : '') +
-      (!offreValable && !periodeNovDec && affichageBandeau ? '<p class="mc-cta__essai">' + N.essai30 + '</p>' : '') +
-      '<ul class="mc-cta__coches">' +
-        (offreValable || periodeNovDec ? '<li>' + T.coche1 + '</li>' : '<li>' + N.essai30 + '</li>') +
-        '<li>' + T.coche2 + '</li>' +
-      '</ul>' +
-      '<a class="mc-cta__btn" href="' + APP + '" data-mc-cta="essai">' + (offreValable ? T.bouton : T.boutonApres) + '</a>' +
-      '<p class="mc-cta__prix">' + (offreValable || periodeNovDec ? T.prix : T.prixApres) + '</p>' +
-      '<button type="button" class="mc-cta__plus-tard">' + T.plus_tard + '</button>';
-    document.body.appendChild(carte);
-
+    carte.setAttribute('aria-describedby', 'mcCtaTexte');
+    carte.setAttribute('aria-live', 'polite');
+    // Tous les textes viennent du catalogue statique ci-dessus.
+    carte.innerHTML = '<button type="button" class="mc-cta__fermer" aria-label="' + T.fermer + '">&times;</button>' +
+      '<h2 class="mc-cta__titre" id="mcCtaTitre">' + T.titre + '</h2>' +
+      '<p class="mc-cta__texte" id="mcCtaTexte">' + T.texte + '</p>' +
+      '<div class="mc-cta__actions"><a class="mc-cta__btn" href="https://tester.monchai.fr" data-mc-cta="essai">' + T.essai + '</a>' +
+      '<a class="mc-cta__btn mc-cta__btn--secondaire" data-mc-cta="demo">' + T.demo + '</a></div>' +
+      '<p class="mc-cta__note">' + T.note + '</p>';
+    carte.querySelector('[data-mc-cta="demo"]').href = contact.href;
     carte.querySelector('.mc-cta__fermer').addEventListener('click', fermer);
-    carte.querySelector('.mc-cta__plus-tard').addEventListener('click', fermer);
-    carte.querySelector('[data-mc-cta]').addEventListener('click', function () {
-      memoriser(true);
-      signaler('cta_popup_essai');
+    carte.querySelectorAll('[data-mc-cta]').forEach(function (a) {
+      a.addEventListener('click', function () {
+        memoriser(true);
+        signaler('cta_popup_' + a.getAttribute('data-mc-cta'));
+      });
     });
+    precedent = document.activeElement;
+    document.body.appendChild(carte);
     document.addEventListener('keydown', function (e) {
-      if (e.key === 'Escape' && affichee) fermer();
-    });
+      if (e.key === 'Escape' && ![].some.call(document.querySelectorAll('[aria-modal="true"], dialog[open]'), visible)) fermer();
+    }, true);
   }
-
-  function fermer() {
-    if (!carte) return;
-    carte.classList.remove('est-visible');
-    setTimeout(function () { carte.hidden = true; }, 350);
-    affichee = false;
-    signaler('cta_popup_ferme');
+  function visible(el) {
+    return !!el && !el.hidden && el.getClientRects().length > 0 && getComputedStyle(el).visibility !== 'hidden';
   }
-
-  // Réponse au bandeau encore attendue : bandeau visible, ou bandeau pas encore
-  // affiché (il attend sa police) alors qu'aucun choix n'est enregistré.
-  function bandeauCookiesOuvert() {
-    var b = document.getElementById('cookieBanner');
-    if (b && !b.hidden && b.offsetParent !== null) return true;
-    try { return !!b && !localStorage.getItem('monchai_cookie_consent'); } catch (e) { return false; }
+  function occupe() {
+    if (document.visibilityState === 'hidden') return true;
+    if (visible(document.getElementById('cookieBanner')) || visible(document.getElementById('cookieModal'))) return true;
+    if ([].some.call(document.querySelectorAll('[aria-modal="true"], dialog[open], .hd.est-deploye'), visible)) return true;
+    var focus = document.activeElement;
+    return !!focus && (focus.matches('input, select, textarea') || focus.isContentEditable);
   }
-
-  var declenchee = false;
   function declencher() {
-    if (declenchee) return;
-    if (bandeauCookiesOuvert()) {
-      // On attend la réponse au bandeau, puis on laisse quelques secondes.
-      window.addEventListener('monchai:consent', function () { setTimeout(declencher, 4000); }, { once: true });
-      return;
-    }
-    declenchee = true;
-    if (!carte) construire();
-    carte.hidden = false;
-    requestAnimationFrame(function () { requestAnimationFrame(function () { carte.classList.add('est-visible'); }); });
-    affichee = true;
+    clearTimeout(timer);
+    if (terminee || dejaVue()) return;
+    if (occupe()) { timer = setTimeout(declencher, 1000); return; }
+    terminee = true;
+    construire();
     memoriser(false);
     signaler('cta_popup_affiche');
   }
-
   function demarrer() {
-    setTimeout(declencher, 25000);
-    window.addEventListener('scroll', function surDefilement() {
-      var h = document.documentElement.scrollHeight - window.innerHeight;
-      if (h > 0 && window.scrollY / h > 0.5) { window.removeEventListener('scroll', surDefilement); declencher(); }
-    }, { passive: true });
-    document.addEventListener('mouseout', function (e) {
-      if (!e.relatedTarget && e.clientY <= 0) declencher();
-    });
+    clearTimeout(timer);
+    var ecoule = window.performance ? performance.now() : 0;
+    timer = setTimeout(declencher, Math.max(0, 20000 - ecoule));
   }
-
-  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', demarrer);
+  window.addEventListener('pagehide', function () { clearTimeout(timer); });
+  window.addEventListener('pageshow', function (e) { if (e.persisted && !terminee) demarrer(); });
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', demarrer, { once: true });
   else demarrer();
 })();

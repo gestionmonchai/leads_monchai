@@ -7,7 +7,7 @@
   if (window.self !== window.top || window.monchaiCadeauVinitech || Date.now() < DEBUT || Date.now() >= FIN) return;
   window.monchaiCadeauVinitech = true;
   var CLE = 'monchai_cadeau_vinitech_2026';
-  var DUREE_ESQUIVE = 23000;
+  var DUREE_ESQUIVE = 7000;
   var termine = false;
   try { if (sessionStorage.getItem(CLE)) return; } catch (e) {}
   var TEXTES = {

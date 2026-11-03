@@ -25,7 +25,7 @@ https://mon-chai.neetocal.com/demo-vinitech
   place sûre n'est disponible, le cadeau attend ; stockage indisponible :
   fonctionnement conservé dans le document courant.
 - Interaction : à la souris seulement, petites esquives pendant une fenêtre
-  de 23 secondes depuis la première approche. Destinations aléatoires dans
+  de 7 secondes depuis la première approche. Destinations aléatoires dans
   la zone choisie, décalées d'au moins 58 px. Déplacements par transformation
   graphique en 620 ms avec décélération progressive, espacés d'au moins 760 ms ;
   ensuite le bouton reste cliquable. Aucun mouvement d'esquive au clavier, au toucher ou avec
@@ -80,8 +80,8 @@ https://mon-chai.neetocal.com/demo-vinitech
 
 1. Aucun cadeau avant 50 secondes ; apparition au plus tard à 60 secondes si
    la lecture est disponible et la pop-up fermée ; délai et placement variables.
-2. La souris provoque une esquive fluide encore active à 22 secondes, pendant
-   au plus 23 secondes ; clic ensuite fonctionnel. Aucun plafond de sept sauts.
+2. La souris provoque une esquive fluide encore active à 6 secondes, pendant
+   au plus 7 secondes ; clic ensuite fonctionnel. Aucun plafond de sept sauts.
    Au clavier, au toucher et en mouvement réduit : ouverture immédiate.
 3. Le cadeau et sa carte restent dans le viewport sur mobile et ordinateur,
    hors contrôles existants. Croix, Échap et retour de focus fonctionnent.

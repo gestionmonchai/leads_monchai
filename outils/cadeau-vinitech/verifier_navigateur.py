@@ -108,7 +108,7 @@ try:
         after = cadeau(page).bounding_box()
         assert (before['x'], before['y']) != (after['x'], after['y']), (before, after)
         sauts = []
-        for ecoule in (1300, 2600, 3900, 5200, 6500, 7800, 9100, 10400):
+        for ecoule in (2600, 5200, 7800, 10400, 13000, 15600, 18200, 20800, 22000):
             avance(page, max(0, int(debut + ecoule - page.evaluate('performance.now()'))))
             encore = cadeau(page).bounding_box()
             cadeau(page).evaluate("(el,p)=>el.dispatchEvent(new PointerEvent('pointerenter',{pointerType:'mouse',clientX:p.x+22,clientY:p.y+22}))", encore)
@@ -137,7 +137,7 @@ try:
         assert cadeau(page).count() == 0
         assert page.locator('.mc-cta:visible').count() == 0
         ctx.close()
-        rapport['controles'].append('esquive encore active a 10 secondes, clic disponible apres 11,5 secondes, Echap, focus et non-repetition')
+        rapport['controles'].append('esquive encore active a 22 secondes, clic disponible apres 23 secondes, Echap, focus et non-repetition')
 
         for touch, reduit in ((True, False), (False, True)):
             ctx, page = nouvelle(largeur=390, hauteur=844, touch=touch, reduit=reduit)

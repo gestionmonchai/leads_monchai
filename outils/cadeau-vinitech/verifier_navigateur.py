@@ -35,7 +35,7 @@ try:
     with sync_playwright() as pw:
         browser = pw.chromium.launch(headless=True)
 
-        def nouvelle(nom='tarifs.html', largeur=1440, hauteur=900, consent=True, touch=False, reduit=False, fin=False, deja_cta=False, stockage=True):
+        def nouvelle(nom='tarifs.html', largeur=1440, hauteur=900, consent=True, touch=False, reduit=False, fin=False, deja_cta=True, stockage=True):
             ctx = browser.new_context(viewport={'width': largeur, 'height': hauteur}, has_touch=touch, is_mobile=touch, reduced_motion='reduce' if reduit else 'no-preference')
             ctx.route('**/*', lambda r: r.continue_() if r.request.url.startswith(BASE) else r.abort())
             if consent:
@@ -52,7 +52,7 @@ try:
             page.evaluate("window.testApparition=null;new MutationObserver(()=>{if(window.testApparition===null&&document.querySelector('.mc-gift:not([hidden])'))window.testApparition=performance.now()}).observe(document.body,{childList:true,subtree:true,attributes:true,attributeFilter:['hidden']})")
             return ctx, page
 
-        def avance(page, ms=31000):
+        def avance(page, ms=61000):
             page.clock.run_for(ms)
 
         def cadeau(page):
@@ -66,31 +66,56 @@ try:
         positions = set()
         for _ in range(5):
             ctx, page = nouvelle()
-            page.clock.run_for(max(0, int(24900 - page.evaluate('performance.now()'))))
+            page.clock.run_for(max(0, int(49900 - page.evaluate('performance.now()'))))
             assert cadeau(page).count() == 0
-            page.clock.run_for(max(0, int(30001 - page.evaluate('performance.now()'))))
+            page.clock.run_for(max(0, int(60001 - page.evaluate('performance.now()'))))
             assert cadeau(page).count() == 1, page.evaluate("({date:new Date().toISOString(),perf:performance.now(),charge:window.monchaiCadeauVinitech,dom:document.querySelectorAll('.mc-gift').length,main:document.querySelector('main')?.getBoundingClientRect().toJSON(),erreurs:window.testApparition,scripts:[...document.scripts].map(s=>s.src).filter(s=>s.includes('cadeau'))})")
             instant = page.evaluate('testApparition')
-            assert 25000 <= instant <= 30000, instant
+            assert 50000 <= instant <= 60000, instant
             box = cadeau(page).bounding_box()
             positions.add((round(box['x']), round(box['y'])))
             assert box['width'] == box['height'] == 44
-            assert cadeau(page).locator('svg').bounding_box()['width'] == 26
+            assert cadeau(page).locator('svg').evaluate('el=>getComputedStyle(el).width') == '26px'
             rapport['apparitions'].append({'ms': instant, 'x': box['x'], 'y': box['y']})
             ctx.close()
-        assert len(positions) > 1
-        rapport['controles'].append('5 apparitions entre 25 et 30 secondes, positions variables, SVG 26 px et cible 44 px')
+        assert len(positions) == 1
+        rapport['controles'].append('5 apparitions entre 50 et 60 secondes, coin stable, SVG 26 px et cible 44 px')
+
+        ctx, page = nouvelle(deja_cta=False)
+        avance(page)
+        assert page.locator('.mc-cta:visible').count() == 1
+        assert cadeau(page).count() == 0
+        page.locator('.mc-cta__fermer').click()
+        avance(page, 4000)
+        assert cadeau(page).count() == 0
+        avance(page, 2500)
+        assert cadeau(page).count() == 1
+        assert page.locator('.mc-cta:visible').count() == 0
+        assert cadeau(page).locator('svg').evaluate('el=>getComputedStyle(el).animationName') == 'mc-gift-balance'
+        assert cadeau(page).evaluate('el=>getComputedStyle(el).transitionProperty') == 'transform'
+        assert cadeau(page).evaluate('el=>getComputedStyle(el).transitionDuration') == '0.46s'
+        ctx.close()
+        rapport['controles'].append('aucune concurrence avec la pop-up, cinq secondes de respiration, balancement léger et transition graphique fluide')
 
         ctx, page = nouvelle()
         avance(page)
         before = cadeau(page).bounding_box()
+        debut = page.evaluate('performance.now()')
         page.mouse.move(before['x'] + 22, before['y'] + 22)
         cadeau(page).evaluate('el => {getComputedStyle(el).left;return Promise.all(el.getAnimations().map(a=>a.finished))}')
         avance(page, 400)
         after = cadeau(page).bounding_box()
         assert (before['x'], before['y']) != (after['x'], after['y']), (before, after)
-        avance(page, 2600)
-        cadeau(page).evaluate('el => {getComputedStyle(el).left;return Promise.all(el.getAnimations().map(a=>a.finished))}')
+        avance(page, max(0, int(debut + 3000 - page.evaluate('performance.now()'))))
+        encore = cadeau(page).bounding_box()
+        cadeau(page).evaluate("(el,p)=>el.dispatchEvent(new PointerEvent('pointerenter',{pointerType:'mouse',clientX:p.x+22,clientY:p.y+22}))", encore)
+        cadeau(page).evaluate('el => {getComputedStyle(el).transform;return Promise.all(el.getAnimations().map(a=>a.finished))}')
+        nouveau = cadeau(page).bounding_box()
+        assert (encore['x'], encore['y']) != (nouveau['x'], nouveau['y']), (debut, page.evaluate('performance.now()'), encore, nouveau)
+        page.mouse.click(nouveau['x'] + 22, nouveau['y'] + 22)
+        assert page.locator('.mc-gift-offer[open]').count() == 0
+        avance(page, 1400)
+        cadeau(page).evaluate('el => {getComputedStyle(el).transform;return Promise.all(el.getAnimations().map(a=>a.finished))}')
         stable = cadeau(page).bounding_box()
         page.mouse.move(stable['x'] + 22, stable['y'] + 22)
         avance(page, 400)
@@ -99,6 +124,7 @@ try:
         assert page.locator('.mc-gift-offer[open]').count() == 1
         assert page.locator('.mc-cta:visible').count() == 0
         page.keyboard.press('Escape')
+        avance(page, 40)
         assert page.locator('.mc-gift-offer[open]').count() == 0
         assert not page.evaluate("document.activeElement.closest('.mc-gift-offer,.mc-gift') !== null")
         page.reload(wait_until='load')
@@ -106,7 +132,7 @@ try:
         assert cadeau(page).count() == 0
         assert page.locator('.mc-cta:visible').count() == 0
         ctx.close()
-        rapport['controles'].append('esquive réelle à la souris, stabilité après 2,5 secondes, clic, Échap, focus et non-répétition')
+        rapport['controles'].append('esquive encore active à 3 secondes, clic disponible après 4 secondes, Échap, focus et non-répétition')
 
         for touch, reduit in ((True, False), (False, True)):
             ctx, page = nouvelle(largeur=390, hauteur=844, touch=touch, reduit=reduit)
@@ -156,6 +182,8 @@ try:
 
         ctx, page = nouvelle(stockage=False)
         avance(page)
+        page.locator('.mc-cta__fermer').click()
+        avance(page, 6500)
         cliquer_clavier(page)
         ctx.close()
         ctx, page = nouvelle(fin=True)

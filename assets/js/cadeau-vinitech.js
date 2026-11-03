@@ -21,19 +21,20 @@
   var souris = window.matchMedia('(hover: hover) and (pointer: fine)');
   var SVG = '<svg viewBox="0 0 32 32" fill="none" aria-hidden="true" focusable="false"><path d="M6 15h20v13H6z" fill="#F7EEDC" stroke="#8F5343" stroke-width="1.5"/><path d="M4 10h24v6H4z" fill="#F9F3E9" stroke="#8F5343" stroke-width="1.5"/><path d="M14 10h4v18h-4z" fill="#C99159"/><path d="M16 10C10 10 7 9 7 6.5 7 2 15 4 16 10Zm0 0c6 0 9-1 9-3.5C25 2 17 4 16 10Z" fill="#F4DFC0" stroke="#A36A38" stroke-width="1.6" stroke-linejoin="round"/></svg>';
   var CSS = [
-    '.mc-gift{position:fixed;z-index:85;display:grid;place-items:center;width:44px;height:44px;padding:9px;border:0;border-radius:10px;background:transparent;cursor:pointer;opacity:.88;transition:left .17s ease-out,top .17s ease-out;touch-action:manipulation}.mc-gift svg{display:block;width:26px;height:26px;filter:drop-shadow(0 2px 2px #3F211520)}.mc-gift:hover{opacity:1}.mc-gift:focus-visible{outline:2px solid #7B1E22;outline-offset:2px;background:#FBF8F2}.mc-gift[hidden]{display:none}',
+    '.mc-gift{--mc-gift-safe-left:env(safe-area-inset-left,0px);--mc-gift-safe-right:env(safe-area-inset-right,0px);--mc-gift-safe-bottom:env(safe-area-inset-bottom,0px);position:fixed;left:0;top:0;z-index:85;display:grid;place-items:center;width:44px;height:44px;padding:9px;border:0;border-radius:10px;background:transparent;cursor:pointer;opacity:.88;transition:transform .46s cubic-bezier(.22,.61,.36,1);touch-action:manipulation}.mc-gift svg{display:block;width:26px;height:26px;filter:drop-shadow(0 2px 2px #3F211520);transform-origin:50% 70%;animation:mc-gift-balance 3.4s ease-in-out infinite}.mc-gift:hover{opacity:1}.mc-gift:hover svg,.mc-gift:focus-visible svg{animation-play-state:paused}.mc-gift:focus-visible{outline:2px solid #7B1E22;outline-offset:2px;background:#FBF8F2}.mc-gift[hidden]{display:none}@keyframes mc-gift-balance{0%,100%{transform:rotate(-5deg)}50%{transform:rotate(5deg)}}',
     '.mc-gift-offer{position:fixed;inset:0;box-sizing:border-box;width:min(420px,calc(100vw - 32px));max-height:calc(100dvh - 32px);margin:auto;padding:0;overflow:auto;border:1px solid #EADCC9;border-radius:26px;background:#FBF8F2;color:#44382F;box-shadow:0 32px 100px #2F0B184D;font-family:Inter,system-ui,sans-serif}.mc-gift-offer:not([open]){display:none}.mc-gift-offer::backdrop{background:#30191E63;backdrop-filter:blur(3px)}.mc-gift-offer *{box-sizing:border-box}',
     '.mc-gift-offer__close{position:absolute;right:8px;top:8px;display:grid;place-items:center;width:44px;height:44px;padding:0;border:0;border-radius:50%;background:transparent;color:#7B1E22;font:26px/1 system-ui;cursor:pointer}.mc-gift-offer__close:hover{background:#7B1E2209}.mc-gift-offer__body{padding:32px 30px 28px;text-align:center}.mc-gift-offer__embleme{position:relative;display:grid;place-items:center;width:70px;height:70px;margin:0 auto 16px;border:1px solid #E5CBA6;border-radius:23px;background:linear-gradient(145deg,#FFFDF8,#F2E3CA);transform:rotate(-7deg)}.mc-gift-offer__embleme svg{width:42px;height:42px;transform:rotate(7deg)}.mc-gift-offer__embleme:before,.mc-gift-offer__embleme:after{content:"";position:absolute;width:5px;height:5px;border-radius:1px;background:#C99159;transform:rotate(35deg);left:-17px;top:14px}.mc-gift-offer__embleme:after{left:auto;right:-19px;top:47px;width:4px;height:4px;background:#7B1E22}',
     '.mc-gift-offer__kicker{margin:0 0 9px;color:#8F5D31;font:600 10px/1.4 Poppins,Inter,sans-serif;letter-spacing:.12em;text-transform:uppercase}.mc-gift-offer__titre{margin:0;color:#7B1E22;font:600 27px/1.18 Poppins,Inter,sans-serif;letter-spacing:-.7px}.mc-gift-offer__ticket{position:relative;margin:24px 0 20px;padding:19px 16px;border:1px dashed #CBAB7E;border-radius:14px;background:#F5EBDD}.mc-gift-offer__ticket small{display:block;margin-bottom:8px;color:#88572C;font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase}.mc-gift-offer__ticket strong{display:block;color:#7B1E22;font:600 26px/1.2 Poppins,Inter,sans-serif;letter-spacing:-.8px}.mc-gift-offer__ticket span{display:block;margin-top:8px;color:#655548;font-size:11px;line-height:1.4}.mc-gift-offer__texte{margin:0 0 22px;font-size:14px;line-height:1.65}',
     '.mc-gift-offer__reserver{display:flex;align-items:center;justify-content:center;gap:14px;min-height:48px;padding:12px 16px;border:1px solid #7B1E22;border-radius:28px;background:#7B1E22;color:#fff;text-decoration:none;font-size:14px;font-weight:600;line-height:1.4;box-shadow:0 7px 18px #7B1E2226}.mc-gift-offer__reserver:hover{background:#64181C}.mc-gift-offer__note{margin:14px 0 0;color:#76695E;font-size:11px;line-height:1.5}.mc-gift-offer :focus-visible{outline:3px solid #7B1E22;outline-offset:3px}',
     '@media(max-width:380px){.mc-gift-offer__body{padding:28px 22px 24px}.mc-gift-offer__titre{font-size:24px}.mc-gift-offer__ticket{margin:18px 0 16px}.mc-gift-offer__texte{font-size:13px}}@media(max-height:650px){.mc-gift-offer__embleme{width:50px;height:50px;margin-bottom:12px}.mc-gift-offer__embleme svg{width:32px;height:32px}.mc-gift-offer__body{padding-top:24px}.mc-gift-offer__ticket{margin:16px 0}.mc-gift-offer__texte{margin-bottom:16px}}',
-    '@media(prefers-reduced-motion:reduce){.mc-gift{transition:none}}@media print{.mc-gift,.mc-gift-offer{display:none!important}}'
+    '@media(prefers-reduced-motion:reduce){.mc-gift{transition:none}.mc-gift svg{animation:none}}@media print{.mc-gift,.mc-gift-offer{display:none!important}}'
   ].join('\n');
 
   var bouton = null, offre = null, position = null, focusAvant = null;
   var apparu = false, timer = null, finJeu = null, debutJeu = null, mouvements = 0, dernierMouvement = -Infinity;
-  var apprivoise = false, ignorerClic = false, frame = null;
-  var attente = 25000 + Math.floor(Math.random() * 5001);
+  var apprivoise = false, ignorerClic = false, frame = null, coin = 'gauche';
+  var popupEtaitVisible = false, reposPopupJusqua = 0;
+  var attente = 50000 + Math.floor(Math.random() * 10001);
   function memoriser() {
     termine = true;
     try { sessionStorage.setItem(CLE, 'decouvert'); } catch (e) {}
@@ -46,88 +47,74 @@
   function visible(el) { return !!el && !el.hidden && el.getClientRects().length > 0 && getComputedStyle(el).visibility !== 'hidden'; }
   function occupe() {
     if (document.visibilityState === 'hidden') return true;
+    if ([].some.call(document.querySelectorAll('.mc-cta'), visible)) { popupEtaitVisible = true; return true; }
+    if (popupEtaitVisible) { popupEtaitVisible = false; reposPopupJusqua = performance.now() + 5000; }
+    if (performance.now() < reposPopupJusqua) return true;
     if (visible(document.getElementById('cookieBanner')) || visible(document.getElementById('cookieModal'))) return true;
     if ([].some.call(document.querySelectorAll('[aria-modal="true"],dialog[open],.hd.est-deploye'), visible)) return true;
     var focus = document.activeElement;
     return !!focus && (focus.matches('input,select,textarea') || focus.isContentEditable);
   }
-  function zone() {
-    var main = document.querySelector('main') || document.querySelector('.page');
-    if (!main) return null;
-    var r = main.getBoundingClientRect();
+  function ancre(cote) {
     var largeur = document.documentElement.clientWidth, hauteur = window.innerHeight;
-    var haut = hauteur * .23;
-    document.querySelectorAll('.site-header,.mobile-header,.hd').forEach(function (el) {
-      var h = el.getBoundingClientRect();
-      if (visible(el) && h.top <= 10 && h.bottom > 0) haut = Math.max(haut, h.bottom + 12);
-    });
-    var z = { left: Math.max(16, r.left + 10), right: Math.min(largeur - 60, r.right - 54), top: Math.max(haut, r.top + 12), bottom: Math.min(hauteur * .79 - 44, r.bottom - 56) };
-    return z.right >= z.left && z.bottom >= z.top ? z : null;
+    if (!document.querySelector('main,.page') || largeur < 76 || hauteur < 120) return null;
+    var style = getComputedStyle(bouton);
+    var margeGauche = Math.max(16, parseFloat(style.getPropertyValue('--mc-gift-safe-left')) || 0);
+    var margeDroite = Math.max(16, parseFloat(style.getPropertyValue('--mc-gift-safe-right')) || 0);
+    var margeBas = Math.max(16, parseFloat(style.getPropertyValue('--mc-gift-safe-bottom')) || 0);
+    return { x: cote === 'gauche' ? margeGauche : largeur - margeDroite - 44, y: hauteur - margeBas - 44 };
+  }
+  function zone() {
+    var a = ancre(coin);
+    if (!a) return null;
+    var largeur = document.documentElement.clientWidth;
+    return { left: Math.max(16, a.x - 150), right: Math.min(largeur - 60, a.x + 150), top: Math.max(96, a.y - 160), bottom: a.y };
   }
   function sure(x, y) {
-    var interdits = 'a,button,input,select,textarea,summary,iframe,video,audio,[role="button"],[contenteditable="true"],footer,.hd,.site-header,.mobile-header,.mc-cta,.cookie,.cookie-modal';
-    var controlesLibres = [[3, 3], [41, 3], [22, 22], [3, 41], [41, 41]].every(function (p) {
+    var interdits = 'a,button,input,select,textarea,summary,iframe,video,audio,[role="button"],[contenteditable="true"],.hd,.site-header,.mobile-header,.mc-cta,.cookie,.cookie-modal';
+    return [[3, 3], [41, 3], [22, 22], [3, 41], [41, 41]].every(function (p) {
       var pile = document.elementsFromPoint(x + p[0], y + p[1]);
       var el = pile.filter(function (n) { return !n.closest('.mc-gift'); })[0];
       return el && !el.closest(interdits);
     });
-    if (!controlesLibres) return false;
-    // Trouver une petite respiration dans la lecture, sans masquer un mot.
-    return [10, 22, 34].every(function (dx) {
-      return [10, 22, 34].every(function (dy) {
-        var range = null;
-        if (document.caretRangeFromPoint) range = document.caretRangeFromPoint(x + dx, y + dy);
-        else if (document.caretPositionFromPoint) {
-          var caret = document.caretPositionFromPoint(x + dx, y + dy);
-          if (caret) { range = document.createRange(); range.setStart(caret.offsetNode, caret.offset); }
-        }
-        if (!range || range.startContainer.nodeType !== 3) return true;
-        var texte = range.startContainer, i = Math.min(range.startOffset, texte.length - 1);
-        if (i < 0 || /\s/.test(texte.data[i])) return true;
-        range.setStart(texte, i); range.setEnd(texte, i + 1);
-        return [].every.call(range.getClientRects(), function (r) {
-          return x + 35 <= r.left - 2 || x + 9 >= r.right + 2 || y + 35 <= r.top - 2 || y + 9 >= r.bottom + 2;
-        });
-      });
-    });
+  }
+  function deplacer(x, y) {
+    position = { x: x, y: y };
+    bouton.style.transform = 'translate3d(' + x + 'px,' + y + 'px,0)';
   }
   function placer(eviter) {
+    if (!eviter) {
+      var coins = [coin, coin === 'gauche' ? 'droite' : 'gauche'];
+      for (var j = 0; j < coins.length; j++) {
+        var a = ancre(coins[j]);
+        if (a && sure(a.x, a.y)) { coin = coins[j]; deplacer(a.x, a.y); return true; }
+      }
+      return false;
+    }
     var z = zone();
     if (!z) return false;
-    for (var i = 0; i < 70; i++) {
-      var x, y;
-      if (eviter && position && i < 45) {
-        x = position.x + (Math.random() < .5 ? -1 : 1) * (65 + Math.random() * 80);
-        y = position.y + (Math.random() < .5 ? -1 : 1) * (30 + Math.random() * 65);
-      } else {
-        x = z.left + Math.random() * (z.right - z.left);
-        y = z.top + Math.random() * (z.bottom - z.top);
-      }
-      x = Math.round(Math.min(z.right, Math.max(z.left, x)));
-      y = Math.round(Math.min(z.bottom, Math.max(z.top, y)));
-      if (eviter && Math.hypot(x + 22 - eviter.x, y + 22 - eviter.y) < 75) continue;
-      if (!sure(x, y)) continue;
-      position = { x: x, y: y };
-      bouton.style.left = x + 'px';
-      bouton.style.top = y + 'px';
+    for (var i = 0; i < 60; i++) {
+      var x = Math.round(z.left + Math.random() * (z.right - z.left));
+      var y = Math.round(z.top + Math.random() * (z.bottom - z.top));
+      if (Math.hypot(x + 22 - eviter.x, y + 22 - eviter.y) < 68 || !sure(x, y)) continue;
+      deplacer(x, y);
       return true;
     }
     return false;
   }
   function terminerJeu() { apprivoise = true; clearTimeout(finJeu); }
   function esquiver(e) {
-    if (e.pointerType !== 'mouse' || !souris.matches || reduit.matches || apprivoise || termine || mouvements >= 3) return false;
+    if (e.pointerType !== 'mouse' || !souris.matches || reduit.matches || apprivoise || termine || mouvements >= 7) return false;
     var maintenant = performance.now();
     if (debutJeu === null) {
       debutJeu = maintenant;
-      finJeu = setTimeout(terminerJeu, 2500);
+      finJeu = setTimeout(terminerJeu, 4000);
     }
-    if (maintenant - debutJeu >= 2500) { terminerJeu(); return false; }
-    if (maintenant - dernierMouvement < 350) return false;
+    if (maintenant - debutJeu >= 4000) { terminerJeu(); return false; }
+    if (maintenant - dernierMouvement < 600 || maintenant - debutJeu > 3500) return false;
     if (placer({ x: e.clientX, y: e.clientY })) {
       mouvements++;
       dernierMouvement = maintenant;
-      if (mouvements >= 3) terminerJeu();
       return true;
     }
     terminerJeu();
@@ -193,7 +180,10 @@
     bouton.addEventListener('pointerdown', function (e) {
       ignorerClic = false;
       if (e.pointerType !== 'mouse') { terminerJeu(); return; }
-      if (esquiver(e)) { ignorerClic = true; e.preventDefault(); }
+      if (!reduit.matches && souris.matches && !apprivoise) {
+        esquiver(e);
+        if (!apprivoise && debutJeu !== null && performance.now() - debutJeu < 4000) { ignorerClic = true; e.preventDefault(); }
+      }
     });
     bouton.addEventListener('focus', terminerJeu);
     bouton.addEventListener('click', function (e) {
@@ -231,9 +221,10 @@
     focusAvant = document.activeElement;
     apparu = true;
     bouton.hidden = false;
+    window.dispatchEvent(new CustomEvent('monchai:cadeau-affiche'));
     signaler('cadeau_vinitech_affiche');
     window.addEventListener('scroll', demanderActualisation, { passive: true });
-    window.addEventListener('resize', demanderActualisation);
+    window.addEventListener('resize', function () { position = null; demanderActualisation(); });
     document.addEventListener('visibilitychange', demanderActualisation);
     document.addEventListener('focusin', demanderActualisation);
     document.addEventListener('focusout', demanderActualisation);

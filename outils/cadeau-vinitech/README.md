@@ -8,8 +8,8 @@ https://mon-chai.neetocal.com/demo-vinitech
 - Problème utilisateur : découvrir une invitation au salon et réserver une
   démonstration avec Mon Chai, par une petite surprise dans la lecture.
 - Point d'entrée : bouton cadeau de 26 px dans une cible tactile de 44 px,
-  placé aléatoirement dans la partie visible du contenu principal, entre 25 et
-  30 secondes après le début de la navigation. Exclusions identiques aux
+  placé dans un coin inférieur de l'écran, entre 50 et 60 secondes après le
+  début de la navigation. Exclusions identiques aux
   pop-ups contextuelles : documents légaux, contact, essai, Notes, développeurs,
   démonstrations et iframes. Pas de déplacement d'un texte ou d'un lien existant.
 - Hiérarchie : cadeau discret sans message automatique ; au clic, découverte
@@ -17,21 +17,27 @@ https://mon-chai.neetocal.com/demo-vinitech
   salon et bouton « Réserver mon créneau ». Le texte relie explicitement
   l'invitation à la réservation d'une démonstration. Aucun tirage au sort,
   montant gagné, compteur de gagnants ou envoi automatique n'est annoncé.
-- États : attente ; report si cookies, formulaire, menu ou autre modale actifs,
+- États : attente ; report si cookies, formulaire, menu, pop-up contextuelle ou autre modale actifs,
   ou onglet masqué ; cadeau visible ; esquive ludique ; cadeau stable ; offre
   ouverte ; offre fermée ou agenda ouvert ; campagne terminée. Aucun état de
   chargement distant ou permission : interface publique autonome. Si aucune
   place sûre n'est disponible, le cadeau attend ; stockage indisponible :
   fonctionnement conservé dans le document courant.
-- Interaction : à la souris seulement, trois petites esquives au maximum
-  pendant au plus 2,5 secondes depuis la première approche. Ensuite le bouton
-  reste cliquable. Aucun mouvement d'esquive au clavier, au toucher ou avec
+- Interaction : à la souris seulement, petites esquives pendant une fenêtre
+  de 4 secondes depuis la première approche. Déplacements par transformation
+  graphique en 460 ms avec décélération progressive, espacés d'au moins 600 ms ;
+  ensuite le bouton reste cliquable. Aucun mouvement d'esquive au clavier, au toucher ou avec
   une préférence de mouvement réduit. Entrée/Espace ouvre immédiatement.
-- Position : dans le contenu réellement visible, dans une respiration qui
-  évite de masquer les mots, à distance du header, du footer, des liens,
-  contrôles et cartes déjà affichés. Le redimensionnement
-  recadre le cadeau. Le défilement ne déclenche aucune esquive.
-- Feedback : apparition douce unique, cadeau qui s'ouvre et carte en forme
+- Position : en bas à gauche avec une marge de 16 px (zone sûre respectée) ;
+  en bas à droite si un contrôle occupe le premier coin. Les esquives restent
+  dans un petit périmètre proche de ce coin. Le redimensionnement recadre le
+  cadeau. Le défilement ne déclenche aucune esquive.
+- Concurrence : aucun cadeau tant que la pop-up contextuelle est visible ;
+  si elle était encore ouverte à l'échéance, laisser cinq secondes de respiration
+  après sa fermeture. Si le cadeau est déjà affiché, la carte contextuelle ne
+  peut plus démarrer dans ce document. Les deux ne se superposent jamais.
+- Feedback : léger balancement du SVG de -5° à +5°, fluide et continu en attente
+  du clic ; pause au survol et au focus. Cadeau qui s'ouvre et carte en forme
   d'invitation. Croix, Échap et clic sur le fond permettent de refermer.
   Le bouton de réservation ouvre l'agenda dédié dans un nouvel onglet ; aucun
   formulaire n'est envoyé par cette fonctionnalité.
@@ -58,9 +64,9 @@ https://mon-chai.neetocal.com/demo-vinitech
 
 ## Critères d'acceptation
 
-1. Aucun cadeau avant 25 secondes ; apparition au plus tard à 30 secondes si
-   la lecture est disponible, avec positions et délais variables.
-2. La souris provoque une brève esquive bornée ; clic ensuite fonctionnel.
+1. Aucun cadeau avant 50 secondes ; apparition au plus tard à 60 secondes si
+   la lecture est disponible et la pop-up fermée ; délai variable et coin stable.
+2. La souris provoque une esquive fluide pendant 4 secondes ; clic ensuite fonctionnel.
    Au clavier, au toucher et en mouvement réduit : ouverture immédiate.
 3. Le cadeau et sa carte restent dans le viewport sur mobile et ordinateur,
    hors contrôles existants. Croix, Échap et retour de focus fonctionnent.

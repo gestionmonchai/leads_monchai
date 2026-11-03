@@ -52,7 +52,9 @@ https://mon-chai.neetocal.com/demo-vinitech
   à la fermeture. SVG décoratif masqué aux lecteurs d'écran. Effets réduits
   selon `prefers-reduced-motion`. Contrastes bordeaux/crème du site.
 - Cohérence : bordeaux, crème, cuivre, Poppins/Inter et arrondis du modèle de
-  pop-up existant ; SVG natif, sans nouvelle image ni dépendance.
+  pop-up existant ; ticket bordeaux aux liserés dorés, encoches latérales,
+  perforation et petite étoile dorée. Le même SVG natif est utilisé pour le
+  bouton discret et l'emblème de l'invitation, sans nouvelle image ni dépendance.
 - Dates : campagne du 3 novembre au 3 décembre 2026 inclus, heure de Paris ;
   arrêt automatique à minuit le 4 décembre. Salon du 1er au 3 décembre 2026 à
   Bordeaux, vérifié sur [le site officiel](https://www.vinitech-sifel.com/).

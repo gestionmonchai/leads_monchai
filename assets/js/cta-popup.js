@@ -21,7 +21,7 @@
   // La surprise a sa fréquence et son délai propres, même si cette rubrique
   // a déjà montré sa carte contextuelle pendant la session.
   var cadeauVinitech = document.createElement('script');
-  cadeauVinitech.src = new URL('cadeau-vinitech.js?v=20261103-fluide', balise.src).href;
+  cadeauVinitech.src = new URL('cadeau-vinitech.js?v=20261103-ticket', balise.src).href;
   document.head.appendChild(cadeauVinitech);
 
   var CONTEXTES = [

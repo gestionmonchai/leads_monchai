@@ -61,7 +61,7 @@ for directory in ['', 'en', 'de', 'it', 'zh']:
 template=read('s-installer-en-viticulture.html')
 body_header=template[template.index('<body'):template.index('<main')]
 footer=re.search(r'<footer\b[^>]*>[\s\S]*?</footer>',template)[0]
-scripts='<script src="assets/js/header.js"></script><script src="consent.js?v=20261029-ga4"></script><script src="assets/js/cta-popup.js?v=20261103-fluide" defer></script><script src="assets/js/documents-legaux.js?v=20261028-footer" defer></script>'
+scripts='<script src="assets/js/header.js"></script><script src="consent.js?v=20261029-ga4"></script><script src="assets/js/cta-popup.js?v=20261103-ticket" defer></script><script src="assets/js/documents-legaux.js?v=20261028-footer" defer></script>'
 
 def page(slug,title,description,content,collection=False):
  header=body_header.replace('href="s-installer-en-viticulture.html" aria-current="page"',f'href="{slug}" aria-current="page"')

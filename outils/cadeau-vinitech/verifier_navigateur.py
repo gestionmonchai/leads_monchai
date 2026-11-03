@@ -78,8 +78,9 @@ try:
             assert cadeau(page).locator('svg').evaluate('el=>getComputedStyle(el).width') == '26px'
             rapport['apparitions'].append({'ms': instant, 'x': box['x'], 'y': box['y']})
             ctx.close()
-        assert len(positions) == 1
-        rapport['controles'].append('5 apparitions entre 50 et 60 secondes, coin stable, SVG 26 px et cible 44 px')
+        assert len(positions) > 1
+        assert all(114 <= x <= 491 and 126 <= y <= 613 for x, y in positions), positions
+        rapport['controles'].append('5 apparitions entre 50 et 60 secondes, positions aleatoires a gauche en retrait du bord, SVG 26 px et cible 44 px')
 
         ctx, page = nouvelle(deja_cta=False)
         avance(page)
@@ -91,11 +92,11 @@ try:
         avance(page, 2500)
         assert cadeau(page).count() == 1
         assert page.locator('.mc-cta:visible').count() == 0
-        assert cadeau(page).locator('svg').evaluate('el=>getComputedStyle(el).animationName') == 'mc-gift-balance'
+        assert cadeau(page).locator('svg').evaluate('el=>getComputedStyle(el).animationName') == 'mc-gift-tremble'
         assert cadeau(page).evaluate('el=>getComputedStyle(el).transitionProperty') == 'transform'
-        assert cadeau(page).evaluate('el=>getComputedStyle(el).transitionDuration') == '0.46s'
+        assert cadeau(page).evaluate('el=>getComputedStyle(el).transitionDuration') == '0.62s'
         ctx.close()
-        rapport['controles'].append('aucune concurrence avec la pop-up, cinq secondes de respiration, balancement léger et transition graphique fluide')
+        rapport['controles'].append('aucune concurrence avec la pop-up, cinq secondes de respiration, tremblement et transition graphique fluide de 620 ms')
 
         ctx, page = nouvelle()
         avance(page)
@@ -106,15 +107,19 @@ try:
         avance(page, 400)
         after = cadeau(page).bounding_box()
         assert (before['x'], before['y']) != (after['x'], after['y']), (before, after)
-        avance(page, max(0, int(debut + 3000 - page.evaluate('performance.now()'))))
-        encore = cadeau(page).bounding_box()
-        cadeau(page).evaluate("(el,p)=>el.dispatchEvent(new PointerEvent('pointerenter',{pointerType:'mouse',clientX:p.x+22,clientY:p.y+22}))", encore)
-        cadeau(page).evaluate('el => {getComputedStyle(el).transform;return Promise.all(el.getAnimations().map(a=>a.finished))}')
-        nouveau = cadeau(page).bounding_box()
-        assert (encore['x'], encore['y']) != (nouveau['x'], nouveau['y']), (debut, page.evaluate('performance.now()'), encore, nouveau)
+        sauts = []
+        for ecoule in (1300, 2600, 3900, 5200, 6500, 7800, 9100, 10400):
+            avance(page, max(0, int(debut + ecoule - page.evaluate('performance.now()'))))
+            encore = cadeau(page).bounding_box()
+            cadeau(page).evaluate("(el,p)=>el.dispatchEvent(new PointerEvent('pointerenter',{pointerType:'mouse',clientX:p.x+22,clientY:p.y+22}))", encore)
+            cadeau(page).evaluate('el => {getComputedStyle(el).transform;return Promise.all(el.getAnimations().map(a=>a.finished))}')
+            nouveau = cadeau(page).bounding_box()
+            assert (encore['x'], encore['y']) != (nouveau['x'], nouveau['y']), (ecoule, encore, nouveau)
+            sauts.append({'depuis_premiere_approche_ms': ecoule, 'x': nouveau['x'], 'y': nouveau['y']})
+        rapport['esquives'] = sauts
         page.mouse.click(nouveau['x'] + 22, nouveau['y'] + 22)
         assert page.locator('.mc-gift-offer[open]').count() == 0
-        avance(page, 1400)
+        avance(page, 1800)
         cadeau(page).evaluate('el => {getComputedStyle(el).transform;return Promise.all(el.getAnimations().map(a=>a.finished))}')
         stable = cadeau(page).bounding_box()
         page.mouse.move(stable['x'] + 22, stable['y'] + 22)
@@ -132,7 +137,7 @@ try:
         assert cadeau(page).count() == 0
         assert page.locator('.mc-cta:visible').count() == 0
         ctx.close()
-        rapport['controles'].append('esquive encore active à 3 secondes, clic disponible après 4 secondes, Échap, focus et non-répétition')
+        rapport['controles'].append('esquive encore active a 10 secondes, clic disponible apres 11,5 secondes, Echap, focus et non-repetition')
 
         for touch, reduit in ((True, False), (False, True)):
             ctx, page = nouvelle(largeur=390, hauteur=844, touch=touch, reduit=reduit)

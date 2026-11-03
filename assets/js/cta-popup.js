@@ -18,6 +18,12 @@
   if (/^(contact|essai-gratuit|cgu|mentions-legales|politique-confidentialite|monchainotes)\.html$/.test(nom) ||
       /^(demonstration(?:-2)?|visite-interactive|developpeurs)\//.test(nom)) return;
 
+  // La surprise a sa fréquence et son délai propres, même si cette rubrique
+  // a déjà montré sa carte contextuelle pendant la session.
+  var cadeauVinitech = document.createElement('script');
+  cadeauVinitech.src = new URL('cadeau-vinitech.js?v=20261103', balise.src).href;
+  document.head.appendChild(cadeauVinitech);
+
   var CONTEXTES = [
     ['recolte', /^declaration-recolte(?:-|\.)/, 'Votre déclaration de récolte dans Mon Chai', 'Regroupez vos vendanges et préparez votre récapitulatif de récolte dans un seul outil.'],
     ['tarifs', /^tarifs\.html$/, 'Découvrez les économies possibles avec Mon Chai', 'Comparez le coût de vos outils actuels avec une gestion réunie dans Mon Chai, selon les besoins de votre domaine.'],
@@ -65,6 +71,12 @@
     if (action) e.pause = true;
     try { sessionStorage.setItem(CLE, JSON.stringify(e)); } catch (erreur) {}
   }
+  window.addEventListener('monchai:cadeau-ouvert', function () {
+    terminee = true;
+    clearTimeout(timer);
+    fermer();
+    memoriser(true);
+  });
   if (dejaVue()) return;
 
   // Reprise du modèle « Pop-up inscription » : vignoble estompé, crème,

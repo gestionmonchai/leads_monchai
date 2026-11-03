@@ -58,6 +58,7 @@ assets/png/
 *.py
 !outils/verifier-coherence.py
 !outils/cta/verifier_navigateur.py
+!outils/cadeau-vinitech/verifier_navigateur.py
 !outils/recette-footer-2026-10-28/verifier_navigateur.py
 *.ps1
 *.sh

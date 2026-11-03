@@ -75,12 +75,12 @@ try:
             box = cadeau(page).bounding_box()
             positions.add((round(box['x']), round(box['y'])))
             assert box['width'] == box['height'] == 44
-            assert cadeau(page).locator('svg').evaluate('el=>getComputedStyle(el).width') == '26px'
+            assert cadeau(page).locator('svg').evaluate('el=>getComputedStyle(el).width') == '39px'
             rapport['apparitions'].append({'ms': instant, 'x': box['x'], 'y': box['y']})
             ctx.close()
         assert len(positions) > 1
         assert all(114 <= x <= 491 and 126 <= y <= 613 for x, y in positions), positions
-        rapport['controles'].append('5 apparitions entre 50 et 60 secondes, positions aleatoires a gauche en retrait du bord, SVG 26 px et cible 44 px')
+        rapport['controles'].append('5 apparitions entre 50 et 60 secondes, positions aleatoires a gauche en retrait du bord, SVG 39 px et cible 44 px')
 
         ctx, page = nouvelle(deja_cta=False)
         avance(page)

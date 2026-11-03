@@ -7,7 +7,7 @@ https://mon-chai.neetocal.com/demo-vinitech
 
 - Problème utilisateur : découvrir une invitation au salon et réserver une
   démonstration avec Mon Chai, par une petite surprise dans la lecture.
-- Point d'entrée : bouton cadeau de 26 px dans une cible tactile de 44 px,
+- Point d'entrée : bouton cadeau de 39 px dans une cible tactile de 44 px,
   placé aléatoirement en haut ou au milieu à gauche de l'écran, entre 50 et 60 secondes après le
   début de la navigation. Exclusions identiques aux
   pop-ups contextuelles : documents légaux, contact, essai, Notes, développeurs,

@@ -13,8 +13,9 @@ https://mon-chai.neetocal.com/demo-vinitech
   pop-ups contextuelles : documents légaux, contact, essai, Notes, développeurs,
   démonstrations et iframes. Pas de déplacement d'un texte ou d'un lien existant.
 - Hiérarchie : cadeau discret sans message automatique ; au clic, découverte
-  volontaire d'une carte « Bien joué, vous l'avez attrapé ! », invitation au
-  salon et bouton « Réserver mon créneau ». Le texte relie explicitement
+  volontaire d'un carton d'invitation : signature Mon Chai, félicitation courte,
+  sceau au ticket, titre « Invitation offerte », salon et dates, explication,
+  puis bandeau de réservation. Le texte relie explicitement
   l'invitation à la réservation d'une démonstration. Aucun tirage au sort,
   montant gagné, compteur de gagnants ou envoi automatique n'est annoncé.
 - États : attente ; report si cookies, formulaire, menu, pop-up contextuelle ou autre modale actifs,
@@ -51,15 +52,21 @@ https://mon-chai.neetocal.com/demo-vinitech
   de l'onglet. L'ouverture ferme la pop-up contextuelle éventuelle et suspend
   les autres invitations commerciales de cette session.
 - Responsive : cadeau identique et discret sur téléphone ; carte limitée au
-  viewport avec défilement interne, aucun débordement horizontal.
+  viewport avec défilement interne, aucun débordement horizontal. Largeur
+  maximale de 478 px, marges extérieures de 14 px minimum ; typographie et
+  espacements resserrés sur petit écran et faible hauteur. Le bouton garde
+  au moins 48 px et le contrôle de fermeture 44 px.
 - Accessibilité : label explicite, cible de 44 px, focus visible, aucun vol de
   focus à l'apparition, dialogue natif avec focus piégé et retour au contenu
   à la fermeture. SVG décoratif masqué aux lecteurs d'écran. Effets réduits
   selon `prefers-reduced-motion`. Contrastes bordeaux/crème du site.
-- Cohérence : bordeaux, crème, cuivre, Poppins/Inter et arrondis du modèle de
-  pop-up existant ; ticket bordeaux aux liserés dorés, encoches latérales,
-  perforation et petite étoile dorée. Le même SVG natif est utilisé pour le
-  bouton discret et l'emblème de l'invitation, sans nouvelle image ni dépendance.
+- Cohérence : véritable carton d'invitation, fond papier crème, double filet
+  doré, pourtour et bandeau bordeaux, détails de vigne tracés en SVG décoratif.
+  Le titre utilise Georgia en italique, les informations Inter/system-ui.
+  Le bouton doré se détache du bandeau bordeaux ; la condition de réservation
+  reste lisible dessous. Pas de nouvelle police distante ni image externe.
+  Ticket bordeaux aux liserés dorés, encoches latérales, perforation et étoile
+  dorée : le même SVG natif sert au bouton et au sceau de l'invitation.
 - Dates : campagne du 3 novembre au 3 décembre 2026 inclus, heure de Paris ;
   arrêt automatique à minuit le 4 décembre. Salon du 1er au 3 décembre 2026 à
   Bordeaux, vérifié sur [le site officiel](https://www.vinitech-sifel.com/).
@@ -80,6 +87,8 @@ https://mon-chai.neetocal.com/demo-vinitech
    hors contrôles existants. Croix, Échap et retour de focus fonctionnent.
 4. La carte nomme l'invitation, la démonstration et l'agenda dédié exact.
    Elle suspend les pop-ups existantes et n'est plus proposée après découverte.
+   Le cadre et la vigne n'interceptent aucun clic ni navigation clavier ;
+   le bouton et la condition restent accessibles sur les petites hauteurs.
 5. Cookies, saisie, autres modales et onglet masqué sont respectés ; refus de
    mesure sans événement. Pas de cadeau après la fin du salon ni en iframe.
 6. Recette navigateur et captures de référence conservées. L'agenda est vérifié

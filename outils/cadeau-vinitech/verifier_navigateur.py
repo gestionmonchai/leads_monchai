@@ -227,10 +227,32 @@ try:
             assert box['x'] >= 0 and box['x'] + box['width'] <= largeur + 1
             assert box['y'] >= 0 and box['y'] + box['height'] <= hauteur + 1
             assert offer.evaluate('el=>el.scrollWidth<=el.clientWidth+1')
+            assert offer.locator('h2').inner_text() == 'Invitation offerte'
+            action = offer.locator('.mc-gift-offer__reserver').bounding_box()
+            assert action['height'] >= 48
+            assert action['y'] >= 0 and action['y'] + action['height'] <= hauteur, (largeur, action)
+            assert offer.locator('.mc-gift-offer__vigne').get_attribute('aria-hidden') == 'true'
             page.screenshot(path=str(OUT / f'invitation-{largeur}.png'), animations='disabled')
             rapport['rendus'].append({'page': nom, 'viewport': [largeur, hauteur], 'dialogue': box})
             ctx.close()
         rapport['controles'].append('4 viewports dont petit téléphone, placement et offre sans débordement ni vol de focus')
+        for langue in ('en', 'de', 'it', 'zh'):
+            ctx, page = nouvelle(f'{langue}/tarifs.html', 390, 844)
+            avance(page)
+            cliquer_clavier(page)
+            offer = page.locator('.mc-gift-offer')
+            assert offer.evaluate('el=>el.scrollWidth<=el.clientWidth+1'), langue
+            assert offer.locator('h2').evaluate('el=>el.scrollWidth<=el.clientWidth+1'), langue
+            action = offer.locator('.mc-gift-offer__reserver')
+            action.scroll_into_view_if_needed()
+            box = action.bounding_box()
+            assert box['height'] >= 48 and 0 <= box['x'] and box['x'] + box['width'] <= 390, (langue, box)
+            assert action.get_attribute('href') == 'https://mon-chai.neetocal.com/demo-vinitech'
+            page.screenshot(path=str(OUT / f'invitation-{langue}-390.png'), animations='disabled')
+            page.keyboard.press('Escape')
+            assert page.locator('.mc-gift-offer[open]').count() == 0
+            ctx.close()
+        rapport['controles'].append('invitation traduite en quatre langues, titre sans debordement, reservation accessible et fermeture clavier')
         assert not rapport['erreurs_js'], rapport['erreurs_js']
         browser.close()
 finally:

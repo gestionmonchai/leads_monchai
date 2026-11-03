@@ -2,7 +2,7 @@
 
 Modification du 2 novembre 2026 : `assets/js/cta-popup.js` remplace la carte
 générique par une invitation adaptée à la rubrique. Les pages existantes
-chargent la version `20261103-ticket-23s`. Les fiches d'aides sont aussi couvertes.
+chargent la version `20261103-invitation`. Les fiches d'aides sont aussi couvertes.
 
 ## Comportement et UX/UI
 

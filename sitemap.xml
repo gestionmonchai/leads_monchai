@@ -1832,7 +1832,7 @@
   </url>
   <url>
     <loc>https://monchai.fr/mon-chai-rejoint-le-poool.html</loc>
-    <lastmod>2026-10-13</lastmod>
+    <lastmod>2026-11-03</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -1946,4 +1946,7 @@
 <url><loc>https://monchai.fr/declaration-recolte-savoie-civs.html</loc><lastmod>2026-10-29</lastmod></url>
 <url><loc>https://monchai.fr/declaration-recolte-sud-est-igp.html</loc><lastmod>2026-10-29</lastmod></url>
 <url><loc>https://monchai.fr/declaration-recolte-sud-ouest-ivso.html</loc><lastmod>2026-10-29</lastmod></url>
+  <url><loc>https://monchai.fr/mon-chai-notes-disponible.html</loc><lastmod>2026-11-03</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://monchai.fr/mon-chai-winetech-coffee.html</loc><lastmod>2026-11-03</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://monchai.fr/mon-chai-vinitech-sifel-2026.html</loc><lastmod>2026-11-03</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
 </urlset>

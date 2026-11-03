@@ -1,0 +1,15 @@
+/* Compléments aux articles existants : quatre actualités de l'entreprise. */
+.article-news{overflow-wrap:break-word}
+.news-skip{position:fixed;top:12px;left:12px;z-index:1500;transform:translateY(-160%);padding:12px 18px;border-radius:10px;background:#7B1E22;color:#fff;font:600 14px/1.4 Inter,system-ui,sans-serif}
+.news-skip:focus{transform:none}
+.article-news :focus-visible{outline:3px solid #7B1E22;outline-offset:4px}
+.article-news .article-news__media{overflow:hidden;border:1px solid #E7D5BE;border-radius:16px;background:#F9F2E8}
+.article-news .article-news__media img{width:100%;height:260px;object-fit:cover;border:0;border-radius:0}
+.article-news .article-news__media figcaption{margin:0;padding:12px 18px;font-size:13px;line-height:1.5}
+.article-news .article-news__media--notes img{height:190px;object-fit:contain;padding:28px}
+.article-news .article-cta__btn{min-height:44px;display:inline-flex;align-items:center;justify-content:center;text-align:center;background:#DFC18D;color:#471318!important}
+.article-news .article-cta__btn:hover{background:#EDD3AE}
+.article-news .article-cta__lien{display:inline-flex;align-items:center;min-height:44px}
+.article-news .article__sources a{overflow-wrap:anywhere}
+@media(max-width:600px){.article-news .article-news__media img{height:190px}.article-news .article-news__media--notes img{height:160px}.article-news .article-cta__actions{align-items:stretch;flex-direction:column;gap:8px}.article-news .article-cta__btn,.article-news .article-cta__lien{width:100%;justify-content:center}.article-news .essentiel{padding:18px 18px 12px}}
+@media(prefers-reduced-motion:reduce){.news-skip{transition:none}}

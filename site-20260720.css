@@ -3135,3 +3135,16 @@ html.fonds-differes .mobile-site main > section:not(.fond-pret):not(.mobile-hero
 .mobile-site main > .mobile-modules{ content-visibility:auto; contain-intrinsic-size:auto 600px; }
 .mobile-site main > .mobile-ai{ content-visibility:auto; contain-intrinsic-size:auto 1000px; }
 .mobile-site main > .changer-accueil{ content-visibility:auto; contain-intrinsic-size:auto 450px; }
+
+/* Actualités éditoriales : les quatre cartes ouvrent leur article. */
+.mobile-news__card--coffee,.mobile-news__card--salon{position:relative}
+.mobile-news__card--coffee h3 a::after,.mobile-news__card--salon h3 a::after{content:"";position:absolute;inset:0;z-index:1}
+.mobile-news__secondaires .mobile-news__card:hover h3 a{text-decoration:underline;text-underline-offset:4px}
+.mobile-news .mobile-news__secondaires .mobile-news__card h3{white-space:normal!important;overflow-wrap:break-word}
+.mobile-news__secondaires .mobile-news__card h3 a:focus-visible{outline:0}
+.mobile-news__secondaires .mobile-news__card h3 a:focus-visible::after{outline:3px solid #7B1E22;outline-offset:-4px;border-radius:inherit}
+/* Les libellés masqués du repère latéral ne doivent pas recouvrir les cartes. */
+@media(min-width:1200px){
+  .dot-nav a{position:relative}
+  .dot-nav .etiquette{position:absolute;right:calc(100% + 12px)}
+}

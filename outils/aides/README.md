@@ -40,3 +40,36 @@ Conserver labels, clavier, focus visible et cibles de 44 px. Vérifier 320, 390,
 liens de retour et sources. Un filtre DOM ne doit pas transposer les dispositifs
 métropolitains. Une aide close ou un paiement réservé ne doit pas être présenté
 comme un dépôt ouvert. La navigation d’étape rétablit les fiches masquées.
+
+## Navigation et présentation du 4 novembre 2026
+
+Demande de Denis : rendre le dossier accessible depuis le header Ressources
+et afficher clairement « aides à la viticulture française » pour le référencement.
+
+- Point d'entrée : un lien HTML « Aides aux vignerons », juste après « Guides
+  pratiques » dans les 141 headers français. Le même panneau sert au menu
+  déroulant sur ordinateur et à l'accordéon dans le tiroir mobile.
+- Hiérarchie : titre principal « Aides à la viticulture française : de
+  l'installation à l'arrachage » ; introduction explicite ; catalogue et filtres
+  existants. Titre SEO, description, Open Graph et CollectionPage cohérents.
+- États : menu fermé/ouvert, page courante identifiée par `aria-current`.
+  Lien public, sans compte, chargement distant ni nouvel état d'erreur ;
+  sans JavaScript, le lien reste présent dans le document HTML indexable.
+- Feedback et accessibilité : ouverture, focus, clavier, fermeture et navigation
+  suivent le header partagé ; aucun nouveau composant ou interaction.
+- Responsive : lien dans la liste existante, lisible sur petit téléphone,
+  tablette et ordinateur ; vérifier l'accès réel par clic et au clavier.
+- Données : présentation mise à jour le 4 novembre ; vérification des dispositifs
+  conservée au 28 octobre. Les dates, montants et statuts des 62 fiches ne sont
+  pas présentés comme ayant été réexaminés à l'occasion de cette retouche.
+- Observabilité : contrôle du lien unique dans chaque header français, du
+  parcours accueil vers catalogue, des métadonnées et du sitemap. Les versions
+  étrangères conservent leur navigation et leur lien de footer vers ce dossier.
+- Périmètre : navigation et contenu éditorial du site vitrine ; aucune nouvelle
+  route ou fonctionnalité dans l'application Django ou son assistant.
+
+Critères d'acceptation : les 141 headers français proposent exactement une
+entrée vers le dossier ; le lien est accessible sur mobile et ordinateur ;
+l'expression demandée figure dans le h1, l'introduction et les métadonnées ;
+le catalogue et sa recherche restent utilisables. Le générateur conserve cette
+entrée et ce titre lors d'une prochaine génération explicite.

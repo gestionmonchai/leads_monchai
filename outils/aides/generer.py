@@ -14,6 +14,7 @@ from pathlib import Path
 from contenus import AIDES, DATE, ETAPES, REGIONS, STATUTS, TYPES
 
 MODIFIED = '2026-10-29'
+COLLECTION_MODIFIED = '2026-11-04'
 PERSONNALISATION = json.loads((Path(__file__).parent / 'personnalisation.json').read_text(encoding='utf-8'))['fiches']
 PAR_ID = {a['id']: a for a in AIDES}
 assert set(PERSONNALISATION) == set(PAR_ID) - {'dja'}, 'Chaque fiche générée possède sa préparation spécifique.'
@@ -49,13 +50,15 @@ for directory in ['', 'en', 'de', 'it', 'zh']:
     f=re.sub(r'(<a href="(?:\.\./)?(?:ressources|actualites-reglementaires).html">[^<]+</a>)',lambda x:x[0]+link,f,count=1)
    return f
   s=re.sub(r'<footer\b[^>]*>[\s\S]*?</footer>',update_footer,s)
-  # Accès direct depuis le menu Ressources français, sans transformer les liens de texte.
-  cut=s.find('<main')
-  if not directory and cut>=0:
-   before=s[:cut]
-   if 'aides-vignerons.html' not in before:
-    before=before.replace('<a href="s-installer-en-viticulture.html">S’installer en viticulture</a>', '<a href="s-installer-en-viticulture.html">S’installer en viticulture</a>'+link,1)
-   s=before+s[cut:]
+  # Le menu existe aussi sur l'accueil, sans lien « S'installer ».
+  # Le limiter au panneau Ressources évite de confondre header et métadonnées.
+  if not directory:
+   def update_ressources(m):
+    menu=re.sub(r'<a\b[^>]*href="aides-vignerons\.html"[^>]*>.*?</a>','',m[0],flags=re.S)
+    courant=' aria-current="page"' if p.name=='aides-vignerons.html' else ''
+    entree=f'<a href="aides-vignerons.html"{courant}>Aides aux vignerons</a>'
+    return re.sub(r'(<a\b[^>]*href="ressources\.html"[^>]*>.*?</a>)',lambda x:x[0]+'\n          '+entree,menu,count=1,flags=re.S)
+   s=re.sub(r'<nav\b[^>]*class="[^"]*hd__menu--ressources[^"]*"[^>]*>.*?</nav>',update_ressources,s,flags=re.S)
   p.write_text(s,encoding='utf-8',newline='\n')
 
 template=read('s-installer-en-viticulture.html')
@@ -68,6 +71,7 @@ def page(slug,title,description,content,collection=False):
  image='assets/img/editorial/aides-viticoles-photo-2026.jpg' if collection else 'assets/img/pages/vigne-vendanges.jpg'
  image_alt='Illustration générée : dossier de financement et pièces en euros devant un vignoble' if collection else 'Vignes du domaine'
  schema={'@context':'https://schema.org','@type':'CollectionPage' if collection else 'Article','name':title,'headline':title,'description':description,'url':'https://monchai.fr/'+slug,'inLanguage':'fr','datePublished':DATE,'dateModified':MODIFIED,'author':{'@type':'Organization','name':'Mon Chai','url':'https://monchai.fr/index.html#apropos'},'publisher':{'@type':'Organization','name':'Mon Chai','url':'https://monchai.fr/','logo':{'@type':'ImageObject','url':'https://monchai.fr/assets/img/logo_mon_chai.png'}},'image':'https://monchai.fr/'+image,'mainEntityOfPage':'https://monchai.fr/'+slug}
+ if collection: schema['dateModified']=COLLECTION_MODIFIED
  if collection:
   schema['mainEntity']={'@type':'ItemList','itemListElement':[{'@type':'ListItem','position':i+1,'name':a['titre'],'url':'https://monchai.fr/'+a['article']} for i,a in enumerate(AIDES)]}
  else: schema['wordCount']=len(re.sub('<[^>]+>',' ',content).split())
@@ -119,9 +123,9 @@ def option(values): return ''.join(f'<option value="{e(k)}">{e(v)}</option>' for
 n=len(AIDES)
 content=f'''<main id="contenu" tabindex="-1" class="aides-catalogue">
 <section class="aides-hero"><div class="aides-largeur"><nav class="article__ariane" aria-label="Fil d’Ariane"><a href="index.html">Accueil</a> › <a href="ressources.html">Ressources</a> › Aides aux vignerons</nav>
-<p class="aide-kicker">Le financement, à chaque étape du domaine</p><h1>Aides aux vignerons :<br>de l’installation à l’arrachage</h1>
-<div class="aides-hero__presentation"><p class="aides-chapo">S’installer, planter, investir, employer, changer de pratiques, traverser une crise ou transmettre : retrouvez les soutiens publics dans l’ordre de vie du domaine.</p><img class="aides-hero__illustration" src="assets/img/editorial/aides-viticoles-photo-2026.webp" width="1200" height="630" alt="Illustration générée : dossier de financement et pièces en euros devant un vignoble" decoding="async"></div>
-<p class="aide-meta">Dossier publié et vérifié le <time datetime="{DATE}">28 octobre 2026</time> · France entière · {n} fiches et portes d’entrée · Sources officielles</p>
+<p class="aide-kicker">Le financement, à chaque étape du domaine</p><h1>Aides à la viticulture française :<br>de l’installation à l’arrachage</h1>
+<div class="aides-hero__presentation"><p class="aides-chapo">Ce dossier sur les aides à la viticulture française rassemble les soutiens publics utiles aux vignerons : s’installer, planter, investir, employer, changer de pratiques, traverser une crise ou transmettre.</p><img class="aides-hero__illustration" src="assets/img/editorial/aides-viticoles-photo-2026.webp" width="1200" height="630" alt="Illustration générée : dossier de financement et pièces en euros devant un vignoble" decoding="async"></div>
+<p class="aide-meta">Dossier publié et vérifié le <time datetime="{DATE}">28 octobre 2026</time> · France entière · {n} fiches et portes d’entrée · Sources officielles<br>Présentation mise à jour le <time datetime="{COLLECTION_MODIFIED}">{date_fr(COLLECTION_MODIFIED)}</time></p>
 <nav class="aides-parcours" aria-label="Les étapes du domaine">'''+''.join(f'<a href="#{k}"><span>{v[0]}</span> {e(v[1])}</a>' for k,v in ETAPES.items())+'''</nav></div></section>
 <div class="aides-largeur aides-intro"><p><strong>Le bon réflexe :</strong> une aide annoncée, une demande ouverte et un paiement réservé à des bénéficiaires acceptés sont trois situations différentes. Les fiches distinguent subventions, prêts, exonérations, accompagnement et indemnisation.</p><p>Ce panorama couvre les principaux dispositifs nationaux, européens et régionaux utiles à la viticulture, avec des exemples locaux et les portes d’entrée des 18 régions. Il ne garantit pas l’inventaire de tous les appels communaux ni votre éligibilité. <a href="#mode-emploi">Lire les règles de cumul et de dépôt</a> · <a href="#territoires">Consulter les portails régionaux</a>.</p></div>
 <section class="aides-recherche" id="recherche" aria-label="Rechercher une aide" hidden><form class="aides-largeur" id="form-aides" role="search" aria-label="Recherche dans les aides viticoles">
@@ -148,7 +152,7 @@ content+='''</div><section class="aides-largeur aides-mode" id="mode-emploi" ari
 <p>Les fiches expliquent les engagements. Pour un dossier individuel, faites confirmer les réponses par l’organisme instructeur ; une simulation commerciale ou le cas d’un voisin ne vaut pas décision pour votre exploitation.</p></section>
 <section class="aides-largeur aides-territoires" id="territoires" aria-labelledby="titre-territoires"><p class="aide-kicker">France entière</p><h2 id="titre-territoires">Les portes d’entrée des 18 régions</h2><p>Ces portails complètent les fiches et permettent de rechercher les appels locaux. Un portail européen peut réunir plusieurs fonds : sa présence ne prouve pas qu’un appel est ouvert à la vigne. Pour les aides agricoles, vérifiez aussi la Région, la DRAAF ou DAAF et la DDT(M). En Corse, rapprochez-vous de l’ODARC. À La Réunion, consultez également le <a href="https://www.departement974.fr/aides-feader">FEADER du Département</a>.</p><ul class="aides-portails">'''+''.join(f'<li><a href="{e(url)}">{e(name)} ↗</a></li>' for _,name,url in REGIONS)+'''</ul><p class="aide-reference">Références : <a href="https://france.representation.ec.europa.eu/collectivites-territoriales-programmes-europeens-2021-2027_fr">Commission européenne, programmes territoriaux</a> et <a href="https://agriculture.gouv.fr/les-aides-des-regions">ministère de l’Agriculture, répartition du FEADER</a>. Les soutiens FEAGA au secteur du vin, le FEADER et les fonds FEDER ne sont pas interchangeables.</p></section>
 <section class="aides-largeur aides-methodo" aria-labelledby="methode"><h2 id="methode">Périmètre et méthode</h2><p>Publication supplémentaire du 28 octobre 2026. Le dossier comprend des dispositifs, familles de soutiens et portes d’entrée utiles à la vie d’un domaine. Il conserve certains appels clos pour éviter de les présenter à tort comme disponibles et pour préparer une éventuelle campagne suivante, sans en promettre la reconduction.</p><p>Priorité aux règlements, notices, téléservices et pages des administrations ou organismes gestionnaires. En cas d’écart entre une ancienne présentation et un appel daté, le dossier précise la campagne retenue. Les rubriques « calendrier territorial à vérifier » ne sont pas déclarées ouvertes. Les méthodes de préparation sont proposées par Mon Chai ; elles ne remplacent pas l’instruction administrative.</p></section></main>'''
-write('aides-vignerons.html',page('aides-vignerons.html','Aides aux vignerons : de l’installation à l’arrachage',f'{n} fiches sourcées : installation, investissement, PAC, bio, emploi, risques, transmission et arrachage. Recherche par étape, territoire et situation du guichet.',content,True))
+write('aides-vignerons.html',page('aides-vignerons.html','Aides à la viticulture française et aux vignerons',f'Aides à la viticulture française : {n} fiches pour les vignerons, de l’installation à la transmission. Recherchez par étape, région et situation du guichet.',content,True))
 
 # Mettre le dossier au premier plan des portes d'entrée existantes, une fois.
 promo='<section class="serie-carte" id="dossier-aides"><p class="actu-date"><time datetime="2026-10-28">28 octobre 2026</time> · Nouveau dossier</p><h2><a href="aides-vignerons.html">Aides aux vignerons : de l’installation à l’arrachage</a></h2><p>'+str(n)+' fiches sourcées, classées par étape de vie du domaine. Recherchez par territoire, type de soutien et situation réelle du guichet.</p></section>'

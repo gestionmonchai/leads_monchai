@@ -1,0 +1,83 @@
+{
+  "date": "2026-11-05",
+  "modifications": {
+    "promotion-tiers": {
+      "statut": "clos",
+      "calendrier": "Candidatures closes depuis le 4 novembre 2026 à midi ; actions 2027 réservées aux programmes retenus.",
+      "resume": "L’appel 2026 pour la promotion des vins hors Union européenne est clos. Les actions des programmes retenus se dérouleront en 2027.",
+      "demarche": "Aucun nouveau dossier ne peut être présenté à cet appel après le 4 novembre 2026 à midi. Pour une candidature déjà déposée, suivez l’instruction et les notifications dans Viti-promotion. Pour un projet futur, préparez marchés, actions et budget sans présumer une réouverture.",
+      "vigilance": "La réalisation d’actions en 2027 ne signifie pas que les candidatures sont ouvertes en 2027. Une éventuelle nouvelle campagne devra être confirmée par une publication de FranceAgriMer. Conservez les preuves des actions et dépenses du seul programme effectivement accepté."
+    },
+    "conseil-rse-grand-est": {
+      "statut": "clos",
+      "calendrier": "Appel clos le 2 novembre 2026 ; aucune prolongation confirmée lors de la veille du 5 novembre.",
+      "resume": "L’appel 2026 au conseil RSE des entreprises viti-vinicoles du Grand Est est clos. Le financement était demandé par les structures de conseil habilitées.",
+      "demarche": "Pour cet appel, la période de dépôt sur Euro-PAC s’est terminée le 2 novembre 2026. Si vous aviez engagé un parcours avec une structure habilitée, demandez-lui où en est son dossier. Pour un nouveau besoin de conseil, contactez la Région sans supposer qu’une nouvelle demande reste recevable.",
+      "vigilance": "Une prise de contact avant le 2 novembre ne remplaçait pas le dépôt d’une demande recevable dans le délai. Aucune prolongation n’a été confirmée lors de cette veille. Un diagnostic RSE n’est pas automatiquement une certification et ne garantit pas l’accès à d’autres aides. Demandez au prestataire le suivi et l’usage des résultats.",
+      "sources": [["Région Grand Est — conseil RSE, bénéficiaires et échéance du 2 novembre", "https://www.grandest.fr/appel-a-projet/conseil-aux-entreprises-vit-vinicoles-en-matiere-de-rse/"]]
+    },
+    "cab": {
+      "calendrier": "Campagne PAC 2026 terminée ; cadre CAB 2027 publié en Occitanie le 3 novembre. Prochain dépôt Telepac à vérifier.",
+      "demarche": "Avant de convertir des parcelles, faites examiner le calendrier avec l’organisme certificateur et la DDT(M). Pour l’Occitanie, la DRAAF a publié le 3 novembre 2026 le cadre des engagements CAB 2027, avec une annexe ajoutée le 4 novembre. L’arrêté, signé le 26 octobre, figure au recueil du 28 octobre. Lisez ce cadre avant de préparer la campagne suivante ; sa publication ne constitue pas l’ouverture d’un nouveau guichet PAC en novembre.",
+      "vigilance": "Les conditions et plafonds sont territoriaux. Ne transposez pas l’arrêté occitan à une autre région ni les sous-plafonds de certaines cultures à la vigne. Faites confirmer les surfaces admissibles, la date de conversion, la durée et le calendrier de déclaration avant de compter une recette. La notice annuelle Telepac de la campagne concernée reste à consulter.",
+      "sources": [["DRAAF Occitanie — CAB 2027, publication du 3 novembre et annexe du 4 novembre", "https://draaf.occitanie.agriculture.gouv.fr/les-aides-a-la-conversion-bio-2027-en-occitanie-a10161.html"], ["Telepac — présentation MAEC/BIO 2026", "https://www.telepac.agriculture.gouv.fr/telepac/pdf/tas/2026/Dossier-PAC-2026_telepac_presentation-MAEC-BIO.pdf"], ["Ministère — instruction MAEC et bio 2026", "https://info.agriculture.gouv.fr/boagri/instruction-2026-527"], ["Légifrance — cumul avec le crédit bio", "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000053561953/2026-06-20"]]
+    },
+    "isn": {
+      "calendrier": "Délais locaux : Deux-Sèvres jusqu’au 20 novembre 2026 ; Indre du 27 octobre au 27 novembre pour les productions reconnues. Pas de date nationale unique.",
+      "demarche": "Vérifiez le sinistre, les productions et communes reconnus, puis le canal de dépôt indiqué par la DDT. Dans les Deux-Sèvres, la publication du 30 octobre inclut la viticulture dans le dispositif sécheresse et températures élevées, avec dépôt jusqu’au 20 novembre 2026. Dans l’Indre, le guichet court du 27 octobre au 27 novembre ; la liste viticole cite les raisins de cuve Reuilly et Chateaumeillant. Les autres territoires ont leurs propres procédures. Utilisez la notice locale adaptée à votre situation d’assurance.",
+      "vigilance": "Une reconnaissance départementale ne vaut pas indemnisation de toute perte ni extension aux départements voisins. Faites confirmer les seuils, références de rendement, productions, assurance et justificatifs de votre dossier. L’ISN, le fonds de réarmement agricole, l’assurance et le dégrèvement fiscal sont des mécanismes distincts ; les cumuls éventuels se vérifient auprès de l’instructeur.",
+      "sources": [["Deux-Sèvres — sécheresse/canicules 2026, actualisation du 30 octobre et échéance du 20 novembre", "https://www.deux-sevres.gouv.fr/Actions-de-l-Etat/Agriculture-foret-et-developpement-rural/Aides-conjoncturelles-et-calamites-agricoles/ISN-depots-de-vos-demandes-du-12-octobre-au-20-novembre-2026"], ["Indre — ISN 2026, productions et échéance du 27 novembre", "https://www.indre.gouv.fr/index.php/Actions-de-l-Etat/Agriculture-foret-chasse-et-appui-aux-territoires/Mesures-conjoncturelles-Mesures-d-urgence-Calamites-ISN/Calamites-agricoles-ISN/Ouverture-de-l-ISN-sur-les-pertes-de-recoltes-2026"], ["Ministère — assurance récolte et ISN", "https://agriculture.gouv.fr/assurance-recolte-reponses-aux-questions-frequemment-posees"]]
+    },
+    "maec": {
+      "calendrier": "MAEC surfaciques : campagne PAC 2026 terminée. Grand Est, mesure forfaitaire Transition des pratiques : jusqu’au 13 novembre 2026, dispositif distinct.",
+      "demarche": "Pour une MAEC surfacique, vérifiez le projet agroenvironnemental et climatique de votre territoire et la prochaine campagne PAC auprès de l’opérateur et de la DDT(M). Un autre parcours existe en Grand Est : la mesure forfaitaire Transition des pratiques reçoit les demandes du 1er juillet au 13 novembre 2026 sur Euro-PAC, avec diagnostic initial et plan d’action d’une structure habilitée. Elle vise notamment la réduction du bilan carbone ou de l’IFT, sous conditions du règlement régional.",
+      "vigilance": "Ne confondez pas une MAEC à la surface avec l’aide forfaitaire Grand Est. La Région affiche un forfait de 18 000 € pour cinq ans et des exclusions de cumul, notamment avec CAB/MAB et PSE, ainsi qu’avec certaines autres MAEC. Ce montant et ce calendrier ne sont pas nationaux. Faites confirmer l’admissibilité de votre système viticole avant de déposer.",
+      "sources": [["Région Grand Est — Transition des pratiques, échéance du 13 novembre et règles de cumul", "https://www.grandest.fr/appel-a-projet/feader-transition-pratiques-bilan-carbone/"], ["Telepac — engagements MAEC/BIO 2026 et durées", "https://www.telepac.agriculture.gouv.fr/telepac/pdf/tas/2026/Dossier-PAC-2026_telepac_presentation-MAEC-BIO.pdf"], ["Ministère — instruction 2026-527", "https://info.agriculture.gouv.fr/boagri/instruction-2026-527"]]
+    }
+  },
+  "ajouts": [
+    {
+      "id": "rearmement-casi",
+      "titre": "Fonds de réarmement agricole : échéances locales après la sécheresse 2026",
+      "etape": "risques", "type": "subvention", "territoire": ["idf", "ges", "occ"], "statut": "local",
+      "territoire_libelle": "Exemples vérifiés : Île-de-France, Meurthe-et-Moselle et Gard ; ailleurs, consulter la DDT(M).",
+      "calendrier": "Exemples vérifiés : Île-de-France, 6 novembre 2026 à midi ; Meurthe-et-Moselle et Gard, 10 novembre inclus. Conditions propres à chaque territoire.",
+      "financeur": "État — fonds de réarmement agricole / plan CASI, instruction territoriale",
+      "resume": "Des guichets locaux soutiennent les trésoreries touchées par la sécheresse et les canicules. Les montants, critères et dates diffèrent selon le département.",
+      "beneficiaires": "Les exploitations fragilisées doivent respecter le cadre local, leur statut agricole et les règles de minimis. En Meurthe-et-Moselle, la phase ouverte du 2 au 10 novembre inclut des viticulteurs ayant au moins 30 % de perte de rendement en 2026 par rapport à leur moyenne olympique sur cinq ans. Dans le Gard, le communiqué du 30 octobre élargit les bénéficiaires : la priorité viticole compare notamment la récolte 2026 à celle de 2023, avec justification par un tiers. Ces références ne sont pas interchangeables.",
+      "soutien": "La Meurthe-et-Moselle annonce un forfait de 6 000 €, soumis à sélection et crédits ; il n’est pas doublé si le demandeur relève aussi de la catégorie nouvel installé. En Île-de-France, les exploitations spécialisées en difficulté, dont les viticulteurs répondant aux critères, peuvent relever du forfait de 4 300 €. Une même aide nationale ne signifie donc ni montant commun ni admission automatique.",
+      "demarche": "Consultez la page officielle du territoire et sa notice avant d’ouvrir le formulaire. L’Île-de-France annonce une prolongation au 6 novembre à midi. Le bandeau du téléservice affiche aussi 23 h 59, mais son texte reprend midi : retenez l’échéance de midi par prudence et faites confirmer toute difficulté à la DDT. Meurthe-et-Moselle et Gard annoncent le 10 novembre. Préparez identité de l’exploitation, rendements et justificatifs des difficultés ; envoyez la demande uniquement sur le téléservice officiel.",
+      "vigilance": "Les exemples de cette fiche ne couvrent pas toute la France. Une exploitation située ailleurs doit demander les règles à sa DDT(M), sans utiliser le formulaire d’un autre territoire. Le fonds de réarmement ne remplace pas une demande ISN ni un dossier d’assurance. Faites examiner les cumuls sur les mêmes pertes et les plafonds de minimis ; conservez les réponses et décisions de chaque instructeur.",
+      "exemple": "Pour un domaine du Gard, commencez par rassembler les récoltes 2023 et 2026 et demander l’attestation prévue localement. Pour un domaine de Meurthe-et-Moselle, préparez la référence pluriannuelle demandée. Cette préparation évite de monter le dossier avec les critères d’un autre département ; elle ne préjuge pas du résultat.",
+      "sources": [["Préfecture de Meurthe-et-Moselle — nouveau guichet, publication du 4 novembre", "https://www.meurthe-et-moselle.gouv.fr/Actualites/Fonds-de-rearmement-agricole-ouverture-d-un-nouveau-guichet"], ["DRIAAF Île-de-France — prolongation, critères viticoles, mise à jour du 3 novembre", "https://driaaf.ile-de-france.agriculture.gouv.fr/fonds-de-rearmement-agricole-pour-les-agriculteurs-d-ile-de-france-a4453.html"], ["Préfecture du Gard — élargissement du fonds CASI, publication du 30 octobre", "https://www.gard.gouv.fr/actualites/agriculture/plan-casi-une-declinaison-departementale-pour-lagriculture-locale"], ["Téléservice francilien — échéance et notice à confronter avant dépôt", "https://demarche.numerique.gouv.fr/commencer/fonds-secheresse-ile-de-france"]],
+      "mots": "casi canicule secheresse urgence tresorerie rearmement meurthe moselle gard ile de france",
+      "article": "aide-rearmement-casi-viticulture.html",
+      "personnalisation": {
+        "titres": ["Quel guichet concerne réellement votre domaine ?", "Des forfaits et références différents selon le territoire", "Déposer avant l’échéance locale", "Aucun forfait national ni cumul automatique", "Préparer les justificatifs de votre département"],
+        "questions": ["Quel département instruit mon dossier et à quelle date ferme-t-il ?", "Quelle référence de rendement et quelle preuve de difficulté sont demandées ?", "Les autres aides sur la même perte ont-elles été déclarées ?"],
+        "liens": ["isn", "msa-difficultes", "urgence-jeunes-viti"]
+      }
+    },
+    {
+      "id": "dephy-ferme",
+      "titre": "DEPHY FERME 2027–2031 : rejoindre un collectif de réduction des phytos",
+      "etape": "transition", "type": "conseil", "territoire": ["fr"], "statut": "ouvert",
+      "calendrier": "Candidatures des structures au renouvellement DEPHY FERME jusqu’au 31 décembre 2026 ; période du réseau 2027–2031.",
+      "financeur": "Écophyto — appel national au renouvellement DEPHY FERME, relais DRAAF",
+      "resume": "Un accompagnement collectif et individuel pour réduire l’usage des produits phytopharmaceutiques. Le financement porte sur l’animation du réseau, pas sur une prime automatique au domaine.",
+      "beneficiaires": "Les organismes publics ou privés de développement agricole et rural peuvent porter une candidature. Les domaines rejoignent un groupe accompagné par un ingénieur réseau. La publication de la DRAAF Occitanie du 3 novembre décrit des collectifs de 15 à 20 exploitations et des priorités territoriales. Pour un groupe viticole, rapprochez-vous du porteur et du relais régional avant de considérer votre participation comme acquise.",
+      "soutien": "Selon la présentation officielle, l’aide couvre 75 % des dépenses admissibles de l’animation, avec plafonds : temps de l’ingénieur réseau dans la limite de 0,5 ETP, déplacements, démonstration, communication et frais de structure. Ce taux ne finance pas 75 % d’un achat de matériel par chaque exploitation ; lisez la notice de l’appel pour identifier le bénéficiaire et les coûts retenus.",
+      "demarche": "L’échéance des candidatures est le 31 décembre 2026. Un domaine intéressé contacte un collectif ou sa DRAAF pour connaître le recrutement des exploitations. La structure porteuse prépare le dossier d’animation selon la notice. Les Pays de la Loire annoncent une publication des résultats en mars 2027 ; cette étape ne garantit pas à l’avance la sélection d’un groupe.",
+      "vigilance": "Le programme demande une démarche de changement et de partage de références. Avant de rejoindre un groupe, précisez avec l’animateur les objectifs, les échanges de données et le temps nécessaire. Ne mélangez pas le dossier du porteur d’animation et les éventuelles aides propres au domaine. La participation à DEPHY ne dispense pas des règles applicables aux produits phytopharmaceutiques.",
+      "exemple": "Un collectif viticole souhaitant travailler le désherbage et la protection de la vigne peut partir d’un état des pratiques : interventions, contexte sanitaire et indicateurs. Chaque domaine prépare des données comparables et ses questions. La structure bâtit ensuite son projet d’accompagnement ; une liste de besoins en matériel ne suffit pas à constituer ce projet.",
+      "sources": [["DRAAF Occitanie — publication du 3 novembre, animation et financement DEPHY 2027–2031", "https://draaf.occitanie.agriculture.gouv.fr/appel-a-projet-dephy-ferme-2027-2031-a10162.html"], ["DRAAF Pays de la Loire — calendrier du renouvellement et résultats attendus", "https://draaf.pays-de-la-loire.agriculture.gouv.fr/appel-a-projets-dephy-2027-2031-a2204.html"]],
+      "mots": "dephy ferme collectif animation ecophyto phytos phyto ift 2027 2031",
+      "article": "aide-dephy-ferme-viticulture.html",
+      "personnalisation": {
+        "titres": ["Domaine participant ou structure porteuse ?", "Une aide à l’animation du collectif", "Préparer la candidature avant le 31 décembre", "Préciser les engagements de chaque participant", "Construire un projet viticole avec le groupe"],
+        "questions": ["Qui porte le groupe et dépose le dossier ?", "Quelles données et quel temps de participation seront demandés au domaine ?", "Quels coûts d’animation figurent dans le budget du porteur ?"],
+        "liens": ["maec", "haies", "pcae-regions"]
+      }
+    }
+  ]
+}

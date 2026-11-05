@@ -248,7 +248,7 @@
     <xhtml:link rel="alternate" hreflang="de" href="https://monchai.fr/de/actualites-reglementaires.html" />
     <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://monchai.fr/zh/actualites-reglementaires.html" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://monchai.fr/actualites-reglementaires.html" />
-    <lastmod>2026-08-31</lastmod>
+    <lastmod>2026-11-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -1677,7 +1677,7 @@
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
-  <url><loc>https://monchai.fr/ressources.html</loc><lastmod>2026-10-22</lastmod></url>
+  <url><loc>https://monchai.fr/ressources.html</loc><lastmod>2026-11-05</lastmod></url>
   <url><loc>https://monchai.fr/cout-de-revient-bouteille-vin.html</loc><lastmod>2026-09-16</lastmod></url>
   <!-- FILE-ATTENTE : nouvelles URL insérées sous cette ligne (workflow publier-article.yml). Ne pas supprimer ce repère. -->
   <url>
@@ -1851,7 +1851,7 @@
   <url><loc>https://monchai.fr/monchainotes.html</loc><lastmod>2026-10-20</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url>
     <loc>https://monchai.fr/s-installer-en-viticulture.html</loc>
-    <lastmod>2026-10-22</lastmod>
+    <lastmod>2026-11-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -1861,7 +1861,7 @@
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
-<url><loc>https://monchai.fr/aides-vignerons.html</loc><lastmod>2026-11-04</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+<url><loc>https://monchai.fr/aides-vignerons.html</loc><lastmod>2026-11-05</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
 <url><loc>https://monchai.fr/aide-nouveaux-agriculteurs-viticulture.html</loc><lastmod>2026-10-29</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
 <url><loc>https://monchai.fr/aide-aita-viticulture.html</loc><lastmod>2026-10-29</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
 <url><loc>https://monchai.fr/aide-msa-jeunes-viticulture.html</loc><lastmod>2026-10-29</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
@@ -1889,12 +1889,12 @@
 <url><loc>https://monchai.fr/aide-apprentissage-ocapiat-viticulture.html</loc><lastmod>2026-10-29</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
 <url><loc>https://monchai.fr/aide-remplacement-viticulture.html</loc><lastmod>2026-10-29</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
 <url><loc>https://monchai.fr/aide-leader-viticulture.html</loc><lastmod>2026-10-29</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
-<url><loc>https://monchai.fr/aide-promotion-tiers-viticulture.html</loc><lastmod>2026-10-29</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+<url><loc>https://monchai.fr/aide-promotion-tiers-viticulture.html</loc><lastmod>2026-11-05</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
 <url><loc>https://monchai.fr/aide-agrip-viticulture.html</loc><lastmod>2026-10-29</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
 <url><loc>https://monchai.fr/aide-assurance-prospection-viticulture.html</loc><lastmod>2026-10-29</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
 <url><loc>https://monchai.fr/aide-credit-cuma-viticulture.html</loc><lastmod>2026-10-29</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
-<url><loc>https://monchai.fr/aide-cab-viticulture.html</loc><lastmod>2026-10-29</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
-<url><loc>https://monchai.fr/aide-maec-viticulture.html</loc><lastmod>2026-10-29</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+<url><loc>https://monchai.fr/aide-cab-viticulture.html</loc><lastmod>2026-11-05</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+<url><loc>https://monchai.fr/aide-maec-viticulture.html</loc><lastmod>2026-11-05</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
 <url><loc>https://monchai.fr/aide-credit-bio-viticulture.html</loc><lastmod>2026-10-29</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
 <url><loc>https://monchai.fr/aide-credit-hve-viticulture.html</loc><lastmod>2026-10-29</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
 <url><loc>https://monchai.fr/aide-tfnb-bio-viticulture.html</loc><lastmod>2026-10-29</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
@@ -1903,9 +1903,9 @@
 <url><loc>https://monchai.fr/aide-pse-viticulture.html</loc><lastmod>2026-10-29</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
 <url><loc>https://monchai.fr/aide-haies-viticulture.html</loc><lastmod>2026-10-29</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
 <url><loc>https://monchai.fr/aide-ademe-energie-viticulture.html</loc><lastmod>2026-10-29</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
-<url><loc>https://monchai.fr/aide-conseil-rse-grand-est-viticulture.html</loc><lastmod>2026-10-29</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+<url><loc>https://monchai.fr/aide-conseil-rse-grand-est-viticulture.html</loc><lastmod>2026-11-05</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
 <url><loc>https://monchai.fr/aide-assurance-recolte-viticulture.html</loc><lastmod>2026-10-29</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
-<url><loc>https://monchai.fr/aide-isn-viticulture.html</loc><lastmod>2026-10-29</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+<url><loc>https://monchai.fr/aide-isn-viticulture.html</loc><lastmod>2026-11-05</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
 <url><loc>https://monchai.fr/aide-prets-consolidation-viticulture.html</loc><lastmod>2026-10-29</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
 <url><loc>https://monchai.fr/aide-msa-difficultes-viticulture.html</loc><lastmod>2026-10-29</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
 <url><loc>https://monchai.fr/aide-audit-global-viticulture.html</loc><lastmod>2026-10-29</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
@@ -1949,4 +1949,6 @@
   <url><loc>https://monchai.fr/mon-chai-notes-disponible.html</loc><lastmod>2026-11-03</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://monchai.fr/mon-chai-winetech-coffee.html</loc><lastmod>2026-11-03</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://monchai.fr/mon-chai-vinitech-sifel-2026.html</loc><lastmod>2026-11-03</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+<url><loc>https://monchai.fr/aide-dephy-ferme-viticulture.html</loc><lastmod>2026-11-05</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+<url><loc>https://monchai.fr/aide-rearmement-casi-viticulture.html</loc><lastmod>2026-11-05</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
 </urlset>

@@ -3,6 +3,9 @@
 Les champs démarche, exemple et préparation sont des méthodes proposées par
 Mon Chai, distinctes des conditions réglementaires reproduites sans citation.
 """
+import json
+from pathlib import Path
+
 DATE = '2026-10-28'
 RECONTROLES = {'petits-equipements-bfc', 'credit-cuma', 'pcae-regions', 'pcae-pays-loire'}
 ETAPES = {
@@ -658,3 +661,17 @@ add('outremer','Outre-mer : aides agricoles territoriales et vérification POSEI
  'Cette fiche est une orientation, pas une affirmation d’éligibilité viticole au POSEI. Les DPB, l’écorégime ou l’assurance décrits pour la métropole ne sont pas automatiquement transposables. Les cotisations peuvent relever de la CGSS ou d’un autre interlocuteur selon le territoire.',
  'Pour un projet ultramarin, construisez votre inventaire d’aides à partir du territoire avant d’importer un plan de financement métropolitain. Conservez le retour écrit de l’instructeur sur la production et chaque poste de dépenses, notamment lorsque le projet combine agriculture et transformation.',
  [('ODEADOM — textes réglementaires, décisions DIVA 2026 et listes de produits','https://www.odeadom.fr/ressources/textes-reglementaires/'),('FranceAgriMer / ODEADOM — service diversification végétale','https://www.franceagrimer.fr/e-services/odeadom-diversification-vegetale'),('Département de La Réunion — aides FEADER','https://www.departement974.fr/aides-feader'),('Commission européenne — portails territoriaux officiels','https://france.representation.ec.europa.eu/collectivites-territoriales-programmes-europeens-2021-2027_fr')], 'dom outre mer guadeloupe guyane martinique mayotte reunion posei daaf')
+
+
+# Veille datee : seules les fiches effectivement examinees changent de date.
+VEILLE = json.loads((Path(__file__).parent / 'veille-2026-11-05.json').read_text(encoding='utf-8'))
+for fiche in AIDES:
+ fiche.setdefault('publie', DATE)
+ fiche.setdefault('modifie', '2026-10-29')
+ if fiche['id'] in VEILLE['modifications']:
+  fiche.update(VEILLE['modifications'][fiche['id']])
+  fiche.update(verifie=VEILLE['date'], modifie=VEILLE['date'])
+for ajout in VEILLE['ajouts']:
+ fiche = {k: v for k, v in ajout.items() if k != 'personnalisation'}
+ fiche.update(publie=VEILLE['date'], modifie=VEILLE['date'], verifie=VEILLE['date'])
+ AIDES.append(fiche)

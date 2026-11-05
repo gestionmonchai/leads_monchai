@@ -14,6 +14,11 @@
 .aides-parcours a { border: 1px solid #d5bca5; border-radius: 9px; padding: 12px; color: #471318; text-decoration: none; min-height: 48px; background: #fffdfb; font-size: 14px; }
 .aides-parcours span { color: #7b1e22; margin-right: 7px; font-weight: 700; }
 .aides-intro { padding-block: 22px; max-width: 1040px; }
+.aides-veille { margin-block: 28px 0; padding-block: 22px; border-block: 1px solid #d5bca5; background: #fff9f4; }
+.aides-veille h2 { margin-block: 8px 16px; font: 500 clamp(24px,3vw,32px)/1.2 var(--ac-serif); color: #471318; }
+.aides-veille ul { padding-left: 22px; line-height: 1.7; }
+.aides-veille li + li { margin-top: 12px; }
+.aides-veille > p:last-child { margin-bottom: 0; font-size: 13px; line-height: 1.6; color: #55473e; }
 .aides-catalogue a,.aide-detail a { color: #7b1e22; text-underline-offset: 3px; }
 .aides-catalogue :focus-visible,.aide-detail :focus-visible { outline: 3px solid #7b1e22; outline-offset: 4px; }
 .aides-recherche { position: sticky; top: var(--aides-header); z-index: 20; background: #fffdfb; border-block: 1px solid #d5bca5; box-shadow: 0 6px 12px #4713180d; }

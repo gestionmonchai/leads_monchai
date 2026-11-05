@@ -73,3 +73,40 @@ entrée vers le dossier ; le lien est accessible sur mobile et ordinateur ;
 l'expression demandée figure dans le h1, l'introduction et les métadonnées ;
 le catalogue et sa recherche restent utilisables. Le générateur conserve cette
 entrée et ce titre lors d'une prochaine génération explicite.
+
+## Veille du 5 novembre 2026 : volet UX/UI
+
+- Problème : deux appels désormais clos restent affichés ouverts et des
+  publications récentes proposent des échéances territoriales très proches.
+- Point d'entrée : même URL et menu Ressources ; un encadré de veille sous
+  l'introduction du catalogue mène aux fiches nouvelles ou complétées.
+- Hiérarchie : nouveautés et échéances, recherche existante, six étapes et
+  fiches. Les aides départementales gardent leur périmètre ; les financements
+  d'animation sont distingués des subventions versées à un domaine.
+- États et feedback : deux fermetures explicites, cadre 2027 à préparer,
+  calendrier local à confirmer, ouverture DEPHY datée. Les filtres reflètent
+  ces statuts ; zéro résultat, réinitialisation et liens de retour sont conservés.
+- Données : deux nouvelles fiches ; dates de publication, modification et
+  vérification distinctes. Les anciennes dates restent sur les fiches qui
+  n'ont pas fait l'objet d'un examen de fond. Les sources inaccessibles ou
+  contradictoires ne sont jamais marquées comme validées automatiquement.
+- Responsive : encadré en flux, sans modale ; listes lisibles à 320 px,
+  recherche et liens visibles sur téléphone et ordinateur.
+- Accessibilité : h2 pour la veille, vrais liens internes, focus existant,
+  contraste de la charte et compteur de recherche annoncé.
+- Observabilité : preuve des sources consultées, journal des décisions,
+  concordance des fiches/JSON-LD/catalogue/filtres et sitemap contrôlés.
+- Critères d'acceptation : 64 cartes et liens valides ; promotion pays tiers
+  et conseil RSE Grand Est exclus du filtre ouvert ; recherche DEPHY et
+  réarmement ; échéances départementales non généralisées ; 320/390/1440 px
+  sans débordement ; header et ticket conservés.
+- Périmètre : contenu du site vitrine ; aucune nouvelle route Django ni
+  procédure métier de l'assistant applicatif.
+
+Lot structuré : `veille-2026-11-05.json`, appliqué par `contenus.py`. Le journal
+des sources, décisions et limites est `BILAN_VEILLE_2026-11-05.md`. La génération
+ciblée conserve les articles non réexaminés et leurs dates :
+
+```sh
+python outils/aides/generer.py . promotion-tiers,conseil-rse-grand-est,cab,isn,maec,rearmement-casi,dephy-ferme
+```

@@ -11,15 +11,18 @@ import re
 import sys
 from datetime import date
 from pathlib import Path
-from contenus import AIDES, DATE, ETAPES, REGIONS, STATUTS, TYPES
+from contenus import AIDES, DATE, ETAPES, REGIONS, STATUTS, TYPES, VEILLE
 
 MODIFIED = '2026-10-29'
-COLLECTION_MODIFIED = '2026-11-04'
+COLLECTION_MODIFIED = VEILLE['date']
 PERSONNALISATION = json.loads((Path(__file__).parent / 'personnalisation.json').read_text(encoding='utf-8'))['fiches']
+PERSONNALISATION.update({a['id']: a['personnalisation'] for a in VEILLE['ajouts']})
 PAR_ID = {a['id']: a for a in AIDES}
 assert set(PERSONNALISATION) == set(PAR_ID) - {'dja'}, 'Chaque fiche générée possède sa préparation spécifique.'
 
 ROOT=Path(sys.argv[1]).resolve()
+SELECTION = set(sys.argv[2].split(',')) if len(sys.argv) > 2 else None
+if SELECTION: assert SELECTION <= set(PAR_ID), 'Sélection de fiches inconnue.'
 AIDES.sort(key=lambda a:list(ETAPES).index(a['etape']))
 def e(t): return html.escape(str(t),quote=True)
 def read(p): return (ROOT/p).read_text(encoding='utf-8')
@@ -29,6 +32,7 @@ def write(p,s):
  p.write_text(s,encoding='utf-8',newline='\n')
 REG=dict((r[0],r[1]) for r in REGIONS)
 def territoire(a):
+ if a.get('territoire_libelle'): return a['territoire_libelle']
  if a['territoire']==['fr']: return 'France — conditions locales et statut à vérifier'
  if a['territoire']==['metropole']: return 'Métropole — cadre territorial à vérifier, Corse comprise selon dispositif'
  return ', '.join(REG[r] for r in a['territoire'])
@@ -54,6 +58,7 @@ for directory in ['', 'en', 'de', 'it', 'zh']:
   # Le limiter au panneau Ressources évite de confondre header et métadonnées.
   if not directory:
    def update_ressources(m):
+    if 'href="aides-vignerons.html"' in m[0]: return m[0]
     menu=re.sub(r'<a\b[^>]*href="aides-vignerons\.html"[^>]*>.*?</a>','',m[0],flags=re.S)
     courant=' aria-current="page"' if p.name=='aides-vignerons.html' else ''
     entree=f'<a href="aides-vignerons.html"{courant}>Aides aux vignerons</a>'
@@ -64,14 +69,19 @@ for directory in ['', 'en', 'de', 'it', 'zh']:
 template=read('s-installer-en-viticulture.html')
 body_header=template[template.index('<body'):template.index('<main')]
 footer=re.search(r'<footer\b[^>]*>[\s\S]*?</footer>',template)[0]
-scripts='<script src="assets/js/header.js"></script><script src="consent.js?v=20261029-ga4"></script><script src="assets/js/cta-popup.js?v=20261103-ticket" defer></script><script src="assets/js/documents-legaux.js?v=20261028-footer" defer></script>'
+cta=re.search(r'<script\b[^>]*src="assets/js/cta-popup\.js[^\"]*"[^>]*></script>',template)[0]
+scripts='<script src="assets/js/header.js"></script><script src="consent.js?v=20261029-ga4"></script>'+cta+'<script src="assets/js/documents-legaux.js?v=20261028-footer" defer></script>'
 
 def page(slug,title,description,content,collection=False):
- header=body_header.replace('href="s-installer-en-viticulture.html" aria-current="page"',f'href="{slug}" aria-current="page"')
+ header=re.sub(r' aria-current="page"','',body_header)
+ header=header.replace(f'href="{slug}"',f'href="{slug}" aria-current="page"',1)
  image='assets/img/editorial/aides-viticoles-photo-2026.jpg' if collection else 'assets/img/pages/vigne-vendanges.jpg'
  image_alt='Illustration générée : dossier de financement et pièces en euros devant un vignoble' if collection else 'Vignes du domaine'
  schema={'@context':'https://schema.org','@type':'CollectionPage' if collection else 'Article','name':title,'headline':title,'description':description,'url':'https://monchai.fr/'+slug,'inLanguage':'fr','datePublished':DATE,'dateModified':MODIFIED,'author':{'@type':'Organization','name':'Mon Chai','url':'https://monchai.fr/index.html#apropos'},'publisher':{'@type':'Organization','name':'Mon Chai','url':'https://monchai.fr/','logo':{'@type':'ImageObject','url':'https://monchai.fr/assets/img/logo_mon_chai.png'}},'image':'https://monchai.fr/'+image,'mainEntityOfPage':'https://monchai.fr/'+slug}
  if collection: schema['dateModified']=COLLECTION_MODIFIED
+ elif slug in {a['article'] for a in AIDES}:
+  fiche=next(a for a in AIDES if a['article']==slug)
+  schema.update(datePublished=fiche['publie'],dateModified=fiche['modifie'])
  if collection:
   schema['mainEntity']={'@type':'ItemList','itemListElement':[{'@type':'ListItem','position':i+1,'name':a['titre'],'url':'https://monchai.fr/'+a['article']} for i,a in enumerate(AIDES)]}
  else: schema['wordCount']=len(re.sub('<[^>]+>',' ',content).split())
@@ -81,7 +91,7 @@ def page(slug,title,description,content,collection=False):
 <meta name="robots" content="index, follow, max-image-preview:large"><link rel="canonical" href="https://monchai.fr/{slug}">
 <meta property="og:type" content="{'website' if collection else 'article'}"><meta property="og:title" content="{e(title)}"><meta property="og:description" content="{e(description)}"><meta property="og:url" content="https://monchai.fr/{slug}"><meta property="og:locale" content="fr_FR"><meta property="og:site_name" content="Mon Chai"><meta property="og:image" content="https://monchai.fr/{image}"><meta property="og:image:alt" content="{image_alt}">
 <link rel="icon" type="image/png" href="assets/img/logo_mon_chai.png"><meta name="theme-color" content="#7B1E22">
-<link rel="stylesheet" href="assets/css/polices.css"><link rel="stylesheet" href="assets/css/header.css"><link rel="stylesheet" href="assets/css/actus.css"><link rel="stylesheet" href="assets/css/couts-editorial.css"><link rel="stylesheet" href="assets/css/footer-commun.css?v=20261028-footer"><link rel="stylesheet" href="assets/css/aides.css?v=20261028{'-photo' if collection else ''}">
+<link rel="stylesheet" href="assets/css/polices.css"><link rel="stylesheet" href="assets/css/header.css"><link rel="stylesheet" href="assets/css/actus.css"><link rel="stylesheet" href="assets/css/couts-editorial.css"><link rel="stylesheet" href="assets/css/footer-commun.css?v=20261028-footer"><link rel="stylesheet" href="assets/css/aides.css?v={'20261105-veille' if collection else '20261028'}">
 <script type="application/ld+json">{json.dumps(schema,ensure_ascii=False).replace('</','< /')}</script>
 <script type="application/ld+json">{json.dumps({'@context':'https://schema.org','@type':'BreadcrumbList','itemListElement':[{'@type':'ListItem','position':1,'name':'Accueil','item':'https://monchai.fr/'},{'@type':'ListItem','position':2,'name':'Aides aux vignerons','item':'https://monchai.fr/aides-vignerons.html'}]+([] if collection else [{'@type':'ListItem','position':3,'name':title,'item':'https://monchai.fr/'+slug}])},ensure_ascii=False)}</script></head>'''
  head=head.replace('</head>','<script src="assets/js/analytics.js?v=20261029"></script></head>')
@@ -93,13 +103,14 @@ def source(a,index=0):
 
 def detail(a):
  perso=PERSONNALISATION[a['id']]
+ publie=a['publie']; modifie=a['modifie']
  sections=[(ident,titre,a[champ],reference) for (ident,champ,reference),titre in zip([('beneficiaires','beneficiaires',0),('soutien','soutien',0),('demarche','demarche',0),('vigilance','vigilance',None),('cas-domaine','exemple',None)],perso['titres'])]
  text=' '.join(a[k] for k in ('resume','beneficiaires','soutien','demarche','vigilance','exemple'))
  minutes=max(3,math.ceil((len(text.split())+180)/220))
  c=f'''<main class="article article-couts aide-detail" id="contenu" tabindex="-1">
 <nav class="article__ariane" aria-label="Fil d’Ariane"><a href="index.html">Accueil</a> › <a href="aides-vignerons.html">Aides aux vignerons</a> › {e(ETAPES[a['etape']][1])}</nav>
 <p class="aide-kicker">{e(ETAPES[a['etape']][1])} · {e(TYPES[a['type']])}</p>
-<h1>{e(a['titre'])}</h1><p class="aide-meta">Par <a href="index.html#apropos">Mon Chai</a> · Publié le <time datetime="{DATE}">28 octobre 2026</time> · Structure et parcours mis à jour le <time datetime="{MODIFIED}">29 octobre 2026</time> · {minutes} min de lecture</p><p class="article__chapo">{e(a['resume'])}</p>
+<h1>{e(a['titre'])}</h1><p class="aide-meta">Par <a href="index.html#apropos">Mon Chai</a> · Publié le <time datetime="{publie}">{date_fr(publie)}</time> · Mis à jour le <time datetime="{modifie}">{date_fr(modifie)}</time> · {minutes} min de lecture</p><p class="article__chapo">{e(a['resume'])}</p>
 <aside class="aide-repere" aria-label="Situation vérifiée du dispositif"><p class="aide-statut aide-statut--{a['statut']}">{e(STATUTS[a['statut']])}</p><p><strong>Calendrier :</strong> {e(a['calendrier'])}</p><p><strong>Territoire :</strong> {e(territoire(a))}</p><p><strong>Financeur / gestionnaire :</strong> {e(a['financeur'])}</p><p>Repères du dispositif vérifiés le {date_fr(a['verifie'])}. Confirmez l’ouverture et les règles actuelles auprès de l’instructeur avant toute démarche. <a href="#sources">Lire les sources primaires</a>.</p></aside>
 <nav class="article-sommaire" aria-label="Sommaire de la fiche"><strong>Dans cette fiche</strong><ol>'''+''.join(f'<li><a href="#{i}">{e(t)}</a></li>' for i,t,_,_ in sections)+'''<li><a href="#preparer">Les questions à emporter</a></li><li><a href="#sources">Sources et date de contrôle</a></li></ol></nav>'''
  for ident,titre,par,index in sections:
@@ -110,14 +121,14 @@ def detail(a):
   c+='</section>'
  c+='<section aria-labelledby="preparer"><h2 id="preparer">Les questions à poser pour ce dispositif</h2><ul>'+''.join('<li>'+e(q)+'</li>' for q in perso['questions'])+'</ul><p>Ces questions de préparation sont proposées par Mon Chai. Pour les vérifications communes de calendrier, de cumul et de trésorerie, consultez le <a href="aides-vignerons.html#mode-emploi">mode d’emploi des aides</a>.</p></section>'
  c+='<section aria-labelledby="comparer"><h2 id="comparer">À comparer selon votre projet</h2><p>Ces fiches répondent à des questions voisines ; leur rapprochement ne signifie pas que les soutiens sont cumulables.</p><ul>'+''.join(f'<li><a href="{e(PAR_ID[ident]["article"])}">{e(PAR_ID[ident]["titre"])}</a></li>' for ident in perso['liens'])+'</ul></section>'
- c+=f'<section class="article__sources" aria-labelledby="sources"><h2 id="sources">Sources et date de contrôle</h2><p>Repères du dispositif vérifiés le {date_fr(a["verifie"])} ; titres, questions de préparation et liens actualisés le 29 octobre 2026. Les dates et conditions peuvent évoluer ; les liens ci-dessous permettent de vérifier la version actuelle.</p><ul>'
+ c+=f'<section class="article__sources" aria-labelledby="sources"><h2 id="sources">Sources et date de contrôle</h2><p>Repères du dispositif vérifiés le {date_fr(a["verifie"])} ; fiche mise à jour le {date_fr(modifie)}. Les dates et conditions peuvent évoluer ; les liens ci-dessous permettent de vérifier la version actuelle.</p><ul>'
  c+=''.join(f'<li><a href="{e(u)}">{e(n)}</a></li>' for n,u in a['sources'])
  c+='</ul><p>Cette fiche fournit des repères généraux pour une exploitation viticole. Elle ne constitue ni une simulation individuelle ni une garantie d’attribution. Les propositions de préparation et de gestion sont celles de Mon Chai.</p></section>'
  c+=f'<nav class="aide-suite" aria-label="Continuer le dossier"><a href="aides-vignerons.html#{a["etape"]}">← Revenir à l’étape « {e(ETAPES[a["etape"]][1])} »</a><a href="aides-vignerons.html#recherche">Rechercher une autre aide</a></nav></main>'
  return page(a['article'],a['titre'],a['resume'],c)
 
 for a in AIDES:
- if a['id']!='dja': write(a['article'],detail(a))
+ if a['id']!='dja' and (not SELECTION or a['id'] in SELECTION): write(a['article'],detail(a))
 
 def option(values): return ''.join(f'<option value="{e(k)}">{e(v)}</option>' for k,v in values)
 n=len(AIDES)
@@ -125,8 +136,15 @@ content=f'''<main id="contenu" tabindex="-1" class="aides-catalogue">
 <section class="aides-hero"><div class="aides-largeur"><nav class="article__ariane" aria-label="Fil d’Ariane"><a href="index.html">Accueil</a> › <a href="ressources.html">Ressources</a> › Aides aux vignerons</nav>
 <p class="aide-kicker">Le financement, à chaque étape du domaine</p><h1>Aides à la viticulture française :<br>de l’installation à l’arrachage</h1>
 <div class="aides-hero__presentation"><p class="aides-chapo">Ce dossier sur les aides à la viticulture française rassemble les soutiens publics utiles aux vignerons : s’installer, planter, investir, employer, changer de pratiques, traverser une crise ou transmettre.</p><img class="aides-hero__illustration" src="assets/img/editorial/aides-viticoles-photo-2026.webp" width="1200" height="630" alt="Illustration générée : dossier de financement et pièces en euros devant un vignoble" decoding="async"></div>
-<p class="aide-meta">Dossier publié et vérifié le <time datetime="{DATE}">28 octobre 2026</time> · France entière · {n} fiches et portes d’entrée · Sources officielles<br>Présentation mise à jour le <time datetime="{COLLECTION_MODIFIED}">{date_fr(COLLECTION_MODIFIED)}</time></p>
+<p class="aide-meta">Dossier publié le <time datetime="{DATE}">28 octobre 2026</time> · France entière · {n} fiches et portes d’entrée · Sources officielles<br>Dernière veille : <time datetime="{COLLECTION_MODIFIED}">{date_fr(COLLECTION_MODIFIED)}</time> · Date de vérification propre à chaque fiche</p>
 <nav class="aides-parcours" aria-label="Les étapes du domaine">'''+''.join(f'<a href="#{k}"><span>{v[0]}</span> {e(v[1])}</a>' for k,v in ETAPES.items())+'''</nav></div></section>
+<section class="aides-largeur aides-veille" aria-labelledby="titre-veille"><p class="aide-kicker">Veille du 5 novembre 2026</p><h2 id="titre-veille">Les changements à regarder en priorité</h2><ul>
+<li><a href="aide-rearmement-casi-viticulture.html">Fonds de réarmement agricole</a> : exemples locaux ajoutés ; Île-de-France jusqu’au 6 novembre à midi, Meurthe-et-Moselle et Gard jusqu’au 10 novembre, sous conditions propres à chaque territoire.</li>
+<li><a href="aide-isn-viticulture.html">Indemnisation climatique (ISN)</a> : Deux-Sèvres jusqu’au 20 novembre ; Indre jusqu’au 27 novembre, pour les productions reconnues.</li>
+<li><a href="aide-dephy-ferme-viticulture.html">DEPHY FERME 2027–2031</a> : candidatures des structures d’animation jusqu’au 31 décembre 2026 ; les domaines rejoignent un collectif.</li>
+<li><a href="aide-cab-viticulture.html">Conversion bio 2027 en Occitanie</a> : cadre publié les 3–4 novembre, à préparer pour la prochaine campagne PAC ; <a href="aide-maec-viticulture.html">Transition des pratiques en Grand Est</a> : appel distinct jusqu’au 13 novembre.</li>
+<li><a href="aide-promotion-tiers-viticulture.html">Promotion pays tiers</a> : candidatures closes le 4 novembre à midi ; <a href="aide-conseil-rse-grand-est-viticulture.html">conseil RSE Grand Est</a> : appel clos le 2 novembre.</li>
+</ul><p>Cette veille complète le dossier. Elle ne signifie pas que tous les dispositifs ont été revérifiés aujourd’hui : chaque fiche conserve sa propre date de contrôle.</p></section>
 <div class="aides-largeur aides-intro"><p><strong>Le bon réflexe :</strong> une aide annoncée, une demande ouverte et un paiement réservé à des bénéficiaires acceptés sont trois situations différentes. Les fiches distinguent subventions, prêts, exonérations, accompagnement et indemnisation.</p><p>Ce panorama couvre les principaux dispositifs nationaux, européens et régionaux utiles à la viticulture, avec des exemples locaux et les portes d’entrée des 18 régions. Il ne garantit pas l’inventaire de tous les appels communaux ni votre éligibilité. <a href="#mode-emploi">Lire les règles de cumul et de dépôt</a> · <a href="#territoires">Consulter les portails régionaux</a>.</p></div>
 <section class="aides-recherche" id="recherche" aria-label="Rechercher une aide" hidden><form class="aides-largeur" id="form-aides" role="search" aria-label="Recherche dans les aides viticoles">
 <div class="aides-recherche__ligne"><div class="aides-champ"><label for="q-aides">Rechercher une aide</label><input type="search" id="q-aides" name="q" placeholder="DJA, bio, gel, arrachage…" autocomplete="off" maxlength="160" aria-describedby="recherche-conseil"></div><button type="reset">Réinitialiser</button></div>
@@ -135,7 +153,7 @@ content=f'''<main id="contenu" tabindex="-1" class="aides-catalogue">
 <div class="aides-champ"><label for="territoire-aides">Territoire</label><select id="territoire-aides" name="territoire"><option value="">Toute la France</option><option value="national">Dispositifs nationaux</option>'''+option((k,v) for k,v,_ in REGIONS)+'''</select></div>
 <div class="aides-champ"><label for="type-aides">Type de soutien</label><select id="type-aides" name="type"><option value="">Tous les types</option>'''+option(TYPES.items())+'''</select></div>
 <div class="aides-champ"><label for="statut-aides">Situation du guichet</label><select id="statut-aides" name="statut"><option value="">Toutes les situations</option>'''+option(STATUTS.items())+'''</select></div></div></details>
-<p class="aides-resultat" id="nombre-aides" role="status" aria-live="polite" aria-atomic="true"></p><p id="recherche-conseil">Recherche sur cette page, sans transmission de vos mots. Les résultats indiquent des pistes, pas un droit. Situations datées du 28 octobre 2026.</p></form></section>
+<p class="aides-resultat" id="nombre-aides" role="status" aria-live="polite" aria-atomic="true"></p><p id="recherche-conseil">Recherche sur cette page, sans transmission de vos mots. Les résultats indiquent des pistes, pas un droit. Consultez la date de contrôle indiquée sur chaque fiche.</p></form></section>
 <noscript><p class="aides-largeur aide-repere">La recherche nécessite JavaScript. Toutes les fiches restent consultables ci-dessous par étape, ainsi que les portails régionaux.</p></noscript>
 <div class="aides-largeur aides-liste"><div id="aides-vide" class="aide-repere" hidden><h2>Aucune fiche ne correspond à ces critères</h2><p>Essayez un mot plus court, élargissez les filtres ou utilisez « Réinitialiser ». Les <a href="#territoires">portails régionaux</a> complètent ce panorama.</p></div>'''
 for key,(num,title,desc) in ETAPES.items():
@@ -158,6 +176,8 @@ write('aides-vignerons.html',page('aides-vignerons.html','Aides à la viticultur
 promo='<section class="serie-carte" id="dossier-aides"><p class="actu-date"><time datetime="2026-10-28">28 octobre 2026</time> · Nouveau dossier</p><h2><a href="aides-vignerons.html">Aides aux vignerons : de l’installation à l’arrachage</a></h2><p>'+str(n)+' fiches sourcées, classées par étape de vie du domaine. Recherchez par territoire, type de soutien et situation réelle du guichet.</p></section>'
 for name in ['ressources.html','s-installer-en-viticulture.html','dja-installation-vigneron.html']:
  s=read(name)
+ s=re.sub(r'(<section\b[^>]*id="dossier-aides"[^>]*>.*?</section>)',lambda m:re.sub(r'\b\d+ fiches',f'{n} fiches',m[0]),s,flags=re.S)
+ write(name,s)
  if 'id="dossier-aides"' not in s:
   end=s.index('</p>',s.index('class="article__chapo"'))+4
   s=s[:end]+promo+s[end:]
@@ -167,6 +187,7 @@ s=read(name)
 image_carte='<img class="actu-fiche__img" src="assets/img/editorial/aides-viticoles-photo-2026.webp" alt="Illustration générée : dossier de financement et pièces en euros devant un vignoble" width="1200" height="630" decoding="async">'
 if 'id="dossier-aides"' in s:
  s=re.sub(r'(<article\b[^>]*id="dossier-aides"[^>]*>)(?!\s*<img)',lambda m:m[1]+image_carte,s,count=1)
+ s=re.sub(r'(<article\b[^>]*id="dossier-aides"[^>]*>.*?</article>)',lambda m:re.sub(r'\b\d+ fiches',f'{n} fiches',m[0]),s,flags=re.S)
  write(name,s)
 if 'id="dossier-aides"' not in s:
  marker=re.search(r'<!-- FILE-ATTENTE : les nouvelles cartes[^>]*-->',s)[0]
@@ -178,7 +199,7 @@ for name in ['ressources.html','s-installer-en-viticulture.html','actualites-reg
  def actualiser_collection(m):
   data=json.loads(m[1])
   if data.get('@type')!='CollectionPage': return m[0]
-  data['dateModified']=DATE
+  data['dateModified']=COLLECTION_MODIFIED
   items=data.setdefault('mainEntity',{'@type':'ItemList','itemListElement':[]}).setdefault('itemListElement',[])
   if not any(x.get('url')=='https://monchai.fr/aides-vignerons.html' for x in items):
    items.insert(0,{'@type':'ListItem','position':1,'name':'Aides aux vignerons : de l’installation à l’arrachage','url':'https://monchai.fr/aides-vignerons.html'})
@@ -187,9 +208,14 @@ for name in ['ressources.html','s-installer-en-viticulture.html','actualites-reg
  write(name,re.sub(r'<script type="application/ld\+json">([\s\S]*?)</script>',actualiser_collection,read(name)))
 # Ajouter au sitemap sans dates de publication inventées pour les autres pages.
 s=read('sitemap.xml')
+for nom in ('ressources.html','s-installer-en-viticulture.html','actualites-reglementaires.html'):
+ s=re.sub(r'(<url>\s*<loc>https://monchai.fr/'+re.escape(nom)+r'</loc>.*?<lastmod>)[^<]+(</lastmod>)',lambda m:m[1]+COLLECTION_MODIFIED+m[2],s,flags=re.S)
 for slug in ['aides-vignerons.html']+[a['article'] for a in AIDES if a['id']!='dja']:
+ modifie=COLLECTION_MODIFIED if slug=='aides-vignerons.html' else next(a['modifie'] for a in AIDES if a['article']==slug)
  if 'https://monchai.fr/'+slug not in s:
-  s=s.replace('</urlset>',f'<url><loc>https://monchai.fr/{slug}</loc><lastmod>{DATE}</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>\n</urlset>')
+  s=s.replace('</urlset>',f'<url><loc>https://monchai.fr/{slug}</loc><lastmod>{modifie}</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>\n</urlset>')
+ elif slug=='aides-vignerons.html' or (SELECTION and any(a['article']==slug and a['id'] in SELECTION for a in AIDES)):
+  s=re.sub(r'(<url>\s*<loc>https://monchai.fr/'+re.escape(slug)+r'</loc>.*?<lastmod>)[^<]+(</lastmod>)',lambda m:m[1]+modifie+m[2],s,flags=re.S)
 write('sitemap.xml',s)
-write('outils/aides/catalogue.json',json.dumps({'date':DATE,'perimetre':'France, principaux dispositifs et exemples territoriaux ; pas une garantie d’exhaustivité locale ni de droit','fiches':AIDES},ensure_ascii=False,indent=2)+'\n')
-print(f'{n} fiches ; {n-1} nouveaux articles ; catalogue, navigation et sitemap générés.')
+write('outils/aides/catalogue.json',json.dumps({'date':DATE,'derniere_veille':COLLECTION_MODIFIED,'perimetre':'France, principaux dispositifs et exemples territoriaux ; pas une garantie d’exhaustivité locale ni de droit','fiches':AIDES},ensure_ascii=False,indent=2)+'\n')
+print(f'{n} fiches ; génération ciblée : {len(SELECTION) if SELECTION else n-1} articles ; catalogue, navigation et sitemap générés.')

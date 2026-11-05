@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#151715">
+  <meta name="description" content="BevHive, le projet Passerelle. Relier les expertises de la filière viticole pour construire ensemble un service unifié pour les vignerons.">
+  <title>BevHive · L'esprit prend forme.</title>
+  <link rel="icon" type="image/svg+xml" href="/proto_bevhive/favicon.svg">
+  <link rel="stylesheet" href="/proto_bevhive/style.css">
+  <link rel="preload" as="image" href="/proto_bevhive/assets/cep-organique-v1.png">
+  <script type="module" src="/proto_bevhive/app.js"></script>
+<meta name="bevhive-api-origin" content="https://bevhive.norbertmoutier.chatgpt.site">
+  <meta name="robots" content="noindex, nofollow">
+</head>
+<body>
+  <a class="skip-link" href="#experience">Aller à l’expérience</a>
+  <div class="site-shell">
+    <header class="header">
+      <a href="#" class="brand" aria-label="BevHive, accueil">
+        <svg viewBox="0 0 44 44" aria-hidden="true"><path d="m16 7 9-5 9 5v11l9 5v11l-9 5-9-5-9 5-9-5V23l9-5z" transform="translate(-3 2)"/><path d="m13 20 9 5 9-5M22 25v11"/></svg>
+        <span>BevHive<span class="brand-dot">.</span></span>
+      </a>
+      <nav aria-label="Navigation principale">
+        <a class="nav-link active" href="#experience">L’expérience <span>01</span></a>
+        <a class="nav-link" href="#concept">Le concept <span>02</span></a>
+      </nav>
+      <span class="header-note"><span class="status-dot"></span> Le projet Passerelle <a id="admin-link" href="https://bevhive.norbertmoutier.chatgpt.site/demandes" hidden>Demandes reçues ↗</a></span>
+    </header>
+
+    <main>
+      <section class="experience" id="experience" aria-labelledby="hero-title">
+        <div class="journey" aria-label="Explorer les métiers de la filière">
+          <div class="journey-heading"><span class="eyebrow">UNE FILIÈRE. DES SAVOIR-FAIRE.</span><span id="journey-current" role="status">Du cep à la rencontre</span><div class="journey-arrows"><button id="stage-prev" aria-label="Métier précédent" disabled>←</button><button id="stage-next" aria-label="Métier suivant">→</button></div></div>
+          <nav class="stage-list" id="stage-list" aria-label="Choisir un métier partenaire"></nav>
+        </div>
+        <div class="hero-copy">
+          <p class="eyebrow" id="hero-eyebrow"><span class="small-line"></span> DES EXPERTISES. UN COLLECTIF.</p>
+          <h1 id="hero-title">L’esprit<br>prend <em>forme.</em></h1>
+          <p class="hero-description" id="hero-description">Des métiers complémentaires.<br>Un service unifié pour les vignerons.<br>Et si nous le construisions ensemble ?</p>
+          <div class="partner-tags" id="partner-tags" aria-label="Expertises recherchées" hidden></div>
+          <p class="connection" id="connection" hidden><span>À construire ensemble</span><span id="connection-copy"></span></p>
+          <button id="open-contact" class="contact-invitation" type="button" aria-haspopup="dialog" aria-controls="contact-dialog"><span>Proposer mon expertise</span><span aria-hidden="true">↗</span></button>
+          <p class="invitation-note">Une première rencontre. Des possibilités à construire.</p>
+          <dialog id="contact-dialog" class="contact-dialog" aria-labelledby="contact-dialog-title">
+            <button type="button" class="dialog-close" data-close-dialog aria-label="Fermer le formulaire">×</button>
+          <form id="partner-form" class="contact-card" novalidate>
+            <div class="contact-card-heading"><span class="eyebrow" id="contact-step-label">01 / VOTRE EXPERTISE</span><h2 id="contact-dialog-title">Votre place dans<br>le <em>collectif.</em></h2><p id="contact-context-description">Choisissez votre métier et les services que vous proposez.</p></div>
+            <div class="contact-fields">
+              <fieldset class="contact-step" data-contact-step="0"><legend class="sr-only">Votre métier et vos services</legend>
+              <label class="field field-full" for="contact-stage">Votre domaine d’expertise <span>requis</span><select id="contact-stage" name="stage" required><option value="">Choisir un métier</option></select></label>
+              <fieldset class="contact-services" id="contact-services"><legend>Les services que vous proposez <span>au moins un</span></legend><div id="contact-service-options"><p class="services-placeholder">Choisissez un métier pour préciser vos services.</p></div><p class="field-error" id="contact-services-error" hidden></p></fieldset>
+              <button type="button" id="contact-next" class="contact-submit field-full"><span>Continuer</span><span aria-hidden="true">→</span></button>
+              <p class="contact-privacy field-full">Étape 1 sur 2 · Votre sélection accompagne votre proposition.</p>
+              </fieldset>
+              <fieldset class="contact-step" data-contact-step="1" hidden><legend class="sr-only">Vos coordonnées et votre proposition</legend>
+              <label class="field" for="contact-name">Votre nom <span>requis</span><input id="contact-name" name="name" autocomplete="name" required minlength="2" maxlength="100" placeholder="Prénom et nom"></label>
+              <label class="field" for="contact-company">Votre structure <span>requis</span><input id="contact-company" name="company" autocomplete="organization" required minlength="2" maxlength="140" placeholder="Entreprise ou collectif"></label>
+              <label class="field field-full" for="contact-email">E-mail professionnel <input id="contact-email" name="email" type="email" autocomplete="email" required maxlength="254" placeholder="vous@entreprise.fr"></label>
+              <input id="contact-website" name="website" type="hidden" value="">
+              <label class="field field-full" for="contact-message">Comment souhaitez-vous contribuer ? <span>requis</span><textarea id="contact-message" name="message" rows="3" required minlength="20" maxlength="2500" placeholder="Votre activité, votre idée de collaboration, les domaines que vous accompagnez…"></textarea></label>
+              <label class="contact-consent field-full"><input type="checkbox" name="consent" required><span>J’accepte d’être recontacté au sujet de ma proposition pour le projet Passerelle.</span></label>
+              <div class="contact-trap" aria-hidden="true"><label>Fax<input name="fax" tabindex="-1" autocomplete="off"></label></div>
+              <div class="contact-status field-full" id="contact-status" role="status" tabindex="-1" hidden></div>
+              <button type="submit" class="contact-submit field-full"><span>Envoyer ma proposition</span><span aria-hidden="true">↗</span></button>
+              <p class="contact-privacy field-full">Vos informations servent à échanger sur votre proposition. Aucune inscription à une newsletter.</p>
+              <button type="button" id="contact-back" class="contact-back field-full">← Revenir à mes services</button>
+              </fieldset>
+            </div>
+          </form>
+          </dialog>
+          <a class="explore-link" id="hero-link" href="#concept"><span class="arrow-circle">↗</span><span id="hero-link-label">Découvrir le projet Passerelle</span></a>
+          <button id="back-to-bottle" class="back-to-bottle" hidden><span aria-hidden="true">←</span> Revenir à la bouteille</button>
+          <div class="edition"><span class="edition-symbol">✳</span><div id="edition-label">PROJET PASSERELLE<span>Relier les savoir-faire.</span></div></div>
+        </div>
+
+        <div class="visual" id="bottle-stage">
+          <div class="visual-glow" aria-hidden="true"></div>
+          <div class="orbit orbit-one" aria-hidden="true"></div>
+          <div class="orbit orbit-two" aria-hidden="true"></div>
+          <span class="visual-coordinate coord-top" aria-hidden="true">FIG. 001 / MATIÈRE VIVANTE</span>
+          <canvas id="bottle-canvas" tabindex="0" role="img" aria-label="Bouteille en 3D composée de 18 000 particules. Faites glisser pour la tourner, ou utilisez les flèches du clavier."></canvas>
+          <div class="service-reveal" id="service-reveal" hidden><div class="service-reveal-heading"><span>SERVICES RECHERCHÉS</span><span data-service-count>0 / 6 services</span><button type="button">Tout afficher</button><button id="open-service-details" type="button" aria-haspopup="dialog" aria-controls="service-details-dialog" aria-label="Lire le détail des services">Détails ↗</button></div><ol aria-label="Services recherchés pour ce métier"></ol><p class="service-reveal-hint">Des savoir-faire à relier.</p></div>
+          <button class="annotation annotation-top origin-trigger" id="origin-trigger" aria-controls="hero-description bottle-canvas"><span>Au commencement,<br>il y a eu le cep.</span><i aria-hidden="true"></i><span class="origin-plus" aria-hidden="true">+</span></button>
+          <div class="annotation annotation-bottom" aria-hidden="true"><i></i><span id="shape-note">18 000 points de vue.</span></div>
+          <div class="visual-bottom"><span class="drag-icon" aria-hidden="true">↔</span><span id="drag-label">Faites glisser pour explorer</span><span class="visual-plus" aria-hidden="true">+</span></div>
+          <div id="reference-feedback" class="reference-error" role="status" hidden><span></span><button id="retry-figure" hidden>Réessayer</button></div>
+          <p id="render-status" class="sr-only" role="status"></p>
+        </div>
+
+        <div class="experiment-index" aria-hidden="true"><span id="figure-number">00</span><i></i><span id="figure-total">14</span></div>
+      </section>
+
+      <section class="atelier" id="atelier" aria-label="Commandes de l’expérience">
+        <div class="atelier-intro"><span class="status-dot"></span><span>À vous de jouer<small>Chaque geste change la perspective.</small></span></div>
+        <fieldset class="palette"><legend>01 <span>La teinte</span></legend><div class="swatches">
+          <button class="swatch selected" data-theme="champagne" aria-label="Teinte Champagne" aria-pressed="true" style="--swatch:#e6dcb5"></button>
+          <button class="swatch" data-theme="jade" aria-label="Teinte Jade" aria-pressed="false" style="--swatch:#9ec9ae"></button>
+          <button class="swatch" data-theme="cobalt" aria-label="Teinte Cobalt" aria-pressed="false" style="--swatch:#9dafe9"></button>
+          <span id="theme-label" aria-live="polite">Champagne</span>
+        </div></fieldset>
+        <div class="dispersion-control"><label for="dispersion">02 <span>La liberté</span><output id="dispersion-value" for="dispersion">0 %</output></label><input id="dispersion" type="range" min="0" max="100" value="0" aria-label="Dispersion des particules" aria-valuetext="0 %, bouteille formée"></div>
+        <button id="scatter" class="scatter-button" aria-pressed="false"><span class="scatter-symbol" aria-hidden="true">⠿</span><span id="scatter-label">Libérer les particules</span><span aria-hidden="true">↗</span></button>
+        <button id="pause" class="pause-button" aria-label="Mettre l’animation en pause" aria-pressed="false"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M7 5v10M13 5v10"/></svg></button>
+      </section>
+
+      <dialog id="concept-dialog" class="info-dialog" aria-labelledby="concept-title"><button type="button" class="dialog-close" data-close-dialog aria-label="Fermer le concept">×</button><section class="concept" id="concept" aria-labelledby="concept-title">
+        <div class="concept-heading"><p class="eyebrow">LE PROJET PASSERELLE / 002</p><h2 id="concept-title">Nos expertises.<br>Un <em>même horizon.</em></h2></div>
+        <div class="concept-copy"><p>Chaque métier accompagne une partie de la vie du vin. Le projet Passerelle a une ambition : rassembler des partenaires de la WineTech et de la filière viticole autour d’un service unifié pour les vignerons.</p><p>Mon Chai apporte le suivi de gestion du domaine. Les partenaires apportent les équipements, les prestations et les expertises métier : du plant à l’expédition, de l’histoire du vin à sa rencontre avec les clients.</p><p>Les métiers présentés sont des invitations à construire ensemble. Les échanges de données, les services et les modalités de collaboration restent à définir avec chaque partenaire. Votre spécialité n’apparaît pas encore ? Le collectif reste ouvert.</p><a href="#experience" class="back-link">Explorer les métiers <span aria-hidden="true">↑</span></a></div>
+      </section></dialog>
+      <dialog id="service-details-dialog" class="info-dialog" aria-labelledby="service-details-title"><button type="button" class="dialog-close" data-close-dialog aria-label="Fermer le détail des services">×</button><p class="eyebrow">LES SAVOIR-FAIRE RECHERCHÉS</p><h2 id="service-details-title">Les services</h2><ol id="service-details-list"></ol></dialog>
+    </main>
+    <footer><a href="#" class="footer-brand">BevHive.</a><span>Relier les expertises. Servir les vignerons.</span><a id="admin-link-footer" href="https://bevhive.norbertmoutier.chatgpt.site/demandes" hidden>Demandes reçues ↗</a><span>PROJET PASSERELLE © 2026</span></footer>
+  </div>
+  <noscript><p class="noscript">Activez JavaScript pour explorer la bouteille en particules.</p></noscript>
+</body>
+</html>

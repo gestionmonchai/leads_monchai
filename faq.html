@@ -31,63 +31,205 @@
 <link rel="icon" type="image/png" href="assets/img/favicon-mon-chai-96.png">
 <meta name="theme-color" content="#7B1E22">
 
-<script type="application/ld+json">
-{
+<script type="application/ld+json">{
   "@context": "https://schema.org",
   "@type": "FAQPage",
   "inLanguage": "fr",
   "mainEntity": [
-    { "@type": "Question", "name": "Qu'est-ce que Mon Chai ?",
-      "acceptedAnswer": { "@type": "Answer", "text": "Un logiciel de gestion viticole en ligne, développé à Rennes. Il centralise la gestion du domaine, de la vigne à la vente : parcelles et registre phytosanitaire, vendanges, cave, stocks, mises, ventes et facturation, œnotourisme, préparation de la DRM, avec un assistant IA en français." } },
-    { "@type": "Question", "name": "À qui s'adresse Mon Chai ?",
-      "acceptedAnswer": { "@type": "Answer", "text": "Aux domaines viticoles, quelle que soit leur taille. Des modules pour cavistes et négociants suivront." } },
-    { "@type": "Question", "name": "Un rapport avec l'application mobile de cave personnelle du même nom ?",
-      "acceptedAnswer": { "@type": "Answer", "text": "Non, aucun. Les applications « Mon Chai » des magasins d'applications servent à gérer une cave personnelle de bouteilles. Ici, sur monchai.fr, il s'agit d'un logiciel professionnel destiné aux domaines viticoles. L'application mobile de Mon Chai, elle, s'appelle Mon Chai Notes : elle sert à préparer vos saisies de terrain, à la voix ou au clavier, et s'installe depuis votre compte Mon Chai." } },
-    { "@type": "Question", "name": "Quelles fonctionnalités sont disponibles aujourd'hui ?",
-      "acceptedAnswer": { "@type": "Answer", "text": "Tous les modules présentés sur le site sont utilisables dès maintenant dans Mon Chai : vigne et vendanges, cave et vinification, stocks et traçabilité, conditionnement et mises, ventes et facturation, DRM et conformité, œnotourisme et l'assistant IA. Trois fonctionnalités annoncées arrivent plus tard : la réservation en ligne des visites œnotouristiques, le suivi de la fermentation malolactique et la transmission des commandes aux transporteurs." } },
-    { "@type": "Question", "name": "Sur quels appareils Mon Chai fonctionne-t-il ?",
-      "acceptedAnswer": { "@type": "Answer", "text": "Dans le navigateur, sur ordinateur et sur tablette. Il n'y a rien à installer, et vos données sont les mêmes sur tous vos postes." } },
-    { "@type": "Question", "name": "Mon Chai gère-t-il la DRM ?",
-      "acceptedAnswer": { "@type": "Answer", "text": "Oui. Les opérations de cave, de mise et de vente alimentent la comptabilité matière, et Mon Chai en déduit un brouillon de DRM (entrées, sorties, pertes et stock final par produit) que vous contrôlez avant de déclarer. Le tableau de bord rappelle l'échéance du mois et l'historique est conservé." } },
-    { "@type": "Question", "name": "Mon Chai dépose-t-il la DRM à ma place ?",
-      "acceptedAnswer": { "@type": "Answer", "text": "Mon Chai produit le fichier au format attendu par votre téléservice : CIEL / DTI+ pour la douane, et selon votre bassin Demat'Vin en Bourgogne, Interloire en Val de Loire, CIVA en Alsace ou CIVC en Champagne. Le dépôt se fait sous vos identifiants, après votre relecture. Le téléversement direct en un clic est en test avec les interprofessions." } },
-    { "@type": "Question", "name": "Le registre phytosanitaire est-il conforme à l'obligation numérique 2027 ?",
-      "acceptedAnswer": { "@type": "Answer", "text": "Oui. Chaque intervention saisie au journal des travaux alimente le registre : parcelle, produit, dose, date. La liste des intrants est synchronisée avec les autorisations de mise sur le marché publiées par l'Anses, vous saisissez donc un produit autorisé avec son numéro d'AMM. Le registre s'exporte en CSV, le format exigé à partir du 1er janvier 2027, et en PDF pour les contrôles. Les délais avant récolte et les délais de rentrée sont suivis." } },
-    { "@type": "Question", "name": "L'IFT est-il calculé ?",
-      "acceptedAnswer": { "@type": "Answer", "text": "Oui, à partir des traitements saisis dans le journal des travaux : produits, doses et surfaces." } },
-    { "@type": "Question", "name": "Quels registres et documents réglementaires Mon Chai tient-il ?",
-      "acceptedAnswer": { "@type": "Answer", "text": "La traçabilité viticole, le cahier de culture et le registre phytosanitaire, alimentés par vos saisies et exportables en CSV et en PDF. Mon Chai suit aussi les codes INAO, les documents de circulation (DAE, DSA, DEB) et les capsules CRD." } },
-    { "@type": "Question", "name": "Êtes-vous prêts pour la facturation électronique ?",
-      "acceptedAnswer": { "@type": "Answer", "text": "La réception des factures électroniques est obligatoire depuis le 1er septembre 2026, l'émission le sera au 1er septembre 2027 pour les TPE-PME. Dans Mon Chai, devis, commandes et factures sont déjà reliés aux clients et aux stocks." } },
-    { "@type": "Question", "name": "Peut-on retracer une bouteille jusqu'à la parcelle ?",
-      "acceptedAnswer": { "@type": "Answer", "text": "Oui, dans les deux sens : de la parcelle aux produits finis, et d'un lot commercial jusqu'aux parcelles d'origine. Chaque lot garde son historique : opérations de cave, intrants, analyses, assemblages." } },
-    { "@type": "Question", "name": "Faut-il ressaisir les informations d'un module à l'autre ?",
-      "acceptedAnswer": { "@type": "Answer", "text": "Non. Les modules sont reliés : une vendange encuvée crée l'entrée en cave, une mise crée les produits finis en stock, une vente met à jour les stocks et la comptabilité matière." } },
-    { "@type": "Question", "name": "Où sont hébergées les données ?",
-      "acceptedAnswer": { "@type": "Answer", "text": "En France, chez OVHcloud à Roubaix, avec des sauvegardes régulières et un accès protégé." } },
-    { "@type": "Question", "name": "À qui appartiennent les données ? Peut-on les récupérer ?",
-      "acceptedAnswer": { "@type": "Answer", "text": "Elles vous appartiennent. Vous pouvez les exporter à tout moment en CSV et en PDF, gratuitement." } },
-    { "@type": "Question", "name": "Que se passe-t-il si j'arrête Mon Chai ?",
-      "acceptedAnswer": { "@type": "Answer", "text": "L'abonnement est sans engagement : vous arrêtez quand vous voulez et vous repartez avec vos données exportées dans des formats standards." } },
-    { "@type": "Question", "name": "Que peut faire l'assistant IA ? Mes données restent-elles confidentielles ?",
-      "acceptedAnswer": { "@type": "Answer", "text": "Il répond en français à des questions sur les données de votre domaine : stocks restants, historique d'un lot, volumes en cuve. Il n'accède qu'aux données de votre domaine, qui restent votre propriété." } },
-    { "@type": "Question", "name": "Comment fonctionne l’essai gratuit ?",
-      "acceptedAnswer": { "@type": "Answer", "text": "Pour toute inscription jusqu’au 31 octobre 2026, vous testez gratuitement le logiciel jusqu'au 31 décembre 2026, sans moyen de paiement. À partir du 1er novembre, l'inscription ouvre 30 jours d'essai gratuit. Le transfert de données, une heure de formation, un webinaire de prise en main et l'assistance sous 24 h ouvrées sont inclus." } },
-    { "@type": "Question", "name": "Peut-on importer nos données existantes ?",
-      "acceptedAnswer": { "@type": "Answer", "text": "Oui. Nous faisons le transfert avec vous, depuis vos fichiers Excel ou CSV ou depuis vos outils actuels. Cette prestation de 300 € HT est offerte pour toute inscription jusqu'au 31 décembre 2026." } },
-    { "@type": "Question", "name": "Quel accompagnement proposez-vous au démarrage ?",
-      "acceptedAnswer": { "@type": "Answer", "text": "Transfert de vos données, une heure de formation individuelle, un webinaire de prise en main et une assistance dédiée. À partir du 1er janvier 2027, la formation et la reprise de données restent disponibles en prestations ponctuelles." } },
-    { "@type": "Question", "name": "Combien coûte Mon Chai ?",
-      "acceptedAnswer": { "@type": "Answer", "text": "Offre de lancement : gratuit jusqu'au 31 décembre 2026 pour toute inscription jusqu’au 31 octobre 2026. À partir du 1er novembre, 30 jours d'essai gratuit sans carte bancaire. Ensuite, 59 € HT par mois, tout inclus, sans engagement. La maintenance, les mises à jour et l'assistance sont comprises dans l'abonnement. Le paiement annuel à 590 € HT comprend deux mois offerts." } },
-    { "@type": "Question", "name": "Combien d'utilisateurs sont inclus ?",
-      "acceptedAnswer": { "@type": "Answer", "text": "Deux. Chaque utilisateur supplémentaire coûte 15 € HT par mois." } },
-    { "@type": "Question", "name": "Y a-t-il un engagement ou des frais cachés ?",
-      "acceptedAnswer": { "@type": "Answer", "text": "Non. L'abonnement est mensuel et résiliable à tout moment. Seules la formation et la reprise de données sont facturées à part, en prestations ponctuelles. L'export de vos données est gratuit." } },
-    { "@type": "Question", "name": "Qui est derrière Mon Chai ?",
-      "acceptedAnswer": { "@type": "Answer", "text": "Denis Berthelot, qui a passé plusieurs années dans les logiciels de gestion viticole, et Laura Hallais, qui développe l'expérience utilisateur, le design et l'accompagnement des domaines. Mon Chai est développé à Rennes, membre de La WineTech et du Poool." } }
+    {
+      "@type": "Question",
+      "name": "Qu'est-ce que Mon Chai ?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Un logiciel de gestion viticole en ligne, développé à Rennes. Il centralise la gestion du domaine, de la vigne à la vente : parcelles et registre phytosanitaire, vendanges, cave, stocks, mises, ventes et facturation, œnotourisme, préparation de la DRM, avec un assistant IA en français."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "À qui s'adresse Mon Chai ?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Aux domaines viticoles, quelle que soit leur taille. Des modules pour cavistes et négociants suivront."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Un rapport avec l'application mobile de cave personnelle du même nom ?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Non, aucun. Les applications « Mon Chai » des magasins d'applications servent à gérer une cave personnelle de bouteilles. Ici, sur monchai.fr, il s'agit d'un logiciel professionnel destiné aux domaines viticoles. L'application mobile de Mon Chai, elle, s'appelle Mon Chai Notes : elle sert à préparer vos saisies de terrain, à la voix ou au clavier, et s'installe depuis votre compte Mon Chai."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Quelles fonctionnalités sont disponibles aujourd'hui ?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Tous les modules présentés sur le site sont utilisables dès maintenant dans Mon Chai : vigne et vendanges, cave et vinification, stocks et traçabilité, conditionnement et mises, ventes et facturation, DRM et conformité, œnotourisme et l'assistant IA. Trois fonctionnalités annoncées arrivent plus tard : la réservation en ligne des visites œnotouristiques, le suivi de la fermentation malolactique et la transmission des commandes aux transporteurs."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Sur quels appareils Mon Chai fonctionne-t-il ?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Dans le navigateur, sur ordinateur et sur tablette. Il n'y a rien à installer, et vos données sont les mêmes sur tous vos postes."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Mon Chai gère-t-il la DRM ?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Oui. Les opérations de cave, de mise et de vente alimentent la comptabilité matière, et Mon Chai en déduit un brouillon de DRM (entrées, sorties, pertes et stock final par produit) que vous contrôlez avant de déclarer. Le tableau de bord rappelle l'échéance du mois et l'historique est conservé."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Mon Chai dépose-t-il la DRM à ma place ?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Mon Chai produit le fichier au format attendu par votre téléservice : CIEL / DTI+ pour la douane, et selon votre bassin Demat'Vin en Bourgogne, Interloire en Val de Loire, CIVA en Alsace ou CIVC en Champagne. Le dépôt se fait sous vos identifiants, après votre relecture. Le téléversement direct en un clic est en test avec les interprofessions."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Le registre phytosanitaire est-il conforme à l'obligation numérique 2027 ?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Oui. Chaque intervention saisie au journal des travaux alimente le registre : parcelle, produit, dose, date. La liste des intrants est synchronisée avec les autorisations de mise sur le marché publiées par l'Anses, vous saisissez donc un produit autorisé avec son numéro d'AMM. Le registre s'exporte en CSV, le format exigé à partir du 1er janvier 2027, et en PDF pour les contrôles. Les délais avant récolte et les délais de rentrée sont suivis."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "L'IFT est-il calculé ?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Oui, à partir des traitements saisis dans le journal des travaux : produits, doses et surfaces."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Quels registres et documents réglementaires Mon Chai tient-il ?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "La traçabilité viticole, le cahier de culture et le registre phytosanitaire, alimentés par vos saisies et exportables en CSV et en PDF. Mon Chai suit aussi les codes INAO, les documents de circulation (DAE, DSA, DEB) et les capsules CRD."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Êtes-vous prêts pour la facturation électronique ?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "La réception des factures électroniques est obligatoire depuis le 1er septembre 2026, l'émission le sera au 1er septembre 2027 pour les TPE-PME. Dans Mon Chai, devis, commandes et factures sont déjà reliés aux clients et aux stocks."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Peut-on retracer une bouteille jusqu'à la parcelle ?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Oui, dans les deux sens : de la parcelle aux produits finis, et d'un lot commercial jusqu'aux parcelles d'origine. Chaque lot garde son historique : opérations de cave, intrants, analyses, assemblages."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Faut-il ressaisir les informations d'un module à l'autre ?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Non. Les modules sont reliés : une vendange encuvée crée l'entrée en cave, une mise crée les produits finis en stock, une vente met à jour les stocks et la comptabilité matière."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Où sont hébergées les données ?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "En France, chez OVHcloud à Roubaix, avec des sauvegardes régulières et un accès protégé."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "À qui appartiennent les données ? Peut-on les récupérer ?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Elles vous appartiennent. Vous pouvez les exporter à tout moment en CSV et en PDF, gratuitement."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Que se passe-t-il si j'arrête Mon Chai ?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "L'abonnement est sans engagement : vous arrêtez quand vous voulez et vous repartez avec vos données exportées dans des formats standards."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Que peut faire l'assistant IA ? Mes données restent-elles confidentielles ?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Il répond en français à des questions sur les données de votre domaine : stocks restants, historique d'un lot, volumes en cuve. Il n'accède qu'aux données de votre domaine, qui restent votre propriété."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Comment fonctionne l’essai gratuit ?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Vous bénéficiez de 30 jours d’essai gratuit pour tester tout le logiciel sur vos propres données, sans carte bancaire ni engagement. La reprise de données et la formation sont offertes pour toute inscription jusqu’au 31 décembre 2026. Ensuite, l’abonnement est de 59 € HT par mois."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Peut-on importer nos données existantes ?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Oui. Nous faisons le transfert avec vous, depuis vos fichiers Excel ou CSV ou depuis vos outils actuels. Cette prestation de 300 € HT est offerte pour toute inscription jusqu'au 31 décembre 2026."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Quel accompagnement proposez-vous au démarrage ?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Transfert de vos données, une heure de formation individuelle, un webinaire de prise en main et une assistance dédiée. À partir du 1er janvier 2027, la formation et la reprise de données restent disponibles en prestations ponctuelles."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Combien coûte Mon Chai ?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Après les 30 jours d’essai gratuit, vous choisissez librement de poursuivre ou non. L’abonnement est de 59 € HT par mois, sans engagement. Le paiement annuel à 590 € HT comprend deux mois offerts. Voir les tarifs ."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Combien d'utilisateurs sont inclus ?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Deux. Chaque utilisateur supplémentaire coûte 15 € HT par mois."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Y a-t-il un engagement ou des frais cachés ?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Non. L'abonnement est mensuel et résiliable à tout moment. Seules la formation et la reprise de données sont facturées à part, en prestations ponctuelles. L'export de vos données est gratuit."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Qui est derrière Mon Chai ?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Denis Berthelot, qui a passé plusieurs années dans les logiciels de gestion viticole, et Laura Hallais, qui développe l'expérience utilisateur, le design et l'accompagnement des domaines. Mon Chai est développé à Rennes, membre de La WineTech et du Poool."
+      }
+    }
   ]
-}
-</script>
+}</script>
 
 <link rel="stylesheet" href="assets/css/polices.css">
 <link rel="stylesheet" href="assets/css/header.css">
@@ -323,11 +465,11 @@
     <div><p>Il répond en français à des questions sur les données de votre domaine : stocks restants, historique d'un lot, volumes en cuve. Il n'accède qu'aux données de votre domaine, qui restent votre propriété. Le traitement des données est décrit dans la <a href="politique-confidentialite.html">politique de confidentialité</a>.</p></div>
   </details>
 
-  <h2>L’essai gratuit et l’offre de lancement</h2>
+  <h2>L’essai gratuit</h2>
 
   <details>
     <summary>Comment fonctionne l’essai gratuit ?</summary>
-    <div><p>Pour toute inscription jusqu’au 31 octobre 2026, <a href="https://tester.monchai.fr">vous testez gratuitement le logiciel</a> jusqu'au 31 décembre 2026, sans moyen de paiement. À partir du 1<sup>er</sup> novembre, l'inscription ouvre 30 jours d'essai gratuit. Le transfert de données, une heure de formation, un webinaire de prise en main et l'assistance sous 24 h ouvrées sont inclus.</p></div>
+    <div><p>Vous bénéficiez de 30 jours d’essai gratuit pour tester tout le logiciel sur vos propres données, sans carte bancaire ni engagement. La reprise de données et la formation sont offertes pour toute inscription jusqu’au 31 décembre 2026. Ensuite, l’abonnement est de 59 € HT par mois.</p></div>
   </details>
   <details>
     <summary>Peut-on importer nos données existantes ?</summary>
@@ -342,7 +484,7 @@
 
   <details>
     <summary>Combien coûte Mon Chai ?</summary>
-    <div><p>Offre de lancement : gratuit jusqu'au 31 décembre 2026 pour toute inscription jusqu’au 31 octobre 2026. À partir du 1<sup>er</sup> novembre, <a href="essai-gratuit.html">30 jours d'essai gratuit</a> sans carte bancaire. Ensuite, 59 € HT par mois, tout inclus, sans engagement. La maintenance, les mises à jour et l'assistance sont comprises dans l'abonnement. Le paiement annuel à 590 € HT comprend deux mois offerts. Le détail est sur la page <a href="tarifs.html">Tarifs</a>.</p></div>
+    <div><p>Après les 30 jours d’essai gratuit, vous choisissez librement de poursuivre ou non. L’abonnement est de 59 € HT par mois, sans engagement. Le paiement annuel à 590 € HT comprend deux mois offerts. <a href="tarifs.html">Voir les tarifs</a>.</p></div>
   </details>
   <details>
     <summary>Combien d'utilisateurs sont inclus ?</summary>
@@ -362,7 +504,7 @@
 
   <div class="article-cta">
     <p class="article-cta__titre">Essayez sur vos propres données</p>
-    <p>Inscrivez-vous au plus tard le 31 octobre 2026 : Mon Chai est gratuit jusqu'au 31 décembre, reprise de vos données et formation offertes, sans moyen de paiement.</p>
+    <p>Essayez Mon Chai gratuitement pendant 30 jours, sur vos propres données, sans carte bancaire ni engagement.</p>
     <div class="article-cta__actions">
       <a class="article-cta__btn" href="https://tester.monchai.fr">Essayer gratuitement pendant 30 jours</a>
       <a class="article-cta__btn article-cta__btn--contour" href="https://calendar.app.google/bJGuZudhQ7q9ka3T9" target="_blank" rel="noopener">Réserver une démonstration</a>
@@ -376,7 +518,7 @@
       <li><a href="fonctionnalites.html">Toutes les fonctionnalités de Mon Chai</a></li>
       <li><a href="drm-conformite.html">DRM &amp; conformité : comptabilité matière et DTI+</a></li>
       <li><a href="registre-phyto-numerique-2027.html">Registre phytosanitaire numérique : obligatoire au 1ᵉʳ janvier 2027</a></li>
-      <li><a href="tarifs.html">Tarifs et offre de lancement</a></li>
+      <li><a href="tarifs.html">Tarifs et essai gratuit</a></li>
     </ul>
   </section>
 </main>

@@ -12,6 +12,12 @@
   function show(index) {
     var next = (index + slides.length) % slides.length;
     if (next === current) return;
+    // Les affiches des diapositives masquées ne sont pas téléchargées avant
+    // leur sélection. Le premier média et les liens sans JS restent natifs.
+    slides[next].querySelectorAll('video[data-poster]').forEach(function (video) {
+      video.poster = video.dataset.poster;
+      video.removeAttribute('data-poster');
+    });
     slides[current].querySelectorAll('video').forEach(function (video) { video.pause(); });
     slides[current].hidden = true;
     slides[next].hidden = false;

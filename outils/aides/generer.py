@@ -73,6 +73,9 @@ cta=re.search(r'<script\b[^>]*src="assets/js/cta-popup\.js[^\"]*"[^>]*></script>
 scripts='<script src="assets/js/header.js"></script><script src="consent.js?v=20261029-ga4"></script>'+cta+'<script src="assets/js/documents-legaux.js?v=20261028-footer" defer></script>'
 
 def page(slug,title,description,content,collection=False):
+ seo=next((a.get('seo',{}) for a in AIDES if a['article']==slug),{})
+ titre_seo=seo.get('titre',title)
+ description=seo.get('description',description)
  header=re.sub(r' aria-current="page"','',body_header)
  header=header.replace(f'href="{slug}"',f'href="{slug}" aria-current="page"',1)
  image='assets/img/editorial/aides-viticoles-photo-2026.jpg' if collection else 'assets/img/pages/vigne-vendanges.jpg'
@@ -81,15 +84,15 @@ def page(slug,title,description,content,collection=False):
  if collection: schema['dateModified']=COLLECTION_MODIFIED
  elif slug in {a['article'] for a in AIDES}:
   fiche=next(a for a in AIDES if a['article']==slug)
-  schema.update(datePublished=fiche['publie'],dateModified=fiche['modifie'])
+  schema.update(datePublished=fiche['publie'],dateModified=max(fiche['modifie'],seo.get('date',fiche['modifie'])))
  if collection:
   schema['mainEntity']={'@type':'ItemList','itemListElement':[{'@type':'ListItem','position':i+1,'name':a['titre'],'url':'https://monchai.fr/'+a['article']} for i,a in enumerate(AIDES)]}
  else: schema['wordCount']=len(re.sub('<[^>]+>',' ',content).split())
  head=f'''<!DOCTYPE html><html lang="fr"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>{e(title)} | Mon Chai</title><meta name="description" content="{e(description)}">
+<title>{e(titre_seo)} | Mon Chai</title><meta name="description" content="{e(description)}">
 <meta name="robots" content="index, follow, max-image-preview:large"><link rel="canonical" href="https://monchai.fr/{slug}">
-<meta property="og:type" content="{'website' if collection else 'article'}"><meta property="og:title" content="{e(title)}"><meta property="og:description" content="{e(description)}"><meta property="og:url" content="https://monchai.fr/{slug}"><meta property="og:locale" content="fr_FR"><meta property="og:site_name" content="Mon Chai"><meta property="og:image" content="https://monchai.fr/{image}"><meta property="og:image:alt" content="{image_alt}">
+<meta property="og:type" content="{'website' if collection else 'article'}"><meta property="og:title" content="{e(titre_seo)}"><meta property="og:description" content="{e(description)}"><meta property="og:url" content="https://monchai.fr/{slug}"><meta property="og:locale" content="fr_FR"><meta property="og:site_name" content="Mon Chai"><meta property="og:image" content="https://monchai.fr/{image}"><meta property="og:image:alt" content="{image_alt}">
 <link rel="icon" type="image/png" href="assets/img/logo_mon_chai.png"><meta name="theme-color" content="#7B1E22">
 <link rel="stylesheet" href="assets/css/polices.css"><link rel="stylesheet" href="assets/css/header.css"><link rel="stylesheet" href="assets/css/actus.css"><link rel="stylesheet" href="assets/css/couts-editorial.css"><link rel="stylesheet" href="assets/css/footer-commun.css?v=20261028-footer"><link rel="stylesheet" href="assets/css/aides.css?v={'20261105-veille' if collection else '20261028'}">
 <script type="application/ld+json">{json.dumps(schema,ensure_ascii=False).replace('</','< /')}</script>
@@ -107,10 +110,11 @@ def detail(a):
  sections=[(ident,titre,a[champ],reference) for (ident,champ,reference),titre in zip([('beneficiaires','beneficiaires',0),('soutien','soutien',0),('demarche','demarche',0),('vigilance','vigilance',None),('cas-domaine','exemple',None)],perso['titres'])]
  text=' '.join(a[k] for k in ('resume','beneficiaires','soutien','demarche','vigilance','exemple'))
  minutes=max(3,math.ceil((len(text.split())+180)/220))
+ presentation=(' · Présentation mise à jour le '+date_fr(a['seo']['date'])) if a.get('seo') else ''
  c=f'''<main class="article article-couts aide-detail" id="contenu" tabindex="-1">
 <nav class="article__ariane" aria-label="Fil d’Ariane"><a href="index.html">Accueil</a> › <a href="aides-vignerons.html">Aides aux vignerons</a> › {e(ETAPES[a['etape']][1])}</nav>
 <p class="aide-kicker">{e(ETAPES[a['etape']][1])} · {e(TYPES[a['type']])}</p>
-<h1>{e(a['titre'])}</h1><p class="aide-meta">Par <a href="index.html#apropos">Mon Chai</a> · Publié le <time datetime="{publie}">{date_fr(publie)}</time> · Mis à jour le <time datetime="{modifie}">{date_fr(modifie)}</time> · {minutes} min de lecture</p><p class="article__chapo">{e(a['resume'])}</p>
+<h1>{e(a['titre'])}</h1><p class="aide-meta">Par <a href="index.html#apropos">Mon Chai</a> · Publié le <time datetime="{publie}">{date_fr(publie)}</time> · Mis à jour le <time datetime="{modifie}">{date_fr(modifie)}</time> · {minutes} min de lecture{presentation}</p><p class="article__chapo">{e(a['resume'])}</p>
 <aside class="aide-repere" aria-label="Situation vérifiée du dispositif"><p class="aide-statut aide-statut--{a['statut']}">{e(STATUTS[a['statut']])}</p><p><strong>Calendrier :</strong> {e(a['calendrier'])}</p><p><strong>Territoire :</strong> {e(territoire(a))}</p><p><strong>Financeur / gestionnaire :</strong> {e(a['financeur'])}</p><p>Repères du dispositif vérifiés le {date_fr(a['verifie'])}. Confirmez l’ouverture et les règles actuelles auprès de l’instructeur avant toute démarche. <a href="#sources">Lire les sources primaires</a>.</p></aside>
 <nav class="article-sommaire" aria-label="Sommaire de la fiche"><strong>Dans cette fiche</strong><ol>'''+''.join(f'<li><a href="#{i}">{e(t)}</a></li>' for i,t,_,_ in sections)+'''<li><a href="#preparer">Les questions à emporter</a></li><li><a href="#sources">Sources et date de contrôle</a></li></ol></nav>'''
  for ident,titre,par,index in sections:
@@ -211,7 +215,7 @@ s=read('sitemap.xml')
 for nom in ('ressources.html','s-installer-en-viticulture.html','actualites-reglementaires.html'):
  s=re.sub(r'(<url>\s*<loc>https://monchai.fr/'+re.escape(nom)+r'</loc>.*?<lastmod>)[^<]+(</lastmod>)',lambda m:m[1]+COLLECTION_MODIFIED+m[2],s,flags=re.S)
 for slug in ['aides-vignerons.html']+[a['article'] for a in AIDES if a['id']!='dja']:
- modifie=COLLECTION_MODIFIED if slug=='aides-vignerons.html' else next(a['modifie'] for a in AIDES if a['article']==slug)
+ modifie=COLLECTION_MODIFIED if slug=='aides-vignerons.html' else next(max(a['modifie'],a.get('seo',{}).get('date',a['modifie'])) for a in AIDES if a['article']==slug)
  if 'https://monchai.fr/'+slug not in s:
   s=s.replace('</urlset>',f'<url><loc>https://monchai.fr/{slug}</loc><lastmod>{modifie}</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>\n</urlset>')
  elif slug=='aides-vignerons.html' or (SELECTION and any(a['article']==slug and a['id'] in SELECTION for a in AIDES)):

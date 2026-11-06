@@ -19,6 +19,10 @@
   document.body.appendChild(dialog);
   var titre = dialog.querySelector('#mc-legal-title');
   var complet = dialog.querySelector('a');
+  // Destination réelle dès la création du dialogue, y compris avant son
+  // ouverture. Elle sera remplacée par celle du document sélectionné.
+  var confidentialite = document.querySelector('footer a[href*="politique-confidentialite.html"]');
+  complet.href = confidentialite ? confidentialite.href : new URL('/politique-confidentialite.html', location.origin).href;
   var fermer = dialog.querySelector('button');
   var corps = dialog.querySelector('.mc-legal-dialog__body');
   complet.textContent = t[1] + ' ↗';

@@ -43,7 +43,7 @@
 
 <!-- SEO -->
 <title>Mon Chai, logiciel de gestion viticole | De la vigne à la vente</title>
-<meta name="description" content="Mon Chai, logiciel viticole : DRM prête pour le DTI+, registre de cave, registre phyto 2027, AMM de l'Anses à jour. Essai gratuit, sans carte bancaire.">
+<meta name="description" content="Mon Chai, logiciel de gestion viticole : parcelles, chai, stocks, ventes et DRM dans un seul outil. Essai gratuit 30 jours, sans carte bancaire.">
 <meta name="keywords" content="gestion viticole, logiciel viticole, chai, vin, viticulture, parcelles, vendanges, cuverie, stocks, DRM, traçabilité, Mon Chai">
 <meta name="author" content="Berthelot &amp; Hallais">
 <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
@@ -129,15 +129,14 @@
 
 <!-- Ressources du premier écran : une image adaptée à chaque viewport et
      uniquement les deux fontes visibles au-dessus de la ligne de flottaison. -->
-<link rel="preload" as="image" href="assets/img/hero-mobile-20260720.webp" type="image/webp" media="(max-width:1199px)" fetchpriority="high">
-<link rel="preload" as="image" href="assets/img/hero-desktop-20260720.webp" type="image/webp" media="(min-width:1200px)" fetchpriority="high">
-<link rel="preload" as="font" href="assets/fonts/Inter-Latin-20260720.woff2" type="font/woff2" crossorigin>
-<link rel="preload" as="font" href="assets/fonts/PlayfairDisplay-Latin-20260720.woff2" type="font/woff2" crossorigin>
-<!-- Polices découvertes sinon en cascade (page puis CSS puis police) :
-     Manrope (modules), Poppins 600 (header) et, dès 900 px, Poppins 500
-     (liens du header). -->
-<link rel="preload" as="font" href="assets/fonts/Manrope-Latin-20260720.woff2" type="font/woff2" crossorigin>
-<link rel="preload" as="font" href="assets/fonts/poppins-600-normal-latin.woff2" type="font/woff2" crossorigin>
+<link rel="preload" as="image" href="assets/img/hero-mobile-20261107.avif" type="image/avif" media="(max-width:1199px)" fetchpriority="high">
+<link rel="preload" as="image" href="assets/img/hero-desktop-20261107.avif" type="image/avif" media="(min-width:1200px)" fetchpriority="high">
+<link rel="preload" as="font" href="assets/fonts/Inter-Latin-400-700-20261107.woff2" type="font/woff2" crossorigin>
+<link rel="preload" as="font" href="assets/fonts/PlayfairDisplay-Latin-400-500-20261107.woff2" type="font/woff2" crossorigin>
+<!-- Sur téléphone, seuls Inter et Playfair sont visibles au premier écran.
+     Les liens du header utilisent Poppins à partir de 900 px ; Manrope est
+     découvert normalement dans les modules, sans concurrencer le média LCP. -->
+<link rel="preload" as="font" href="assets/fonts/poppins-600-normal-latin.woff2" type="font/woff2" crossorigin media="(min-width:900px)">
 <link rel="preload" as="font" href="assets/fonts/poppins-500-normal-latin.woff2" type="font/woff2" crossorigin media="(min-width:900px)">
 <!-- data-lot : au déploiement, ces feuilles sont fusionnées et intégrées à la
      page pour les écrans de moins de 1200 px (outils/construire). En local,
@@ -157,13 +156,13 @@
   if (!document.fonts || !document.fonts.load) return;
   h.classList.add('polices-attente');
   function montrer(){ h.classList.remove('polices-attente'); }
-  Promise.all(['500 40px "Playfair Display"', '400 15px Inter', '700 15px Inter', '700 15px Manrope']
+  Promise.all(['500 40px "Playfair Display"', '400 15px Inter', '700 15px Inter']
     .map(function (f) { return document.fonts.load(f); })).then(montrer, montrer);
   setTimeout(montrer, 1000);
 })(document.documentElement);</script>
-<link rel="stylesheet" href="assets/css/footer-commun.css?v=20261028-footer">
+<link rel="stylesheet" href="assets/css/footer-commun.css" data-lot="accueil">
 
-<script src="assets/js/analytics.js?v=20261029" data-gtm></script>
+<script src="assets/js/analytics.js?v=20261029" data-gtm defer></script>
 </head>
 <body>
 
@@ -322,7 +321,7 @@
             <div class="nouveautes-carrousel__diapo" id="nouveaute-notes" role="group" aria-roledescription="diapositive" aria-label="2 sur 3 : saisir avec Mon Chai Notes" hidden>
               <h2>Saisissez vos données avec Mon Chai Notes</h2>
               <div class="nouveautes-carrousel__media">
-                <video class="mobile-demo__video mobile-demo__video--notes" controls playsinline preload="none" width="720" height="1440" poster="assets/img/demo-mon-chai-notes.webp" aria-label="Présentation de Mon Chai Notes sur Android" aria-describedby="demo-notes-resume demo-notes-deroule">
+                <video class="mobile-demo__video mobile-demo__video--notes" controls playsinline preload="none" width="720" height="1440" data-poster="assets/img/demo-mon-chai-notes.webp" aria-label="Présentation de Mon Chai Notes sur Android" aria-describedby="demo-notes-resume demo-notes-deroule">
                   <source src="assets/video/mon-chai-notes.mp4" type="video/mp4">
                   <a href="assets/video/mon-chai-notes.mp4">Ouvrir la vidéo Mon Chai Notes</a>.
                 </video>
@@ -334,7 +333,7 @@
             <div class="nouveautes-carrousel__diapo" id="nouveaute-annonces" role="group" aria-roledescription="diapositive" aria-label="3 sur 3 : créer vos annonces de recrutement" hidden>
               <h2>Créez vos annonces</h2>
               <div class="nouveautes-carrousel__media">
-                <video class="mobile-demo__video mobile-demo__video--annonces" controls playsinline preload="none" width="720" height="1200" poster="assets/img/demo-annonces.webp" aria-label="Créer une annonce de recrutement dans Mon Chai" aria-describedby="demo-annonces-resume demo-annonces-deroule">
+                <video class="mobile-demo__video mobile-demo__video--annonces" controls playsinline preload="none" width="720" height="1200" data-poster="assets/img/demo-annonces.webp" aria-label="Créer une annonce de recrutement dans Mon Chai" aria-describedby="demo-annonces-resume demo-annonces-deroule">
                   <source src="assets/video/creez-vos-annonces.mp4" type="video/mp4">
                   <a href="assets/video/creez-vos-annonces.mp4">Ouvrir la vidéo de création d’annonce</a>.
                 </video>

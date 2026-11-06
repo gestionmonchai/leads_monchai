@@ -675,3 +675,19 @@ for ajout in VEILLE['ajouts']:
  fiche = {k: v for k, v in ajout.items() if k != 'personnalisation'}
  fiche.update(publie=VEILLE['date'], modifie=VEILLE['date'], verifie=VEILLE['date'])
  AIDES.append(fiche)
+
+# Retouche de présentation du 7 novembre : ne renouvelle pas la vérification
+# réglementaire ni le calendrier. Conserver ces métadonnées à la régénération.
+SEO_PRESENTATION = {
+ 'pve-nouvelle-aquitaine': {
+  'titre': 'PVE Nouvelle-Aquitaine 2026-2027 : investissements',
+  'description': 'Plan végétal environnement (PVE) en Nouvelle-Aquitaine : investissements viticoles, périmètre et sources de l’appel 2026-2027. Conditions à vérifier.',
+  'date': '2026-11-07'},
+ 'acja': {
+  'titre': 'ACJA PAC : complément pour les jeunes agriculteurs',
+  'description': 'ACJA dans la PAC : complément pour les jeunes agriculteurs, distinct de la DJA. Retrouvez les conditions et références avant de préparer votre demande.',
+  'date': '2026-11-07'}
+}
+for fiche in AIDES:
+ if fiche['id'] in SEO_PRESENTATION:
+  fiche['seo'] = SEO_PRESENTATION[fiche['id']]

@@ -6,7 +6,7 @@
  */
 @font-face{
   font-family:"Inter";
-  src:url("assets/fonts/Inter-Latin-20260720.woff2") format("woff2");
+  src:url("assets/fonts/Inter-Latin-400-700-20261107.woff2") format("woff2");
   font-style:normal;
   font-weight:400 700;
   font-display:swap;
@@ -20,7 +20,7 @@
 }
 @font-face{
   font-family:"Playfair Display";
-  src:url("assets/fonts/PlayfairDisplay-Latin-20260720.woff2") format("woff2");
+  src:url("assets/fonts/PlayfairDisplay-Latin-400-500-20261107.woff2") format("woff2");
   font-style:normal;
   font-weight:400 500;
   font-display:swap;
@@ -346,7 +346,7 @@ body{
   .mobile-hero{
     position:relative; min-height:calc(100svh - 72px); padding:clamp(96px,16vh,150px) 22px 42px;
     display:flex; align-items:flex-end; overflow:hidden;
-    background:url("assets/img/hero-mobile-20260720.webp") 61% center/cover no-repeat;
+    background:url("assets/img/hero-mobile-20260720.webp") 61% center/cover no-repeat;background-image:image-set(url("assets/img/hero-mobile-20261107.avif") type("image/avif"),url("assets/img/hero-mobile-20260720.webp") type("image/webp"));
   }
   .mobile-hero__veil{ position:absolute; inset:0; background:linear-gradient(180deg,rgba(31,16,12,.42) 0%,rgba(42,18,17,.34) 38%,rgba(42,18,17,.88) 100%); }
   .mobile-hero__content{ position:relative; z-index:1; max-width:560px; color:#fff; }
@@ -738,7 +738,7 @@ body{
     display:flex;
     align-items:center;
     overflow:hidden;
-    background:url("assets/img/hero-desktop-20260720.webp") center/cover no-repeat;
+    background:url("assets/img/hero-desktop-20260720.webp") center/cover no-repeat;background-image:image-set(url("assets/img/hero-desktop-20261107.avif") type("image/avif"),url("assets/img/hero-desktop-20260720.webp") type("image/webp"));
   }
 
   .mobile-hero__veil {
@@ -1701,7 +1701,7 @@ body{
   /* Hero : véritable canvas HTML 1920 × 1200, scalé sans déformer le DOM. */
   .mobile-hero{ position:relative; height:calc(100vw * 1200 / 1920); min-height:0; padding:0; display:block; overflow:hidden; background:none; }
   .hero-desktop-canvas{ position:absolute; top:0; left:0; display:block; width:1920px; height:1200px; transform-origin:top left; transform:scale(var(--desktop-scale)); }
-  .mobile-hero__veil{ position:absolute; left:0; top:0; z-index:1; width:2141px; height:1428px; background:url("assets/img/hero-desktop-20260720.webp") center/100% 100% no-repeat; transform:scaleX(-1); }
+  .mobile-hero__veil{ position:absolute; left:0; top:0; z-index:1; width:2141px; height:1428px; background:url("assets/img/hero-desktop-20260720.webp") center/100% 100% no-repeat;background-image:image-set(url("assets/img/hero-desktop-20261107.avif") type("image/avif"),url("assets/img/hero-desktop-20260720.webp") type("image/webp")); transform:scaleX(-1); }
   .mobile-hero__content{ position:absolute; inset:0; z-index:2; display:block; width:1920px; max-width:none; height:1200px; color:var(--encre); }
   .hero-copy{ position:absolute; left:136px; top:273px; width:824px; height:775px; padding:0; border:0; border-radius:22px; background:rgba(255,253,252,.94); box-shadow:0 4px 4px rgba(0,0,0,.13); backdrop-filter:none; transform:scale(.95); transform-origin:top left; }
   .mobile-eyebrow,
@@ -2212,7 +2212,7 @@ body{
     display:grid !important;
     align-items:center !important;
     overflow:hidden;
-    background:url("assets/img/hero-mobile-20260720.webp") center/cover no-repeat;
+    background:url("assets/img/hero-mobile-20260720.webp") center/cover no-repeat;background-image:image-set(url("assets/img/hero-mobile-20261107.avif") type("image/avif"),url("assets/img/hero-mobile-20260720.webp") type("image/webp"));
   }
   .hero-desktop-canvas,
   .mobile-hero__content{
@@ -3116,6 +3116,16 @@ html.fonds-differes .mobile-site main > section:not(.fond-pret):not(.mobile-hero
 html.fonds-differes .mobile-site main > section:not(.fond-pret):not(.mobile-hero) *::before,
 html.fonds-differes .mobile-site main > section:not(.fond-pret):not(.mobile-hero) *::after{
   background-image:none !important;
+}
+
+/* Les fonds différés retirent aussi les dégradés : du texte blanc doit
+   conserver un fond sombre avant le chargement de sa section. */
+html.fonds-differes #mobile-assistant:not(.fond-pret) .mobile-ai__entete,
+html.fonds-differes #mobile-assistant:not(.fond-pret) .mobile-ai__answer{
+  background-color:#7B1E22 !important;
+}
+html.fonds-differes #mobile-apropos:not(.fond-pret) .mobile-citation{
+  background-color:#471318 !important;
 }
 
 /* Sections sous le premier écran : mises en page seulement à leur approche

@@ -308,7 +308,7 @@
     <xhtml:link rel="alternate" hreflang="de" href="https://monchai.fr/de/actualites-ventes-facturation.html" />
     <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://monchai.fr/zh/actualites-ventes-facturation.html" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://monchai.fr/actualites-ventes-facturation.html" />
-    <lastmod>2026-09-01</lastmod>
+    <lastmod>2026-11-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -1023,7 +1023,7 @@
     <xhtml:link rel="alternate" hreflang="de" href="https://monchai.fr/de/" />
     <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://monchai.fr/zh/" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://monchai.fr/" />
-    <lastmod>2026-08-31</lastmod>
+    <lastmod>2026-11-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
@@ -1951,4 +1951,5 @@
   <url><loc>https://monchai.fr/mon-chai-vinitech-sifel-2026.html</loc><lastmod>2026-11-03</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
 <url><loc>https://monchai.fr/aide-dephy-ferme-viticulture.html</loc><lastmod>2026-11-05</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
 <url><loc>https://monchai.fr/aide-rearmement-casi-viticulture.html</loc><lastmod>2026-11-05</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://monchai.fr/facturation-electronique-actualites-mon-chai.html</loc><lastmod>2026-11-06</lastmod></url>
 </urlset>

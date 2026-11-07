@@ -25,32 +25,72 @@
   document.head.appendChild(cadeauVinitech);
 
   var CONTEXTES = [
-    ['recolte', /^declaration-recolte(?:-|\.)/, 'Votre déclaration de récolte dans Mon Chai', 'Regroupez vos vendanges et préparez votre récapitulatif de récolte dans un seul outil.'],
-    ['tarifs', /^tarifs\.html$/, 'Découvrez les économies possibles avec Mon Chai', 'Comparez le coût de vos outils actuels avec une gestion réunie dans Mon Chai, selon les besoins de votre domaine.'],
-    ['drm', /^(drm-|dae-daes-|actualites-douane-)/, 'Votre DRM se prépare au fil du travail', 'Retrouvez vos mouvements de cave et préparez votre déclaration mensuelle dans Mon Chai.'],
-    ['vigne', /^(vigne-vendanges|cahier-de-culture|registre-phyto|ift-viticulture|actualites-vigne)/, 'De vos parcelles à vos vendanges', 'Parcelles, interventions et réceptions de vendanges : retrouvez le suivi de votre vigne dans Mon Chai.'],
-    ['cave', /^(cave-vinification|registre-de-cave|actualites-cave)/, 'Votre cave, un suivi clair au quotidien', 'Retrouvez vos cuves, vos lots et vos opérations de vinification dans un même logiciel.'],
-    ['stocks', /^(stocks-tracabilite|tracabilite-lots)/, 'Savez-vous où en sont vos stocks ?', 'Suivez vos vins, vos bouteilles et leurs mouvements dans Mon Chai.'],
-    ['mises', /^(mises-conditionnement|actualites-etiquetage|ppwr-vin)/, 'Préparez votre prochaine mise dans Mon Chai', 'Reliez votre mise en bouteille aux lots, aux matières sèches et au suivi des stocks.'],
-    ['ventes', /^(ventes-clients|vente-directe|facturation-electronique|actualites-ventes)/, 'De votre client à votre facture', 'Retrouvez vos clients, vos ventes et vos documents commerciaux dans un seul outil.'],
-    ['couts', /^(cout-|cout-de-|charges-indirectes|marge-vin|investir-leviers|activations-locales)/, 'Comprenez le coût de vos vins', 'Rassemblez vos données de production et de vente pour suivre vos coûts et vos marges dans Mon Chai.'],
-    ['oenotourisme', /^(oenotourisme|actualites-oenotourisme)/, 'Reliez vos dégustations à vos ventes', 'Découvrez comment Mon Chai accompagne vos dégustations et le suivi de vos clients.'],
-    ['assistant', /^(ia-au-service|ce-que-votre-assistant)/, 'Un assistant pour vous guider dans Mon Chai', 'Posez votre question et retrouvez les étapes pour avancer dans le logiciel.'],
-    ['migration', /^(changer-de-logiciel|choisir-logiciel)/, 'Et si vous passiez à Mon Chai ?', 'Échangeons sur vos outils, vos données à reprendre et les besoins de votre domaine.'],
-    ['aides', /^(aide-|aides-|dja-|s-installer)/, 'Un outil simple pour gérer votre domaine', 'Découvrez Mon Chai et échangeons sur votre organisation et vos besoins.']
+    ['recolte', /^declaration-recolte(?:-|\.)/, 'Votre récolte ne devrait pas vous prendre la soirée.', 'Vos vendanges sont déjà saisies ? Mettons l’IA au défi de préparer votre récapitulatif, puis contrôlons-le ensemble.'],
+    ['tarifs', /^tarifs\.html$/, 'Et si un seul logiciel en remplaçait plusieurs ?', 'Mettons vos abonnements actuels face au prix de Mon Chai. Comparons ce que vous pouvez réellement remplacer.'],
+    ['drm', /^(drm-|dae-daes-|actualites-douane-)/, 'La DRM revient chaque mois. Les ressaisies aussi ?', 'Mouvements de cave, stocks, données déclaratives : partons du travail déjà enregistré pour préparer votre DRM.'],
+    ['vigne', /^(vigne-vendanges|cahier-de-culture|registre-phyto|ift-viticulture|actualites-vigne)/, 'La journée dans les vignes. La soirée à ressaisir ?', 'Réunissez interventions, parcelles et vendanges. Mesurons le temps que votre organisation peut récupérer sur sa gestion.'],
+    ['cave', /^(cave-vinification|registre-de-cave|actualites-cave)/, 'Votre vin avance. Vos tableaux devraient suivre.', 'Cuves, lots, opérations : retrouvons vos informations sans les recopier d’un fichier à l’autre.'],
+    ['stocks', /^(stocks-tracabilite|tracabilite-lots)/, 'Vos stocks : une question. Pas une chasse aux fichiers.', 'Voyez Claude interroger les stocks de Mon Chai. Ensuite, testons vos propres questions sur les données de votre domaine.'],
+    ['mises', /^(mises-conditionnement|actualites-etiquetage|ppwr-vin)/, 'Votre prochaine mise, sans trois tableaux à recoller.', 'Lots, matières sèches, bouteilles : relions la préparation de votre mise et le suivi de vos stocks.'],
+    ['ventes', /^(ventes-clients|vente-directe|facturation-electronique|actualites-ventes|recommandation-sociale|vin-multigenerationnel|vin-low-alcool)/, 'Vos factures doivent partir. Pas vos soirées.', 'Du client aux documents de vente, suivons le même dossier sans repartir de zéro à chaque étape.'],
+    ['couts', /^(cout-|cout-de-|charges-indirectes|marge-vin|investir-leviers|activations-locales)/, 'Vos marges méritent mieux qu’un coût approximatif.', 'Production, charges, ventes : réunissons vos données pour comprendre ce que chaque vin vous coûte et vous rapporte.'],
+    ['oenotourisme', /^(oenotourisme|actualites-oenotourisme)/, 'Après la dégustation, gardez le client. Pas la ressaisie.', 'Reliez vos dégustations, vos clients et vos ventes au domaine. Regardons ensemble les tâches qui vous prennent du temps.'],
+    ['assistant', /^(ia-au-service|ce-que-votre-assistant)/, 'Demandez vos données. Pas un nouveau tableau.', 'Dans le film MCP : des stocks, puis des impayés, interrogés avec Claude. À vous de choisir la prochaine question en démonstration.'],
+    ['migration', /^(changer-de-logiciel|choisir-logiciel)/, 'Vos logiciels s’additionnent. Vos factures aussi ?', 'Faisons l’inventaire de vos outils, des données à reprendre et des abonnements que Mon Chai pourrait remplacer.'],
+    ['aides', /^(aide-|aides-|dja-|s-installer)/, 'Chercher une aide prend du temps. Gérer le domaine aussi.', 'Gardez les sources et les conditions de cette fiche pour votre dossier. Voyons séparément comment alléger votre gestion quotidienne.'],
+    ['reglementation', /^(actualites-reglementaires|paquet-vin-europeen)/, 'Le réglementaire bouge. Pas besoin de repartir de zéro.', 'Retrouvez vos opérations et vos documents dans un même outil. Vérifions ensemble ce que votre organisation peut simplifier.'],
+    ['ressources', /^(ressources|faq)\.html$/, 'Une question de gestion ne devrait pas prendre votre soirée.', 'Partons de vos vrais cas : stocks, clients, cave ou documents. Mesurons ce qui peut être simplifié sur votre domaine.']
   ];
   var contexte = CONTEXTES.filter(function (c) { return c[1].test(nom); })[0] ||
-    ['generale', null, 'Et si votre gestion devenait plus simple ?', 'De la vigne à la vente, découvrez un logiciel accessible, construit avec les vignerons.'];
+    ['generale', null, 'Votre journée au domaine ne devrait pas finir dans les tableaux.', 'De la vigne à la vente, réunissez vos données. Puis mettons vos tâches réelles à l’épreuve en démonstration.'];
+
+  var variante = contexte[0];
+  var objectif = /^(tarifs|migration)$/.test(contexte[0]) ? 'budget' : contexte[0] === 'recolte' ? 'recolte' : 'temps';
+  var variantesAides = [
+    ['risques', /aide-(assurance|isn|fmse|secheresse|distillation|msa-difficultes|prets-consolidation|tfnb-sinistre|urgence|rearmement)/, 'Vous gérez déjà la crise. Évitons une couche de ressaisie.', 'Les aides de cette fiche ont leurs propres conditions. Pour vos stocks, opérations et justificatifs, regardons ce qu’une gestion réunie peut vous épargner.', 'temps'],
+    ['installation', /^(dja-|s-installer)|aide-(acja|acre|arce|aita|dpb|installation|nouveaux-agriculteurs|msa-jeunes|tfnb-jeunes|abattement)/, 'Lancez votre domaine. Pas une collection de fichiers.', 'Parcelles, cave, clients, documents : prenez de bonnes habitudes de gestion dès le départ. Mesurons le temps que vous pourriez y consacrer.', 'temps'],
+    ['investissement', /aide-(pve|pcae|investissement|petits-equipements|modernisation|credit-cuma|agences-eau|ademe|hydraulique|plantations|pepinieres|restructuration)/, 'Le matériel coûte assez cher. Vos logiciels aussi ?', 'Votre projet d’équipement et ses aides sont un sujet. Le budget de vos outils de gestion en est un autre : comparons les abonnements remplaçables.', 'budget'],
+    ['emploi', /aide-(apprentissage|tode|remplacement|vivea)/, 'Vos équipes changent. Les informations ne doivent pas se perdre.', 'Interventions, suivis et données du domaine : voyons comment les réunir pour limiter les recherches et les ressaisies.', 'temps'],
+    ['transmission', /aide-(arrachage|arp|fiscalite-transmission|transmission|reorientation)/, 'Votre domaine change. Votre gestion doit suivre.', 'Classez vos opérations et vos données pour préparer la suite. Les droits et conditions de cette fiche restent à vérifier auprès de l’organisme compétent.', 'temps'],
+    ['transition', /aide-(bio|cab|hve|credit|ecoregime|maec|pse|haies|avenir|dephy|tfnb-bio|conseil-rse)/, 'Vos pratiques évoluent. Pas besoin de multiplier les fichiers.', 'Interventions, traçabilité, suivi : partons des données de votre domaine pour identifier les tâches répétées à simplifier.', 'temps'],
+    ['commercial', /aide-(promotion|agrip|assurance-prospection|leader|diversification)/, 'Développez vos ventes. Sans multiplier la ressaisie.', 'Retrouvez clients, ventes, documents et stocks dans Mon Chai. Étudions votre organisation commerciale en démonstration.', 'temps']
+  ];
+  if (contexte[0] === 'aides') {
+    var aide = variantesAides.filter(function (v) { return v[1].test(nom); })[0];
+    if (aide) { contexte = contexte.slice(); contexte[2] = aide[2]; contexte[3] = aide[3]; objectif = aide[4]; variante = 'aides-' + aide[0]; }
+  }
 
   // Les pages traduites gardent une invitation entièrement dans leur langue.
   var TEXTES = {
-    fr: { titre: contexte[2], texte: contexte[3], essai: 'Essayer Mon Chai', demo: 'Demander une démonstration', fermer: 'Fermer cette invitation', note: 'Découvrez Mon Chai à votre rythme.' },
+    fr: { titre: contexte[2], texte: contexte[3], essai: 'Essayer 30 jours', demo: objectif === 'recolte' ? 'Demander ma démo chronométrée' : 'Mesurer mes gains en démo', fermer: 'Fermer cette invitation', note: 'Objectif global à vérifier ensemble en démonstration, selon votre organisation.', objectif: 'Votre objectif : jusqu’à', defi: 'Le défi à chronométrer ensemble', temps: 'par semaine à récupérer sur la gestion du domaine', budget: 'par mois à viser sur vos outils de gestion', annuel: 'Soit jusqu’à 2 400 € sur 12 mois.', recolte: 'pour préparer votre récapitulatif de récolte', limiteRecolte: 'Objectif à tester sur des données déjà saisies. Contrôle et dépôt officiel distincts.', video: 'Voir l’IA en action · 33 s', sujet: 'Le temps de votre domaine compte.' },
     en: { titre: 'Simplify your estate management', texte: 'From vineyard to sales, discover one accessible tool built with winegrowers.', essai: 'Try Mon Chai', demo: 'Request a demonstration', fermer: 'Close this invitation', note: 'Discover Mon Chai at your own pace.' },
     de: { titre: 'Verwalten Sie Ihr Weingut einfacher', texte: 'Vom Weinberg bis zum Verkauf: Entdecken Sie eine zugängliche Software, gemeinsam mit Winzern entwickelt.', essai: 'Mon Chai testen', demo: 'Vorführung anfragen', fermer: 'Diese Einladung schließen', note: 'Entdecken Sie Mon Chai in Ihrem eigenen Tempo.' },
     it: { titre: 'Semplifica la gestione della tua azienda', texte: 'Dalla vigna alla vendita, scopri un software accessibile, sviluppato con i viticoltori.', essai: 'Prova Mon Chai', demo: 'Richiedi una dimostrazione', fermer: 'Chiudi questo invito', note: 'Scopri Mon Chai al tuo ritmo.' },
     zh: { titre: '让酒庄管理更简单', texte: '从葡萄园到销售，了解与葡萄种植者共同打造的实用软件。', essai: '试用 Mon Chai', demo: '申请演示', fermer: '关闭此邀请', note: '按照自己的节奏了解 Mon Chai。' }
   };
   var T = TEXTES[langue] || TEXTES.fr;
+  var OBJECTIFS = {
+    en: {objectif:'Your target: up to',defi:'A challenge to time together',temps:'per week to reclaim across estate management',budget:'per month to target on management tools',annuel:'That is up to €2,400 over 12 months.',recolte:'to prepare your harvest summary',limiteRecolte:'A target to test with data already entered. Review and official submission are separate.',note:'A whole-estate target to assess together against your own organisation.',video:'Watch the AI demo · 33 s',demo:'Measure my gains in a demo',essai:'Try it for 30 days',sujet:'Make time for your estate.'},
+    de: {objectif:'Ihr Ziel: bis zu',defi:'Eine Herausforderung zum gemeinsamen Messen',temps:'pro Woche für die gesamte Betriebsverwaltung zurückgewinnen',budget:'pro Monat bei Ihren Verwaltungsprogrammen als Ziel',annuel:'Das entspricht bis zu 2.400 € in 12 Monaten.',recolte:'zur Vorbereitung Ihrer Ernteübersicht',limiteRecolte:'Ziel zum Testen mit bereits erfassten Daten. Prüfung und amtliche Abgabe erfolgen separat.',note:'Ein betriebsweites Ziel, das wir anhand Ihrer Organisation gemeinsam prüfen.',video:'KI-Demo ansehen · 33 s',demo:'Mein Potenzial in einer Demo messen',essai:'30 Tage testen',sujet:'Zeit für Ihr Weingut.'},
+    it: {objectif:'Il tuo obiettivo: fino a',defi:'Una sfida da cronometrare insieme',temps:'alla settimana da recuperare sulla gestione aziendale',budget:'al mese come obiettivo sui tuoi software gestionali',annuel:'Fino a 2.400 € su 12 mesi.',recolte:'per preparare il riepilogo della vendemmia',limiteRecolte:'Obiettivo da verificare su dati già inseriti. Controllo e invio ufficiale sono separati.',note:'Obiettivo sulla gestione complessiva, da verificare insieme sulla tua organizzazione.',video:'Guarda la demo IA · 33 s',demo:'Misurare i vantaggi in una demo',essai:'Prova per 30 giorni',sujet:'Tempo per la tua azienda.'},
+    zh: {objectif:'您的目标：最多',defi:'一起计时验证的挑战',temps:'每周可争取节省的酒庄整体管理时间',budget:'每月管理软件费用的目标节省金额',annuel:'按12个月计算，目标最高为2,400欧元。',recolte:'用于准备采收汇总',limiteRecolte:'使用已录入的数据共同测试目标。审核与正式申报另行完成。',note:'针对酒庄整体管理的目标，需要结合您的组织方式共同验证。',video:'观看AI演示 · 33秒',demo:'预约演示并衡量实际收益',essai:'试用30天',sujet:'把时间留给您的酒庄。'}
+  };
+  if (OBJECTIFS[langue]) Object.assign(T, OBJECTIFS[langue]);
+  // Le sujet reste contextualisé aussi sur les pages traduites.
+  var TITRES = {
+    en: {recolte:'Your harvest should not take your whole evening.',tarifs:'Could one tool replace several subscriptions?',drm:'The DRM returns every month. Does the retyping?',vigne:'A day in the vineyard. An evening retyping?',cave:'Your wine moves forward. Your records should too.',stocks:'How many bottles? Ask your data.',mises:'Your next bottling, without merging three spreadsheets.',ventes:'Send your invoices. Keep your evenings.',couts:'Your margins deserve more than an approximate cost.',oenotourisme:'After the tasting, keep the customer. Skip the retyping.',assistant:'Ask your data, not for another spreadsheet.',migration:'Your tools add up. So do their bills.',aides:'Funding research takes time. Estate management does too.',reglementation:'Rules change. No need to start your records over.',ressources:'A management question should not take all evening.',generale:'Your estate day should not end in spreadsheets.'},
+    de: {recolte:'Ihre Ernte sollte nicht den ganzen Abend kosten.',tarifs:'Kann ein Programm mehrere Abos ersetzen?',drm:'Die DRM kommt jeden Monat. Die Doppelerfassung auch?',vigne:'Tagsüber im Weinberg. Abends Daten nachtragen?',cave:'Ihr Wein entwickelt sich. Ihre Aufzeichnungen auch?',stocks:'Wie viele Flaschen? Fragen Sie Ihre Daten.',mises:'Die nächste Abfüllung ohne drei getrennte Tabellen.',ventes:'Rechnungen versenden. Den Feierabend behalten.',couts:'Ihre Marge verdient mehr als geschätzte Kosten.',oenotourisme:'Nach der Verkostung Kunden behalten, Daten nicht neu erfassen.',assistant:'Ihre Daten fragen, statt neue Tabellen anzulegen.',migration:'Mehr Programme. Mehr Rechnungen?',aides:'Fördermittel suchen kostet Zeit. Verwaltung auch.',reglementation:'Regeln ändern sich. Ihre Daten bleiben nutzbar.',ressources:'Eine Verwaltungsfrage sollte keinen Abend kosten.',generale:'Ihr Arbeitstag sollte nicht in Tabellen enden.'},
+    it: {recolte:'La vendemmia non dovrebbe occupare tutta la serata.',tarifs:'Un software può sostituire più abbonamenti?',drm:'La DRM torna ogni mese. Anche i dati da ricopiare?',vigne:'Una giornata in vigna. Una serata a ricopiare?',cave:'Il vino evolve. I tuoi registri lo seguono?',stocks:'Quante bottiglie? Chiedilo ai tuoi dati.',mises:'Il prossimo imbottigliamento, senza unire tre fogli.',ventes:'Invia le fatture. Tieni libere le serate.',couts:'I tuoi margini meritano costi più precisi.',oenotourisme:'Dopo la degustazione, conserva il cliente, non la riscrittura.',assistant:'Interroga i dati, senza creare un altro foglio.',migration:'Aumentano i software. Anche le fatture?',aides:'Cercare aiuti richiede tempo. Anche gestire l’azienda.',reglementation:'Le regole cambiano. I tuoi dati restano utili.',ressources:'Una domanda di gestione non dovrebbe occupare una serata.',generale:'La giornata in azienda non dovrebbe finire nei fogli di calcolo.'},
+    zh: {recolte:'采收申报，不该占据整个晚上。',tarifs:'一套软件，能否替代多项订阅？',drm:'每月都要申报，也要重复录入吗？',vigne:'白天在葡萄园，晚上还要重复录入？',cave:'酒在成熟，管理记录也应及时跟进。',stocks:'还有多少瓶？直接询问您的数据。',mises:'下一次装瓶，不必拼接三张表格。',ventes:'发出发票，把晚上留给自己。',couts:'了解利润，不该只靠成本估算。',oenotourisme:'品鉴结束，留下客户，不留重复录入。',assistant:'询问数据，而不是再建一张表。',migration:'软件越来越多，账单也越来越多？',aides:'寻找补助需要时间，管理酒庄也是。',reglementation:'规则在变，管理数据不必从头整理。',ressources:'一个管理问题，不该耗费整个晚上。',generale:'酒庄的一天，不该以整理表格结束。'}
+  };
+  if (TITRES[langue]) T.titre = TITRES[langue][contexte[0]] || TITRES[langue].generale;
+  T.budget = {fr:'d’économies par mois sur vos outils de gestion',en:'in monthly savings to target on management tools',de:'Ersparnis pro Monat bei Ihren Verwaltungsprogrammen als Ziel',it:'di risparmio al mese sui tuoi software gestionali',zh:T.budget}[langue] || T.budget;
+  T.valeur = objectif === 'recolte' ? (langue === 'zh' ? '30 秒' : '30 s') : objectif === 'budget' ? (langue === 'zh' ? '200 欧元' : '200 €') : (langue === 'zh' ? '7 小时' : '7 h');
+  T.unite = T[objectif];
+  T.prefixe = objectif === 'recolte' ? T.defi : T.objectif;
+  if (objectif === 'recolte') T.note = T.limiteRecolte;
+  var videoDisponible = /^(stocks|assistant|generale)$/.test(contexte[0]);
+  var video = new URL('index.html#nouveaute-ia', racine);
   var contact = new URL((TEXTES[langue] && langue !== 'fr' ? langue + '/' : '') + 'contact.html?objet=demo#formulaire', racine);
   var CLE = 'monchai_cta_contextes_v1';
   var memoire = { vus: [], pause: false };
@@ -83,31 +123,28 @@
   });
   if (dejaVue()) return;
 
-  // Reprise du modèle « Pop-up inscription » : vignoble estompé, crème,
-  // titre sans empattement bordeaux/cuivre et boutons en pilule.
-  var photo = new URL('assets/img/hero-fond-960.webp', racine).href;
+  // Hiérarchie éditoriale : problème, objectif visible, mécanisme, action.
   var logo = new URL('assets/img/logo-header-344.webp', racine).href;
   var signatures = {fr: 'Pensé avec les vignerons', en: 'Built with winegrowers', de: 'Mit Winzern entwickelt', it: 'Creato con i viticoltori', zh: '与葡萄种植者共同打造'};
   var CSS = [
-    '.mc-cta{position:fixed;right:24px;bottom:24px;z-index:290;display:grid;grid-template-columns:132px minmax(0,1fr);box-sizing:border-box;width:min(510px,calc(100vw - 40px));max-height:calc(100dvh - 48px);overflow:auto;background:#FBF8F2;border:1px solid #EADCC9;border-radius:24px;box-shadow:0 24px 70px #47131830,0 4px 16px #4713180c;color:#433C35;font-family:Inter,system-ui,sans-serif;animation:mc-cta-entree .3s cubic-bezier(.2,.9,.3,1);isolation:isolate}',
-    '.mc-cta[hidden]{display:none}.mc-cta *{box-sizing:border-box}.mc-cta__visuel{position:relative;min-height:100%;background:linear-gradient(180deg,#F5F0E8 0%,#F5F0E8E8 23%,#F5F0E855 65%,#F5F0E826 100%),url("' + photo + '") 45% bottom/auto 100%;border-right:1px solid #EADCC9}.mc-cta__logo{position:absolute;top:28px;left:14px;width:104px;height:auto;mix-blend-mode:multiply}.mc-cta__visuel:after{content:"";position:absolute;left:24px;right:24px;top:85px;height:1px;background:#C9915966}',
-    '.mc-cta__contenu{min-width:0;padding:28px 26px 22px}.mc-cta__signature{margin:0 22px 14px 0;color:#8F5D31;font:600 9px/1.5 Poppins,Inter,sans-serif;letter-spacing:.12em;text-transform:uppercase}.mc-cta__titre{margin:0 0 14px;font:600 25px/1.17 Poppins,Inter,system-ui,sans-serif;letter-spacing:-.8px;color:#7B1E22}.mc-cta__titre span{color:#A46C38}.mc-cta__texte{margin:0 0 22px;color:#5B524A;font-size:13px;line-height:1.65}',
-    '.mc-cta__fermer{position:absolute;z-index:2;top:6px;right:6px;display:grid;place-items:center;width:44px;height:44px;border:0;border-radius:50%;background:transparent;color:#7B1E22;font:24px/1 system-ui;cursor:pointer}.mc-cta__fermer:hover{background:#7B1E2209}.mc-cta__actions{display:grid;gap:9px}',
-    '.mc-cta__btn{display:flex;align-items:center;justify-content:center;gap:12px;min-height:46px;padding:11px 14px;border:1px solid #7B1E22;border-radius:30px;background:#7B1E22;color:#fff;text-decoration:none;text-align:center;font-size:13px;font-weight:600;line-height:1.4;box-shadow:0 7px 18px #7B1E2226;transition:background .2s,box-shadow .2s}.mc-cta__btn:hover{background:#64181C;box-shadow:0 9px 22px #7B1E2233}.mc-cta__fleche{font-size:20px;line-height:1;font-weight:400}.mc-cta__btn--secondaire{background:transparent;border-color:#D8BFA7;color:#7B1E22;box-shadow:none}.mc-cta__btn--secondaire:hover{background:#F4EBDF;box-shadow:none}',
-    '.mc-cta__note{margin:18px 0 0;padding-top:13px;border-top:1px solid #E7D8C5;color:#76695E;font-size:10px;line-height:1.4;text-align:center}.mc-cta :focus-visible{outline:3px solid #7B1E22;outline-offset:3px}',
+    '.mc-cta{position:fixed;right:24px;bottom:24px;z-index:290;display:grid;grid-template-rows:auto minmax(0,1fr) auto;box-sizing:border-box;width:min(480px,calc(100vw - 40px));max-height:min(720px,calc(100dvh - 48px));overflow:hidden;background:#FBF8F2;border:1px solid #D8BFA7;border-top:5px solid #C99159;border-radius:20px;box-shadow:0 24px 70px #47131838,0 4px 16px #4713180c;color:#433C35;font-family:Inter,system-ui,sans-serif;animation:mc-cta-entree .25s ease-out;isolation:isolate}',
+    '.mc-cta[hidden]{display:none}.mc-cta *{box-sizing:border-box}.mc-cta__bandeau{display:flex;align-items:center;gap:16px;min-height:66px;padding:12px 54px 12px 22px;border-bottom:1px solid #E7D8C5}.mc-cta__logo{display:block;width:112px;height:auto;flex:none;mix-blend-mode:multiply}.mc-cta__signature{margin:0;color:#7B1E22;font-size:10px;font-weight:600;line-height:1.5}',
+    '.mc-cta__contenu{min-width:0;min-height:0;overflow:auto;overscroll-behavior:contain;padding:20px 22px 22px}.mc-cta__titre{margin:0 0 16px;font:700 24px/1.18 Inter,system-ui,sans-serif;letter-spacing:-.65px;color:#7B1E22}.mc-cta__objectif{margin:0;padding:16px 18px;background:#7B1E22;color:#fff;border-radius:12px}.mc-cta__prefixe{display:block;color:#F4DCB6;font-size:12px;font-weight:600;line-height:1.5}.mc-cta__valeur{display:block;margin:2px 0 0;font:700 48px/1.1 Inter,system-ui,sans-serif;letter-spacing:-1.8px;color:#fff}.mc-cta__unite{display:block;margin-top:4px;font-size:14px;font-weight:500;line-height:1.4}.mc-cta__annuel{display:block;margin-top:10px;padding-top:9px;border-top:1px solid #F4DCB655;color:#F4DCB6;font-size:12px;line-height:1.4}',
+    '.mc-cta__texte{margin:12px 0 0;color:#51473F;font-size:13px;line-height:1.6}.mc-cta__note{margin:10px 0 0;color:#66594D;font-size:11px;line-height:1.5}.mc-cta__fermer{position:absolute;z-index:2;top:8px;right:6px;display:grid;place-items:center;width:44px;height:44px;border:0;border-radius:50%;background:#FBF8F2;color:#7B1E22;font:24px/1 system-ui;cursor:pointer}.mc-cta__fermer:hover{background:#F0E6D8}.mc-cta__actions{display:grid;gap:8px;padding:0 22px 20px;background:#FBF8F2}',
+    '.mc-cta__btn{display:flex;align-items:center;justify-content:center;gap:12px;min-height:46px;padding:11px 14px;border:1px solid #7B1E22;border-radius:28px;background:#7B1E22;color:#fff;text-decoration:none;text-align:center;font-size:13px;font-weight:600;line-height:1.4;transition:background .2s}.mc-cta__btn:hover{background:#64181C}.mc-cta__fleche{font-size:20px;line-height:1;font-weight:400}.mc-cta__btn--secondaire{background:transparent;color:#7B1E22}.mc-cta__btn--secondaire:hover{background:#F4EBDF}.mc-cta :focus-visible{outline:3px solid #A85D35;outline-offset:3px}',
     '@keyframes mc-cta-entree{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}',
-    '@media(max-width:639px){.mc-cta{left:12px;right:12px;bottom:max(12px,env(safe-area-inset-bottom));width:auto;grid-template-columns:1fr;max-height:45dvh;border-radius:20px}.mc-cta__visuel{min-height:52px;background:linear-gradient(90deg,#F5F0E8 8%,#F5F0E8DD 38%,#F5F0E822 100%),url("' + photo + '") 75% 48%/cover;border-right:0;border-bottom:1px solid #E7D8C5}.mc-cta__logo{top:8px;left:18px;width:108px}.mc-cta__visuel:after{display:none}.mc-cta__contenu{padding:16px 18px 18px}.mc-cta__signature{display:none}.mc-cta__titre{font-size:21px;line-height:1.2;letter-spacing:-.6px;margin-bottom:10px}.mc-cta__texte{font-size:12px;line-height:1.5;margin-bottom:16px}.mc-cta__actions{gap:7px}.mc-cta__btn{min-height:44px;padding:10px 12px;font-size:13px}.mc-cta__note{display:none}.mc-cta__fermer{top:4px;right:4px;background:#FBF8F2E8}}',
-    '@media(max-width:360px){.mc-cta__contenu{padding:14px}.mc-cta__titre{font-size:19px}.mc-cta__visuel{min-height:46px}.mc-cta__logo{top:7px;width:98px}}',
-    '@media(max-height:700px) and (max-width:639px){.mc-cta{max-height:55dvh}}',
+    '@media(max-width:639px){.mc-cta{left:12px;right:12px;bottom:max(12px,env(safe-area-inset-bottom));width:auto;max-height:min(620px,calc(100dvh - 88px));border-radius:16px}.mc-cta__bandeau{min-height:54px;padding:8px 50px 8px 16px;gap:12px}.mc-cta__logo{width:98px}.mc-cta__signature{font-size:9px}.mc-cta__contenu{padding:16px}.mc-cta__titre{font-size:21px;line-height:1.2;margin-bottom:12px}.mc-cta__objectif{padding:12px 14px}.mc-cta__valeur{font-size:42px}.mc-cta__unite{font-size:13px}.mc-cta__texte{margin-top:12px;font-size:12px;line-height:1.5}.mc-cta__note{font-size:11px}.mc-cta__actions{padding:0 16px 16px}.mc-cta__btn{min-height:44px;padding:10px 12px}.mc-cta__fermer{top:4px;right:4px}}',
+    '@media(max-width:360px){.mc-cta__titre{font-size:20px}.mc-cta__signature{max-width:110px}.mc-cta__valeur{font-size:40px}}',
+    '@media(max-height:600px){.mc-cta{max-height:calc(100dvh - 24px)}}',
     '@media(prefers-reduced-motion:reduce){.mc-cta,.mc-cta__btn{animation:none;transition:none}}@media print{.mc-cta{display:none!important}}'
   ].join('\n');
 
   var carte = null, precedent = null, timer = null, terminee = false;
   function signaler(evenement) {
     if (!window.monchaiConsent || window.monchaiConsent.audience !== true) return;
-    (window.dataLayer = window.dataLayer || []).push({ event: evenement, cta_campagne: contexte[0] });
+    (window.dataLayer = window.dataLayer || []).push({ event: evenement, cta_campagne: contexte[0], cta_variante: variante, cta_objectif: objectif, cta_statut: 'objectif_a_mesurer' });
   }
-  function fermer() {
+  function fermer(raison) {
     if (!carte || carte.hidden) return;
     var focusDedans = carte.contains(document.activeElement);
     carte.hidden = true;
@@ -121,7 +158,7 @@
         else cible.setAttribute('tabindex', ancien);
       }
     }
-    signaler('cta_popup_ferme');
+    if (raison !== 'navigation') signaler('cta_popup_ferme');
   }
   function construire() {
     var style = document.createElement('style');
@@ -130,24 +167,32 @@
     carte = document.createElement('aside');
     carte.className = 'mc-cta';
     carte.setAttribute('data-campagne', contexte[0]);
+    carte.setAttribute('data-variante', variante);
+    carte.setAttribute('data-objectif', objectif);
     carte.setAttribute('aria-labelledby', 'mcCtaTitre');
-    carte.setAttribute('aria-describedby', 'mcCtaTexte');
+    carte.setAttribute('aria-describedby', 'mcCtaTexte mcCtaNote');
     carte.setAttribute('aria-live', 'polite');
-    // Tous les textes viennent du catalogue statique ci-dessus.
+    // Le film récolte n'existe pas encore : cette carte mène à une demande
+    // de démo chronométrée. Le film existant montre stocks et impayés.
+    var principal = videoDisponible ? {id:'video',texte:T.video,href:video.href} : {id:'demo',texte:T.demo,href:contact.href};
+    var secondaire = videoDisponible ? {id:'demo',texte:T.demo,href:contact.href} : {id:'essai',texte:T.essai,href:'https://tester.monchai.fr'};
+    // Les textes proviennent uniquement du catalogue statique ci-dessus.
     carte.innerHTML = '<button type="button" class="mc-cta__fermer" aria-label="' + T.fermer + '">&times;</button>' +
-      '<div class="mc-cta__visuel" aria-hidden="true"><img class="mc-cta__logo" src="' + logo + '" alt="" width="344" height="111"></div>' +
-      '<div class="mc-cta__contenu"><p class="mc-cta__signature">' + (signatures[langue] || signatures.fr) + '</p>' +
-      '<h2 class="mc-cta__titre" id="mcCtaTitre">' + T.titre.replace('Mon Chai', '<span>Mon Chai</span>') + '</h2>' +
-      '<p class="mc-cta__texte" id="mcCtaTexte">' + T.texte + '</p>' +
-      '<div class="mc-cta__actions"><a class="mc-cta__btn" href="https://tester.monchai.fr" data-mc-cta="essai">' + T.essai + '<span class="mc-cta__fleche" aria-hidden="true">&rarr;</span></a>' +
-      '<a class="mc-cta__btn mc-cta__btn--secondaire" data-mc-cta="demo">' + T.demo + '</a></div>' +
-      '<p class="mc-cta__note">' + T.note + '</p></div>';
-    carte.querySelector('[data-mc-cta="demo"]').href = contact.href;
+      '<div class="mc-cta__bandeau"><img class="mc-cta__logo" src="' + logo + '" alt="Mon Chai" width="344" height="111"><p class="mc-cta__signature">' + (signatures[langue] || signatures.fr) + '</p></div>' +
+      '<div class="mc-cta__contenu"><h2 class="mc-cta__titre" id="mcCtaTitre">' + T.titre + '</h2>' +
+      '<p class="mc-cta__objectif"><span class="mc-cta__prefixe">' + T.prefixe + '</span><strong class="mc-cta__valeur">' + T.valeur + '</strong><span class="mc-cta__unite">' + T.unite + '</span>' + (objectif === 'budget' ? '<span class="mc-cta__annuel">' + T.annuel + '</span>' : '') + '</p>' +
+      '<p class="mc-cta__note" id="mcCtaNote">' + T.note + '</p>' +
+      '<p class="mc-cta__texte" id="mcCtaTexte">' + T.texte + '</p></div>' +
+      '<div class="mc-cta__actions"><a class="mc-cta__btn" data-mc-cta="' + principal.id + '">' + principal.texte + '<span class="mc-cta__fleche" aria-hidden="true">&rarr;</span></a>' +
+      '<a class="mc-cta__btn mc-cta__btn--secondaire" data-mc-cta="' + secondaire.id + '">' + secondaire.texte + '</a></div>';
+    carte.querySelector('[data-mc-cta="' + principal.id + '"]').href = principal.href;
+    carte.querySelector('[data-mc-cta="' + secondaire.id + '"]').href = secondaire.href;
     carte.querySelector('.mc-cta__fermer').addEventListener('click', fermer);
     carte.querySelectorAll('[data-mc-cta]').forEach(function (a) {
       a.addEventListener('click', function () {
         memoriser(true);
         signaler('cta_popup_' + a.getAttribute('data-mc-cta'));
+        if (a.getAttribute('data-mc-cta') === 'video') fermer('navigation');
       });
     });
     precedent = document.activeElement;

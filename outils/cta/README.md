@@ -1,5 +1,46 @@
 # Invitations contextuelles du site vitrine
 
+## Version du 7 novembre 2026
+
+Cette version remplace les textes génériques par une accroche de problème,
+un grand chiffre explicitement qualifié d'objectif, sa portée et une action.
+La description du 2 novembre ci-dessous est historique ; les critères de
+fréquence, consentement, exclusions et clavier restent applicables.
+
+Objectifs : 7 h/semaine sur la gestion globale, 200 €/mois sur les outils
+remplaçables (2 400 €/12 mois), défi de préparation de récolte en 30 s sur
+données déjà saisies. Ce ne sont pas des résultats mesurés par cette recette.
+Le contrôle et le dépôt officiel sont distincts. La vidéo récolte n'existant
+pas encore, cette carte mène à une demande de démonstration chronométrée.
+Le film MCP de 33 s, stocks/impayés, est proposé pour Stocks, Assistant et
+présentation générale. La fermeture d'une carte vidéo accompagne sa navigation.
+
+### UX/UI et acceptation
+
+Sujet et douleur en tête, objectif en grand bloc bordeaux, condition lisible
+avant le mécanisme, puis démo personnalisée ou vidéo réelle. Sept sous-thèmes
+d'aides ; pas de promesse d'attribution ou de nouvelle échéance. Le chiffre des
+gains hebdomadaires reste global au domaine, jamais additionné par module.
+
+Carte crème/bordeaux de 480 px sur ordinateur, marges de 12 px sur téléphone,
+sans colonne photo. Hauteur plafonnée ; corps défilant sur écran court, fermeture
+et deux actions toujours disponibles. La portée n'est jamais masquée sur mobile.
+Titres, labels, annonce polie, focus non volé, retour de focus, cibles de 44 px,
+contraste et préférence de mouvement sont conservés. Sans vidéo, aucune
+destination fictive ; contacts et essai utilisent leurs parcours existants.
+
+Accepter uniquement si les scénarios de la recette passent : 15 rubriques,
+7 sous-thèmes d'aides, réglementation et ressources, chiffres/portées, vidéo et
+hash de diapositive, langue, consentement, stockage refusé, focus et fermeture,
+320/390/768/1440 px et écrans courts. Les événements consentis ajoutent la
+variante et le type d'objectif ; le clic vidéo est distinct du clic démo.
+
+La campagne Vinitech, le délai de 20 s et les exclusions restent ceux existants.
+Aucune nouvelle fonction ni route dans Django ; aucun envoi de formulaire
+n'est réalisé par les tests. Aucun média vidéo n'est préchargé par une invitation.
+
+## Description historique du 2 novembre
+
 Modification du 2 novembre 2026 : `assets/js/cta-popup.js` remplace la carte
 générique par une invitation adaptée à la rubrique. Les pages existantes
 chargent la version `20261103-invitation-7s`. Les fiches d'aides sont aussi couvertes.

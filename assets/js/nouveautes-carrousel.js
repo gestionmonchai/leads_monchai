@@ -43,4 +43,20 @@
     selectors[current].focus();
   });
   navigation.hidden = false;
+  function ouvrirDepuisAncre() {
+    if (location.hash === '#nouveaute-ia') show(0);
+  }
+  window.addEventListener('hashchange', ouvrirDepuisAncre);
+  // Le même lien peut être cliqué après sélection d'une autre diapositive,
+  // sans changement de hash : rendre la destination visible aussi dans ce cas.
+  document.addEventListener('click', function (event) {
+    var link = event.target.closest('a[href]');
+    if (!link || event.defaultPrevented || event.button !== 0 || event.ctrlKey || event.metaKey || event.shiftKey || event.altKey) return;
+    var url = new URL(link.href, location.href);
+    function accueil(path) { return path.replace(/index\.html$/, ''); }
+    if (url.origin !== location.origin || accueil(url.pathname) !== accueil(location.pathname) || url.hash !== '#nouveaute-ia') return;
+    show(0);
+    slides[0].scrollIntoView({block:'start'});
+  });
+  ouvrirDepuisAncre();
 })();

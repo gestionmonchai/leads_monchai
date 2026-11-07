@@ -24,7 +24,7 @@ class Silencieux(SimpleHTTPRequestHandler):
 server = ThreadingHTTPServer(('127.0.0.1', 0), partial(Silencieux, directory=str(ROOT)))
 threading.Thread(target=server.serve_forever, daemon=True).start()
 BASE = f'http://127.0.0.1:{server.server_port}'
-rapport = {'controles': [], 'rendus': [], 'erreurs_js': []}
+rapport = {'controles': [], 'rendus': [], 'messages': [], 'erreurs_js': []}
 try:
     with sync_playwright() as pw:
         browser = pw.chromium.launch(headless=True)
@@ -61,10 +61,69 @@ try:
             avance(page)
             assert carte(page).count() == 1, nom
             assert carte(page).get_attribute('data-campagne') == attendu, nom
-            assert page.locator('[data-mc-cta="essai"]').get_attribute('href') == 'https://tester.monchai.fr'
+            if page.locator('[data-mc-cta="essai"]').count():
+                assert page.locator('[data-mc-cta="essai"]').get_attribute('href') == 'https://tester.monchai.fr'
+            else:
+                assert page.locator('[data-mc-cta="video"]').get_attribute('href') == BASE + '/index.html#nouveaute-ia'
             assert page.locator('[data-mc-cta="demo"]').get_attribute('href') == BASE + '/contact.html?objet=demo#formulaire'
+            assert page.locator('.mc-cta__prefixe').is_visible()
+            assert page.locator('#mcCtaNote').is_visible()
+            rapport['messages'].append({'page': nom, 'variante': carte(page).get_attribute('data-variante'),
+                'titre': page.locator('#mcCtaTitre').inner_text(), 'objectif': page.locator('.mc-cta__objectif').inner_text(),
+                'portee': page.locator('#mcCtaNote').inner_text()})
             ctx.close()
         rapport['controles'].append(f'{len(contextes)} rubriques et destinations')
+
+        for nom, variante, objectif in [
+            ('aide-distillation-crise-viticulture.html', 'aides-risques', 'temps'),
+            ('aide-acja-viticulture.html', 'aides-installation', 'temps'),
+            ('aide-pve-nouvelle-aquitaine-viticulture.html', 'aides-investissement', 'budget'),
+            ('aide-apprentissage-ocapiat-viticulture.html', 'aides-emploi', 'temps'),
+            ('aide-arrachage-viticulture.html', 'aides-transmission', 'temps'),
+            ('aide-cab-viticulture.html', 'aides-transition', 'temps'),
+            ('aide-promotion-tiers-viticulture.html', 'aides-commercial', 'temps'),
+            ('actualites-reglementaires.html', 'reglementation', 'temps'),
+            ('ressources.html', 'ressources', 'temps')]:
+            ctx, page = page_neuve(nom)
+            avance(page)
+            assert carte(page).get_attribute('data-variante') == variante, nom
+            assert carte(page).get_attribute('data-objectif') == objectif, nom
+            assert 'Votre objectif : jusqu’à' in page.locator('.mc-cta__objectif').inner_text()
+            if objectif == 'budget':
+                assert '2 400' in page.locator('.mc-cta__annuel').inner_text()
+                assert 'économies' in page.locator('.mc-cta__unite').inner_text()
+            else:
+                assert 'gestion du domaine' in page.locator('.mc-cta__unite').inner_text()
+            rapport['messages'].append({'page':nom,'variante':variante,'titre':page.locator('#mcCtaTitre').inner_text(),
+                'objectif':page.locator('.mc-cta__objectif').inner_text(),'portee':page.locator('#mcCtaNote').inner_text()})
+            ctx.close()
+        rapport['controles'].append('7 sous-thèmes d’aides, réglementation et ressources ; portée globale et calcul annuel')
+
+        ctx, page = page_neuve('declaration-recolte-2026.html')
+        avance(page)
+        assert page.locator('.mc-cta__valeur').inner_text() == '30 s'
+        assert 'défi' in page.locator('.mc-cta__prefixe').inner_text()
+        assert 'dépôt officiel distinct' in page.locator('#mcCtaNote').inner_text()
+        assert page.locator('[data-mc-cta="video"]').count() == 0
+        ctx.close()
+        rapport['controles'].append('récolte : défi explicite, pas de fausse vidéo ni assimilation au dépôt officiel')
+
+        ctx, page = page_neuve('stocks-tracabilite.html')
+        avance(page)
+        page.evaluate('window.monchaiConsent={audience:true}')
+        page.locator('[data-mc-cta="video"]').click()
+        page.wait_for_url('**/index.html#nouveaute-ia')
+        assert page.locator('#nouveaute-ia').is_visible()
+        assert page.locator('#nouveaute-ia video source').get_attribute('src') == 'assets/video/monchai-mcp.mp4'
+        page.locator('[data-diapo="1"]').click()
+        assert page.locator('#nouveaute-notes').is_visible()
+        page.evaluate("let a=document.createElement('a');a.href='index.html#nouveaute-ia';a.id='testRetourFilm';a.textContent='Retour film';a.style.cssText='display:block;min-height:44px';document.querySelector('.nouveautes-carrousel__navigation').insertAdjacentElement('afterend',a)")
+        page.locator('#testRetourFilm').click()
+        assert page.locator('#nouveaute-ia').is_visible()
+        avance(page)
+        assert carte(page).count() == 0
+        ctx.close()
+        rapport['controles'].append('vidéo MCP réelle, navigation vers la diapositive, même hash et pause des invitations')
 
         ctx, page = page_neuve()
         page.evaluate("window.scrollTo(0,document.body.scrollHeight);document.dispatchEvent(new MouseEvent('mouseout',{clientY:0,relatedTarget:null}));")
@@ -134,10 +193,10 @@ try:
         ctx.close()
         rapport['controles'].append('exclusions et sessionStorage indisponible')
 
-        for lang, libelle in [('en', 'Request a demonstration'), ('de', 'Vorführung anfragen'), ('it', 'Richiedi una dimostrazione'), ('zh', '申请演示')]:
+        for lang, libelle in [('en', 'Measure my gains in a demo'), ('de', 'Mein Potenzial in einer Demo messen'), ('it', 'Misurare i vantaggi in una demo'), ('zh', '预约演示并衡量实际收益')]:
             ctx, page = page_neuve(lang + '/tarifs.html', 390)
             avance(page)
-            assert page.locator('[data-mc-cta="demo"]').inner_text() == libelle
+            assert page.locator('[data-mc-cta="demo"]').inner_text().replace('→', '').strip() == libelle
             assert page.locator('[data-mc-cta="demo"]').get_attribute('href') == BASE + '/' + lang + '/contact.html?objet=demo#formulaire'
             ctx.close()
         rapport['controles'].append('4 langues secondaires et contact localisé')
@@ -162,6 +221,19 @@ try:
                 assert carte(page).count() == 0
                 ctx.close()
         rapport['controles'].append('8 rendus, cibles 44 px, aucun focus volé et fermeture à la croix')
+        for largeur, hauteur in ((320,568),(844,390)):
+            ctx, page = page_neuve('tarifs.html', largeur)
+            page.set_viewport_size({'width':largeur,'height':hauteur})
+            avance(page)
+            for control in page.locator('.mc-cta__fermer,.mc-cta__actions a').all():
+                box=control.bounding_box()
+                assert 0 <= box['y'] and box['y']+box['height'] <= hauteur+1, box
+            page.locator('.mc-cta__contenu').evaluate('e=>e.scrollTop=e.scrollHeight')
+            box=page.locator('.mc-cta__fermer').bounding_box()
+            assert box['y'] >= 0
+            page.screenshot(path=str(OUT / f'ecran-court-{largeur}x{hauteur}.png'))
+            ctx.close()
+        rapport['controles'].append('écrans courts : fermeture et actions toujours visibles pendant le défilement interne')
         assert not rapport['erreurs_js'], rapport['erreurs_js']
         browser.close()
 finally:

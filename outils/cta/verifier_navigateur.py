@@ -68,6 +68,7 @@ try:
             assert page.locator('[data-mc-cta="demo"]').get_attribute('href') == BASE + '/contact.html?objet=demo#formulaire'
             assert page.locator('.mc-cta__prefixe').is_visible()
             assert page.locator('#mcCtaNote').is_visible()
+            assert 'gain' not in carte(page).inner_text().casefold()
             rapport['messages'].append({'page': nom, 'variante': carte(page).get_attribute('data-variante'),
                 'titre': page.locator('#mcCtaTitre').inner_text(), 'objectif': page.locator('.mc-cta__objectif').inner_text(),
                 'portee': page.locator('#mcCtaNote').inner_text()})
@@ -90,10 +91,13 @@ try:
             assert carte(page).get_attribute('data-objectif') == objectif, nom
             assert 'Votre objectif : jusqu’à' in page.locator('.mc-cta__objectif').inner_text()
             if objectif == 'budget':
-                assert '2 400' in page.locator('.mc-cta__annuel').inner_text()
+                assert page.locator('.mc-cta__valeur').inner_text() == '2 400 €'
+                assert '200 €' in page.locator('.mc-cta__annuel').inner_text()
+                assert 'par an' in page.locator('.mc-cta__unite').inner_text()
                 assert 'économies' in page.locator('.mc-cta__unite').inner_text()
             else:
                 assert 'gestion du domaine' in page.locator('.mc-cta__unite').inner_text()
+                assert 'économisées par semaine' in page.locator('.mc-cta__unite').inner_text()
             rapport['messages'].append({'page':nom,'variante':variante,'titre':page.locator('#mcCtaTitre').inner_text(),
                 'objectif':page.locator('.mc-cta__objectif').inner_text(),'portee':page.locator('#mcCtaNote').inner_text()})
             ctx.close()
@@ -193,7 +197,7 @@ try:
         ctx.close()
         rapport['controles'].append('exclusions et sessionStorage indisponible')
 
-        for lang, libelle in [('en', 'Measure my gains in a demo'), ('de', 'Mein Potenzial in einer Demo messen'), ('it', 'Misurare i vantaggi in una demo'), ('zh', '预约演示并衡量实际收益')]:
+        for lang, libelle in [('en', 'Request a demo'), ('de', 'Vorführung anfragen'), ('it', 'Richiedi una dimostrazione'), ('zh', '预约演示')]:
             ctx, page = page_neuve(lang + '/tarifs.html', 390)
             avance(page)
             assert page.locator('[data-mc-cta="demo"]').inner_text().replace('→', '').strip() == libelle

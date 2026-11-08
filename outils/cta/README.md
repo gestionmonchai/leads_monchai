@@ -1,5 +1,19 @@
 # Invitations contextuelles du site vitrine
 
+## Formulations du 8 novembre 2026
+
+Demande de Denis : utiliser « économies » et « heures économisées », y compris
+dans les actions, sans employer « gain » dans les cartes. Le budget annuel
+2 400 € devient le chiffre principal, avec son équivalent 200 €/mois ; les
+unités indiquent explicitement la période. Le bouton propose « Découvrir en
+démo » et ses traductions ; la récolte conserve sa démo chronométrée.
+
+La composition visuelle validée le 8 novembre, les conditions, la portée des
+objectifs, les liens et la fréquence restent ceux décrits. Vérifier la largeur
+du montant annuel à 320/390/768/1440 px et sur écran court. La recette contrôle
+le texte rendu, la période, le calcul annuel/mensuel et les libellés traduits.
+Les descriptions ci-dessous constituent l'historique des versions précédentes.
+
 ## Version du 7 novembre 2026
 
 Cette version remplace les textes génériques par une accroche de problème,

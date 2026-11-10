@@ -14,6 +14,7 @@
    ========================================================= */
 
 :root{
+  --hd-hauteur: calc(100vw * 94 / 1920);
   --hd-blanc:     #FFFDFC;
   --hd-creme:     #FFF9F4;
   --hd-encre:     #2E2826;
@@ -260,17 +261,13 @@
 
 
 /* =========================================================
-   ENVELOPPE FIXE : index.html uniquement
-
-   Sur les 8 pages « Le logiciel », le header vit à l'intérieur de la scène
-   1920 et suit sa mise à l'échelle. Sur index.html il est fixe au-dessus du
-   défilement : il porte donc lui-même le facteur d'échelle, publié par
-   script.js dans --echelle. Il se masque au défilement vers le bas et
-   revient au défilement vers le haut, comme l'ancien header.
+   ENVELOPPE COMMUNE : toutes les pages publiques.
+   Hors des scènes transformées, le header suit le même défilement partout.
+   Sa place est réservée séparément pour ne pas recouvrir le contenu.
    ========================================================= */
 .site-header{
   position:fixed; top:0; left:0; right:0; z-index:100;
-  height:calc(100vw * 94 / 1920);
+  height:var(--hd-hauteur);
   transform:translateY(0);
   transition:transform .35s cubic-bezier(.2,.8,.2,1);
   will-change:transform;
@@ -281,13 +278,10 @@
   transform-origin:top left;
 }
 
-/* Les pages éditoriales utilisent le même header 1920 que l'accueil, mais
-   il reste dans le flux. L'enveloppe réserve sa hauteur une fois mise à
-   l'échelle ; aucun second dessin « compact » ne peut donc dériver. */
-.site-header--page{
-  position:sticky;
-  height:calc(100vw * 94 / 1920);
-}
+.header-reserve{ height:0; }
+.header-reserve--page{ height:var(--hd-hauteur); }
+.header-reserve-scene{ height:94px; grid-area:entete; }
+.hd :focus-visible{ outline:3px solid var(--hd-cuivre-f); outline-offset:4px; }
 
 
 /* =========================================================
@@ -297,12 +291,8 @@
    24px de marge laissent 684px, la rangée en occupe 628.
    ========================================================= */
 @media (max-width:1199px){
-  /* sticky et non fixed : sous 1200px le contenu d'index.html repasse en flux
-     et démarre à y=0. Resté fixe, le header recouvrait le haut de la page,
-     l'enveloppe passe en hauteur automatique, donc à zéro, et plus rien ne
-     poussait le contenu vers le bas. En sticky il occupe sa place ET reste
-     visible au défilement. */
-  .site-header{ position:sticky; top:0; height:auto; }
+  :root{ --hd-hauteur:76px; }
+  .header-reserve, .header-reserve-scene{ height:var(--hd-hauteur); }
   .site-header .hd{ transform:none; position:relative; width:100%; }
 }
 
@@ -376,6 +366,7 @@
    TIROIR : sous 900px
    ========================================================= */
 @media (max-width:899px){
+  :root{ --hd-hauteur:64px; }
   .hd{
     position:sticky; top:0;
     width:100%; height:64px;
@@ -457,6 +448,7 @@
 
 /* Tablette : le header respire un peu plus que sur téléphone. */
 @media (min-width:640px) and (max-width:899px){
+  :root{ --hd-hauteur:76px; }
   .hd{ height:76px; padding:0 28px; }
   .hd__logo img{ width:208px; height:67px; }
   .hd__burger{ right:26px; }

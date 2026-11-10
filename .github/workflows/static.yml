@@ -31,6 +31,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+      - name: Générer le header commun
+        run: python outils/header/generer.py .
       - name: Setup Pages
         uses: actions/configure-pages@v5
       # Minification et CSS de l'accueil intégré à la page (outils/construire/

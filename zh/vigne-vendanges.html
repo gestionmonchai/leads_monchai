@@ -38,10 +38,7 @@
 <script src="../assets/js/analytics.js?v=20261029" data-gtm></script>
 </head>
 <body class="lang-zh">
-<div class="page" id="page">
-<main>
-<section class="stage stage--1200 t-creme">
-<!-- ============ HEADER (identique sur les 8 pages) ============ -->
+<div class="site-header" id="siteHeader">
 <header class="hd">
 <a class="hd__logo" href="index.html"><img alt="Mon Chai,葡萄酒软件" height="85" src="../assets/img/logo-header.webp" srcset="../assets/img/logo-header-344.webp 344w, ../assets/img/logo-header.webp 602w" sizes="(max-width:639px) 172px, (max-width:899px) 208px, 263px" width="263"/></a>
 <button aria-controls="nav-principale" aria-expanded="false" aria-label="打开菜单" class="hd__burger" type="button">
@@ -59,7 +56,7 @@
 </div>
 <div class="hd__groupe">
 <span class="hd__groupe-titre">酒庄模块</span>
-<a aria-current="page" href="vigne-vendanges.html">葡萄园与采收</a>
+<a href="vigne-vendanges.html" aria-current="page">葡萄园与采收</a>
 <a href="cave-vinification.html">酒窖与酿造</a>
 <a href="mises-conditionnement.html">包装与装瓶</a>
 <a href="stocks-tracabilite.html">库存与追溯</a>
@@ -113,9 +110,15 @@
 </nav>
 <a class="hd__demo" href="https://calendar.app.google/bJGuZudhQ7q9ka3T9" target="_blank" rel="noopener">预约演示</a>
 <a class="hd__cta" href="https://tester.monchai.fr">试用 Mon Chai</a>
-<div class="hd__langue"><button aria-controls="menu-langues" aria-expanded="false" aria-haspopup="true" aria-label="选择语言" class="hd__langue-bouton" type="button">ZH<span aria-hidden="true" class="hd__chev"></span></button><div class="hd__langue-menu" id="menu-langues"><a href="../vigne-vendanges.html" hreflang="fr" lang="fr">Français</a><a href="../en/vigne-vendanges.html" hreflang="en" lang="en">English</a><a href="../it/vigne-vendanges.html" hreflang="it" lang="it">Italiano</a><a href="../de/vigne-vendanges.html" hreflang="de" lang="de">Deutsch</a><a aria-current="page" href="vigne-vendanges.html" hreflang="zh-Hans" lang="zh-Hans">中文</a></div></div>
+<div class="hd__langue"><button aria-controls="menu-langues" aria-expanded="false" aria-haspopup="true" aria-label="选择语言" class="hd__langue-bouton" type="button">ZH<span aria-hidden="true" class="hd__chev"></span></button><div class="hd__langue-menu" id="menu-langues"><a href="../vigne-vendanges.html" hreflang="fr" lang="fr">Français</a><a href="../en/vigne-vendanges.html" hreflang="en" lang="en">English</a><a href="../it/vigne-vendanges.html" hreflang="it" lang="it">Italiano</a><a href="../de/vigne-vendanges.html" hreflang="de" lang="de">Deutsch</a><a href="../zh/vigne-vendanges.html" hreflang="zh-Hans" lang="zh-Hans" aria-current="page">中文</a></div></div>
 </div>
 </header>
+</div>
+<div class="page" id="page">
+<main>
+<section class="stage stage--1200 t-creme">
+<!-- ============ HEADER (identique sur les 8 pages) ============ -->
+<div class="header-reserve-scene" aria-hidden="true"></div>
 <!-- ============ CONTENU ============ -->
 <div class="mod__photo" style="--px:519px; --py:-178px; --pw:1526px; --ph:1758px;
          background-image:url('../assets/img/pages/vigne-vendanges.jpg');

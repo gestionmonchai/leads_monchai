@@ -145,6 +145,10 @@ jobs:
           fi
           echo "Contrôles OK"
 
+      - name: Générer le header commun
+        if: steps.choix.outputs.publier == 'oui'
+        run: python site/outils/header/generer.py site
+
       - name: Test à blanc, montrer le diff sans pousser
         if: steps.choix.outputs.publier == 'oui' && inputs.test == true
         run: |

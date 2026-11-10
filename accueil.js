@@ -12,7 +12,6 @@ const mobileNav = document.getElementById('mobileNav');
 
 /* Chrome desktop 1920 px : seul le header et le hero sont mis à l'échelle.
    Le reste de la page demeure un flux HTML natif. */
-const siteHeader = document.getElementById('siteHeader');
 const liensHeader = document.querySelector('.site-header__liens');
 const heroCanvas = document.getElementById('heroDesktopCanvas');
 const readingBar = document.getElementById('readingBar');
@@ -72,24 +71,14 @@ if (!document.documentElement.style.getPropertyValue('--desktop-scale')) ajuster
 // Lire window.scrollY pendant l'exécution du script force une mise en page
 // complète avant le premier affichage (Lighthouse : « ajustement forcé »).
 // La position est relue à chaque défilement.
-let dernierYChrome = 0;
 let chromeEnAttente = false;
 
 function majChromeDesktop() {
   if (!window.matchMedia('(min-width:1200px)').matches) {
-    if (siteHeader) siteHeader.classList.remove('est-masque');
     mettreAJourContrasteNavigation();
-    dernierYChrome = window.scrollY;
     return;
   }
   const y = window.scrollY;
-  const delta = y - dernierYChrome;
-  if (siteHeader && Math.abs(delta) > 6) {
-    siteHeader.classList.toggle('est-masque', delta > 0 && y > 80);
-    dernierYChrome = y;
-  }
-  if (siteHeader && y <= 80) siteHeader.classList.remove('est-masque');
-
   if (readingBar) {
     const total = document.documentElement.scrollHeight - window.innerHeight;
     const pct = total > 0 ? Math.min(100, Math.max(0, y / total * 100)) : 0;

@@ -38,10 +38,7 @@
 <script src="../assets/js/analytics.js?v=20261029" data-gtm></script>
 </head>
 <body class="lang-de">
-<div class="page" id="page">
-<main>
-<section class="stage stage--1200 t-terracotta">
-<!-- ============ HEADER (identique sur les 8 pages) ============ -->
+<div class="site-header" id="siteHeader">
 <header class="hd">
 <a class="hd__logo" href="index.html"><img alt="Mon Chai, Weinsoftware" height="85" src="../assets/img/logo-header.webp" srcset="../assets/img/logo-header-344.webp 344w, ../assets/img/logo-header.webp 602w" sizes="(max-width:639px) 172px, (max-width:899px) 208px, 263px" width="263"/></a>
 <button aria-controls="nav-principale" aria-expanded="false" aria-label="Menü öffnen" class="hd__burger" type="button">
@@ -60,7 +57,7 @@
 <div class="hd__groupe">
 <span class="hd__groupe-titre">Weingut-Module</span>
 <a href="vigne-vendanges.html">Weinberg &amp; Lese</a>
-<a aria-current="page" href="cave-vinification.html">Keller &amp; Weinbereitung</a>
+<a href="cave-vinification.html" aria-current="page">Keller &amp; Weinbereitung</a>
 <a href="mises-conditionnement.html">Verpackung &amp; Abfüllung</a>
 <a href="stocks-tracabilite.html">Bestände &amp; Rückverfolgbarkeit</a>
 <a href="ventes-clients.html">Verkauf, Kunden &amp; Rechnungen</a>
@@ -113,9 +110,15 @@
 </nav>
 <a class="hd__demo" href="https://calendar.app.google/bJGuZudhQ7q9ka3T9" target="_blank" rel="noopener">Demo buchen</a>
 <a class="hd__cta" href="https://tester.monchai.fr">Mon Chai testen</a>
-<div class="hd__langue"><button aria-controls="menu-langues" aria-expanded="false" aria-haspopup="true" aria-label="Sprache wählen" class="hd__langue-bouton" type="button">DE<span aria-hidden="true" class="hd__chev"></span></button><div class="hd__langue-menu" id="menu-langues"><a href="../cave-vinification.html" hreflang="fr" lang="fr">Français</a><a href="../en/cave-vinification.html" hreflang="en" lang="en">English</a><a href="../it/cave-vinification.html" hreflang="it" lang="it">Italiano</a><a aria-current="page" href="cave-vinification.html" hreflang="de" lang="de">Deutsch</a><a href="../zh/cave-vinification.html" hreflang="zh-Hans" lang="zh-Hans">中文</a></div></div>
+<div class="hd__langue"><button aria-controls="menu-langues" aria-expanded="false" aria-haspopup="true" aria-label="Sprache wählen" class="hd__langue-bouton" type="button">DE<span aria-hidden="true" class="hd__chev"></span></button><div class="hd__langue-menu" id="menu-langues"><a href="../cave-vinification.html" hreflang="fr" lang="fr">Français</a><a href="../en/cave-vinification.html" hreflang="en" lang="en">English</a><a href="../it/cave-vinification.html" hreflang="it" lang="it">Italiano</a><a href="../de/cave-vinification.html" hreflang="de" lang="de" aria-current="page">Deutsch</a><a href="../zh/cave-vinification.html" hreflang="zh-Hans" lang="zh-Hans">中文</a></div></div>
 </div>
 </header>
+</div>
+<div class="page" id="page">
+<main>
+<section class="stage stage--1200 t-terracotta">
+<!-- ============ HEADER (identique sur les 8 pages) ============ -->
+<div class="header-reserve-scene" aria-hidden="true"></div>
 <!-- ============ CONTENU ============ -->
 <div class="mod__photo" style="--px:478px; --py:95px; --pw:1682px; --ph:1105px;
          background-image:url('../assets/img/pages/cave-vinification.jpg');

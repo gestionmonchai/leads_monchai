@@ -34,6 +34,34 @@
   if (!hd) return;
   var menus = [].slice.call(document.querySelectorAll('.hd__menu'));
 
+  /* Défilement de référence de l'accueil, commun à toutes les pages.
+     Téléphone/tablette : toujours visible. Ordinateur : masqué en descendant
+     après 80 px, réaffiché en remontant (micro-mouvements de 6 px ignorés).
+     Un menu ouvert ou un focus clavier conserve la navigation à l'écran. */
+  var enveloppe = hd.closest('.site-header');
+  var dernierY = 0;
+  var enAttente = false;
+  function majVisibilite() {
+    if (!enveloppe) return;
+    var y = window.scrollY;
+    var delta = y - dernierY;
+    var garder = !window.matchMedia('(min-width:1200px)').matches ||
+      hd.contains(document.activeElement) || hd.querySelector('.est-ouvert') ||
+      hd.classList.contains('est-deploye');
+    if (garder || y <= 80) enveloppe.classList.remove('est-masque');
+    else if (Math.abs(delta) > 6) enveloppe.classList.toggle('est-masque', delta > 0);
+    if (garder || Math.abs(delta) > 6) dernierY = y;
+  }
+  window.addEventListener('scroll', function () {
+    if (enAttente) return;
+    enAttente = true;
+    requestAnimationFrame(function () { majVisibilite(); enAttente = false; });
+  }, { passive: true });
+  window.addEventListener('resize', majVisibilite);
+  hd.addEventListener('focusin', function () {
+    if (enveloppe) enveloppe.classList.remove('est-masque');
+  });
+
   function boutonDe(menu) {
     return menu && menu.querySelector('.hd__declencheur');
   }
@@ -145,7 +173,13 @@
   });
 
   document.addEventListener('keydown', function (e) {
-    if (e.key === 'Escape') { toutFermer(null); fermerTiroir(); }
+    if (e.key === 'Escape') {
+      var menu = e.target.closest('.hd__menu.est-ouvert');
+      var dansTiroir = !NAV_HORIZ.matches && hd.contains(e.target) && hd.classList.contains('est-deploye');
+      toutFermer(null); fermerTiroir();
+      if (dansTiroir && burger) burger.focus();
+      else if (menu && boutonDe(menu)) boutonDe(menu).focus();
+    }
   });
 
   document.addEventListener('click', function (e) {
@@ -174,6 +208,10 @@
     if (langue && !langue.contains(e.target)) fermerLangues();
   });
   document.addEventListener('keydown', function (e) {
-    if (e.key === 'Escape') fermerLangues();
+    if (e.key === 'Escape') {
+      var rendreFocus = langue && langue.classList.contains('est-ouvert') && langue.contains(e.target);
+      fermerLangues();
+      if (rendreFocus) boutonLangue.focus();
+    }
   });
 })();

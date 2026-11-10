@@ -94,25 +94,8 @@ document.addEventListener('keydown', function (e) {
       - seuil de 6px : ignore les micro-mouvements du trackpad
       - reste visible dans les 80 premiers pixels
    ========================================================= */
-const header = document.getElementById('siteHeader');
-const SEUIL = 6;
-const HAUT = 80;
-
-let dernierY = window.scrollY;
+// Le défilement du header est géré uniquement par assets/js/header.js.
 let enAttente = false;
-
-function majHeader() {
-  if (!header) return;
-  const y = window.scrollY;
-  const delta = y - dernierY;
-
-  if (Math.abs(delta) > SEUIL) {
-    if (delta > 0 && y > HAUT) header.classList.add('est-masque');
-    else header.classList.remove('est-masque');
-    dernierY = y;
-  }
-  if (y <= HAUT) header.classList.remove('est-masque');
-}
 
 
 /* =========================================================
@@ -165,7 +148,6 @@ window.addEventListener('scroll', function () {
   if (enAttente) return;
   enAttente = true;
   requestAnimationFrame(function () {
-    majHeader();
     majBarre();
     majNav();
     enAttente = false;

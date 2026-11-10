@@ -15,7 +15,6 @@
 .ch-eyebrow>span{display:inline-block;width:7px;height:7px;border-radius:50%;background:#b8834e;margin:0 9px 1px 0}
 .ch-hero{display:grid;grid-template-columns:1.12fr 1fr;align-items:center;gap:40px;padding-block:80px;position:relative;isolation:isolate}
 .ch-hero::before{content:'';position:absolute;z-index:-1;inset:0;background:var(--creme);box-shadow:0 0 0 100vmax var(--creme);clip-path:inset(0 -100vmax)}
-.corps-transition .site-header{overflow-x:clip}
 .ch-hero h1{font:500 clamp(40px,4.2vw,64px)/1.2 var(--serif);letter-spacing:0;margin:24px 0;color:var(--bordeaux)}
 .ch-hero h1 em{font-weight:500;color:var(--cuivre-f)}
 .ch-hero__filet{width:128px;height:4px;border-radius:2px;background:var(--cuivre);margin-bottom:26px}

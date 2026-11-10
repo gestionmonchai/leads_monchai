@@ -93,38 +93,31 @@ try:
         assert cadeau(page).count() == 1
         assert page.locator('.mc-cta:visible').count() == 0
         assert cadeau(page).locator('svg').evaluate('el=>getComputedStyle(el).animationName') == 'mc-gift-tremble'
-        assert cadeau(page).evaluate('el=>getComputedStyle(el).transitionProperty') == 'transform'
-        assert cadeau(page).evaluate('el=>getComputedStyle(el).transitionDuration') == '0.62s'
+        assert cadeau(page).evaluate('el=>getComputedStyle(el).transitionDuration') == '0s'
         ctx.close()
-        rapport['controles'].append('aucune concurrence avec la pop-up, cinq secondes de respiration, tremblement et transition graphique fluide de 620 ms')
+        rapport['controles'].append('aucune concurrence avec la pop-up, cinq secondes de respiration et tremblement decoratif sans deplacement')
 
         ctx, page = nouvelle()
         avance(page)
         before = cadeau(page).bounding_box()
         debut = page.evaluate('performance.now()')
         page.mouse.move(before['x'] + 22, before['y'] + 22)
-        cadeau(page).evaluate('el => {getComputedStyle(el).left;return Promise.all(el.getAnimations().map(a=>a.finished))}')
-        avance(page, 400)
+        avance(page, 100)
         after = cadeau(page).bounding_box()
-        assert (before['x'], before['y']) != (after['x'], after['y']), (before, after)
-        sauts = []
-        for ecoule in (1300, 2600, 3900, 5200, 6100):
+        assert before == after, (before, after)
+        approches = []
+        for ecoule in (200, 400, 600):
             avance(page, max(0, int(debut + ecoule - page.evaluate('performance.now()'))))
             encore = cadeau(page).bounding_box()
             cadeau(page).evaluate("(el,p)=>el.dispatchEvent(new PointerEvent('pointerenter',{pointerType:'mouse',clientX:p.x+22,clientY:p.y+22}))", encore)
-            cadeau(page).evaluate('el => {getComputedStyle(el).transform;return Promise.all(el.getAnimations().map(a=>a.finished))}')
             nouveau = cadeau(page).bounding_box()
-            assert (encore['x'], encore['y']) != (nouveau['x'], nouveau['y']), (ecoule, encore, nouveau)
-            sauts.append({'depuis_premiere_approche_ms': ecoule, 'x': nouveau['x'], 'y': nouveau['y']})
-        rapport['esquives'] = sauts
-        page.mouse.click(nouveau['x'] + 22, nouveau['y'] + 22)
-        assert page.locator('.mc-gift-offer[open]').count() == 0
-        avance(page, max(0, int(debut + 7001 - page.evaluate('performance.now()'))))
-        cadeau(page).evaluate('el => {getComputedStyle(el).transform;return Promise.all(el.getAnimations().map(a=>a.finished))}')
+            assert before == nouveau, (ecoule, before, nouveau)
+            approches.append({'depuis_premiere_approche_ms': ecoule, 'x': nouveau['x'], 'y': nouveau['y']})
+        rapport['approches_sans_deplacement'] = approches
         stable = cadeau(page).bounding_box()
         page.mouse.move(stable['x'] + 22, stable['y'] + 22)
-        avance(page, 400)
         assert cadeau(page).bounding_box() == stable
+        assert page.evaluate('performance.now()') - debut < 1000
         page.mouse.click(stable['x'] + 22, stable['y'] + 22)
         assert page.locator('.mc-gift-offer[open]').count() == 1
         assert page.locator('.mc-cta:visible').count() == 0
@@ -137,7 +130,7 @@ try:
         assert cadeau(page).count() == 0
         assert page.locator('.mc-cta:visible').count() == 0
         ctx.close()
-        rapport['controles'].append('esquive encore active a 6 secondes, clic disponible apres 7 secondes, Echap, focus et non-repetition')
+        rapport['controles'].append('ticket stable aux approches repetees, premier clic immediat avant une seconde, Echap, focus et non-repetition')
 
         for touch, reduit in ((True, False), (False, True)):
             ctx, page = nouvelle(largeur=390, hauteur=844, touch=touch, reduit=reduit)

@@ -213,11 +213,14 @@ try:
                 avance(page)
                 assert page.evaluate('document.activeElement.tagName') == avant
                 box = carte(page).bounding_box()
+                assert box['width'] <= 400 and box['height'] <= 480, box
+                if largeur < 640:
+                    assert box['height'] <= 440, box
                 assert box['x'] >= 0 and box['x'] + box['width'] <= largeur + 1, (nom, largeur, box)
                 assert box['y'] >= 0 and box['y'] + box['height'] <= 901, box
                 assert carte(page).evaluate('el=>el.scrollWidth<=el.clientWidth+1')
                 for control in page.locator('.mc-cta a,.mc-cta button').all():
-                    assert control.bounding_box()['height'] >= 44
+                    assert round(control.bounding_box()['height'], 2) >= 44, (nom,largeur,control.get_attribute('class'),control.bounding_box())
                 page.evaluate('document.activeElement.blur()')
                 page.screenshot(path=str(OUT / f'{Path(nom).stem}-{largeur}.png'), animations='disabled')
                 rapport['rendus'].append({'page': nom, 'largeur': largeur, 'boite': box})
@@ -229,6 +232,8 @@ try:
             ctx, page = page_neuve('tarifs.html', largeur)
             page.set_viewport_size({'width':largeur,'height':hauteur})
             avance(page)
+            box=carte(page).bounding_box()
+            assert box['height'] <= (min(440,hauteur*.65)+1 if largeur<640 else hauteur-31), box
             for control in page.locator('.mc-cta__fermer,.mc-cta__actions a').all():
                 box=control.bounding_box()
                 assert 0 <= box['y'] and box['y']+box['height'] <= hauteur+1, box

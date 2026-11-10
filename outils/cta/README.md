@@ -1,5 +1,21 @@
 # Invitations contextuelles du site vitrine
 
+## Format compact du 10 novembre 2026
+
+Denis demande des dimensions normales. Les invitations existantes gardent leurs
+textes et destinations : bandeau court, titre, objectif, explication puis actions.
+Carte limitée à 400 × 480 px sur ordinateur ; sur téléphone, largeur disponible
+avec marges de 12 px, hauteur maximale de 440 px et 65 % du viewport. La lecture
+défile à l'intérieur, les actions et la croix restent disponibles. La charte et
+la photographie sont conservées ; aucun bouton ou parcours ajouté.
+
+États et feedback : attente pendant cookies/saisie/modale, apparition après
+20 secondes, fermeture immédiate par croix ou Échap, retour de focus et fréquence
+inchangés. Conserver les cibles de 44 px, le focus visible et le mouvement réduit.
+Critères : limites dimensionnelles et absence de débordement à 320/390/768/1440 px,
+fermeture et actions accessibles aussi à 320 × 568 et 844 × 390 ; recettes vertes
+et captures. Les descriptions de composition suivantes sont historiques.
+
 ## Formulations du 8 novembre 2026
 
 Demande de Denis : utiliser « économies » et « heures économisées », y compris

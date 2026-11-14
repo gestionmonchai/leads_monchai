@@ -1,5 +1,24 @@
 # Cadeau discret Vinitech-Sifel
 
+## Modification du 10 novembre 2026 : ouverture directe
+
+Denis demande le retrait de l'esquive. Le ticket garde sa position lors des
+approches et ouvre l'invitation au premier clic, sans attente. Le placement
+initial sûr et son adaptation au redimensionnement sont conservés. L'invitation
+centrée est ramenée à 400 px de large, avec des marges et titres plus compacts ;
+le libellé de capture est remplacé par le libellé cadeau déjà traduit.
+
+UX/UI : entrée par le ticket existant ; invitation puis réservation de démo.
+États d'attente, cookies, saisie, dialogue, fermeture et fréquence inchangés ;
+aucun état de jeu. La croix, Échap, le piège de focus, les cibles de 44 px et
+le retour au contenu sont conservés. Souris, clavier et tactile ouvrent
+immédiatement ; le tremblement décoratif respecte le mouvement réduit.
+
+Critères : stabilité pendant des approches répétées, premier clic avant une
+seconde, agenda exact, aucune réservation de test et aucun débordement aux quatre
+tailles et dans les cinq langues. Recette adaptée et captures conservées.
+Les descriptions d'esquive ci-dessous sont historiques et ne s'appliquent plus.
+
 Demande de Denis du 3 novembre 2026. Réservation dédiée fournie par Denis :
 https://mon-chai.neetocal.com/demo-vinitech
 

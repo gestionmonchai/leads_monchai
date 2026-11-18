@@ -688,6 +688,29 @@ SEO_PRESENTATION = {
   'description': 'ACJA dans la PAC : complément pour les jeunes agriculteurs, distinct de la DJA. Retrouvez les conditions et références avant de préparer votre demande.',
   'date': '2026-11-07'}
 }
+# Présentation SEO du 18 novembre : aucune nouvelle vérification des droits.
+SEO_PRESENTATION.update({
+ 'investissement-chai': {
+  'titre': 'Subvention pour le chai : investissements FranceAgriMer',
+  'description': 'Financer un investissement au chai : repères sur la subvention FranceAgriMer, dépenses, calendrier et conditions à vérifier dans les sources officielles.',
+  'date': '2026-11-18'},
+ 'restructuration': {
+  'titre': 'Subvention de restructuration du vignoble : les repères',
+  'description': 'Restructuration et reconversion du vignoble : comprendre le financement, préparer les démarches et vérifier les conditions de la campagne auprès de FranceAgriMer.',
+  'date': '2026-11-18'},
+ 'pcae-regions': {
+  'titre': 'PCAE : subventions régionales au matériel viticole',
+  'description': 'Subventions PCAE et FEADER pour les investissements viticoles : matériel, appels régionaux et conditions de financement à vérifier avant tout engagement.',
+  'date': '2026-11-18'},
+ 'pve-nouvelle-aquitaine': {
+  'titre': 'PVE Nouvelle-Aquitaine : subventions viticoles 2026-2027',
+  'description': 'Subventions PVE en Nouvelle-Aquitaine : investissements viticoles, périmètre et sources de l’appel 2026-2027. Vérifiez les conditions du financement.',
+  'date': '2026-11-18'},
+ 'cab': {
+  'titre': 'Conversion bio en viticulture : subvention CAB et démarches',
+  'description': 'Aide à la conversion bio du vignoble : repères sur la subvention CAB, engagements et démarches PAC, avec sources et dates de vérification.',
+  'date': '2026-11-18'}
+})
 for fiche in AIDES:
  if fiche['id'] in SEO_PRESENTATION:
   fiche['seo'] = SEO_PRESENTATION[fiche['id']]

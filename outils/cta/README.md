@@ -1,5 +1,23 @@
 # Invitations contextuelles du site vitrine
 
+## Visite interactive, 18 novembre 2026
+
+L'action principale devient « Lancer la visite interactive », vers
+`/visite-interactive/`. Le titre « On vous fait visiter ? » et une courte
+présentation expliquent les lieux, les saisons et le domaine fictif. Le contact
+reste secondaire. Les anciennes accroches chiffrées décrites ci-dessous sont
+historiques et ne figurent plus dans cette invitation.
+
+Le format compact, le délai, les rubriques, la fermeture, le retour de focus,
+l'attente pendant cookies/saisie/modales, les exclusions et la pause de session
+sont conservés. Les cinq langues annoncent la visite ; les langues étrangères
+précisent que le parcours est en français. L'événement `cta_popup_visite` suit
+le consentement d'audience existant, avec la variante `visite_interactive_20261118`.
+
+La recette `verifier_navigateur.py --sortie CHEMIN_TEMPORAIRE` lance désormais
+la recette commune du moteur et de l'invitation. Le contrat UX/UI en vigueur est
+dans `../aides/PARCOURS_SUBVENTIONS_2026-11-18.md`.
+
 ## Format compact du 10 novembre 2026
 
 Denis demande des dimensions normales. Les invitations existantes gardent leurs

@@ -36,7 +36,7 @@
     ['oenotourisme', /^(oenotourisme|actualites-oenotourisme)/],
     ['assistant', /^(ia-au-service|ce-que-votre-assistant)/],
     ['migration', /^(changer-de-logiciel|choisir-logiciel)/],
-    ['aides', /^(aide-|aides-|dja-|s-installer)/],
+    ['aides', /^(aide-|aides-|subventions-|dja-|s-installer)/],
     ['reglementation', /^(actualites-reglementaires|paquet-vin-europeen)/],
     ['ressources', /^(ressources|faq)\.html$/]
   ];

@@ -1,5 +1,27 @@
 # Panorama des aides viticoles
 
+## Présentation autonome du 21 novembre 2026
+
+`subventions-viticulture.html` explique notre démarche, le moteur, les projets,
+le rôle du logiciel et les questions à préparer. La page possède sa canonique
+et un contenu propre. Le moteur reste à `aides-vignerons.html`, avec sa propre
+canonique et ses fiches ; aucune redirection automatique n'est ajoutée.
+
+La source éditoriale est `subventions-viticulture-corps.html`. Après une
+modification du catalogue ou de la présentation, exécuter dans cet ordre :
+
+```sh
+python outils/aides/generer.py . dja
+python outils/aides/generer-presentation.py .
+python outils/header/generer.py .
+python outils/aides/verifier-presentation.py --sortie CHEMIN_TEMPORAIRE
+```
+
+La sélection `dja` évite de régénérer les autres fiches lors d'une retouche du
+catalogue seul ; choisir les identifiants réellement modifiés pour une mise à
+jour de fiches. Le header propose séparément « Subventions viticoles » et
+« Moteur de subventions ». Contrat : [PAGE_SUBVENTIONS_2026-11-21.md](PAGE_SUBVENTIONS_2026-11-21.md).
+
 ## Recherche guidée et SEO du 18 novembre 2026
 
 Le catalogue met en avant les subventions et financements viticoles. Les URL,

@@ -1,0 +1,128 @@
+/* Présentation autonome du financement viticole, dans la charte du site. */
+.sv-page { color:#2d241e;background:#fffdfb;font:400 16px/1.75 Inter,system-ui,sans-serif;overflow-wrap:anywhere; }
+.sv-page *, .sv-page *::before, .sv-page *::after { box-sizing:border-box; }
+.sv-width { width:min(100%,1200px);margin-inline:auto;padding-inline:32px; }
+.sv-page h1,.sv-page h2,.sv-page h3,.sv-page p,.sv-page figure,.sv-page dl { margin:0; }
+.sv-page h1,.sv-page h2,.sv-page h3 { font-family:"Playfair Display",Georgia,serif;font-weight:500;color:#471318;text-wrap:balance; }
+.sv-page h1 { font-size:clamp(42px,4vw,56px);line-height:1.12;letter-spacing:-1.4px; }
+.sv-page h1 em { color:#986239;font-weight:400; }
+.sv-page h2 { font-size:clamp(31px,3.2vw,43px);line-height:1.18;letter-spacing:-.7px;margin-bottom:22px; }
+.sv-page h3 { font-size:24px;line-height:1.25;letter-spacing:-.25px; }
+.sv-page p + p { margin-top:16px; }
+.sv-page a { color:#7b1e22;text-underline-offset:4px; }
+.sv-page :focus-visible { outline:3px solid #7b1e22;outline-offset:5px; }
+.sv-page [id] { scroll-margin-top:115px; }
+.sv-page .sv-kicker { margin:0 0 17px;color:#7b1e22;font:600 11px/1.6 Poppins,Inter,sans-serif;text-transform:uppercase;letter-spacing:.16em; }
+.sv-page .sv-intro { font-size:19px;line-height:1.7;margin-bottom:20px; }
+.sv-hero { padding-block:24px 0;background:#fcf5ec;border-bottom:1px solid #e7d6c3; }
+.sv-breadcrumb { display:flex;align-items:center;flex-wrap:wrap;gap:6px 12px;margin-bottom:48px;font-size:12px;color:#655246; }
+.sv-breadcrumb a { display:inline-flex;align-items:center;min-height:44px; }
+.sv-hero-grid { display:grid;grid-template-columns:1.15fr 1fr;gap:54px;align-items:center; }
+.sv-page .sv-lead { margin-top:25px;max-width:56ch;color:#59493d;font-size:17px;line-height:1.8; }
+.sv-actions { display:flex;align-items:center;flex-wrap:wrap;gap:13px 24px;margin-top:27px; }
+.sv-page .sv-button { display:inline-flex;justify-content:center;align-items:center;gap:24px;min-height:50px;max-width:100%;padding:13px 19px;border:1px solid #7b1e22;border-radius:7px;background:#7b1e22;color:#fffdfb;text-decoration:none;font-size:13px;font-weight:600;line-height:1.5; }
+.sv-page .sv-button>span { flex-shrink:0;font-size:20px; }
+.sv-page .sv-button:hover { background:#55191d; }
+.sv-page .sv-text-link { display:inline-flex;align-items:center;min-height:44px;font-size:13px; }
+.sv-page .sv-caption { margin-top:18px;color:#655246;font-size:12px;line-height:1.8; }
+.sv-hero-image { position:relative;align-self:stretch;display:flex;flex-direction:column;justify-content:center;padding-bottom:65px; }
+.sv-hero-image img { display:block;width:100%;height:330px;object-fit:cover;border-radius:100px 12px 12px 12px;border:1px solid #dbc1a5; }
+.sv-hero-image figcaption { padding:13px 0;color:#655246;font-size:12px; }
+.sv-image-note { position:relative;align-self:flex-end;width:235px;padding:23px 25px;margin-top:-8px;border:1px solid #d9bea3;border-radius:9px;background:#fffdfb;box-shadow:0 12px 26px #5e36230a; }
+.sv-image-note span { display:block;color:#6b5140;font-size:11px; }
+.sv-image-note strong { display:block;margin-top:9px;font:500 26px/1.22 "Playfair Display",Georgia,serif;color:#7b1e22;overflow-wrap:normal; }
+.sv-facts { display:grid;grid-template-columns:repeat(3,1fr);gap:28px;margin-top:48px!important;padding-block:24px;border-top:1px solid #dec8b0; }
+.sv-facts dt { color:#471318;font-size:14px;font-weight:600; }
+.sv-facts dd { margin:4px 0 0;color:#655246;font-size:12px; }
+.sv-jump { display:flex;align-items:center;flex-wrap:wrap;gap:7px 26px;padding-block:17px;border-bottom:1px solid #eaded1; }
+.sv-jump>span { margin-right:auto;color:#655246;font-size:11px;text-transform:uppercase;letter-spacing:.08em; }
+.sv-jump a { display:inline-flex;align-items:center;min-height:44px;font-size:13px; }
+.sv-section { padding-block:80px; }
+.sv-editorial { display:grid;grid-template-columns:1fr 1fr;gap:70px; }
+.sv-principles { display:grid;gap:26px; }
+.sv-principles article { display:flex;align-items:start;gap:19px;padding-bottom:23px;border-bottom:1px solid #eaded1; }
+.sv-number { display:inline-block;flex-shrink:0;color:#9c6136;font:500 29px/1.1 "Playfair Display",Georgia,serif;white-space:nowrap; }
+.sv-principles h3 { margin-bottom:10px; }
+.sv-principles p { color:#59493d;font-size:14px;line-height:1.75; }
+.sv-soft { background:#f8f2e9;border-block:1px solid #e7d6c3; }
+.sv-section-heading { display:grid;grid-template-columns:1.3fr 1fr;gap:70px;align-items:center;margin-bottom:40px; }
+.sv-section-heading h2 { margin-bottom:0; }
+.sv-section-heading>p { color:#59493d; }
+.sv-steps { display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:32px;padding:0;margin:0;list-style:none; }
+.sv-steps li { border-top:1px solid #d9c3aa;padding-top:24px; }
+.sv-steps h3 { margin:16px 0 13px; }
+.sv-steps p { color:#59493d;font-size:14px;line-height:1.85; }
+.sv-callout { display:flex;align-items:center;justify-content:space-between;gap:35px;padding:24px;margin-top:38px;border:1px solid #d9c3aa;border-radius:10px;background:#fffdfb; }
+.sv-callout p { max-width:60ch;color:#59493d;font-size:13px; }
+.sv-callout .sv-button { flex-shrink:0; }
+.sv-section-intro { max-width:72ch;color:#59493d; }
+.sv-projects { display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;margin-top:35px; }
+.sv-projects>a { display:flex;flex-direction:column;align-items:start;padding:25px;border:1px solid #dec8b0;border-radius:11px;text-decoration:none;background:#fffdfb; }
+.sv-projects>a:hover { background:#fcf5ec;border-color:#a56843; }
+.sv-project-tag { margin-bottom:22px;color:#8a522f;font-size:10px;text-transform:uppercase;font-weight:600;letter-spacing:.12em; }
+.sv-projects h3 { font-size:26px;margin-bottom:14px; }
+.sv-projects p { margin-bottom:22px;color:#59493d;font-size:14px; }
+.sv-project-action { display:flex;align-items:center;justify-content:space-between;gap:13px;width:100%;min-height:44px;margin-top:auto;padding-top:12px;border-top:1px solid #eaded1;font-size:12px;font-weight:600; }
+.sv-wine { background:#471318;color:#f7e9db; }
+.sv-wine h2,.sv-wine h3 { color:#fff7ed; }
+.sv-wine p { color:#ecddd1; }
+.sv-wine .sv-kicker { color:#e1bb8d; }
+.sv-wine a { color:#f3d3aa; }
+.sv-wine .sv-button-light { background:#fbf2e5;border-color:#fbf2e5;color:#471318; }
+.sv-wine .sv-button-light:hover { background:#e9cfae; }
+.sv-wine :focus-visible { outline-color:#f3d3aa; }
+.sv-software { display:grid;gap:16px; }
+.sv-software>a { padding:20px 23px;border:1px solid #956b63;border-radius:9px;text-decoration:none;background:#ffffff04; }
+.sv-software>a:hover { background:#ffffff0c; }
+.sv-software>a>span:first-child { font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:#e1bb8d; }
+.sv-software h3 { margin:7px 0 9px;font-size:24px; }
+.sv-software p { font-size:14px; }
+.sv-software-link { display:inline-flex;align-items:center;min-height:44px;margin-top:7px;font-size:12px;text-decoration:underline;text-underline-offset:4px; }
+.sv-faq details { border-top:1px solid #dec8b0; }
+.sv-faq details:last-child { border-bottom:1px solid #dec8b0; }
+.sv-faq summary { min-height:58px;padding:18px 0;cursor:pointer;color:#471318;font-size:15px;font-weight:600;line-height:1.6; }
+.sv-faq p { padding:0 0 22px;color:#59493d;font-size:14px; }
+.sv-final { padding-block:60px;background:#fcf5ec;border-block:1px solid #e7d6c3;text-align:center; }
+.sv-final p:not(.sv-kicker) { max-width:60ch;margin-inline:auto;color:#59493d; }
+.sv-final .sv-button { margin-top:25px; }
+.sv-provenance { padding-block:26px; }
+.sv-provenance p { max-width:110ch;color:#655246;font-size:12px;line-height:1.8; }
+@media(max-width:999px) {
+ .sv-width { padding-inline:24px; }
+ .sv-hero-grid { gap:28px;grid-template-columns:1.2fr 1fr; }
+ .sv-page h1 { font-size:46px; }
+ .sv-editorial,.sv-section-heading { gap:35px; }
+ .sv-hero-image img { height:280px; }
+ .sv-jump { gap:6px 18px; }
+ .sv-jump>span { flex-basis:100%; }
+ .sv-callout { align-items:start;flex-direction:column;gap:20px; }
+ .sv-projects { grid-template-columns:repeat(2,minmax(0,1fr)); }
+}
+@media(max-width:699px) {
+ .sv-width { padding-inline:20px; }
+ .sv-page [id] { scroll-margin-top:86px; }
+ .sv-page h1 { font-size:clamp(37px,8vw,48px);letter-spacing:-1px; }
+ .sv-page h2 { font-size:33px; }
+ .sv-hero { padding-top:12px; }
+ .sv-breadcrumb { gap:3px 9px;margin-bottom:28px;font-size:11px; }
+ .sv-hero-grid,.sv-editorial,.sv-section-heading,.sv-steps { grid-template-columns:1fr;gap:32px; }
+ .sv-hero-image { padding-bottom:0;margin-top:10px!important; }
+ .sv-hero-image img { height:210px;border-radius:50px 9px 9px 9px; }
+ .sv-image-note { display:none; }
+ .sv-page .sv-lead { font-size:16px;line-height:1.8; }
+ .sv-page .sv-button { justify-content:space-between;padding-inline:15px;gap:14px; }
+ .sv-actions .sv-button { width:100%; }
+ .sv-facts { grid-template-columns:1fr;gap:15px;margin-top:24px!important;padding-block:22px; }
+ .sv-facts>div { padding-bottom:14px;border-bottom:1px solid #eaded1; }
+ .sv-facts>div:last-child { border:0;padding-bottom:0; }
+ .sv-section { padding-block:48px; }
+ .sv-page .sv-intro { font-size:18px; }
+ .sv-principles { gap:20px; }
+ .sv-callout { padding:20px; }
+ .sv-projects { grid-template-columns:1fr;margin-top:28px; }
+ .sv-projects>a { padding:23px; }
+ .sv-project-tag { margin-bottom:14px; }
+ .sv-final { padding-block:45px; }
+ .sv-final h2 { font-size:32px; }
+}
+@media print { .sv-jump,.sv-actions { display:none; }.sv-wine { background:#fff;color:#211b18; }.sv-wine h2,.sv-wine h3,.sv-wine p,.sv-wine a { color:#211b18; }.sv-section { break-inside:avoid; } }

@@ -115,6 +115,8 @@ desktop.ini
 !outils/aides/generer-presentation.py
 !outils/aides/verifier-presentation.py
 !outils/aides/PAGE_SUBVENTIONS_2026-11-21.md
+!outils/salons/generer.py
+!outils/salons/verifier_navigateur.py
 !outils/aides/verifier_navigateur.py
 !outils/aides/PARCOURS_SUBVENTIONS_2026-11-18.md
 !outils/editorial/generer-guides.py

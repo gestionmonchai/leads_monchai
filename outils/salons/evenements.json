@@ -1,0 +1,75 @@
+{
+  "verifie": "2026-11-22",
+  "perimetre": "Première sélection France 2026-2027, sans garantie d’exhaustivité. Dates à revérifier avant engagement.",
+  "evenements": [
+    {
+      "id": "vinitech-sifel-2026", "nom": "Vinitech-Sifel", "edition": 2026,
+      "ville": "Bordeaux", "lieu": "Parc des Expositions de Bordeaux", "region": "naq", "objectif": "equipement",
+      "debut": "2026-12-01", "fin": "2026-12-03", "statut_dates": "annoncees",
+      "resume": "Un rendez-vous professionnel pour comparer les équipements et services de la vigne, du chai et de la mise en marché.",
+      "public": "Professionnels des filières vitivinicole, arboricole et maraîchère.",
+      "participation": "Pour un domaine : préparer une visite et des rendez-vous techniques. Les modalités pour exposer comme fournisseur relèvent de l’organisateur.",
+      "preparer": "Apportez un besoin précis, vos contraintes de travail et un scénario à essayer sur les outils comparés.",
+      "inscription": "Badge et conditions de visite à consulter sur la billetterie officielle ; les invitations suivent leur propre procédure.",
+      "sources": [["FAQ et accès officiels", "https://www.vinitech-sifel.com/visiter/faq-visiteurs"]],
+      "exposant": "https://www.vinitech-sifel.com/", "mots": "vigne chai logiciel materiel innovation bordeaux gironde"
+    },
+    {
+      "id": "wine-paris-2027", "nom": "Wine Paris", "edition": 2027,
+      "ville": "Paris", "lieu": "Paris Expo Porte de Versailles", "region": "idf", "objectif": "pros",
+      "debut": "2027-02-15", "fin": "2027-02-17", "statut_dates": "annoncees",
+      "resume": "Un salon professionnel orienté rencontres entre producteurs, importateurs, distributeurs et acheteurs.",
+      "public": "Professionnels du vin et des spiritueux ; conditions d’accès selon le rôle.",
+      "participation": "Pour un domaine : examiner une participation exposant et préparer ses rendez-vous avec des acheteurs professionnels.",
+      "preparer": "Définissez les marchés recherchés, les références à présenter et les documents utiles aux rendez-vous.",
+      "inscription": "Les démarches exposant et badge visiteur sont distinctes ; disponibilités à vérifier sur le site officiel.",
+      "sources": [["Présentation et dates officielles", "https://wineparis.com/fr/home"]],
+      "exposant": "https://wineparis.com/fr/home", "mots": "export importateur caviste chr acheteur paris professionnel commercial"
+    },
+    {
+      "id": "millesime-bio-2027", "nom": "Millésime BIO", "edition": 2027,
+      "ville": "Montpellier · Pérols", "lieu": "Parc des Expositions de Montpellier", "region": "occ", "objectif": "pros",
+      "debut": "2027-01-25", "fin": "2027-01-27", "statut_dates": "annoncees",
+      "resume": "Une rencontre commerciale consacrée aux vins et boissons biologiques, avec des règles d’admission spécifiques.",
+      "public": "Visiteurs professionnels de l’achat/vente et presse. Fournisseurs, prestataires et grand public exclus de cet accès ; dispositions spécifiques pour enseignants et étudiants.",
+      "participation": "L’admission des vins exposés exige la certification biologique prévue par le règlement ; les vins en conversion et conventionnels sont exclus.",
+      "preparer": "Vérifiez d’abord l’admission de vos produits et de votre profil, puis préparez les cuvées et les rendez-vous.",
+      "inscription": "Le site propose une inscription exposant ; disponibilité et règlement à vérifier avant engagement.",
+      "sources": [["Accès visiteurs et dates", "https://www.millesime-bio.com/fr/visiteurs/inscription_visiteurs"], ["Admission et inscription exposants", "https://www.millesime-bio.com/fr/exposants/inscription-exposants"]],
+      "exposant": "https://www.millesime-bio.com/fr/exposants/inscription-exposants", "mots": "bio biologique export acheteur montpellier perols occitanie"
+    },
+    {
+      "id": "viteff-2027", "nom": "VITeff", "edition": 2027,
+      "ville": "Épernay · Pierry", "lieu": "Le Millesium, Pierry", "region": "ges", "objectif": "equipement",
+      "debut": "2027-10-12", "fin": "2027-10-14", "statut_dates": "annoncees",
+      "resume": "Une piste de visite technique pour les technologies des vins effervescents et les échanges avec les fournisseurs.",
+      "public": "Professionnels intéressés par les technologies des vins effervescents.",
+      "participation": "Pour un domaine : organiser une visite technique. Une candidature comme exposant suit le parcours fournisseur de l’organisateur.",
+      "preparer": "Identifiez les opérations à améliorer, les contraintes du chai et les interlocuteurs à rencontrer.",
+      "inscription": "Consulter la billetterie et les modalités de l’édition auprès de l’organisateur.",
+      "sources": [["Informations pratiques officielles", "https://www.viteff.com/en/content/practical-information"]],
+      "exposant": "https://www.viteff.com/", "mots": "champagne effervescent equipement technique marne epernay pierry"
+    },
+    {
+      "id": "sitevi-2027", "nom": "SITEVI", "edition": 2027,
+      "ville": "Montpellier · Pérols", "lieu": "Parc des Expositions de Montpellier", "region": "occ", "objectif": "equipement",
+      "debut": null, "fin": null, "statut_dates": "non_publiees",
+      "resume": "Équipements et savoir-faire de la vigne et du vin. L’édition 2027 est annoncée, les jours restent à confirmer dans les sources consultées.",
+      "public": "Professionnels des filières viticole, vinicole, arboricole et oléicole.",
+      "participation": "Pour un domaine : préparer une visite technique et suivre les informations de l’organisateur.",
+      "preparer": "Repérez vos besoins ; attendez une confirmation des jours avant de réserver un déplacement.",
+      "inscription": "Conditions et disponibilités à demander à l’organisateur ; aucun délai d’inscription n’est déduit ici.",
+      "sources": [["Présentation de l’édition 2027", "https://www.sitevi.com/"], ["Lieu et accès officiels", "https://www.sitevi.com/fr/content/infos-pratiques"]],
+      "exposant": "https://www.sitevi.com/", "mots": "vigne vin chai materiel technique montpellier perols"
+    },
+    {"id":"vi-paris-2026","nom":"Vignerons Indépendants · Paris Porte de Versailles","edition":2026,"ville":"Paris","lieu":"Paris Expo Porte de Versailles, pavillon 7.2","region":"idf","objectif":"particuliers","debut":"2026-12-10","fin":"2026-12-13","statut_dates":"a_reconfirmer","page":"paris-porte-de-versailles-2026","conflit":true},
+    {"id":"vi-rennes-2027","nom":"Vignerons Indépendants · Rennes","edition":2027,"ville":"Rennes · Bruz","lieu":"Parc Expo Rennes Aéroport, hall 10A","region":"bre","objectif":"particuliers","debut":"2027-01-22","fin":"2027-01-24","statut_dates":"a_reconfirmer","page":"rennes-2027","conflit":true},
+    {"id":"vi-strasbourg-2027","nom":"Vignerons Indépendants · Strasbourg","edition":2027,"ville":"Strasbourg","lieu":"Parc des Expositions, avenue Herrenschmidt","region":"ges","objectif":"particuliers","debut":"2027-02-19","fin":"2027-02-22","statut_dates":"a_reconfirmer","page":"strasbourg-2027","conflit":true},
+    {"id":"vi-lyon-2027","nom":"Vignerons Indépendants · Lyon Eurexpo","edition":2027,"ville":"Lyon · Chassieu","lieu":"Eurexpo, hall 7.A, Chassieu","region":"ara","objectif":"particuliers","debut":"2027-03-05","fin":"2027-03-07","statut_dates":"a_reconfirmer","page":"lyon-eurexpo-2027","conflit":true},
+    {"id":"vi-bordeaux-2027","nom":"Vignerons Indépendants · Bordeaux","edition":2027,"ville":"Bordeaux","lieu":"Parc des Expositions de Bordeaux Lac, hall 3","region":"naq","objectif":"particuliers","debut":"2027-03-12","fin":"2027-03-14","statut_dates":"a_reconfirmer","page":"bordeaux-2027","conflit":true},
+    {"id":"vi-champerret-2027","nom":"Vignerons Indépendants · Paris Champerret","edition":2027,"ville":"Paris","lieu":"Espace Champerret, Paris 17e","region":"idf","objectif":"particuliers","debut":"2027-03-18","fin":"2027-03-21","statut_dates":"annoncees","page":"paris-champerret-2027","conflit":false},
+    {"id":"vi-ponts-ce-2027","nom":"Vignerons Indépendants · Les Ponts-de-Cé","edition":2027,"ville":"Les Ponts-de-Cé · Angers","lieu":"Centre Athlétis, Les Ponts-de-Cé","region":"pdl","objectif":"particuliers","debut":"2027-04-02","fin":"2027-04-04","statut_dates":"annoncees","page":"les-ponts-de-ce-2027","conflit":false},
+    {"id":"vi-mandelieu-2027","nom":"Vignerons Indépendants · Mandelieu","edition":2027,"ville":"Mandelieu-la-Napoule","lieu":"Centre Expo Congrès, Mandelieu-la-Napoule","region":"pac","objectif":"particuliers","debut":"2027-04-09","fin":"2027-04-11","statut_dates":"annoncees","page":"mandelieu-2027","conflit":false},
+    {"id":"vi-baltard-2027","nom":"Vignerons Indépendants · Baltard","edition":2027,"ville":"Nogent-sur-Marne","lieu":"Pavillon Baltard, Nogent-sur-Marne","region":"idf","objectif":"particuliers","debut":"2027-04-23","fin":"2027-04-25","statut_dates":"annoncees","page":"baltard-2027","conflit":false}
+  ]
+}

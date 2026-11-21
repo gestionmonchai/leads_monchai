@@ -37,6 +37,7 @@
     ['assistant', /^(ia-au-service|ce-que-votre-assistant)/],
     ['migration', /^(changer-de-logiciel|choisir-logiciel)/],
     ['aides', /^(aide-|aides-|subventions-|dja-|s-installer)/],
+    ['salons', /^(salons-viticoles|preparer-visite-vinitech|choisir-salon-vin|budget-salon-vin|stock-vin-salon|suivi-contacts-apres-salon)/],
     ['reglementation', /^(actualites-reglementaires|paquet-vin-europeen)/],
     ['ressources', /^(ressources|faq)\.html$/]
   ];

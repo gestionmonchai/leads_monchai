@@ -4,6 +4,7 @@ from datetime import datetime, timezone
 from functools import partial
 from http.server import SimpleHTTPRequestHandler, ThreadingHTTPServer
 import json
+from generer import load_events
 from pathlib import Path
 import re
 import threading
@@ -28,6 +29,13 @@ threading.Thread(target=server.serve_forever,daemon=True).start()
 BASE=f'http://127.0.0.1:{server.server_port}'
 
 try:
+    events=load_events(ROOT)['evenements']
+    total=len(events)
+    local_total=sum(bool(a.get('local')) for a in events)
+    def active_at(a,day):
+        return a['fin']>=day if a['fin'] else a['edition']>=int(day[:4])
+    assert local_total>=22
+    assert all(active_at(a,'2026-11-22') for a in events)
     articles=json.loads((ROOT/'outils/salons/articles.json').read_text(encoding='utf-8'))
     urls=[x.text for x in ET.parse(ROOT/'sitemap.xml').findall('.//{*}loc')]
     for slug in ['salons-viticoles']+[a['slug'] for a in articles]:
@@ -57,10 +65,10 @@ try:
         def no_overflow(p): assert p.evaluate('document.documentElement.scrollWidth<=innerWidth')
 
         ctx,p=new()
-        assert cards(p).count()==14
-        for value,count in [('particuliers',9),('pros',2),('equipement',3)]:
+        assert cards(p).count()==total
+        for value in ['particuliers','pros','equipement']:
             goal(p,value)
-            assert cards(p).count()==count
+            assert cards(p).count()==sum(a['objectif']==value for a in events)
             assert cards(p).evaluate_all('(xs,v)=>xs.every(x=>x.dataset.objectif===v)',value)
         reset(p)
         p.locator('#q-salons').fill('salons du vin Bordeaux')
@@ -69,9 +77,9 @@ try:
         assert cards(p).count()==1
         reset(p)
         p.locator('#region-salons').select_option('occ')
-        assert cards(p).count()==2
+        assert cards(p).count()==sum(a['region']=='occ' for a in events)
         p.locator('#periode-salons').select_option('2027-t1')
-        assert cards(p).count()==1
+        assert cards(p).count()==sum(a['region']=='occ' and bool(a['debut']) and a['debut']<='2027-03-31' and a['fin']>='2027-01-01' for a in events)
         assert p.locator('#salon-millesime-bio-2027').is_visible()
         p.get_by_role('button',name='Retirer le critère : Occitanie',exact=True).click()
         assert p.locator('#region-salons').input_value()==''
@@ -79,39 +87,72 @@ try:
         assert p.locator('#titre-resultats-salons').evaluate('(el)=>el===document.activeElement')
         reset(p)
         p.locator('#periode-salons').select_option('incertain')
-        assert cards(p).count()==6
+        assert cards(p).count()==sum(a['statut_dates']!='annoncees' for a in events)
         assert p.locator('#salon-sitevi-2027').inner_text().count('jours à confirmer')>=1
-        assert p.locator('[data-statut=a_reconfirmer]').count()==5
+        assert p.locator('[data-statut=a_reconfirmer]').count()==sum(a['statut_dates']=='a_reconfirmer' for a in events)
+        assert p.locator('#salon-intervin-vienne-2027').is_visible()
+        p.locator('#salon-les-angles-2027 summary').click()
+        assert '14 avril' in p.locator('#salon-les-angles-2027 .sl-date-note').inner_text()
         p.locator('#q-salons').fill('<img src=x onerror=alert(1)>')
         assert p.locator('#salons-vide').is_visible()
         assert not p.locator('#criteres-salons img').count()
         p.get_by_role('button',name='Effacer les critères',exact=True).click()
-        assert cards(p).count()==14
+        assert cards(p).count()==total
         p.locator('#salon-millesime-bio-2027 summary').click()
         assert p.locator('#salon-millesime-bio-2027 details[open]').count()==1
         assert 'conversion' in p.locator('#salon-millesime-bio-2027 details').inner_text()
         assert p.locator('#salon-millesime-bio-2027 .sl-official').get_attribute('href').startswith('https://www.millesime-bio.com/')
         assert p.evaluate("!(window.dataLayer||[]).some(x=>x.event==='salons_recherche')")
         ctx.close()
-        report['controles'].append('14 éditions, 3 objectifs, région/période combinées, accents, critères supprimables, zéro/reset, saisie sûre, admission et sources')
+        report['controles'].append(f'{total} éditions, 3 objectifs, région/période combinées, accents, critères supprimables, zéro/reset, saisie sûre, admission et sources')
+
+        ctx,p=new()
+        p.locator('#locaux-salons').check()
+        assert cards(p).count()==local_total
+        assert cards(p).evaluate_all('(xs)=>xs.every(x=>x.dataset.local==="oui")')
+        p.locator('#q-salons').fill('56')
+        assert cards(p).count()==1
+        assert p.locator('#salon-guidel-2027').is_visible()
+        p.locator('#q-salons').fill('Morbihan')
+        assert cards(p).count()==1
+        p.locator('#q-salons').fill('VIN sur VIN')
+        assert cards(p).count()==1
+        assert p.locator('#salon-vinotours-2027').is_visible()
+        p.locator('#q-salons').fill('')
+        p.locator('#region-salons').select_option('bre')
+        p.locator('#periode-salons').select_option('2027-t2')
+        assert cards(p).count()==2
+        p.get_by_role('button',name='Retirer le critère : Événements locaux',exact=True).click()
+        assert not p.locator('#locaux-salons').is_checked()
+        assert p.locator('#region-salons').input_value()=='bre'
+        assert p.locator('#periode-salons').input_value()=='2027-t2'
+        reset(p)
+        assert cards(p).count()==total
+        p.locator('#q-salons').fill('44')
+        assert p.locator('#salon-saint-nazaire-bretagne-2027').is_visible()
+        assert p.locator('#salon-saint-nazaire-bretagne-2027').get_attribute('data-region')=='pdl'
+        p.locator('#salon-saint-nazaire-bretagne-2027 summary').click()
+        assert 'uniquement' in p.locator('#salon-saint-nazaire-bretagne-2027 details').inner_text()
+        ctx.close()
+        report['controles'].append(f'{local_total} initiatives locales : département, organisateur, région/période, retrait isolé du filtre, admission géographique et reset')
 
         ctx,p=new(future=True)
-        assert cards(p).count()==8
+        assert cards(p).count()==sum(active_at(a,'2027-03-01') for a in events)
         assert not p.locator('#salon-vinitech-sifel-2026').is_visible()
         p.locator('#archives-salons').check()
-        assert cards(p).count()==14
+        assert cards(p).count()==total
         reset(p)
         p.goto(BASE+'/salons-viticoles.html#salon-vinitech-sifel-2026',wait_until='load')
         assert p.locator('#salon-vinitech-sifel-2026').is_visible()
         assert p.locator('#salon-vinitech-sifel-2026 .sl-past').is_visible()
         assert p.locator('#archives-salons').is_checked()
         ctx.close()
-        report['controles'].append('horloge navigateur au 1er mars 2027 : 6 éditions archivées, option et lien direct récupérables')
+        report['controles'].append('horloge navigateur au 1er mars 2027 : éditions terminées archivées, option et lien direct récupérables')
         ctx,p=new(future=2028)
         assert cards(p).count()==0
         assert p.locator('#salons-vide').is_visible()
         p.get_by_role('button',name='Inclure les éditions passées',exact=True).click()
-        assert cards(p).count()==14
+        assert cards(p).count()==total
         assert p.locator('#salon-sitevi-2027 .sl-past').is_visible()
         ctx.close()
         report['controles'].append('en 2028, une édition sans jours mais avec année passée est aussi archivée')
@@ -121,6 +162,12 @@ try:
             p.locator('.sl-hero .sv-button').click()
             no_overflow(p)
             p.screenshot(path=str(OUT/f'moteur-{width}.png'),animations='disabled')
+            p.locator('#locaux-salons').check()
+            p.locator('#q-salons').fill('56')
+            p.locator('#form-salons [type=submit]').click()
+            no_overflow(p)
+            p.screenshot(path=str(OUT/f'local-{width}.png'),animations='disabled')
+            reset(p)
             if width==1440: p.screenshot(path=str(OUT/'moteur-complet-1440.png'),full_page=True,animations='disabled')
             # Accès Ressources, au clavier, puis filtre par objectif.
             if p.locator('.hd__burger').is_visible(): p.locator('.hd__burger').click()
@@ -161,7 +208,7 @@ try:
         report['controles'].append('5 formats, menu clavier, vide et 5 guides sur mobile/ordinateur, liens réels vers le moteur, sans débordement')
 
         ctx,p=new(js=False)
-        assert cards(p).count()==14
+        assert cards(p).count()==total
         assert not p.locator('#recherche-salons').is_visible()
         p.locator('#salon-vi-paris-2026 summary').click()
         assert p.locator('#salon-vi-paris-2026 .sl-date-note').is_visible()

@@ -1,0 +1,229 @@
+{
+  "verifie": "2026-11-22",
+  "perimetre": "Initiatives associatives et marchés de vignerons annoncés, sources organisateurs ou institutionnelles locales. Ni classement par taille ni annuaire exhaustif.",
+  "evenements": [
+    {
+      "id": "guidel-2027", "nom": "Salon des vins de Guidel", "edition": 2027,
+      "ville": "Guidel", "departement": "Morbihan (56)", "region": "bre",
+      "lieu": "Salle Villeneuve Ellé, 1 Clos de Locmiquel-Méné",
+      "organisateur": "Entre Mer & Vin",
+      "debut": "2027-04-03", "fin": "2027-04-04", "statut_dates": "annoncees",
+      "resume": "Un salon associatif de dégustation avec des vignerons à Guidel, près de Lorient.",
+      "participation": "Demandez à Entre Mer & Vin les critères de sélection des domaines et la disponibilité des stands. La présence comme visiteur ne donne pas une place d'exposant.",
+      "mots": "Lorient Bretagne association dégustation vente directe",
+      "sources": [["Dates et lieu, organisateur", "https://salondesvinsguidel.org/informations-pratiques/"], ["Association organisatrice", "https://salondesvinsguidel.org/a-propos/"]]
+    },
+    {
+      "id": "ecully-2027", "nom": "Vins & Saveurs d’Écully", "edition": 2027,
+      "ville": "Écully", "departement": "Rhône (69)", "region": "ara",
+      "lieu": "Espace Écully, 7 rue Jean Rigaud", "organisateur": "Lions Club Lyon Ouest, avec la Ville d’Écully",
+      "debut": "2027-03-13", "fin": "2027-03-14", "statut_dates": "annoncees",
+      "resume": "Vignerons et producteurs de terroir réunis par le club Lyon Ouest pour un salon solidaire.",
+      "participation": "Le site propose une démarche « Devenir exposant ». Faites préciser les critères d'admission et les places restantes avant d'engager des frais.",
+      "mots": "Lyon association gastronomie producteurs vente directe",
+      "sources": [["Salon et démarche exposant", "https://www.vins-saveurs-ecully.org/"]]
+    },
+    {
+      "id": "saint-didier-mont-or-2026", "nom": "P’tit Salon des Vins de Saint-Didier-au-Mont-d’Or", "edition": 2026,
+      "ville": "Saint-Didier-au-Mont-d’Or", "departement": "Rhône (69)", "region": "ara",
+      "lieu": "Espace Laurent Bonnevay", "organisateur": "Terra Desiderius",
+      "debut": "2026-12-05", "fin": "2026-12-06", "statut_dates": "annoncees",
+      "resume": "Un rendez-vous de l'association désidérienne pour rencontrer les producteurs et déguster leurs vins.",
+      "participation": "Contactez Terra Desiderius pour connaître la sélection des vignerons. La liste des domaines de cette édition est publiée sur le site.",
+      "mots": "Lyon Monts d Or association dégustation vente directe",
+      "sources": [["Annonce de l’association", "https://www.terra-desiderius.com/salon-des-vins-2026"]]
+    },
+    {
+      "id": "les-angles-2027", "nom": "Saveurs des Terroirs de France aux Angles", "edition": 2027,
+      "ville": "Les Angles", "departement": "Gard (30)", "region": "occ",
+      "lieu": "Forum des Angles, 10 boulevard des Carrières", "organisateur": "Lions Club Ponts d’Avignon – Villeneuve – Les Angles et municipalité",
+      "debut": "2027-03-13", "fin": "2027-03-14", "statut_dates": "a_reconfirmer",
+      "date_note": "L’annonce et les horaires principaux indiquent les 13–14 mars 2027, mais le pied de page mentionne « dimanche 14 avril ». Faites confirmer les jours par l’organisateur.",
+      "resume": "Un salon solidaire réunissant vins et spécialités des terroirs près d'Avignon.",
+      "participation": "La page publie le contact pour les informations et inscriptions. Faites confirmer les dates, l'admission des domaines et la disponibilité.",
+      "mots": "Avignon Villeneuve les Avignon association gastronomie",
+      "sources": [["Annonce et contact de l’organisateur, avec contradiction de date", "https://www.salondesvins-lesangles.fr/"]]
+    },
+    {
+      "id": "voreppe-voiron-2027", "nom": "Salon des Vins, Spiritueux & Produits du Terroir du Lions Voiron", "edition": 2027,
+      "ville": "Voreppe", "departement": "Isère (38)", "region": "ara",
+      "lieu": "Espace festif L’Arrosoir, 517 rue de Nardan", "organisateur": "Lions Club Voiron",
+      "debut": "2027-04-03", "fin": "2027-04-04", "statut_dates": "annoncees",
+      "resume": "Le club de Voiron organise son salon à Voreppe. Vignerons et producteurs du terroir rencontrent les amateurs.",
+      "participation": "Utilisez le contact du club pour les conditions exposants. Attention au lieu : le salon se tient à Voreppe, malgré le nom du club de Voiron.",
+      "mots": "Voiron Grenoble association terroir dégustation",
+      "sources": [["Dates, lieu et contact du club", "https://lions-voiron.fr/salon-des-vins-et-terroir/"]]
+    },
+    {
+      "id": "aix-noulette-2027", "nom": "Salon du Vin et des Délices d’Aix-Noulette", "edition": 2027,
+      "ville": "Aix-Noulette", "departement": "Pas-de-Calais (62)", "region": "hdf",
+      "lieu": "Salle des fêtes, rue de l’Abbé", "organisateur": "Lions Club Aix-Noulette en Artois",
+      "debut": "2027-02-26", "fin": "2027-02-27", "statut_dates": "annoncees",
+      "resume": "Un salon solidaire en Artois, ouvert le vendredi après-midi et le samedi, avec des exposants vins et délices.",
+      "participation": "Demandez au club les conditions pour exposer. La nocturne est annoncée sur réservation ; ne la confondez pas avec l'accès général au salon.",
+      "mots": "Lens Liévin Artois association dégustation terroir",
+      "sources": [["Annonce officielle du Lions Club", "https://lions-103-nord.myassoc.org/action_club-salon-du-vin-et-des-delices-102297.html"]]
+    },
+    {
+      "id": "davezieux-2027", "nom": "Salon des Vins et Produits du Terroir de Davézieux", "edition": 2027,
+      "ville": "Davézieux", "departement": "Ardèche (07)", "region": "ara",
+      "lieu": "Espace Montgolfier", "organisateur": "Comité d’animation culturelle et de loisirs de Davézieux",
+      "debut": "2027-02-20", "fin": "2027-02-21", "statut_dates": "annoncees",
+      "resume": "Un salon porté par le comité d'animation local, avec une page d'inscription aux stands publiée par l'association.",
+      "participation": "Consultez la page exposants du comité. Elle précise que le placement est décidé par l'organisateur et que l'inscription devient définitive après validation.",
+      "mots": "Annonay association comité animation stand exposant",
+      "sources": [["Inscription exposants publiée par le comité", "https://www.helloasso.com/associations/comite-d-animation-culturelle-et-de-loisirs-de-davezieux/evenements/salon-des-vins-et-produits-du-terroir-2"]]
+    },
+    {
+      "id": "saint-nazaire-bretagne-2027", "nom": "Vins et Saveurs de Bretagne à Saint-Nazaire", "edition": 2027,
+      "ville": "Saint-Nazaire", "departement": "Loire-Atlantique (44)", "region": "pdl",
+      "lieu": "Le Ruban Bleu", "organisateur": "Vignerons-Artisans de Bretagne",
+      "debut": "2027-02-13", "fin": "2027-02-13", "statut_dates": "annoncees",
+      "resume": "Un rendez-vous de vignerons-artisans, porté par une équipe bénévole, autour des productions bretonnes.",
+      "participation": "L'organisateur annonce des exposants uniquement de productions et produits bretons. Contactez l'association pour vérifier votre admissibilité et les conditions de stand.",
+      "mots": "Nantes Bretagne Muscadet Gros Plant association produits bretons",
+      "sources": [["Édition 2027 et restriction des exposants", "https://www.vignerons-artisans-de-bretagne.bzh/"]]
+    },
+    {
+      "id": "vinotours-2027", "nom": "VinoTours, vins bio et naturels", "edition": 2027,
+      "ville": "La Ville-aux-Dames", "departement": "Indre-et-Loire (37)", "region": "cvl",
+      "lieu": "Salle Maria Callas, rue Madeleine Renaud", "organisateur": "Club de dégustation VIN sur VIN",
+      "debut": "2027-02-27", "fin": "2027-02-28", "statut_dates": "annoncees",
+      "resume": "Un salon de vignerons bio et naturels organisé par un club de dégustation près de Tours.",
+      "participation": "Le club présente une sélection de vignerons bio et naturels. Demandez les critères et les possibilités d'intégrer cette sélection avant de prévoir un stand.",
+      "mots": "Tours Touraine association biodynamie dégustation vente directe",
+      "sources": [["Dates et présentation du club organisateur", "https://www.vinotours.fr/"]]
+    },
+    {
+      "id": "dinan-quevert-2027", "nom": "Salon des Vins et de la Gastronomie de Dinan Quévert", "edition": 2027,
+      "ville": "Quévert", "departement": "Côtes-d’Armor (22)", "region": "bre",
+      "lieu": "Salle et adresse à reconfirmer auprès du club", "organisateur": "Lions Club de Dinan",
+      "debut": "2027-04-24", "fin": "2027-04-25", "statut_dates": "annoncees",
+      "resume": "Le club de Dinan annonce sa vingtième édition à Quévert, avec vins, gastronomie et spiritueux.",
+      "participation": "Faites préciser par le club le lieu exact et les conditions d'admission des exposants. Le nom Dinan désigne le salon ; la commune annoncée est Quévert.",
+      "mots": "Dinan Bretagne association terroir spiritueux",
+      "sources": [["Dates et commune annoncées par l’organisateur", "https://salonvinsdinan.com/"]]
+    },
+    {
+      "id": "vin-seine-bonsecours-2027", "nom": "Salon Vin Seine", "edition": 2027,
+      "ville": "Bonsecours", "departement": "Seine-Maritime (76)", "region": "nor",
+      "lieu": "Casino de Bonsecours", "organisateur": "Rotary Rouen Bruyères",
+      "debut": "2027-03-27", "fin": "2027-03-28", "statut_dates": "annoncees",
+      "resume": "Une rencontre autour du vin annoncée par le club Rouen Bruyères au Casino de Bonsecours.",
+      "participation": "Contactez le club pour connaître le public détaillé, les critères exposants et les places restantes. Les jours annoncés ne constituent pas une échéance de candidature.",
+      "mots": "Rouen Normandie association dégustation",
+      "sources": [["Annonce du club sur le site du district Rotary", "https://www.rotarynormandie.org/Les-Nouvelles/Clubs?cric=10729&newsid=041ce34a-fb7b-4a68-9653-9a37a2b43d29"]]
+    },
+    {
+      "id": "honfleur-2027", "nom": "Salon du Vin et des Saveurs de Honfleur", "edition": 2027,
+      "ville": "Honfleur", "departement": "Calvados (14)", "region": "nor",
+      "lieu": "Greniers à Sel, 9T rue de la Ville", "organisateur": "Rotary Club de Honfleur",
+      "debut": "2027-03-27", "fin": "2027-03-28", "statut_dates": "annoncees",
+      "resume": "Un salon bénévole aux Greniers à Sel, avec vignerons, producteurs et artisans de différentes régions.",
+      "participation": "Demandez au Rotary les conditions de sélection des domaines. L'entrée libre annoncée concerne les visiteurs et ne vaut pas inscription comme exposant.",
+      "mots": "Deauville Côte Fleurie Normandie association vente directe gastronomie",
+      "sources": [["Dates détaillées et lieu, Office de tourisme de Honfleur", "https://www.ot-honfleur.fr/agenda/le-salon-du-vin-et-des-saveurs/"]]
+    },
+    {
+      "id": "morainvilliers-2026", "nom": "Salon des Vins et Produits Régionaux de Morainvilliers", "edition": 2026,
+      "ville": "Morainvilliers", "departement": "Yvelines (78)", "region": "idf",
+      "lieu": "Salle des Loisirs, place de l’Église", "organisateur": "Lions Club de Poissy Pincerais",
+      "debut": "2026-11-28", "fin": "2026-11-29", "statut_dates": "annoncees",
+      "resume": "Le bulletin municipal annonce un salon de vins et produits régionaux organisé par le club de Poissy Pincerais.",
+      "participation": "Renseignez-vous auprès du club sur l'admission et la disponibilité. Le bulletin municipal décrit l'édition, sans publier une procédure d'inscription exposant.",
+      "mots": "Poissy Bures association terroir vente directe",
+      "sources": [["Bulletin municipal, page 36", "https://www.morainvilliers-bures.fr/wp-content/uploads/2026/11/LM26_26-OctDec_V5.pdf#page=36"]]
+    },
+    {
+      "id": "gaillac-petit-bio-2026", "nom": "Petit Salon des Vins Bio du Tarn", "edition": 2026,
+      "ville": "Gaillac", "departement": "Tarn (81)", "region": "occ",
+      "lieu": "Salle de spectacles de Gaillac", "organisateur": "Nature & Progrès Tarn",
+      "debut": "2026-12-05", "fin": "2026-12-06", "statut_dates": "annoncees",
+      "resume": "Vigneronnes, vignerons et distillateurs du Tarn se retrouvent pour un salon de dégustation et de vente annoncé par la Ville.",
+      "participation": "Ce rendez-vous met en avant les vins bio et Nature & Progrès. Demandez à l'association son cahier des charges et les possibilités d'admission ; ne présumez pas qu'une certification suffit.",
+      "mots": "Albi Toulouse bio Nature Progrès association vente directe",
+      "sources": [["Agenda municipal novembre–décembre 2026, page 18", "https://www.gaillac.fr/wp-content/uploads/2026/10/Sortir24_Web.pdf#page=18"]]
+    },
+    {
+      "id": "ampuis-2027", "nom": "Marché aux Vins d’Ampuis", "edition": 2027,
+      "ville": "Ampuis", "departement": "Rhône (69)", "region": "ara",
+      "lieu": "Salle polyvalente, allée du Château", "organisateur": "Syndicat des Vignerons de Côte-Rôtie",
+      "debut": "2027-01-22", "fin": "2027-01-25", "statut_dates": "annoncees",
+      "resume": "Un marché de vignerons consacré aux appellations de la vallée du Rhône septentrionale.",
+      "participation": "La sélection est liée aux appellations du Rhône septentrional. Interrogez le syndicat sur votre admissibilité ; le billet visiteur n'est pas un accès exposant.",
+      "mots": "Côte Rôtie Condrieu Vienne Saint Joseph Hermitage vente directe",
+      "sources": [["Marché, dates et accès, ODG Côte-Rôtie", "https://www.cote-rotie.com/marche-aux-vins/"]]
+    },
+    {
+      "id": "cornas-2026", "nom": "Marché aux Vins de Cornas", "edition": 2026,
+      "ville": "Cornas", "departement": "Ardèche (07)", "region": "ara",
+      "lieu": "Adresse précise à vérifier auprès de l’AOC", "organisateur": "AOC Cornas",
+      "debut": "2026-12-04", "fin": "2026-12-06", "statut_dates": "annoncees",
+      "resume": "L'AOC annonce le soixante-dixième marché aux vins de Cornas pour le premier week-end de décembre.",
+      "participation": "Vérifiez auprès de l'AOC le lieu, les horaires et les conditions de participation des producteurs. L'annonce des dates n'ouvre pas une candidature générale.",
+      "mots": "Valence Saint Péray Rhône marché vignerons appellation",
+      "sources": [["Annonce de l’AOC Cornas", "https://www.aoc-cornas.fr/actualite-70-ans-du-marche-aux-vins-_26.html"]]
+    },
+    {
+      "id": "gouvieux-2026", "nom": "Salon des Vins et Saveurs du Terroir de Gouvieux", "edition": 2026,
+      "ville": "Gouvieux", "departement": "Oise (60)", "region": "hdf",
+      "lieu": "Salle des fêtes, 38 rue de la Mairie", "organisateur": "Rotary Club de Chantilly",
+      "debut": "2026-11-27", "fin": "2026-11-29", "statut_dates": "annoncees",
+      "resume": "Le Rotary de Chantilly réunit des vignerons à Gouvieux pour un salon annoncé par l'office de tourisme local.",
+      "participation": "Contactez le Rotary pour une candidature exposant. L'entrée gratuite et les horaires publiés concernent l'accueil des visiteurs.",
+      "mots": "Chantilly Senlis association terroir dégustation vente directe",
+      "sources": [["Annonce, dates et contact du club, Chantilly Senlis Tourisme", "https://www.chantilly-senlis-tourisme.com/agenda/salon-des-vins-et-saveurs-du-terroir-a-gouvieux/"]]
+    },
+    {
+      "id": "vins-du-coin-blois-2026", "nom": "Les Vins du Coin", "edition": 2026,
+      "ville": "Blois", "departement": "Loir-et-Cher (41)", "region": "cvl",
+      "lieu": "Halle aux Grains, place Jean-Jaurès", "organisateur": "Association Les Vins du Coin",
+      "debut": "2026-11-28", "fin": "2026-11-28", "statut_dates": "annoncees",
+      "resume": "Une rencontre de dégustation et de vente avec des vignerons entre le Loir et le Cher, accompagnée d'artisans locaux.",
+      "participation": "Le salon présente les domaines de l'association. Demandez les conditions d'adhésion ou d'invitation ; aucune place disponible n'est déduite de l'affiche.",
+      "mots": "Loire bio nature association Cheverny vente directe artisans",
+      "sources": [["Site de l’association et domaines de l’édition", "https://lesvinsducoin.com/"], ["Affiche officielle datée de l’édition 2026", "https://lesvinsducoin.com/wordpress/wp-content/uploads/2023/09/AFFICHE-A3-LVDC-2026_site.png"]]
+    },
+    {
+      "id": "altervinea-2026", "nom": "AlterVinea, cépages à (re)découvrir", "edition": 2026,
+      "ville": "Langeais", "departement": "Indre-et-Loire (37)", "region": "cvl",
+      "lieu": "Salle In’Ox, 3 rue Andrée Colson", "organisateur": "100pour100 Vinifera",
+      "debut": "2026-11-27", "fin": "2026-11-29", "statut_dates": "annoncees",
+      "resume": "Un événement autour de la diversité des cépages, avec rencontres le vendredi et samedi matin, puis dégustation-vente samedi après-midi et dimanche.",
+      "participation": "Demandez à l'association les critères de sélection des vignerons. La billetterie publiée concerne les visiteurs et les activités, pas une réservation de stand.",
+      "mots": "Tours Touraine Les Essards association cépages rares Orbois vente directe",
+      "sources": [["Programme et billetterie de l’association", "https://www.helloasso.com/associations/100pour100-vinifera/evenements/altervinea-2026"]]
+    },
+    {
+      "id": "intervin-vienne-2027", "nom": "INTERVIN, salon des vins de Vienne", "edition": 2027,
+      "ville": "Vienne", "departement": "Isère (38)", "region": "ara",
+      "lieu": "Lieu 2027 à confirmer", "organisateur": "Association La CAVE",
+      "debut": null, "fin": null, "statut_dates": "non_publiees",
+      "date_note": "L’édition 2027 est annoncée en construction. Les dates du 31 janvier au 1er février 2026 encore présentes sur le site concernent l’ancienne édition et ne sont pas reportées à 2027.",
+      "resume": "L'association prépare l'édition 2027 de son salon de producteurs. Les jours et le lieu restent à annoncer.",
+      "participation": "Interrogez La CAVE sur le calendrier 2027 et les conditions exposants. Attendez la publication de l'édition avant une réservation liée au déplacement.",
+      "mots": "Rhône Lyon association gastronomie producteurs",
+      "sources": [["Annonce de préparation de l’édition 2027", "https://salonintervin.fr/"]]
+    },
+    {
+      "id": "chavanay-2026", "nom": "Marché aux Vins de Chavanay", "edition": 2026,
+      "ville": "Chavanay", "departement": "Loire (42)", "region": "ara",
+      "lieu": "Lieu précis à reconfirmer auprès de l’organisateur", "organisateur": "Syndicat agricole et Confrérie de la Vigneronne",
+      "debut": "2026-12-11", "fin": "2026-12-14", "statut_dates": "annoncees",
+      "resume": "Un marché de vignerons du Rhône septentrional annoncé par l'Office de tourisme du Pilat et le Département de la Loire.",
+      "participation": "Faites confirmer l'adresse, les horaires et l'admissibilité des producteurs par le syndicat agricole. Les dates de l'événement ne valent pas inscription exposant.",
+      "mots": "Pilat Condrieu Saint Joseph Rhône appellations vente directe",
+      "sources": [["Dates et organisateurs, Département de la Loire", "https://www.loire.fr/jcms/105840_DBEvenement/fr/103-eme-marche-aux-vins-de-chavanay"]]
+    },
+    {
+      "id": "grigny-sur-rhone-2026", "nom": "Salon des Vins et Produits du Terroir de Grigny-sur-Rhône", "edition": 2026,
+      "ville": "Grigny-sur-Rhône", "departement": "Rhône (69)", "region": "ara",
+      "lieu": "Centre Édouard Brenot, rue Waldeck-Rousseau", "organisateur": "Comité de jumelage Grigny-Koupéla",
+      "debut": "2026-11-28", "fin": "2026-11-29", "statut_dates": "annoncees",
+      "resume": "Un salon du comité de jumelage, autour des vins et des produits du terroir, annoncé dans l'agenda municipal.",
+      "participation": "Contactez le comité de jumelage pour les conditions d'admission et les places disponibles. Il s'agit de Grigny-sur-Rhône dans le Rhône, pas de Grigny en Essonne.",
+      "mots": "Lyon Givors association solidaire Burkina Faso Koupela vente directe",
+      "sources": [["Agenda municipal, édition 2026", "https://www.grignysurrhone.fr/calendrier/liste/"], ["Annonce publiée par le comité de jumelage", "https://www.infolocale.fr/associations/organisme-comite-de-jumelage-grigny-koupela-516991/evenement-salon-des-vins-et-produits-du-terroir-9029761"]]
+    }
+  ]
+}

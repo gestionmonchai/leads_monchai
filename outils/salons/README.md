@@ -1,10 +1,11 @@
 # Salons viticoles et cinq guides
 
 Implémentation autorisée par Denis le 22 novembre 2026. Le lot ajoute une page
-`salons-viticoles.html`, 14 éditions françaises, cinq guides, le lien Ressources,
+`salons-viticoles.html`, 36 éditions françaises dont 22 initiatives locales,
+cinq guides, le lien Ressources,
 la carte des guides et le maillage/sitemap. Aucune route ni fonction Django.
 
-Sources : `evenements.json`, `articles.json` et les cinq fichiers `guide-*.html`.
+Sources : `evenements.json`, `evenements-locaux.json`, `articles.json` et les cinq fichiers `guide-*.html`.
 Les textes de préparation sont des méthodes Mon Chai. Les données d'accès et de
 calendrier sont issues des organisateurs, avec un lien et une date de contrôle.
 La liste n'est pas exhaustive. Aucun formulaire d'inscription n'est transmis.
@@ -24,6 +25,36 @@ champ `verifie`. Les pages d'édition ont priorité sur un agenda général, mai
 les contradictions observées restent affichées tant qu'elles sont présentes.
 
 ## Contrat UX/UI en vigueur
+
+### Extension locale du 22 novembre 2026
+
+- Entrée : même page et même URL, avec accès direct « Événements locaux » dans
+  le moteur. Le filtre désigne une initiative d'association ou de vignerons,
+  sans promettre une taille, une proximité calculée ni une place d'exposant.
+- Hiérarchie : objectif, région/période, recherche par commune, département ou
+  organisateur, option locale, compteur et fiches chronologiques. Département
+  et organisateur sont lisibles ; lieu et conditions dans le détail.
+- États/feedback : option combinable, critère retirable, reset, résultat vide,
+  archives et dates non publiées gardent leur fonctionnement. Compteur annoncé.
+- Responsive/accessibilité : case native avec label, aide associée, focus
+  visible, contrôles dans le flux, aucune nouvelle barre fixe ; recette clavier,
+  320 à 1440 px et sans JavaScript.
+- Acceptation : recherche « 56 », « Morbihan », « VIN sur VIN » ; combinaison
+  local/région/période ; retrait du seul filtre local ; admission restreinte
+  explicite ; aucun report automatique d'une date annuelle de 2026 à 2027.
+- Sources : organisateurs, communes et offices de tourisme identifiés par fiche.
+  La date de vérification appartient au lot contrôlé. Les anciennes fiches
+  conservent leur date. Les méthodes de préparation restent éditoriales.
+- État partiel : INTERVIN 2027 annoncé sans jours ni lieu ; ne pas reprendre les
+  dates 2026 restées sur la page. Les Angles conserve une alerte mars/avril.
+  Aucun chargement distant ni permission nécessaire pour filtrer ; une liste
+  vide est un résultat de recherche, jamais un échec de collecte masqué.
+- Pistes non publiées : VinoTours retenu sur son propre site malgré un annuaire
+  encore sans dates ; dates extrapolées des fêtes annuelles refusées. Tournus
+  non ajouté à ce lot (site organisateur inaccessible, relais tourisme avec
+  deux années différentes). Pont-Audemer non ajouté faute de programme viticole
+  assez précis dans les sources consultées. Edern, Cléden-Poher et Quimperlé
+  restent hors sélection faute d'édition suffisamment documentée dans ce lot.
 
 - Entrée : Ressources → Salons viticoles ; les cinq guides sont aussi reliés
   depuis les ressources et entre eux. Consultation publique, sans compte.

@@ -1,4 +1,6 @@
 /* Salons et guides : composants éditoriaux partagés, interactions locales. */
+.sl-card .sl-local{align-self:start;border:1px solid #c4a281;border-radius:20px;padding:5px 10px;color:#651a20;background:#fcf5ec;font-size:11px;font-weight:600}
+.sl-card .sl-organizer{font-size:12px;color:#59493d;overflow-wrap:anywhere}
 [hidden]{display:none!important}
 .sl-hero{display:grid;grid-template-columns:1.35fr 1fr;gap:65px;align-items:center;padding-bottom:42px}
 .sl-hero h1{font-size:clamp(38px,4vw,56px)}

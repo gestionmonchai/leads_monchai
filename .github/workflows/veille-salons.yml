@@ -1,0 +1,81 @@
+name: Veille quotidienne des salons
+on:
+  schedule:
+    # 05:43 UTC : 06:43 en hiver, 07:43 en été à Paris. Horaire indicatif GitHub.
+    - cron: '43 5 * * *'
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: veille-salons
+  cancel-in-progress: false
+jobs:
+  recenser:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Vérifier les parseurs et la conservation de l’historique
+        run: python -m unittest discover -s outils/salons/veille -p 'test_*.py'
+      - name: Restaurer la dernière collecte
+        uses: actions/cache/restore@v4
+        with:
+          path: |
+            ${{ runner.temp }}/veille-salons/cache
+            ${{ runner.temp }}/veille-salons/etat.json
+          key: veille-salons-v1-${{ github.run_id }}-${{ github.run_attempt }}
+          restore-keys: veille-salons-v1-
+      - name: Recenser les éditions et les changements
+        id: collecte
+        shell: bash
+        run: |
+          set +e
+          python outils/salons/veille/recenser.py --sortie "$RUNNER_TEMP/veille-salons"
+          code=$?
+          echo "code=$code" >> "$GITHUB_OUTPUT"
+          if [ "$code" = 2 ]; then
+            echo "::warning::Collecte partielle : certaines sources nécessitent une vérification."
+          fi
+          exit 0
+      - name: Conserver l’état même après une collecte partielle
+        if: always() && steps.collecte.outputs.code != '3'
+        uses: actions/cache/save@v4
+        with:
+          path: |
+            ${{ runner.temp }}/veille-salons/cache
+            ${{ runner.temp }}/veille-salons/etat.json
+          key: veille-salons-v1-${{ github.run_id }}-${{ github.run_attempt }}
+      - name: Télécharger le rapport et l’état récupérable
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: veille-salons-${{ github.run_number }}
+          path: |
+            ${{ runner.temp }}/veille-salons/rapport.html
+            ${{ runner.temp }}/veille-salons/rapport.json
+            ${{ runner.temp }}/veille-salons/candidats.csv
+            ${{ runner.temp }}/veille-salons/etat.json
+          if-no-files-found: warn
+          retention-days: 30
+      - name: Résumé de la collecte
+        if: always()
+        shell: python
+        run: |
+          import json, os
+          from pathlib import Path
+          path = Path(os.environ['RUNNER_TEMP']) / 'veille-salons/rapport.json'
+          with open(os.environ['GITHUB_STEP_SUMMARY'], 'a', encoding='utf-8') as output:
+              if path.exists():
+                  report = json.loads(path.read_text('utf-8'))
+                  output.write('## Veille des salons\n\n')
+                  for label, value in report['bilan'].items():
+                      output.write(f'- {label} : {value}\n')
+                  output.write('\nTélécharger l’artefact de cette exécution et ouvrir `rapport.html`. Les propositions restent à valider avant publication.\n')
+              else:
+                  output.write('Aucun rapport produit. Consulter les journaux de cette exécution.\n')
+      - name: Signaler une panne totale
+        if: steps.collecte.outputs.code != '0' && steps.collecte.outputs.code != '2'
+        run: exit 1

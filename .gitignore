@@ -118,6 +118,9 @@ desktop.ini
 !outils/salons/generer.py
 !outils/salons/verifier_navigateur.py
 !outils/salons/verifier_proposition.py
+!outils/salons/veille/*.py
+# Historique local de veille : jamais dans l'artefact du site.
+outils/salons/veille/resultats/
 !outils/verifier-honeypots.py
 !outils/ANTISPAM.md
 !outils/aides/verifier_navigateur.py

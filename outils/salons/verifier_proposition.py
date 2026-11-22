@@ -62,6 +62,7 @@ try:
   ctx,p,calls,_=new()
   assert p.locator('link[rel=canonical]').get_attribute('href')=='https://monchai.fr/proposer-salon.html'
   assert p.locator('main h1').count()==1
+  assert p.locator('#proposition-salon').get_attribute('data-hs-do-not-collect')=='true'
   schema=[json.loads(x) for x in p.locator('script[type="application/ld+json"]').all_text_contents()]
   assert any(x.get('@type')=='WebPage' for x in schema)
   response=ctx.request.get(BASE+'/sitemap.xml')

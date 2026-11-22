@@ -177,10 +177,10 @@
 <div class="ct" id="formulaire">
 <h2 class="ct__titre">Schreiben Sie uns</h2>
 <p class="ct__aide">Um Ihnen zu antworten, müssen Sie mit einem Sternchen markierte Felder ausfüllen.</p>
-<form class="ct__form" id="contact-form" novalidate="">
+<form class="ct__form" id="contact-form" novalidate="" data-honeypot-form>
 <div aria-hidden="true" class="hp-field">
 <label for="website">Website</label>
-<input autocomplete="off" id="website" name="website" tabindex="-1" type="text"/>
+<input autocomplete="off" id="website" name="website" tabindex="-1" type="text"/ data-honeypot data-lpignore="true" data-1p-ignore>
 </div>
 <div class="ct__grille">
 <div class="champ">
@@ -267,5 +267,6 @@
 <script src="../assets/js/contact.js?v=20261028-footer"></script>
 <script src="../consent.js?v=20261029-ga4"></script>
 <script src="../assets/js/documents-legaux.js?v=20261028-footer" defer></script>
+<script src="../assets/js/antispam.js?v=20261122-honeypot" defer></script>
 </body>
 </html>

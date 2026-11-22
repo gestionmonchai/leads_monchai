@@ -44,7 +44,7 @@
           <p class="invitation-note">Une première rencontre. Des possibilités à construire.</p>
           <dialog id="contact-dialog" class="contact-dialog" aria-labelledby="contact-dialog-title">
             <button type="button" class="dialog-close" data-close-dialog aria-label="Fermer le formulaire">×</button>
-          <form id="partner-form" class="contact-card" novalidate>
+          <form id="partner-form" class="contact-card" novalidate data-honeypot-form>
             <div class="contact-card-heading"><span class="eyebrow" id="contact-step-label">01 / VOTRE EXPERTISE</span><h2 id="contact-dialog-title">Votre place dans<br>le <em>collectif.</em></h2><p id="contact-context-description">Choisissez votre métier et les services que vous proposez.</p></div>
             <div class="contact-fields">
               <fieldset class="contact-step" data-contact-step="0"><legend class="sr-only">Votre métier et vos services</legend>
@@ -60,7 +60,7 @@
               <input id="contact-website" name="website" type="hidden" value="">
               <label class="field field-full" for="contact-message">Comment souhaitez-vous contribuer ? <span>requis</span><textarea id="contact-message" name="message" rows="3" required minlength="20" maxlength="2500" placeholder="Votre activité, votre idée de collaboration, les domaines que vous accompagnez…"></textarea></label>
               <label class="contact-consent field-full"><input type="checkbox" name="consent" required><span>J’accepte d’être recontacté au sujet de ma proposition pour le projet Passerelle.</span></label>
-              <div class="contact-trap" aria-hidden="true"><label>Fax<input name="fax" tabindex="-1" autocomplete="off"></label></div>
+              <div class="contact-trap" aria-hidden="true"><label>Fax<input name="fax" tabindex="-1" autocomplete="off" data-honeypot data-lpignore="true" data-1p-ignore></label></div>
               <div class="contact-status field-full" id="contact-status" role="status" tabindex="-1" hidden></div>
               <button type="submit" class="contact-submit field-full"><span>Envoyer ma proposition</span><span aria-hidden="true">↗</span></button>
               <p class="contact-privacy field-full">Vos informations servent à échanger sur votre proposition. Aucune inscription à une newsletter.</p>
@@ -113,5 +113,6 @@
     <footer><a href="#" class="footer-brand">BevHive.</a><span>Relier les expertises. Servir les vignerons.</span><a id="admin-link-footer" href="https://bevhive.norbertmoutier.chatgpt.site/demandes" hidden>Demandes reçues ↗</a><span>PROJET PASSERELLE © 2026</span></footer>
   </div>
   <noscript><p class="noscript">Activez JavaScript pour explorer la bouteille en particules.</p></noscript>
+<script src="../assets/js/antispam.js?v=20261122-honeypot" defer></script>
 </body>
 </html>

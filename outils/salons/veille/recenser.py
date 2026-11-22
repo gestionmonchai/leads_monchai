@@ -33,7 +33,7 @@ MAX_BYTES = 5_000_000
 MONTHS = {m: i for i, m in enumerate(
     'janvier fevrier mars avril mai juin juillet aout septembre octobre novembre decembre'.split(), 1)}
 MONTHS.update(jan=1, fev=2, avr=4, juil=7, sept=9, oct=10, nov=11, dec=12)
-WINE = re.compile(r'\b(vins?|viticol\w*|viticultur\w*|vigneron\w*|vignoble\w*|vinitech|sitevi|viteff|sival|vinidome|millesime|vitisaveurs)\b')
+WINE = re.compile(r'\b(vins?|vigne|wine|viticol\w*|viticultur\w*|vigneron\w*|vignoble\w*|vinitech|sitevi|viteff|sival|vinidome|millesime|vitisaveurs|grand tasting)\b')
 
 
 def norm(value):
@@ -92,7 +92,7 @@ def french_ranges(text):
     ranges = []
     # 30 octobre au 2 novembre 2026 ; 31 décembre 2026 au 2 janvier 2027.
     cross = rf'\b(\d{{1,2}})\s+({month})\.?\s*(\d{{4}})?\s*(?:au|a|[-–])\s*(\d{{1,2}})\s+({month})\.?\s+(\d{{4}})\b'
-    same = rf'\b(\d{{1,2}})(?:\s*(?:/|,|et|au|a|[-–])\s*(?:(?:samedi|dimanche|lundi|mardi|mercredi|jeudi|vendredi)\s+)?\d{{1,2}})+\s+({month})\.?\s+(\d{{4}})\b'
+    same = rf'\b(\d{{1,2}})(?:\s*(?:/|,|&|et|au|a|[-–])\s*(?:(?:samedi|dimanche|lundi|mardi|mercredi|jeudi|vendredi)\s+)?\d{{1,2}})+\s+({month})\.?\s+(\d{{4}})\b'
     occupied = []
     listed = rf'\b(\d{{1,2}}(?:\s*/\s*\d{{1,2}})*)\s+({month})\.?\s*/\s*(\d{{1,2}}(?:\s*/\s*\d{{1,2}})*)\s+({month})\.?\s+(\d{{4}})\b'
     for m in re.finditer(listed, text):
@@ -288,7 +288,10 @@ def parse_page(body, url, source):
             if host(link) == host(url) and p.path.rstrip('/') == urlsplit(source['racine']).path.rstrip('/') and page.isdigit() and int(page) <= 4:
                 follows.append(dict(source, url=link))
     else:
-        records.extend(json_events(doc, url))
+        # Une commune peut publier dans le même agenda un salon, un don du sang
+        # et une fête scolaire. Le balisage Event seul ne prouve pas la pertinence.
+        records.extend(r for r in json_events(doc, url)
+                       if WINE.search(norm(r['nom'])) or source.get('reseau_viticole'))
         if parser == 'auxvignobles':
             for a in doc.root.walk('a'):
                 link = urljoin(url, a.attrs.get('href', ''))
@@ -674,7 +677,8 @@ def collect(args, folder):
     fetcher = Fetcher(folder / 'cache', args.delai, args.timeout, args.hors_ligne)
     sources, seen = [], set()
     i, pages = 0, 0
-    while i < len(queue) and pages < args.max_pages:
+    deadline = time.monotonic() + getattr(args, 'max_minutes', 20) * 60
+    while i < len(queue) and pages < args.max_pages and time.monotonic() < deadline:
         source = queue[i]
         i += 1
         try:
@@ -717,13 +721,13 @@ def collect(args, folder):
         except ValueError:
             pass
     candidates = group_records(observations, state, published, now)
-    duplicate_count = possible_duplicates(candidates)
     future = [c for c in candidates if not c['edition_terminee']]
+    duplicate_count = possible_duplicates(future)
     errors = sum(bool(s.get('erreur')) for s in sources)
     missing = [c for c in state['candidats'] if c['id'] not in {x['id'] for x in candidates}]
     summary = dict(candidats=len(candidates), a_venir=len(future), absents_catalogue=sum(not c['deja_publie'] for c in future),
-                   nouveaux=sum(c['id'] not in previous for c in candidates),
-                   modifies=sum(c['id'] in previous and previous[c['id']] != c['empreinte'] for c in candidates),
+                   nouveaux=sum(c['id'] not in previous for c in future),
+                   modifies=sum(c['id'] in previous and previous[c['id']] != c['empreinte'] for c in future),
                    conflits=sum(c['statut'] == 'dates_en_conflit' for c in future), pages_ok=len(sources) - errors,
                    erreurs=errors, en_attente=len(pending), pages_modifiees=sum(bool(s.get('page_modifiee')) for s in sources),
                    non_retrouves=len(missing), doublons_possibles=duplicate_count)
@@ -751,13 +755,14 @@ def main():
     parser.add_argument('--sortie', type=Path, default=default)
     parser.add_argument('--source', action='append', default=[], help='Page officielle supplémentaire (JSON-LD Event)')
     parser.add_argument('--max-pages', type=int, default=220)
+    parser.add_argument('--max-minutes', type=float, default=20, help='Budget global ; conserve les pages restantes pour la relance')
     parser.add_argument('--delai', type=float, default=0.8, help='Pause minimale entre requêtes au même domaine')
     parser.add_argument('--timeout', type=float, default=18)
     parser.add_argument('--hors-ligne', action='store_true')
     parser.add_argument('--ouvrir', action='store_true')
     args = parser.parse_args()
-    if not 1 <= args.max_pages <= 1000 or args.delai < 0.5 or not 1 <= args.timeout <= 60:
-        parser.error('max-pages : 1 à 1000 ; delai >= 0.5 ; timeout : 1 à 60')
+    if not 1 <= args.max_pages <= 1000 or not 1 <= args.max_minutes <= 120 or args.delai < 0.5 or not 1 <= args.timeout <= 60:
+        parser.error('max-pages : 1 à 1000 ; max-minutes : 1 à 120 ; delai >= 0.5 ; timeout : 1 à 60')
     try:
         return run(args)
     except (OSError, ValueError, KeyError) as exc:

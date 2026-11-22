@@ -33,6 +33,8 @@ class Dates(unittest.TestCase):
             'du 27 au 29 novembre 2026': [('2026-11-27', '2026-11-29')],
             'Samedi 3 et dimanche 4 avril 2027': [('2027-04-03', '2027-04-04')],
             '2 / 3 / 4 Avril 2027': [('2027-04-02', '2027-04-04')],
+            '27 & 28 novembre 2026': [('2026-11-27', '2026-11-28')],
+            'Les 5, 6 & 7 mars 2027': [('2027-03-05', '2027-03-07')],
             '30 octobre au 2 novembre 2026': [('2026-10-30', '2026-11-02')],
             '30 / 31 Oct. / 1 / 2 Novembre 2026': [('2026-10-30', '2026-11-02')],
             '31 décembre 2026 au 2 janvier 2027': [('2026-12-31', '2027-01-02')],
@@ -77,16 +79,28 @@ class Parsers(unittest.TestCase):
 
     def test_jsonld_graph_multiple_country_and_cancellation(self):
         events = {'@graph': [
-            {'@type': 'Event', 'name': 'Salon français', 'startDate': '2027-03-02T11:00:00+01:00',
+            {'@type': 'Event', 'name': 'Salon des vins français', 'startDate': '2027-03-02T11:00:00+01:00',
              'endDate': '2027-03-03', 'eventStatus': 'https://schema.org/EventCancelled',
              'location': {'name': 'Salle', 'address': {'addressCountry': 'FR', 'addressLocality': 'Tours'}}},
-            {'@type': 'Event', 'name': 'Étranger', 'location': {'address': {'addressCountry': 'US'}}},
+            {'@type': 'Event', 'name': 'Salon des vins étranger', 'location': {'address': {'addressCountry': 'US'}}},
         ]}
         rows, _ = v.parse_page('<script type="application/ld+json">' + json.dumps(events) + '</script>',
                                'https://example.org/tours', source())
         self.assertEqual(len(rows), 1)
         self.assertEqual(rows[0]['statut_evenement'], 'EventCancelled')
         self.assertEqual(rows[0]['ville'], 'Tours')
+
+    def test_municipal_calendar_ignores_unrelated_events(self):
+        events = [{'@type': 'Event', 'name': n, 'startDate': '2027-03-02', 'endDate': '2027-03-03'}
+                  for n in ('Don du sang', 'Marché de Noël', 'Salon des vins')]
+        rows, _ = v.parse_page('<script type="application/ld+json">' + json.dumps(events) + '</script>',
+                               'https://example.org/agenda', source())
+        self.assertEqual([r['nom'] for r in rows], ['Salon des vins'])
+
+    def test_wine_network_can_use_city_only_event_names(self):
+        text = '<script type="application/ld+json">{"@type":"Event","name":"Salon de Tours","startDate":"2027-03-02","endDate":"2027-03-03"}</script>'
+        rows, _ = v.parse_page(text, 'https://example.org/tours', source(reseau_viticole=True))
+        self.assertEqual(rows[0]['nom'], 'Salon de Tours')
 
     def test_source_layout_failure_is_an_error(self):
         with self.assertRaisesRegex(ValueError, 'structure'):
@@ -252,8 +266,15 @@ class DailyRun(unittest.TestCase):
         self.assertEqual(self.report()['bilan']['en_attente'], 0)
         self.assertEqual(self.report()['bilan']['candidats'], 1)
 
+    def test_elapsed_time_produces_partial_report_and_pending_queue(self):
+        self.config.write_text(json.dumps({'version': 1, 'sources': [source(), dict(source(), url='https://example.org/autre')]}))
+        with patch.object(v.time, 'monotonic', side_effect=[0, 0, 1201]), patch.object(v.Fetcher, 'get', return_value=(self.body, 'chargée', 'https://example.org/salons')), redirect_stdout(io.StringIO()):
+            self.assertEqual(v.run(self.args), 2)
+        self.assertEqual(self.report()['bilan']['candidats'], 1)
+        self.assertEqual(self.report()['bilan']['en_attente'], 1)
+
     def test_injection_escaped_in_report_and_spreadsheet(self):
-        body = self.body.replace('Salon vins', '=1+1 <img src=x onerror=alert(1)>')
+        body = self.body.replace('Salon vins', '=1+1 <img src=x onerror=alert(1)> Salon vins')
         self.run_fake(body)
         rendered = (self.args.sortie / 'rapport.html').read_text('utf-8')
         self.assertNotIn('<img src=x', rendered)

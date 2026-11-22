@@ -2,7 +2,7 @@
   "version": 1,
   "sources": [
     {"id":"aux-vignobles", "url":"https://www.auxvignobles.fr/", "type":"officielle", "parseur":"auxvignobles", "suivre":"/salon/", "nom":"Aux Vignobles!"},
-    {"id":"mer-et-vigne", "url":"https://www.mer-et-vigne.fr/nos-salons", "type":"officielle", "parseur":"generique", "suivre":"/salons/", "nom":"Mer et Vigne"},
+    {"id":"mer-et-vigne", "url":"https://www.mer-et-vigne.fr/nos-salons", "type":"officielle", "parseur":"generique", "suivre":"/salons/", "nom":"Mer et Vigne", "reseau_viticole":true},
     {"id":"vitisaveurs", "url":"https://www.vitisaveurs.com/", "type":"officielle", "parseur":"generique", "suivre":"/salon-vins-de-gastronomie/", "nom":"Vitisaveurs"},
     {"id":"vignerons-independants", "url":"https://www.vignerons-independants.com/agenda-des-salons", "type":"officielle", "parseur":"generique", "suivre":"/agenda-des-salons/", "nom":"Vignerons Indépendants"},
     {"id":"vinabox", "url":"https://www.vinabox.fr/salons-des-vins/", "type":"annuaire", "parseur":"vinabox", "nom":"Vinabox"},

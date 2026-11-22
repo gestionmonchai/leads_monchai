@@ -33,7 +33,7 @@ MAX_BYTES = 5_000_000
 MONTHS = {m: i for i, m in enumerate(
     'janvier fevrier mars avril mai juin juillet aout septembre octobre novembre decembre'.split(), 1)}
 MONTHS.update(jan=1, fev=2, avr=4, juil=7, sept=9, oct=10, nov=11, dec=12)
-WINE = re.compile(r'\b(vins?|viticol\w*|viticultur\w*|vigneron\w*|vignoble\w*|vinitech|sitevi|viteff|sival|vinidome|millesime|vitisaveurs)\b')
+WINE = re.compile(r'\b(vins?|vigne|wine|viticol\w*|viticultur\w*|vigneron\w*|vignoble\w*|vinitech|sitevi|viteff|sival|vinidome|millesime|vitisaveurs|grand tasting)\b')
 
 
 def norm(value):
@@ -92,7 +92,7 @@ def french_ranges(text):
     ranges = []
     # 30 octobre au 2 novembre 2026 ; 31 décembre 2026 au 2 janvier 2027.
     cross = rf'\b(\d{{1,2}})\s+({month})\.?\s*(\d{{4}})?\s*(?:au|a|[-–])\s*(\d{{1,2}})\s+({month})\.?\s+(\d{{4}})\b'
-    same = rf'\b(\d{{1,2}})(?:\s*(?:/|,|et|au|a|[-–])\s*(?:(?:samedi|dimanche|lundi|mardi|mercredi|jeudi|vendredi)\s+)?\d{{1,2}})+\s+({month})\.?\s+(\d{{4}})\b'
+    same = rf'\b(\d{{1,2}})(?:\s*(?:/|,|&|et|au|a|[-–])\s*(?:(?:samedi|dimanche|lundi|mardi|mercredi|jeudi|vendredi)\s+)?\d{{1,2}})+\s+({month})\.?\s+(\d{{4}})\b'
     occupied = []
     listed = rf'\b(\d{{1,2}}(?:\s*/\s*\d{{1,2}})*)\s+({month})\.?\s*/\s*(\d{{1,2}}(?:\s*/\s*\d{{1,2}})*)\s+({month})\.?\s+(\d{{4}})\b'
     for m in re.finditer(listed, text):
@@ -288,7 +288,10 @@ def parse_page(body, url, source):
             if host(link) == host(url) and p.path.rstrip('/') == urlsplit(source['racine']).path.rstrip('/') and page.isdigit() and int(page) <= 4:
                 follows.append(dict(source, url=link))
     else:
-        records.extend(json_events(doc, url))
+        # Une commune peut publier dans le même agenda un salon, un don du sang
+        # et une fête scolaire. Le balisage Event seul ne prouve pas la pertinence.
+        records.extend(r for r in json_events(doc, url)
+                       if WINE.search(norm(r['nom'])) or source.get('reseau_viticole'))
         if parser == 'auxvignobles':
             for a in doc.root.walk('a'):
                 link = urljoin(url, a.attrs.get('href', ''))

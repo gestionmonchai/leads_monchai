@@ -10,6 +10,36 @@ Les textes de préparation sont des méthodes Mon Chai. Les données d'accès et
 calendrier sont issues des organisateurs, avec un lien et une date de contrôle.
 La liste n'est pas exhaustive. Aucun formulaire d'inscription n'est transmis.
 
+## Proposer un salon : contrat UX/UI du 22 novembre 2026
+
+- Problème : un organisateur ne peut pas transmettre un salon absent du moteur.
+- Entrée : bouton « Créer un salon » dans le moteur et son état vide ; page
+  autonome `proposer-salon.html`, avec retour au moteur.
+- Hiérarchie : promesse « proposition → vérification → publication », informations
+  du salon, public/conditions exposants, coordonnées privées, récapitulatif relu
+  dans le formulaire et envoi explicite. Aucune publication automatique.
+- Données : nom, organisateur, source officielle, dates, lieu/commune/code postal,
+  région, public, objectif, description et conditions ; nom/e-mail du proposant
+  réservés au suivi. Transmission à la messagerie de l'équipe via le service
+  EmailJS déjà utilisé par le contact. Aucun ajout dans `evenements*.json` à l'envoi.
+- États : champs requis/invalides, dates incohérentes, envoi en cours, succès après
+  réponse positive du service, erreur récupérable avec saisie conservée, fréquence
+  excessive, absence de JavaScript. Une erreur réseau n'affiche jamais de succès.
+- Feedback : libellés et aides, premier champ invalide ciblé, bouton désactivé
+  pendant l'envoi, annonce accessible et confirmation rappelant la validation.
+  Après erreur, réessayer ou contacter l'équipe par e-mail.
+- Responsive/accessibilité : mêmes couleurs et typographies, trois sections dans
+  le flux, une colonne sur mobile, labels natifs/fieldset/legend, focus visible,
+  cibles 44 px, compteur de caractères descriptif, pas de fenêtre modale.
+- Acceptation : accès depuis le moteur, saisie clavier, refus d'un URL hors HTTP(S),
+  d'un e-mail invalide et d'une fin antérieure au début ; un seul envoi en cours ;
+  payload contenant tous les champs ; nom/e-mail absents des fiches publiques ;
+  échec/réessai et succès vérifiés par interception réseau ; aucune donnée réelle
+  transmise par les tests. Recette 320/390/768/1440 px et sans JavaScript.
+- Exploitation : l'équipe reçoit une proposition identifiable avec le lien du
+  moteur et la source officielle ; après contrôle, elle ajoute la fiche au jeu
+  éditorial existant et publie par le circuit du site. Pas de nouvel outil admin.
+
 ```sh
 python outils/salons/generer.py .
 python outils/header/generer.py .

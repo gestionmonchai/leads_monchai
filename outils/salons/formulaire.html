@@ -1,0 +1,44 @@
+<main class="sv-page salons-proposition" id="contenu" tabindex="-1">
+<section class="sv-hero"><div class="sv-width sp-width">
+  <nav class="sv-breadcrumb" aria-label="Fil d’Ariane"><a href="index.html">Accueil</a><span aria-hidden="true">/</span><a href="salons-viticoles.html">Salons viticoles</a><span aria-hidden="true">/</span><span>Créer un salon</span></nav>
+  <p class="sv-kicker">Faites connaître votre rendez-vous</p>
+  <h1>Votre salon mérite<br><em>d’être découvert.</em></h1>
+  <p class="sv-lead">Vous organisez un salon du vin, un marché de vignerons ou une rencontre viticole ? Envoyez-nous votre proposition. Nous la vérifions avant de la publier dans le moteur des salons Mon Chai.</p>
+  <ol class="sp-steps" aria-label="Les étapes de publication"><li><span>01</span><strong>Vous proposez</strong><p>Les informations utiles et une source officielle.</p></li><li><span>02</span><strong>Nous vérifions</strong><p>Notre équipe examine la proposition et peut vous recontacter.</p></li><li><span>03</span><strong>Nous publions</strong><p>Après validation, votre salon apparaît dans le moteur.</p></li></ol>
+  <p class="sv-caption">La proposition n’est pas publiée automatiquement. Ce formulaire sert à référencer un événement ; les inscriptions des visiteurs et des exposants restent auprès de son organisateur.</p>
+</div></section>
+<section class="sv-width sp-width sp-section" aria-labelledby="titre-proposition">
+  <div id="sp-intro"><p class="sv-kicker">Les informations pour une fiche utile</p><h2 id="titre-proposition">Proposer votre salon</h2><p>Les champs marqués d’un astérisque (*) sont obligatoires. Relisez votre proposition avant de l’envoyer.</p></div>
+  <form id="proposition-salon" class="sp-form" method="post" novalidate hidden>
+    <fieldset><legend><span>01</span> Le salon</legend><div class="sp-grid">
+      <div class="sp-full"><label for="salon-nom">Nom du salon *</label><input id="salon-nom" name="salon_nom" maxlength="140" required autocomplete="off" placeholder="Ex. : Salon des vins de votre commune"></div>
+      <div class="sp-full"><label for="salon-organisateur">Association ou organisme organisateur *</label><input id="salon-organisateur" name="organisateur" maxlength="140" required autocomplete="organization"></div>
+      <div class="sp-full"><label for="salon-source">Lien officiel de l’événement *</label><input id="salon-source" name="source" type="url" maxlength="500" required inputmode="url" placeholder="https://…" aria-describedby="aide-source"><p class="sp-help" id="aide-source">Site de l’organisateur, page de la commune, billetterie ou annonce officielle. Ce lien nous permet de vérifier les informations.</p></div>
+      <div><label for="salon-debut">Date de début *</label><input id="salon-debut" name="debut" type="date" required></div>
+      <div><label for="salon-fin">Date de fin *</label><input id="salon-fin" name="fin" type="date" required aria-describedby="aide-dates"></div>
+      <p class="sp-help sp-full" id="aide-dates">Pour un salon d’une journée, indiquez la même date dans les deux champs.</p>
+      <div class="sp-full"><label for="salon-lieu">Salle ou lieu de l’événement *</label><input id="salon-lieu" name="lieu" maxlength="180" required placeholder="Nom de la salle et adresse"></div>
+      <div><label for="salon-ville">Commune *</label><input id="salon-ville" name="ville" maxlength="100" required autocomplete="address-level2"></div>
+      <div><label for="salon-code-postal">Code postal *</label><input id="salon-code-postal" name="code_postal" maxlength="5" minlength="5" pattern="[0-9]{5}" inputmode="numeric" required autocomplete="postal-code" aria-describedby="aide-postal"><p class="sp-help" id="aide-postal">Les cinq chiffres du code postal français.</p></div>
+      <div class="sp-full"><label for="salon-region">Région du lieu de l’événement *</label><select id="salon-region" name="region" required><option value="">Choisir une région</option><option>Auvergne-Rhône-Alpes</option><option>Bourgogne-Franche-Comté</option><option>Bretagne</option><option>Centre-Val de Loire</option><option>Corse</option><option>Grand Est</option><option>Hauts-de-France</option><option>Île-de-France</option><option>Normandie</option><option>Nouvelle-Aquitaine</option><option>Occitanie</option><option>Pays de la Loire</option><option>Provence-Alpes-Côte d’Azur</option><option>Outre-mer</option></select></div>
+    </div></fieldset>
+    <fieldset><legend><span>02</span> Ce que l’on y trouve</legend><div class="sp-grid">
+      <div><label for="salon-public">À qui s’adresse le salon ? *</label><select id="salon-public" name="public" required><option value="">Choisir un public</option><option>Grand public</option><option>Professionnels</option><option>Grand public et professionnels</option></select></div>
+      <div><label for="salon-objectif">Objectif principal pour un vigneron *</label><select id="salon-objectif" name="objectif" required><option value="">Choisir un objectif</option><option>Vendre aux particuliers</option><option>Rencontrer des acheteurs pros</option><option>Visiter pour s’équiper</option></select></div>
+      <div class="sp-full"><label for="salon-description">Présentez le salon en quelques mots *</label><textarea id="salon-description" name="description" rows="5" minlength="30" maxlength="1800" required aria-describedby="aide-description" placeholder="L’esprit du salon, les producteurs présents, le programme et les informations utiles aux visiteurs…"></textarea><p class="sp-help" id="aide-description">De 30 à 1 800 caractères. <span id="compteur-description" aria-hidden="true">0 / 1 800</span></p></div>
+      <div class="sp-full"><label for="salon-exposants">Comment participer en tant qu’exposant ? <span class="sp-optional">Facultatif</span></label><textarea id="salon-exposants" name="exposants" rows="4" maxlength="1200" aria-describedby="aide-exposants" placeholder="Sélection des domaines, candidature, tarif du stand, date limite ou lien d’inscription…"></textarea><p class="sp-help" id="aide-exposants">Précisez les restrictions éventuelles. Évitez les coordonnées personnelles dans les textes destinés à la fiche publique.</p></div>
+    </div></fieldset>
+    <fieldset><legend><span>03</span> Pour échanger avec vous</legend><p class="sp-private">Votre nom et votre e-mail servent au suivi de la proposition. Ils ne seront pas affichés sur la fiche du salon.</p><div class="sp-grid">
+      <div><label for="salon-contact">Votre nom *</label><input id="salon-contact" name="contact_nom" maxlength="100" autocomplete="name" required></div>
+      <div><label for="salon-email">Votre e-mail *</label><input id="salon-email" name="contact_email" type="email" maxlength="100" autocomplete="email" required></div>
+    </div></fieldset>
+    <div class="sp-trap" aria-hidden="true"><label for="salon-website">Laisser ce champ vide</label><input id="salon-website" name="website" tabindex="-1" autocomplete="off"></div>
+    <label class="sp-consent"><input id="salon-consent" name="consent" type="checkbox" required><span>J’autorise Mon Chai à publier les informations du salon après vérification par l’équipe. J’ai pris connaissance de la <a href="politique-confidentialite.html#propositions-salons">politique de confidentialité</a>. *</span></label>
+    <p class="sp-help">HALLAIS &amp; BERTHELOT reçoit cette proposition via EmailJS et la messagerie de l’équipe pour la vérifier et préparer sa publication. Cet envoi ne vous inscrit pas à la newsletter.</p>
+    <p id="salon-retour" class="sp-message" role="alert" hidden></p>
+    <div class="sv-actions"><button id="salon-envoyer" type="submit" class="sv-button">Envoyer mon salon <span aria-hidden="true">→</span></button><a class="sv-text-link" href="salons-viticoles.html">Retour au moteur</a></div>
+  </form>
+  <div id="salon-succes" class="sp-success" hidden tabindex="-1" role="status" aria-labelledby="salon-succes-titre"><p class="sv-kicker">Proposition transmise</p><h2 id="salon-succes-titre">Merci, votre salon nous a été envoyé.</h2><p>Notre équipe va vérifier les informations et pourra vous recontacter par e-mail. <strong>Après validation, nous publierons votre salon dans le moteur Mon Chai.</strong></p><p>Il n’apparaît donc pas immédiatement dans les résultats.</p><a class="sv-button" href="salons-viticoles.html">Retrouver les salons <span aria-hidden="true">→</span></a></div>
+  <noscript><p class="sp-message">Pour utiliser le formulaire, activez JavaScript. Vous pouvez aussi envoyer les informations de votre salon par e-mail.</p></noscript>
+  <p class="sp-alternative">Besoin d’aide ou d’envoyer une correction ? Écrivez-nous à <a href="mailto:contact@monchai.fr?subject=Proposition%20de%20salon%20viticole">contact@monchai.fr</a>.</p>
+</section></main>

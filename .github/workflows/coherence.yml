@@ -22,7 +22,7 @@ jobs:
         run: python outils/header/generer.py . --check
       - name: Syntaxe des scripts des parcours modifiés
         run: |
-          for script in assets/js/header.js accueil.js script.js consent.js assets/js/analytics.js assets/js/documents-legaux.js assets/js/contact.js assets/js/aides.js; do
+          for script in assets/js/header.js accueil.js script.js consent.js assets/js/analytics.js assets/js/documents-legaux.js assets/js/contact.js assets/js/aides.js assets/js/salons.js assets/js/proposer-salon.js; do
             node --check "$script"
           done
 

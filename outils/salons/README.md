@@ -127,4 +127,6 @@ les contradictions observées restent affichées tant qu'elles sont présentes.
 
 Suivi après publication : requêtes/pages dans Search Console, usages et clics
 consentis de la visite selon la mesure existante ; aucun volume SEO ni taux de
-conversion n'est promis. Aucune automatisation de maintenance n'est créée.
+conversion n'est promis. La veille automatisée est documentée dans
+[veille/README.md](veille/README.md) : collecte quotidienne, rapport et propositions
+à valider ; aucune modification automatique des fiches éditoriales.

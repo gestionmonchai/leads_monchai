@@ -31,6 +31,9 @@ jobs:
       - name: Composants des futurs articles
         run: node --test outils/test-harmoniser-article.cjs
 
+      - name: Veille des salons sans réseau
+        run: python -m unittest discover -s outils/salons/veille -p 'test_*.py'
+
       - name: Démonstration viticole, liens et absence de transmission
         run: |
           node --check demonstration/site.js

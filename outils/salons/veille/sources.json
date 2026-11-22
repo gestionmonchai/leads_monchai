@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "sources": [
+    {"id":"aux-vignobles", "url":"https://www.auxvignobles.fr/", "type":"officielle", "parseur":"auxvignobles", "suivre":"/salon/", "nom":"Aux Vignobles!"},
+    {"id":"mer-et-vigne", "url":"https://www.mer-et-vigne.fr/nos-salons", "type":"officielle", "parseur":"generique", "suivre":"/salons/", "nom":"Mer et Vigne"},
+    {"id":"vitisaveurs", "url":"https://www.vitisaveurs.com/", "type":"officielle", "parseur":"generique", "suivre":"/salon-vins-de-gastronomie/", "nom":"Vitisaveurs"},
+    {"id":"vignerons-independants", "url":"https://www.vignerons-independants.com/agenda-des-salons", "type":"officielle", "parseur":"generique", "suivre":"/agenda-des-salons/", "nom":"Vignerons Indépendants"},
+    {"id":"vinabox", "url":"https://www.vinabox.fr/salons-des-vins/", "type":"annuaire", "parseur":"vinabox", "nom":"Vinabox"},
+    {"id":"nsalons-viticulture", "url":"https://www.nsalons.com/viticulture/france/", "type":"annuaire", "parseur":"nsalons", "nom":"nSalons viticulture"},
+    {"id":"nsalons-vin", "url":"https://www.nsalons.com/vin/france/", "type":"annuaire", "parseur":"nsalons", "nom":"nSalons vin"}
+  ]
+}

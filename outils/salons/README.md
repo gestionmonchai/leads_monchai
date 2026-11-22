@@ -22,6 +22,8 @@ La liste n'est pas exhaustive. Aucun formulaire d'inscription n'est transmis.
   région, public, objectif, description et conditions ; nom/e-mail du proposant
   réservés au suivi. Transmission à la messagerie de l'équipe via le service
   EmailJS déjà utilisé par le contact. Aucun ajout dans `evenements*.json` à l'envoi.
+  Le formulaire porte `data-hs-do-not-collect` pour être exclu de la collecte
+  automatique des formulaires par HubSpot, y compris après consentement audience.
 - États : champs requis/invalides, dates incohérentes, envoi en cours, succès après
   réponse positive du service, erreur récupérable avec saisie conservée, fréquence
   excessive, absence de JavaScript. Une erreur réseau n'affiche jamais de succès.

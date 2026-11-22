@@ -290,8 +290,10 @@ def parse_page(body, url, source):
     else:
         # Une commune peut publier dans le même agenda un salon, un don du sang
         # et une fête scolaire. Le balisage Event seul ne prouve pas la pertinence.
+        known_network = (host(url) == 'mer-et-vigne.fr' and
+                         source.get('connu', {}).get('organisateur') == 'Mer et Vigne')
         records.extend(r for r in json_events(doc, url)
-                       if WINE.search(norm(r['nom'])) or source.get('reseau_viticole'))
+                       if WINE.search(norm(r['nom'])) or source.get('reseau_viticole') or known_network)
         if parser == 'auxvignobles':
             for a in doc.root.walk('a'):
                 link = urljoin(url, a.attrs.get('href', ''))
@@ -462,7 +464,7 @@ def read_json(path, default):
 
 def catalog(folder):
     records = []
-    for filename in ('evenements.json', 'evenements-locaux.json'):
+    for filename in ('evenements.json', 'evenements-locaux.json', 'evenements-valides.json'):
         data = read_json(folder / filename, {'evenements': []})
         for event in data['evenements']:
             event = dict(event)

@@ -12,7 +12,7 @@ import re
 
 DATE = '2026-11-22'
 GOALS = {'particuliers': 'Vendre aux particuliers', 'pros': 'Rencontrer des acheteurs pros', 'equipement': 'Visiter pour s’équiper'}
-REGIONS = {'ara': 'Auvergne-Rhône-Alpes', 'bre': 'Bretagne', 'cvl': 'Centre-Val de Loire', 'ges': 'Grand Est', 'hdf': 'Hauts-de-France', 'idf': 'Île-de-France', 'nor': 'Normandie', 'naq': 'Nouvelle-Aquitaine', 'occ': 'Occitanie', 'pdl': 'Pays de la Loire', 'pac': 'Provence-Alpes-Côte d’Azur'}
+REGIONS = {'ara': 'Auvergne-Rhône-Alpes', 'bfc': 'Bourgogne-Franche-Comté', 'bre': 'Bretagne', 'cvl': 'Centre-Val de Loire', 'ges': 'Grand Est', 'hdf': 'Hauts-de-France', 'idf': 'Île-de-France', 'nor': 'Normandie', 'naq': 'Nouvelle-Aquitaine', 'occ': 'Occitanie', 'pdl': 'Pays de la Loire', 'pac': 'Provence-Alpes-Côte d’Azur'}
 STATUS = {'annoncees': 'Dates annoncées', 'a_reconfirmer': 'Dates à reconfirmer', 'non_publiees': 'Jours à confirmer'}
 VI = 'https://www.vignerons-independants.com/'
 e = html.escape
@@ -36,6 +36,13 @@ def load_events(root):
             inscription='Admission, disponibilité, tarif et échéance exposant à demander à l’organisateur. Aucun stand n’est réservé depuis Mon Chai.',
             exposant=event['sources'][0][1])
     data['evenements'].extend(local['evenements'])
+    validated = json.loads((root/'outils/salons/evenements-valides.json').read_text(encoding='utf-8'))
+    for row in validated['evenements']:
+        event = {**validated['defauts'], **row}
+        event.setdefault('verifie', validated['verifie'])
+        event.setdefault('exposant', event['sources'][0][1])
+        event.setdefault('mots', ' '.join([event['nom'], event['ville'], event.get('departement', ''), event.get('organisateur', '')]))
+        data['evenements'].append(event)
     for event in data['evenements']:
         if event['id'].startswith('vi-'):
             event.update(

@@ -1,0 +1,251 @@
+{
+  "verifie": "2026-11-22",
+  "perimetre": "37 éditions issues de la veille, relues sur les pages officielles le 22 novembre 2026 et validées pour publication. Aucun prix de stand ni disponibilité déduit d'un billet visiteur.",
+  "defauts": {
+    "objectif": "particuliers",
+    "statut_dates": "annoncees",
+    "local": false,
+    "public": "Amateurs de vin et visiteurs ; modalités d'accès dans les informations officielles.",
+    "participation": "Pour un domaine : étudier une candidature exposant auprès de l'organisateur. L'accès visiteur ne constitue ni une admission ni une réservation de stand.",
+    "preparer": "Demandez les conditions d'admission, les possibilités de vente, le coût du stand et les places disponibles. Préparez vos cuvées, les quantités de dégustation et le suivi des commandes.",
+    "inscription": "Candidature, tarif et éventuelle échéance exposant à confirmer auprès de l'organisateur ; aucune réservation n'est effectuée depuis Mon Chai."
+  },
+  "evenements": [
+    {
+      "id":"aux-vignobles-angers-2026", "nom":"Aux Vignobles! · Angers", "edition":2026,
+      "ville":"Angers", "departement":"Maine-et-Loire (49)", "region":"pdl", "lieu":"Parc des Expositions d'Angers · Destination Angers", "organisateur":"Aux Vignobles!",
+      "debut":"2026-11-20", "fin":"2026-11-22", "resume":"Vins et gastronomie réunis pour la dégustation et les achats des visiteurs dans le bassin angevin.",
+      "sources":[["Page officielle du salon","https://auxvignobles.fr/salon/angers/"],["Dates du calendrier national","https://auxvignobles.fr/"]], "exposant":"https://auxvignobles.fr/devenir-exposant/"
+    },
+    {
+      "id":"aux-vignobles-limoges-2026", "nom":"Aux Vignobles! · Limoges", "edition":2026,
+      "ville":"Limoges", "departement":"Haute-Vienne (87)", "region":"naq", "lieu":"Parc Expo de Limoges", "organisateur":"Aux Vignobles!",
+      "debut":"2026-11-20", "fin":"2026-11-22", "resume":"Un rendez-vous vins et gastronomie à Limoges pour rencontrer des consommateurs et présenter ses cuvées.",
+      "sources":[["Page officielle du salon","https://auxvignobles.fr/salon/limoges/"],["Dates du calendrier national","https://auxvignobles.fr/"]], "exposant":"https://auxvignobles.fr/devenir-exposant/"
+    },
+    {
+      "id":"aux-vignobles-nantes-2026", "nom":"Aux Vignobles! · Nantes", "edition":2026,
+      "ville":"Nantes", "departement":"Loire-Atlantique (44)", "region":"pdl", "lieu":"Parc Expo La Beaujoire", "organisateur":"Aux Vignobles!",
+      "debut":"2026-11-27", "fin":"2026-11-29", "resume":"Un salon de dégustation et de gastronomie dans la métropole nantaise, avec démarche exposant sur le site du réseau.",
+      "sources":[["Page officielle du salon","https://auxvignobles.fr/salon/nantes/"],["Dates du calendrier national","https://auxvignobles.fr/"]], "exposant":"https://auxvignobles.fr/devenir-exposant/"
+    },
+    {
+      "id":"aux-vignobles-cherbourg-2026", "nom":"Aux Vignobles! · Cherbourg", "edition":2026,
+      "ville":"Cherbourg-en-Cotentin", "departement":"Manche (50)", "region":"nor", "lieu":"La Cité de la Mer", "organisateur":"Aux Vignobles!",
+      "debut":"2026-12-04", "fin":"2026-12-06", "resume":"Vins et spécialités gastronomiques à la Cité de la Mer : une piste de rencontre avec les consommateurs du Cotentin.",
+      "sources":[["Page officielle du salon","https://auxvignobles.fr/salon/cherbourg/"],["Dates du calendrier national","https://auxvignobles.fr/"]], "exposant":"https://auxvignobles.fr/devenir-exposant/"
+    },
+    {
+      "id":"aux-vignobles-biarritz-2027", "nom":"Aux Vignobles! · Biarritz", "edition":2027,
+      "ville":"Biarritz", "departement":"Pyrénées-Atlantiques (64)", "region":"naq", "lieu":"Halle d'Iraty", "organisateur":"Aux Vignobles!",
+      "debut":"2027-01-29", "fin":"2027-01-31", "resume":"Un rendez-vous vins et gastronomie sur la côte basque pour préparer une participation de vente directe.",
+      "sources":[["Page officielle du salon","https://auxvignobles.fr/salon/biarritz/"],["Dates du calendrier national","https://auxvignobles.fr/"]], "exposant":"https://auxvignobles.fr/devenir-exposant/"
+    },
+    {
+      "id":"aux-vignobles-vertou-2027", "nom":"Aux Vignobles! · Vertou", "edition":2027,
+      "ville":"Vertou", "departement":"Loire-Atlantique (44)", "region":"pdl", "lieu":"Salle Sèvre et Maine", "organisateur":"Aux Vignobles!",
+      "debut":"2027-02-12", "fin":"2027-02-14", "resume":"Une étape du réseau dans le vignoble nantais, réunissant dégustation de vins et produits de gastronomie.",
+      "sources":[["Page officielle du salon","https://auxvignobles.fr/salon/vertou/"],["Dates du calendrier national","https://auxvignobles.fr/"]], "exposant":"https://auxvignobles.fr/devenir-exposant/"
+    },
+    {
+      "id":"aux-vignobles-le-havre-2027", "nom":"Aux Vignobles! · Le Havre", "edition":2027,
+      "ville":"Le Havre", "departement":"Seine-Maritime (76)", "region":"nor", "lieu":"Carré des Docks", "organisateur":"Aux Vignobles!",
+      "debut":"2027-02-19", "fin":"2027-02-21", "resume":"Des rencontres autour des vins et de la gastronomie au Havre, avec candidature à examiner auprès du réseau.",
+      "sources":[["Page officielle du salon","https://auxvignobles.fr/salon/le-havre/"],["Dates du calendrier national","https://auxvignobles.fr/"]], "exposant":"https://auxvignobles.fr/devenir-exposant/"
+    },
+    {
+      "id":"aux-vignobles-saint-malo-2027", "nom":"Aux Vignobles! · Saint-Malo", "edition":2027,
+      "ville":"Saint-Malo", "departement":"Ille-et-Vilaine (35)", "region":"bre", "lieu":"Le Quai Saint-Malo", "organisateur":"Aux Vignobles!",
+      "debut":"2027-02-26", "fin":"2027-02-28", "resume":"Une piste de salon vins et gastronomie sur la côte malouine pour rencontrer des amateurs et préparer ses ventes.",
+      "sources":[["Page officielle du salon","https://auxvignobles.fr/salon/saint-malo/"],["Dates du calendrier national","https://auxvignobles.fr/"]], "exposant":"https://auxvignobles.fr/devenir-exposant/"
+    },
+    {
+      "id":"aux-vignobles-vannes-2027", "nom":"Aux Vignobles! · Vannes", "edition":2027,
+      "ville":"Vannes", "departement":"Morbihan (56)", "region":"bre", "lieu":"Le Chorus", "organisateur":"Aux Vignobles!",
+      "debut":"2027-03-05", "fin":"2027-03-07", "resume":"Un salon de dégustation et de gastronomie dans le Morbihan, à distinguer des rendez-vous associatifs de la région.",
+      "sources":[["Page officielle du salon","https://auxvignobles.fr/salon/vannes/"],["Dates du calendrier national","https://auxvignobles.fr/"]], "exposant":"https://auxvignobles.fr/devenir-exposant/"
+    },
+    {
+      "id":"aux-vignobles-la-rochelle-2027", "nom":"Aux Vignobles! · La Rochelle", "edition":2027,
+      "ville":"La Rochelle", "departement":"Charente-Maritime (17)", "region":"naq", "lieu":"Espace Encan", "organisateur":"Aux Vignobles!",
+      "debut":"2027-03-12", "fin":"2027-03-14", "resume":"Vins et gastronomie à l'Espace Encan : une étape du réseau pour étudier une présence auprès des consommateurs rochelais.",
+      "sources":[["Page officielle du salon","https://auxvignobles.fr/salon/la-rochelle/"],["Dates du calendrier national","https://auxvignobles.fr/"]], "exposant":"https://auxvignobles.fr/devenir-exposant/"
+    },
+    {
+      "id":"aux-vignobles-caen-2027", "nom":"Aux Vignobles! · Caen", "edition":2027,
+      "ville":"Caen", "departement":"Calvados (14)", "region":"nor", "lieu":"Parc des Expositions de Caen", "organisateur":"Aux Vignobles!",
+      "debut":"2027-03-19", "fin":"2027-03-21", "resume":"Un salon normand consacré aux vins et à la gastronomie pour préparer une rencontre avec les particuliers.",
+      "sources":[["Page officielle du salon","https://auxvignobles.fr/salon/caen/"],["Dates du calendrier national","https://auxvignobles.fr/"]], "exposant":"https://auxvignobles.fr/devenir-exposant/"
+    },
+    {
+      "id":"aux-vignobles-quimper-2027", "nom":"Aux Vignobles! · Quimper", "edition":2027,
+      "ville":"Quimper", "departement":"Finistère (29)", "region":"bre", "lieu":"Parc Expo Quimper-Cornouaille", "organisateur":"Aux Vignobles!",
+      "debut":"2027-04-02", "fin":"2027-04-04", "resume":"Une étape finistérienne du réseau, avec vins et gastronomie au Parc Expo Quimper-Cornouaille.",
+      "sources":[["Page officielle du salon","https://auxvignobles.fr/salon/quimper/"],["Dates du calendrier national","https://auxvignobles.fr/"]], "exposant":"https://auxvignobles.fr/devenir-exposant/"
+    },
+    {
+      "id":"aux-vignobles-metz-2027", "nom":"Aux Vignobles! · Metz", "edition":2027,
+      "ville":"Metz", "departement":"Moselle (57)", "region":"ges", "lieu":"Metz Expo", "organisateur":"Aux Vignobles!",
+      "debut":"2027-04-02", "fin":"2027-04-04", "resume":"Un rendez-vous vins et gastronomie en Moselle pour examiner une candidature de vente et de dégustation.",
+      "sources":[["Page officielle du salon","https://auxvignobles.fr/salon/metz/"],["Dates du calendrier national","https://auxvignobles.fr/"]], "exposant":"https://auxvignobles.fr/devenir-exposant/"
+    },
+    {
+      "id":"mer-vigne-tours-2026", "nom":"Mer et Vigne · Tours", "edition":2026,
+      "ville":"Tours", "departement":"Indre-et-Loire (37)", "region":"cvl", "lieu":"Parc des Expositions", "organisateur":"Mer et Vigne",
+      "debut":"2026-11-27", "fin":"2026-11-30", "resume":"Vignerons et producteurs de gastronomie se retrouvent à Tours dans le circuit Mer et Vigne.",
+      "sources":[["Dates et accès officiels","https://www.mer-et-vigne.fr/salons/salon-tours-parc-des-expositions"]], "exposant":"https://www.mer-et-vigne.fr/espace-exposant"
+    },
+    {
+      "id":"mer-vigne-paris-noel-2026", "nom":"Mer et Vigne · Paris-Vincennes, Noël", "edition":2026,
+      "ville":"Paris", "departement":"Paris (75)", "region":"idf", "lieu":"Hippodrome de Paris-Vincennes, Paris 12e", "organisateur":"Mer et Vigne",
+      "debut":"2026-12-04", "fin":"2026-12-06", "resume":"Une édition de fin d'année consacrée aux vins et à la gastronomie à l'hippodrome de Paris-Vincennes.",
+      "sources":[["Dates et accès officiels","https://www.mer-et-vigne.fr/salons/salon-gastronomique-paris-vincennes-decembre"]], "exposant":"https://www.mer-et-vigne.fr/espace-exposant"
+    },
+    {
+      "id":"mer-vigne-port-marly-2026", "nom":"Mer et Vigne · Le Port-Marly", "edition":2026,
+      "ville":"Le Port-Marly", "departement":"Yvelines (78)", "region":"idf", "lieu":"Les Pyramides", "organisateur":"Mer et Vigne",
+      "debut":"2026-12-11", "fin":"2026-12-13", "resume":"Une rencontre vins et gastronomie aux Pyramides, dans les Yvelines, pour préparer sa présence auprès des amateurs.",
+      "sources":[["Dates et accès officiels","https://www.mer-et-vigne.fr/salons/evenement-gastronomie-port-marly-les-pyramides"]], "exposant":"https://www.mer-et-vigne.fr/espace-exposant"
+    },
+    {
+      "id":"mer-vigne-marcq-2027", "nom":"Mer et Vigne · Marcq-en-Barœul", "edition":2027,
+      "ville":"Marcq-en-Barœul", "departement":"Nord (59)", "region":"hdf", "lieu":"Hippodrome de Marcq-en-Barœul", "organisateur":"Mer et Vigne",
+      "debut":"2027-02-05", "fin":"2027-02-07", "resume":"Vins et gastronomie à l'hippodrome de Marcq-en-Barœul, dans la métropole lilloise.",
+      "sources":[["Dates et accès officiels","https://www.mer-et-vigne.fr/salons/salon-de-marcq-en-baroeul-lille"]], "exposant":"https://www.mer-et-vigne.fr/espace-exposant"
+    },
+    {
+      "id":"mer-vigne-paris-printemps-2027", "nom":"Mer et Vigne · Paris-Vincennes, printemps", "edition":2027,
+      "ville":"Paris", "departement":"Paris (75)", "region":"idf", "lieu":"Hippodrome de Paris-Vincennes, Paris 12e", "organisateur":"Mer et Vigne",
+      "debut":"2027-02-12", "fin":"2027-02-14", "resume":"L'édition de printemps du réseau à Paris-Vincennes, distincte du rendez-vous de décembre 2026.",
+      "sources":[["Dates et accès officiels","https://www.mer-et-vigne.fr/salons/printemps-paris-vincennes"]], "exposant":"https://www.mer-et-vigne.fr/espace-exposant"
+    },
+    {
+      "id":"mer-vigne-dijon-2027", "nom":"Mer et Vigne · Dijon, printemps", "edition":2027,
+      "ville":"Dijon", "departement":"Côte-d'Or (21)", "region":"bfc", "lieu":"Zénith de Dijon", "organisateur":"Mer et Vigne",
+      "debut":"2027-03-05", "fin":"2027-03-07", "resume":"Une étape bourguignonne du circuit vins et gastronomie, organisée au Zénith de Dijon.",
+      "sources":[["Dates et accès officiels","https://www.mer-et-vigne.fr/salons/salon-gastronomie-zenith-dijon-printemps"]], "exposant":"https://www.mer-et-vigne.fr/espace-exposant"
+    },
+    {
+      "id":"mer-vigne-prevessin-2027", "nom":"Mer et Vigne · Prévessin-Moëns", "edition":2027,
+      "ville":"Prévessin-Moëns", "departement":"Ain (01)", "region":"ara", "lieu":"Salle Gaston Laverrière", "organisateur":"Mer et Vigne",
+      "debut":"2027-03-12", "fin":"2027-03-14", "resume":"Un rendez-vous dans le Pays de Gex autour des vins et des produits de gastronomie.",
+      "sources":[["Dates et accès officiels","https://www.mer-et-vigne.fr/salons/gastronomique-qui-marie-le-vin-et-les-mets-a-prevessin-moens"]], "exposant":"https://www.mer-et-vigne.fr/espace-exposant"
+    },
+    {
+      "id":"mer-vigne-lyon-printemps-2027", "nom":"Mer et Vigne · Lyon La Palmeraie", "edition":2027,
+      "ville":"La Tour-de-Salvagny", "departement":"Rhône (69)", "region":"ara", "lieu":"La Palmeraie", "organisateur":"Mer et Vigne",
+      "debut":"2027-03-19", "fin":"2027-03-21", "resume":"Le salon annoncé sous le nom de Lyon se tient à La Tour-de-Salvagny : vérifiez cette commune pour votre déplacement.",
+      "sources":[["Dates et accès officiels","https://www.mer-et-vigne.fr/salons/salon-printemps-palmeraie-de-la-tour-de-salvagny"]], "exposant":"https://www.mer-et-vigne.fr/espace-exposant"
+    },
+    {
+      "id":"mer-vigne-strasbourg-2027", "nom":"Mer et Vigne · Strasbourg, printemps", "edition":2027,
+      "ville":"Eckbolsheim", "departement":"Bas-Rhin (67)", "region":"ges", "lieu":"Zénith de Strasbourg", "organisateur":"Mer et Vigne",
+      "debut":"2027-04-09", "fin":"2027-04-12", "resume":"Une rencontre vins et gastronomie au Zénith de Strasbourg, situé à Eckbolsheim.",
+      "sources":[["Dates et accès officiels","https://www.mer-et-vigne.fr/salons/salon-gastronomique-printemps-de-strasbourg"]], "exposant":"https://www.mer-et-vigne.fr/espace-exposant"
+    },
+    {
+      "id":"vitisaveurs-trementines-2026", "nom":"Vitisaveurs · Trémentines, près de Cholet", "edition":2026,
+      "ville":"Trémentines", "departement":"Maine-et-Loire (49)", "region":"pdl", "lieu":"Salle Azura 2000", "organisateur":"Vitisaveurs",
+      "debut":"2026-11-27", "fin":"2026-11-29", "resume":"Des vignerons et artisans producteurs réunis à Trémentines, près de Cholet, pour une rencontre de dégustation.",
+      "sources":[["Dates et accès officiels","https://www.vitisaveurs.com/salon-vins-de-gastronomie/cholet/"]], "exposant":"https://www.vitisaveurs.com/devenir-exposant/"
+    },
+    {
+      "id":"vitisaveurs-gueret-2027", "nom":"Vitisaveurs · Guéret", "edition":2027,
+      "ville":"Guéret", "departement":"Creuse (23)", "region":"naq", "lieu":"Espace André Lejeune", "organisateur":"Vitisaveurs",
+      "debut":"2027-02-26", "fin":"2027-02-28", "resume":"Une rencontre de vignerons et d'artisans producteurs en Creuse, avec des vins issus de plusieurs modes de production.",
+      "sources":[["Dates et accès officiels","https://www.vitisaveurs.com/salon-vins-de-gastronomie/gueret/"]], "exposant":"https://www.vitisaveurs.com/devenir-exposant/"
+    },
+    {
+      "id":"vitisaveurs-avrille-2027", "nom":"Vitisaveurs · Avrillé", "edition":2027,
+      "ville":"Avrillé", "departement":"Maine-et-Loire (49)", "region":"pdl", "lieu":"Château de la Perrière, route de Cantenay-Épinard", "organisateur":"Vitisaveurs",
+      "debut":"2027-03-12", "fin":"2027-03-14", "resume":"Un salon vins et gastronomie au château de la Perrière, à Avrillé près d'Angers.",
+      "sources":[["Dates et accès officiels","https://www.vitisaveurs.com/salon-vins-de-gastronomie/avrille/"]], "exposant":"https://www.vitisaveurs.com/devenir-exposant/"
+    },
+    {
+      "id":"grand-tasting-paris-2026", "nom":"Le Grand Tasting Paris", "edition":2026,
+      "ville":"Paris", "departement":"Paris (75)", "region":"idf", "lieu":"Carrousel du Louvre, 99 rue de Rivoli", "organisateur":"Bettane+Desseauve",
+      "debut":"2026-11-27", "fin":"2026-11-28", "resume":"Dégustations de domaines et maisons, rencontres avec les producteurs et masterclass au Carrousel du Louvre.",
+      "participation":"La présence comme exposant relève de la sélection et des modalités de Bettane+Desseauve. Le billet de dégustation ne donne pas accès à un stand.",
+      "sources":[["Dates, lieu et programme officiels","https://www.grandtasting.com/"]]
+    },
+    {
+      "id":"salon-vins-loire-2027", "nom":"Salon des Vins de Loire", "edition":2027,
+      "ville":"Verrières-en-Anjou", "departement":"Maine-et-Loire (49)", "region":"pdl", "lieu":"Parc des Expositions d'Angers, 3520 route de Paris", "organisateur":"Salon des Vins de Loire · Destination Angers",
+      "debut":"2027-02-01", "fin":"2027-02-02", "objectif":"pros", "public":"Professionnels de la filière vins et spiritueux ; conditions d'accès à consulter sur la billetterie officielle.",
+      "resume":"Un salon professionnel de la filière ligérienne pour préparer des rencontres avec des acheteurs et partenaires.",
+      "participation":"L'offre exposant concerne les vins de Loire et les catégories admises par le salon. Faire vérifier l'éligibilité des produits et les places disponibles.",
+      "sources":[["Dates et présentation de l'édition","https://www.salondesvinsdeloire.com/"],["Candidature exposant","https://www.salondesvinsdeloire.com/exposer-au-salon-des-vins-de-loire/"]], "exposant":"https://www.salondesvinsdeloire.com/exposer-au-salon-des-vins-de-loire/"
+    },
+    {
+      "id":"de-natura-vini-2026", "nom":"De Natura Vini", "edition":2026,
+      "ville":"Saint-Julien-l'Ars", "departement":"Vienne (86)", "region":"naq", "lieu":"Saint-Julien-l'Ars ; lieu précis à confirmer auprès de l'organisateur", "organisateur":"De Natura Vini",
+      "debut":"2026-12-12", "fin":"2026-12-13", "resume":"Un salon de vins naturels réunissant des vignerons à Saint-Julien-l'Ars, près de Poitiers.",
+      "participation":"Salon consacré aux vins naturels ; sélection des domaines et éventuelle candidature à vérifier directement auprès de l'équipe organisatrice.",
+      "sources":[["Annonce et liste des vignerons","https://denaturavini.org/"]]
+    },
+    {
+      "id":"vigne-mousse-avignon-2027", "nom":"Vigne & Mousse · Avignon", "edition":2027,
+      "ville":"Avignon", "departement":"Vaucluse (84)", "region":"pac", "lieu":"Parc Expo Avignon", "organisateur":"JFD Organisation",
+      "debut":"2027-06-11", "fin":"2027-06-12", "public":"Professionnels et grand public annoncés pour cette première édition consacrée au vin et à la bière.",
+      "resume":"Une première édition annoncée pour rapprocher vignerons, brasseurs, acteurs de la gastronomie et amateurs en Provence.",
+      "participation":"L'organisateur invite les producteurs à étudier une exposition ou un partenariat ; format, conditions et confirmation du programme à demander avant engagement.",
+      "sources":[["Annonce officielle de l'édition 2027","https://jfdo.fr/salon-vigne-mousse-2027/"]], "exposant":"https://jfdo.fr/contact-jfd-organisation/"
+    },
+    {
+      "id":"printemps-chateauneuf-2027", "nom":"Les Printemps de Châteauneuf-du-Pape", "edition":2027,
+      "ville":"Châteauneuf-du-Pape", "departement":"Vaucluse (84)", "region":"pac", "lieu":"Salle Dufays", "organisateur":"Les Printemps de Châteauneuf-du-Pape",
+      "debut":"2027-04-02", "fin":"2027-04-04", "resume":"Un rendez-vous de dégustation consacré aux domaines de Châteauneuf-du-Pape, avec ateliers et marché gastronomique.",
+      "participation":"Le salon est centré sur les domaines de l'appellation Châteauneuf-du-Pape ; vérifier l'admission auprès de l'organisateur. Ce n'est pas une candidature ouverte à toutes les appellations.",
+      "sources":[["Dates, lieu et périmètre du salon","https://www.lesprintempsdechateauneufdupape.fr/"]]
+    },
+    {
+      "id":"club-laureats-toulouse-2027", "nom":"Club des Vignerons Lauréats · Toulouse", "edition":2027,
+      "ville":"Toulouse", "departement":"Haute-Garonne (31)", "region":"occ", "lieu":"École d'Ingénieurs de Purpan", "organisateur":"Club des Vignerons Lauréats", "local":true,
+      "debut":"2027-03-05", "fin":"2027-03-07", "resume":"Un rendez-vous associatif porté par le Club des Vignerons Lauréats pour déguster et acheter les vins des domaines présents.",
+      "participation":"La participation s'inscrit dans le fonctionnement du Club des Vignerons Lauréats ; demander les conditions d'admission au club et au salon avant de candidater.",
+      "sources":[["Dates, lieu et présentation de l'association","https://www.club-vignerons-laureats.com/salon-des-vins-toulouse/"]]
+    },
+    {
+      "id":"vibj-arras-2027", "nom":"Vignerons Indépendants de Bourgogne et du Jura · Arras", "edition":2027,
+      "ville":"Saint-Laurent-Blangy", "departement":"Pas-de-Calais (62)", "region":"hdf", "lieu":"Artois Expo, près d'Arras", "organisateur":"Fédération des Vignerons Indépendants de Bourgogne et du Jura",
+      "debut":"2027-03-05", "fin":"2027-03-07", "resume":"Des vignerons indépendants de Bourgogne et du Jura présentent leurs vins au public d'Artois Expo.",
+      "participation":"Salon porté par la fédération de Bourgogne et du Jura : vérifier les conditions du réseau et l'éligibilité du domaine. Les informations pratiques complémentaires sont encore annoncées à venir.",
+      "sources":[["Annonce officielle de l'édition 2027","https://www.fvibourgognejura.fr/les-salons/salon-arras/"]]
+    },
+    {
+      "id":"vibj-la-roche-sur-foron-2027", "nom":"Vignerons Indépendants de Bourgogne et du Jura · La Roche-sur-Foron", "edition":2027,
+      "ville":"La Roche-sur-Foron", "departement":"Haute-Savoie (74)", "region":"ara", "lieu":"Parc des Expositions de La Roche-sur-Foron", "organisateur":"Fédération des Vignerons Indépendants de Bourgogne et du Jura",
+      "debut":"2027-02-05", "fin":"2027-02-07", "resume":"Une rencontre avec les vignerons indépendants de Bourgogne et du Jura en Haute-Savoie, à distinguer des autres salons du réseau national.",
+      "participation":"Salon porté par la fédération de Bourgogne et du Jura : admission et participation à vérifier auprès de cette fédération. Ne pas utiliser le plan 2026 comme confirmation de l'organisation 2027.",
+      "sources":[["Annonce officielle de l'édition 2027","https://www.fvibourgognejura.fr/les-salons/salon-la-roche-sur-foron-anciennement-annemasse/"]]
+    },
+    {
+      "id":"vins-terroirs-toulouse-printemps-2027", "nom":"Vins & Terroirs · Toulouse, printemps", "edition":2027,
+      "ville":"Aussonne", "departement":"Haute-Garonne (31)", "region":"occ", "lieu":"MEETT, Concorde Avenue", "organisateur":"Salon Vins & Terroirs",
+      "debut":"2027-03-05", "fin":"2027-03-07", "resume":"L'édition de printemps de Vins & Terroirs au MEETT, dans la métropole toulousaine.",
+      "date_note":"Les dates publiées concernent le printemps 2027. Certains liens de programme sur le site officiel renvoient encore à l'automne 2026.",
+      "sources":[["Dates de l'édition et démarche exposant","https://www.salon-vins-terroirs-toulouse.com/"]]
+    },
+    {
+      "id":"gastronomie-vins-orleans-2026", "nom":"Salon Gastronomie & Vins d'Orléans", "edition":2026,
+      "ville":"Orléans", "departement":"Loiret (45)", "region":"cvl", "lieu":"CO'Met", "organisateur":"Salon Gastronomie & Vins d'Orléans",
+      "debut":"2026-11-20", "fin":"2026-11-23", "resume":"Un rendez-vous de vins et de gastronomie au CO'Met, avec parcours exposant proposé sur le site officiel.",
+      "sources":[["Dates et accès officiels","https://www.salon-gastronomie-orleans.fr/"]]
+    },
+    {
+      "id":"champagne-week-2027", "nom":"Champagne Week · Paris", "edition":2027,
+      "ville":"Paris et petite couronne", "departement":"Île-de-France", "region":"idf", "lieu":"Plusieurs lieux ; programme 2027 à confirmer", "organisateur":"Champagne Week · Comité Champagne",
+      "debut":"2027-10-18", "fin":"2027-10-24", "resume":"Une semaine de rencontres autour du champagne, distincte d'un salon avec stands ; la prochaine période est annoncée par l'organisateur.",
+      "public":"Public et conditions d'accès à préciser selon les rendez-vous du programme 2027.",
+      "participation":"Programme de rencontres, et non réservation d'un stand unique. Demander au Comité Champagne les possibilités de participation et les conditions des rendez-vous 2027.",
+      "sources":[["Annonce de la prochaine Champagne Week","https://champagne-week.fr/"]]
+    },
+    {
+      "id":"contrastes-toulouse-2027", "nom":"Contrastes · Vins natures du Sud-Ouest", "edition":2027,
+      "ville":"Toulouse", "departement":"Haute-Garonne (31)", "region":"occ", "lieu":"Toulouse · lieu à confirmer", "organisateur":"Association de vignerons Contrastes", "local":true,
+      "debut":"2027-11-07", "fin":"2027-11-08", "resume":"Un salon associatif de vins natures du Sud-Ouest dont les jours sont annoncés, avec lieu encore à confirmer à Toulouse.",
+      "participation":"Respect de la charte de l'association : viticulture biologique au minimum, vendanges manuelles, levures indigènes, SO2 limité et absence de cuvées de négoce. Admission à confirmer auprès des organisateurs.",
+      "sources":[["Dates, lieu à confirmer et charte","https://contrastes-salon-vins.mobirisesite.com/"]]
+    }
+  ]
+}

@@ -44,7 +44,9 @@ coordonnée personnelle, description éditoriale ou prix n'est importé.
 
 `sources.json` configure Vinabox, les deux catégories françaises de nSalons,
 Aux Vignobles!, Mer et Vigne, Vitisaveurs et les Vignerons Indépendants.
-Le script ajoute les pages HTML des sources du catalogue Mon Chai, notamment
+Le script ajoute les pages HTML des sources du catalogue Mon Chai, y compris
+`evenements-valides.json`, le lot de 37 éditions relues et effectivement publiées,
+notamment
 les organisateurs associatifs, communes et offices de tourisme déjà identifiés.
 
 - Vinabox : lecture de la table, suivi des liens explicitement officiels.

@@ -102,6 +102,13 @@ class Parsers(unittest.TestCase):
         rows, _ = v.parse_page(text, 'https://example.org/tours', source(reseau_viticole=True))
         self.assertEqual(rows[0]['nom'], 'Salon de Tours')
 
+    def test_published_wine_network_keeps_its_structured_dates(self):
+        text = '<script type="application/ld+json">{"@type":"Event","name":"Salon de Tours","startDate":"2027-03-02","endDate":"2027-03-03"}</script>'
+        known = dict(id='mer-tours', nom='Mer et Vigne Tours', ville='Tours', edition=2027, organisateur='Mer et Vigne')
+        rows, _ = v.parse_page(text, 'https://www.mer-et-vigne.fr/salons/tours', source(connu=known))
+        self.assertEqual(rows[0]['methode'], 'jsonld')
+        self.assertEqual(rows[0]['debut'], '2027-03-02')
+
     def test_source_layout_failure_is_an_error(self):
         with self.assertRaisesRegex(ValueError, 'structure'):
             v.parse_page('<p>Plus de tableau</p>', 'https://example.org/', dict(source(), parseur='vinabox'))

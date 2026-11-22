@@ -266,6 +266,13 @@ class DailyRun(unittest.TestCase):
         self.assertEqual(self.report()['bilan']['en_attente'], 0)
         self.assertEqual(self.report()['bilan']['candidats'], 1)
 
+    def test_elapsed_time_produces_partial_report_and_pending_queue(self):
+        self.config.write_text(json.dumps({'version': 1, 'sources': [source(), dict(source(), url='https://example.org/autre')]}))
+        with patch.object(v.time, 'monotonic', side_effect=[0, 0, 1201]), patch.object(v.Fetcher, 'get', return_value=(self.body, 'chargée', 'https://example.org/salons')), redirect_stdout(io.StringIO()):
+            self.assertEqual(v.run(self.args), 2)
+        self.assertEqual(self.report()['bilan']['candidats'], 1)
+        self.assertEqual(self.report()['bilan']['en_attente'], 1)
+
     def test_injection_escaped_in_report_and_spreadsheet(self):
         body = self.body.replace('Salon vins', '=1+1 <img src=x onerror=alert(1)> Salon vins')
         self.run_fake(body)

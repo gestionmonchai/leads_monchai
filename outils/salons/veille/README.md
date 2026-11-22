@@ -91,8 +91,12 @@ en changeant son année. Une annulation ou un report JSON-LD est signalé.
   en panne ne met jamais son ancien relevé à la date du jour.
 - Une ancienne fiche non retrouvée après une lecture réussie est conservée dans
   `non_retrouves` du rapport. Cela ne supprime rien du site.
-- Budget par défaut : 220 pages ; URLs restantes enregistrées et prioritaires au
-  passage suivant. `--max-pages 300` permet de l'augmenter (maximum 1 000).
+- Budget par défaut : 220 pages ou 20 minutes, avec achèvement de la requête en
+  cours avant de produire le rapport ; URLs restantes enregistrées et prioritaires au
+  passage suivant. `--max-pages 300` permet de l'augmenter (maximum 1 000),
+  `--max-minutes 25` augmente le temps. Les compteurs de nouveautés, modifications
+  et doublons possibles concernent les fiches à venir ou sans dates ; les archives
+  restent dans le CSV, le JSON et l'historique.
 - Robots.txt vérifié, identité de robot explicite, pause minimale par domaine,
   délais réseau et taille de page limités ; aucune tentative de contourner un
   refus. Un Crawl-delay supérieur à 30 secondes laisse la source à la lecture

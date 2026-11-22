@@ -4,6 +4,7 @@ from datetime import datetime, timezone
 from functools import partial
 from http.server import SimpleHTTPRequestHandler, ThreadingHTTPServer
 import json
+from generer import load_events
 from pathlib import Path
 import threading
 import xml.etree.ElementTree as ET
@@ -149,7 +150,7 @@ try:
    expect(p.locator('#salon-succes')).to_be_visible();no_overflow(p)
    p.screenshot(path=str(OUT/f'confirmation-{width}.png'),animations='disabled')
    p.locator('#salon-succes a').click();p.wait_for_url('**/salons-viticoles.html')
-   assert p.locator('[data-salon]').count()==36
+   assert p.locator('[data-salon]').count()==len(load_events(ROOT)['evenements'])
    assert not p.locator('[data-salon]').filter(has_text='Salon de recette Mon Chai').count()
    p.locator('.sl-hero a[href="proposer-salon.html"]').click()
    p.wait_for_url('**/proposer-salon.html')
@@ -162,7 +163,7 @@ try:
   assert not calls
   ctx.close();browser.close()
   assert not report['erreurs_js'],report['erreurs_js']
-  report['controles'].append('5 formats, clavier, confirmation et retour au moteur, 36 fiches inchangées, repli sans JavaScript, aucune erreur JS et aucun e-mail réel')
+  report['controles'].append('5 formats, clavier, confirmation et retour au moteur, catalogue complet conservé, repli sans JavaScript, aucune erreur JS et aucun e-mail réel')
 finally:
  if server:server.shutdown()
  (OUT/'verification-proposition.json').write_text(json.dumps(report,ensure_ascii=False,indent=2),encoding='utf-8')

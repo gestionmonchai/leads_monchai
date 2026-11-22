@@ -107,6 +107,25 @@ try:
         report['controles'].append(f'{total} éditions, 3 objectifs, région/période combinées, accents, critères supprimables, zéro/reset, saisie sûre, admission et sources')
 
         ctx,p=new()
+        for organizer,expected in [('Aux Vignobles!',13),('Mer et Vigne',9),('Vitisaveurs',3)]:
+            p.locator('#q-salons').fill(organizer)
+            assert cards(p).count()==expected,organizer
+        reset(p)
+        p.locator('#region-salons').select_option('bfc')
+        assert cards(p).count()==1
+        assert p.locator('#salon-mer-vigne-dijon-2027').is_visible()
+        reset(p)
+        p.locator('#q-salons').fill('Contrastes')
+        assert cards(p).count()==1
+        p.locator('#salon-contrastes-toulouse-2027 summary').click()
+        assert 'lieu à confirmer' in p.locator('#salon-contrastes-toulouse-2027').inner_text()
+        assert 'négoce' in p.locator('#salon-contrastes-toulouse-2027 details').inner_text()
+        assert p.locator('#salon-millesime-bio-2027').count()==1
+        assert p.locator('#salon-grigny-2026').count()<=1
+        ctx.close()
+        report['controles'].append('37 éditions issues de la veille publiées : 13 Aux Vignobles, 9 Mer et Vigne, 3 Vitisaveurs, Dijon en BFC et lieu/charte de Contrastes explicites')
+
+        ctx,p=new()
         p.locator('#locaux-salons').check()
         assert cards(p).count()==local_total
         assert cards(p).evaluate_all('(xs)=>xs.every(x=>x.dataset.local==="oui")')

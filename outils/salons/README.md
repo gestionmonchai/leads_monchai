@@ -1,14 +1,42 @@
 # Salons viticoles et cinq guides
 
 Implémentation autorisée par Denis le 22 novembre 2026. Le lot ajoute une page
-`salons-viticoles.html`, 36 éditions françaises dont 22 initiatives locales,
+`salons-viticoles.html`, enrichie de 36 à 73 éditions françaises dont 24 initiatives locales,
 cinq guides, le lien Ressources,
 la carte des guides et le maillage/sitemap. Aucune route ni fonction Django.
 
-Sources : `evenements.json`, `evenements-locaux.json`, `articles.json` et les cinq fichiers `guide-*.html`.
+Sources : `evenements.json`, `evenements-locaux.json`, `evenements-valides.json`,
+`articles.json` et les cinq fichiers `guide-*.html`.
 Les textes de préparation sont des méthodes Mon Chai. Les données d'accès et de
 calendrier sont issues des organisateurs, avec un lien et une date de contrôle.
 La liste n'est pas exhaustive. Aucun formulaire d'inscription n'est transmis.
+
+## Publication des résultats de veille : contrat UX/UI du 22 novembre 2026
+
+- Problème : la veille produisait un rapport tandis que le moteur public restait
+  limité à 36 éditions. Ce lot publie 37 éditions relues sur les sites officiels.
+- Entrée et hiérarchie : même moteur, compteur réel, objectifs, région, période,
+  commune/département/organisateur, puis fiches et leurs sources. La région
+  Bourgogne-Franche-Comté devient disponible pour le rendez-vous de Dijon.
+- Données : treize Aux Vignobles!, neuf Mer et Vigne, trois Vitisaveurs et douze
+  autres rendez-vous. Les descriptions et conseils sont rédigés par Mon Chai.
+  Millésime BIO, Grigny et SITEVI ne sont pas republiés en double. Les pages Mer
+  et Vigne d'automne encore datées de 2026 ne deviennent pas des éditions 2027.
+  Champagne Week reste un programme de rencontres avec accès 2027 à confirmer ;
+  Contrastes garde son lieu annoncé comme incertain.
+- États et feedback : compteur et filtres calculés sur les fiches rendues ; dates
+  annoncées ou incertaines, lieu à confirmer, admission restreinte, archives, zéro
+  résultat, retrait de critère et retour au formulaire de proposition préservés.
+- Responsive/accessibilité : composants existants, mêmes fiches et contrôles
+  natifs ; recette clavier et cinq formats d'écran. Aucun nouveau parcours ni
+  nouvelle route de l'application : son assistant enseigne déjà ce moteur.
+- Acceptation : 73 fiches et éléments de liste structurée, aucune ID répétée,
+  recherche Aux Vignobles!/Mer et Vigne/Vitisaveurs, région de Dijon correcte,
+  commune de La Tour-de-Salvagny distincte de Lyon, mêmes fiches sans JS ; après
+  déploiement, vérifier le compteur public et les nouvelles fiches sur mobile.
+- Exploitation : le catalogue validé est chargé par le générateur ET la veille,
+  puis recopié dans l'outil local. Un rapport de collecte n'est jamais présenté
+  comme une publication. La publication suit génération, vérifications et Pages.
 
 ## Proposer un salon : contrat UX/UI du 22 novembre 2026
 

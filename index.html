@@ -712,10 +712,10 @@
       <h3 class="modal__form-titre">Parlez-nous de votre domaine.</h3>
       <p class="modal__form-aide">Les champs marqués d’un astérisque sont nécessaires pour étudier votre demande.</p>
 
-      <form id="waitlist-form" class="modal__form" novalidate>
+      <form id="waitlist-form" class="modal__form" novalidate data-honeypot-form>
         <div class="hp-field" aria-hidden="true">
           <label for="website">Site web</label>
-          <input type="text" name="website" id="website" tabindex="-1" autocomplete="off">
+          <input type="text" name="website" id="website" tabindex="-1" autocomplete="off" data-honeypot data-lpignore="true" data-1p-ignore>
         </div>
 
         <div class="modal__grid">
@@ -811,5 +811,6 @@
 <script src="assets/js/nouveautes-carrousel.js?v=20261107-objectifs" defer></script>
 <script src="assets/js/cta-popup.js?v=20261118-visite" defer></script>
 <script src="assets/js/documents-legaux.js?v=20261028-footer" defer></script>
+<script src="assets/js/antispam.js?v=20261122-honeypot" defer></script>
 </body>
 </html>

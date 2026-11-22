@@ -50,6 +50,7 @@ export class ContextContact{
  }
  async send(){
   if(this.pending||this.loading||this.completed)return;
+  const trap=this.form.elements.namedItem('fax');if(!trap||trap.value)return;
   if(this.step===0){this.nextStep();return;}
   if(!this.form.reportValidity())return;
   const services=this.selected();if(!services.length){const error=this.form.querySelector('#contact-services-error');error.textContent='Choisissez au moins un service que vous proposez.';error.hidden=false;this.options.querySelector('input')?.focus();return;}

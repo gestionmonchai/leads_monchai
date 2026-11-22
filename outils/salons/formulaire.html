@@ -9,7 +9,7 @@
 </div></section>
 <section class="sv-width sp-width sp-section" aria-labelledby="titre-proposition">
   <div id="sp-intro"><p class="sv-kicker">Les informations pour une fiche utile</p><h2 id="titre-proposition">Proposer votre salon</h2><p>Les champs marqués d’un astérisque (*) sont obligatoires. Relisez votre proposition avant de l’envoyer.</p></div>
-  <form id="proposition-salon" class="sp-form" data-hs-do-not-collect="true" method="post" novalidate hidden>
+  <form id="proposition-salon" class="sp-form" data-honeypot-form data-hs-do-not-collect="true" method="post" novalidate hidden>
     <fieldset><legend><span>01</span> Le salon</legend><div class="sp-grid">
       <div class="sp-full"><label for="salon-nom">Nom du salon *</label><input id="salon-nom" name="salon_nom" maxlength="140" required autocomplete="off" placeholder="Ex. : Salon des vins de votre commune"></div>
       <div class="sp-full"><label for="salon-organisateur">Association ou organisme organisateur *</label><input id="salon-organisateur" name="organisateur" maxlength="140" required autocomplete="organization"></div>
@@ -32,7 +32,7 @@
       <div><label for="salon-contact">Votre nom *</label><input id="salon-contact" name="contact_nom" maxlength="100" autocomplete="name" required></div>
       <div><label for="salon-email">Votre e-mail *</label><input id="salon-email" name="contact_email" type="email" maxlength="100" autocomplete="email" required></div>
     </div></fieldset>
-    <div class="sp-trap" aria-hidden="true"><label for="salon-website">Laisser ce champ vide</label><input id="salon-website" name="website" tabindex="-1" autocomplete="off"></div>
+    <div class="sp-trap" aria-hidden="true"><label for="salon-website">Laisser ce champ vide</label><input id="salon-website" name="website" tabindex="-1" autocomplete="off" data-honeypot data-lpignore="true" data-1p-ignore></div>
     <label class="sp-consent"><input id="salon-consent" name="consent" type="checkbox" required><span>J’autorise Mon Chai à publier les informations du salon après vérification par l’équipe. J’ai pris connaissance de la <a href="politique-confidentialite.html#propositions-salons">politique de confidentialité</a>. *</span></label>
     <p class="sp-help">HALLAIS &amp; BERTHELOT reçoit cette proposition via EmailJS et la messagerie de l’équipe pour la vérifier et préparer sa publication. Cet envoi ne vous inscrit pas à la newsletter.</p>
     <p id="salon-retour" class="sp-message" role="alert" hidden></p>

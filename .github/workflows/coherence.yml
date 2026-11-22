@@ -20,9 +20,11 @@ jobs:
         run: python outils/verifier-coherence.py . --strict --output "$RUNNER_TEMP/coherence.json"
       - name: Header commun sans divergence
         run: python outils/header/generer.py . --check
+      - name: Chaque formulaire public possède un honeypot ou un usage local déclaré
+        run: python outils/verifier-honeypots.py --inventaire
       - name: Syntaxe des scripts des parcours modifiés
         run: |
-          for script in assets/js/header.js accueil.js script.js consent.js assets/js/analytics.js assets/js/documents-legaux.js assets/js/contact.js assets/js/aides.js assets/js/salons.js assets/js/proposer-salon.js; do
+          for script in assets/js/header.js accueil.js script.js consent.js assets/js/analytics.js assets/js/documents-legaux.js assets/js/contact.js assets/js/aides.js assets/js/salons.js assets/js/proposer-salon.js assets/js/antispam.js; do
             node --check "$script"
           done
 

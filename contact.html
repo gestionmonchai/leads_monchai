@@ -231,10 +231,10 @@
         <h2 class="ct__titre">Écrivez-nous</h2>
         <p class="ct__aide">Si vous préférez écrire, ou si aucun créneau ne vous convient. Les champs marqués d'un astérisque sont nécessaires pour vous répondre.</p>
 
-        <form id="contact-form" class="ct__form" novalidate>
+        <form id="contact-form" class="ct__form" novalidate data-honeypot-form>
           <div class="hp-field" aria-hidden="true">
             <label for="website">Site web</label>
-            <input type="text" name="website" id="website" tabindex="-1" autocomplete="off">
+            <input type="text" name="website" id="website" tabindex="-1" autocomplete="off" data-honeypot data-lpignore="true" data-1p-ignore>
           </div>
 
           <div class="ct__grille">
@@ -334,5 +334,6 @@
 <script src="assets/js/contact.js?v=20261028-footer"></script>
 <script src="consent.js?v=20261029-ga4"></script>
 <script src="assets/js/documents-legaux.js?v=20261028-footer" defer></script>
+<script src="assets/js/antispam.js?v=20261122-honeypot" defer></script>
 </body>
 </html>

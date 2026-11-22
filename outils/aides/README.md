@@ -1,5 +1,51 @@
 # Panorama des aides viticoles
 
+## Présentation autonome du 21 novembre 2026
+
+`subventions-viticulture.html` explique notre démarche, le moteur, les projets,
+le rôle du logiciel et les questions à préparer. La page possède sa canonique
+et un contenu propre. Le moteur reste à `aides-vignerons.html`, avec sa propre
+canonique et ses fiches ; aucune redirection automatique n'est ajoutée.
+
+La source éditoriale est `subventions-viticulture-corps.html`. Après une
+modification du catalogue ou de la présentation, exécuter dans cet ordre :
+
+```sh
+python outils/aides/generer.py . dja
+python outils/aides/generer-presentation.py .
+python outils/header/generer.py .
+python outils/aides/verifier-presentation.py --sortie CHEMIN_TEMPORAIRE
+```
+
+La sélection `dja` évite de régénérer les autres fiches lors d'une retouche du
+catalogue seul ; choisir les identifiants réellement modifiés pour une mise à
+jour de fiches. Le header propose séparément « Subventions viticoles » et
+« Moteur de subventions ». Contrat : [PAGE_SUBVENTIONS_2026-11-21.md](PAGE_SUBVENTIONS_2026-11-21.md).
+
+## Recherche guidée et SEO du 18 novembre 2026
+
+Le catalogue met en avant les subventions et financements viticoles. Les URL,
+faits réglementaires et dates de vérification sont conservés. Présentation,
+métadonnées et cinq fiches ont une date éditoriale distincte de la veille.
+
+Le moteur précède la veille : projet, région, mot-clé facultatif, exemples et
+critères avancés. Le compteur, le bouton vers les résultats, les critères
+supprimables et le retour de recherche guident le parcours. Les mots génériques
+« aides » et « financements » ne bloquent pas une recherche ; « subvention »
+sélectionne bien cette nature de soutien. Les résultats ne valent pas éligibilité.
+
+Contrat UX/UI et suivi : [PARCOURS_SUBVENTIONS_2026-11-18.md](PARCOURS_SUBVENTIONS_2026-11-18.md).
+Recette navigateur, incluant la nouvelle invitation à la visite :
+
+```sh
+python outils/aides/verifier_navigateur.py --sortie CHEMIN_TEMPORAIRE
+```
+
+Périmètre : site vitrine statique dans `leads_monchai`. Aucune nouvelle route,
+fonction ou commande dans l'application Django ni modification de son assistant.
+
+## Publication historique
+
 Publication datée du 28 octobre 2026, France entière. 62 fiches et portes d’entrée,
 61 nouveaux articles et le guide DJA existant. Sources primaires dans chaque
 fiche et dans `catalogue.json`. Ce dossier n’est pas une décision d’éligibilité

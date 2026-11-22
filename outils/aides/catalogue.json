@@ -339,7 +339,12 @@
       "article": "aide-acja-viticulture.html",
       "verifie": "2026-10-28",
       "publie": "2026-10-28",
-      "modifie": "2026-10-29"
+      "modifie": "2026-10-29",
+      "seo": {
+        "titre": "ACJA PAC : complément pour les jeunes agriculteurs",
+        "description": "ACJA dans la PAC : complément pour les jeunes agriculteurs, distinct de la DJA. Retrouvez les conditions et références avant de préparer votre demande.",
+        "date": "2026-11-07"
+      }
     },
     {
       "id": "outremer",
@@ -417,7 +422,12 @@
       "article": "aide-restructuration-viticulture.html",
       "verifie": "2026-10-28",
       "publie": "2026-10-28",
-      "modifie": "2026-10-29"
+      "modifie": "2026-10-29",
+      "seo": {
+        "titre": "Subvention de restructuration du vignoble : les repères",
+        "description": "Restructuration et reconversion du vignoble : comprendre le financement, préparer les démarches et vérifier les conditions de la campagne auprès de FranceAgriMer.",
+        "date": "2026-11-18"
+      }
     },
     {
       "id": "investissement-chai",
@@ -450,7 +460,12 @@
       "article": "aide-investissement-chai-viticulture.html",
       "verifie": "2026-10-28",
       "publie": "2026-10-28",
-      "modifie": "2026-10-29"
+      "modifie": "2026-10-29",
+      "seo": {
+        "titre": "Subvention pour le chai : investissements FranceAgriMer",
+        "description": "Financer un investissement au chai : repères sur la subvention FranceAgriMer, dépenses, calendrier et conditions à vérifier dans les sources officielles.",
+        "date": "2026-11-18"
+      }
     },
     {
       "id": "secheresse",
@@ -520,7 +535,12 @@
       "article": "aide-pcae-regions-viticulture.html",
       "verifie": "2026-10-29",
       "publie": "2026-10-28",
-      "modifie": "2026-10-29"
+      "modifie": "2026-10-29",
+      "seo": {
+        "titre": "PCAE : subventions régionales au matériel viticole",
+        "description": "Subventions PCAE et FEADER pour les investissements viticoles : matériel, appels régionaux et conditions de financement à vérifier avant tout engagement.",
+        "date": "2026-11-18"
+      }
     },
     {
       "id": "plantations-occitanie",
@@ -689,7 +709,12 @@
       "article": "aide-pve-nouvelle-aquitaine-viticulture.html",
       "verifie": "2026-10-28",
       "publie": "2026-10-28",
-      "modifie": "2026-10-29"
+      "modifie": "2026-10-29",
+      "seo": {
+        "titre": "PVE Nouvelle-Aquitaine : subventions viticoles 2026-2027",
+        "description": "Subventions PVE en Nouvelle-Aquitaine : investissements viticoles, périmètre et sources de l’appel 2026-2027. Vérifiez les conditions du financement.",
+        "date": "2026-11-18"
+      }
     },
     {
       "id": "hydraulique-ara",
@@ -1241,7 +1266,12 @@
       "article": "aide-cab-viticulture.html",
       "verifie": "2026-11-05",
       "publie": "2026-10-28",
-      "modifie": "2026-11-05"
+      "modifie": "2026-11-05",
+      "seo": {
+        "titre": "Conversion bio en viticulture : subvention CAB et démarches",
+        "description": "Aide à la conversion bio du vignoble : repères sur la subvention CAB, engagements et démarches PAC, avec sources et dates de vérification.",
+        "date": "2026-11-18"
+      }
     },
     {
       "id": "maec",

@@ -22,18 +22,18 @@
   if (window.self !== window.top) return;
 
   var CLE = 'monchai_cookie_consent';
-  var VERSION = '2026-10-29-ga4';
+  var VERSION = '2026-11-24-gtm';
   var SIX_MOIS = 1000 * 60 * 60 * 24 * 182;
 
   // Textes du bandeau dans la langue de la page (attribut lang de <html>).
   // Le lien « En savoir plus » vise la politique de confidentialité du même
   // dossier de langue.
   var TEXTES = {
-    fr: { bandeau: '<strong>Cookies&nbsp;:</strong> nécessaires au site et, avec votre accord, pour la mesure d’audience et les contenus Instagram.', plus: 'En savoir plus', perso: 'Personnaliser', refus: 'Refuser', accepte: 'Tout accepter', reglages: 'Réglages des cookies', fermer: 'Fermer', intro: 'Choisissez les cookies que vous acceptez. Vos choix sont conservés six mois.', necT: 'Strictement nécessaires', necD: 'Indispensables au fonctionnement et à la sécurité du site. Toujours actifs.', audT: 'Mesure d’audience', audD: 'Google Analytics 4, Google Analytics 4, HubSpot et les balises de mesure gérées avec Google Tag Manager nous aident à comprendre l’usage du site. Ils sont chargés seulement après votre accord. Ils sont chargés seulement après votre accord.', tiersT: 'Services tiers', tiersD: 'Publications Instagram intégrées, fournies par Meta. Sans accord, les liens vers Instagram restent disponibles.', toutRefus: 'Tout refuser', enregistrer: 'Enregistrer mes choix' },
-    en: { bandeau: '<strong>Cookies:</strong> required for the site and, with your consent, for audience measurement and Instagram content.', plus: 'Learn more', perso: 'Customize', refus: 'Decline', accepte: 'Accept all', reglages: 'Cookie settings', fermer: 'Close', intro: 'Choose the cookies you accept. Your choices are kept for six months.', necT: 'Strictly necessary', necD: 'Essential to the operation and security of the site. Always active.', audT: 'Audience measurement', audD: 'Google Analytics 4, Google Analytics 4, HubSpot and measurement tags managed with Google Tag Manager help us understand how the site is used. They load only after your consent. They load only after your consent.', tiersT: 'Third-party services', tiersD: 'Instagram posts provided by Meta. Links to Instagram remain available if you decline.', toutRefus: 'Decline all', enregistrer: 'Save my choices' },
-    de: { bandeau: '<strong>Cookies:</strong> für den Betrieb der Website erforderlich und, mit Ihrer Zustimmung, für die Reichweitenmessung und Instagram-Inhalte.', plus: 'Mehr erfahren', perso: 'Anpassen', refus: 'Ablehnen', accepte: 'Alle akzeptieren', reglages: 'Cookie-Einstellungen', fermer: 'Schließen', intro: 'Wählen Sie die Cookies, die Sie akzeptieren. Ihre Auswahl wird sechs Monate gespeichert.', necT: 'Unbedingt erforderlich', necD: 'Für den Betrieb und die Sicherheit der Website unerlässlich. Immer aktiv.', audT: 'Reichweitenmessung', audD: 'Google Analytics 4, Google Analytics 4, HubSpot und über Google Tag Manager verwaltete Mess-Tags helfen uns, die Nutzung der Website zu verstehen. Sie werden erst nach Ihrer Zustimmung geladen. Sie werden erst nach Ihrer Zustimmung geladen.', tiersT: 'Dienste von Drittanbietern', tiersD: 'Instagram-Beiträge von Meta. Bei Ablehnung bleiben die Links zu Instagram verfügbar.', toutRefus: 'Alle ablehnen', enregistrer: 'Auswahl speichern' },
-    it: { bandeau: '<strong>Cookie:</strong> necessari al sito e, con il tuo consenso, per la misurazione del pubblico e i contenuti Instagram.', plus: 'Scopri di più', perso: 'Personalizza', refus: 'Rifiuta', accepte: 'Accetta tutto', reglages: 'Impostazioni dei cookie', fermer: 'Chiudi', intro: 'Scegli i cookie che accetti. Le tue scelte vengono conservate per sei mesi.', necT: 'Strettamente necessari', necD: 'Indispensabili al funzionamento e alla sicurezza del sito. Sempre attivi.', audT: 'Misurazione del pubblico', audD: 'Google Analytics 4, Google Analytics 4, HubSpot e i tag di misurazione gestiti con Google Tag Manager ci aiutano a capire come viene usato il sito. Vengono caricati solo dopo il consenso. Vengono caricati solo dopo il consenso.', tiersT: 'Servizi di terze parti', tiersD: 'Pubblicazioni Instagram fornite da Meta. Se rifiuti, i link a Instagram restano disponibili.', toutRefus: 'Rifiuta tutto', enregistrer: 'Salva le mie scelte' },
-    zh: { bandeau: '<strong>Cookie：</strong>网站运行所必需；经您同意后，还用于访问量统计和 Instagram 内容。', plus: '了解更多', perso: '自定义', refus: '拒绝', accepte: '全部接受', reglages: 'Cookie 设置', fermer: '关闭', intro: '请选择您接受的 Cookie。您的选择将保留六个月。', necT: '必要 Cookie', necD: '网站运行和安全所必需，始终启用。', audT: '访问量统计', audD: 'Google Analytics 4、Google Analytics 4、HubSpot 及通过 Google Tag Manager 管理的统计标签帮助我们了解网站的使用情况。它们仅在您同意后加载。它们仅在您同意后加载。', tiersT: '第三方服务', tiersD: '由 Meta 提供的 Instagram 帖子。拒绝后仍可使用 Instagram 链接。', toutRefus: '全部拒绝', enregistrer: '保存我的选择' }
+    fr: { bandeau: '<strong>Cookies&nbsp;:</strong> nécessaires au site et, avec votre accord, pour la mesure d’audience et les contenus Instagram.', plus: 'En savoir plus', perso: 'Personnaliser', refus: 'Refuser', accepte: 'Tout accepter', reglages: 'Réglages des cookies', fermer: 'Fermer', intro: 'Choisissez les cookies que vous acceptez. Vos choix sont conservés six mois.', necT: 'Strictement nécessaires', necD: 'Indispensables au fonctionnement et à la sécurité du site. Toujours actifs.', audT: 'Mesure d’audience', audD: 'Google Analytics 4 et HubSpot mesurent la fréquentation du site. Google Tag Manager gère les balises de mesure. Ces services attendent votre accord.', tiersT: 'Services tiers', tiersD: 'Publications Instagram intégrées, fournies par Meta. Sans accord, les liens vers Instagram restent disponibles.', toutRefus: 'Tout refuser', enregistrer: 'Enregistrer mes choix' },
+    en: { bandeau: '<strong>Cookies:</strong> required for the site and, with your consent, for audience measurement and Instagram content.', plus: 'Learn more', perso: 'Customize', refus: 'Decline', accepte: 'Accept all', reglages: 'Cookie settings', fermer: 'Close', intro: 'Choose the cookies you accept. Your choices are kept for six months.', necT: 'Strictly necessary', necD: 'Essential to the operation and security of the site. Always active.', audT: 'Audience measurement', audD: 'Google Analytics 4 and HubSpot measure website usage. Google Tag Manager manages measurement tags. These services wait for your consent.', tiersT: 'Third-party services', tiersD: 'Instagram posts provided by Meta. Links to Instagram remain available if you decline.', toutRefus: 'Decline all', enregistrer: 'Save my choices' },
+    de: { bandeau: '<strong>Cookies:</strong> für den Betrieb der Website erforderlich und, mit Ihrer Zustimmung, für die Reichweitenmessung und Instagram-Inhalte.', plus: 'Mehr erfahren', perso: 'Anpassen', refus: 'Ablehnen', accepte: 'Alle akzeptieren', reglages: 'Cookie-Einstellungen', fermer: 'Schließen', intro: 'Wählen Sie die Cookies, die Sie akzeptieren. Ihre Auswahl wird sechs Monate gespeichert.', necT: 'Unbedingt erforderlich', necD: 'Für den Betrieb und die Sicherheit der Website unerlässlich. Immer aktiv.', audT: 'Reichweitenmessung', audD: 'Google Analytics 4 und HubSpot messen die Nutzung der Website. Google Tag Manager verwaltet die Mess-Tags. Diese Dienste werden erst nach Ihrer Zustimmung geladen.', tiersT: 'Dienste von Drittanbietern', tiersD: 'Instagram-Beiträge von Meta. Bei Ablehnung bleiben die Links zu Instagram verfügbar.', toutRefus: 'Alle ablehnen', enregistrer: 'Auswahl speichern' },
+    it: { bandeau: '<strong>Cookie:</strong> necessari al sito e, con il tuo consenso, per la misurazione del pubblico e i contenuti Instagram.', plus: 'Scopri di più', perso: 'Personalizza', refus: 'Rifiuta', accepte: 'Accetta tutto', reglages: 'Impostazioni dei cookie', fermer: 'Chiudi', intro: 'Scegli i cookie che accetti. Le tue scelte vengono conservate per sei mesi.', necT: 'Strettamente necessari', necD: 'Indispensabili al funzionamento e alla sicurezza del sito. Sempre attivi.', audT: 'Misurazione del pubblico', audD: 'Google Analytics 4 e HubSpot misurano le visite al sito. Google Tag Manager gestisce i tag di misurazione. Questi servizi si attivano solo dopo il tuo consenso.', tiersT: 'Servizi di terze parti', tiersD: 'Pubblicazioni Instagram fornite da Meta. Se rifiuti, i link a Instagram restano disponibili.', toutRefus: 'Rifiuta tutto', enregistrer: 'Salva le mie scelte' },
+    zh: { bandeau: '<strong>Cookie：</strong>网站运行所必需；经您同意后，还用于访问量统计和 Instagram 内容。', plus: '了解更多', perso: '自定义', refus: '拒绝', accepte: '全部接受', reglages: 'Cookie 设置', fermer: '关闭', intro: '请选择您接受的 Cookie。您的选择将保留六个月。', necT: '必要 Cookie', necD: '网站运行和安全所必需，始终启用。', audT: '访问量统计', audD: 'Google Analytics 4 和 HubSpot 用于统计网站访问情况。Google Tag Manager 管理统计标签。这些服务仅在您同意后加载。', tiersT: '第三方服务', tiersD: '由 Meta 提供的 Instagram 帖子。拒绝后仍可使用 Instagram 链接。', toutRefus: '全部拒绝', enregistrer: '保存我的选择' }
   };
   var T = TEXTES[(document.documentElement.lang || 'fr').slice(0, 2).toLowerCase()] || TEXTES.fr;
 
@@ -41,7 +41,7 @@
     try {
       var d = JSON.parse(localStorage.getItem(CLE));
       if (!d || typeof d.ts !== 'number' || !Number.isFinite(d.ts) || d.ts > Date.now() || Date.now() - d.ts > SIX_MOIS || typeof d.audience !== 'boolean' || typeof d.tiers !== 'boolean') return null;
-      // Une ancienne acceptation ne couvre pas automatiquement le nouveau flux GA4.
+      // La couverture étendue de Tag Manager est présentée avant le nouvel accord.
       // Le refus antérieur reste respecté jusqu'à son échéance.
       if (d.audience && d.version !== VERSION) return null;
       return d;
@@ -132,13 +132,8 @@
     '</div>';
 
   function ecrire(audience, tiers) {
-    var precedent = window.monchaiConsent || {};
-    var retrait = (precedent.audience && !audience) || (precedent.tiers && !tiers);
     try { localStorage.setItem(CLE, JSON.stringify({ audience: audience, tiers: tiers, ts: Date.now(), version: VERSION })); } catch (e) {}
-    appliquer(audience, tiers);
-    // Un script tiers déjà exécuté ne peut pas être « déchargé ». Une nouvelle
-    // page applique le refus avant tout chargement et arrête ses traitements.
-    if (retrait) window.location.reload();
+    appliquerChoix(audience, tiers);
   }
 
   function chargerHubSpot() {
@@ -182,6 +177,45 @@
   }
 
   if (initial) appliquer(initial.audience, initial.tiers);
+
+  function appliquerChoix(audience, tiers) {
+    var precedent = window.monchaiConsent || {};
+    if ((precedent.audience && !audience) || (precedent.tiers && !tiers)) {
+      if (precedent.audience && !audience) {
+        // Une mesure mise en file sous consentement peut partir au déchargement.
+        // Bloquer les nouveaux flux externes du document qui va être remplacé.
+        var arret = document.createElement('meta');
+        arret.httpEquiv = 'Content-Security-Policy';
+        arret.content = "connect-src 'self'; img-src 'self' data: blob:; script-src 'self'; frame-src 'self'";
+        document.head.appendChild(arret);
+      }
+      // Appliquer le retrait dans le document courant. Les nouveaux accords
+      // prennent effet après rechargement pour éviter deux chargements.
+      appliquer(audience && !!precedent.audience, tiers && !!precedent.tiers);
+      window.location.reload();
+      return false;
+    }
+    appliquer(audience, tiers);
+    return true;
+  }
+
+  function synchroniserChoix() {
+    var choix = lire();
+    var precedent = window.monchaiConsent || {};
+    var audience = choix ? choix.audience : false;
+    var tiers = choix ? choix.tiers : false;
+    if ((audience !== !!precedent.audience || tiers !== !!precedent.tiers) &&
+        !appliquerChoix(audience, tiers)) return;
+    var banniere = document.getElementById('cookieBanner');
+    if (banniere) banniere.hidden = !!choix;
+  }
+
+  window.addEventListener('storage', function (event) {
+    if (event.key === CLE || event.key === null) synchroniserChoix();
+  });
+  window.addEventListener('pageshow', function (event) {
+    if (event.persisted) synchroniserChoix();
+  });
 
   function apresPolices(rappel) {
     try {
@@ -236,7 +270,7 @@
     // Le bandeau n'apparaît qu'une fois sa police (Inter normal et gras)
     // chargée : affiché plus tôt, son texte se recomposait à l'arrivée de la
     // police et le bandeau changeait de hauteur (CLS de 0,11 mesuré sur mobile).
-    if (!lire()) apresPolices(montrerBanniere);
+    if (!lire()) apresPolices(function () { if (!lire()) montrerBanniere(); });
 
     document.getElementById('cookieAccept').addEventListener('click', function () { ecrire(true, true); cacherBanniere(); });
     document.getElementById('cookieRefus').addEventListener('click', function () { ecrire(false, false); cacherBanniere(); });

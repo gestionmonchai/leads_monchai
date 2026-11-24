@@ -71,7 +71,7 @@ template=read('s-installer-en-viticulture.html')
 body_header=template[template.index('<body'):template.index('<main')]
 footer=re.search(r'<footer\b[^>]*>[\s\S]*?</footer>',template)[0]
 cta=re.search(r'<script\b[^>]*src="assets/js/cta-popup\.js[^\"]*"[^>]*></script>',template)[0]
-scripts='<script src="assets/js/header.js"></script><script src="consent.js?v=20261029-ga4"></script>'+cta+'<script src="assets/js/documents-legaux.js?v=20261028-footer" defer></script>'
+scripts='<script src="assets/js/header.js"></script><script src="consent.js?v=20261124-gtm"></script>'+cta+'<script src="assets/js/documents-legaux.js?v=20261028-footer" defer></script>'
 
 def page(slug,title,description,content,collection=False):
  seo=next((a.get('seo',{}) for a in AIDES if a['article']==slug),{})
@@ -98,7 +98,7 @@ def page(slug,title,description,content,collection=False):
 <link rel="stylesheet" href="assets/css/polices.css"><link rel="stylesheet" href="assets/css/header.css"><link rel="stylesheet" href="assets/css/actus.css"><link rel="stylesheet" href="assets/css/couts-editorial.css"><link rel="stylesheet" href="assets/css/footer-commun.css?v=20261028-footer"><link rel="stylesheet" href="assets/css/aides.css?v={'20261118-parcours' if collection else '20261028'}">
 <script type="application/ld+json">{json.dumps(schema,ensure_ascii=False).replace('</','< /')}</script>
 <script type="application/ld+json">{json.dumps({'@context':'https://schema.org','@type':'BreadcrumbList','itemListElement':[{'@type':'ListItem','position':1,'name':'Accueil','item':'https://monchai.fr/'},{'@type':'ListItem','position':2,'name':'Subventions et aides viticoles','item':'https://monchai.fr/aides-vignerons.html'}]+([] if collection else [{'@type':'ListItem','position':3,'name':title,'item':'https://monchai.fr/'+slug}])},ensure_ascii=False)}</script></head>'''
- head=head.replace('</head>','<script src="assets/js/analytics.js?v=20261029"></script></head>')
+ head=head.replace('</head>','<script src="assets/js/analytics.js?v=20261124-gtm"></script></head>')
  return head+header+content+footer+scripts+('<script src="assets/js/aides.js?v=20261118-parcours" defer></script>' if collection else '')+'</body></html>\n'
 
 def source(a,index=0):

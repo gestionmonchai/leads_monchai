@@ -30,7 +30,7 @@ function harmoniser(article, reference) {
   for (const fichier of ['consent.js', 'assets/js/documents-legaux.js']) {
     const rx = new RegExp('<script\\b[^>]*src=["\\\']' + fichier.replaceAll('.', '\\.') + '(?:\\?[^"\\\']*)?["\\\'][^>]*>\\s*</script>\\s*', 'g');
     resultat = resultat.replace(rx, '');
-    const version = fichier === 'consent.js' ? '20261029-ga4' : '20261028-footer';
+    const version = fichier === 'consent.js' ? '20261124-gtm' : '20261028-footer';
     resultat = resultat.replace('</body>', `<script src="${fichier}?v=${version}" defer></script>\n</body>`);
   }
   return resultat;

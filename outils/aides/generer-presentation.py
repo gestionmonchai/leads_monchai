@@ -57,7 +57,7 @@ def generate(root):
 <link rel="stylesheet" href="assets/css/polices.css"><link rel="stylesheet" href="assets/css/header.css"><link rel="stylesheet" href="assets/css/actus.css"><link rel="stylesheet" href="assets/css/footer-commun.css?v=20261028-footer"><link rel="stylesheet" href="assets/css/subventions.css?v=20261121">
 <script type="application/ld+json">{json.dumps(schema, ensure_ascii=False)}</script>
 <script type="application/ld+json">{json.dumps(breadcrumb, ensure_ascii=False)}</script>
-<script src="assets/js/analytics.js?v=20261029" defer></script>
+<script src="assets/js/analytics.js?v=20261124-gtm" defer></script>
 </head>'''
     (root / SLUG).write_text(head + body_header + body + footer + scripts + '</body></html>\n', encoding='utf-8', newline='\n')
     sitemap = (root / 'sitemap.xml').read_text(encoding='utf-8')

@@ -1,0 +1,116 @@
+[
+  {
+    "slug": "elan-de-schiste",
+    "reference": "SV-RGE-23-75",
+    "nom": "Élan de Schiste",
+    "millesime": 2023,
+    "couleur": "Rouge",
+    "type": "Vin tranquille",
+    "appellation": "AOP Côtes du Rhône Villages",
+    "cepages": [
+      "Syrah",
+      "Grenache noir"
+    ],
+    "degre_alcool": 14,
+    "prix_ttc": 19.5,
+    "notes": "Mûre, violette et poivre noir",
+    "description": "La syrah apporte la violette et le poivre. Le grenache prolonge le fruit noir et arrondit les tanins. Une finale fraîche rappelle le versant où la cuvée a pris forme.",
+    "accord": "Agneau rôti, aubergines grillées",
+    "service": "16–18 °C"
+  },
+  {
+    "slug": "de-bonne-heure",
+    "reference": "SV-BLC-24-75",
+    "nom": "De Bonne Heure",
+    "millesime": 2024,
+    "couleur": "Blanc",
+    "type": "Vin tranquille",
+    "appellation": "AOP Côtes du Rhône",
+    "cepages": [
+      "Clairette",
+      "Grenache blanc"
+    ],
+    "degre_alcool": 12.5,
+    "prix_ttc": 14.4,
+    "notes": "Poire fraîche, fenouil et citron",
+    "description": "Vendangée tôt, cette cuvée garde le croquant de la poire et une légère note anisée. Le grenache blanc donne de l’ampleur, puis le citron rafraîchit la finale.",
+    "accord": "Truite, fenouil rôti",
+    "service": "9–11 °C"
+  },
+  {
+    "slug": "a-fleur-de-roche",
+    "reference": "SV-ROS-25-75",
+    "nom": "À Fleur de Roche",
+    "millesime": 2025,
+    "couleur": "Rosé",
+    "type": "Vin tranquille",
+    "appellation": "IGP Méditerranée",
+    "cepages": [
+      "Cinsault",
+      "Grenache noir"
+    ],
+    "degre_alcool": 12.5,
+    "prix_ttc": 12.8,
+    "notes": "Groseille, pêche blanche et pomelo",
+    "description": "Le pressurage direct donne à ce rosé sa robe claire. En bouche, la pêche et la groseille précèdent une amertume fine de pomelo.",
+    "accord": "Tomates anciennes, légumes grillés",
+    "service": "8–10 °C"
+  },
+  {
+    "slug": "la-pente-douce",
+    "reference": "SV-RGE-24-75",
+    "nom": "La Pente Douce",
+    "millesime": 2024,
+    "couleur": "Rouge",
+    "type": "Vin tranquille",
+    "appellation": "AOP Côtes du Rhône",
+    "cepages": [
+      "Grenache noir",
+      "Carignan"
+    ],
+    "degre_alcool": 13.5,
+    "prix_ttc": 14.8,
+    "notes": "Cerise, réglisse et thym",
+    "description": "Une macération courte conserve la cerise et des tanins souples. Le carignan donne un peu de relief à l’assemblage, avec une finale de thym et de réglisse.",
+    "accord": "Volaille rôtie, champignons poêlés",
+    "service": "14–16 °C"
+  },
+  {
+    "slug": "vent-de-craie",
+    "reference": "SV-BLC-23-75",
+    "nom": "Vent de Craie",
+    "millesime": 2023,
+    "couleur": "Blanc",
+    "type": "Vin tranquille",
+    "appellation": "AOP Côtes du Rhône Villages",
+    "cepages": [
+      "Roussanne",
+      "Marsanne"
+    ],
+    "degre_alcool": 13,
+    "prix_ttc": 21.6,
+    "notes": "Coing, amande et zeste de citron",
+    "description": "L’élevage sur lies donne à la roussanne une texture ample. Le coing et l’amande dominent, puis une note d’agrume apporte de la tension en fin de bouche.",
+    "accord": "Saint-jacques, risotto aux asperges",
+    "service": "10–12 °C"
+  },
+  {
+    "slug": "les-eclats",
+    "reference": "SV-EFF-24-75",
+    "nom": "Les Éclats",
+    "millesime": 2024,
+    "couleur": "Blanc",
+    "type": "Vin effervescent",
+    "appellation": "Vin de France",
+    "cepages": [
+      "Clairette",
+      "Ugni blanc"
+    ],
+    "degre_alcool": 11.5,
+    "prix_ttc": 17.9,
+    "notes": "Pomme verte, fleurs blanches et brioche",
+    "description": "Une prise de mousse en bouteille donne des bulles fines. À la pomme verte et aux fleurs blanches succède une légère note de brioche.",
+    "accord": "Gougères, fromage frais aux herbes",
+    "service": "7–9 °C"
+  }
+]

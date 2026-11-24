@@ -1,0 +1,341 @@
+@font-face {
+  font-family: Inter;
+  src: url("/assets/fonts/Inter-Latin-400-700-20261107.woff2") format("woff2");
+  font-weight: 400 700;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: Playfair;
+  src: url("/assets/fonts/PlayfairDisplay-Latin-400-500-20261107.woff2") format("woff2");
+  font-weight: 400 500;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: Playfair;
+  src: url("/assets/fonts/playfairdisplay-400-italic-latin.woff2") format("woff2");
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+}
+
+:root {
+  --papier: #f8f4ea;
+  --encre: #312331;
+  --secondaire: #645660;
+  --prune: #382639;
+  --citron: #ecf289;
+  --ligne: #d6cbd0;
+  --serif: Playfair, Georgia, serif;
+  --gouttiere: clamp(1.25rem, 5vw, 5.5rem);
+  color: var(--encre);
+  background: var(--papier);
+  font-family: Inter, Arial, sans-serif;
+  line-height: 1.55;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+body, h1, h2, h3, p, figure, dl, dd { margin: 0; }
+img { display: block; max-width: 100%; }
+a { color: inherit; }
+button { font: inherit; }
+[hidden] { display: none !important; }
+:focus-visible { outline: 3px solid #683e85; outline-offset: 5px; }
+.hero :focus-visible, .pied :focus-visible { outline-color: var(--citron); }
+::selection { color: var(--encre); background: var(--citron); }
+
+.largeur { width: min(100% - 2 * var(--gouttiere), 80rem); margin-inline: auto; }
+
+.skip {
+  position: absolute;
+  top: 0.75rem;
+  left: 0.75rem;
+  z-index: 3;
+  transform: translateY(-200%);
+  background: var(--citron);
+  padding: 0.7rem 1rem;
+}
+.skip:focus { transform: none; }
+
+.entete { border-bottom: 1px solid var(--ligne); }
+.barre {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem 2rem;
+  min-height: 4.9rem;
+}
+
+.marque {
+  display: inline-flex;
+  gap: 0.7rem;
+  align-items: center;
+  font: 500 clamp(1.35rem, 2.3vw, 1.9rem)/1 var(--serif);
+  letter-spacing: -0.05em;
+  white-space: nowrap;
+  text-decoration: none;
+}
+
+.sillon {
+  display: grid;
+  align-content: center;
+  gap: 3px;
+  width: 2.1rem;
+  height: 2.1rem;
+  padding-inline: 0.4rem;
+  border-radius: 50%;
+  background: var(--prune);
+  overflow: hidden;
+  transform: rotate(-26deg);
+}
+
+.sillon i { display: block; height: 5px; border: 1px solid var(--citron); border-width: 1px 0 0; border-radius: 60%; }
+.sillon i:nth-child(2) { translate: 2px 0; }
+.sillon i:nth-child(3) { translate: 4px 0; }
+
+.barre nav { display: flex; align-items: center; gap: clamp(1rem, 3.5vw, 3rem); }
+.barre nav a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.75rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-underline-offset: 0.28em;
+  text-decoration: none;
+}
+
+.barre nav a:hover, .retour:hover, .retour-monchai:hover { text-decoration: underline; }
+.lien-donnees { border: 1px solid var(--ligne); border-radius: 2rem; padding-inline: 1rem; }
+
+.hero {
+  position: relative;
+  isolation: isolate;
+  display: grid;
+  align-items: end;
+  min-height: clamp(32rem, 76svh, 46rem);
+  background: #282317;
+  color: var(--papier);
+}
+
+.hero-image, .hero-image img, .hero::before { position: absolute; inset: 0; width: 100%; height: 100%; }
+.hero-image { z-index: -2; }
+.hero-image img { object-fit: cover; object-position: 58% 53%; }
+.hero::before {
+  content: "";
+  z-index: -1;
+  background: linear-gradient(90deg, #1f151ebb, #20191324 68%, transparent),
+              linear-gradient(0deg, #1f151ec9, #1f151e28 60%, transparent);
+}
+
+.hero-contenu { padding-block: clamp(3rem, 8vw, 6.8rem); }
+.surtitre {
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+.hero .surtitre, .domaine .surtitre { color: var(--citron); margin-bottom: 1.1rem; }
+
+.hero h1 {
+  font: 400 clamp(3.6rem, 8.25vw, 8.1rem)/0.99 var(--serif);
+  letter-spacing: -0.07em;
+}
+.hero h1 em, .domaine h2 em { font-weight: 400; }
+.hero-intro { max-width: 30rem; font-size: clamp(1rem, 1.5vw, 1.2rem); margin: 1.5rem 0; }
+
+.bouton {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 3rem;
+  padding: 0.55rem 1.35rem;
+  border: 1px solid transparent;
+  border-radius: 2rem;
+  font-weight: 700;
+  font-size: 0.94rem;
+  text-align: center;
+  text-decoration: none;
+  transition: background-color 180ms ease, color 180ms ease;
+}
+
+.bouton-clair { background: var(--citron); color: var(--encre); }
+.bouton-clair:hover { background: var(--papier); }
+.bouton-sombre { background: var(--prune); color: var(--papier); }
+.bouton-sombre:hover { background: var(--citron); color: var(--encre); border-color: var(--prune); }
+
+.section-cuvees { padding-block: clamp(3.5rem, 7vw, 7rem); }
+.entete-section { display: flex; align-items: end; justify-content: space-between; gap: 1.5rem 2rem; }
+.entete-section h2, .section-donnees h2, .domaine h2 {
+  font: 400 clamp(2.7rem, 6vw, 5.4rem)/1.01 var(--serif);
+  letter-spacing: -0.06em;
+}
+.entete-section p, .section-donnees p { margin-top: 0.75rem; color: var(--secondaire); }
+
+.filtres { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+.filtres button {
+  min-height: 2.75rem;
+  padding: 0.35rem 0.8rem;
+  border: 1px solid var(--ligne);
+  border-radius: 2rem;
+  background: transparent;
+  color: var(--encre);
+  cursor: pointer;
+  font-size: 0.88rem;
+}
+.filtres button:hover { border-color: var(--encre); }
+.filtres button[aria-pressed="true"] { background: var(--prune); color: var(--papier); border-color: var(--prune); }
+
+.resultats {
+  margin-top: 1.6rem;
+  margin-bottom: 1rem;
+  padding-top: 0.8rem;
+  border-top: 1px solid var(--ligne);
+  color: var(--secondaire);
+  font-size: 0.88rem;
+}
+
+.grille-cuvees {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(1.75rem, 4vw, 3.5rem) clamp(0.85rem, 2.1vw, 1.75rem);
+}
+
+.cuvee-lien { display: block; height: 100%; text-decoration: none; border-bottom: 1px solid var(--ligne); }
+.cuvee-image { position: relative; overflow: hidden; background: #ded2d4; }
+.cuvee-image img { width: 100%; height: auto; transition: transform 400ms ease; }
+.cuvee-lien:hover img { transform: scale(1.045); }
+.cuvee-lien:hover h3 { text-decoration: underline; text-underline-offset: 0.16em; text-decoration-thickness: 1px; }
+.pastille {
+  position: absolute;
+  left: 0.7rem;
+  top: 0.7rem;
+  display: inline-block;
+  border-radius: 2rem;
+  color: var(--encre);
+  background: var(--papier);
+  padding: 0.26rem 0.62rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.cuvee-texte { padding-block: 1.15rem 1.25rem; }
+.appellation { color: var(--secondaire); font-size: 0.84rem; line-height: 1.35; }
+.cuvee h3 {
+  font: 500 clamp(1.65rem, 3vw, 2.55rem)/1.07 var(--serif);
+  letter-spacing: -0.055em;
+  margin-top: 0.4rem;
+}
+.notes { margin-top: 0.55rem; }
+.prix { display: inline-block; margin-top: 0.85rem; font-weight: 700; }
+.prix small { color: var(--secondaire); font-weight: 400; font-size: 0.87rem; }
+
+.domaine {
+  padding-block: clamp(2rem, 6vw, 6rem);
+  background: var(--prune);
+  color: var(--papier);
+}
+.domaine-grille {
+  display: grid;
+  grid-template-columns: 0.93fr 1fr;
+  align-items: center;
+  gap: clamp(2rem, 8vw, 8rem);
+}
+.vendanges { width: 100%; height: auto; aspect-ratio: 5/5.5; object-fit: cover; object-position: 50% 52%; }
+.domaine-texte p:not(.surtitre) { margin-top: 1.25rem; max-width: 30rem; color: #f2e7ed; }
+
+.section-donnees {
+  padding-block: clamp(3rem, 6vw, 6rem);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1.6rem;
+}
+.section-donnees h2 { font-size: clamp(2.35rem, 4.6vw, 4.2rem); }
+.section-donnees .bouton { flex-shrink: 0; }
+
+.pied { padding-block: 2.1rem; background: #2b1c2c; color: var(--papier); }
+.pied-contenu { display: flex; justify-content: space-between; align-items: center; gap: 1.25rem 2rem; }
+.pied p { margin-top: 0.7rem; font-size: 0.9rem; color: #eee0e9; max-width: 36rem; }
+.retour-monchai { font-weight: 600; text-underline-offset: 0.25em; }
+
+.fiche { padding-block: clamp(2rem, 5vw, 4.6rem) clamp(3rem, 6vw, 6rem); }
+.retour { display: inline-flex; align-items: center; min-height: 2.75rem; font-weight: 600; text-underline-offset: 0.25em; }
+.fiche-grille {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: start;
+  gap: clamp(2rem, 5vw, 5rem);
+  margin-top: 1rem;
+}
+.fiche-image { width: 100%; height: auto; }
+.fiche-corps { padding-top: clamp(0.15rem, 2vw, 2rem); }
+.fiche-corps .surtitre { color: var(--secondaire); }
+.fiche-corps h1 {
+  font: 400 clamp(3rem, 6vw, 6.3rem)/1.02 var(--serif);
+  letter-spacing: -0.065em;
+  margin-block: 0.6rem 0.9rem;
+}
+.fiche-corps p + p { margin-top: 0.7rem; }
+.fiche-notes { font: italic 400 clamp(1.25rem, 2.6vw, 1.65rem)/1.35 var(--serif); }
+.fiche-corps .fiche-prix {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.1rem 0.75rem;
+  align-items: baseline;
+  margin-top: 1.5rem;
+}
+.fiche-prix strong { font-size: 1.7rem; }
+.fiche-prix span { color: var(--secondaire); font-size: 0.875rem; }
+.caracteristiques { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 1.3rem; margin-top: 1.2rem; }
+.caracteristiques div { border-top: 1px solid var(--ligne); padding-block: 0.7rem; }
+.caracteristiques dt { font-size: 0.86rem; color: var(--secondaire); }
+.caracteristiques dd { font-weight: 600; }
+.service {
+  display: grid;
+  grid-template-columns: 1.2fr 0.75fr 1fr;
+  align-items: start;
+  gap: 1.3rem;
+  margin-top: 2.25rem;
+  padding: clamp(1.2rem, 3vw, 2rem);
+  background: #eee6dc;
+}
+.service h2 { font: 500 1.6rem/1.18 var(--serif); margin-bottom: 0.4rem; }
+.service .retour { justify-self: end; flex-direction: column; align-items: start; font-size: 0.88rem; }
+.service .retour span { font: 500 1.45rem/1.25 var(--serif); }
+
+@media (max-width: 920px) {
+  .entete-section { align-items: start; flex-direction: column; }
+  .grille-cuvees { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media (max-width: 680px) {
+  .barre { justify-content: center; flex-direction: column; gap: 0; padding-top: 0.85rem; }
+  .barre nav { gap: clamp(0.6rem, 3.2vw, 1.2rem); }
+  .barre nav a { font-size: 0.875rem; }
+  .lien-donnees { border: 0; padding-inline: 0; }
+  .hero { min-height: clamp(29rem, 73svh, 38rem); }
+  .hero h1 { font-size: clamp(3.05rem, 11.5vw, 4.7rem); }
+  .hero-image img { object-position: 58% 48%; }
+  .hero::before { background: linear-gradient(0deg, #1f151eeb, #1f151e63 60%, #1f151e06); }
+  .hero-intro { margin-block: 1rem 1.3rem; }
+  .domaine-grille, .fiche-grille { grid-template-columns: 1fr; }
+  .vendanges { aspect-ratio: 1.12; }
+  .domaine { padding-bottom: 3.1rem; }
+  .section-donnees, .pied-contenu { flex-direction: column; align-items: start; }
+  .section-donnees .bouton { flex-shrink: 1; }
+  .service { grid-template-columns: 1fr 1fr; }
+  .service .retour { justify-self: start; grid-column: 1 / -1; }
+}
+
+@media (max-width: 425px) {
+  .grille-cuvees { grid-template-columns: 1fr; }
+  .pastille { top: 0.55rem; left: 0.55rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { transition: none !important; }
+}

@@ -8,14 +8,14 @@
   <meta name="robots" content="noindex, follow">
   <meta name="theme-color" content="#f8f4ea">
   <link rel="canonical" href="https://monchai.fr/votre-futur-vignoble/cuvees/la-pente-douce/">
-  <link rel="alternate" type="application/json" title="Catalogue public Sillons Vifs" href="https://monchai.fr/votre-futur-vignoble/catalogue.json">
   <meta property="og:type" content="website">
   <meta property="og:title" content="La Pente Douce 2024 | Sillons Vifs">
   <meta property="og:description" content="Une macération courte conserve la cerise et des tanins souples. Le carignan donne un peu de relief à l’assemblage, avec une finale de thym et de réglisse.">
   <meta property="og:url" content="https://monchai.fr/votre-futur-vignoble/cuvees/la-pente-douce/">
   <meta property="og:image" content="https://monchai.fr/votre-futur-vignoble/assets/la-pente-douce.webp">
-  <link rel="stylesheet" href="/votre-futur-vignoble/style.css?v=20261124-age">
+  <link rel="stylesheet" href="/votre-futur-vignoble/style.css?v=20261124-visites">
   <script src="/votre-futur-vignoble/majorite.js" defer></script>
+  <script src="/votre-futur-vignoble/boutique.js" defer></script>
   <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Product", "@id": "https://monchai.fr/votre-futur-vignoble/cuvees/la-pente-douce/#produit", "url": "https://monchai.fr/votre-futur-vignoble/cuvees/la-pente-douce/", "name": "La Pente Douce", "sku": "SV-RGE-24-75", "image": "https://monchai.fr/votre-futur-vignoble/assets/la-pente-douce.webp", "description": "Une macération courte conserve la cerise et des tanins souples. Le carignan donne un peu de relief à l’assemblage, avec une finale de thym et de réglisse.", "brand": {"@type": "Brand", "name": "Sillons Vifs"}, "category": "Vin tranquille", "color": "Rouge", "additionalProperty": [{"@type": "PropertyValue", "name": "Contenance", "value": 75.0, "unitText": "cl"}, {"@type": "PropertyValue", "name": "Prix indicatif TTC", "value": 14.8, "unitText": "EUR"}, {"@type": "PropertyValue", "name": "Conditionnement", "value": "Bouteille"}, {"@type": "PropertyValue", "name": "Millésime", "value": 2024}, {"@type": "PropertyValue", "name": "Appellation", "value": "AOP Côtes du Rhône"}, {"@type": "PropertyValue", "name": "Cépages", "value": "Grenache noir, Carignan"}, {"@type": "PropertyValue", "name": "Degré d’alcool", "value": 13.5, "unitText": "% vol."}, {"@type": "PropertyValue", "name": "Accords", "value": "Volaille rôtie, champignons poêlés"}, {"@type": "PropertyValue", "name": "Température de service", "value": "14–16 °C"}]}</script>
 </head>
 <body>
@@ -39,8 +39,11 @@
       <nav aria-label="Navigation principale">
         <a href="/votre-futur-vignoble/#cuvees">Les cuvées</a>
         <a href="/votre-futur-vignoble/#comptoir">Le comptoir</a>
-        <a class="lien-donnees" href="/votre-futur-vignoble/#donnees">Données</a>
+        <a href="/votre-futur-vignoble/sejours/">Séjours</a>
+        <a href="/votre-futur-vignoble/experiences/">Expériences</a>
+        <a href="/votre-futur-vignoble/domaines/">Nos domaines</a>
       </nav>
+      <button class="panier-ouvrir" type="button" data-panier-ouvrir aria-controls="panier" hidden>Panier <span data-panier-nombre>0</span></button>
     </div>
   </header>
   <main id="contenu" tabindex="-1">
@@ -62,20 +65,35 @@
           <div><dt>Degré d’alcool</dt><dd>13,5 % vol.</dd></div>
           <div><dt>Référence</dt><dd>SV-RGE-24-75</dd></div>
           </dl>
+          <button class="bouton bouton-sombre fiche-ajouter" type="button" data-ajouter="SV-RGE-24-75"
+              data-nom="La Pente Douce" data-prix="1480"
+              data-format="75 cl" hidden>Ajouter au panier</button>
         </div>
       </div>
-      <div class="service">
+      <div class="service" id="degustation">
         <div><h2>À table</h2><p>Volaille rôtie, champignons poêlés</p></div>
         <div><h2>Service</h2><p>14–16 °C</p></div>
         <a class="retour" href="/votre-futur-vignoble/cuvees/vent-de-craie/">À découvrir ensuite <span>Vent de Craie</span></a>
       </div>
+
     </section>
   </main>
+  <dialog class="panneau" id="panier" aria-labelledby="titre-panier">
+    <div class="panneau-entete">
+      <h2 id="titre-panier">Votre panier</h2>
+      <button class="panneau-fermer" type="button" aria-label="Fermer le panier" data-fermer>×</button>
+    </div>
+    <p id="panier-vide">Votre panier est vide.</p>
+    <ul id="panier-lignes" class="panier-lignes"></ul>
+    <p class="panier-total" aria-live="polite">Total <strong data-panier-total>0,00 €</strong></p>
+    <button class="bouton bouton-sombre" type="button" data-fermer>Continuer la visite</button>
+    <p class="panier-demo">Les achats et les réservations sont simulés.</p>
+  </dialog>
   <footer class="pied">
     <div class="largeur pied-contenu">
       <div>
         <a class="marque" href="/votre-futur-vignoble/">Sillons Vifs</a>
-        <p>Vignoble fictif créé pour une démonstration Mon Chai. Les produits et leurs tarifs sont illustratifs.</p>
+        <p>Vignoble fictif créé pour une démonstration Mon Chai. Les offres et leurs tarifs sont illustratifs.</p>
       </div>
       <a class="retour-monchai" href="/">Découvrir Mon Chai</a>
     </div>

@@ -1,0 +1,116 @@
+{
+  "domaines": [
+    {
+      "slug": "chai-de-la-combe",
+      "nom": "Le Chai de la Combe",
+      "lieu": "Les coteaux du Rhône",
+      "description": "Le chai est installé dans une ancienne grange de pierre, au pied des parcelles de syrah. On y vinifie Élan de Schiste et on y ouvre les portes du caveau pour les dégustations et les ateliers d’assemblage.",
+      "details": [
+        "Caveau de dégustation",
+        "Départ des visites de vignes",
+        "Atelier d’assemblage"
+      ],
+      "lien": "experiences/#du-rang-au-verre",
+      "action": "Voir les expériences",
+      "image": "chai-de-la-combe",
+      "alt": "Un chai de pierre ouvert sur les terrasses de vignes"
+    },
+    {
+      "slug": "bastide-des-roches",
+      "nom": "La Bastide des Roches Claires",
+      "lieu": "La vallée des amandiers",
+      "description": "Les volets de la bastide s’ouvrent sur le grenache et les amandiers. La chambre donne sur les rangs de vigne. Un peu plus bas, le gîte réunit les voyageurs sur une terrasse à l’abri de la treille.",
+      "details": [
+        "Chambre d’hôtes et gîte",
+        "Terrasse au milieu des vignes",
+        "Table du domaine"
+      ],
+      "lien": "sejours/",
+      "action": "Voir les hébergements",
+      "image": "bastide-des-roches",
+      "alt": "Une bastide de pierre claire parmi les amandiers en fleurs"
+    }
+  ],
+  "sejours": [
+    {
+      "slug": "chambre-amandiers",
+      "nom": "La Chambre des Amandiers",
+      "domaine": "bastide-des-roches",
+      "prix": 145,
+      "capacite": 2,
+      "description": "Une chambre à deux, avec un lit double et des volets qui s’ouvrent sur la vigne. Le petit déjeuner est servi sur la terrasse à la belle saison.",
+      "details": [
+        "2 personnes",
+        "Petit déjeuner inclus",
+        "Arrivée à partir de 16 h"
+      ],
+      "image": "chambre-amandiers",
+      "alt": "Une chambre en pierre et linge clair donnant sur les vignes"
+    },
+    {
+      "slug": "gite-roches",
+      "nom": "Le Gîte des Roches Claires",
+      "domaine": "bastide-des-roches",
+      "prix": 245,
+      "capacite": 4,
+      "description": "Deux chambres, une cuisine et une terrasse sous la treille. On peut déjeuner dehors puis suivre le chemin qui descend vers les parcelles de grenache.",
+      "details": [
+        "Jusqu’à 4 personnes",
+        "2 chambres",
+        "Cuisine et terrasse privatives"
+      ],
+      "image": "gite-roches",
+      "alt": "Une terrasse de gîte sous une treille à l’heure dorée"
+    }
+  ],
+  "experiences": [
+    {
+      "slug": "du-rang-au-verre",
+      "nom": "Du rang au verre",
+      "domaine": "chai-de-la-combe",
+      "prix": 25,
+      "capacite": 10,
+      "horaire": "10 h 30",
+      "description": "On remonte les rangs à pied pour comparer la syrah et le grenache. Au retour, une dégustation au chai permet de retrouver dans les verres ce qu’on a observé dans les vignes.",
+      "details": [
+        "1 h 30",
+        "10 personnes maximum",
+        "Dégustation de 3 cuvées"
+      ],
+      "image": "du-rang-au-verre",
+      "alt": "Une guide et deux visiteurs entre les rangs de vigne"
+    },
+    {
+      "slug": "table-du-chai",
+      "nom": "À la table du chai",
+      "domaine": "bastide-des-roches",
+      "prix": 59,
+      "capacite": 8,
+      "horaire": "12 h 30",
+      "description": "Un déjeuner sur la terrasse autour des produits de saison. À chaque plat, on découvre un vin du domaine ou un accord sans alcool.",
+      "details": [
+        "2 h 15",
+        "8 personnes maximum",
+        "Déjeuner et accords inclus"
+      ],
+      "image": "table-du-chai",
+      "alt": "Une table dressée avec trois verres de vin sur une terrasse de pierre"
+    },
+    {
+      "slug": "assemblage-aveugle",
+      "nom": "Assemblage à l’aveugle",
+      "domaine": "chai-de-la-combe",
+      "prix": 42,
+      "capacite": 6,
+      "horaire": "15 h",
+      "description": "On goûte les lots séparément, puis on dose à l’éprouvette pour chercher son propre équilibre entre le fruit du grenache et le poivre de la syrah.",
+      "details": [
+        "2 h",
+        "6 personnes maximum",
+        "Atelier au chai"
+      ],
+      "image": "assemblage-aveugle",
+      "alt": "Des mains dosent du vin rouge dans une éprouvette au chai"
+    }
+  ]
+}

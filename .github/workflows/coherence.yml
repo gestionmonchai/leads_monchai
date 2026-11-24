@@ -36,6 +36,7 @@ jobs:
           python outils/votre-futur-vignoble/generer.py --check
           node --check votre-futur-vignoble/filtres.js
           node --check votre-futur-vignoble/majorite.js
+          node --check votre-futur-vignoble/boutique.js
 
       - name: Veille des salons sans réseau
         run: python -m unittest discover -s outils/salons/veille -p 'test_*.py'

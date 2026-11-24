@@ -8,14 +8,14 @@
   <meta name="robots" content="noindex, follow">
   <meta name="theme-color" content="#f8f4ea">
   <link rel="canonical" href="https://monchai.fr/votre-futur-vignoble/produits/gelee-de-grenache/">
-  <link rel="alternate" type="application/json" title="Catalogue public Sillons Vifs" href="https://monchai.fr/votre-futur-vignoble/catalogue.json">
   <meta property="og:type" content="website">
   <meta property="og:title" content="Gelée de Grenache | Sillons Vifs">
   <meta property="og:description" content="Le jus de grenache cuit doucement avec du sucre et un trait de citron. Il donne une gelée souple aux notes de raisin mûr et de fruits rouges.">
   <meta property="og:url" content="https://monchai.fr/votre-futur-vignoble/produits/gelee-de-grenache/">
   <meta property="og:image" content="https://monchai.fr/votre-futur-vignoble/assets/gelee-de-grenache.webp">
-  <link rel="stylesheet" href="/votre-futur-vignoble/style.css?v=20261124-age">
+  <link rel="stylesheet" href="/votre-futur-vignoble/style.css?v=20261124-visites">
   <script src="/votre-futur-vignoble/majorite.js" defer></script>
+  <script src="/votre-futur-vignoble/boutique.js" defer></script>
   <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Product", "@id": "https://monchai.fr/votre-futur-vignoble/produits/gelee-de-grenache/#produit", "url": "https://monchai.fr/votre-futur-vignoble/produits/gelee-de-grenache/", "name": "Gelée de Grenache", "sku": "SV-GEL-220", "image": "https://monchai.fr/votre-futur-vignoble/assets/gelee-de-grenache.webp", "description": "Le jus de grenache cuit doucement avec du sucre et un trait de citron. Il donne une gelée souple aux notes de raisin mûr et de fruits rouges.", "brand": {"@type": "Brand", "name": "Sillons Vifs"}, "category": "Gelée de raisin", "additionalProperty": [{"@type": "PropertyValue", "name": "Masse nette", "value": 220, "unitText": "g"}, {"@type": "PropertyValue", "name": "Prix indicatif TTC", "value": 7.8, "unitText": "EUR"}, {"@type": "PropertyValue", "name": "Conditionnement", "value": "Pot"}, {"@type": "PropertyValue", "name": "Accords", "value": "Tomme de brebis, brioche toastée"}, {"@type": "PropertyValue", "name": "Conseil", "value": "Servir à température ambiante pour retrouver une texture fondante."}]}</script>
 </head>
 <body>
@@ -39,8 +39,11 @@
       <nav aria-label="Navigation principale">
         <a href="/votre-futur-vignoble/#cuvees">Les cuvées</a>
         <a href="/votre-futur-vignoble/#comptoir">Le comptoir</a>
-        <a class="lien-donnees" href="/votre-futur-vignoble/#donnees">Données</a>
+        <a href="/votre-futur-vignoble/sejours/">Séjours</a>
+        <a href="/votre-futur-vignoble/experiences/">Expériences</a>
+        <a href="/votre-futur-vignoble/domaines/">Nos domaines</a>
       </nav>
+      <button class="panier-ouvrir" type="button" data-panier-ouvrir aria-controls="panier" hidden>Panier <span data-panier-nombre>0</span></button>
     </div>
   </header>
   <main id="contenu" tabindex="-1">
@@ -58,20 +61,35 @@
           <div><dt>Format</dt><dd>Pot · 220 g</dd></div>
           <div><dt>Référence</dt><dd>SV-GEL-220</dd></div>
           </dl>
+          <button class="bouton bouton-sombre fiche-ajouter" type="button" data-ajouter="SV-GEL-220"
+              data-nom="Gelée de Grenache" data-prix="780"
+              data-format="220 g" hidden>Ajouter au panier</button>
         </div>
       </div>
-      <div class="service">
+      <div class="service" id="degustation">
         <div><h2>À table</h2><p>Tomme de brebis, brioche toastée</p></div>
         <div><h2>En cuisine</h2><p>Servir à température ambiante pour retrouver une texture fondante.</p></div>
         <a class="retour" href="/votre-futur-vignoble/produits/huile-de-pepins/">À découvrir ensuite <span>Huile de Pépins de Raisin</span></a>
       </div>
+
     </section>
   </main>
+  <dialog class="panneau" id="panier" aria-labelledby="titre-panier">
+    <div class="panneau-entete">
+      <h2 id="titre-panier">Votre panier</h2>
+      <button class="panneau-fermer" type="button" aria-label="Fermer le panier" data-fermer>×</button>
+    </div>
+    <p id="panier-vide">Votre panier est vide.</p>
+    <ul id="panier-lignes" class="panier-lignes"></ul>
+    <p class="panier-total" aria-live="polite">Total <strong data-panier-total>0,00 €</strong></p>
+    <button class="bouton bouton-sombre" type="button" data-fermer>Continuer la visite</button>
+    <p class="panier-demo">Les achats et les réservations sont simulés.</p>
+  </dialog>
   <footer class="pied">
     <div class="largeur pied-contenu">
       <div>
         <a class="marque" href="/votre-futur-vignoble/">Sillons Vifs</a>
-        <p>Vignoble fictif créé pour une démonstration Mon Chai. Les produits et leurs tarifs sont illustratifs.</p>
+        <p>Vignoble fictif créé pour une démonstration Mon Chai. Les offres et leurs tarifs sont illustratifs.</p>
       </div>
       <a class="retour-monchai" href="/">Découvrir Mon Chai</a>
     </div>

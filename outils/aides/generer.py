@@ -81,7 +81,7 @@ def page(slug,title,description,content,collection=False):
  header=header.replace(f'href="{slug}"',f'href="{slug}" aria-current="page"',1)
  image='assets/img/editorial/aides-viticoles-photo-2026.jpg' if collection else 'assets/img/pages/vigne-vendanges.jpg'
  image_alt='Illustration générée : dossier de financement et pièces en euros devant un vignoble' if collection else 'Vignes du domaine'
- schema={'@context':'https://schema.org','@type':'CollectionPage' if collection else 'Article','name':title,'headline':title,'description':description,'url':'https://monchai.fr/'+slug,'inLanguage':'fr','datePublished':DATE,'dateModified':MODIFIED,'author':{'@type':'Organization','name':'Mon Chai','url':'https://monchai.fr/index.html#apropos'},'publisher':{'@type':'Organization','name':'Mon Chai','url':'https://monchai.fr/','logo':{'@type':'ImageObject','url':'https://monchai.fr/assets/img/logo_mon_chai.png'}},'image':'https://monchai.fr/'+image,'mainEntityOfPage':'https://monchai.fr/'+slug}
+ schema={'@context':'https://schema.org','@type':'CollectionPage' if collection else 'Article','name':title,'headline':title,'description':description,'url':'https://monchai.fr/'+slug,'inLanguage':'fr','datePublished':DATE,'dateModified':MODIFIED,'author':{'@type':'Organization','name':'Mon Chai','url':'https://monchai.fr/./#apropos'},'publisher':{'@type':'Organization','name':'Mon Chai','url':'https://monchai.fr/','logo':{'@type':'ImageObject','url':'https://monchai.fr/assets/img/logo_mon_chai.png'}},'image':'https://monchai.fr/'+image,'mainEntityOfPage':'https://monchai.fr/'+slug}
  if collection: schema['dateModified']=COLLECTION_MODIFIED
  elif slug in {a['article'] for a in AIDES}:
   fiche=next(a for a in AIDES if a['article']==slug)
@@ -113,9 +113,9 @@ def detail(a):
  minutes=max(3,math.ceil((len(text.split())+180)/220))
  presentation=(' · Présentation mise à jour le '+date_fr(a['seo']['date'])) if a.get('seo') else ''
  c=f'''<main class="article article-couts aide-detail" id="contenu" tabindex="-1">
-<nav class="article__ariane" aria-label="Fil d’Ariane"><a href="index.html">Accueil</a> › <a href="aides-vignerons.html">Subventions et aides viticoles</a> › {e(ETAPES[a['etape']][1])}</nav>
+<nav class="article__ariane" aria-label="Fil d’Ariane"><a href="./">Accueil</a> › <a href="aides-vignerons.html">Subventions et aides viticoles</a> › {e(ETAPES[a['etape']][1])}</nav>
 <p class="aide-kicker">{e(ETAPES[a['etape']][1])} · {e(TYPES[a['type']])}</p>
-<h1>{e(a['titre'])}</h1><p class="aide-meta">Par <a href="index.html#apropos">Mon Chai</a> · Publié le <time datetime="{publie}">{date_fr(publie)}</time> · Mis à jour le <time datetime="{modifie}">{date_fr(modifie)}</time> · {minutes} min de lecture{presentation}</p><p class="article__chapo">{e(a['resume'])}</p>
+<h1>{e(a['titre'])}</h1><p class="aide-meta">Par <a href="./#apropos">Mon Chai</a> · Publié le <time datetime="{publie}">{date_fr(publie)}</time> · Mis à jour le <time datetime="{modifie}">{date_fr(modifie)}</time> · {minutes} min de lecture{presentation}</p><p class="article__chapo">{e(a['resume'])}</p>
 <aside class="aide-repere" aria-label="Situation vérifiée du dispositif"><p class="aide-statut aide-statut--{a['statut']}">{e(STATUTS[a['statut']])}</p><p><strong>Calendrier :</strong> {e(a['calendrier'])}</p><p><strong>Territoire :</strong> {e(territoire(a))}</p><p><strong>Financeur / gestionnaire :</strong> {e(a['financeur'])}</p><p>Repères du dispositif vérifiés le {date_fr(a['verifie'])}. Confirmez l’ouverture et les règles actuelles auprès de l’instructeur avant toute démarche. <a href="#sources">Lire les sources primaires</a>.</p></aside>
 <nav class="article-sommaire" aria-label="Sommaire de la fiche"><strong>Dans cette fiche</strong><ol>'''+''.join(f'<li><a href="#{i}">{e(t)}</a></li>' for i,t,_,_ in sections)+'''<li><a href="#preparer">Les questions à emporter</a></li><li><a href="#sources">Sources et date de contrôle</a></li></ol></nav>'''
  for ident,titre,par,index in sections:
@@ -138,7 +138,7 @@ for a in AIDES:
 def option(values): return ''.join(f'<option value="{e(k)}">{e(v)}</option>' for k,v in values)
 n=len(AIDES)
 content=f'''<main id="contenu" tabindex="-1" class="aides-catalogue">
-<section class="aides-hero"><div class="aides-largeur"><nav class="article__ariane" aria-label="Fil d’Ariane"><a href="index.html">Accueil</a> › <a href="ressources.html">Ressources</a> › Subventions et aides viticoles</nav>
+<section class="aides-hero"><div class="aides-largeur"><nav class="article__ariane" aria-label="Fil d’Ariane"><a href="./">Accueil</a> › <a href="ressources.html">Ressources</a> › Subventions et aides viticoles</nav>
 <p class="aide-kicker">Le financement, à chaque étape du domaine</p><h1>Subventions et aides à la viticulture :<br>quel financement pour votre projet ?</h1>
 <div class="aides-hero__presentation"><p class="aides-chapo">Trouvez des pistes de subventions viticoles et de financements pour votre domaine : installation, plantation, matériel, chai ou transition bio. Ce dossier distingue les subventions, dotations, prêts, exonérations et indemnisations, avec leurs conditions et leurs sources officielles.</p><img class="aides-hero__illustration" src="assets/img/editorial/aides-viticoles-photo-2026.webp" width="1200" height="630" alt="Illustration générée : dossier de financement et pièces en euros devant un vignoble" decoding="async"></div>
 <p class="aide-meta">Dossier publié le <time datetime="{DATE}">28 octobre 2026</time> · France entière · {n} fiches et portes d’entrée · Sources officielles<br>Présentation et recherche : <time datetime="{COLLECTION_MODIFIED}">{date_fr(COLLECTION_MODIFIED)}</time> · Dernière veille des dispositifs : <time datetime="{VEILLE_DATE}">{date_fr(VEILLE_DATE)}</time> · Date de vérification propre à chaque fiche</p>

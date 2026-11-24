@@ -35,7 +35,7 @@
 
 <link rel="stylesheet" href="assets/css/polices.css">
 <link rel="stylesheet" href="assets/css/header.css">
-<link rel="stylesheet" href="assets/css/actus.css">
+<link rel="stylesheet" href="assets/css/actus.css?v=20261124-vignettes">
 <link rel="stylesheet" href="assets/css/pied.css">
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Accueil", "item": "https://monchai.fr/"}, {"@type": "ListItem", "position": 2, "name": "Actualités réglementaires", "item": "https://monchai.fr/actualites-reglementaires.html"}]}</script>
 
@@ -48,7 +48,7 @@
 <!-- ============ HEADER (composant partagé, repassé en flux par actus.css) ============ -->
 <div class="site-header site-header--page">
 <header class="hd">
-    <a class="hd__logo" href="index.html"><img src="assets/img/logo-header.webp" srcset="assets/img/logo-header-344.webp 344w, assets/img/logo-header.webp 602w" sizes="(max-width:639px) 172px, (max-width:899px) 208px, 263px" alt="Mon Chai, logiciel viticole" width="263" height="85"></a>
+    <a class="hd__logo" href="./"><img src="assets/img/logo-header.webp" srcset="assets/img/logo-header-344.webp 344w, assets/img/logo-header.webp 602w" sizes="(max-width:639px) 172px, (max-width:899px) 208px, 263px" alt="Mon Chai, logiciel viticole" width="263" height="85"></a>
 
     <button class="hd__burger" type="button" aria-label="Ouvrir le menu"
             aria-expanded="false" aria-controls="nav-principale">
@@ -63,9 +63,9 @@
             <span class="hd__groupe-titre">Découvrir</span>
             <a href="fonctionnalites.html">Vue d'ensemble du logiciel</a>
           <a href="monchainotes.html">Mon Chai Notes · Android</a>
-            <a href="index.html#mobile-fonctions">Comment ça fonctionne</a>
+            <a href="./#mobile-fonctions">Comment ça fonctionne</a>
             <a href="changer-de-logiciel.html">Changer de logiciel</a>
-            <a href="index.html#mobile-assistant">Assistant IA</a>
+            <a href="./#mobile-assistant">Assistant IA</a>
           </div>
           <div class="hd__groupe">
             <span class="hd__groupe-titre">Modules du domaine</span>
@@ -123,8 +123,8 @@
         <div class="hd__panneau" id="sous-menu-apropos">
           <div class="hd__groupe">
             <span class="hd__groupe-titre">Mon Chai</span>
-            <a href="index.html#mobile-apropos">Qui sommes-nous</a>
-            <a href="index.html#mobile-actualite">Actualité de Mon Chai</a>
+            <a href="./#mobile-apropos">Qui sommes-nous</a>
+            <a href="./#mobile-actualite">Actualité de Mon Chai</a>
             <a href="contact.html">Nous contacter</a>
           </div>
         </div>
@@ -174,13 +174,13 @@
   <!-- ============ LES ARTICLES ============ -->
   <section class="actus-grille" aria-label="Articles">
     <!-- FILE-ATTENTE : les nouvelles cartes s'insèrent sous cette ligne (workflow publier-article.yml), la plus récente en premier. Ne pas supprimer ce repère. -->
-    <article class="actu-fiche" data-categorie="ventes-facturation">
-      <a href="facturation-electronique-actualites-mon-chai.html" aria-hidden="true" tabindex="-1"><img class="actu-fiche__img" src="assets/img/pages/ventes-clients.jpg" alt="" width="2400" height="3600" loading="lazy"></a>
+    <article class="actu-fiche actu-fiche--vignette-liee" data-categorie="ventes-facturation">
+      <img class="actu-fiche__img" src="assets/img/pages/ventes-clients-carte.webp" alt="" loading="lazy" width="1000" height="1500">
       <div class="actu-fiche__corps"><a class="actu-tag" href="actualites-ventes-facturation.html">Ventes &amp; facturation</a><span class="actu-date">Publié le 6 novembre 2026</span><h2 class="actu-fiche__titre"><a href="facturation-electronique-actualites-mon-chai.html">Facturation électronique : l’actualité et la préparation de Mon Chai</a></h2><p class="actu-fiche__resume">Moratoire débattu, calendrier 2026-2027, Factur-X et e-reporting : les dernières informations officielles et les fonctions déjà en place dans Mon Chai.</p><a class="actu-fiche__lire" href="facturation-electronique-actualites-mon-chai.html">Lire l’article&nbsp;→</a></div>
     </article>
 <article class="actu-fiche" id="dossier-aides" data-categorie="vigne-phyto"><img class="actu-fiche__img" src="assets/img/editorial/aides-viticoles-photo-2026.webp" alt="Illustration générée : dossier de financement et pièces en euros devant un vignoble" width="1200" height="630" decoding="async"><div class="actu-fiche__corps"><p class="actu-date"><time datetime="2026-10-28">28 octobre 2026</time> · Dossier transversal</p><h2 class="actu-fiche__titre"><a href="aides-vignerons.html">Subventions et aides viticoles : de l’installation à l’arrachage</a></h2><p class="actu-fiche__resume">64 fiches sourcées : installation, investissements, PAC, bio, emploi, risques et transmission. Recherche dédiée par étape et territoire.</p><a class="actu-fiche__lire" href="aides-vignerons.html">Explorer les subventions et financements →</a></div></article>
-    <article class="actu-fiche" data-categorie="douane-declarations">
-<a aria-hidden="true" href="dae-daes-gamma2-vin.html" tabindex="-1"><img alt="" class="actu-fiche__img" loading="lazy" src="assets/img/pages/stocks-tracabilite.jpg"/></a>
+    <article class="actu-fiche actu-fiche--vignette-liee" data-categorie="douane-declarations">
+<img alt="" class="actu-fiche__img" loading="lazy" src="assets/img/pages/stocks-tracabilite-carte.webp" width="1000" height="667"/>
 <div class="actu-fiche__corps">
 <a class="actu-tag" href="actualites-douane-declarations.html">Douane &amp; déclarations</a>
 <span class="actu-date">Publié le 26 octobre 2026</span>
@@ -189,8 +189,8 @@
 <a class="actu-fiche__lire" href="dae-daes-gamma2-vin.html">Lire l'article →</a>
 </div>
 </article>
-<article class="actu-fiche" data-categorie="oenotourisme-vente-directe">
-  <a href="investir-leviers-commerciaux-vin.html" aria-hidden="true" tabindex="-1"><img class="actu-fiche__img" src="assets/img/pages/ventes-clients.jpg" alt="" loading="lazy"></a>
+<article class="actu-fiche actu-fiche--vignette-liee" data-categorie="oenotourisme-vente-directe">
+  <img class="actu-fiche__img" src="assets/img/pages/ventes-clients-carte.webp" alt="" loading="lazy" width="1000" height="1500">
   <div class="actu-fiche__corps">
     <a class="actu-tag" href="actualites-oenotourisme-vente-directe.html">Œnotourisme &amp; vente directe</a>
     <span class="actu-date">Analyse commerciale · Publié le <time datetime="2026-10-25">25 octobre 2026</time></span>
@@ -200,8 +200,8 @@
   </div>
 </article>
 
-<article class="actu-fiche" data-categorie="oenotourisme-vente-directe">
-  <a href="vin-multigenerationnel-clienteles-adultes.html" aria-hidden="true" tabindex="-1"><img class="actu-fiche__img" src="assets/img/pages/oenotourisme.jpg" alt="" loading="lazy"></a>
+<article class="actu-fiche actu-fiche--vignette-liee" data-categorie="oenotourisme-vente-directe">
+  <img class="actu-fiche__img" src="assets/img/pages/oenotourisme-carte.webp" alt="" loading="lazy" width="1000" height="667">
   <div class="actu-fiche__corps">
     <a class="actu-tag" href="actualites-oenotourisme-vente-directe.html">Œnotourisme &amp; vente directe</a>
     <span class="actu-date">Analyse commerciale · Publié le <time datetime="2026-10-24">24 octobre 2026</time></span>
@@ -211,8 +211,8 @@
   </div>
 </article>
 
-<article class="actu-fiche" data-categorie="oenotourisme-vente-directe">
-  <a href="vin-low-alcool-6-8-degres.html" aria-hidden="true" tabindex="-1"><img class="actu-fiche__img" src="assets/img/pages/conditionnement-mises.jpg" alt="" loading="lazy"></a>
+<article class="actu-fiche actu-fiche--vignette-liee" data-categorie="oenotourisme-vente-directe">
+  <img class="actu-fiche__img" src="assets/img/pages/conditionnement-mises-carte.webp" alt="" loading="lazy" width="1000" height="563">
   <div class="actu-fiche__corps">
     <a class="actu-tag" href="actualites-oenotourisme-vente-directe.html">Œnotourisme &amp; vente directe</a>
     <span class="actu-date">Analyse commerciale · Publié le <time datetime="2026-10-23">23 octobre 2026</time></span>
@@ -222,8 +222,8 @@
   </div>
 </article>
 
-<article class="actu-fiche" data-categorie="oenotourisme-vente-directe">
-  <a href="activations-locales-vin-rentabilite.html" aria-hidden="true" tabindex="-1"><img class="actu-fiche__img" src="assets/img/pages/oenotourisme.jpg" alt="" loading="lazy"></a>
+<article class="actu-fiche actu-fiche--vignette-liee" data-categorie="oenotourisme-vente-directe">
+  <img class="actu-fiche__img" src="assets/img/pages/oenotourisme-carte.webp" alt="" loading="lazy" width="1000" height="667">
   <div class="actu-fiche__corps">
     <a class="actu-tag" href="actualites-oenotourisme-vente-directe.html">Œnotourisme &amp; vente directe</a>
     <span class="actu-date">Analyse commerciale · Publié le <time datetime="2026-10-22">22 octobre 2026</time></span>
@@ -233,8 +233,8 @@
   </div>
 </article>
 
-<article class="actu-fiche" data-categorie="oenotourisme-vente-directe">
-  <a href="recommandation-sociale-vin-clients.html" aria-hidden="true" tabindex="-1"><img class="actu-fiche__img" src="assets/img/pages/ventes-clients.jpg" alt="" loading="lazy"></a>
+<article class="actu-fiche actu-fiche--vignette-liee" data-categorie="oenotourisme-vente-directe">
+  <img class="actu-fiche__img" src="assets/img/pages/ventes-clients-carte.webp" alt="" loading="lazy" width="1000" height="1500">
   <div class="actu-fiche__corps">
     <a class="actu-tag" href="actualites-oenotourisme-vente-directe.html">Œnotourisme &amp; vente directe</a>
     <span class="actu-date">Analyse commerciale · Publié le <time datetime="2026-10-21">21 octobre 2026</time></span>
@@ -244,8 +244,8 @@
   </div>
 </article>
 
-<article class="actu-fiche" data-categorie="oenotourisme-vente-directe">
-  <a href="oenotourisme-rentabilite-domaine.html" aria-hidden="true" tabindex="-1"><img class="actu-fiche__img" src="assets/img/pages/oenotourisme.jpg" alt="" loading="lazy"></a>
+<article class="actu-fiche actu-fiche--vignette-liee" data-categorie="oenotourisme-vente-directe">
+  <img class="actu-fiche__img" src="assets/img/pages/oenotourisme-carte.webp" alt="" loading="lazy" width="1000" height="667">
   <div class="actu-fiche__corps">
     <a class="actu-tag" href="actualites-oenotourisme-vente-directe.html">Œnotourisme &amp; vente directe</a>
     <span class="actu-date">Analyse commerciale · Publié le <time datetime="2026-10-20">20 octobre 2026</time></span>
@@ -255,8 +255,8 @@
   </div>
 </article>
 
-<article class="actu-fiche" data-categorie="oenotourisme-vente-directe">
-  <a href="vente-directe-vin-marge.html" aria-hidden="true" tabindex="-1"><img class="actu-fiche__img" src="assets/img/pages/ventes-clients.jpg" alt="" loading="lazy"></a>
+<article class="actu-fiche actu-fiche--vignette-liee" data-categorie="oenotourisme-vente-directe">
+  <img class="actu-fiche__img" src="assets/img/pages/ventes-clients-carte.webp" alt="" loading="lazy" width="1000" height="1500">
   <div class="actu-fiche__corps">
     <a class="actu-tag" href="actualites-oenotourisme-vente-directe.html">Œnotourisme &amp; vente directe</a>
     <span class="actu-date">Analyse commerciale · Publié le <time datetime="2026-10-19">19 octobre 2026</time></span>
@@ -266,8 +266,8 @@
   </div>
 </article>
 
-    <article class="actu-fiche" data-categorie="douane-declarations">
-<a aria-hidden="true" href="declaration-recolte-2026.html" tabindex="-1"><img alt="" class="actu-fiche__img" loading="lazy" src="assets/img/pages/oenotourisme.jpg"/></a>
+    <article class="actu-fiche actu-fiche--vignette-liee" data-categorie="douane-declarations">
+<img alt="" class="actu-fiche__img" loading="lazy" src="assets/img/pages/oenotourisme-carte.webp" width="1000" height="667"/>
 <div class="actu-fiche__corps">
 <a class="actu-tag" href="actualites-douane-declarations.html">Douane &amp; déclarations</a>
 <span class="actu-date">Publié le 12 octobre 2026</span>
@@ -276,8 +276,8 @@
 <a class="actu-fiche__lire" href="declaration-recolte-2026.html">Lire l'article →</a>
 </div>
 </article>
-    <article class="actu-fiche" data-categorie="etiquetage-mises">
-      <a href="ppwr-vin-emballages.html" aria-hidden="true" tabindex="-1"><img class="actu-fiche__img" src="assets/img/pages/conditionnement-mises.jpg" alt="" loading="lazy"></a>
+    <article class="actu-fiche actu-fiche--vignette-liee" data-categorie="etiquetage-mises">
+      <img class="actu-fiche__img" src="assets/img/pages/conditionnement-mises-carte.webp" alt="" loading="lazy" width="1000" height="563">
       <div class="actu-fiche__corps">
         <a class="actu-tag" href="actualites-etiquetage-mises.html">Étiquetage &amp; mises</a>
         <span class="actu-date">Publié le 8 octobre 2026</span>
@@ -286,8 +286,8 @@
         <a class="actu-fiche__lire" href="ppwr-vin-emballages.html">Lire l'article&nbsp;→</a>
       </div>
     </article>
-    <article class="actu-fiche" data-categorie="vigne-phyto">
-      <a href="cahier-de-culture-vigne.html" aria-hidden="true" tabindex="-1"><img class="actu-fiche__img" src="assets/img/pages/vigne-vendanges.jpg" alt="" loading="lazy"></a>
+    <article class="actu-fiche actu-fiche--vignette-liee" data-categorie="vigne-phyto">
+      <img class="actu-fiche__img" src="assets/img/pages/vigne-vendanges-carte.webp" alt="" loading="lazy" width="1000" height="667">
       <div class="actu-fiche__corps">
         <a class="actu-tag" href="actualites-vigne-phyto.html">Vigne &amp; phyto</a>
         <span class="actu-date">Publié le 5 octobre 2026</span>
@@ -296,8 +296,8 @@
         <a class="actu-fiche__lire" href="cahier-de-culture-vigne.html">Lire l'article&nbsp;→</a>
       </div>
     </article>
-    <article class="actu-fiche" data-categorie="vigne-phyto">
-      <a href="ift-viticulture-calcul.html" aria-hidden="true" tabindex="-1"><img class="actu-fiche__img" src="assets/img/pages/vigne-vendanges.jpg" alt="" loading="lazy"></a>
+    <article class="actu-fiche actu-fiche--vignette-liee" data-categorie="vigne-phyto">
+      <img class="actu-fiche__img" src="assets/img/pages/vigne-vendanges-carte.webp" alt="" loading="lazy" width="1000" height="667">
       <div class="actu-fiche__corps">
         <a class="actu-tag" href="actualites-vigne-phyto.html">Vigne &amp; phyto</a>
         <span class="actu-date">Publié le 28 septembre 2026</span>
@@ -306,8 +306,8 @@
         <a class="actu-fiche__lire" href="ift-viticulture-calcul.html">Lire l'article&nbsp;→</a>
       </div>
     </article>
-    <article class="actu-fiche" data-categorie="cave-registres">
-      <a href="tracabilite-lots-vin.html" aria-hidden="true" tabindex="-1"><img class="actu-fiche__img" src="assets/img/pages/stocks-tracabilite.jpg" alt="" loading="lazy"></a>
+    <article class="actu-fiche actu-fiche--vignette-liee" data-categorie="cave-registres">
+      <img class="actu-fiche__img" src="assets/img/pages/stocks-tracabilite-carte.webp" alt="" loading="lazy" width="1000" height="667">
       <div class="actu-fiche__corps">
         <a class="actu-tag" href="actualites-cave-registres.html">Cave &amp; registres</a>
         <span class="actu-date">Publié le 21 septembre 2026</span>
@@ -316,8 +316,8 @@
         <a class="actu-fiche__lire" href="tracabilite-lots-vin.html">Lire l'article&nbsp;→</a>
       </div>
     </article>
-    <article class="actu-fiche" data-categorie="cave-registres">
-      <a href="registre-de-cave-vigneron.html" aria-hidden="true" tabindex="-1"><img class="actu-fiche__img" src="assets/img/pages/cave-vinification.jpg" alt="" loading="lazy"></a>
+    <article class="actu-fiche actu-fiche--vignette-liee" data-categorie="cave-registres">
+      <img class="actu-fiche__img" src="assets/img/pages/cave-vinification-carte.webp" alt="" loading="lazy" width="1000" height="563">
       <div class="actu-fiche__corps">
         <a class="actu-tag" href="actualites-cave-registres.html">Cave &amp; registres</a>
         <span class="actu-date">Publié le 14 septembre 2026</span>
@@ -326,8 +326,8 @@
         <a class="actu-fiche__lire" href="registre-de-cave-vigneron.html">Lire l'article&nbsp;→</a>
       </div>
     </article>
-    <article class="actu-fiche" data-categorie="douane-declarations">
-<a aria-hidden="true" href="drm-vin-guide.html" tabindex="-1"><img alt="" class="actu-fiche__img" loading="lazy" src="assets/img/pages/drm-conformite.jpg"/></a>
+    <article class="actu-fiche actu-fiche--vignette-liee" data-categorie="douane-declarations">
+<img alt="" class="actu-fiche__img" loading="lazy" src="assets/img/pages/drm-conformite-carte.webp" width="1000" height="563"/>
 <div class="actu-fiche__corps">
 <a class="actu-tag" href="actualites-douane-declarations.html">Douane &amp; déclarations</a>
 <span class="actu-date">Publié le 7 septembre 2026</span>
@@ -337,8 +337,8 @@
 </div>
 </article>
 
-    <article class="actu-fiche" data-categorie="vigne-phyto">
-      <a href="registre-phyto-numerique-2027.html" aria-hidden="true" tabindex="-1"><img class="actu-fiche__img" src="assets/img/pages/vigne-vendanges.jpg" alt="" loading="lazy"></a>
+    <article class="actu-fiche actu-fiche--vignette-liee" data-categorie="vigne-phyto">
+      <img class="actu-fiche__img" src="assets/img/pages/vigne-vendanges-carte.webp" alt="" loading="lazy" width="1000" height="667">
       <div class="actu-fiche__corps">
         <a class="actu-tag" href="actualites-vigne-phyto.html">Vigne &amp; phyto</a>
         <span class="actu-date">Publié le 31 août 2026</span>
@@ -348,8 +348,8 @@
       </div>
     </article>
 
-    <article class="actu-fiche" data-categorie="ventes-facturation">
-      <a href="facturation-electronique-viticulture.html" aria-hidden="true" tabindex="-1"><img class="actu-fiche__img" src="assets/img/pages/ventes-clients.jpg" alt="" loading="lazy"></a>
+    <article class="actu-fiche actu-fiche--vignette-liee" data-categorie="ventes-facturation">
+      <img class="actu-fiche__img" src="assets/img/pages/ventes-clients-carte.webp" alt="" loading="lazy" width="1000" height="1500">
       <div class="actu-fiche__corps">
         <a class="actu-tag" href="actualites-ventes-facturation.html">Ventes &amp; facturation</a>
         <span class="actu-date">Publié le 31 août 2026</span>
@@ -359,8 +359,8 @@
       </div>
     </article>
 
-    <article class="actu-fiche" data-categorie="etiquetage-mises">
-      <a href="paquet-vin-europeen-2027.html" aria-hidden="true" tabindex="-1"><img class="actu-fiche__img" src="assets/img/pages/conditionnement-mises.jpg" alt="" loading="lazy"></a>
+    <article class="actu-fiche actu-fiche--vignette-liee" data-categorie="etiquetage-mises">
+      <img class="actu-fiche__img" src="assets/img/pages/conditionnement-mises-carte.webp" alt="" loading="lazy" width="1000" height="563">
       <div class="actu-fiche__corps">
         <a class="actu-tag" href="actualites-etiquetage-mises.html">Étiquetage &amp; mises</a>
         <span class="actu-date">Publié le 31 août 2026</span>
@@ -388,7 +388,7 @@
 <!-- ============ PIED DE PAGE (composant partagé) ============ -->
 <footer class="mc-site-footer" aria-label="Informations légales">
   <div class="mc-site-footer__inner">
-    <div class="mc-site-footer__brand"><a class="mc-site-footer__name" href="index.html"><img src="assets/img/logo-mon-chai-400-20260720.webp" alt="Mon Chai" width="400" height="219" loading="lazy" decoding="async"></a><p>De la vigne à la vente.</p><a href="mailto:contact@monchai.fr">contact@monchai.fr</a><nav class="mc-site-footer__social" aria-label="Mon Chai"><a href="https://www.instagram.com/monchai.fr/" target="_blank" rel="noopener noreferrer">Instagram ↗</a><a href="https://www.linkedin.com/company/monchai" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a></nav></div>
+    <div class="mc-site-footer__brand"><a class="mc-site-footer__name" href="./"><img src="assets/img/logo-mon-chai-400-20260720.webp" alt="Mon Chai" width="400" height="219" loading="lazy" decoding="async"></a><p>De la vigne à la vente.</p><a href="mailto:contact@monchai.fr">contact@monchai.fr</a><nav class="mc-site-footer__social" aria-label="Mon Chai"><a href="https://www.instagram.com/monchai.fr/" target="_blank" rel="noopener noreferrer">Instagram ↗</a><a href="https://www.linkedin.com/company/monchai" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a></nav></div>
     <nav aria-label="Le logiciel"><h2>Le logiciel</h2><a href="fonctionnalites.html">Fonctionnalités</a><a href="tarifs.html">Tarifs</a><a href="monchainotes.html">Mon Chai Notes</a></nav>
     <nav aria-label="Ressources"><h2>Ressources</h2><a href="ressources.html">Guides pratiques</a><a href="aides-vignerons.html">Subventions et aides viticoles</a><a href="faq.html">Questions fréquentes</a><a href="contact.html">Nous contacter</a></nav>
     <nav class="mc-site-footer__privacy" aria-label="Confidentialité & données"><h2>Confidentialité & données</h2><a href="politique-confidentialite.html">Consulter la politique de confidentialité</a><a href="politique-confidentialite.html#traitements">Traitement des données</a><a href="politique-confidentialite.html#vos-droits">Vos droits</a><button type="button" data-cookies>Gérer mes cookies</button></nav>

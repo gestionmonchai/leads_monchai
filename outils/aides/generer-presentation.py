@@ -11,8 +11,8 @@ import re
 
 SLUG = 'subventions-viticulture.html'
 PUBLISHED = '2026-11-21'
-TITLE = 'Subventions viticoles : financements et moteur pour viticulteurs'
-DESCRIPTION = 'Subventions pour viticulteurs : découvrez la démarche Mon Chai, les financements à explorer et notre moteur gratuit par projet et région, avec sources officielles.'
+TITLE = 'Subventions viticoles : financer son domaine'
+DESCRIPTION = 'Quels financements pour votre domaine viticole ? Explorez les subventions et aides par projet et région avec le moteur gratuit de Mon Chai.'
 
 
 def date_fr(value):
@@ -76,8 +76,11 @@ def generate(root):
         if data.get('@type') != 'CollectionPage':
             return match[0]
         items = data.setdefault('mainEntity', {'@type': 'ItemList', 'itemListElement': []}).setdefault('itemListElement', [])
-        if not any(item.get('url') == url for item in items):
+        item = next((item for item in items if item.get('url') == url), None)
+        if item is None:
             items.insert(0, {'@type': 'ListItem', 'position': 1, 'name': TITLE, 'url': url})
+        else:
+            item['name'] = TITLE
         for i, item in enumerate(items):
             item['position'] = i + 1
         data['dateModified'] = PUBLISHED

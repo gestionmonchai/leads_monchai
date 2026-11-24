@@ -346,3 +346,43 @@ button { font: inherit; }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { transition: none !important; }
 }
+
+.verification-age {
+  width: min(calc(100% - 2rem), 44rem);
+  max-height: calc(100% - 2rem);
+  padding: 0;
+  border: 0;
+  background: var(--papier);
+  color: var(--encre);
+}
+
+.verification-age::backdrop {
+  background: #271b29b8;
+  backdrop-filter: blur(6px);
+}
+
+html:has(.verification-age[open]) { overflow: hidden; }
+.verification-age[open] { display: grid; grid-template-columns: 1.55fr 1fr; }
+
+.verification-age[open]::after {
+  content: "";
+  background: #413532 url("assets/vignoble-mobile.webp") center / cover no-repeat;
+}
+
+.age-texte { padding: clamp(1.6rem, 5vw, 3.2rem); }
+.age-texte .marque { margin-bottom: 1.6rem; }
+.age-texte h2 {
+  font: 400 clamp(2rem, 5vw, 3rem)/1.06 var(--serif);
+  letter-spacing: -0.055em;
+}
+.age-texte h2:focus { outline: none; }
+
+.age-actions { display: grid; gap: 0.65rem; margin-top: 1.75rem; }
+.age-actions .bouton { cursor: pointer; }
+.age-actions .bouton-sortie { border-color: var(--ligne); }
+.age-actions .bouton-sortie:hover { border-color: var(--prune); }
+
+@media (max-width: 580px) {
+  .verification-age[open] { display: block; }
+  .verification-age[open]::after { content: none; }
+}

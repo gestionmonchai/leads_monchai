@@ -1,4 +1,4 @@
-"""Génère la vitrine et son catalogue public depuis cuvees.json."""
+"""Génère la vitrine et son catalogue public depuis cuvees.json et comptoir.json."""
 
 import argparse
 import json
@@ -10,17 +10,25 @@ DOSSIER = "votre-futur-vignoble"
 BASE = f"/{DOSSIER}/"
 SITE = f"https://monchai.fr{BASE}"
 DOMAINE = "Sillons Vifs"
-CONTENANCE_CL = 75
 DEVISE = "EUR"
 FILTRES = ("Toutes", "Rouge", "Blanc", "Rosé", "Bulles")
 
 
-def url_cuvee(cuvee):
-    return f"{BASE}cuvees/{cuvee['slug']}/"
+def chemin_produit(article):
+    repertoire = "cuvees" if article["collection"] == "cuvees" else "produits"
+    return f"{repertoire}/{article['slug']}/"
 
 
-def categorie(cuvee):
-    return "Bulles" if cuvee["type"] == "Vin effervescent" else cuvee["couleur"]
+def url_produit(article):
+    return SITE + chemin_produit(article)
+
+
+def image_produit(article):
+    return f"{SITE}assets/{article['slug']}.webp"
+
+
+def categorie(article):
+    return "Bulles" if article["type"] == "Vin effervescent" else article["couleur"]
 
 
 def decimal_fr(nombre):
@@ -31,39 +39,64 @@ def prix_fr(nombre):
     return f"{nombre:.2f}".replace(".", ",") + " €"
 
 
-def produit(cuvee):
-    url = f"https://monchai.fr{url_cuvee(cuvee)}"
-    proprietes = (
-        ("Millésime", cuvee["millesime"], None),
-        ("Appellation", cuvee["appellation"], None),
-        ("Cépages", ", ".join(cuvee["cepages"]), None),
-        ("Contenance", CONTENANCE_CL, "cl"),
-        ("Degré d’alcool", cuvee["degre_alcool"], "% vol."),
-        ("Prix indicatif TTC", cuvee["prix_ttc"], DEVISE),
-        ("Accords", cuvee["accord"], None),
-        ("Température de service", cuvee["service"], None),
+def dimension(article):
+    if "masse_nette_g" in article:
+        return "Masse nette", article["masse_nette_g"], "g"
+    return "Contenance", article["contenance_ml"] / 10, "cl"
+
+
+def format_court(article):
+    if "contenu" in article:
+        total = sum(ligne["quantite"] for ligne in article["contenu"])
+        return f"{total} bouteilles"
+    _, valeur, unite = dimension(article)
+    return f"{decimal_fr(valeur)} {unite}"
+
+
+def surtitre_produit(article):
+    textes = [article.get("appellation", article["type"])]
+    if "millesime" in article:
+        textes.append(str(article["millesime"]))
+    return " · ".join(textes)
+
+
+def produit(article):
+    url = url_produit(article)
+    champs = (
+        ("Millésime", "millesime", None),
+        ("Appellation", "appellation", None),
+        ("Cépages", "cepages", None),
+        ("Degré d’alcool", "degre_alcool", "% vol."),
+        ("Accords", "accord", None),
+        ("Température de service", "service", None),
+        ("Conseil", "conseil", None),
+        ("Variante de", "variante_de", None),
     )
+    proprietes = [dimension(article), ("Prix indicatif TTC", article["prix_ttc"], DEVISE),
+                  ("Conditionnement", article["conditionnement"], None)]
+    for nom, cle, unite in champs:
+        if cle in article:
+            valeur = ", ".join(article[cle]) if cle == "cepages" else article[cle]
+            proprietes.append((nom, valeur, unite))
+    for ligne in article.get("contenu", []):
+        proprietes.append(("Référence incluse", f"{ligne['quantite']} × {ligne['reference']}", None))
     return {
         "@type": "Product",
         "@id": url + "#produit",
         "url": url,
-        "name": cuvee["nom"],
-        "sku": cuvee["reference"],
-        "image": image_cuvee(cuvee),
-        "description": cuvee["description"],
+        "name": article["nom"],
+        "sku": article["reference"],
+        "image": image_produit(article),
+        "description": article["description"],
         "brand": {"@type": "Brand", "name": DOMAINE},
-        "category": cuvee["type"],
-        "color": cuvee["couleur"],
+        "category": article["type"],
+        **({"color": article["couleur"]} if "couleur" in article else {}),
         "additionalProperty": [
             {"@type": "PropertyValue", "name": nom, "value": valeur,
              **({"unitText": unite} if unite else {})}
             for nom, valeur, unite in proprietes
         ],
     }
-
-
-def image_cuvee(cuvee):
-    return f"{SITE}assets/{cuvee['slug']}.webp"
 
 
 def page(titre, description, canonical, contenu, donnees, image, accueil=False):
@@ -97,9 +130,9 @@ def page(titre, description, canonical, contenu, donnees, image, accueil=False):
         <span>Sillons Vifs</span>
       </a>
       <nav aria-label="Navigation principale">
-        <a href="{BASE}#domaine">Le domaine</a>
         <a href="{BASE}#cuvees">Les cuvées</a>
-        <a class="lien-donnees" href="{BASE}#donnees">Catalogue public</a>
+        <a href="{BASE}#comptoir">Le comptoir</a>
+        <a class="lien-donnees" href="{BASE}#donnees">Données</a>
       </nav>
     </div>
   </header>
@@ -110,7 +143,7 @@ def page(titre, description, canonical, contenu, donnees, image, accueil=False):
     <div class="largeur pied-contenu">
       <div>
         <a class="marque" href="{BASE}">Sillons Vifs</a>
-        <p>Vignoble fictif créé pour une démonstration Mon Chai. Les cuvées et leurs tarifs sont illustratifs.</p>
+        <p>Vignoble fictif créé pour une démonstration Mon Chai. Les produits et leurs tarifs sont illustratifs.</p>
       </div>
       <a class="retour-monchai" href="/">Découvrir Mon Chai</a>
     </div>
@@ -120,27 +153,36 @@ def page(titre, description, canonical, contenu, donnees, image, accueil=False):
 """
 
 
-def carte(cuvee):
-    nom = escape(cuvee["nom"])
-    etiquette = categorie(cuvee)
-    return f"""        <li class="cuvee" data-couleur="{etiquette.lower()}">
-          <a href="{url_cuvee(cuvee)}" class="cuvee-lien" aria-label="Découvrir {nom}, {cuvee['millesime']}">
+def carte(article):
+    nom = escape(article["nom"])
+    vin = article["collection"] == "cuvees"
+    attribut = f' data-couleur="{categorie(article).lower()}"' if vin else ''
+    if vin:
+        pastille = f"{categorie(article)} · {article['millesime']}"
+        libelle = f"{nom}, {article['millesime']}"
+    else:
+        pastille = article["conditionnement"]
+        libelle = nom
+    sous_titre = article["appellation"] if vin else article["type"]
+    return f"""        <li class="cuvee"{attribut}>
+          <a href="{BASE}{chemin_produit(article)}" class="cuvee-lien" aria-label="Découvrir {libelle}">
             <div class="cuvee-image">
-              <img src="{BASE}assets/{cuvee['slug']}.webp" width="512" height="512" loading="lazy" alt="">
-              <span class="pastille">{etiquette} <span aria-hidden="true">·</span> {cuvee['millesime']}</span>
+              <img src="{BASE}assets/{article['slug']}.webp" width="512" height="512" loading="lazy" alt="">
+              <span class="pastille">{escape(pastille)}</span>
             </div>
             <div class="cuvee-texte">
-              <p class="appellation">{escape(cuvee['appellation'])}</p>
+              <p class="appellation">{escape(sous_titre)}</p>
               <h3>{nom}</h3>
-              <p class="notes">{escape(cuvee['notes'])}</p>
-              <span class="prix">{prix_fr(cuvee['prix_ttc'])} <small>/ {CONTENANCE_CL} cl</small></span>
+              <p class="notes">{escape(article['notes'])}</p>
+              <span class="prix">{prix_fr(article['prix_ttc'])} <small>/ {escape(format_court(article))}</small></span>
             </div>
           </a>
         </li>"""
 
 
-def accueil(cuvees):
+def accueil(cuvees, comptoir):
     cartes = "\n".join(carte(cuvee) for cuvee in cuvees)
+    cartes_comptoir = "\n".join(carte(article) for article in comptoir)
     filtres = "\n".join(
         f'          <button type="button" data-filtre="{nom.lower()}" aria-pressed="{str(nom == "Toutes").lower()}">{nom}</button>'
         for nom in FILTRES
@@ -153,8 +195,8 @@ def accueil(cuvees):
       <div class="largeur hero-contenu">
         <p class="surtitre">Vallée du Rhône</p>
         <h1 id="titre">Faisons parler<br><em>le terroir.</em></h1>
-        <p class="hero-intro">Un vignoble de coteaux, six cuvées et autant de façons de goûter le Rhône.</p>
-        <a class="bouton bouton-clair" href="#cuvees">Découvrir les cuvées</a>
+        <p class="hero-intro">Des vins de coteaux, des coffrets et le raisin jusque dans l’épicerie.</p>
+        <a class="bouton bouton-clair" href="#cuvees">Découvrir les produits</a>
       </div>
     </section>
 
@@ -174,6 +216,20 @@ def accueil(cuvees):
       </ul>
     </section>
 
+    <section class="comptoir" id="comptoir" aria-labelledby="titre-comptoir">
+      <div class="largeur section-cuvees">
+        <div class="entete-section">
+          <div>
+            <h2 id="titre-comptoir">Le comptoir</h2>
+            <p>Un magnum et un coffret à offrir, des bulles sans alcool et des produits pour la cuisine.</p>
+          </div>
+        </div>
+        <ul class="grille-cuvees">
+{cartes_comptoir}
+        </ul>
+      </div>
+    </section>
+
     <section class="domaine" id="domaine" aria-labelledby="titre-domaine">
       <div class="largeur domaine-grille">
         <img class="vendanges" src="{BASE}assets/vendanges.webp" alt="Des mains déposent une grappe de syrah dans un panier de vendange" width="760" height="1140" loading="lazy">
@@ -189,99 +245,148 @@ def accueil(cuvees):
     <section class="largeur section-donnees" id="donnees" aria-labelledby="titre-donnees">
       <div>
         <h2 id="titre-donnees">Le catalogue public</h2>
-        <p>Les six fiches de démonstration sont disponibles sous forme de données structurées.</p>
+        <p>Les {len(cuvees) + len(comptoir)} fiches de démonstration sont disponibles sous forme de données structurées.</p>
       </div>
       <a class="bouton bouton-sombre" href="catalogue.json">Ouvrir le catalogue JSON</a>
     </section>"""
     donnees = {
         "@context": "https://schema.org",
         "@type": "ItemList",
-        "name": "Cuvées de démonstration Sillons Vifs",
-        "numberOfItems": len(cuvees),
+        "name": "Catalogue de démonstration Sillons Vifs",
+        "numberOfItems": len(cuvees) + len(comptoir),
         "itemListElement": [
             {"@type": "ListItem", "position": i, "item": produit(c)}
-            for i, c in enumerate(cuvees, 1)
+            for i, c in enumerate([*cuvees, *comptoir], 1)
         ],
     }
     return page("Sillons Vifs | Votre futur vignoble",
-                "Explorez les six cuvées de Sillons Vifs, un domaine fictif imaginé par Mon Chai pour la démonstration de données produits.",
+                "Explorez les vins et l’épicerie de Sillons Vifs, un domaine fictif créé par Mon Chai pour la démonstration de données produits.",
                 SITE, contenu, donnees, SITE + "assets/vignoble.webp", accueil=True)
 
 
-def fiche(cuvee, suivante):
-    nom = escape(cuvee["nom"])
-    details = (
-        ("Millésime", str(cuvee["millesime"])),
-        ("Couleur", cuvee["couleur"]),
-        ("Cépages", ", ".join(cuvee["cepages"])),
-        ("Format", f"Bouteille · {CONTENANCE_CL} cl"),
-        ("Degré d’alcool", decimal_fr(cuvee["degre_alcool"]) + " % vol."),
-        ("Référence", cuvee["reference"]),
-    )
-    lignes = "\n".join(f"          <div><dt>{label}</dt><dd>{escape(valeur)}</dd></div>" for label, valeur in details)
+def caracteristiques(article):
+    valeurs = []
+    for nom, cle in (("Millésime", "millesime"), ("Couleur", "couleur"), ("Cépages", "cepages")):
+        if cle in article:
+            valeur = ", ".join(article[cle]) if cle == "cepages" else str(article[cle])
+            valeurs.append((nom, valeur))
+    _, valeur, unite = dimension(article)
+    valeurs.append(("Format", f"{article['conditionnement']} · {decimal_fr(valeur)} {unite}"))
+    if "degre_alcool" in article:
+        valeurs.append(("Degré d’alcool", decimal_fr(article["degre_alcool"]) + " % vol."))
+    valeurs.append(("Référence", article["reference"]))
+    return "\n".join(f"          <div><dt>{nom}</dt><dd>{escape(valeur)}</dd></div>" for nom, valeur in valeurs)
+
+
+def service(article, suivante, produits):
+    contenu = []
+    if "contenu" in article:
+        liens = []
+        for ligne in article["contenu"]:
+            inclus = produits[ligne["reference"]]
+            liens.append(f'<li>{ligne["quantite"]} × <a href="{BASE}{chemin_produit(inclus)}">{escape(inclus["nom"])}</a> · {format_court(inclus)}</li>')
+        contenu.append('<div class="contenu-coffret"><h2>Dans le coffret</h2><ul>' + "".join(liens) + '</ul></div>')
+    for titre, cle in (("À table", "accord"), ("Service", "service"), ("En cuisine", "conseil")):
+        if cle in article:
+            contenu.append(f"<div><h2>{titre}</h2><p>{escape(article[cle])}</p></div>")
+    contenu.append(f'<a class="retour" href="{BASE}{chemin_produit(suivante)}">À découvrir ensuite <span>{escape(suivante["nom"])}</span></a>')
+    return "\n        ".join(contenu)
+
+
+def fiche(article, suivante, produits, variantes):
+    nom = escape(article["nom"])
+    cuvee = article["collection"] == "cuvees"
+    ancre = "cuvees" if cuvee else "comptoir"
+    retour = "Toutes les cuvées" if cuvee else "Retour au comptoir"
+    format_lie = produits.get(article.get("variante_de")) or variantes.get(article["reference"])
+    lien_format = ""
+    if format_lie:
+        lien_format = f'<p class="autre-format"><a href="{BASE}{chemin_produit(format_lie)}">Existe aussi en {format_court(format_lie)}</a></p>'
+    lignes = caracteristiques(article)
+    conseils = service(article, suivante, produits)
     contenu = f"""    <section class="largeur fiche" aria-labelledby="nom-cuvee">
-      <a class="retour" href="{BASE}#cuvees">Toutes les cuvées</a>
+      <a class="retour" href="{BASE}#{ancre}">{retour}</a>
       <div class="fiche-grille">
-        <img class="fiche-image" src="{BASE}assets/{cuvee['slug']}.webp" width="512" height="512" alt="Bouteille de {nom}, Sillons Vifs" fetchpriority="high">
+        <img class="fiche-image" src="{BASE}assets/{article['slug']}.webp" width="512" height="512" alt="{nom}, {DOMAINE}" fetchpriority="high">
         <div class="fiche-corps">
-          <p class="surtitre">{escape(cuvee['appellation'])} · {cuvee['millesime']}</p>
+          <p class="surtitre">{escape(surtitre_produit(article))}</p>
           <h1 id="nom-cuvee">{nom}</h1>
-          <p class="fiche-notes">{escape(cuvee['notes'])}</p>
-          <p>{escape(cuvee['description'])}</p>
-          <p class="fiche-prix"><strong>{prix_fr(cuvee['prix_ttc'])}</strong> <span>Prix indicatif TTC</span></p>
+          <p class="fiche-notes">{escape(article['notes'])}</p>
+          <p>{escape(article['description'])}</p>
+          <p class="fiche-prix"><strong>{prix_fr(article['prix_ttc'])}</strong> <span>Prix indicatif TTC</span></p>
           <dl class="caracteristiques">
 {lignes}
-          </dl>
+          </dl>{lien_format}
         </div>
       </div>
       <div class="service">
-        <div><h2>À table</h2><p>{escape(cuvee['accord'])}.</p></div>
-        <div><h2>Service</h2><p>{escape(cuvee['service'])}</p></div>
-        <a class="retour" href="{url_cuvee(suivante)}">Cuvée suivante <span>{escape(suivante['nom'])}</span></a>
+        {conseils}
       </div>
     </section>"""
-    donnees = {"@context": "https://schema.org", **produit(cuvee)}
-    return page(f"{cuvee['nom']} {cuvee['millesime']} | {DOMAINE}", cuvee["description"],
-                donnees["url"], contenu, donnees, image_cuvee(cuvee))
+    donnees = {"@context": "https://schema.org", **produit(article)}
+    titre = " ".join(str(article[cle]) for cle in ("nom", "millesime") if cle in article)
+    return page(f"{titre} | {DOMAINE}", article["description"], donnees["url"],
+                contenu, donnees, image_produit(article))
 
 
-def catalogue(cuvees):
+def catalogue(produits):
     return {
         "version": 1,
         "domaine": DOMAINE,
         "site": SITE,
         "demonstration": True,
-        "description": "Catalogue fictif pour la démonstration d’import de données produits Mon Chai. Prix indicatifs, cuvées sans offre de vente.",
+        "description": "Catalogue fictif pour la démonstration d’import de données produits Mon Chai. Prix indicatifs, produits sans offre de vente.",
         "produits": [
             {
-                **cuvee,
-                "contenance_ml": CONTENANCE_CL * 10,
-                "conditionnement": "Bouteille",
+                **article,
                 "devise": DEVISE,
-                "url": f"https://monchai.fr{url_cuvee(cuvee)}",
-                "image": image_cuvee(cuvee),
+                "url": url_produit(article),
+                "image": image_produit(article),
             }
-            for cuvee in cuvees
+            for article in produits
         ],
     }
+
+
+def lire_collection(nom):
+    source = Path(__file__).with_name(f"{nom}.json")
+    return json.loads(source.read_text(encoding="utf-8"))
 
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--check", action="store_true", help="Contrôler les fichiers publiables sans les modifier.")
     args = parser.parse_args()
-    cuvees = json.loads(Path(__file__).with_name("cuvees.json").read_text(encoding="utf-8"))
+    cuvees = [
+        {"contenance_ml": 750, "conditionnement": "Bouteille", **article, "collection": "cuvees"}
+        for article in lire_collection("cuvees")
+    ]
+    par_reference = {article["reference"]: article for article in cuvees}
+    comptoir = [
+        {**par_reference.get(article.get("variante_de"), {}), **article, "collection": "comptoir"}
+        for article in lire_collection("comptoir")
+    ]
+    articles = [*cuvees, *comptoir]
     for champ in ("slug", "reference"):
-        if len({cuvee[champ] for cuvee in cuvees}) != len(cuvees):
+        if len({article[champ] for article in articles}) != len(articles):
             parser.error("Valeurs en double dans le catalogue pour " + champ)
+    par_reference = {article["reference"]: article for article in articles}
+    variantes = {article["variante_de"]: article for article in comptoir if "variante_de" in article}
     fichiers = {
-        "index.html": accueil(cuvees),
-        "catalogue.json": json.dumps(catalogue(cuvees), ensure_ascii=False, indent=2) + "\n",
+        "index.html": accueil(cuvees, comptoir),
+        "catalogue.json": json.dumps(catalogue(articles), ensure_ascii=False, indent=2) + "\n",
     }
-    for i, cuvee in enumerate(cuvees):
-        if not (RACINE / DOSSIER / "assets" / f"{cuvee['slug']}.webp").is_file():
-            parser.error("Visuel de bouteille manquant pour " + cuvee["slug"])
-        fichiers[f"cuvees/{cuvee['slug']}/index.html"] = fiche(cuvee, cuvees[(i + 1) % len(cuvees)])
+    for collection in (cuvees, comptoir):
+        for i, article in enumerate(collection):
+            if not (RACINE / DOSSIER / "assets" / f"{article['slug']}.webp").is_file():
+                parser.error("Visuel de produit manquant pour " + article["slug"])
+            if "variante_de" in article and article["variante_de"] not in par_reference:
+                parser.error("Référence de la variante inconnue pour " + article["slug"])
+            for ligne in article.get("contenu", []):
+                if ligne["reference"] not in par_reference or ligne["quantite"] < 1:
+                    parser.error("Contenu du coffret invalide pour " + article["slug"])
+            suivante = collection[(i + 1) % len(collection)]
+            fichiers[f"{chemin_produit(article)}index.html"] = fiche(article, suivante, par_reference, variantes)
     for nom, contenu in fichiers.items():
         fichier = RACINE / DOSSIER / nom
         if args.check:
@@ -290,7 +395,7 @@ def main():
         else:
             fichier.parent.mkdir(parents=True, exist_ok=True)
             fichier.write_text(contenu, encoding="utf-8", newline="\n")
-    print(f"{len(cuvees)} cuvées et {len(fichiers)} fichiers cohérents.")
+    print(f"{len(articles)} produits et {len(fichiers)} fichiers cohérents.")
 
 
 if __name__ == "__main__":

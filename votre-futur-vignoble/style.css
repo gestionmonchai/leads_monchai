@@ -165,6 +165,8 @@ button { font: inherit; }
 .bouton-sombre:hover { background: var(--citron); color: var(--encre); border-color: var(--prune); }
 
 .section-cuvees { padding-block: clamp(3.5rem, 7vw, 7rem); }
+.comptoir { background: #f0e8dd; border-block-start: 1px solid var(--ligne); }
+.comptoir .grille-cuvees { margin-top: clamp(1.8rem, 3.8vw, 3.5rem); }
 .entete-section { display: flex; align-items: end; justify-content: space-between; gap: 1.5rem 2rem; }
 .entete-section h2, .section-donnees h2, .domaine h2 {
   font: 400 clamp(2.7rem, 6vw, 5.4rem)/1.01 var(--serif);
@@ -304,8 +306,13 @@ button { font: inherit; }
   background: #eee6dc;
 }
 .service h2 { font: 500 1.6rem/1.18 var(--serif); margin-bottom: 0.4rem; }
-.service .retour { justify-self: end; flex-direction: column; align-items: start; font-size: 0.88rem; }
+.service .retour { grid-column: 3; justify-self: end; flex-direction: column; align-items: start; font-size: 0.88rem; }
 .service .retour span { font: 500 1.45rem/1.25 var(--serif); }
+.contenu-coffret { grid-column: span 2; }
+.contenu-coffret ul { padding-left: 1.2rem; margin-block: 0.4rem 0; }
+.contenu-coffret li + li { margin-top: 0.28rem; }
+.autre-format { margin-top: 0.8rem; font-weight: 600; }
+.contenu-coffret a, .autre-format a { text-underline-offset: 0.22em; }
 
 @media (max-width: 920px) {
   .entete-section { align-items: start; flex-direction: column; }

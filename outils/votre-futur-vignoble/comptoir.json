@@ -1,0 +1,91 @@
+[
+  {
+    "slug": "elan-de-schiste-magnum",
+    "reference": "SV-RGE-23-150",
+    "variante_de": "SV-RGE-23-75",
+    "nom": "Élan de Schiste Magnum",
+    "conditionnement": "Magnum",
+    "contenance_ml": 1500,
+    "prix_ttc": 42,
+    "description": "La même syrah poivrée et le même grenache qu’en bouteille de 75 cl, dans un magnum de 1,5 litre. La mûre et la violette se retrouvent en bouche, avec des tanins souples.",
+    "accord": "Gigot d’agneau, gratin d’aubergines"
+  },
+  {
+    "slug": "trois-coteaux",
+    "reference": "SV-COF-3X75",
+    "nom": "Trois Coteaux",
+    "type": "Coffret de vins",
+    "conditionnement": "Coffret",
+    "contenance_ml": 2250,
+    "prix_ttc": 45,
+    "notes": "Un rouge, un blanc et un rosé",
+    "description": "Trois bouteilles de 75 cl réunies dans un coffret cartonné. Élan de Schiste ouvre sur la syrah poivrée, De Bonne Heure apporte la fraîcheur de la clairette et À Fleur de Roche termine sur le pomelo.",
+    "contenu": [
+      {
+        "reference": "SV-RGE-23-75",
+        "quantite": 1
+      },
+      {
+        "reference": "SV-BLC-24-75",
+        "quantite": 1
+      },
+      {
+        "reference": "SV-ROS-25-75",
+        "quantite": 1
+      }
+    ]
+  },
+  {
+    "slug": "clair-de-grappe",
+    "reference": "SV-JUS-75",
+    "nom": "Clair de Grappe",
+    "type": "Pétillant de raisin sans alcool",
+    "conditionnement": "Bouteille",
+    "contenance_ml": 750,
+    "degre_alcool": 0,
+    "prix_ttc": 8.9,
+    "notes": "Raisin blanc, pomme et citron",
+    "description": "Un jus de raisin blanc pressé puis gazéifié. La pomme et le citron équilibrent la douceur du fruit, avec des bulles fines.",
+    "accord": "Gougères, tarte aux pommes",
+    "service": "6–8 °C"
+  },
+  {
+    "slug": "vinaigre-de-syrah",
+    "reference": "SV-VIN-250",
+    "nom": "Vinaigre de Syrah",
+    "type": "Vinaigre de vin rouge",
+    "conditionnement": "Bouteille",
+    "contenance_ml": 250,
+    "prix_ttc": 9.5,
+    "notes": "Griotte et poivre doux",
+    "description": "Un vinaigre de vin rouge aux notes de griotte, élevé en fût. Son acidité relève une vinaigrette et apporte du relief aux sucs de cuisson.",
+    "accord": "Salade de lentilles, magret de canard",
+    "conseil": "Ajouter un trait en fin de cuisson pour déglacer la poêle."
+  },
+  {
+    "slug": "gelee-de-grenache",
+    "reference": "SV-GEL-220",
+    "nom": "Gelée de Grenache",
+    "type": "Gelée de raisin",
+    "conditionnement": "Pot",
+    "masse_nette_g": 220,
+    "prix_ttc": 7.8,
+    "notes": "Raisin mûr et gelée fondante",
+    "description": "Le jus de grenache cuit doucement avec du sucre et un trait de citron. Il donne une gelée souple aux notes de raisin mûr et de fruits rouges.",
+    "accord": "Tomme de brebis, brioche toastée",
+    "conseil": "Servir à température ambiante pour retrouver une texture fondante."
+  },
+  {
+    "slug": "huile-de-pepins",
+    "reference": "SV-HUI-250",
+    "nom": "Huile de Pépins de Raisin",
+    "type": "Huile de pépins de raisin",
+    "conditionnement": "Bouteille",
+    "contenance_ml": 250,
+    "prix_ttc": 11.6,
+    "notes": "Huile légère et douce",
+    "description": "Cette huile est obtenue à partir des pépins de raisin, avec une saveur discrète qui laisse une vinaigrette ou une mayonnaise prendre le goût de ses autres ingrédients.",
+    "accord": "Salade de haricots verts, mayonnaise maison",
+    "conseil": "Ajouter quelques gouttes de vinaigre de Syrah à la vinaigrette."
+  }
+]

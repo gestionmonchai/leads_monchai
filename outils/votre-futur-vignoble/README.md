@@ -13,6 +13,8 @@ L’accueil met en avant la photo du vignoble et l’accès aux cuvées. Le filt
 
 La grille se réduit selon la largeur, le lien d’évitement mène au contenu principal et le focus reste visible. La recette couvre 320, 390, 820 et 1440 px, les filtres au clavier, le parcours vers et depuis une fiche, les URL des produits et la concordance des données avec et sans JavaScript.
 
+À la première ouverture d’une page de la vitrine, le dialogue de majorité prend le focus et bloque l’accès au contenu visuel. La confirmation ferme le dialogue, renvoie le focus au contenu et mémorise le choix dans le stockage de session de l’onglet. Le refus et Échap ramènent à Mon Chai. Les fiches, le JSON-LD et le fichier JSON restent lisibles avec JavaScript désactivé.
+
 ## Photographies
 
 Le générateur d’images intégré a produit le paysage `assets/vignoble.webp` et sa déclinaison mobile, les six packshots `assets/<slug>.webp`, et la photo `assets/vendanges.webp`. Les visuels se trouvent sous `votre-futur-vignoble/assets/`.

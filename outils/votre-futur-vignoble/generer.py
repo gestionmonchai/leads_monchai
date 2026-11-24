@@ -118,10 +118,21 @@ def page(titre, description, canonical, contenu, donnees, image, accueil=False):
   <meta property="og:description" content="{escape(description)}">
   <meta property="og:url" content="{canonical}">
   <meta property="og:image" content="{image}">
-  <link rel="stylesheet" href="{BASE}style.css">
+  <link rel="stylesheet" href="{BASE}style.css?v=20261124-age">
+  <script src="{BASE}majorite.js" defer></script>
 {script}  <script type="application/ld+json">{jsonld}</script>
 </head>
 <body>
+  <dialog class="verification-age" id="verification-age" aria-labelledby="titre-majorite">
+    <div class="age-texte">
+      <p class="marque"><span class="sillon" aria-hidden="true"><i></i><i></i><i></i></span> Sillons Vifs</p>
+      <h2 id="titre-majorite" tabindex="-1" autofocus>Avez-vous<br><em>18&nbsp;ans ou plus&nbsp;?</em></h2>
+      <div class="age-actions">
+        <button class="bouton bouton-sombre" type="button" data-confirmer-age>Oui, j’ai 18 ans ou plus</button>
+        <button class="bouton bouton-sortie" type="button" data-quitter-vitrine>Non, quitter la vitrine</button>
+      </div>
+    </div>
+  </dialog>
   <a class="skip" href="#contenu">Aller au contenu</a>
   <header class="entete">
     <div class="largeur barre">

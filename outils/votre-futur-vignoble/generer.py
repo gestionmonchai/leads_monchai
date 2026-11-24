@@ -1,9 +1,11 @@
-"""Génère la vitrine et son catalogue public depuis cuvees.json et comptoir.json."""
+"""Génère les fiches et les pages de la vitrine Sillons Vifs."""
 
 import argparse
 import json
 from html import escape
 from pathlib import Path
+
+from hospitalite import VISITES, apercu, contenu_visite
 
 RACINE = Path(__file__).resolve().parents[2]
 DOSSIER = "votre-futur-vignoble"
@@ -11,6 +13,7 @@ BASE = f"/{DOSSIER}/"
 SITE = f"https://monchai.fr{BASE}"
 DOMAINE = "Sillons Vifs"
 DEVISE = "EUR"
+VIDEO_CUVEE = "elan-de-schiste"
 FILTRES = ("Toutes", "Rouge", "Blanc", "Rosé", "Bulles")
 
 
@@ -112,14 +115,14 @@ def page(titre, description, canonical, contenu, donnees, image, accueil=False):
   <meta name="robots" content="noindex, follow">
   <meta name="theme-color" content="#f8f4ea">
   <link rel="canonical" href="{canonical}">
-  <link rel="alternate" type="application/json" title="Catalogue public Sillons Vifs" href="{SITE}catalogue.json">
   <meta property="og:type" content="website">
   <meta property="og:title" content="{escape(titre)}">
   <meta property="og:description" content="{escape(description)}">
   <meta property="og:url" content="{canonical}">
   <meta property="og:image" content="{image}">
-  <link rel="stylesheet" href="{BASE}style.css?v=20261124-age">
+  <link rel="stylesheet" href="{BASE}style.css?v=20261124-visites">
   <script src="{BASE}majorite.js" defer></script>
+  <script src="{BASE}boutique.js" defer></script>
 {script}  <script type="application/ld+json">{jsonld}</script>
 </head>
 <body>
@@ -143,18 +146,32 @@ def page(titre, description, canonical, contenu, donnees, image, accueil=False):
       <nav aria-label="Navigation principale">
         <a href="{BASE}#cuvees">Les cuvées</a>
         <a href="{BASE}#comptoir">Le comptoir</a>
-        <a class="lien-donnees" href="{BASE}#donnees">Données</a>
+        <a href="{BASE}sejours/">Séjours</a>
+        <a href="{BASE}experiences/">Expériences</a>
+        <a href="{BASE}domaines/">Nos domaines</a>
       </nav>
+      <button class="panier-ouvrir" type="button" data-panier-ouvrir aria-controls="panier" hidden>Panier <span data-panier-nombre>0</span></button>
     </div>
   </header>
   <main id="contenu" tabindex="-1">
 {contenu}
   </main>
+  <dialog class="panneau" id="panier" aria-labelledby="titre-panier">
+    <div class="panneau-entete">
+      <h2 id="titre-panier">Votre panier</h2>
+      <button class="panneau-fermer" type="button" aria-label="Fermer le panier" data-fermer>×</button>
+    </div>
+    <p id="panier-vide">Votre panier est vide.</p>
+    <ul id="panier-lignes" class="panier-lignes"></ul>
+    <p class="panier-total" aria-live="polite">Total <strong data-panier-total>0,00 €</strong></p>
+    <button class="bouton bouton-sombre" type="button" data-fermer>Continuer la visite</button>
+    <p class="panier-demo">Les achats et les réservations sont simulés.</p>
+  </dialog>
   <footer class="pied">
     <div class="largeur pied-contenu">
       <div>
         <a class="marque" href="{BASE}">Sillons Vifs</a>
-        <p>Vignoble fictif créé pour une démonstration Mon Chai. Les produits et leurs tarifs sont illustratifs.</p>
+        <p>Vignoble fictif créé pour une démonstration Mon Chai. Les offres et leurs tarifs sont illustratifs.</p>
       </div>
       <a class="retour-monchai" href="/">Découvrir Mon Chai</a>
     </div>
@@ -162,6 +179,30 @@ def page(titre, description, canonical, contenu, donnees, image, accueil=False):
 </body>
 </html>
 """
+
+
+def ajout_panier(article, classe):
+    nom = escape(article["nom"])
+    return f"""<button class="{classe}" type="button" data-ajouter="{article['reference']}"
+              data-nom="{nom}" data-prix="{round(article['prix_ttc'] * 100)}"
+              data-format="{escape(format_court(article))}" hidden>Ajouter au panier</button>"""
+
+
+def menu_produit(article):
+    url = BASE + chemin_produit(article)
+    nom = escape(article["nom"])
+    video = ''
+    if article["slug"] in {VIDEO_CUVEE, "trois-coteaux"}:
+        video = f'<a href="{BASE}cuvees/{VIDEO_CUVEE}/#video-sommelier">Vidéo de la sommelière</a>'
+    conseil = "Dans le coffret" if "contenu" in article else "Conseils et accords"
+    return f"""          <details class="menu-produit">
+            <summary aria-label="Actions pour {nom}"><i aria-hidden="true"></i></summary>
+            <div class="menu-produit-liens">
+              <a href="{url}">Fiche produit</a>
+              <a href="{url}#degustation">{conseil}</a>
+              {video}{ajout_panier(article, "menu-ajouter")}
+            </div>
+          </details>"""
 
 
 def carte(article):
@@ -188,6 +229,7 @@ def carte(article):
               <span class="prix">{prix_fr(article['prix_ttc'])} <small>/ {escape(format_court(article))}</small></span>
             </div>
           </a>
+{menu_produit(article)}
         </li>"""
 
 
@@ -207,7 +249,10 @@ def accueil(cuvees, comptoir):
         <p class="surtitre">Vallée du Rhône</p>
         <h1 id="titre">Faisons parler<br><em>le terroir.</em></h1>
         <p class="hero-intro">Des vins de coteaux, des coffrets et le raisin jusque dans l’épicerie.</p>
-        <a class="bouton bouton-clair" href="#cuvees">Découvrir les produits</a>
+        <div class="hero-actions">
+          <a class="bouton bouton-clair" href="#cuvees">Découvrir les produits</a>
+          <a class="bouton bouton-transparente" href="{BASE}sejours/">Séjourner au domaine</a>
+        </div>
       </div>
     </section>
 
@@ -241,6 +286,8 @@ def accueil(cuvees, comptoir):
       </div>
     </section>
 
+{apercu(BASE)}
+
     <section class="domaine" id="domaine" aria-labelledby="titre-domaine">
       <div class="largeur domaine-grille">
         <img class="vendanges" src="{BASE}assets/vendanges.webp" alt="Des mains déposent une grappe de syrah dans un panier de vendange" width="760" height="1140" loading="lazy">
@@ -251,27 +298,19 @@ def accueil(cuvees, comptoir):
           <p>Au chai, chaque parcelle est vinifiée séparément. On assemble les lots après dégustation, pour garder la fraîcheur des coteaux et la texture des raisins mûrs.</p>
         </div>
       </div>
-    </section>
-
-    <section class="largeur section-donnees" id="donnees" aria-labelledby="titre-donnees">
-      <div>
-        <h2 id="titre-donnees">Le catalogue public</h2>
-        <p>Les {len(cuvees) + len(comptoir)} fiches de démonstration sont disponibles sous forme de données structurées.</p>
-      </div>
-      <a class="bouton bouton-sombre" href="catalogue.json">Ouvrir le catalogue JSON</a>
     </section>"""
     donnees = {
         "@context": "https://schema.org",
         "@type": "ItemList",
-        "name": "Catalogue de démonstration Sillons Vifs",
+        "name": "Les produits de Sillons Vifs",
         "numberOfItems": len(cuvees) + len(comptoir),
         "itemListElement": [
-            {"@type": "ListItem", "position": i, "item": produit(c)}
+            {"@type": "ListItem", "position": i, "url": url_produit(c), "name": c["nom"]}
             for i, c in enumerate([*cuvees, *comptoir], 1)
         ],
     }
     return page("Sillons Vifs | Votre futur vignoble",
-                "Explorez les vins et l’épicerie de Sillons Vifs, un domaine fictif créé par Mon Chai pour la démonstration de données produits.",
+                "Explorez les vins et l’épicerie de Sillons Vifs, les séjours au milieu des vignes et les expériences au chai.",
                 SITE, contenu, donnees, SITE + "assets/vignoble.webp", accueil=True)
 
 
@@ -304,6 +343,22 @@ def service(article, suivante, produits):
     return "\n        ".join(contenu)
 
 
+def video_sommelier(article):
+    if article["slug"] != VIDEO_CUVEE:
+        return ""
+    return f"""      <section class="video-sommelier" id="video-sommelier" aria-labelledby="titre-video">
+        <div>
+          <p class="surtitre">Dans le verre</p>
+          <h2 id="titre-video">La dégustation avec Camille</h2>
+          <p>Les arômes d’Élan de Schiste 2023 et deux idées pour le servir à table.</p>
+        </div>
+        <video controls playsinline preload="none" width="1280" height="720" poster="{BASE}assets/camille-degustation.webp" aria-label="Camille présente Élan de Schiste">
+          <source src="{BASE}assets/camille-degustation.mp4" type="video/mp4">
+          <track src="{BASE}assets/camille-degustation.vtt" kind="captions" srclang="fr" label="Français" default>
+        </video>
+      </section>"""
+
+
 def fiche(article, suivante, produits, variantes):
     nom = escape(article["nom"])
     cuvee = article["collection"] == "cuvees"
@@ -315,6 +370,8 @@ def fiche(article, suivante, produits, variantes):
         lien_format = f'<p class="autre-format"><a href="{BASE}{chemin_produit(format_lie)}">Existe aussi en {format_court(format_lie)}</a></p>'
     lignes = caracteristiques(article)
     conseils = service(article, suivante, produits)
+    ajout = ajout_panier(article, "bouton bouton-sombre fiche-ajouter")
+    video = video_sommelier(article)
     contenu = f"""    <section class="largeur fiche" aria-labelledby="nom-cuvee">
       <a class="retour" href="{BASE}#{ancre}">{retour}</a>
       <div class="fiche-grille">
@@ -328,35 +385,18 @@ def fiche(article, suivante, produits, variantes):
           <dl class="caracteristiques">
 {lignes}
           </dl>{lien_format}
+          {ajout}
         </div>
       </div>
-      <div class="service">
+      <div class="service" id="degustation">
         {conseils}
       </div>
+{video}
     </section>"""
     donnees = {"@context": "https://schema.org", **produit(article)}
     titre = " ".join(str(article[cle]) for cle in ("nom", "millesime") if cle in article)
     return page(f"{titre} | {DOMAINE}", article["description"], donnees["url"],
                 contenu, donnees, image_produit(article))
-
-
-def catalogue(produits):
-    return {
-        "version": 1,
-        "domaine": DOMAINE,
-        "site": SITE,
-        "demonstration": True,
-        "description": "Catalogue fictif pour la démonstration d’import de données produits Mon Chai. Prix indicatifs, produits sans offre de vente.",
-        "produits": [
-            {
-                **article,
-                "devise": DEVISE,
-                "url": url_produit(article),
-                "image": image_produit(article),
-            }
-            for article in produits
-        ],
-    }
 
 
 def lire_collection(nom):
@@ -383,10 +423,15 @@ def main():
             parser.error("Valeurs en double dans le catalogue pour " + champ)
     par_reference = {article["reference"]: article for article in articles}
     variantes = {article["variante_de"]: article for article in comptoir if "variante_de" in article}
-    fichiers = {
-        "index.html": accueil(cuvees, comptoir),
-        "catalogue.json": json.dumps(catalogue(articles), ensure_ascii=False, indent=2) + "\n",
-    }
+    fichiers = {"index.html": accueil(cuvees, comptoir)}
+    visites = lire_collection("hospitalite")
+    for cle, (nom, titre, description, image) in VISITES.items():
+        url = f"{SITE}{cle}/"
+        contenu = contenu_visite(cle, visites, BASE, prix_fr)
+        meta = {"@context": "https://schema.org", "@type": "WebPage", "name": titre, "url": url,
+                "description": description, "inLanguage": "fr"}
+        fichiers[f"{cle}/index.html"] = page(f"{nom} | {DOMAINE}", description, url, contenu,
+                                            meta, f"{SITE}assets/{image}.webp")
     for collection in (cuvees, comptoir):
         for i, article in enumerate(collection):
             if not (RACINE / DOSSIER / "assets" / f"{article['slug']}.webp").is_file():

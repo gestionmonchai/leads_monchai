@@ -14,6 +14,16 @@ SITE = f"https://monchai.fr{BASE}"
 DOMAINE = "Sillons Vifs"
 DEVISE = "EUR"
 VIDEO_CUVEE = "elan-de-schiste"
+# Coordonnées du texte imprimé sur le papier dans les photos de 512 px.
+IMPRESSION_VERSO = {
+    "elan-de-schiste": (329, 41, "#cdb1c9"),
+    "de-bonne-heure": (322, 43, "#f0e3c9"),
+    "a-fleur-de-roche": (322, 43, "#eed8ce"),
+    "la-pente-douce": (333, 45, "#e5a594"),
+    "vent-de-craie": (333, 45, "#d0d7bb"),
+    "les-eclats": (343, 43, "#f3e5ae"),
+    "elan-de-schiste-magnum": (342, 61, "#d9b8d4"),
+}
 FILTRES = ("Toutes", "Rouge", "Blanc", "Rosé", "Bulles")
 
 
@@ -103,7 +113,9 @@ def produit(article):
 
 
 def page(titre, description, canonical, contenu, donnees, image, accueil=False):
-    script = f'  <script src="{BASE}filtres.js" defer></script>\n' if accueil else ''
+    script = ""
+    if accueil:
+        script = f'  <script src="{BASE}filtres.js" defer></script>\n  <script src="{BASE}cartes.js" defer></script>\n'
     jsonld = json.dumps(donnees, ensure_ascii=False).replace("<", "\\u003c")
     return f"""<!doctype html>
 <html lang="fr">
@@ -120,7 +132,7 @@ def page(titre, description, canonical, contenu, donnees, image, accueil=False):
   <meta property="og:description" content="{escape(description)}">
   <meta property="og:url" content="{canonical}">
   <meta property="og:image" content="{image}">
-  <link rel="stylesheet" href="{BASE}style.css?v=20261124-visites">
+  <link rel="stylesheet" href="{BASE}style.css?v=20261124-cartes">
   <script src="{BASE}majorite.js" defer></script>
   <script src="{BASE}boutique.js" defer></script>
 {script}  <script type="application/ld+json">{jsonld}</script>
@@ -188,25 +200,102 @@ def ajout_panier(article, classe):
               data-format="{escape(format_court(article))}" hidden>Ajouter au panier</button>"""
 
 
+def a_video(article):
+    return article["slug"] in {VIDEO_CUVEE, "trois-coteaux", "elan-de-schiste-magnum"}
+
+
+def titre_apercu(article):
+    return "Dans le coffret" if "contenu" in article else "Conseils et accords"
+
+
 def menu_produit(article):
     url = BASE + chemin_produit(article)
     nom = escape(article["nom"])
+    zone = f"apercu-{article['slug']}"
     video = ''
-    if article["slug"] in {VIDEO_CUVEE, "trois-coteaux"}:
-        video = f'<a href="{BASE}cuvees/{VIDEO_CUVEE}/#video-sommelier">Vidéo de la sommelière</a>'
-    conseil = "Dans le coffret" if "contenu" in article else "Conseils et accords"
+    if a_video(article):
+        video = f'<a href="{BASE}cuvees/{VIDEO_CUVEE}/#video-sommelier" data-apercu="video" aria-controls="{zone}">Vidéo de la sommelière</a>'
     return f"""          <details class="menu-produit">
             <summary aria-label="Actions pour {nom}"><i aria-hidden="true"></i></summary>
             <div class="menu-produit-liens">
-              <a href="{url}">Fiche produit</a>
-              <a href="{url}#degustation">{conseil}</a>
+              <a href="{url}">Voir la fiche complète</a>
+              <a href="{url}#degustation" data-apercu="accords" aria-controls="{zone}">{titre_apercu(article)}</a>
               {video}{ajout_panier(article, "menu-ajouter")}
             </div>
           </details>"""
 
 
-def carte(article):
+def lecteur_sommelier():
+    return f"""<video controls playsinline preload="none" width="1280" height="720" poster="{BASE}assets/camille-degustation.webp" aria-label="Camille présente Élan de Schiste">
+          <source src="{BASE}assets/camille-degustation.mp4" type="video/mp4">
+          <track src="{BASE}assets/camille-degustation.vtt" kind="captions" srclang="fr" label="Français" default>
+        </video>"""
+
+
+def photo_carte(article, verso):
+    slug = article["slug"]
+    recto = f'<img class="face-recto" src="{BASE}assets/{slug}.webp" width="512" height="512" loading="lazy" alt="">'
+    if not verso:
+        return recto
+    impression = ""
+    if slug in IMPRESSION_VERSO:
+        y, hauteur, papier = IMPRESSION_VERSO[slug]
+        position = f"--papier-etiquette:{papier};--texte-y:{y / 5.12:.2f}%;--texte-h:{hauteur / 5.12:.2f}%"
+        impression = f"""
+                  <div class="impression-verso" style="{position}" aria-hidden="true">
+                    <span>{escape(article['appellation'])}</span>
+                    <span>{article['millesime']} · {format_court(article)}</span>
+                    <span>{decimal_fr(article['degre_alcool'])} % vol.</span>
+                  </div>"""
+    return f"""<div class="photo-rotation">
+                {recto}
+                <div class="face-verso">
+                  <img src="{BASE}assets/{slug}-verso.webp" width="512" height="512" loading="lazy" alt="">{impression}
+                </div>
+              </div>"""
+
+
+def apercus_carte(article, produits, verso):
+    slug = article["slug"]
     nom = escape(article["nom"])
+    accords = "\n".join(conseils_article(article, produits, "h5"))
+    etiquette = ""
+    if verso:
+        etiquette = f"""              <div data-contenu="etiquette" hidden>
+                <h4>Contre-étiquette</h4>
+                <p>{escape(surtitre_produit(article))}</p>
+                <p>{escape(article['description'])}</p>
+                <dl class="caracteristiques">
+{caracteristiques(article)}
+                </dl>
+              </div>"""
+    video = ""
+    if a_video(article):
+        video = f"""              <div data-contenu="video" hidden>
+                <h4>La dégustation avec Camille</h4>
+                <p>Élan de Schiste · 2023 · 75 cl</p>
+                <template>{lecteur_sommelier()}</template>
+                <div data-lecteur></div>
+              </div>"""
+    return f"""          <div class="carte-couche">
+            <section class="carte-apercu" id="apercu-{slug}" aria-label="Aperçu de {nom}" hidden>
+              <button class="carte-fermer" type="button" data-fermer-apercu aria-label="Fermer l’aperçu">×</button>
+              <div class="carte-apercu-corps">
+                <div data-contenu="accords" hidden>
+                  <h4>{titre_apercu(article)}</h4>
+                  <p class="carte-nom">{nom}</p>
+{accords}
+                </div>
+{etiquette}
+{video}
+              </div>
+            </section>
+          </div>"""
+
+
+def carte(article, produits):
+    nom = escape(article["nom"])
+    slug = article["slug"]
     vin = article["collection"] == "cuvees"
     attribut = f' data-couleur="{categorie(article).lower()}"' if vin else ''
     if vin:
@@ -216,10 +305,17 @@ def carte(article):
         pastille = article["conditionnement"]
         libelle = nom
     sous_titre = article["appellation"] if vin else article["type"]
+    verso = (RACINE / DOSSIER / "assets" / f"{slug}-verso.webp").is_file()
+    outils = ""
+    if verso:
+        outils = f"""          <div class="carte-outils" hidden>
+            <button type="button" data-retourner>Contre-étiquette</button>
+            <button type="button" data-apercu="etiquette" aria-controls="apercu-{slug}" hidden>Lire l’étiquette</button>
+          </div>"""
     return f"""        <li class="cuvee"{attribut}>
           <a href="{BASE}{chemin_produit(article)}" class="cuvee-lien" aria-label="Découvrir {libelle}">
             <div class="cuvee-image">
-              <img src="{BASE}assets/{article['slug']}.webp" width="512" height="512" loading="lazy" alt="">
+              {photo_carte(article, verso)}
               <span class="pastille">{escape(pastille)}</span>
             </div>
             <div class="cuvee-texte">
@@ -230,12 +326,14 @@ def carte(article):
             </div>
           </a>
 {menu_produit(article)}
+{outils}
+{apercus_carte(article, produits, verso)}
         </li>"""
 
 
-def accueil(cuvees, comptoir):
-    cartes = "\n".join(carte(cuvee) for cuvee in cuvees)
-    cartes_comptoir = "\n".join(carte(article) for article in comptoir)
+def accueil(cuvees, comptoir, produits):
+    cartes = "\n".join(carte(cuvee, produits) for cuvee in cuvees)
+    cartes_comptoir = "\n".join(carte(article, produits) for article in comptoir)
     filtres = "\n".join(
         f'          <button type="button" data-filtre="{nom.lower()}" aria-pressed="{str(nom == "Toutes").lower()}">{nom}</button>'
         for nom in FILTRES
@@ -328,17 +426,23 @@ def caracteristiques(article):
     return "\n".join(f"          <div><dt>{nom}</dt><dd>{escape(valeur)}</dd></div>" for nom, valeur in valeurs)
 
 
-def service(article, suivante, produits):
+def conseils_article(article, produits, balise):
     contenu = []
     if "contenu" in article:
         liens = []
         for ligne in article["contenu"]:
             inclus = produits[ligne["reference"]]
             liens.append(f'<li>{ligne["quantite"]} × <a href="{BASE}{chemin_produit(inclus)}">{escape(inclus["nom"])}</a> · {format_court(inclus)}</li>')
-        contenu.append('<div class="contenu-coffret"><h2>Dans le coffret</h2><ul>' + "".join(liens) + '</ul></div>')
+        titre = '<h2>Dans le coffret</h2>' if balise == "h2" else ''
+        contenu.append('<div class="contenu-coffret">' + titre + '<ul>' + "".join(liens) + '</ul></div>')
     for titre, cle in (("À table", "accord"), ("Service", "service"), ("En cuisine", "conseil")):
         if cle in article:
-            contenu.append(f"<div><h2>{titre}</h2><p>{escape(article[cle])}</p></div>")
+            contenu.append(f"<div><{balise}>{titre}</{balise}><p>{escape(article[cle])}</p></div>")
+    return contenu
+
+
+def service(article, suivante, produits):
+    contenu = conseils_article(article, produits, "h2")
     contenu.append(f'<a class="retour" href="{BASE}{chemin_produit(suivante)}">À découvrir ensuite <span>{escape(suivante["nom"])}</span></a>')
     return "\n        ".join(contenu)
 
@@ -352,10 +456,7 @@ def video_sommelier(article):
           <h2 id="titre-video">La dégustation avec Camille</h2>
           <p>Les arômes d’Élan de Schiste 2023 et deux idées pour le servir à table.</p>
         </div>
-        <video controls playsinline preload="none" width="1280" height="720" poster="{BASE}assets/camille-degustation.webp" aria-label="Camille présente Élan de Schiste">
-          <source src="{BASE}assets/camille-degustation.mp4" type="video/mp4">
-          <track src="{BASE}assets/camille-degustation.vtt" kind="captions" srclang="fr" label="Français" default>
-        </video>
+        {lecteur_sommelier()}
       </section>"""
 
 
@@ -423,7 +524,7 @@ def main():
             parser.error("Valeurs en double dans le catalogue pour " + champ)
     par_reference = {article["reference"]: article for article in articles}
     variantes = {article["variante_de"]: article for article in comptoir if "variante_de" in article}
-    fichiers = {"index.html": accueil(cuvees, comptoir)}
+    fichiers = {"index.html": accueil(cuvees, comptoir, par_reference)}
     visites = lire_collection("hospitalite")
     for cle, (nom, titre, description, image) in VISITES.items():
         url = f"{SITE}{cle}/"

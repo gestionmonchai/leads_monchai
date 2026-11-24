@@ -21,12 +21,32 @@ test('une structure inconnue échoue avant de remplacer un composant', () => {
 });
 test('le bloc de consentement suit la référence et ne restaure pas les publicités', () => {
   const bloc='<!-- Mode consentement de Google -->\n<script>window.monchaiChargerGtm=function(){};var obsolete=true;</script><!-- End Google Tag Manager -->';
-  const ancien='<html><head>'+bloc+'</head><body><main>Texte</main><footer>Ancien</footer></body></html>';
+  const iframe='<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NDSQV6T7"></iframe></noscript>';
+  const ancien='<html><head>'+bloc+'</head><body>'+iframe+'<main>Texte</main><footer>Ancien</footer></body></html>';
   const resultat=harmoniser(ancien,reference);
   assert.ok(!resultat.includes('var obsolete=true'));
-  assert.ok(resultat.includes('assets/js/analytics.js?v=20261029'));
+  assert.ok(resultat.includes('assets/js/analytics.js?v=20261124-gtm'));
   assert.ok(!resultat.includes('monchaiChargerGtm'));
   assert.equal((resultat.match(/src="assets\/js\/analytics.js/g)||[]).length, 1);
   assert.ok(!resultat.includes('googletagmanager.com/gtag/js'));
+  assert.ok(!resultat.includes('googletagmanager.com/ns.html'));
   assert.equal(harmoniser(resultat,reference),resultat);
+});
+
+test('les pages du sitemap chargent seulement les scripts locaux de consentement et de mesure', () => {
+  const site = path.join(__dirname, '..');
+  const sitemap = fs.readFileSync(path.join(site, 'sitemap.xml'), 'utf8');
+  for (const [, adresse] of sitemap.matchAll(/<loc>(https:\/\/monchai\.fr\/[^<]*)<\/loc>/g)) {
+    const route = new URL(adresse).pathname;
+    const fichier = (route.endsWith('/') ? route + 'index.html' : route).slice(1);
+    const page = fs.readFileSync(path.join(site, fichier), 'utf8');
+    const scripts = [...page.matchAll(/<script\b[^>]*\bsrc="([^"]+)"[^>]*>/g)];
+    const mesure = scripts.filter(([, src]) => src.includes('assets/js/analytics.js'));
+    const consentement = scripts.filter(([, src]) => src.includes('consent.js'));
+    assert.equal(mesure.length, 1, adresse);
+    assert.equal(consentement.length, 1, adresse);
+    assert.match(mesure[0][1], /^(?:\.\.\/)?assets\/js\/analytics\.js\?v=20261124-gtm$/, adresse);
+    assert.match(consentement[0][1], /^(?:\.\.\/)?consent\.js\?v=20261124-gtm$/, adresse);
+    assert.doesNotMatch(page, /googletagmanager\.com|google-analytics\.com|\bdata-gtm\b/, adresse);
+  }
 });

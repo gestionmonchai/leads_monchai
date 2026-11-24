@@ -23,13 +23,25 @@ node --test outils/test-harmoniser-article.cjs
 Les scripts de correction des articles secondaires et traductions documentent le
 correctif initial. Ils ne remplacent pas une nouvelle vérification du droit.
 
-La mesure GA4 `G-2VZ6WQSB52` est centralisée dans `assets/js/analytics.js`.
-La bibliothèque Google ne charge qu’après accord audience ; la publicité reste
-refusée. Une ancienne acceptation doit être renouvelée pour la version GA4.
-Le refus enregistré reste respecté. Le conteneur GTM historique est conservé
-uniquement sur les pages déjà concernées (`data-gtm`). Ne pas y ajouter une
-seconde configuration du même flux. Les démonstrations fictives ne sont pas
-instrumentées. `consent.js` porte les réglages et le retrait.
+Sur les pages qui proposent les réglages des cookies, `consent.js` valide le
+choix. GA4 `G-2VZ6WQSB52` et GTM `GTM-NDSQV6T7` attendent un accord à la mesure
+d’audience, avec les trois autorisations publicitaires à l’état refusé. Les
+acceptations antérieures sont renouvelées pour cette extension. Les refus
+existants s’appliquent jusqu’à leur échéance.
+
+Le conteneur publié a été vérifié sans balise active lors de l’intégration.
+L’administration GTM peut changer ce que le conteneur exécute. Avant de publier
+une version, vérifier les finalités, les destinataires et les durées, appliquer
+le contrôle supplémentaire `analytics_storage` aux balises d’audience et
+vérifier les requêtes dans Tag Assistant. Le flux GA4 direct est déjà configuré
+sur le site. Une seconde configuration du même flux fausserait les mesures.
+
+Le refus et l’acceptation sont présentés avec la même visibilité. Le réglage
+reste disponible dans le pied de page. Le retrait arrête l’intégration,
+supprime les cookies Google Analytics accessibles et recharge les pages déjà
+actives, y compris dans les autres onglets. Le bandeau et ses contrôles restent
+utilisables au clavier et sur mobile. La recette vérifie le blocage avant choix,
+après refus et au retrait, ainsi que le chargement unique après accord.
 
 Une vérification navigateur de la vraie bibliothèque a constaté un seul
 `page_view` du flux après acceptation, avec requête de collecte interceptée.

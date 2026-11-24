@@ -1,19 +1,14 @@
-/* GA4 direct : aucun chargement Google avant l'accord « Mesure d'audience ».
-   Le conteneur GTM historique n'est chargé que sur les pages qui l'utilisaient.
-   Une seule configuration directe du flux par document ; publicité refusée. */
+/* GA4 et GTM attendent le choix validé par consent.js.
+   Le flux GA4 est configuré une seule fois par document. */
 (function () {
   'use strict';
   if (window.self !== window.top || window.monchaiAnalyticsInitialise) return;
   window.monchaiAnalyticsInitialise = true;
   var ID = 'G-2VZ6WQSB52';
-  var CLE = 'monchai_cookie_consent';
-  var VERSION = '2026-10-29-ga4';
-  var DUREE = 1000 * 60 * 60 * 24 * 182;
+  var CONTENEUR = 'GTM-NDSQV6T7';
   var autorise = false;
   var configure = false;
   var gaCharge = false;
-  var scriptCourant = document.currentScript;
-  var utiliserGtm = scriptCourant && scriptCourant.hasAttribute('data-gtm');
   window.dataLayer = window.dataLayer || [];
   window.gtag = window.gtag || function () { window.dataLayer.push(arguments); };
 
@@ -23,15 +18,6 @@
   }
   window.gtag('consent', 'default', etat(false));
   window['ga-disable-' + ID] = true;
-
-  function choixSauve() {
-    try {
-      var c = JSON.parse(localStorage.getItem(CLE));
-      return c && typeof c.ts === 'number' && Number.isFinite(c.ts) && c.ts <= Date.now() &&
-        Date.now() - c.ts <= DUREE && typeof c.audience === 'boolean' && typeof c.tiers === 'boolean' &&
-        (!c.audience || c.version === VERSION) ? c : null;
-    } catch (e) { return null; }
-  }
 
   function retirerCookiesGoogle() {
     var noms = document.cookie.split(';').map(function (c) { return c.split('=')[0].trim(); })
@@ -71,36 +57,30 @@
       ga.src = 'https://www.googletagmanager.com/gtag/js?id=' + ID;
       document.head.appendChild(ga);
     }
-    if (utiliserGtm && !window.monchaiGtmCharge) {
+    if (!window.monchaiGtmCharge) {
       window.monchaiGtmCharge = true;
       window.dataLayer.push({'gtm.start': Date.now(), event: 'gtm.js'});
       var gtm = document.createElement('script');
       gtm.id = 'monchai-gtm';
       gtm.async = true;
-      gtm.src = 'https://www.googletagmanager.com/gtm.js?id=GTM-NDSQV6T7';
+      gtm.referrerPolicy = 'strict-origin';
+      gtm.src = 'https://www.googletagmanager.com/gtm.js?id=' + CONTENEUR;
       document.head.appendChild(gtm);
     }
   }
 
   function appliquer(c) {
+    var precedent = autorise;
     autorise = !!c && c.audience === true;
     window['ga-disable-' + ID] = !autorise;
-    window.gtag('consent', 'update', etat(autorise));
     if (autorise) {
+      if (!precedent) window.gtag('consent', 'update', etat(true));
       if (document.readyState === 'complete') charger();
       else window.addEventListener('load', charger, {once: true});
     } else retirerCookiesGoogle();
   }
-  window.addEventListener('monchai:consent', function (event) {
-    appliquer(event.detail);
+  window.addEventListener('monchai:consent', function () {
+    appliquer(window.monchaiConsent);
   });
-  // Rafraîchir le choix si un autre onglet vient de le modifier.
-  window.addEventListener('storage', function (event) {
-    if (event.key === CLE) {
-      var precedent = autorise;
-      appliquer(choixSauve());
-      if (precedent && !autorise) location.reload();
-    }
-  });
-  appliquer(choixSauve());
+  appliquer(window.monchaiConsent);
 })();

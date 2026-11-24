@@ -63,7 +63,7 @@
 
 <link rel="stylesheet" href="assets/css/polices.css">
 <link rel="stylesheet" href="assets/css/header.css">
-<link rel="stylesheet" href="assets/css/actus.css">
+<link rel="stylesheet" href="assets/css/actus.css?v=20261124-vignettes">
 <link rel="stylesheet" href="assets/css/pied.css">
 <link rel="stylesheet" href="assets/css/footer-commun.css?v=20261028-footer">
 
@@ -74,7 +74,7 @@
 <!-- ============ HEADER (composant partagé, repassé en flux par actus.css) ============ -->
 <div class="site-header site-header--page">
 <header class="hd">
-    <a class="hd__logo" href="index.html"><img src="assets/img/logo-header.webp" srcset="assets/img/logo-header-344.webp 344w, assets/img/logo-header.webp 602w" sizes="(max-width:639px) 172px, (max-width:899px) 208px, 263px" alt="Mon Chai, logiciel viticole" width="263" height="85"></a>
+    <a class="hd__logo" href="./"><img src="assets/img/logo-header.webp" srcset="assets/img/logo-header-344.webp 344w, assets/img/logo-header.webp 602w" sizes="(max-width:639px) 172px, (max-width:899px) 208px, 263px" alt="Mon Chai, logiciel viticole" width="263" height="85"></a>
 
     <button class="hd__burger" type="button" aria-label="Ouvrir le menu"
             aria-expanded="false" aria-controls="nav-principale">
@@ -89,9 +89,9 @@
             <span class="hd__groupe-titre">Découvrir</span>
             <a href="fonctionnalites.html">Vue d'ensemble du logiciel</a>
           <a href="monchainotes.html">Mon Chai Notes · Android</a>
-            <a href="index.html#mobile-fonctions">Comment ça fonctionne</a>
+            <a href="./#mobile-fonctions">Comment ça fonctionne</a>
             <a href="changer-de-logiciel.html">Changer de logiciel</a>
-            <a href="index.html#mobile-assistant">Assistant IA</a>
+            <a href="./#mobile-assistant">Assistant IA</a>
           </div>
           <div class="hd__groupe">
             <span class="hd__groupe-titre">Modules du domaine</span>
@@ -149,8 +149,8 @@
         <div class="hd__panneau" id="sous-menu-apropos">
           <div class="hd__groupe">
             <span class="hd__groupe-titre">Mon Chai</span>
-            <a href="index.html#mobile-apropos">Qui sommes-nous</a>
-            <a href="index.html#mobile-actualite">Actualité de Mon Chai</a>
+            <a href="./#mobile-apropos">Qui sommes-nous</a>
+            <a href="./#mobile-actualite">Actualité de Mon Chai</a>
             <a href="contact.html">Nous contacter</a>
           </div>
         </div>
@@ -187,8 +187,8 @@
   <!-- ============ LES ARTICLES DE LA CATÉGORIE ============ -->
   <section class="actus-grille" aria-label="Articles de la catégorie">
     <!-- FILE-ATTENTE : cartes de la catégorie, les nouvelles s'insèrent sous cette ligne (workflow publier-article.yml). Ne pas supprimer ce repère. -->
-    <article class="actu-fiche" data-categorie="cave-registres">
-      <a href="tracabilite-lots-vin.html" aria-hidden="true" tabindex="-1"><img class="actu-fiche__img" src="assets/img/pages/stocks-tracabilite.jpg" alt="" loading="lazy"></a>
+    <article class="actu-fiche actu-fiche--vignette-liee" data-categorie="cave-registres">
+      <img class="actu-fiche__img" src="assets/img/pages/stocks-tracabilite-carte.webp" alt="" loading="lazy" width="1000" height="667">
       <div class="actu-fiche__corps">
         <a class="actu-tag" href="actualites-cave-registres.html">Cave &amp; registres</a>
         <span class="actu-date">Publié le 21 septembre 2026</span>
@@ -197,8 +197,8 @@
         <a class="actu-fiche__lire" href="tracabilite-lots-vin.html">Lire l'article&nbsp;→</a>
       </div>
     </article>
-    <article class="actu-fiche" data-categorie="cave-registres">
-      <a href="registre-de-cave-vigneron.html" aria-hidden="true" tabindex="-1"><img class="actu-fiche__img" src="assets/img/pages/cave-vinification.jpg" alt="" loading="lazy"></a>
+    <article class="actu-fiche actu-fiche--vignette-liee" data-categorie="cave-registres">
+      <img class="actu-fiche__img" src="assets/img/pages/cave-vinification-carte.webp" alt="" loading="lazy" width="1000" height="563">
       <div class="actu-fiche__corps">
         <a class="actu-tag" href="actualites-cave-registres.html">Cave &amp; registres</a>
         <span class="actu-date">Publié le 14 septembre 2026</span>
@@ -236,7 +236,7 @@
       <p class="sources__titre">Sources officielles</p>
       <ul>
         <li><a href="https://eur-lex.europa.eu/legal-content/FR/TXT/?uri=CELEX%3A32018R0273" target="_blank" rel="noopener">Règlement délégué (UE) 2018/273</a> : registres et documents d'accompagnement dans le secteur vitivinicole.</li>
-        <li><a href="https://www.douane.gouv.fr/les-actualites/pour-les-professionnels/vins-et-alcools" target="_blank" rel="noopener">Douane, espace vins et alcools</a> : obligations déclaratives et téléservices.</li>
+        <li><a href="https://www.douane.gouv.fr/professionnels/alcools-boissons-alcooliques" target="_blank" rel="noopener">Douane, espace vins et alcools</a> : obligations déclaratives et téléservices.</li>
         <li><a href="https://www.inao.gouv.fr" target="_blank" rel="noopener">INAO</a> : cahiers des charges des appellations et pratiques autorisées.</li>
       </ul>
     </div>
@@ -260,7 +260,7 @@
 <!-- ============ PIED DE PAGE (composant partagé) ============ -->
 <footer class="mc-site-footer" aria-label="Informations légales">
   <div class="mc-site-footer__inner">
-    <div class="mc-site-footer__brand"><a class="mc-site-footer__name" href="index.html"><img src="assets/img/logo-mon-chai-400-20260720.webp" alt="Mon Chai" width="400" height="219" loading="lazy" decoding="async"></a><p>De la vigne à la vente.</p><a href="mailto:contact@monchai.fr">contact@monchai.fr</a><nav class="mc-site-footer__social" aria-label="Mon Chai"><a href="https://www.instagram.com/monchai.fr/" target="_blank" rel="noopener noreferrer">Instagram ↗</a><a href="https://www.linkedin.com/company/monchai" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a></nav></div>
+    <div class="mc-site-footer__brand"><a class="mc-site-footer__name" href="./"><img src="assets/img/logo-mon-chai-400-20260720.webp" alt="Mon Chai" width="400" height="219" loading="lazy" decoding="async"></a><p>De la vigne à la vente.</p><a href="mailto:contact@monchai.fr">contact@monchai.fr</a><nav class="mc-site-footer__social" aria-label="Mon Chai"><a href="https://www.instagram.com/monchai.fr/" target="_blank" rel="noopener noreferrer">Instagram ↗</a><a href="https://www.linkedin.com/company/monchai" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a></nav></div>
     <nav aria-label="Le logiciel"><h2>Le logiciel</h2><a href="fonctionnalites.html">Fonctionnalités</a><a href="tarifs.html">Tarifs</a><a href="monchainotes.html">Mon Chai Notes</a></nav>
     <nav aria-label="Ressources"><h2>Ressources</h2><a href="ressources.html">Guides pratiques</a><a href="aides-vignerons.html">Subventions et aides viticoles</a><a href="faq.html">Questions fréquentes</a><a href="contact.html">Nous contacter</a></nav>
     <nav class="mc-site-footer__privacy" aria-label="Confidentialité & données"><h2>Confidentialité & données</h2><a href="politique-confidentialite.html">Consulter la politique de confidentialité</a><a href="politique-confidentialite.html#traitements">Traitement des données</a><a href="politique-confidentialite.html#vos-droits">Vos droits</a><button type="button" data-cookies>Gérer mes cookies</button></nav>

@@ -34,7 +34,8 @@ def rendre(root, page, source):
         code = 'zh' if code == 'zh-Hans' else code
         dossier = root if code == 'fr' else root / code
         nom = page.name if (dossier / page.name).exists() else 'index.html'
-        cible = prefixe + ('' if code == 'fr' else code + '/') + nom
+        repertoire = prefixe + ('' if code == 'fr' else code + '/')
+        cible = (repertoire or './') if nom == 'index.html' else repertoire + nom
         tag = re.sub(r'href="[^"]*"', f'href="{cible}"', tag)
         if code == langue:
             tag = tag[:-1] + ' aria-current="page">'
@@ -43,7 +44,8 @@ def rendre(root, page, source):
     def courant(m):
         tag = m[0]
         href = re.search(r'href="([^"]*)"', tag)
-        if href and href[1] == page.name and 'lang=' not in tag:
+        accueil = './' if page.name == 'index.html' else page.name
+        if href and href[1] == accueil and 'lang=' not in tag:
             tag = tag[:-1] + ' aria-current="page">'
         return tag
     return re.sub(r'<a\b[^>]*>', courant, template).strip()

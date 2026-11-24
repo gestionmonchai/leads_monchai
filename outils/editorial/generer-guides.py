@@ -54,7 +54,7 @@ def update_meta(source, title, description, slug, new=False, breadcrumb=None):
                         mainEntityOfPage=ORIGIN + slug, image=ORIGIN + 'assets/img/pages/vigne-vendanges.jpg')
             if new:
                 data['datePublished'] = DATE
-            data['author'] = {'@type': 'Organization', 'name': 'Mon Chai', 'url': ORIGIN + 'index.html#apropos'}
+            data['author'] = {'@type': 'Organization', 'name': 'Mon Chai', 'url': ORIGIN + './#apropos'}
         elif data.get('@type') == 'BreadcrumbList':
             if breadcrumb is not None:
                 data['itemListElement'] = [{'@type': 'ListItem', 'position': i + 1, 'name': name, 'item': ORIGIN + url}
@@ -85,8 +85,8 @@ for entry in entries:
     if not any(s['url'] == VENDANGES for s in sources):
         sources.append({'url': VENDANGES, 'label': 'Douane : circuits, échéances et accès VENDANGES'})
     links = ''.join(f'<li><a href="{esc(s["url"])}">{esc(s["label"])}</a></li>' for s in sources)
-    body = f'''<p class="article__ariane"><a href="index.html">Accueil</a> › <a href="actualites-douane-declarations.html">Douane &amp; déclarations</a> › <a href="declaration-recolte-2026.html">Guide Récolte 2026</a> › {esc(p['territoire'])}</p>
-<div class="article__meta"><a class="actu-tag" href="actualites-douane-declarations.html">Douane &amp; déclarations</a><span class="actu-date">Par <a href="index.html#apropos">Mon Chai</a> · Publié le 29 octobre 2026 · Références relues le 29 octobre 2026</span></div>
+    body = f'''<p class="article__ariane"><a href="./">Accueil</a> › <a href="actualites-douane-declarations.html">Douane &amp; déclarations</a> › <a href="declaration-recolte-2026.html">Guide Récolte 2026</a> › {esc(p['territoire'])}</p>
+<div class="article__meta"><a class="actu-tag" href="actualites-douane-declarations.html">Douane &amp; déclarations</a><span class="actu-date">Par <a href="./#apropos">Mon Chai</a> · Publié le 29 octobre 2026 · Références relues le 29 octobre 2026</span></div>
 <h1>Déclaration de récolte 2026 : {esc(p['territoire'])}</h1>
 <p class="article__chapo">Votre repère pour identifier le circuit de récolte et les démarches à distinguer avec {esc(p['organisme'])}. La fiche sépare les informations confirmées des consignes à demander dans votre espace professionnel.</p>
 <aside class="reg-fiche-repere" aria-label="Circuit et niveau de vérification"><p><strong>Circuit :</strong> {esc(p['circuit'])}</p><p><strong>Calendrier :</strong> {esc(p['calendrier'])}</p><p><strong>Niveau de vérification :</strong> {esc(entry['source_label'])}. {esc(entry['source_detail'])}</p></aside>

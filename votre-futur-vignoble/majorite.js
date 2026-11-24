@@ -23,6 +23,8 @@ if (typeof verification?.showModal === 'function') {
       document.getElementById('contenu').focus({preventScroll: true});
     });
 
+    sortie.addEventListener('click', () => window.location.assign('/'));
+
     verification.addEventListener('cancel', (event) => {
       event.preventDefault();
       sortie.click();

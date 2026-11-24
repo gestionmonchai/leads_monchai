@@ -379,7 +379,7 @@ html:has(.verification-age[open]) { overflow: hidden; }
 
 .age-actions { display: grid; gap: 0.65rem; margin-top: 1.75rem; }
 .age-actions .bouton { cursor: pointer; }
-.age-actions .bouton-sortie { border-color: var(--ligne); }
+.age-actions .bouton-sortie { border-color: var(--ligne); background: transparent; color: inherit; }
 .age-actions .bouton-sortie:hover { border-color: var(--prune); }
 
 @media (max-width: 580px) {

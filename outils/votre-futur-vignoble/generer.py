@@ -129,7 +129,7 @@ def page(titre, description, canonical, contenu, donnees, image, accueil=False):
       <h2 id="titre-majorite" tabindex="-1" autofocus>Avez-vous<br><em>18&nbsp;ans ou plus&nbsp;?</em></h2>
       <div class="age-actions">
         <button class="bouton bouton-sombre" type="button" data-confirmer-age>Oui, j’ai 18 ans ou plus</button>
-        <a class="bouton bouton-sortie" href="/" data-quitter-vitrine>Non, quitter la vitrine</a>
+        <button class="bouton bouton-sortie" type="button" data-quitter-vitrine>Non, quitter la vitrine</button>
       </div>
     </div>
   </dialog>

@@ -9,8 +9,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 
-<title>Comment choisir son logiciel viticole : le guide à télécharger</title>
-<meta name="description" content="Une méthode concrète pour comparer les logiciels viticoles : données, sécurité, réglementation, coût, contrat, support et essai. Guide PDF gratuit de 17 pages.">
+<title>Choisir un logiciel viticole : 8 critères et un essai en cave</title>
+<meta name="description" content="Comparez les logiciels de gestion viticole et testez le suivi d’un lot, de la cuve à la vente. Huit critères, un exercice chiffré et un guide PDF gratuit.">
 <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
 <link rel="canonical" href="https://monchai.fr/choisir-logiciel-viticole.html">
 <link rel="alternate" hreflang="fr" href="https://monchai.fr/choisir-logiciel-viticole.html">
@@ -22,8 +22,8 @@
 
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://monchai.fr/choisir-logiciel-viticole.html">
-<meta property="og:title" content="Comment choisir son logiciel viticole : le guide à télécharger">
-<meta property="og:description" content="Les questions à poser à tout éditeur avant de lui confier les données de votre domaine, et les réponses qui doivent alerter. Guide de 17 pages, gratuit.">
+<meta property="og:title" content="Choisir un logiciel viticole : 8 critères et un essai en cave">
+<meta property="og:description" content="Comparez les logiciels de gestion viticole et testez le suivi d’un lot, de la cuve à la vente. Huit critères, un exercice chiffré et un guide PDF gratuit.">
 <meta property="og:image" content="https://monchai.fr/assets/img/vignes_2.jpg">
 <meta property="og:locale" content="fr_FR">
 <meta property="og:site_name" content="Mon Chai">
@@ -36,10 +36,10 @@
   "@context": "https://schema.org",
   "@type": "Article",
   "headline": "Comment choisir son logiciel viticole",
-  "description": "Une méthode concrète pour comparer les logiciels viticoles : données, sécurité, réglementation, coût, contrat, support et essai.",
+  "description": "Comparez les logiciels de gestion viticole et testez le suivi d’un lot, de la cuve à la vente. Huit critères, un exercice chiffré et un guide PDF gratuit.",
   "inLanguage": "fr",
   "datePublished": "2026-09-02",
-  "dateModified": "2026-09-02",
+  "dateModified": "2026-11-25",
   "image": "https://monchai.fr/assets/img/vignes_2.jpg",
   "mainEntityOfPage": "https://monchai.fr/choisir-logiciel-viticole.html",
   "author": { "@type": "Organization", "name": "Mon Chai", "url": "https://monchai.fr/" },
@@ -170,6 +170,32 @@
   width:7px; height:7px; border-radius:50%;
   background:var(--ac-cuivre);
 }
+
+/* Exercice du lot et lien vers la visite. */
+.guide-essai {
+  margin: 35px 0 42px;
+  padding: clamp(16px, 4vw, 30px);
+  border: 1px solid var(--ac-ligne, #e2d5cc);
+  border-radius: 16px;
+  background: #fbf7f1;
+  scroll-margin-top: 100px;
+}
+.article .guide-essai h2 { margin-top: 0; }
+.guide-essai__etapes { margin-bottom: 24px; }
+.guide-essai__etapes .guide-essai__controle { margin-top: 7px; }
+.guide-essai__controle strong { display: inline-block; margin-right: 0.35em; }
+.guide-essai__capture { margin: 0 0 22px; }
+.guide-essai__capture img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 1px solid var(--ac-ligne, #e2d5cc);
+  border-radius: 10px;
+}
+.guide-essai__capture figcaption { margin-top: 8px; color: var(--ac-gris); font-size: 0.875rem; }
+.guide-essai__actions { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 17px; }
+.article .guide-essai__actions .guide-dl__btn { white-space: normal; text-align: center; }
+.guide-essai a:focus-visible { outline: 2px solid var(--ac-lie); outline-offset: 4px; }
 </style>
 <link rel="stylesheet" href="assets/css/footer-commun.css?v=20261028-footer">
 
@@ -287,12 +313,13 @@
 
   <div class="article__meta">
     <span class="actu-tag">Guide</span>
-    <span class="actu-date">Édition du 2 septembre 2026 · 17 pages</span>
+    <span class="actu-date">Guide PDF du 2 septembre 2026 · Page mise à jour le <time datetime="2026-11-25">25 novembre 2026</time></span>
   </div>
 
   <h1>Comment choisir son logiciel viticole</h1>
 
-  <p class="article__chapo">Choisir un logiciel de gestion revient à organiser une partie du travail et des données du domaine pour plusieurs années. Ce guide fournit une trame commune pour préparer les rendez-vous, comparer les offres et conduire un essai sur des situations réelles.</p>
+  <p class="article__chapo">Pour choisir un logiciel viticole, demandez à chaque éditeur de refaire la même opération de votre domaine. Comparez le résultat, les fichiers que vous pouvez récupérer, le coût sur trois ans et les conditions de reprise de vos données.</p>
+  <p><a href="#essai-lot">Voir l’exercice de traçabilité en trois étapes</a></p>
 
   <div class="guide-dl">
     <span class="guide-dl__doc" aria-hidden="true">PDF</span>
@@ -343,6 +370,36 @@
     </li>
   </ol>
 
+  <section class="guide-essai" id="essai-lot" aria-labelledby="titre-essai-lot">
+    <h2 id="titre-essai-lot">Tester un logiciel viticole sur un lot, de la cuve à la vente</h2>
+    <p class="guide-essai__intro">Prenez le même cas pour chaque éditeur. Dans cet exercice fictif, vous partez de <strong>300 L</strong> de vin en cuve, vous mettez <strong>392 bouteilles de 75 cl</strong> en stock, puis vous en expédiez <strong>24</strong>.</p>
+    <ol class="guide-points guide-essai__etapes">
+      <li>
+        <h3>Retrouver le vin en cuve</h3>
+        <p>Préparez une fiche de cuvée, une cuve et le numéro du lot de vin en vrac. Demandez à retrouver le millésime, le volume et l’historique du lot depuis l’écran utilisé au chai.</p>
+        <p class="guide-essai__controle"><strong>À vérifier</strong> Le lot, le contenant et les 300 L sont identifiables dans l’historique.</p>
+      </li>
+      <li>
+        <h3>Enregistrer la mise</h3>
+        <p>Déclarez 392 bouteilles de 75 cl, soit 294 L. Demandez comment les 6 L d’écart sont expliqués dans l’opération, par exemple un reste en cuve ou une perte enregistrée.</p>
+        <p class="guide-essai__controle"><strong>À vérifier</strong> Le numéro de lot bouteille permet de retrouver la mise et le lot de vin d’origine.</p>
+      </li>
+      <li>
+        <h3>Suivre la sortie des 24 bouteilles</h3>
+        <p>Préparez une commande test, enregistrez la sortie et revenez à l’écran des stocks. Demandez un export qui permet de relire le mouvement sans ouvrir le logiciel.</p>
+        <p class="guide-essai__controle"><strong>À vérifier</strong> Il reste 368 bouteilles après la sortie si aucun autre mouvement n’a été saisi. Le mouvement reste rattaché au bon lot.</p>
+      </li>
+    </ol>
+    <figure class="guide-essai__capture">
+      <img src="assets/img/captures/st-v3-lots.webp" width="1440" height="900" loading="lazy" decoding="async" alt="Écran Lots commerciaux dans Mon Chai. Le tableau affiche pour chaque lot la cuvée, le format, la date de mise et le stock.">
+      <figcaption>Dans Mon Chai, la liste des lots commerciaux indique le format, la date de mise et le stock. Capture du domaine de démonstration.</figcaption>
+    </figure>
+    <div class="guide-essai__actions">
+      <a class="guide-dl__btn" href="visite-interactive/#lieu-chai" data-evenement-guide="guide_logiciel_visite">Voir le chai dans la visite guidée</a>
+      <a href="stocks-tracabilite.html">Consulter le module Stocks et traçabilité</a>
+    </div>
+  </section>
+
   <h2>Trois vérifications à intégrer au rendez-vous</h2>
 
   <p>Ces questions permettent d'obtenir des éléments faciles à reporter dans la grille et à confirmer par écrit.</p>
@@ -391,7 +448,7 @@
     <p>Envoyez-nous la liste de questions ou <a href="https://tester.monchai.fr">testez l'export à partir d'un compte d'essai</a>.</p>
     <div class="article-cta__actions">
       <a class="article-cta__btn" href="contact.html">Nous écrire</a>
-      <a class="article-cta__btn article-cta__btn--contour" href="https://calendar.app.google/bJGuZudhQ7q9ka3T9" target="_blank" rel="noopener">Réserver une démonstration</a>
+      <a class="article-cta__btn article-cta__btn--contour" href="https://calendar.app.google/bJGuZudhQ7q9ka3T9" target="_blank" rel="noopener" data-evenement-guide="guide_logiciel_demo">Réserver une démonstration</a>
       <a class="article-cta__lien" href="https://tester.monchai.fr">Essayer sur mes données</a>
     </div>
   </div>
@@ -422,5 +479,6 @@
 <script src="consent.js?v=20261124-gtm"></script>
 <script src="assets/js/cta-popup.js?v=20261124-vinitech-visuel" defer></script>
 <script src="assets/js/documents-legaux.js?v=20261028-footer" defer></script>
+<script src="assets/js/mesure-guide-logiciel.js" defer></script>
 </body>
 </html>

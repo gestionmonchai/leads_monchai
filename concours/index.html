@@ -4,11 +4,14 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="robots" content="noindex, nofollow">
-  <meta name="description" content="Le chai des surprises : la démo du jeu concours Mon Chai pour Vinitech. Retrouvez les paires et découvrez votre surprise.">
-  <title>Mon Chai Concours · Le chai des surprises</title>
+  <meta name="description" content="Le geste juste : un défi de taille de vigne Mon Chai. Observez les yeux, placez le sécateur et préparez trois ceps en Guyot simple.">
+  <title>Mon Chai Concours · Le geste juste</title>
   <link rel="icon" href="../assets/img/favicon-mon-chai-96.png">
-  <link rel="stylesheet" href="concours.css">
-  <script src="concours.js" defer></script>
+  <link rel="stylesheet" href="concours.css?v=taille2">
+  <link rel="stylesheet" href="taille.css?v=taille2">
+  <script src="taille-moteur.js?v=taille2" defer></script>
+  <script src="taille-scene.js?v=taille2" defer></script>
+  <script src="taille-jeu.js?v=taille2" defer></script>
 </head>
 <body>
 <svg class="svg-library" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><defs>
@@ -26,21 +29,15 @@
   <button class="text-button" data-dialog="help-dialog">Comment jouer ?</button>
 </header>
 <main id="main">
-  <div class="breadcrumb">MON CHAI CONCOURS <span>/</span> LE CHAI DES SURPRISES</div>
+  <div class="breadcrumb">MON CHAI CONCOURS <span>/</span> LE GESTE JUSTE</div>
   <ol class="steps" aria-label="Votre parcours"><li aria-current="step"><span>1</span> Je m’inscris</li><li><span>2</span> Je joue</li><li><span>3</span> Ma surprise</li></ol>
   <section id="registration" class="intro">
     <div class="story">
-      <p class="eyebrow"><span class="little-line"></span> UNE PAUSE LUDIQUE SUR LE SALON</p>
-      <h1>Un peu de mémoire.<br>Un joli <em>lot à la clé.</em></h1>
-      <p class="lead">Bienvenue dans le chai des surprises !<br>Retrouvez les 4 paires cachées en 30 secondes.<br>La prochaine belle découverte, c’est peut-être la vôtre.</p>
-      <div class="illustration" aria-hidden="true">
-        <span class="orbit orbit-one"></span><span class="orbit orbit-two"></span>
-        <div class="illustrated-card card-left"><svg><use href="#grape"/></svg><span>LA VIGNE</span></div>
-        <div class="illustrated-card card-middle"><svg><use href="#barrel"/></svg><span>LE CHAI</span></div>
-        <div class="illustrated-card card-right"><svg><use href="#gift"/></svg><span>LA SURPRISE</span></div>
-        <span class="illustration-note">À vous de faire la paire !</span><svg class="floating-spark"><use href="#spark"/></svg>
-      </div>
-      <div class="quick-facts"><span>✦ 30 secondes de jeu</span><span>✦ Aucune expertise requise</span><span>✦ 100 % bonne humeur</span></div>
+      <p class="eyebrow"><span class="little-line"></span> LE DÉFI VIGNERON · VINITECH</p>
+      <h1>L’œil du vigneron.<br>La précision <em>du geste.</em></h1>
+      <p class="lead">Trois ceps. Un sécateur. À vous de tailler.<br>Observez les bourgeons, choisissez votre point de coupe et préparez la prochaine saison.</p>
+      <div class="botanical-intro"><img src="assets/cep-bevhive.png" width="1024" height="1536" alt="Illustration botanique d’un jeune plant de vigne, issue des visuels BevHive"><div><span class="tiny-label">LE GESTE JUSTE</span><p>Du bois à conserver.<br>Des yeux à compter.<br>Chaque coupe compte.</p><small>Un défi de précision en Guyot simple.</small></div></div>
+      <div class="quick-facts"><span>✦ 3 ceps à préparer</span><span>✦ Coupes au millimètre</span><span>✦ À votre rythme</span></div>
     </div>
     <div class="form-card">
       <div class="card-heading"><span class="tiny-label">ON FAIT CONNAISSANCE ?</span><span class="round-icon"><svg><use href="#grape"/></svg></span></div>
@@ -54,7 +51,7 @@
           <label for="estate">Domaine / entreprise <small>facultatif</small></label><input id="estate" name="estate" autocomplete="organization" maxlength="120" placeholder="Le nom de votre domaine">
           <label class="check"><input id="demo-consent" type="checkbox" required><span>J’ai compris qu’il s’agit d’une démo, sans inscription ni gain réel. <span aria-hidden="true">*</span></span></label>
           <label class="check optional"><input id="news" type="checkbox"><span>Je souhaite recevoir les nouvelles de Mon Chai.<small>Option illustrative, aucun abonnement effectué.</small></span></label>
-          <button class="primary" type="submit">Entrer dans le chai <svg><use href="#spark"/></svg></button>
+          <button class="primary" type="submit">Prendre le sécateur <svg><use href="#spark"/></svg></button>
         </fieldset>
       </form>
       <p class="privacy-note">* Champs obligatoires. Vos infos restent dans cette page, le temps de l’essai. Aucun envoi, aucun enregistrement.</p>
@@ -62,24 +59,42 @@
     </div>
   </section>
   <section id="ready" class="play-panel" hidden aria-labelledby="ready-title">
-    <span class="section-icon"><svg><use href="#barrel"/></svg></span><p class="eyebrow">LE CHAI DES SURPRISES</p>
+    <span class="section-icon">✂</span><p class="eyebrow">LE GESTE JUSTE</p>
     <h2 id="ready-title" tabindex="-1">À vous de jouer, <span id="player-name"></span> !</h2>
-    <p>Retournez deux cartes. Si elles sont identiques, la paire est à vous.<br>Retrouvez les <strong>4 paires</strong> avant la fin des <strong>30 secondes</strong>.</p>
-    <div class="ready-icons" aria-hidden="true"><svg><use href="#grape"/></svg><svg><use href="#barrel"/></svg><svg><use href="#leaf"/></svg><svg><use href="#bottle"/></svg></div>
-    <label class="check untimed"><input id="untimed" type="checkbox"><span>Jouer sans chronomètre, à mon rythme</span></label>
-    <button id="start" class="primary">C’est parti !</button><button class="text-button back-registration">Modifier mes infos</button>
-    <p class="small-note">Le score sert à s’amuser. Dans cette démo, vous pouvez toujours découvrir la surprise.</p>
+    <p>Les ceps sont prétaillés : l’ancienne baguette a déjà été retirée. Préparez une <strong>baguette à fruit</strong>, un <strong>courson à 2 yeux</strong> et supprimez les deux sarments superflus.</p>
+    <div class="ready-instructions"><p><b>Observez</b> les yeux francs, les nœuds et le vieux bois.</p><p><b>Placez</b> votre coupe sur le sarment, puis ajustez avec la loupe et le réglage fin.</p><p><b>Coupez</b>, contrôlez les yeux conservés et validez chaque cep.</p></div>
+    <label class="check untimed"><input id="timed" type="checkbox"><span>Activer le défi chronométré : 3 minutes pour les 3 ceps</span></label>
+    <button id="start" class="primary">Commencer la taille</button><button class="text-button back-registration">Modifier mes infos</button>
+    <p class="small-note">Scénarios simplifiés de Guyot simple. Les charges en yeux et marges du jeu sont des objectifs d’exercice, à adapter au vignoble réel. <a href="https://www.vignevin-occitanie.com/la-taille-longue-de-la-vigne-en-guyot/" target="_blank" rel="noopener">Repères techniques IFV</a>.</p>
   </section>
-  <section id="game" class="play-panel" hidden aria-labelledby="game-title">
-    <div class="game-top"><div><p class="eyebrow">À VOUS DE FAIRE LA PAIRE</p><h2 id="game-title" tabindex="-1">La mémoire du chai.</h2></div><div class="timer" role="timer" aria-label="Temps restant"><span id="time">30</span><small id="time-unit">secondes</small></div></div>
-    <div class="game-progress"><span><strong id="pairs">0</strong> / 4 paires retrouvées</span><button id="pause" class="text-button">Mettre en pause</button></div>
-    <div id="board" class="board" aria-label="Huit cartes à associer"></div>
-    <div id="pause-panel" hidden><p>Le chai vous attend. Reprenez quand vous êtes prêt.</p><button id="resume" class="primary">Reprendre la partie</button></div>
-    <p id="game-status" class="game-status" role="status">Choisissez deux cartes pour commencer.</p>
+  <section id="game" class="pruning-game" hidden aria-labelledby="game-title">
+    <div class="pruning-header"><div><p class="eyebrow">LE GESTE JUSTE <span id="vine-number">CEP 1 / 3</span></p><h2 id="game-title" tabindex="-1">Trouvez votre point de coupe.</h2></div><div class="game-tools"><span id="time" role="timer" aria-label="Temps restant">À votre rythme</span><button id="pause" class="tool-button">Pause</button><button id="leave-game" class="tool-button">Quitter</button></div></div>
+    <div class="pruning-workspace" id="workspace">
+      <div class="scene-column"><div class="scene-toolbar"><span>GUYOT SIMPLE · REPOS HIVERNAL</span><div><button id="zoom-out" class="zoom-button" aria-label="Dézoomer">−</button><output id="zoom-value">100 %</output><button id="zoom-in" class="zoom-button" aria-label="Zoomer">+</button><button id="reset-view" class="tool-button">Recentrer</button></div></div>
+        <div id="vine-scene" class="vine-scene"><svg id="vine-svg" viewBox="0 0 900 720" role="img" aria-label="Cep en hiver : tronc, sarments et yeux francs. Sélectionnez un point de coupe sur le bois d’un an."></svg><div class="scene-caption"><span>✂</span><p>Touchez un sarment pour placer le sécateur.<br><small>Puis affinez la coupe avant de la confirmer.</small></p></div><span class="scene-season">NOVEMBRE<br><b>LE TEMPS DE LA TAILLE</b></span></div>
+        <div class="wood-legend"><span><i class="legend-old"></i>Bois permanent</span><span><i class="legend-cane"></i>Sarment d’un an</span><span><i class="legend-bud"></i>Œil franc</span><label><input id="show-labels" type="checkbox" checked>Repères</label></div>
+      </div>
+      <aside class="cut-panel" aria-label="Objectifs et précision de coupe">
+        <div class="mission"><p class="tiny-label">VOTRE OBJECTIF</p><h3 id="mission-title">Préparer le prochain millésime.</h3><p id="mission-summary"></p><div id="mission-list"></div></div>
+        <div id="cut-empty" class="cut-empty"><span>✂</span><p>Sélectionnez un point sur un sarment.</p><small>Vous pouvez aussi choisir son repère ci-dessous.</small></div>
+        <div class="branch-buttons" id="branch-buttons" aria-label="Choisir un sarment"></div>
+        <div id="cut-details" hidden>
+          <div class="cut-selection"><span id="selected-label"></span><span id="cut-length"></span></div>
+          <svg id="cut-loupe" viewBox="0 0 300 140" role="img" aria-label="Loupe du point de coupe"></svg>
+          <div class="cut-metrics"><div><strong id="eyes-left">0</strong><span>yeux conservés</span></div><div><strong id="bud-margin">0 mm</strong><span id="margin-label">au-dessus du dernier œil</span></div></div>
+          <label for="cut-position">Position depuis le départ du sarment</label><input id="cut-position" type="range" min="1" max="1000" step="1" value="200"><div class="fine-adjust"><button id="cut-less" class="tool-button">− 1 mm</button><output id="cut-position-value">0 mm</output><button id="cut-more" class="tool-button">+ 1 mm</button></div>
+          <p id="cut-advice" class="cut-advice"></p><button id="confirm-cut" class="primary">Couper ici</button>
+        </div>
+        <p id="game-status" class="cut-feedback" role="status">Observez le cep avant votre première coupe.</p>
+        <div class="pruning-actions"><button id="undo" class="text-button" disabled>Annuler la dernière coupe</button><button id="validate-vine" class="primary">Valider ce cep</button></div>
+      </aside>
+    </div>
+    <div id="vine-review" class="vine-review" hidden><p class="eyebrow">BILAN DU CEP</p><h3 id="review-title" tabindex="-1"></h3><div id="review-lines"></div><button id="next-vine" class="primary">Passer au cep suivant</button></div>
+    <div id="pause-panel" class="pause-screen" hidden><span>✂</span><h3>Le vignoble vous attend.</h3><p>Votre partie et votre chronomètre sont en pause.</p><button id="resume" class="primary">Reprendre la taille</button></div>
   </section>
   <section id="result" class="play-panel result-panel" hidden aria-labelledby="result-title">
-    <div class="result-spark" aria-hidden="true"><svg><use href="#spark"/></svg></div><p class="eyebrow">BIEN JOUÉ !</p><h2 id="result-title" tabindex="-1">Une jolie pause dans le chai.</h2>
-    <p id="result-summary"></p><div class="score-badge"><span id="result-pairs">4 / 4</span> paires retrouvées</div>
+    <div class="result-spark" aria-hidden="true"><svg><use href="#spark"/></svg></div><p class="eyebrow">VOTRE TAILLE EST TERMINÉE</p><h2 id="result-title" tabindex="-1">Le geste juste.</h2>
+    <p id="result-summary"></p><div class="score-badge"><span id="result-score">0 / 300</span> points</div><div id="final-breakdown"></div>
     <div id="surprise-closed"><p>Et si on découvrait la surprise ?</p><button id="reveal" class="primary">Ouvrir ma surprise <svg><use href="#gift"/></svg></button></div>
     <div id="surprise-open" class="surprise" hidden><svg><use href="#gift"/></svg><p class="tiny-label">EXEMPLE DE LOT</p><h3>Un tote bag Mon Chai</h3><p>Un petit compagnon pour vos grandes découvertes.</p><strong>Démonstration uniquement : aucun lot attribué.</strong></div>
     <div class="result-actions"><button id="replay" class="text-button">Rejouer</button><button id="restart" class="text-button">Revenir au formulaire</button></div>
@@ -88,7 +103,8 @@
   <section class="prizes" aria-labelledby="prizes-title"><div><p class="eyebrow">UN AVANT-GOÛT</p><h2 id="prizes-title">Des surprises à imaginer.</h2><p>Exemples de lots pour la future opération.</p></div><div class="prize-item"><svg><use href="#gift"/></svg><span>Le tote bag<br><strong>Mon Chai</strong></span></div><div class="prize-item"><svg><use href="#bottle"/></svg><span>L’accessoire<br><strong>du vigneron</strong></span></div><div class="prize-item"><svg><use href="#spark"/></svg><span>Le coffret<br><strong>surprise</strong></span></div></section>
   <div class="salon-note"><span>De la vigne à la vente, <strong>gardez le plaisir du métier.</strong></span><a href="../">Découvrir Mon Chai</a></div>
 </main>
-<footer><span>© Mon Chai · Le chai des surprises</span><div><button class="text-button" data-dialog="demo-dialog">À propos de cette démo</button><a href="../politique-confidentialite.html">Confidentialité</a><a href="qr-concours.svg" download="qr-monchai-concours.svg">QR code de la démo</a></div></footer>
-<dialog id="help-dialog"><button class="close" aria-label="Fermer l’aide">×</button><p class="eyebrow">COMMENT JOUER ?</p><h2>Quatre paires, une surprise.</h2><ol><li>Remplissez prénom, nom et e-mail, ou cliquez sur « Essayer avec un profil fictif ».</li><li>Cliquez sur « Entrer dans le chai », puis sur « C’est parti ! ». Vous pouvez choisir de jouer sans chronomètre.</li><li>Touchez deux cartes pour les retourner. Deux symboles identiques forment une paire.</li><li>Découvrez votre score, puis cliquez sur « Ouvrir ma surprise ». Le lot est fictif.</li></ol><p>Vous pouvez mettre la partie en pause, rejouer ou revenir au formulaire. Au clavier : Tab pour choisir une carte, Entrée ou Espace pour la retourner.</p><button class="primary close-dialog">J’ai compris</button></dialog>
+<footer><span>© Mon Chai · Le geste juste</span><div><button class="text-button" data-dialog="demo-dialog">À propos de cette démo</button><a href="../politique-confidentialite.html">Confidentialité</a><a href="qr-concours.svg" download="qr-monchai-concours.svg">QR code de la démo</a></div></footer>
+<dialog id="help-dialog"><button class="close" aria-label="Fermer l’aide">×</button><p class="eyebrow">COMMENT JOUER ?</p><h2>Observez. Ajustez. Coupez.</h2><ol><li>Renseignez vos coordonnées ou utilisez le profil fictif, puis cliquez sur « Prendre le sécateur » et « Commencer la taille ».</li><li>Lisez les objectifs du cep : le repère A est le courson, B la baguette ; C et D sont superflus. Touchez le sarment à l’endroit voulu, ou choisissez un repère A/B/C/D.</li><li>La loupe montre le bourgeon et la coupe. Déplacez le réglage ou utilisez « − 1 mm » et « + 1 mm ». Le compteur indique les yeux conservés.</li><li>Cliquez sur « Couper ici ». La partie retirée disparaît. « Annuler la dernière coupe » restaure le bois.</li><li>Après vos coupes, cliquez sur « Valider ce cep » pour le bilan, puis passez au suivant. Après 3 ceps, découvrez le score et la surprise fictive.</li></ol><p>Zoomer, dézoomer et recentrer permettent de viser précisément ; en zoom, faites glisser le fond pour déplacer la vue. Sur mobile, la coupe reste à confirmer dans le panneau sous le cep. Au clavier, utilisez les repères et le curseur de position (flèches), puis « Couper ici ». Pause ou changement d’onglet arrêtent le chronomètre facultatif.</p><p>Le vieux bois est protégé. Les longueurs, tolérances et charges sont celles de l’exercice, pas une prescription de taille pour votre domaine. <a href="https://www.vignevin-occitanie.com/la-taille-longue-de-la-vigne-en-guyot/" target="_blank" rel="noopener">Référence IFV : taille en Guyot</a>.</p><button class="primary close-dialog">J’ai compris</button></dialog>
 <dialog id="demo-dialog"><button class="close" aria-label="Fermer les informations">×</button><p class="eyebrow">VERSION DE DÉMONSTRATION</p><h2>On teste l’idée ensemble.</h2><p>Cette page présente un parcours possible pour le jeu concours Mon Chai à Vinitech. Les lots sont des exemples. Aucune inscription, attribution de lot, prise de contact ou souscription à une newsletter n’a lieu.</p><p>Les coordonnées restent uniquement en mémoire dans cet onglet. Elles ne sont ni envoyées ni enregistrées. Fermer ou recharger la page les efface.</p><p>Le QR code mène à cette démo. Les modalités de la véritable opération seront définies avant son lancement.</p><button class="primary close-dialog">Fermer</button></dialog>
+<dialog id="exit-dialog"><h2>Quitter cette partie ?</h2><p>Le score de la partie en cours sera effacé. Vous pourrez recommencer avec les mêmes coordonnées.</p><button id="exit-cancel" class="primary">Garder ma partie en pause</button><button id="exit-confirm" class="text-button">Revenir au formulaire</button></dialog>
 </body></html>

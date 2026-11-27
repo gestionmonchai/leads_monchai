@@ -1,0 +1,10 @@
+{
+  "asset": "cep-organique-v1.png",
+  "origin": "Original AI-generated botanical illustration with photographic style",
+  "tool": "Built-in image_gen.imagegen",
+  "generated_on": "2026-11-05",
+  "transparent_background": true,
+  "third_party_assets": [],
+  "purpose": "Source for the organic grapevine silhouette, texture and image-sampled particle targets; not a botanical or varietal reference.",
+  "prompt": "Use case: photorealistic-natural. Asset type: transparent botanical source asset for a premium French wine-tech website, to be sampled into an organic particle cloud. Create a remarkably lifelike isolated complete young grafted grapevine, with exposed bare roots, a naturally crooked woody rootstock, a small irregular graft union, and a living scion above it with five to seven delicate recognisable grape vine leaves of varying sizes. Real nursery plant, NOT a mature tree. Slender, asymmetrical and naturally grown, with subtle S-shaped woody trunk, finely cracked brown bark, branching roots with many wispy root hairs, gently curved green shoots, small tendrils. Broad palmate deeply lobed serrated grape leaves with highly detailed translucent veins, irregular natural angles, some in three-quarter view, a few slightly curled, never geometric or identical. Composition: whole plant upright portrait, full roots to top leaf visible with 8% clear margin, root system bottom 30%, woody rootstock middle 30%, airy irregular foliage upper 40%. Plenty of negative space between leaves and roots. Photorealistic museum-quality macro botanical specimen photograph, refined natural soft side lighting, warm bark highlights, rich sage and fresh olive green leaves, realistic depth and material texture. Truly transparent background with alpha, absolutely no soil, pot, hands, text, labels, graphics, watermark, ground plane, drop shadow, grid or checkerboard. No symmetrical branches, no bonsai shape, no conifer, no grape bunches, no plastic, no flat vector illustration, no low-poly forms. Target portrait around 1024x1536."
+}

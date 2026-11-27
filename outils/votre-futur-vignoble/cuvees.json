@@ -26,7 +26,11 @@
     "elevage": "12 mois, dont 30 % de l’assemblage en fûts de 500 litres et le reste en béton.",
     "garde": "À boire de 2026 à 2031",
     "sucres_g_l": 1.7,
-    "allergenes": "Contient des sulfites"
+    "allergenes": "Contient des sulfites",
+    "lot": "EDS23-2409",
+    "stock_caveau": 236,
+    "unites_carton": 6,
+    "poids_brut_g": 1260
   },
   {
     "slug": "de-bonne-heure",
@@ -54,7 +58,11 @@
     "elevage": "5 mois sur lies fines en cuve inox.",
     "garde": "À boire de 2025 à 2028",
     "sucres_g_l": 1.4,
-    "allergenes": "Contient des sulfites"
+    "allergenes": "Contient des sulfites",
+    "lot": "DBH24-2503",
+    "stock_caveau": 412,
+    "unites_carton": 6,
+    "poids_brut_g": 1180
   },
   {
     "slug": "a-fleur-de-roche",
@@ -82,7 +90,11 @@
     "elevage": "4 mois en cuve inox avant la mise en bouteille.",
     "garde": "À boire de 2026 à 2027",
     "sucres_g_l": 1.9,
-    "allergenes": "Contient des sulfites"
+    "allergenes": "Contient des sulfites",
+    "lot": "AFR25-2602",
+    "stock_caveau": 183,
+    "unites_carton": 6,
+    "poids_brut_g": 1160
   },
   {
     "slug": "la-pente-douce",
@@ -110,7 +122,11 @@
     "elevage": "8 mois en cuves de béton, puis assemblage.",
     "garde": "À boire de 2025 à 2029",
     "sucres_g_l": 1.6,
-    "allergenes": "Contient des sulfites"
+    "allergenes": "Contient des sulfites",
+    "lot": "LPD24-2508",
+    "stock_caveau": 128,
+    "unites_carton": 6,
+    "poids_brut_g": 1220
   },
   {
     "slug": "vent-de-craie",
@@ -138,7 +154,11 @@
     "elevage": "10 mois sur lies fines en cuve et en demi-muids de 600 litres.",
     "garde": "À boire de 2025 à 2031",
     "sucres_g_l": 1.8,
-    "allergenes": "Contient des sulfites"
+    "allergenes": "Contient des sulfites",
+    "lot": "VDC23-2408",
+    "stock_caveau": 76,
+    "unites_carton": 6,
+    "poids_brut_g": 1320
   },
   {
     "slug": "les-eclats",
@@ -166,6 +186,10 @@
     "elevage": "14 mois sur lattes avant dégorgement, puis 3 mois en cave.",
     "garde": "À boire de 2026 à 2029",
     "sucres_g_l": 6,
-    "allergenes": "Contient des sulfites"
+    "allergenes": "Contient des sulfites",
+    "lot": "LEC24-2602",
+    "stock_caveau": 18,
+    "unites_carton": 6,
+    "poids_brut_g": 1510
   }
 ]

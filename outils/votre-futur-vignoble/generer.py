@@ -25,6 +25,18 @@ IMPRESSION_VERSO = {
     "elan-de-schiste-magnum": (342, 61, "#d9b8d4"),
 }
 FILTRES = ("Toutes", "Rouge", "Blanc", "Rosé", "Bulles")
+CHAMPS_TECHNIQUES = (
+    ("Vendanges", "vendanges", None),
+    ("Vinification", "vinification", None),
+    ("Élevage", "elevage", None),
+    ("Sucres résiduels", "sucres_g_l", "g/L"),
+    ("Garde", "garde", None),
+    ("Ingrédients", "ingredients", None),
+    ("Fabrication", "fabrication", None),
+    ("Acidité", "acidite_pct", "%"),
+    ("Conservation", "conservation", None),
+    ("Allergènes", "allergenes", None),
+)
 
 
 def chemin_produit(article):
@@ -50,6 +62,20 @@ def decimal_fr(nombre):
 
 def prix_fr(nombre):
     return f"{nombre:.2f}".replace(".", ",") + " €"
+
+
+def assemblage(article):
+    return ", ".join(f"{cepage} {part} %" for cepage, part in article["assemblage"].items())
+
+
+def proprietes_techniques(article):
+    valeurs = []
+    if "assemblage" in article:
+        valeurs.append(("Assemblage", assemblage(article), None))
+    valeurs.extend(
+        (nom, article[cle], unite) for nom, cle, unite in CHAMPS_TECHNIQUES if cle in article
+    )
+    return valeurs
 
 
 def dimension(article):
@@ -91,6 +117,9 @@ def produit(article):
         if cle in article:
             valeur = ", ".join(article[cle]) if cle == "cepages" else article[cle]
             proprietes.append((nom, valeur, unite))
+    if article.get("parcelles"):
+        proprietes.append(("Parcelles", ", ".join(p["nom"] for p in article["parcelles"]), None))
+    proprietes.extend(proprietes_techniques(article))
     for ligne in article.get("contenu", []):
         proprietes.append(("Référence incluse", f"{ligne['quantite']} × {ligne['reference']}", None))
     return {
@@ -132,7 +161,7 @@ def page(titre, description, canonical, contenu, donnees, image, accueil=False):
   <meta property="og:description" content="{escape(description)}">
   <meta property="og:url" content="{canonical}">
   <meta property="og:image" content="{image}">
-  <link rel="stylesheet" href="{BASE}style.css?v=20261124-cartes">
+  <link rel="stylesheet" href="{BASE}style.css?v=20261127-terroirs">
   <script src="{BASE}majorite.js" defer></script>
   <script src="{BASE}boutique.js" defer></script>
 {script}  <script type="application/ld+json">{jsonld}</script>
@@ -331,13 +360,14 @@ def carte(article, produits):
         </li>"""
 
 
-def accueil(cuvees, comptoir, produits):
+def accueil(cuvees, comptoir, produits, parcelles):
     cartes = "\n".join(carte(cuvee, produits) for cuvee in cuvees)
     cartes_comptoir = "\n".join(carte(article, produits) for article in comptoir)
     filtres = "\n".join(
         f'          <button type="button" data-filtre="{nom.lower()}" aria-pressed="{str(nom == "Toutes").lower()}">{nom}</button>'
         for nom in FILTRES
     )
+    cepages = ", ".join(sorted({cepage for p in parcelles for cepage in p["plantations"]}, key=str.casefold))
     contenu = f"""    <section class="hero" aria-labelledby="titre">
       <picture class="hero-image">
         <source media="(max-width: 640px)" srcset="{BASE}assets/vignoble-mobile.webp">
@@ -354,11 +384,19 @@ def accueil(cuvees, comptoir, produits):
       </div>
     </section>
 
+    <section class="largeur cepages-domaine" aria-labelledby="titre-cepages">
+      <div>
+        <h2 id="titre-cepages">Les cépages du domaine</h2>
+        <p>{escape(cepages)}.</p>
+      </div>
+      <a class="bouton bouton-sombre" href="{BASE}domaines/#parcelles">Explorer les parcelles</a>
+    </section>
+
     <section class="largeur section-cuvees" id="cuvees" aria-labelledby="titre-cuvees">
       <div class="entete-section">
         <div>
           <h2 id="titre-cuvees">Les cuvées</h2>
-          <p>Du premier blanc aux dernières bulles.</p>
+            <p>Consultez les fiches pour découvrir les assemblages et les accords de chaque millésime.</p>
         </div>
         <div class="filtres" role="group" aria-label="Filtrer les cuvées" hidden>
 {filtres}
@@ -403,7 +441,7 @@ def accueil(cuvees, comptoir, produits):
         "name": "Les produits de Sillons Vifs",
         "numberOfItems": len(cuvees) + len(comptoir),
         "itemListElement": [
-            {"@type": "ListItem", "position": i, "url": url_produit(c), "name": c["nom"]}
+            {"@type": "ListItem", "position": i, "url": url_produit(c), "name": c["nom"], "item": produit(c)}
             for i, c in enumerate([*cuvees, *comptoir], 1)
         ],
     }
@@ -424,6 +462,25 @@ def caracteristiques(article):
         valeurs.append(("Degré d’alcool", decimal_fr(article["degre_alcool"]) + " % vol."))
     valeurs.append(("Référence", article["reference"]))
     return "\n".join(f"          <div><dt>{nom}</dt><dd>{escape(valeur)}</dd></div>" for nom, valeur in valeurs)
+
+
+def fiche_technique(article):
+    valeurs = []
+    for nom, valeur, unite in proprietes_techniques(article):
+        texte = f"{decimal_fr(valeur)} {unite}" if unite else escape(valeur)
+        valeurs.append((nom, texte))
+    if article.get("parcelles"):
+        liens = ", ".join(
+            f'<a href="{BASE}domaines/#{p["slug"]}">{escape(p["nom"])}</a>' for p in article["parcelles"]
+        )
+        valeurs.insert(1, ("Parcelles", liens))
+    lignes = "\n".join(f"          <div><dt>{nom}</dt><dd>{valeur}</dd></div>" for nom, valeur in valeurs)
+    return f"""      <section class="fiche-technique" id="fiche-technique" aria-labelledby="titre-technique">
+        <h2 id="titre-technique">Fiche technique</h2>
+        <dl class="caracteristiques">
+{lignes}
+        </dl>
+      </section>"""
 
 
 def conseils_article(article, produits, balise):
@@ -473,6 +530,7 @@ def fiche(article, suivante, produits, variantes):
     conseils = service(article, suivante, produits)
     ajout = ajout_panier(article, "bouton bouton-sombre fiche-ajouter")
     video = video_sommelier(article)
+    technique = fiche_technique(article)
     contenu = f"""    <section class="largeur fiche" aria-labelledby="nom-cuvee">
       <a class="retour" href="{BASE}#{ancre}">{retour}</a>
       <div class="fiche-grille">
@@ -487,8 +545,10 @@ def fiche(article, suivante, produits, variantes):
 {lignes}
           </dl>{lien_format}
           {ajout}
+          <p class="lien-technique"><a href="#fiche-technique">Voir la fiche technique</a></p>
         </div>
       </div>
+{technique}
       <div class="service" id="degustation">
         {conseils}
       </div>
@@ -498,6 +558,69 @@ def fiche(article, suivante, produits, variantes):
     titre = " ".join(str(article[cle]) for cle in ("nom", "millesime") if cle in article)
     return page(f"{titre} | {DOMAINE}", article["description"], donnees["url"],
                 contenu, donnees, image_produit(article))
+
+
+def parcellaire(domaines, parcelles, cuvees):
+    groupes = []
+    entites = []
+    for domaine in domaines:
+        cartes = []
+        for parcelle in parcelles:
+            if parcelle["domaine"] != domaine["slug"]:
+                continue
+            slug = parcelle["slug"]
+            plantations = ", ".join(f"{cepage} ({annee})" for cepage, annee in parcelle["plantations"].items())
+            valeurs = [
+                ("Surface", parcelle["surface_ha"], "ha"),
+                ("Altitude", parcelle["altitude_m"], "m"),
+                ("Exposition", parcelle["exposition"], None),
+                ("Sol", parcelle["sol"], None),
+                ("Cépages et années de plantation", plantations, None),
+            ]
+            description = "\n".join(
+                f'            <div><dt>{nom}</dt><dd>{decimal_fr(valeur) + " " + unite if unite else escape(valeur)}</dd></div>'
+                for nom, valeur, unite in valeurs
+            )
+            vins = ", ".join(
+                f'<a href="{BASE}{chemin_produit(article)}">{escape(article["nom"])}</a>'
+                for article in cuvees if parcelle in article["parcelles"]
+            )
+            liens = f'\n          <p class="lien-technique">Dans nos cuvées · {vins}</p>' if vins else ""
+            cartes.append(f"""        <article class="parcelle" id="{slug}">
+          <h4>{escape(parcelle["nom"])}</h4>
+          <dl class="caracteristiques">
+{description}
+          </dl>{liens}
+        </article>""")
+            url = f"{SITE}domaines/#{slug}"
+            entites.append({
+                "@type": "Place",
+                "@id": url,
+                "url": url,
+                "name": parcelle["nom"],
+                "containedInPlace": {"@type": "Place", "name": domaine["nom"],
+                                     "url": f'{SITE}domaines/#{domaine["slug"]}'},
+                "additionalProperty": [
+                    {"@type": "PropertyValue", "name": nom, "value": valeur,
+                     **({"unitText": unite} if unite else {})}
+                    for nom, valeur, unite in valeurs
+                ],
+            })
+        groupes.append(f"""      <h3>{escape(domaine["nom"])}</h3>
+      <div class="grille-parcelles">
+{chr(10).join(cartes)}
+      </div>""")
+    surface = decimal_fr(sum(p["surface_ha"] for p in parcelles))
+    return f"""
+    <section class="largeur parcellaire" id="parcelles" aria-labelledby="titre-parcelles">
+      <div class="entete-section">
+        <div>
+          <h2 id="titre-parcelles">Nos parcelles</h2>
+          <p>{len(parcelles)} parcelles sur {surface} hectares, entre les terrasses du chai et les coteaux de la bastide.</p>
+        </div>
+      </div>
+{chr(10).join(groupes)}
+    </section>""", entites
 
 
 def lire_collection(nom):
@@ -524,13 +647,40 @@ def main():
             parser.error("Valeurs en double dans le catalogue pour " + champ)
     par_reference = {article["reference"]: article for article in articles}
     variantes = {article["variante_de"]: article for article in comptoir if "variante_de" in article}
-    fichiers = {"index.html": accueil(cuvees, comptoir, par_reference)}
     visites = lire_collection("hospitalite")
+    parcelles = lire_collection("parcelles")
+    par_slug = {p["slug"]: p for p in parcelles}
+    if len(par_slug) != len(parcelles):
+        parser.error("Identifiants de parcelles en double")
+    domaines = {domaine["slug"] for domaine in visites["domaines"]}
+    for p in parcelles:
+        if p["domaine"] not in domaines or p["surface_ha"] <= 0 or not p["plantations"]:
+            parser.error("Parcelle invalide : " + p["slug"])
+    for article in articles:
+        slugs = article.get("parcelles", [])
+        if any(slug not in par_slug for slug in slugs):
+            parser.error("Parcelle inconnue pour " + article["slug"])
+        article["parcelles"] = [par_slug[slug] for slug in slugs]
+        if "assemblage" in article:
+            parts = article["assemblage"]
+            if sum(parts.values()) != 100 or any(part <= 0 for part in parts.values()):
+                parser.error("Assemblage invalide pour " + article["slug"])
+            article["cepages"] = list(parts)
+        if slugs:
+            plantes = {cepage for p in article["parcelles"] for cepage in p["plantations"]}
+            if not set(article.get("cepages", [])) <= plantes:
+                parser.error("Cépage sans parcelle pour " + article["slug"])
+
+    fichiers = {"index.html": accueil(cuvees, comptoir, par_reference, parcelles)}
     for cle, (nom, titre, description, image) in VISITES.items():
         url = f"{SITE}{cle}/"
         contenu = contenu_visite(cle, visites, BASE, prix_fr)
         meta = {"@context": "https://schema.org", "@type": "WebPage", "name": titre, "url": url,
                 "description": description, "inLanguage": "fr"}
+        if cle == "domaines":
+            section, entites = parcellaire(visites["domaines"], parcelles, cuvees)
+            contenu += section
+            meta["mainEntity"] = entites
         fichiers[f"{cle}/index.html"] = page(f"{nom} | {DOMAINE}", description, url, contenu,
                                             meta, f"{SITE}assets/{image}.webp")
     for collection in (cuvees, comptoir):

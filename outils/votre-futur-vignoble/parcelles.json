@@ -1,0 +1,105 @@
+[
+  {
+    "slug": "les-echines",
+    "nom": "Les Échines",
+    "domaine": "chai-de-la-combe",
+    "surface_ha": 2.4,
+    "altitude_m": 345,
+    "exposition": "Sud-est",
+    "sol": "Schistes sombres et cailloutis",
+    "plantations": {
+      "Syrah": 1998
+    }
+  },
+  {
+    "slug": "terrasses-de-la-combe",
+    "nom": "Les Terrasses de la Combe",
+    "domaine": "chai-de-la-combe",
+    "surface_ha": 3.15,
+    "altitude_m": 285,
+    "exposition": "Sud",
+    "sol": "Terrasses calcaires et argile rouge",
+    "plantations": {
+      "Grenache noir": 1987,
+      "Carignan": 1994
+    }
+  },
+  {
+    "slug": "le-clos-du-vent",
+    "nom": "Le Clos du Vent",
+    "domaine": "chai-de-la-combe",
+    "surface_ha": 1.7,
+    "altitude_m": 365,
+    "exposition": "Nord-est",
+    "sol": "Éboulis calcaires et marnes blanches",
+    "plantations": {
+      "Roussanne": 2006,
+      "Marsanne": 2008
+    }
+  },
+  {
+    "slug": "le-plat-du-moulin",
+    "nom": "Le Plat du Moulin",
+    "domaine": "chai-de-la-combe",
+    "surface_ha": 1.35,
+    "altitude_m": 215,
+    "exposition": "Est",
+    "sol": "Sables et limons sur graviers",
+    "plantations": {
+      "Clairette": 2011,
+      "Ugni blanc": 2012
+    }
+  },
+  {
+    "slug": "les-traverses",
+    "nom": "Les Traverses",
+    "domaine": "chai-de-la-combe",
+    "surface_ha": 1.1,
+    "altitude_m": 310,
+    "exposition": "Sud-ouest",
+    "sol": "Calcaire fissuré et terres rouges",
+    "plantations": {
+      "Mourvèdre": 2014,
+      "Counoise": 2017
+    }
+  },
+  {
+    "slug": "les-amandiers",
+    "nom": "Les Amandiers",
+    "domaine": "bastide-des-roches",
+    "surface_ha": 2.8,
+    "altitude_m": 235,
+    "exposition": "Est",
+    "sol": "Sables calcaires et galets roulés",
+    "plantations": {
+      "Clairette": 1999,
+      "Grenache blanc": 2004
+    }
+  },
+  {
+    "slug": "le-coteau-rose",
+    "nom": "Le Coteau Rose",
+    "domaine": "bastide-des-roches",
+    "surface_ha": 2.05,
+    "altitude_m": 255,
+    "exposition": "Sud-est",
+    "sol": "Graviers et argiles claires",
+    "plantations": {
+      "Cinsault": 2001,
+      "Grenache noir": 2003
+    }
+  },
+  {
+    "slug": "la-cote-des-oliviers",
+    "nom": "La Côte des Oliviers",
+    "domaine": "bastide-des-roches",
+    "surface_ha": 1.4,
+    "altitude_m": 275,
+    "exposition": "Nord-ouest",
+    "sol": "Sables calcaires mêlés de galets",
+    "plantations": {
+      "Vermentino": 2016,
+      "Viognier": 2018
+    }
+  }
+]

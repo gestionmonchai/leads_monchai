@@ -88,6 +88,8 @@ def contenu_visite(cle, data, base, prix_fr):
     for rubrique, (libelle, *_) in VISITES.items():
         courant = ' aria-current="page"' if rubrique == cle else ''
         liens.append(f'<li><a href="{base}{rubrique}/"{courant}>{libelle}</a></li>')
+    if cle == "domaines":
+        liens.append('<li><a href="#parcelles">Les parcelles</a></li>')
     navigation = "\n        ".join(liens)
     return f"""    <section class="hero hero-visite" aria-labelledby="titre-visite">
       <picture class="hero-image">

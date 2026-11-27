@@ -286,6 +286,30 @@ button { font: inherit; }
 .caracteristiques div { border-top: 1px solid var(--ligne); padding-block: 0.7rem; }
 .caracteristiques dt { font-size: 0.86rem; color: var(--secondaire); }
 .caracteristiques dd { font-weight: 600; }
+.cepages-domaine {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem 2rem;
+  margin-top: clamp(2rem, 4vw, 4rem);
+  padding-block: 1.4rem;
+  border-block: 1px solid var(--ligne);
+}
+.cepages-domaine h2, .fiche-technique h2 { font-size: clamp(1.7rem, 3vw, 2.5rem); }
+.cepages-domaine p { max-width: 62ch; margin-top: 0.3rem; color: var(--secondaire); }
+.fiche-corps .lien-technique { margin-top: 1.15rem; }
+.lien-technique a, .fiche-technique a { text-underline-offset: 0.2em; }
+.fiche-technique { margin-top: clamp(2.5rem, 6vw, 5rem); scroll-margin-top: 1rem; }
+.fiche-technique .caracteristiques { grid-template-columns: repeat(auto-fit, minmax(min(100%, 16rem), 1fr)); }
+.parcellaire { padding-bottom: clamp(3rem, 6vw, 6rem); scroll-margin-top: 1rem; }
+.parcellaire h3 { margin-block: 2.2rem 0.85rem; font-size: clamp(1.5rem, 2.8vw, 2rem); }
+.grille-parcelles { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 17rem), 1fr)); gap: 1rem; }
+.parcelle { border: 1px solid var(--ligne); padding: clamp(1rem, 2.5vw, 1.65rem); scroll-margin-top: 1rem; }
+.parcelle h4 { margin: 0; font-family: var(--serif); font-size: 1.35rem; font-weight: 500; }
+.parcelle .caracteristiques { gap: 0 0.8rem; margin-top: 0.75rem; }
+.parcelle .caracteristiques div:nth-child(n+4) { grid-column: 1 / -1; }
+.parcelle .lien-technique { font-size: 0.875rem; margin-top: 0.5rem; }
 .service {
   display: grid;
   grid-template-columns: 1.2fr 0.75fr 1fr;

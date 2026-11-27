@@ -45,6 +45,7 @@
     $('workspace').hidden=false;$('vine-review').hidden=true;$('pause-panel').hidden=true;$('pause').hidden=false;
     $('cut-empty').hidden=false;$('cut-details').hidden=true;
     $('branch-buttons').replaceChildren();
+    document.querySelector('.scene-caption p').textContent='Touchez un sarment, puis affinez le point de coupe.';
     for(const b of current.branches){const button=document.createElement('button');button.className='branch-button';button.dataset.branch=b.id;button.setAttribute('aria-pressed','false');button.textContent=`${b.id} · ${b.kind==='remove'?'Superflu':b.kind==='spur'?'Courson':'Baguette'}`;button.addEventListener('click',()=>select(b.id,b.cut*.48));$('branch-buttons').append(button);}
     scene.load(current);scene.labels($('show-labels').checked);missions();message('Observez les yeux et sélectionnez votre premier point de coupe.');
     deadline=performance.now()+remaining;
@@ -57,7 +58,7 @@
     if(!remaining)finish(true);
   }
   function start(){
-    clearInterval(timer);index=0;reviews=[];remaining=180000;started=true;paused=false;loadVine();show('game');tick();timer=setInterval(tick,100);
+    clearInterval(timer);index=0;reviews=[];remaining=180000;started=true;paused=false;$('time').classList.remove('urgent');loadVine();show('game');tick();timer=setInterval(tick,100);
   }
   function cut(){
     tick();if(!started||paused||inReview||!selection)return;

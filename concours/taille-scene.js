@@ -14,12 +14,12 @@
     const g=el('g',{'data-eye':`${b.id}-${index+1}`,transform:`translate(${p.x} ${p.y}) rotate(${a})`},parent),side=index%2?1:-1;
     el('ellipse',{cx:0,cy:0,rx:4.3,ry:7,fill:'#a88759',opacity:.8},g);
     line(g,'M-3 -6 Q-5 0 -2 6','#d5b27c',1.3);
-    el('path',{d:`M-2 ${side*3} Q-11 ${side*7} -5 ${side*15} Q4 ${side*12} 3 ${side*5}Z`,fill:'url(#bud-shade)',stroke:'#493327','stroke-width':.7},g);
-    line(g,`M-5 ${side*6} Q-6 ${side*10} -5 ${side*12}`,'#c3a078',.85);
+    el('path',{d:`M-2 ${side*3} Q-7 ${side*5} -4 ${side*10} Q3 ${side*8} 3 ${side*4}Z`,fill:'url(#bud-shade)',stroke:'#493327','stroke-width':.7},g);
+    line(g,`M-4 ${side*5} Q-5 ${side*7} -4 ${side*8}`,'#c3a078',.85);
     el('path',{d:`M3 ${-side*4} q3 ${-side*7} 5 ${-side*5} l-1 ${side*5}Z`,fill:'#73533b'},g);
   }
   function cane(parent,b,end=1,opacity=1){
-    const g=el('g',{'data-branch':b.id,opacity},parent),width=b.diameter*1.15;
+    const g=el('g',{'data-branch':b.id,opacity},parent),width=b.diameter*.7;
     for(let i=0;i<16;i++){const from=end*i/16,to=end*(i+1)/16,w=width*(1-from*.65);line(g,curve(b,from,to),'#30251c',w+1);line(g,curve(b,from,to),'url(#cane-shade)',w);line(g,curve(b,from,to,-w*.22),'#d0a16d',w*.18,{opacity:.65});}
     const rng=random(187+b.id.charCodeAt(0));
     for(let i=0;i<19;i++){const a=rng()*end,z=Math.min(end,a+.025+rng()*.09);line(g,curve(b,a,z,(rng()-.5)*width*.6),i%2?'#62422b':'#d0a16d',.5+rng()*.55,{opacity:.65});}
@@ -40,7 +40,8 @@
     // Old pruning scars are deliberately on permanent wood, never click targets.
     el('ellipse',{cx:427,cy:478,rx:7,ry:10,fill:'#4b392a',stroke:'#9b8060','stroke-width':2},parent);
     line(parent,'M425 478 Q431 473 430 484','#c1a479',1.3);
-    line(parent,'M430 624 Q395 665 374 688 M435 640 Q467 674 488 688','#6c5940',9);
+    el('ellipse',{cx:432,cy:680,rx:47,ry:10,fill:'#565744',opacity:.7},parent);
+    for(let i=0;i<12;i++){const x=393+i*7;line(parent,`M${x} ${680+i%3} l${i%3-1} ${-3-i%5}`,i%2?'#a6a17c':'#3f4937',1,{opacity:.8});}
   }
   function environment(){
     scene.innerHTML=`<defs>

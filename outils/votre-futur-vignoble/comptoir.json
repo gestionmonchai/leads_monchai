@@ -8,7 +8,11 @@
     "contenance_ml": 1500,
     "prix_ttc": 42,
     "description": "La même syrah poivrée et le même grenache qu’en bouteille de 75 cl, dans un magnum de 1,5 litre. La mûre et la violette se retrouvent en bouche, avec des tanins souples.",
-    "accord": "Gigot d’agneau, gratin d’aubergines"
+    "accord": "Gigot d’agneau, gratin d’aubergines",
+    "lot": "EDS23-M2409",
+    "stock_caveau": 28,
+    "unites_carton": 3,
+    "poids_brut_g": 2530
   },
   {
     "slug": "trois-coteaux",
@@ -36,7 +40,11 @@
     ],
     "fabrication": "Coffret cartonné à trois compartiments, avec un rouge, un blanc et un rosé.",
     "conservation": "Conserver les bouteilles couchées, au frais et à l’abri de la lumière.",
-    "allergenes": "Les trois vins contiennent des sulfites"
+    "allergenes": "Les trois vins contiennent des sulfites",
+    "lot": "TCT-2610",
+    "stock_caveau": 34,
+    "unites_carton": 2,
+    "poids_brut_g": 3890
   },
   {
     "slug": "clair-de-grappe",
@@ -60,7 +68,11 @@
     ],
     "ingredients": "Jus de raisin blanc, dioxyde de carbone.",
     "fabrication": "Pressurage des raisins, pasteurisation du jus puis gazéification.",
-    "conservation": "Après ouverture, conserver au réfrigérateur et consommer dans les 3 jours."
+    "conservation": "Après ouverture, conserver au réfrigérateur et consommer dans les 3 jours.",
+    "lot": "CDG-2609",
+    "stock_caveau": 94,
+    "unites_carton": 6,
+    "poids_brut_g": 1170
   },
   {
     "slug": "vinaigre-de-syrah",
@@ -84,7 +96,11 @@
     "fabrication": "Acétification lente du vin, puis 6 mois en petits fûts.",
     "acidite_pct": 6,
     "conservation": "Bien refermer après usage et conserver à l’abri de la lumière.",
-    "allergenes": "Contient des sulfites"
+    "allergenes": "Contient des sulfites",
+    "lot": "VDS-2606",
+    "stock_caveau": 63,
+    "unites_carton": 12,
+    "poids_brut_g": 510
   },
   {
     "slug": "gelee-de-grenache",
@@ -106,7 +122,11 @@
     ],
     "ingredients": "Jus de raisin Grenache noir, sucre, jus de citron.",
     "fabrication": "Cuisson du jus et du sucre en bassine, mise en pot à chaud.",
-    "conservation": "Après ouverture, garder au réfrigérateur et consommer dans les 3 semaines."
+    "conservation": "Après ouverture, garder au réfrigérateur et consommer dans les 3 semaines.",
+    "lot": "GGR-2609",
+    "stock_caveau": 47,
+    "unites_carton": 12,
+    "poids_brut_g": 390
   },
   {
     "slug": "huile-de-pepins",
@@ -122,6 +142,10 @@
     "conseil": "Ajouter quelques gouttes de vinaigre de Syrah à la vinaigrette.",
     "ingredients": "Huile de pépins de raisin.",
     "fabrication": "Extraction à partir de pépins séchés issus du pressurage des raisins, puis filtration.",
-    "conservation": "Conserver à l’abri de la chaleur et de la lumière."
+    "conservation": "Conserver à l’abri de la chaleur et de la lumière.",
+    "lot": "HPR-2608",
+    "stock_caveau": 52,
+    "unites_carton": 12,
+    "poids_brut_g": 490
   }
 ]

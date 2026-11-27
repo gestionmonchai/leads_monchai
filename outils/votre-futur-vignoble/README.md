@@ -5,7 +5,7 @@ Vitrine publique de démonstration pour l’import de données produits Mon Chai
 - Vitrine disponible à `/votre-futur-vignoble/`, avec les fiches sous `cuvees/` et `produits/` et les pages `sejours/`, `experiences/` et `domaines/`.
 - Les sources sont `cuvees.json`, `comptoir.json`, `parcelles.json` et `hospitalite.json`. Après une modification, lancer `python outils/votre-futur-vignoble/generer.py`. L’option `--check` contrôle que les fichiers versionnés ont été régénérés.
 - Les liens HTML et le balisage `ItemList` de l’accueil mènent aux fiches. Chaque fiche annonce ses caractéristiques dans le contenu HTML et dans son objet `Product`, également inclus dans l’`ItemList` de l’accueil. Les parcelles sont décrites par des objets `Place` sur la page des domaines.
-- Les produits, les séjours et les tarifs sont fictifs. Le panier et les préparations de réservation utilisent le stockage de session.
+- Les produits, les séjours, les tarifs et le stock sont fictifs. Le panier et les préparations de réservation utilisent le stockage de session. Les objets `Offer` reprennent le prix TTC, la devise, la disponibilité et le stock depuis les mêmes sources que les fiches. Le lot, les unités par carton et le poids brut figurent aussi dans les caractéristiques.
 
 ## Parcours et validation UX/UI
 

@@ -36,6 +36,10 @@ CHAMPS_TECHNIQUES = (
     ("Acidité", "acidite_pct", "%"),
     ("Conservation", "conservation", None),
     ("Allergènes", "allergenes", None),
+    ("Lot", "lot", None),
+    ("Stock au caveau", "stock_caveau", "unités"),
+    ("Unités par carton", "unites_carton", "unités"),
+    ("Poids brut", "poids_brut_g", "g"),
 )
 
 
@@ -101,6 +105,7 @@ def surtitre_produit(article):
 
 def produit(article):
     url = url_produit(article)
+    prix = article["prix_ttc"]
     champs = (
         ("Millésime", "millesime", None),
         ("Appellation", "appellation", None),
@@ -111,7 +116,7 @@ def produit(article):
         ("Conseil", "conseil", None),
         ("Variante de", "variante_de", None),
     )
-    proprietes = [dimension(article), ("Prix indicatif TTC", article["prix_ttc"], DEVISE),
+    proprietes = [dimension(article), ("Prix indicatif TTC", prix, DEVISE),
                   ("Conditionnement", article["conditionnement"], None)]
     for nom, cle, unite in champs:
         if cle in article:
@@ -133,6 +138,18 @@ def produit(article):
         "brand": {"@type": "Brand", "name": DOMAINE},
         "category": article["type"],
         **({"color": article["couleur"]} if "couleur" in article else {}),
+        "weight": {"@type": "QuantitativeValue", "value": article["poids_brut_g"], "unitCode": "GRM"},
+        "offers": {
+            "@type": "Offer",
+            "url": url,
+            "description": "Tarif et disponibilité de démonstration.",
+            "price": prix,
+            "priceCurrency": DEVISE,
+            "priceSpecification": {"@type": "UnitPriceSpecification", "price": prix,
+                                   "priceCurrency": DEVISE, "valueAddedTaxIncluded": True},
+            "availability": "https://schema.org/" + ("InStock" if article["stock_caveau"] else "OutOfStock"),
+            "inventoryLevel": {"@type": "QuantitativeValue", "value": article["stock_caveau"], "unitCode": "C62"},
+        },
         "additionalProperty": [
             {"@type": "PropertyValue", "name": nom, "value": valeur,
              **({"unitText": unite} if unite else {})}
@@ -223,6 +240,8 @@ def page(titre, description, canonical, contenu, donnees, image, accueil=False):
 
 
 def ajout_panier(article, classe):
+    if not article["stock_caveau"]:
+        return ""
     nom = escape(article["nom"])
     return f"""<button class="{classe}" type="button" data-ajouter="{article['reference']}"
               data-nom="{nom}" data-prix="{round(article['prix_ttc'] * 100)}"
@@ -528,7 +547,8 @@ def fiche(article, suivante, produits, variantes):
         lien_format = f'<p class="autre-format"><a href="{BASE}{chemin_produit(format_lie)}">Existe aussi en {format_court(format_lie)}</a></p>'
     lignes = caracteristiques(article)
     conseils = service(article, suivante, produits)
-    ajout = ajout_panier(article, "bouton bouton-sombre fiche-ajouter")
+    bouton = ajout_panier(article, "bouton bouton-sombre fiche-ajouter")
+    ajout = f"\n          {bouton}" if bouton else ""
     video = video_sommelier(article)
     technique = fiche_technique(article)
     contenu = f"""    <section class="largeur fiche" aria-labelledby="nom-cuvee">
@@ -540,11 +560,13 @@ def fiche(article, suivante, produits, variantes):
           <h1 id="nom-cuvee">{nom}</h1>
           <p class="fiche-notes">{escape(article['notes'])}</p>
           <p>{escape(article['description'])}</p>
-          <p class="fiche-prix"><strong>{prix_fr(article['prix_ttc'])}</strong> <span>Prix indicatif TTC</span></p>
+          <p class="fiche-prix"><strong><data value="{article['prix_ttc']:.2f}">{prix_fr(article['prix_ttc'])}</data></strong>
+            <span>Prix indicatif TTC</span>
+            <span>{'En stock au caveau' if article['stock_caveau'] else 'Rupture au caveau'}</span>
+          </p>
           <dl class="caracteristiques">
 {lignes}
-          </dl>{lien_format}
-          {ajout}
+          </dl>{lien_format}{ajout}
           <p class="lien-technique"><a href="#fiche-technique">Voir la fiche technique</a></p>
         </div>
       </div>
@@ -657,6 +679,12 @@ def main():
         if p["domaine"] not in domaines or p["surface_ha"] <= 0 or not p["plantations"]:
             parser.error("Parcelle invalide : " + p["slug"])
     for article in articles:
+        for champ, minimum in (("stock_caveau", 0), ("unites_carton", 1), ("poids_brut_g", 1)):
+            valeur = article.get(champ)
+            if type(valeur) is not int or valeur < minimum:
+                parser.error(f"{champ} invalide pour {article['slug']}")
+        if not article.get("lot"):
+            parser.error("Lot manquant pour " + article["slug"])
         slugs = article.get("parcelles", [])
         if any(slug not in par_slug for slug in slugs):
             parser.error("Parcelle inconnue pour " + article["slug"])

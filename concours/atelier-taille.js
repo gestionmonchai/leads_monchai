@@ -2,12 +2,14 @@
 (() => {
   const $=id=>document.getElementById(id),T=window.Taille,scene=window.TailleScene;
   let current=null,index=0,selection=null,history=[],started=false,paused=false,inReview=false;
-  let onFinish=null;
+  let onFinish=null,allowed=null;
+  function changed(){document.dispatchEvent(new CustomEvent('taille:change'));}
   function branch(id){return current.branches.find(b=>b.id===id);}
   function message(text){$('game-status').textContent=text;}
   function select(id,mm){
     if(!started||paused||inReview)return;
     if(!id){message('Visez un sarment d’un an. Le bois permanent est protégé dans cet exercice.');return;}
+    if(allowed&&!allowed.includes(id)){message(`Pour ce geste, choisissez ${allowed.join(' ou ')}. Les autres sarments viendront ensuite.`);changed();return;}
     const b=branch(id);selection={id,mm:Math.round(T.clamp(mm,1,Math.floor(b.cut)-1))};
     const m=T.metrics(b,selection.mm),assessment=T.assess({...b,cut:selection.mm});
     $('cut-empty').hidden=true;$('cut-details').hidden=false;
@@ -21,6 +23,8 @@
     $('confirm-cut').disabled=b.cut<=2;
     for(const button of $('branch-buttons').children)button.setAttribute('aria-pressed',String(button.dataset.branch===id));
     scene.select(id,selection.mm);
+    message(`${id} est sélectionné. Ajustez la position de coupe, puis confirmez avec « Couper ici ».`);
+    changed();
   }
   function clearSelection(){selection=null;$('cut-empty').hidden=false;$('cut-details').hidden=true;for(const button of $('branch-buttons').children)button.setAttribute('aria-pressed','false');scene.clear();}
   function missions(){
@@ -43,17 +47,18 @@
     scene.load(current);scene.labels($('show-labels').checked);missions();message('Observez les yeux et sélectionnez votre premier point de coupe.');
 
   }
-  function start(callback){onFinish=callback;index=0;started=true;paused=false;loadVine();}
+  function start(callback){onFinish=callback;index=0;started=true;paused=false;allowed=null;loadVine();}
   function cut(){
     if(!started||paused||inReview||!selection)return;
     const b=branch(selection.id),old=b.cut;b.cut=selection.mm;history.push({id:b.id,cut:old});
     const a=T.assess(b);clearSelection();missions();scene.refresh();message(`${b.id} : coupe à ${Math.round(b.cut)} mm. ${a.reason}`);
     document.querySelector('.scene-caption p').textContent=`${b.id} : ${a.reason}`;
     $('branch-buttons').querySelector(`[data-branch="${b.id}"]`).focus({preventScroll:true});
-    if(matchMedia('(max-width:700px)').matches)$('vine-scene').scrollIntoView({block:'start',behavior:'instant'});
+    changed();
   }
   function undo(){
     if(!started||paused||inReview||!history.length)return;const prev=history.pop();branch(prev.id).cut=prev.cut;clearSelection();missions();scene.refresh();message(`Dernière coupe sur ${prev.id} annulée. Le sarment est restauré.`);
+    changed();
   }
   function validate(){if(!started||paused)return;started=false;const lines=current.branches.map(T.assess);onFinish({score:lines.reduce((n,a)=>n+a.score,0),lines});}
   function pause(){paused=true;}
@@ -65,5 +70,8 @@
   $('validate-vine').addEventListener('click',validate);
   $('zoom-in').addEventListener('click',()=>scene.zoom(.25));$('zoom-out').addEventListener('click',()=>scene.zoom(-.25));$('reset-view').addEventListener('click',()=>scene.reset());
   $('show-labels').addEventListener('change',()=>scene.labels($('show-labels').checked));
-  window.AtelierTaille={start,pause,resume,stop(){started=false;paused=false;}};
+  window.AtelierTaille={start,pause,resume,stop(){started=false;paused=false;},
+    status(){return {selection:selection?.id||null,feedback:$('game-status').textContent,branches:current?current.branches.map(b=>({id:b.id,made:b.cut<b.length-1,eyes:T.metrics(b).eyes})):[]};},
+    allow(ids){allowed=ids;for(const b of $('branch-buttons').children){b.hidden=!!ids&&!ids.includes(b.dataset.branch);b.disabled=!!ids&&!ids.includes(b.dataset.branch);}if(selection&&ids&&!ids.includes(selection.id))clearSelection();}
+  };
 })();

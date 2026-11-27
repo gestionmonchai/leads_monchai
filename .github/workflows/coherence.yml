@@ -49,6 +49,7 @@ jobs:
           node --check concours/atelier-taille.js
           node --check concours/parcours-moteur.js
           node --check concours/parcours-jeu.js
+          node --check concours/guidage.js
           node --test outils/test-concours-taille.cjs
           node --test outils/test-concours-parcours.cjs
           node --check demonstration/site.js

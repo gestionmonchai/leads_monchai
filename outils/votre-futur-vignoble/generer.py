@@ -106,6 +106,8 @@ def surtitre_produit(article):
 def produit(article):
     url = url_produit(article)
     prix = article["prix_ttc"]
+    taille = {"size": {"@type": "QuantitativeValue", "value": article["contenance_ml"], "unitCode": "MLT",
+                       "unitText": "ml"}} if "contenance_ml" in article else {}
     champs = (
         ("Millésime", "millesime", None),
         ("Appellation", "appellation", None),
@@ -138,6 +140,7 @@ def produit(article):
         "brand": {"@type": "Brand", "name": DOMAINE},
         "category": article["type"],
         **({"color": article["couleur"]} if "couleur" in article else {}),
+        **taille,
         "weight": {"@type": "QuantitativeValue", "value": article["poids_brut_g"], "unitCode": "GRM"},
         "offers": {
             "@type": "Offer",
@@ -471,7 +474,8 @@ def accueil(cuvees, comptoir, produits, parcelles):
 
 def caracteristiques(article):
     valeurs = []
-    for nom, cle in (("Millésime", "millesime"), ("Couleur", "couleur"), ("Cépages", "cepages")):
+    for nom, cle in (("Millésime", "millesime"), ("Couleur", "couleur"), ("Appellation", "appellation"),
+                     ("Cépages", "cepages")):
         if cle in article:
             valeur = ", ".join(article[cle]) if cle == "cepages" else str(article[cle])
             valeurs.append((nom, valeur))

@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="description" content="Le chai des surprises : la démo du jeu concours Mon Chai pour Vinitech. Retrouvez les paires et découvrez votre surprise.">
+  <title>Mon Chai Concours · Le chai des surprises</title>
+  <link rel="icon" href="../assets/img/favicon-mon-chai-96.png">
+  <link rel="stylesheet" href="concours.css">
+  <script src="concours.js" defer></script>
+</head>
+<body>
+<svg class="svg-library" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><defs>
+  <symbol id="grape" viewBox="0 0 64 64"><path d="M33 17c-1-9 5-13 12-12M34 17C24 5 15 8 15 8c1 11 10 13 19 9Z"/><circle cx="23" cy="26" r="8"/><circle cx="41" cy="26" r="8"/><circle cx="32" cy="40" r="8"/><circle cx="32" cy="54" r="6"/></symbol>
+  <symbol id="barrel" viewBox="0 0 64 64"><path d="M19 9h26c9 14 9 32 0 46H19C10 41 10 23 19 9Z"/><path d="M16 19h32M13 43h38M25 9c-5 14-5 32 0 46M39 9c5 14 5 32 0 46"/><circle cx="32" cy="32" r="3"/></symbol>
+  <symbol id="leaf" viewBox="0 0 64 64"><path d="M12 49C-1 22 29 8 54 10c2 27-13 54-38 43M12 57 42 25M24 45V30M24 45h16"/></symbol>
+  <symbol id="bottle" viewBox="0 0 64 64"><path d="M27 5h10v17l9 10v24H18V32l9-10ZM26 5h12M19 37h26M19 48h26"/></symbol>
+  <symbol id="gift" viewBox="0 0 64 64"><path d="M10 29h44v28H10ZM6 19h52v10H6ZM32 19v38M32 19C6 20 14-3 25 9l7 10c26 1 18-22 7-10Z"/></symbol>
+  <symbol id="spark" viewBox="0 0 64 64"><path d="m32 5 7 20 20 7-20 7-7 20-7-20-20-7 20-7Z"/></symbol>
+</defs></svg>
+<div class="demo-banner">VERSION DÉMO <span>À vous de jouer. Aucun vrai lot ni inscription.</span></div>
+<header class="header">
+  <a href="../" aria-label="Mon Chai, accueil"><img src="../assets/img/logo-header-344.webp" width="172" height="58" alt="Mon Chai"></a>
+  <span class="event">LE RENDEZ-VOUS VINITECH</span>
+  <button class="text-button" data-dialog="help-dialog">Comment jouer ?</button>
+</header>
+<main id="main">
+  <div class="breadcrumb">MON CHAI CONCOURS <span>/</span> LE CHAI DES SURPRISES</div>
+  <ol class="steps" aria-label="Votre parcours"><li aria-current="step"><span>1</span> Je m’inscris</li><li><span>2</span> Je joue</li><li><span>3</span> Ma surprise</li></ol>
+  <section id="registration" class="intro">
+    <div class="story">
+      <p class="eyebrow"><span class="little-line"></span> UNE PAUSE LUDIQUE SUR LE SALON</p>
+      <h1>Un peu de mémoire.<br>Un joli <em>lot à la clé.</em></h1>
+      <p class="lead">Bienvenue dans le chai des surprises !<br>Retrouvez les 4 paires cachées en 30 secondes.<br>La prochaine belle découverte, c’est peut-être la vôtre.</p>
+      <div class="illustration" aria-hidden="true">
+        <span class="orbit orbit-one"></span><span class="orbit orbit-two"></span>
+        <div class="illustrated-card card-left"><svg><use href="#grape"/></svg><span>LA VIGNE</span></div>
+        <div class="illustrated-card card-middle"><svg><use href="#barrel"/></svg><span>LE CHAI</span></div>
+        <div class="illustrated-card card-right"><svg><use href="#gift"/></svg><span>LA SURPRISE</span></div>
+        <span class="illustration-note">À vous de faire la paire !</span><svg class="floating-spark"><use href="#spark"/></svg>
+      </div>
+      <div class="quick-facts"><span>✦ 30 secondes de jeu</span><span>✦ Aucune expertise requise</span><span>✦ 100 % bonne humeur</span></div>
+    </div>
+    <div class="form-card">
+      <div class="card-heading"><span class="tiny-label">ON FAIT CONNAISSANCE ?</span><span class="round-icon"><svg><use href="#grape"/></svg></span></div>
+      <h2>Votre tour de jouer.</h2>
+      <p>Quelques infos, puis le chai est à vous.</p>
+      <button id="sample-profile" class="sample-button" type="button">Essayer avec un profil fictif</button>
+      <form id="concours-form" aria-label="Coordonnées de démonstration">
+        <fieldset disabled id="form-fields">
+          <div class="field-row"><div><label for="firstname">Prénom <span>*</span></label><input id="firstname" name="firstname" autocomplete="given-name" maxlength="60" required placeholder="Camille"></div><div><label for="lastname">Nom <span>*</span></label><input id="lastname" name="lastname" autocomplete="family-name" maxlength="80" required placeholder="Martin"></div></div>
+          <label for="email">Adresse e-mail <span>*</span></label><input id="email" name="email" type="email" autocomplete="email" maxlength="200" required placeholder="camille@exemple.fr">
+          <label for="estate">Domaine / entreprise <small>facultatif</small></label><input id="estate" name="estate" autocomplete="organization" maxlength="120" placeholder="Le nom de votre domaine">
+          <label class="check"><input id="demo-consent" type="checkbox" required><span>J’ai compris qu’il s’agit d’une démo, sans inscription ni gain réel. <span aria-hidden="true">*</span></span></label>
+          <label class="check optional"><input id="news" type="checkbox"><span>Je souhaite recevoir les nouvelles de Mon Chai.<small>Option illustrative, aucun abonnement effectué.</small></span></label>
+          <button class="primary" type="submit">Entrer dans le chai <svg><use href="#spark"/></svg></button>
+        </fieldset>
+      </form>
+      <p class="privacy-note">* Champs obligatoires. Vos infos restent dans cette page, le temps de l’essai. Aucun envoi, aucun enregistrement.</p>
+      <noscript><p>Activez JavaScript pour essayer le jeu. Le formulaire est désactivé pour éviter tout envoi de coordonnées.</p></noscript>
+    </div>
+  </section>
+  <section id="ready" class="play-panel" hidden aria-labelledby="ready-title">
+    <span class="section-icon"><svg><use href="#barrel"/></svg></span><p class="eyebrow">LE CHAI DES SURPRISES</p>
+    <h2 id="ready-title" tabindex="-1">À vous de jouer, <span id="player-name"></span> !</h2>
+    <p>Retournez deux cartes. Si elles sont identiques, la paire est à vous.<br>Retrouvez les <strong>4 paires</strong> avant la fin des <strong>30 secondes</strong>.</p>
+    <div class="ready-icons" aria-hidden="true"><svg><use href="#grape"/></svg><svg><use href="#barrel"/></svg><svg><use href="#leaf"/></svg><svg><use href="#bottle"/></svg></div>
+    <label class="check untimed"><input id="untimed" type="checkbox"><span>Jouer sans chronomètre, à mon rythme</span></label>
+    <button id="start" class="primary">C’est parti !</button><button class="text-button back-registration">Modifier mes infos</button>
+    <p class="small-note">Le score sert à s’amuser. Dans cette démo, vous pouvez toujours découvrir la surprise.</p>
+  </section>
+  <section id="game" class="play-panel" hidden aria-labelledby="game-title">
+    <div class="game-top"><div><p class="eyebrow">À VOUS DE FAIRE LA PAIRE</p><h2 id="game-title" tabindex="-1">La mémoire du chai.</h2></div><div class="timer" role="timer" aria-label="Temps restant"><span id="time">30</span><small id="time-unit">secondes</small></div></div>
+    <div class="game-progress"><span><strong id="pairs">0</strong> / 4 paires retrouvées</span><button id="pause" class="text-button">Mettre en pause</button></div>
+    <div id="board" class="board" aria-label="Huit cartes à associer"></div>
+    <div id="pause-panel" hidden><p>Le chai vous attend. Reprenez quand vous êtes prêt.</p><button id="resume" class="primary">Reprendre la partie</button></div>
+    <p id="game-status" class="game-status" role="status">Choisissez deux cartes pour commencer.</p>
+  </section>
+  <section id="result" class="play-panel result-panel" hidden aria-labelledby="result-title">
+    <div class="result-spark" aria-hidden="true"><svg><use href="#spark"/></svg></div><p class="eyebrow">BIEN JOUÉ !</p><h2 id="result-title" tabindex="-1">Une jolie pause dans le chai.</h2>
+    <p id="result-summary"></p><div class="score-badge"><span id="result-pairs">4 / 4</span> paires retrouvées</div>
+    <div id="surprise-closed"><p>Et si on découvrait la surprise ?</p><button id="reveal" class="primary">Ouvrir ma surprise <svg><use href="#gift"/></svg></button></div>
+    <div id="surprise-open" class="surprise" hidden><svg><use href="#gift"/></svg><p class="tiny-label">EXEMPLE DE LOT</p><h3>Un tote bag Mon Chai</h3><p>Un petit compagnon pour vos grandes découvertes.</p><strong>Démonstration uniquement : aucun lot attribué.</strong></div>
+    <div class="result-actions"><button id="replay" class="text-button">Rejouer</button><button id="restart" class="text-button">Revenir au formulaire</button></div>
+    <p class="small-note">Aucune participation enregistrée. Aucun e-mail envoyé.</p>
+  </section>
+  <section class="prizes" aria-labelledby="prizes-title"><div><p class="eyebrow">UN AVANT-GOÛT</p><h2 id="prizes-title">Des surprises à imaginer.</h2><p>Exemples de lots pour la future opération.</p></div><div class="prize-item"><svg><use href="#gift"/></svg><span>Le tote bag<br><strong>Mon Chai</strong></span></div><div class="prize-item"><svg><use href="#bottle"/></svg><span>L’accessoire<br><strong>du vigneron</strong></span></div><div class="prize-item"><svg><use href="#spark"/></svg><span>Le coffret<br><strong>surprise</strong></span></div></section>
+  <div class="salon-note"><span>De la vigne à la vente, <strong>gardez le plaisir du métier.</strong></span><a href="../">Découvrir Mon Chai</a></div>
+</main>
+<footer><span>© Mon Chai · Le chai des surprises</span><div><button class="text-button" data-dialog="demo-dialog">À propos de cette démo</button><a href="../politique-confidentialite.html">Confidentialité</a><a href="qr-concours.svg" download="qr-monchai-concours.svg">QR code de la démo</a></div></footer>
+<dialog id="help-dialog"><button class="close" aria-label="Fermer l’aide">×</button><p class="eyebrow">COMMENT JOUER ?</p><h2>Quatre paires, une surprise.</h2><ol><li>Remplissez prénom, nom et e-mail, ou cliquez sur « Essayer avec un profil fictif ».</li><li>Cliquez sur « Entrer dans le chai », puis sur « C’est parti ! ». Vous pouvez choisir de jouer sans chronomètre.</li><li>Touchez deux cartes pour les retourner. Deux symboles identiques forment une paire.</li><li>Découvrez votre score, puis cliquez sur « Ouvrir ma surprise ». Le lot est fictif.</li></ol><p>Vous pouvez mettre la partie en pause, rejouer ou revenir au formulaire. Au clavier : Tab pour choisir une carte, Entrée ou Espace pour la retourner.</p><button class="primary close-dialog">J’ai compris</button></dialog>
+<dialog id="demo-dialog"><button class="close" aria-label="Fermer les informations">×</button><p class="eyebrow">VERSION DE DÉMONSTRATION</p><h2>On teste l’idée ensemble.</h2><p>Cette page présente un parcours possible pour le jeu concours Mon Chai à Vinitech. Les lots sont des exemples. Aucune inscription, attribution de lot, prise de contact ou souscription à une newsletter n’a lieu.</p><p>Les coordonnées restent uniquement en mémoire dans cet onglet. Elles ne sont ni envoyées ni enregistrées. Fermer ou recharger la page les efface.</p><p>Le QR code mène à cette démo. Les modalités de la véritable opération seront définies avant son lancement.</p><button class="primary close-dialog">Fermer</button></dialog>
+</body></html>

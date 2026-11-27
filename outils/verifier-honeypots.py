@@ -9,7 +9,7 @@ from pathlib import Path
 import threading
 
 ROOT=Path(__file__).resolve().parents[1]
-LOCAL={('aides-vignerons.html','form-aides'),('salons-viticoles.html','form-salons'),('demonstration/index.html','visit-form'),('visite-interactive/index.html','visit-form')}
+LOCAL={('aides-vignerons.html','form-aides'),('salons-viticoles.html','form-salons'),('demonstration/index.html','visit-form'),('visite-interactive/index.html','visit-form'),('concours/index.html','concours-form')}
 IGNORE={'.git','.github','node_modules','outils'}
 class Scan(HTMLParser):
  def __init__(self):super().__init__();self.forms=[];self.current=None;self.scripts=[]

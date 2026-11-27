@@ -44,6 +44,7 @@ jobs:
 
       - name: Démonstration viticole, liens et absence de transmission
         run: |
+          node --check concours/concours.js
           node --check demonstration/site.js
           node outils/verifier-demonstration.cjs .
           node --check visite-interactive/site.js

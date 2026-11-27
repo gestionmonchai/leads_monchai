@@ -123,6 +123,7 @@ desktop.ini
 outils/salons/veille/resultats/
 !outils/verifier-honeypots.py
 !outils/verifier-concours-parcours.py
+!outils/verifier-concours-quiz.py
 !outils/ANTISPAM.md
 !outils/aides/verifier_navigateur.py
 !outils/aides/PARCOURS_SUBVENTIONS_2026-11-18.md

@@ -1,6 +1,6 @@
 const {test}=require('node:test');
 const assert=require('node:assert/strict');
-const P=require('../concours/parcours-moteur.js');
+const P=require('../concours/millesime/parcours-moteur.js');
 const ideal={taille:{score:100,lines:[]},vendanges:{samples:[1,3,4,5,7],read:true,day:0},chauffe:{temp:26,cooling:true,follow:true,read:true},derive:{sample:true,read:true,plan:['isoler','diagnostic','protocole']},controle:{compared:true,enzymatic:true,stabilize:true},ouillage:{clean:true,reserve:'F18',volume:6,closed:true}};
 test('six ateliers complets donnent 600 points et un portrait équilibré',()=>{
   const records=P.steps.map(s=>P.evaluate(s.id,ideal[s.id]));assert.equal(records.length,6);records.forEach(r=>assert.equal(r.score,100));const p=P.profile(records);assert.equal(p.total,600);assert.deepEqual(p.axes,[100,100,100,100]);assert.equal(p.title,'L’esprit du millésime');

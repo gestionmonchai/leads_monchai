@@ -44,12 +44,15 @@ jobs:
 
       - name: Démonstration viticole, liens et absence de transmission
         run: |
-          node --check concours/taille-moteur.js
-          node --check concours/taille-scene.js
-          node --check concours/atelier-taille.js
-          node --check concours/parcours-moteur.js
-          node --check concours/parcours-jeu.js
-          node --check concours/guidage.js
+          node --check concours/quiz-moteur.js
+          node --check concours/quiz.js
+          node --test outils/test-concours-quiz.cjs
+          node --check concours/millesime/taille-moteur.js
+          node --check concours/millesime/taille-scene.js
+          node --check concours/millesime/atelier-taille.js
+          node --check concours/millesime/parcours-moteur.js
+          node --check concours/millesime/parcours-jeu.js
+          node --check concours/millesime/guidage.js
           node --test outils/test-concours-taille.cjs
           node --test outils/test-concours-parcours.cjs
           node --check demonstration/site.js

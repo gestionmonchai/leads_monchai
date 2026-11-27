@@ -33,7 +33,10 @@
         "reference": "SV-ROS-25-75",
         "quantite": 1
       }
-    ]
+    ],
+    "fabrication": "Coffret cartonné à trois compartiments, avec un rouge, un blanc et un rosé.",
+    "conservation": "Conserver les bouteilles couchées, au frais et à l’abri de la lumière.",
+    "allergenes": "Les trois vins contiennent des sulfites"
   },
   {
     "slug": "clair-de-grappe",
@@ -47,7 +50,17 @@
     "notes": "Raisin blanc, pomme et citron",
     "description": "Un jus de raisin blanc pressé puis gazéifié. La pomme et le citron équilibrent la douceur du fruit, avec des bulles fines.",
     "accord": "Gougères, tarte aux pommes",
-    "service": "6–8 °C"
+    "service": "6–8 °C",
+    "assemblage": {
+      "Clairette": 70,
+      "Grenache blanc": 30
+    },
+    "parcelles": [
+      "les-amandiers"
+    ],
+    "ingredients": "Jus de raisin blanc, dioxyde de carbone.",
+    "fabrication": "Pressurage des raisins, pasteurisation du jus puis gazéification.",
+    "conservation": "Après ouverture, conserver au réfrigérateur et consommer dans les 3 jours."
   },
   {
     "slug": "vinaigre-de-syrah",
@@ -60,7 +73,18 @@
     "notes": "Griotte et poivre doux",
     "description": "Un vinaigre de vin rouge aux notes de griotte, élevé en fût. Son acidité relève une vinaigrette et apporte du relief aux sucs de cuisson.",
     "accord": "Salade de lentilles, magret de canard",
-    "conseil": "Ajouter un trait en fin de cuisson pour déglacer la poêle."
+    "conseil": "Ajouter un trait en fin de cuisson pour déglacer la poêle.",
+    "cepages": [
+      "Syrah"
+    ],
+    "parcelles": [
+      "les-echines"
+    ],
+    "ingredients": "Vinaigre de vin rouge de Syrah.",
+    "fabrication": "Acétification lente du vin, puis 6 mois en petits fûts.",
+    "acidite_pct": 6,
+    "conservation": "Bien refermer après usage et conserver à l’abri de la lumière.",
+    "allergenes": "Contient des sulfites"
   },
   {
     "slug": "gelee-de-grenache",
@@ -73,7 +97,16 @@
     "notes": "Raisin mûr et gelée fondante",
     "description": "Le jus de grenache cuit doucement avec du sucre et un trait de citron. Il donne une gelée souple aux notes de raisin mûr et de fruits rouges.",
     "accord": "Tomme de brebis, brioche toastée",
-    "conseil": "Servir à température ambiante pour retrouver une texture fondante."
+    "conseil": "Servir à température ambiante pour retrouver une texture fondante.",
+    "cepages": [
+      "Grenache noir"
+    ],
+    "parcelles": [
+      "terrasses-de-la-combe"
+    ],
+    "ingredients": "Jus de raisin Grenache noir, sucre, jus de citron.",
+    "fabrication": "Cuisson du jus et du sucre en bassine, mise en pot à chaud.",
+    "conservation": "Après ouverture, garder au réfrigérateur et consommer dans les 3 semaines."
   },
   {
     "slug": "huile-de-pepins",
@@ -86,6 +119,9 @@
     "notes": "Huile légère et douce",
     "description": "Cette huile est obtenue à partir des pépins de raisin, avec une saveur discrète qui laisse une vinaigrette ou une mayonnaise prendre le goût de ses autres ingrédients.",
     "accord": "Salade de haricots verts, mayonnaise maison",
-    "conseil": "Ajouter quelques gouttes de vinaigre de Syrah à la vinaigrette."
+    "conseil": "Ajouter quelques gouttes de vinaigre de Syrah à la vinaigrette.",
+    "ingredients": "Huile de pépins de raisin.",
+    "fabrication": "Extraction à partir de pépins séchés issus du pressurage des raisins, puis filtration.",
+    "conservation": "Conserver à l’abri de la chaleur et de la lumière."
   }
 ]

@@ -3,8 +3,8 @@
 Vitrine publique de démonstration pour l’import de données produits Mon Chai.
 
 - Vitrine disponible à `/votre-futur-vignoble/`, avec les fiches sous `cuvees/` et `produits/` et les pages `sejours/`, `experiences/` et `domaines/`.
-- Les sources sont `cuvees.json`, `comptoir.json` et `hospitalite.json`. Après une modification, lancer `python outils/votre-futur-vignoble/generer.py`. L’option `--check` contrôle que les fichiers versionnés ont été régénérés.
-- Les liens HTML et le balisage `ItemList` de l’accueil mènent aux fiches. Chaque fiche annonce ses caractéristiques dans le contenu HTML et dans son objet `Product`. L’ancien fichier public `catalogue.json` a été retiré.
+- Les sources sont `cuvees.json`, `comptoir.json`, `parcelles.json` et `hospitalite.json`. Après une modification, lancer `python outils/votre-futur-vignoble/generer.py`. L’option `--check` contrôle que les fichiers versionnés ont été régénérés.
+- Les liens HTML et le balisage `ItemList` de l’accueil mènent aux fiches. Chaque fiche annonce ses caractéristiques dans le contenu HTML et dans son objet `Product`, également inclus dans l’`ItemList` de l’accueil. Les parcelles sont décrites par des objets `Place` sur la page des domaines.
 - Les produits, les séjours et les tarifs sont fictifs. Le panier et les préparations de réservation utilisent le stockage de session.
 
 ## Parcours et validation UX/UI
@@ -12,6 +12,8 @@ Vitrine publique de démonstration pour l’import de données produits Mon Chai
 L’accueil met en avant la photo du vignoble et l’accès aux cuvées. Le filtre conserve le focus, indique le choix actif et annonce le nombre de résultats. Les images et liens de fiches sont disponibles même sans JavaScript, avec les six cuvées affichées par défaut. Les fiches présentent d’abord le nom, l’appellation et la dégustation, puis les caractéristiques, l’accord et le service. « Le comptoir » mène aux six nouveaux produits depuis le header. Les fiches du magnum et de la bouteille renvoient vers l’autre format. Le coffret liste chacune des trois bouteilles et renvoie vers sa fiche.
 
 La grille se réduit selon la largeur, le lien d’évitement mène au contenu principal et le focus reste visible. La recette couvre 320, 390, 820 et 1440 px, les filtres au clavier, le parcours vers et depuis une fiche, les URL des produits l’extraction des données avec et sans JavaScript, et la lecture de la vidéo.
+
+La liste des cépages est visible sous la photo d’accueil et renvoie au parcellaire. « Voir la fiche technique » mène aux caractéristiques détaillées avec des liens vers les parcelles, qui renvoient aux cuvées correspondantes. Les sections s’affichent en colonnes adaptatives. Les liens d’ancre sont utilisables au clavier et les listes de caractéristiques restent lisibles sans JavaScript. La vérification porte sur la concordance entre le texte des fiches, les propriétés structurées et les cépages plantés sur les parcelles liées.
 
 À la première ouverture d’une page de la vitrine, le dialogue de majorité prend le focus et bloque l’accès au contenu visuel. La confirmation ferme le dialogue, renvoie le focus au contenu et mémorise le choix dans le stockage de session de l’onglet. Le refus et Échap ramènent à Mon Chai. Les fiches et le JSON-LD restent lisibles avec JavaScript désactivé.
 

@@ -7,16 +7,26 @@
     "couleur": "Rouge",
     "type": "Vin tranquille",
     "appellation": "AOP Côtes du Rhône Villages",
-    "cepages": [
-      "Syrah",
-      "Grenache noir"
-    ],
     "degre_alcool": 14,
     "prix_ttc": 19.5,
     "notes": "Mûre, violette et poivre noir",
     "description": "La syrah apporte la violette et le poivre. Le grenache prolonge le fruit noir et arrondit les tanins. Une finale fraîche rappelle le versant où la cuvée a pris forme.",
     "accord": "Agneau rôti, aubergines grillées",
-    "service": "16–18 °C"
+    "service": "16–18 °C",
+    "assemblage": {
+      "Syrah": 55,
+      "Grenache noir": 45
+    },
+    "parcelles": [
+      "les-echines",
+      "terrasses-de-la-combe"
+    ],
+    "vendanges": "Vendanges manuelles du 12 au 19 septembre 2023",
+    "vinification": "Éraflage complet, macération de 21 jours et remontages doux, cépages vinifiés séparément.",
+    "elevage": "12 mois, dont 30 % de l’assemblage en fûts de 500 litres et le reste en béton.",
+    "garde": "À boire de 2026 à 2031",
+    "sucres_g_l": 1.7,
+    "allergenes": "Contient des sulfites"
   },
   {
     "slug": "de-bonne-heure",
@@ -26,16 +36,25 @@
     "couleur": "Blanc",
     "type": "Vin tranquille",
     "appellation": "AOP Côtes du Rhône",
-    "cepages": [
-      "Clairette",
-      "Grenache blanc"
-    ],
     "degre_alcool": 12.5,
     "prix_ttc": 14.4,
     "notes": "Poire fraîche, fenouil et citron",
     "description": "Vendangée tôt, cette cuvée garde le croquant de la poire et une légère note anisée. Le grenache blanc donne de l’ampleur, puis le citron rafraîchit la finale.",
     "accord": "Truite, fenouil rôti",
-    "service": "9–11 °C"
+    "service": "9–11 °C",
+    "assemblage": {
+      "Clairette": 60,
+      "Grenache blanc": 40
+    },
+    "parcelles": [
+      "les-amandiers"
+    ],
+    "vendanges": "Vendanges à l’aube les 3 et 4 septembre 2024",
+    "vinification": "Pressurage direct, débourbage à froid et fermentation en cuve inox.",
+    "elevage": "5 mois sur lies fines en cuve inox.",
+    "garde": "À boire de 2025 à 2028",
+    "sucres_g_l": 1.4,
+    "allergenes": "Contient des sulfites"
   },
   {
     "slug": "a-fleur-de-roche",
@@ -45,16 +64,25 @@
     "couleur": "Rosé",
     "type": "Vin tranquille",
     "appellation": "IGP Méditerranée",
-    "cepages": [
-      "Cinsault",
-      "Grenache noir"
-    ],
     "degre_alcool": 12.5,
     "prix_ttc": 12.8,
     "notes": "Groseille, pêche blanche et pomelo",
     "description": "Le pressurage direct donne à ce rosé sa robe claire. En bouche, la pêche et la groseille précèdent une amertume fine de pomelo.",
     "accord": "Tomates anciennes, légumes grillés",
-    "service": "8–10 °C"
+    "service": "8–10 °C",
+    "assemblage": {
+      "Cinsault": 65,
+      "Grenache noir": 35
+    },
+    "parcelles": [
+      "le-coteau-rose"
+    ],
+    "vendanges": "Vendanges le 29 août 2025",
+    "vinification": "Pressurage direct des deux cépages, fermentation entre 15 et 17 °C.",
+    "elevage": "4 mois en cuve inox avant la mise en bouteille.",
+    "garde": "À boire de 2026 à 2027",
+    "sucres_g_l": 1.9,
+    "allergenes": "Contient des sulfites"
   },
   {
     "slug": "la-pente-douce",
@@ -64,16 +92,25 @@
     "couleur": "Rouge",
     "type": "Vin tranquille",
     "appellation": "AOP Côtes du Rhône",
-    "cepages": [
-      "Grenache noir",
-      "Carignan"
-    ],
     "degre_alcool": 13.5,
     "prix_ttc": 14.8,
     "notes": "Cerise, réglisse et thym",
     "description": "Une macération courte conserve la cerise et des tanins souples. Le carignan donne un peu de relief à l’assemblage, avec une finale de thym et de réglisse.",
     "accord": "Volaille rôtie, champignons poêlés",
-    "service": "14–16 °C"
+    "service": "14–16 °C",
+    "assemblage": {
+      "Grenache noir": 80,
+      "Carignan": 20
+    },
+    "parcelles": [
+      "terrasses-de-la-combe"
+    ],
+    "vendanges": "Vendanges du 18 au 20 septembre 2024",
+    "vinification": "Macération de 8 jours avec une extraction douce pour garder des tanins souples.",
+    "elevage": "8 mois en cuves de béton, puis assemblage.",
+    "garde": "À boire de 2025 à 2029",
+    "sucres_g_l": 1.6,
+    "allergenes": "Contient des sulfites"
   },
   {
     "slug": "vent-de-craie",
@@ -83,16 +120,25 @@
     "couleur": "Blanc",
     "type": "Vin tranquille",
     "appellation": "AOP Côtes du Rhône Villages",
-    "cepages": [
-      "Roussanne",
-      "Marsanne"
-    ],
     "degre_alcool": 13,
     "prix_ttc": 21.6,
     "notes": "Coing, amande et zeste de citron",
     "description": "L’élevage sur lies donne à la roussanne une texture ample. Le coing et l’amande dominent, puis une note d’agrume apporte de la tension en fin de bouche.",
     "accord": "Saint-jacques, risotto aux asperges",
-    "service": "10–12 °C"
+    "service": "10–12 °C",
+    "assemblage": {
+      "Roussanne": 70,
+      "Marsanne": 30
+    },
+    "parcelles": [
+      "le-clos-du-vent"
+    ],
+    "vendanges": "Vendanges manuelles le 8 septembre 2023",
+    "vinification": "Pressurage de grappes entières. Une partie des moûts fermente en demi-muids.",
+    "elevage": "10 mois sur lies fines en cuve et en demi-muids de 600 litres.",
+    "garde": "À boire de 2025 à 2031",
+    "sucres_g_l": 1.8,
+    "allergenes": "Contient des sulfites"
   },
   {
     "slug": "les-eclats",
@@ -102,15 +148,24 @@
     "couleur": "Blanc",
     "type": "Vin effervescent",
     "appellation": "Vin de France",
-    "cepages": [
-      "Clairette",
-      "Ugni blanc"
-    ],
     "degre_alcool": 11.5,
     "prix_ttc": 17.9,
     "notes": "Pomme verte, fleurs blanches et brioche",
     "description": "Une prise de mousse en bouteille donne des bulles fines. À la pomme verte et aux fleurs blanches succède une légère note de brioche.",
     "accord": "Gougères, fromage frais aux herbes",
-    "service": "7–9 °C"
+    "service": "7–9 °C",
+    "assemblage": {
+      "Clairette": 75,
+      "Ugni blanc": 25
+    },
+    "parcelles": [
+      "le-plat-du-moulin"
+    ],
+    "vendanges": "Vendanges du 26 au 28 août 2024",
+    "vinification": "Seconde fermentation en bouteille selon la méthode traditionnelle.",
+    "elevage": "14 mois sur lattes avant dégorgement, puis 3 mois en cave.",
+    "garde": "À boire de 2026 à 2029",
+    "sucres_g_l": 6,
+    "allergenes": "Contient des sulfites"
   }
 ]

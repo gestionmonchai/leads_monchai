@@ -31,7 +31,7 @@ try:
         for width in (320,390,768,1440):
             ctx=browser.new_context(viewport={'width':width,'height':1000},is_mobile=width<700,has_touch=width<700,accept_downloads=True)
             p=ctx.new_page();p.on('pageerror',lambda e:report['errors'].append(str(e)));p.on('request',lambda r:report['transmissions'].append(r.url) if r.method!='GET' or not r.url.startswith(base+'/') else None)
-            response=p.goto(base+'/concours/',wait_until='networkidle');assert response.status==200
+            response=p.goto(base+'/concours/millesime/',wait_until='networkidle');assert response.status==200
             screenshot(p,'accueil',width);p.locator('button[type=submit]').click();expect(p.locator('#registration')).to_be_visible()
             p.locator('#sample-profile').click();expect(p.locator('#news')).not_to_be_checked();p.locator('button[type=submit]').click();expect(p.locator('#ready')).to_be_visible();p.locator('#start').click()
             expect(p.locator('#campaign-title')).to_have_text('Le geste juste')
@@ -73,7 +73,7 @@ try:
             p.locator('#reveal').click();expect(p.locator('#surprise-open')).to_contain_text('aucun lot attribué');screenshot(p,'portrait',width)
             p.locator('#replay').click();p.locator('#start').click();p.locator('#leave-game').click();p.locator('#exit-cancel').click();expect(p.locator('#pause-panel')).to_be_visible();p.locator('#resume').click();p.locator('#leave-game').click();p.locator('#exit-confirm').click();expect(p.locator('#registration')).to_be_visible()
             assert p.evaluate('localStorage.length===0 && sessionStorage.length===0');report['formats'].append(width);ctx.close()
-        ctx=browser.new_context(java_script_enabled=False);p=ctx.new_page();p.goto(base+'/concours/');expect(p.locator('#firstname')).to_be_disabled();expect(p.locator('button[type=submit]')).to_be_disabled();ctx.close();browser.close()
+        ctx=browser.new_context(java_script_enabled=False);p=ctx.new_page();p.goto(base+'/concours/millesime/');expect(p.locator('#firstname')).to_be_disabled();expect(p.locator('button[type=submit]')).to_be_disabled();ctx.close();browser.close()
         assert not report['errors'],report['errors'];assert not report['transmissions'],report['transmissions']
         report['controles']+=['six ateliers guidés, un geste à la fois','commande montrée et focus transmis','taille A/B puis C/D','retour au geste précédent sans perte','bilan court et détails dépliables','choix de récolte explicite sans valeur préremplie','prélèvement cinq zones','vanne et réglage thermique','alerte malo et plan ordonné','papier et confirmation enzymatique','volume et réserve d’ouillage','portrait et carnet complet','premier score conservé après réessai','pause/aide/sortie','aucun envoi ou stockage','formulaire désactivé sans JavaScript']
 finally:

@@ -1,7 +1,7 @@
 'use strict';
 const {test}=require('node:test');
 const assert=require('node:assert/strict');
-const T=require('../concours/taille-moteur.js');
+const T=require('../concours/millesime/taille-moteur.js');
 test('Trois charges distinctes, courson bas à deux yeux et vieux bois hors du modèle de coupe',()=>{
   assert.deepEqual([0,1,2].map(i=>T.scenario(i).baguette),[6,7,5]);
   for(let i=0;i<3;i++){const s=T.scenario(i);assert.equal(s.branches.length,4);assert.equal(s.branches[0].target,2);assert.ok(s.branches[0].points[0][1]>s.branches[1].points[0][1]);}

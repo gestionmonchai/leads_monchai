@@ -1,166 +1,98 @@
-# Quel viticulteur êtes-vous ? Un millésime Mon Chai
+# Concours Vinitech : quiz simple, tirage indépendant
 
-## Guidage du joueur
+Demande du 27 novembre 2026 : mettre le parcours de métier de côté, présenter
+les trois lots annoncés et revenir à un jeu très simple. Denis souligne le risque
+que les participants confondent performance et chances de gagner.
 
-Retour de Denis : le parcours plaît, mais le joueur se perd devant toutes les
-commandes et explications présentées ensemble. La correction rend chaque
-atelier progressif, sans changer ses principes œnologiques ni son barème.
+Le quiz est une animation facultative de cinq questions, sans chronomètre.
+Une bonne réponse donne un point personnel, accompagné d'une courte explication.
+Aucun classement, rang ou highscore public n'est affiché.
 
-### Volet UX/UI du guidage
+## Principe proposé et état de démonstration
 
-- **Entrée** : dès le premier atelier, un bandeau « Geste 1 / … » donne une
-  consigne courte. Taille : A, puis B, puis C/D, puis relecture. Les autres
-  ateliers séparent observation, manipulation et conclusion en 3 ou 4 gestes.
-- **Hiérarchie** : une commande principale dans le bandeau, le groupe d'outils
-  du geste courant et la scène. Les commandes des gestes suivants restent cachées.
-  La situation complète est repliée derrière « Revoir la situation de cet atelier ».
-- **États** : geste à faire, outil ciblé, geste effectué, suivant, précédent,
-  annulation d'une coupe, relecture et bilan. Pas de passage automatique après
-  l'ouverture d'une analyse : le joueur garde le temps de lire avant de continuer.
-- **Feedback** : outil utile encadré, retour immédiat et compteur local.
-  « Me montrer où agir » fait défiler jusqu'à la commande et lui transmet le focus.
-  « Continuer » ne s'affiche qu'après les manipulations attendues, sans imposer
-  la bonne réponse de fond ; une consigne thermique erronée reste un choix possible.
-  Le dernier geste ouvre « Voir l'explication » plutôt qu'un bouton de validation
-  éloigné. La date de récolte doit être choisie explicitement.
-- **Récupération** : « Geste précédent » conserve réglages, prélèvements et plan.
-  Annuler une coupe ramène au geste de taille à refaire, pour éviter une impasse.
-  Le retour arrière et les réessais ne réécrivent pas le premier score enregistré.
-- **Responsive** : bandeau lisible et fixe lors du défilement, outils empilés sur
-  mobile, cible amenée au centre de la vue. Les panneaux vides disparaissent sur
-  téléphone ; le contrôle utile reste atteignable sans chercher sous la scène.
-- **Accessibilité** : boutons et champs natifs, focus visible, message d'état
-  annoncé sans répétition à chaque déplacement, scène inactive hors du geste
-  concerné via `inert`. Les étapes de taille limitent les sarments sélectionnables.
-  « Les mots utiles » explique les termes propres au geste. Pas d'animation imposée.
-- **Explications** : le bilan montre d'abord le repère à retenir ; observation,
-  détails et source sont dans « Comprendre mon résultat en détail ». Le carnet
-  final conserve l'ensemble des explications.
-- **Cohérence et assistant** : même scène, couleurs, URL et QR. L'aide servie
-  explique les quatre nouvelles commandes de guidage ; aucune fonction ou route
-  n'est ajoutée à l'application Django ni à son assistant distinct.
+Une participation valide par personne, indépendamment du score, du fait de jouer
+ou non, du nombre de parties et de la vitesse. Le formulaire précède le quiz.
+Passer le quiz, obtenir 0/5 ou 5/5 et rejouer conservent chacun le même indicateur
+de participation simulée. Le résultat rappelle que seul le futur tirage attribue
+les lots. Aucun « ticket bonus », seuil de bonnes réponses, faux gagnant ou lot
+attribué immédiatement.
 
-### Acceptation du guidage
+Cette version reste une démo : les coordonnées ne sont ni envoyées ni stockées,
+aucune participation réelle n'est enregistrée, aucun tirage n'est exécuté.
+Le compteur vaut un dans l'onglet, ce n'est pas un mécanisme serveur d'unicité.
+Le règlement, dates, dédoublonnage, conservation des participations, tirage
+auditable, notification et caractéristiques précises des lots restent à établir
+pour l'opération réelle. Ne pas présenter la démo comme un concours ouvert.
 
-1. Au départ, A est proposé ; B est masqué et le bouton d'aide cible A au clavier.
-2. Une annulation de A depuis le geste B revient à A. Le geste peut être refait.
-3. Les bilans s'ouvrent avant le passage suivant ; les analyses utiles restent
-   consultables au moment de décider. Les mauvaises décisions sont explicables.
-4. Revenir à la lecture d'une cuve conserve son circuit et sa consigne.
-5. Les six ateliers, le portrait, pause/aide/sortie et le téléchargement passent
-   à 320/390/768/1440 px, avec captures et aucune transmission ou stockage.
+Lots annoncés par Denis, distincts des anciens exemples du parcours archivé :
 
-Démo publique `/concours/`, non indexable, sans entrée ajoutée dans la navigation
-principale. Le QR existant garde sa destination. Le parcours remplace le défi de
-trois ceps par six ateliers concrets et un portrait ludique. Formulaire local,
-aucun compte, abonnement, suivi d'audience, enregistrement ou envoi de coordonnées.
+- Un mois Mon Chai offert : formule et conditions à préciser.
+- Un emballage Bottleflow : format et quantité à préciser.
+- Une bouteille de champagne : référence à préciser.
 
-## Parcours livré
+Aucune valeur, marque de champagne, formule d'abonnement, quantité Bottleflow
+ou condition d'attribution supplémentaire n'est inventée. L'essai demande une
+confirmation de majorité, vu le lot alcoolisé, sans collecter de date de naissance.
+Il n'y a aucun abonnement marketing dans cette démo.
 
-1. **Taille** : un cep prétaillé en Guyot simple ; couper librement les sarments,
-   régler à 1 mm, conserver 2 yeux sur le courson et 6 sur la baguette, supprimer
-   les deux superflus en laissant un chicot. Zoom, loupe, clavier et annulation.
-2. **Vendanges** : cinq zones de prélèvement parmi neuf, consultation du bilan,
-   décision de récolte selon l'objectif de ce lot fictif et sa météo.
-3. **Cuve chaude** : lecture des mesures, vanne de refroidissement à ouvrir,
-   consigne à régler, contrôle suivant à programmer. La projection n'est pas une
-   mesure ni un modèle cinétique réel.
-4. **Alerte pendant la malo** : échantillon identifié, analyses à consulter,
-   trois actions à ordonner. FA arrêtée, sucres présents et volatile croissante
-   sont des signaux d'alerte ; aucune certitude diagnostique ni dose de traitement.
-5. **Contrôle de fin de malo** : sur un autre lot où elle était recherchée,
-   comparer le papier aux témoins puis demander la confirmation enzymatique.
-   Le schéma de chromatographie n'est pas un protocole expérimental.
-6. **Ouillage** : matériel et réserve, volume à régler et fermeture à prévoir.
-   Une coupe schématique montre le niveau projeté ; élevage sans recherche de voile.
+## Volet UX/UI et acceptation
 
-Chaque atelier aboutit à un débrief avec action observée, explication,
-enseignement, score et source primaire. Le réessai conserve le premier score,
-annoncé dans les règles, le débrief et le résultat. Aucun bonus de vitesse.
+- **Entrée** : même `/concours/` et même QR. Logo et charte Mon Chai ; message
+  score/tirage visible avant le formulaire, avant le quiz, à chaque question et
+  au résultat. Les lots sont présentés comme ceux de la future opération.
+- **Hiérarchie** : coordonnées, participation simulée, choix de jouer ou passer,
+  une question avec trois réponses, explication courte, résultat. Les commandes
+  principales ont une seule fonction explicite. Aucun système de guidage à apprendre.
+- **États** : formulaire vide/invalide/valide, prêt, quiz passé, question ouverte,
+  réponse correcte/incorrecte verrouillée, suite, arrêt anticipé, résultat et rejeu.
+  La démo est explicitement nommée ; sans JS les champs et l'envoi restent désactivés.
+- **Feedback** : question N sur 5, score personnel, réponse expliquée après le clic,
+  texte et couleur pour distinguer le résultat, aucun passage automatique. Toutes
+  les fins montrent le même principe de participation ; score masqué si quiz passé.
+- **Récupération** : aide accessible partout et fermable par Échap, modification
+  des coordonnées, arrêt du quiz à tout moment, rejeu sans créer de bonus.
+- **Responsive** : accueil sur deux colonnes puis une sur mobile ; carte de quiz
+  centrée, choix tactiles de 44 px minimum, pas de débordement à 320/390/768/1440 px.
+- **Accessibilité** : contrôles natifs, labels, focus visible et transmis au titre
+  puis à l'action suivante, résultat annoncé, progression nommée, pas de timer,
+  mouvement réduit respecté. Le score ne dépend pas d'une rapidité de manipulation.
+- **Assistant** : « Le principe du jeu » enseigne formulaire, profil fictif,
+  jouer/passer, répondre, continuer, arrêter, rejouer et revenir au formulaire.
+  Aucune nouvelle fonction ou route de l'application Django ni changement de sa banque.
+- **Critères** : vérification navigateur des trois issues 0/5, 5/5 et quiz passé,
+  toutes avec une participation simulée ; arrêt, rejeu, aide, téléchargement QR,
+  absence de requête d'envoi/stockage et archive accessible sans ressource manquante.
 
-Le portrait calcule quatre axes : observation (vendanges et contrôle de malo),
-précision (taille), sang-froid (cuve et alerte), préservation (ouillage).
-Chaque atelier vaut 100 points, total 600. Les axes sont les moyennes des premiers
-scores concernés. Un axe dominant produit un portrait associé ; égalité : portrait
-équilibré ; total inférieur à 180 : explorateur. Ce résultat ne caractérise pas
-la personne en dehors du jeu et ne mesure pas une compétence professionnelle.
+## Ancien parcours conservé
 
-Le résultat réunit les six débriefs consultables, un portrait téléchargeable en
-texte sans nom ni e-mail et une surprise explicitement fictive. Le téléchargement
-reste sur l'appareil, sans requête réseau. Rejouer remet les scores à zéro.
+Le millésime guidé est conservé en entier sous `/concours/millesime/`, sans lien
+ajouté à la navigation principale. Sources, assets, modèle, explications et
+provenances sont déplacés, avec adaptation des liens et des polices communes.
+Ses tests de modèle restent en CI ; son script de recette cible désormais cette
+URL. Son ancien contenu et ses lots d'exemple restent ceux de cette archive.
 
-## Volet UX/UI
+## Vérifications
 
-- **Entrée** : même QR et même URL ; accueil « Quel viticulteur êtes-vous ? »,
-  formulaire prénom, nom, e-mail, domaine facultatif ; profil fictif en un clic.
-  Confirmation de démo obligatoire ; option newsletter illustrative décochée.
-- **Hiérarchie** : présentation, carte du parcours, situation et geste attendu,
-  scène manipulable et outils, validation, explication, étape suivante, portrait.
-  Le fil des saisons et le compteur montrent la progression réelle.
-- **États** : formulaire vide/invalide, prêt, geste incomplet/valide, paramètres
-  inadéquats, débrief correct/partiel/erreur, réessai, pause/reprise, dialogue de
-  sortie, résultat et surprise. Le score ne transforme pas une erreur en succès.
-  Aucune attente serveur ni permission de compte ; sans JS, formulaire désactivé.
-- **Feedback** : compteurs de prélèvement, vanne et consigne visibles, analyses
-  débloquées après prélèvement, actions numérotées, mesure enzymatique affichée,
-  niveau et dépassement du fût, détails des gestes dans le bilan. Rien ne prétend
-  qu'un vin réel a été traité ou qu'un lot a été gagné.
-- **Responsive** : scène et outils côte à côte sur grand écran, empilés sur
-  téléphone ; validations accessibles sans zone tronquée à 320/390/768/1440 px.
-  Les gestes précis sont possibles avec des contrôles numériques au clavier.
-- **Accessibilité** : boutons et champs natifs nommés, labels, focus visible,
-  titres ciblés lors des transitions, état de vanne annoncé, score en texte,
-  progressions nommées, explications repliables natives. Dialogues fermables par
-  Échap, retour du focus, pause sur aide et changement d'onglet. Aucun chronomètre.
-  Mouvement réduit respecté. Les scènes ont leurs alternatives fonctionnelles.
-- **Cohérence** : logo et polices locales Mon Chai, crème/bordeaux pour l'accueil,
-  vert forêt pour le parcours ; photographies détourées BevHive et scènes natives
-  coordonnées aux commandes. Provenances IA conservées avec les assets réutilisés.
-- **Assistant** : procédure complète pour tous les gestes et boutons dans l'aide
-  servie à toute étape. Aucune nouvelle route ni fonction dans l'application
-  Django de Mon Chai ; sa banque et ses artefacts ne sont pas modifiés.
+`node --test outils/test-concours-quiz.cjs` vérifie l'indépendance entre score et
+participation, le quiz passé, le rejeu, le verrouillage et les entrées invalides.
+Les 12 tests du millésime et de la taille restent exécutés sur les sources archivées.
 
-## Références et limites pédagogiques
+`outils/verifier-concours-quiz.py --sortie CHEMIN` teste les quatre formats,
+les trois scores/choix, l'arrêt, le rejeu et l'aide ; contrôle aucun envoi,
+stockage ou erreur JS, blocage sans JS et démarrage réel de l'archive.
+`--public` reprend les contrôles sur les fichiers servis.
 
-Sources primaires consultées le 27 novembre 2026, liées au débrief de l'atelier :
+## Références de conception
 
-- [IFV : taille en Guyot](https://www.vignevin-occitanie.com/la-taille-longue-de-la-vigne-en-guyot/).
-- [IFV : prélèvement de raisins](https://www.vignevin-occitanie.com/prelevement-de-raisins/).
-- [IFV : arrêts de fermentation](https://www.vignevin-occitanie.com/les-arrets-de-fermentation-alcoolique/).
-- [OIV : suivi des fermentations et protection des vins](https://www.oiv.int/fr/standards/review-of-practices-for-the-reduction-of-so2-doses-used-in-winemaking-).
-- [IFV : fermentation malolactique](https://www.vignevin.com/publications/fiches-pratiques/fermentation-malolactique/).
-- [IFV : suivi par chromatographie](https://www.vignevin-occitanie.com/suivi-de-la-fermentation-malolactique-ou-fml-dans-les-vins-par-chromatographie/).
-- [Notice du fabricant ALLA France, lecture du papier](https://b2b.carles-france.com/upload/products_data/files/Fiche%20techinque%20Chromatographie%20FML.pdf) : ordre des taches du schéma, lactique au-dessus du malique.
-- [OIV : ouillage](https://www.oiv.int/public/medias/3519/f-code-ii-34-341.pdf).
+Le choix de ne pas afficher de highscore est un choix de clarté dans cette
+opération, pas l'affirmation qu'un classement serait interdit. La présentation
+doit rester cohérente avec le mécanisme annoncé. Repère consulté le 27/11/2026 :
+[DGCCRF, loteries publicitaires et loyauté](https://www.economie.gouv.fr/dgccrf/les-fiches-pratiques/loterie-des-pratiques-commerciales-reglementees?language=fr).
+La future collecte devra informer les participants de ses conditions ; aucune
+prospection ne doit être imposée pour jouer :
+[CNIL, organisation de jeux-concours](https://www.cnil.fr/fr/cnil-direct/question/organisation-de-jeux-concours-que-faire),
+[CNIL, parrainage et jeux-concours](https://www.cnil.fr/sites/cnil/files/atoms/files/commerce-donnees_perso_parrainage_jeux_concours.pdf).
 
-Les chiffres, délais, tolérances, barèmes et scénarios sont inventés pour le jeu.
-Ils ne sont pas des normes IFV/OIV ni une recommandation d'intervention sur un lot
-réel. Le choix de demain pour la récolte répond uniquement à l'ensemble des
-conditions fictives données. Les cinq zones symbolisent une campagne de
-prélèvements, pas cinq baies. La consigne de 26 °C est le protocole de ce lot,
-pas une valeur universelle. L'alerte malo appelle un diagnostic et un protocole
-adapté ; le dosage de fin sur l'autre lot est accompagné d'une conclusion de
-laboratoire fictive, pas d'un seuil général. L'ouillage est celui d'un élevage
-classique sans voile.
-
-La taille conserve le modèle géométrique antérieur : longueur mesurée le long
-des sarments, yeux conservés selon la position de coupe ; marge de jeu de 10 à
-25 mm sur les bois gardés, chicot de 1 à 3 diamètres pour les suppressions.
-Pas de simulation 3D des angles, flux de sève, vitalité ou diagnostic de maladie.
-
-## Vérification
-
-`node --test outils/test-concours-taille.cjs outils/test-concours-parcours.cjs`
-vérifie le modèle de taille, les six barèmes, les erreurs de gestes, la distinction
-alerte/fin de malo et le calcul borné du portrait. Ces tests tournent dans la CI.
-
-`outils/verifier-concours-parcours.py --sortie CHEMIN` parcourt les six ateliers
-sur quatre formats, de l'accueil au portrait : coupe réelle, échantillonnage,
-vanne, suivi, plan ordonné et annulation, confirmation enzymatique, volume et
-réserve, débriefs, premier score conservé après réessai, téléchargement sans PII,
-pause, aide, sortie, aucun stockage ou envoi et formulaire bloqué sans JS.
-`--public` reprend le contrôle sur les fichiers publiés. Captures par atelier.
-
-Le formulaire reste explicitement local dans l'inventaire CI des honeypots.
-Le vrai concours, ses lots, son règlement, sa collecte et son mécanisme
-d'attribution restent distincts de cette démo.
+Les questions s'appuient sur les repères déjà vérifiés pour le millésime : taille
+et prélèvements IFV, fermentation alcoolique, ouillage OIV, et positionnement de
+Mon Chai sur le site vitrine. Elles n'impliquent aucun geste œnologique à réaliser.

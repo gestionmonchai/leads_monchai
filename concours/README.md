@@ -1,5 +1,55 @@
 # Quel viticulteur êtes-vous ? Un millésime Mon Chai
 
+## Guidage du joueur
+
+Retour de Denis : le parcours plaît, mais le joueur se perd devant toutes les
+commandes et explications présentées ensemble. La correction rend chaque
+atelier progressif, sans changer ses principes œnologiques ni son barème.
+
+### Volet UX/UI du guidage
+
+- **Entrée** : dès le premier atelier, un bandeau « Geste 1 / … » donne une
+  consigne courte. Taille : A, puis B, puis C/D, puis relecture. Les autres
+  ateliers séparent observation, manipulation et conclusion en 3 ou 4 gestes.
+- **Hiérarchie** : une commande principale dans le bandeau, le groupe d'outils
+  du geste courant et la scène. Les commandes des gestes suivants restent cachées.
+  La situation complète est repliée derrière « Revoir la situation de cet atelier ».
+- **États** : geste à faire, outil ciblé, geste effectué, suivant, précédent,
+  annulation d'une coupe, relecture et bilan. Pas de passage automatique après
+  l'ouverture d'une analyse : le joueur garde le temps de lire avant de continuer.
+- **Feedback** : outil utile encadré, retour immédiat et compteur local.
+  « Me montrer où agir » fait défiler jusqu'à la commande et lui transmet le focus.
+  « Continuer » ne s'affiche qu'après les manipulations attendues, sans imposer
+  la bonne réponse de fond ; une consigne thermique erronée reste un choix possible.
+  Le dernier geste ouvre « Voir l'explication » plutôt qu'un bouton de validation
+  éloigné. La date de récolte doit être choisie explicitement.
+- **Récupération** : « Geste précédent » conserve réglages, prélèvements et plan.
+  Annuler une coupe ramène au geste de taille à refaire, pour éviter une impasse.
+  Le retour arrière et les réessais ne réécrivent pas le premier score enregistré.
+- **Responsive** : bandeau lisible et fixe lors du défilement, outils empilés sur
+  mobile, cible amenée au centre de la vue. Les panneaux vides disparaissent sur
+  téléphone ; le contrôle utile reste atteignable sans chercher sous la scène.
+- **Accessibilité** : boutons et champs natifs, focus visible, message d'état
+  annoncé sans répétition à chaque déplacement, scène inactive hors du geste
+  concerné via `inert`. Les étapes de taille limitent les sarments sélectionnables.
+  « Les mots utiles » explique les termes propres au geste. Pas d'animation imposée.
+- **Explications** : le bilan montre d'abord le repère à retenir ; observation,
+  détails et source sont dans « Comprendre mon résultat en détail ». Le carnet
+  final conserve l'ensemble des explications.
+- **Cohérence et assistant** : même scène, couleurs, URL et QR. L'aide servie
+  explique les quatre nouvelles commandes de guidage ; aucune fonction ou route
+  n'est ajoutée à l'application Django ni à son assistant distinct.
+
+### Acceptation du guidage
+
+1. Au départ, A est proposé ; B est masqué et le bouton d'aide cible A au clavier.
+2. Une annulation de A depuis le geste B revient à A. Le geste peut être refait.
+3. Les bilans s'ouvrent avant le passage suivant ; les analyses utiles restent
+   consultables au moment de décider. Les mauvaises décisions sont explicables.
+4. Revenir à la lecture d'une cuve conserve son circuit et sa consigne.
+5. Les six ateliers, le portrait, pause/aide/sortie et le téléchargement passent
+   à 320/390/768/1440 px, avec captures et aucune transmission ou stockage.
+
 Démo publique `/concours/`, non indexable, sans entrée ajoutée dans la navigation
 principale. Le QR existant garde sa destination. Le parcours remplace le défi de
 trois ceps par six ateliers concrets et un portrait ludique. Formulaire local,

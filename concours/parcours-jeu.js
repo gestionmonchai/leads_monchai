@@ -23,14 +23,14 @@
     $('campaign-content').hidden=false;$('debrief').hidden=true;$('pause-panel').hidden=true;$('pause').hidden=false;
     const step=P.steps[index];$('campaign-title').textContent=step.title;$('chapter-subtitle').textContent=step.subtitle;$('chapter-mission').textContent=step.mission;$('chapter-action').textContent=step.action;progress();notice('');
     $('pruning-stage').hidden=index!==0;$('scenario-stage').hidden=index===0;
-    if(index===0)window.AtelierTaille.start(s=>submit(s));else renderActivity(step.id);
+    if(index===0){window.AtelierTaille.start(s=>submit(s));window.Guidage.mount(step.id,()=>state);}else renderActivity(step.id);
     show('campaign');
   }
   function submit(s=state){
     if(paused||chapterView!=='activity')return;
     const trial=P.evaluate(P.steps[index].id,s);lastTrial=trial;
     const first=records.find(r=>r.id===trial.id);if(!first)records.push(trial);
-    chapterView='debrief';$('campaign-content').hidden=true;$('debrief').hidden=false;
+    chapterView='debrief';window.Guidage.stop();$('campaign-content').hidden=true;$('debrief').hidden=false;$('debrief-details').open=false;
     $('debrief-score').textContent=`${trial.score} / 100`;$('debrief-title').textContent=P.steps[index].title;
     $('debrief-attempt').textContent=first?`Essai d’entraînement. Le premier score de ${first.score} / 100 reste dans votre portrait.`:'Premier essai enregistré dans votre portrait de jeu.';
     $('debrief-observed').textContent=trial.observed;$('debrief-explain').textContent=trial.explain;$('debrief-takeaway').textContent=trial.takeaway;
@@ -41,12 +41,13 @@
     const scene=$('scenario-scene'),controls=$('scenario-controls');scene.className=`scenario-scene scene-${id}`;
     const bottom='<button id="check-mission" class="primary" disabled>Valider mon geste</button><p class="simulation-note">Données fictives. Les objectifs chiffrés sont ceux de ce scénario.</p>';
     if(id==='vendanges'){
-      state={samples:[],day:0,read:false};
+      state={samples:[],day:null,read:false};
       scene.innerHTML=`<div class="scene-label">PARCELLE DES HAUTS · RAISINS ROUGES</div><div class="vineyard-panorama"><div class="vineyard-hills"></div><div class="vineyard-rows"></div><span class="map-mark map-left">Bordure</span><span class="map-mark map-center">Intérieur de parcelle</span><span class="map-mark map-right">Bordure</span>${P.sampling.map((s,i)=>`<button class="grape-pick" data-sample="${i}" aria-label="Prélever : ${s.label}" style="left:${s.x}%;top:${s.y}%"><svg viewBox="0 0 50 65" aria-hidden="true"><path d="M25 12q-4-10 4-11"/><path class="grape-leaf" d="M26 11Q9-3 6 10q5 12 20 1Z"/>${[[15,22],[32,22],[9,35],[24,35],[39,35],[16,47],[32,47],[25,58]].map(([x,y])=>`<circle cx="${x}" cy="${y}" r="7"/>`).join('')}</svg><span>${i+1}</span></button>`).join('')}</div><div class="sample-tray"><span>VOTRE PRÉLÈVEMENT</span><strong id="sample-count">0 / 5 zones</strong><div id="tray-dots"></div></div>`;
       controls.innerHTML=`<p class="tiny-label">LE CARNET DE PARCELLE</p><h3>Ne jugez pas sur une grappe.</h3><p>Chaque zone représente plusieurs prélèvements. Répartissez-les entre hauteurs et faces de rangs, en évitant les bordures.</p><button id="read-harvest" class="tool-button" disabled>Consulter le bilan du prélèvement</button><div id="harvest-report" hidden>${stat('Potentiel alcoolique','12,9 % vol.')}${stat('État sanitaire','Bon, observé au prélèvement')}${stat('Dégustation','Fruit présent, pépins mûrs')}<p class="weather-note">Météo fictive : 35 mm de pluie annoncés dans 48 h.</p></div><label for="harvest-day">Prévoir la récolte</label><select id="harvest-day"><option value="0">Demain matin</option><option value="1">Dans 3 jours</option><option value="2">Dans 6 jours</option></select><button id="reset-samples" class="text-button">Recommencer le prélèvement</button>${bottom}`;
       scene.querySelectorAll('[data-sample]').forEach(b=>b.addEventListener('click',()=>{if(state.samples.length>=5)return;state.samples.push(Number(b.dataset.sample));b.disabled=true;b.classList.add('picked');sync();notice(`${P.sampling[b.dataset.sample].label} : prélèvement ajouté.`);}));
       $('read-harvest').addEventListener('click',()=>{state.read=true;sync();notice('Analyses, dégustation et météo sont maintenant dans votre carnet.');});
-      $('harvest-day').addEventListener('change',()=>state.day=Number($('harvest-day').value));$('reset-samples').addEventListener('click',()=>renderActivity(id));
+      const emptyDay=document.createElement('option');emptyDay.value='';emptyDay.textContent='Choisir un créneau';emptyDay.selected=true;emptyDay.disabled=true;$('harvest-day').prepend(emptyDay);
+      $('harvest-day').addEventListener('change',()=>{state.day=Number($('harvest-day').value);sync();});$('reset-samples').addEventListener('click',()=>renderActivity(id));
     }else if(id==='chauffe'){
       state={temp:30,cooling:false,follow:false,read:false};
       scene.innerHTML=`<div class="scene-label">CUVE C12 · FERMENTATION ALCOOLIQUE</div><div class="tank-room"><div class="cellar-lines"></div><img class="tank-image" src="assets/cuverie.png" alt="Cuve inox représentée dans le chai"><div class="tank-plaque">C12<span>ROUGE · LOT FRUITÉ</span></div><div class="thermal-display"><span>TEMPÉRATURE MESURÉE</span><strong>33 °C</strong><small>Consigne <b id="scene-setpoint">30</b> °C</small></div><button id="valve" class="valve" aria-pressed="false"><span aria-hidden="true">✣</span><small id="valve-label">Circuit fermé</small></button><div id="coolant-pipe" class="coolant-pipe"></div></div><div class="scene-bottom-label">La cuve chauffe. Votre réglage doit être suivi d’une mesure.</div>`;
@@ -70,12 +71,12 @@
       controls.innerHTML=`<p class="tiny-label">LA TOURNÉE D’OUILLAGE</p><h3>La précision jusque dans les détails.</h3>${check('clean','Matériel vérifié propre et réserve contrôlée saine')}<label for="reserve">Vin de réserve</label><select id="reserve"><option value="">Choisir une réserve</option><option value="inconnu">Bidon non identifié</option><option value="F18">Réserve saine du même lot F18</option></select><label for="fill-volume">Volume prévu : <output id="fill-output">0,0 L</output></label><input id="fill-volume" type="range" min="0" max="10" step="0.1" value="0"><div class="fill-readings">${stat('Manque mesuré','6 L')}${stat('Après transfert prévu','219 L','fill-total')}</div><p id="overflow-note" class="projection"></p>${check('closed','Prévoir de remettre la bonde après contrôle du niveau')}${bottom}`;
       $('clean').addEventListener('change',()=>{state.clean=$('clean').checked;sync();});$('reserve').addEventListener('change',()=>{state.reserve=$('reserve').value;sync();});$('fill-volume').addEventListener('input',()=>{state.volume=Number($('fill-volume').value);sync();});$('pump').addEventListener('click',()=>{state.volume=Math.min(10,Math.round((state.volume+.5)*10)/10);$('fill-volume').value=state.volume;sync();});$('closed').addEventListener('change',()=>{state.closed=$('closed').checked;sync();});
     }
-    $('check-mission').addEventListener('click',()=>{if(!$('check-mission').disabled)submit();});sync();
+    $('check-mission').addEventListener('click',()=>{if(!$('check-mission').disabled)submit();});sync();window.Guidage.mount(id,()=>state);
   }
   function sync(){
     const id=P.steps[index].id;
     if(id==='vendanges'){
-      $('sample-count').textContent=`${state.samples.length} / 5 zones`;$('tray-dots').innerHTML=state.samples.map(i=>`<span>${i+1}</span>`).join('');$('read-harvest').disabled=state.samples.length<5;$('harvest-report').hidden=!state.read;$('check-mission').disabled=!state.read;
+      $('sample-count').textContent=`${state.samples.length} / 5 zones`;$('tray-dots').innerHTML=state.samples.map(i=>`<span>${i+1}</span>`).join('');$('read-harvest').disabled=state.samples.length<5;$('harvest-report').hidden=!state.read;$('check-mission').disabled=!state.read||state.day===null;
     }else if(id==='chauffe'){
       $('monitor-report').hidden=!state.read;$('scene-setpoint').textContent=state.temp;$('temp-output').textContent=`${state.temp} °C`;$('valve').setAttribute('aria-pressed',String(state.cooling));$('valve-label').textContent=state.cooling?'Circuit ouvert':'Circuit fermé';$('coolant-pipe').classList.toggle('flowing',state.cooling);
       $('thermal-projection').textContent=state.cooling?`Projection du jeu : retour progressif vers ${state.temp} °C. Une mesure réelle reste nécessaire.`:'Circuit fermé : la consigne ne suffit pas à agir sur la cuve.';$('check-mission').disabled=!state.read;
@@ -91,16 +92,17 @@
       $('wine-level').style.height=`${Math.min(100,77+state.volume/6*23)}%`;$('air-label').textContent=space>0?`${format(space)} L d’espace libre`:space<0?'Débordement prévu':'Niveau atteint';$('air-label').classList.toggle('full',space<=0);
       $('overflow-note').textContent=space>0?`Il restera ${format(space)} L à compléter.`:space<0?`${format(-space)} L de trop dans cette projection.`:'Le volume prévu compense exactement le manque.';$('bung-state').textContent=state.closed?'Bonde à remettre après transfert':'Bonde ouverte';$('check-mission').disabled=!state.reserve;
     }
+    window.Guidage.refresh();
   }
   function finish(){
-    window.AtelierTaille.stop();const portrait=P.profile(records);$('result-title').textContent=portrait.title;$('portrait-text').textContent=portrait.text;$('result-score').textContent=`${portrait.total} / 600 · vos premiers essais`;
+    window.AtelierTaille.stop();window.Guidage.stop();const portrait=P.profile(records);$('result-title').textContent=portrait.title;$('portrait-text').textContent=portrait.text;$('result-score').textContent=`${portrait.total} / 600 · vos premiers essais`;
     $('portrait-axes').replaceChildren();portrait.axes.forEach((value,i)=>{const row=document.createElement('div');row.className='portrait-axis';const label=document.createElement('span');label.textContent=portrait.names[i];const progress=document.createElement('progress');progress.max=100;progress.value=value;progress.setAttribute('aria-label',portrait.names[i]);const number=document.createElement('strong');number.textContent=`${value} / 100`;row.append(label,number,progress);$('portrait-axes').append(row);});
     $('final-breakdown').replaceChildren();for(const r of records){const step=P.steps.find(s=>s.id===r.id),d=document.createElement('details'),summary=document.createElement('summary');summary.textContent=`${step.title} · ${r.score} / 100`;d.append(summary);for(const text of [r.observed,r.explain,r.takeaway]){const p=document.createElement('p');p.textContent=text;d.append(p);}const link=document.createElement('a');link.href=step.source[1];link.textContent=step.source[0];link.target='_blank';link.rel='noopener';d.append(link);$('final-breakdown').append(d);}
     $('surprise-closed').hidden=false;$('surprise-open').hidden=true;show('result');
   }
   function pause(){if(phase!=='campaign'||paused)return;beforePause=chapterView;paused=true;window.AtelierTaille.pause();$('campaign-content').hidden=true;$('debrief').hidden=true;$('pause-panel').hidden=false;$('pause').hidden=true;}
   function resume(){if(!paused||phase!=='campaign')return;paused=false;$('pause-panel').hidden=true;$('campaign-content').hidden=beforePause!=='activity';$('debrief').hidden=beforePause!=='debrief';$('pause').hidden=false;window.AtelierTaille.resume();$(beforePause==='activity'?'campaign-title':'debrief-title').focus();}
-  function back(){window.AtelierTaille.stop();records=[];index=0;paused=false;show('registration');}
+  function back(){window.AtelierTaille.stop();window.Guidage.stop();records=[];index=0;paused=false;show('registration');}
   $('ready-map').innerHTML=P.steps.map((s,i)=>`<div><span>${icons[i]}</span><p><strong>${s.title}</strong><small>${s.season}</small></p></div>`).join('');
   $('form-fields').disabled=false;$('sample-profile').addEventListener('click',()=>{for(const [id,v]of Object.entries({firstname:'Camille',lastname:'Martin',email:'camille@example.org',estate:'Domaine de démonstration'}))$(id).value=v;$('demo-consent').checked=true;$('news').checked=false;$('concours-form').querySelector('[type=submit]').focus();});
   $('concours-form').addEventListener('submit',e=>{e.preventDefault();for(const id of ['firstname','lastname']){$(id).value=$(id).value.trim();if(!$(id).value){$(id).reportValidity();return;}}if(!$('concours-form').reportValidity())return;$('player-name').textContent=$('firstname').value;show('ready');});

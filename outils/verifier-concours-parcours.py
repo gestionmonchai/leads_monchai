@@ -22,7 +22,9 @@ def screenshot(p,name,width):
 def advance(p):
     expect(p.locator('#debrief')).to_be_visible();p.locator('#next-chapter').click()
 def check(p,score=100):
-    p.locator('#check-mission').click();expect(p.locator('#debrief-score')).to_have_text(f'{score} / 100')
+    expect(p.locator('#guide-action')).to_have_text('Voir l’explication');p.locator('#guide-action').click();expect(p.locator('#debrief-score')).to_have_text(f'{score} / 100')
+def gesture(p):
+    expect(p.locator('#guide-action')).to_have_text('Continuer');p.locator('#guide-action').click()
 try:
     with sync_playwright() as pw:
         browser=pw.chromium.launch()
@@ -33,30 +35,37 @@ try:
             screenshot(p,'accueil',width);p.locator('button[type=submit]').click();expect(p.locator('#registration')).to_be_visible()
             p.locator('#sample-profile').click();expect(p.locator('#news')).not_to_be_checked();p.locator('button[type=submit]').click();expect(p.locator('#ready')).to_be_visible();p.locator('#start').click()
             expect(p.locator('#campaign-title')).to_have_text('Le geste juste')
+            expect(p.locator('#guide-count')).to_contain_text('Atelier 1 / 6 · Geste 1 / 4');expect(p.locator('.branch-button[data-branch="B"]')).not_to_be_visible()
+            screenshot(p,'guide-depart',width)
+            p.locator('#guide-action').click();expect(p.locator('.branch-button[data-branch="A"]')).to_be_focused()
             cuts=p.evaluate('Taille.scenario(0).branches.map(b=>({id:b.id,mm:Math.round(Taille.ideal(b)),eyes:b.target}))')
             for cut in cuts:
                 p.locator(f'.branch-button[data-branch="{cut["id"]}"]').click();p.locator('#cut-position').evaluate('(el,n)=>{el.value=n;el.dispatchEvent(new Event("input",{bubbles:true}));}',cut['mm']);p.locator('#confirm-cut').click()
                 assert p.locator(f'[data-branch="{cut["id"]}"] [data-eye]').count()==cut['eyes']
-            screenshot(p,'taille',width);p.locator('#validate-vine').click();expect(p.locator('#debrief-score')).to_have_text('100 / 100');advance(p)
+                if cut['id']!='C':gesture(p)
+                if cut['id']=='A':
+                    p.locator('#undo').click();expect(p.locator('#guide-count')).to_contain_text('Geste 1 / 4')
+                    p.locator('.branch-button[data-branch="A"]').click();p.locator('#cut-position').evaluate('(el,n)=>{el.value=n;el.dispatchEvent(new Event("input",{bubbles:true}));}',cut['mm']);p.locator('#confirm-cut').click();gesture(p)
+            screenshot(p,'taille',width);check(p);expect(p.locator('#debrief-details')).not_to_have_attribute('open','');expect(p.locator('#debrief-takeaway')).to_be_visible();screenshot(p,'bilan-court',width);advance(p)
             expect(p.locator('#campaign-title')).to_have_text('Le bon moment');expect(p.locator('#check-mission')).to_be_disabled()
             for i in (1,3,4,5,7):p.locator(f'[data-sample="{i}"]').click()
-            expect(p.locator('#sample-count')).to_have_text('5 / 5 zones');p.locator('#read-harvest').click();p.locator('#harvest-day').select_option('0');screenshot(p,'vendanges',width);check(p);advance(p)
-            expect(p.locator('#campaign-title')).to_have_text('La cuve monte');p.locator('#read-monitor').click();p.locator('#valve').click();expect(p.locator('#cooling')).to_be_checked()
-            p.locator('#target-temp').fill('26');p.locator('#follow').check()
+            expect(p.locator('#sample-count')).to_have_text('5 / 5 zones');gesture(p);p.locator('#read-harvest').click();expect(p.locator('#harvest-report')).to_be_visible();gesture(p);expect(p.locator('#harvest-report')).to_be_visible();expect(p.locator('#guide-action')).to_have_text('Me montrer où agir');p.locator('#harvest-day').select_option('0');screenshot(p,'vendanges',width);check(p);advance(p)
+            expect(p.locator('#campaign-title')).to_have_text('La cuve monte');expect(p.locator('#target-temp')).not_to_be_visible();p.locator('#read-monitor').click();gesture(p);p.locator('#valve').click();expect(p.locator('#cooling')).to_be_checked()
+            p.locator('#target-temp').fill('26')
             p.locator('#pause').click();expect(p.locator('#pause-panel')).to_be_visible();p.locator('#resume').click();expect(p.locator('#target-temp')).to_have_value('26');expect(p.locator('#cooling')).to_be_checked()
             p.get_by_role('button',name='Comment jouer ?').click();expect(p.locator('#help-dialog')).to_be_visible();p.keyboard.press('Escape');expect(p.locator('#pause-panel')).to_be_visible();p.locator('#resume').click()
-            screenshot(p,'cuve',width);check(p);advance(p)
+            p.locator('#guide-back').click();expect(p.locator('#read-monitor')).to_be_visible();gesture(p);expect(p.locator('#target-temp')).to_have_value('26');expect(p.locator('#cooling')).to_be_checked();gesture(p);p.locator('#follow').check();screenshot(p,'cuve',width);check(p);advance(p)
             expect(p.locator('#campaign-title')).to_have_text('La malo… ou une alerte ?');expect(p.locator('#read-lab')).to_be_disabled()
-            p.locator('#take-sample').click();expect(p.locator('#sample-bottle')).to_be_visible();p.locator('#read-lab').click();expect(p.locator('#alert-lab')).to_contain_text('18 g/L')
+            p.locator('#take-sample').click();expect(p.locator('#sample-bottle')).to_be_visible();gesture(p);p.locator('#read-lab').click();expect(p.locator('#alert-lab')).to_contain_text('18 g/L');gesture(p)
             if width==390:
                 for action in ('lancer','assembler','attendre'):p.locator(f'[data-plan="{action}"]').click()
-                check(p,25);expect(p.locator('#debrief-explain')).to_contain_text('ne suffit pas');p.locator('#retry-chapter').click();p.locator('#take-sample').click();p.locator('#read-lab').click()
+                check(p,25);p.locator('#debrief-details summary').click();expect(p.locator('#debrief-explain')).to_contain_text('ne suffit pas');p.locator('#retry-chapter').click();p.locator('#take-sample').click();gesture(p);p.locator('#read-lab').click();gesture(p)
             for action in ('isoler','diagnostic','protocole'):p.locator(f'[data-plan="{action}"]').click()
             p.locator('#undo-plan').click();expect(p.locator('#check-mission')).to_be_disabled();p.locator('[data-plan="protocole"]').click();screenshot(p,'derive',width);check(p)
             if width==390:expect(p.locator('#debrief-attempt')).to_contain_text('premier score de 25')
             advance(p)
-            expect(p.locator('#campaign-title')).to_have_text('C’est fini, la malo ?');expect(p.locator('#enzymatic')).to_be_disabled();p.locator('#compare-paper').click();p.locator('#enzymatic').click();expect(p.locator('#enzymatic-result')).to_contain_text('0,06 g/L');p.locator('#stabilize').check();screenshot(p,'controle-malo',width);check(p);advance(p)
-            expect(p.locator('#campaign-title')).to_have_text('La part des anges');p.locator('#clean').check();p.locator('#reserve').select_option('F18');p.locator('#fill-volume').fill('5.5');p.locator('#pump').click();expect(p.locator('#fill-volume')).to_have_value('6');p.locator('#closed').check();expect(p.locator('#air-label')).to_have_text('Niveau atteint');screenshot(p,'ouillage',width);check(p);advance(p)
+            expect(p.locator('#campaign-title')).to_have_text('C’est fini, la malo ?');expect(p.locator('#enzymatic')).to_be_disabled();p.locator('#compare-paper').click();gesture(p);p.locator('#enzymatic').click();expect(p.locator('#enzymatic-result')).to_contain_text('0,06 g/L');gesture(p);p.locator('#stabilize').check();screenshot(p,'controle-malo',width);check(p);advance(p)
+            expect(p.locator('#campaign-title')).to_have_text('La part des anges');p.locator('#clean').check();gesture(p);p.locator('#reserve').select_option('F18');gesture(p);p.locator('#fill-volume').fill('5.5');p.locator('#pump').click();expect(p.locator('#fill-volume')).to_have_value('6');gesture(p);p.locator('#closed').check();expect(p.locator('#air-label')).to_have_text('Niveau atteint');screenshot(p,'ouillage',width);check(p);advance(p)
             expect(p.locator('#result')).to_be_visible();expect(p.locator('#result-score')).to_contain_text('525 / 600' if width==390 else '600 / 600');assert p.locator('#final-breakdown details').count()==6;assert p.locator('#portrait-axes progress').count()==4
             p.locator('#final-breakdown summary').nth(3).click();expect(p.locator('#final-breakdown details').nth(3)).to_contain_text('ne suffit pas')
             with p.expect_download() as d:p.locator('#download-portrait').click()
@@ -66,7 +75,7 @@ try:
             assert p.evaluate('localStorage.length===0 && sessionStorage.length===0');report['formats'].append(width);ctx.close()
         ctx=browser.new_context(java_script_enabled=False);p=ctx.new_page();p.goto(base+'/concours/');expect(p.locator('#firstname')).to_be_disabled();expect(p.locator('button[type=submit]')).to_be_disabled();ctx.close();browser.close()
         assert not report['errors'],report['errors'];assert not report['transmissions'],report['transmissions']
-        report['controles']+=['six ateliers et débriefs','taille géométrique','prélèvement cinq zones','vanne et réglage thermique','alerte malo et plan ordonné','papier et confirmation enzymatique','volume et réserve d’ouillage','portrait et carnet complet','premier score conservé après réessai','pause/aide/sortie','aucun envoi ou stockage','formulaire désactivé sans JavaScript']
+        report['controles']+=['six ateliers guidés, un geste à la fois','commande montrée et focus transmis','taille A/B puis C/D','retour au geste précédent sans perte','bilan court et détails dépliables','choix de récolte explicite sans valeur préremplie','prélèvement cinq zones','vanne et réglage thermique','alerte malo et plan ordonné','papier et confirmation enzymatique','volume et réserve d’ouillage','portrait et carnet complet','premier score conservé après réessai','pause/aide/sortie','aucun envoi ou stockage','formulaire désactivé sans JavaScript']
 finally:
     if server:server.shutdown()
     (args.sortie/'verification.json').write_text(json.dumps(report,ensure_ascii=False,indent=2),encoding='utf-8')

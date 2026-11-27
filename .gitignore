@@ -122,7 +122,7 @@ desktop.ini
 # Historique local de veille : jamais dans l'artefact du site.
 outils/salons/veille/resultats/
 !outils/verifier-honeypots.py
-!outils/verifier-concours-taille.py
+!outils/verifier-concours-parcours.py
 !outils/ANTISPAM.md
 !outils/aides/verifier_navigateur.py
 !outils/aides/PARCOURS_SUBVENTIONS_2026-11-18.md

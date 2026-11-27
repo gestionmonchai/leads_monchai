@@ -65,6 +65,7 @@
     const b=branch(selection.id),old=b.cut;b.cut=selection.mm;history.push({id:b.id,cut:old});
     const a=T.assess(b);clearSelection();missions();scene.refresh();message(`${b.id} : coupe à ${Math.round(b.cut)} mm. ${a.reason}`);
     document.querySelector('.scene-caption p').textContent=`${b.id} : ${a.reason}`;
+    $('branch-buttons').querySelector(`[data-branch="${b.id}"]`).focus({preventScroll:true});
     if(matchMedia('(max-width:700px)').matches)$('vine-scene').scrollIntoView({block:'start',behavior:'instant'});
   }
   function undo(){

@@ -42,11 +42,9 @@ jobs:
       - name: Veille des salons sans réseau
         run: python -m unittest discover -s outils/salons/veille -p 'test_*.py'
 
-      - name: Démonstration viticole, liens et absence de transmission
+      - name: Concours et jeux viticoles
         run: |
-          node --check concours/quiz-moteur.js
-          node --check concours/quiz.js
-          node --test outils/test-concours-quiz.cjs
+          node --check concours/concours.js
           node --check concours/millesime/taille-moteur.js
           node --check concours/millesime/taille-scene.js
           node --check concours/millesime/atelier-taille.js

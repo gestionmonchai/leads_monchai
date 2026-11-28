@@ -38,11 +38,18 @@ try:
      if r.request.method=='POST':posts.append(r.request.url);r.abort()
      else:r.continue_()
     ctx.route(API+'**',no_write)
-   page.goto('https://monchai.fr/concours/',wait_until='networkidle')
+   with page.expect_response(lambda r:r.url==API+'status') as loaded_status:
+    page.goto('https://monchai.fr/concours/',wait_until='networkidle')
+   state=loaded_status.value.json()
+   assert 'remaining' not in state and 'instant' not in state,state
+   assert all(set(p)=={'id','label'} for p in state['prizes']),state['prizes']
+   assert page.locator('.hero-prizes li').count()==3
    assert page.evaluate('document.documentElement.scrollWidth<=innerWidth'),width
    expect(page.locator('#campaign-status')).not_to_contain_text('Nous vérifions')
    page.screenshot(path=str(args.sortie/f'accueil-{width}.png'),full_page=True)
    page.locator('#try-gesture').click()
+   assert page.locator('#pruning-cursor').get_attribute('aria-hidden')=='true'
+   assert page.locator('#pruning-cursor').evaluate("e=>getComputedStyle(e).pointerEvents")=='none'
    for _ in range(6):page.locator('#prune-one').click()
    expect(page.locator('#reveal-title')).to_have_text('La vigne est prête.')
    assert not page.locator('#prize-reference').inner_text()

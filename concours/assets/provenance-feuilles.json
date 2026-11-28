@@ -1,0 +1,9 @@
+{
+  "outil": "image_gen int?gr?",
+  "skill": "imagegen",
+  "date": "2026-11-28",
+  "asset": "feuilles-vigne.png",
+  "transparent_background": true,
+  "original": "$CODEX_HOME/generated_images/01a21baa-7b43-7f31-a7d6-dba1799241ce/exec-1a77fb30-0789-407e-88e3-a6f939bc303e.png",
+  "prompt": "Create an original photorealistic botanical game sprite on a truly transparent background with alpha: one elegant compact grapevine sprig bearing three overlapping mature Vitis vinifera leaves, broad deeply lobed serrated vine leaves with delicate luminous veins, a small natural green stem connecting them. Top leaf is deep forest green, left leaf warm olive green, lower right leaf lighter fresh sage, natural irregular asymmetry and subtly curled edges. Specimen macro photography, rich textured leaf surfaces and soft directional light from upper left, sophisticated botanical photographic quality for a premium French winery website on a deep burgundy background. The sprig fills the square frame with clear 12 percent transparent margin all round. Entire sprig isolated, no pot, no soil, no grapes, no wood trunk, no background scene, no shadow outside subject, no lettering or text, no logo, no watermark, no checkerboard, no grid, no border, no collage. This is an interactive foliage sprite: keep clear organic silhouette and realistic recognisable grapevine anatomy, separate leaf tips visible."
+}

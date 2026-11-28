@@ -1,98 +1,43 @@
-# Concours Vinitech : quiz simple, tirage indépendant
+# Concours Vinitech : un cadeau dans la vigne
 
-Demande du 27 novembre 2026 : mettre le parcours de métier de côté, présenter
-les trois lots annoncés et revenir à un jeu très simple. Denis souligne le risque
-que les participants confondent performance et chances de gagner.
+Version du 28 novembre 2026. Point d’entrée et QR inchangés : https://monchai.fr/concours/.
 
-Le quiz est une animation facultative de cinq questions, sans chronomètre.
-Une bonne réponse donne un point personnel, accompagné d'une courte explication.
-Aucun classement, rang ou highscore public n'est affiché.
+Le concours est réel : stock partagé et réservations en D1, résultat immédiat choisi au hasard parmi les unités disponibles. La taille du feuillage révèle un cadeau déjà réservé ; aucun geste, score ou temps ne change le lot. Un lot garanti par e-mail tant que le tirage est ouvert et qu’il reste du stock. Pas de lot fictif, pas de classement servant à attribuer les cadeaux.
 
-## Principe proposé et état de démonstration
+Le tirage reste fermé sans quantités réelles et sans modalités complètes. Les lots annoncés sont un mois Mon Chai, un emballage Bottleflow et une bouteille de champagne ; leurs références et conditions sont à renseigner par l’organisateur avant ouverture. Les visuels sont des évocations, sans marque de champagne ou caractéristique inventée.
 
-Une participation valide par personne, indépendamment du score, du fait de jouer
-ou non, du nombre de parties et de la vitesse. Le formulaire précède le quiz.
-Passer le quiz, obtenir 0/5 ou 5/5 et rejouer conservent chacun le même indicateur
-de participation simulée. Le résultat rappelle que seul le futur tirage attribue
-les lots. Aucun « ticket bonus », seuil de bonnes réponses, faux gagnant ou lot
-attribué immédiatement.
+## Service et organisation
 
-Cette version reste une démo : les coordonnées ne sont ni envoyées ni stockées,
-aucune participation réelle n'est enregistrée, aucun tirage n'est exécuté.
-Le compteur vaut un dans l'onglet, ce n'est pas un mécanisme serveur d'unicité.
-Le règlement, dates, dédoublonnage, conservation des participations, tirage
-auditable, notification et caractéristiques précises des lots restent à établir
-pour l'opération réelle. Ne pas présenter la démo comme un concours ouvert.
+Service : https://monchai-concours-vinitech.norbertmoutier.chatgpt.site ; administration : /admin, avec connexion ChatGPT du compte propriétaire autorisé. Source maintenue dans le dépôt privé Sites appgprj_6b0a9f6fe1608191a08a67bb9c0049cc, distinct de GitHub Pages et de Django. Ne pas placer les sources serveur, migrations ou réponses du quiz dans l’artefact public Pages.
 
-Lots annoncés par Denis, distincts des anciens exemples du parcours archivé :
+L’organisateur ajoute les quantités physiques nouvelles, précise la date de fin et les conditions, puis ouvre le tirage. Chaque unité disponible est réservée atomiquement avec unicité de l’e-mail, du jeton et du lot ; un double clic ou une demande simultanée ne crée pas de lot supplémentaire. Le stock est débité dès la réservation. Au retrait, rechercher l’e-mail ou la référence, vérifier la personne et marquer remis ; la seconde remise est refusée. Fermeture manuelle immédiate possible. Le public conserve un identifiant opaque dans l’onglet, sans coordonnées en stockage navigateur. Un rechargement retrouve la même réservation ; masquer le résultat n’annule pas le cadeau.
 
-- Un mois Mon Chai offert : formule et conditions à préciser.
-- Un emballage Bottleflow : format et quantité à préciser.
-- Une bouteille de champagne : référence à préciser.
+Les coordonnées sont privées, sans newsletter. L’e-mail est dédoublonné mais sa possession n’est pas vérifiée ; l’unicité de personne doit être vérifiée au stand. Le honeypot et une limite de requêtes ne constituent pas une preuve d’identité. Les coordonnées sont anonymisées à la première utilisation du service après 90 jours suivant la clôture, sans remettre les unités anonymisées à disposition. Le classement exclut les pseudos après 30 jours.
 
-Aucune valeur, marque de champagne, formule d'abonnement, quantité Bottleflow
-ou condition d'attribution supplémentaire n'est inventée. L'essai demande une
-confirmation de majorité, vu le lot alcoolisé, sans collecter de date de naissance.
-Il n'y a aucun abonnement marketing dans cette démo.
+## Les jeux, à part
 
-## Volet UX/UI et acceptation
+- Défi chrono : cinq questions, progression du grand public à l’œnologie, saut technique sur le SO₂ moléculaire en question 5. Une question à la fois, correction expliquée et sourcée. Maximum 60 secondes par question, temps autoritaire du serveur. Bonne réponse : 20 × [1 − ln(1+t)/ln(61)], zéro pour erreur ou à 60 secondes, arrondi au centième ; total sur 100. Pseudo public volontaire, top 20 persistant, égalité de rang à score égal. Les premières parties terminées sont affichées d’abord. Rejouer est autorisé, sans avantage sur les cadeaux. Ce jeu ludique n’est pas un examen surveillé.
+- Quel vigneron êtes-vous : le millésime guidé reste à /concours/millesime/, avec ses six ateliers et son profil. Il reste local et sans inscription réelle.
 
-- **Entrée** : même `/concours/` et même QR. Logo et charte Mon Chai ; message
-  score/tirage visible avant le formulaire, avant le quiz, à chaque question et
-  au résultat. Les lots sont présentés comme ceux de la future opération.
-- **Hiérarchie** : coordonnées, participation simulée, choix de jouer ou passer,
-  une question avec trois réponses, explication courte, résultat. Les commandes
-  principales ont une seule fonction explicite. Aucun système de guidage à apprendre.
-- **États** : formulaire vide/invalide/valide, prêt, quiz passé, question ouverte,
-  réponse correcte/incorrecte verrouillée, suite, arrêt anticipé, résultat et rejeu.
-  La démo est explicitement nommée ; sans JS les champs et l'envoi restent désactivés.
-- **Feedback** : question N sur 5, score personnel, réponse expliquée après le clic,
-  texte et couleur pour distinguer le résultat, aucun passage automatique. Toutes
-  les fins montrent le même principe de participation ; score masqué si quiz passé.
-- **Récupération** : aide accessible partout et fermable par Échap, modification
-  des coordonnées, arrêt du quiz à tout moment, rejeu sans créer de bonus.
-- **Responsive** : accueil sur deux colonnes puis une sur mobile ; carte de quiz
-  centrée, choix tactiles de 44 px minimum, pas de débordement à 320/390/768/1440 px.
-- **Accessibilité** : contrôles natifs, labels, focus visible et transmis au titre
-  puis à l'action suivante, résultat annoncé, progression nommée, pas de timer,
-  mouvement réduit respecté. Le score ne dépend pas d'une rapidité de manipulation.
-- **Assistant** : « Le principe du jeu » enseigne formulaire, profil fictif,
-  jouer/passer, répondre, continuer, arrêter, rejouer et revenir au formulaire.
-  Aucune nouvelle fonction ou route de l'application Django ni changement de sa banque.
-- **Critères** : vérification navigateur des trois issues 0/5, 5/5 et quiz passé,
-  toutes avec une participation simulée ; arrêt, rejeu, aide, téléchargement QR,
-  absence de requête d'envoi/stockage et archive accessible sans ressource manquante.
+## Volet UX/UI
 
-## Ancien parcours conservé
+- Point d’entrée : QR /concours/. En premier, le cadeau et le statut réel ; ensuite les jeux et le tableau.
+- Hiérarchie : participer, formulaire court, feuillage à éclaircir, cadeau et référence. Quiz dans un écran séparé, une question à la fois. Le profil possède sa page propre.
+- États : vérification réseau, non configuré, fermé, épuisé, formulaire invalide, réservation, progression de six rameaux, résultat, reprise, essai sans participation, question ouverte/verrouillée/expirée, score privé/publié, classement vide/chargé/erreur. Administration anonyme ou non autorisée refusée côté serveur.
+- Feedback : compte des lots disponibles, confirmation et référence, question N/5, chrono et score, explication après réponse, publication confirmée. Les boutons sont désactivés pendant les demandes. Les premiers résultats serveur sont conservés lors des reprises.
+- Données : points au centième, chrono en secondes, fin en heure de Paris, pseudos publics séparés des coordonnées privées, quantités en unités, sources OIV/IFV après correction.
+- Responsive : deux colonnes puis une ; jeux empilés sur téléphone ; dialogues défilants. Vérifié à 320/390/768/1440 pixels sans débordement horizontal.
+- Accessibilité : contrôles natifs, labels, focus visible, Échap pour fermer les dialogues, texte avec les couleurs de correction, mouvement réduit. Alternatives clavier Éclaircir un rameau et Révéler directement. Le chrono est réservé au défi facultatif ; aucun délai de manipulation dans le concours.
+- Cohérence : logo et polices locales Mon Chai, vocabulaire du vigneron. Le lien Besoin d’un coup de main enseigne chaque commande. Des unités d’assistant applicatif et le réentraînement dense accompagnent cette livraison, sans nouvelle route Django.
 
-Le millésime guidé est conservé en entier sous `/concours/millesime/`, sans lien
-ajouté à la navigation principale. Sources, assets, modèle, explications et
-provenances sont déplacés, avec adaptation des liens et des polices communes.
-Ses tests de modèle restent en CI ; son script de recette cible désormais cette
-URL. Son ancien contenu et ses lots d'exemple restent ceux de cette archive.
+Critères d’acceptation : aucun cadeau sans configuration ; 45 demandes concurrentes sur 5 unités donnent exactement 5 réservations ; e-mail et reprise uniques ; double retrait refusé ; aucun score ou chrono client accepté ; cinq questions progressives et correction entre chaque ; publication d’un pseudo uniquement après accord ; aucun e-mail ou nom dans le tableau public ; parcours complet sur les quatre largeurs ; captures de référence dans le dossier de livraison.
 
-## Vérifications
+## Direction visuelle et provenance
 
-`node --test outils/test-concours-quiz.cjs` vérifie l'indépendance entre score et
-participation, le quiz passé, le rejeu, le verrouillage et les entrées invalides.
-Les 12 tests du millésime et de la taille restent exécutés sur les sources archivées.
+Inspiration éditoriale : Teso La Monja par Miguel Recio (https://miguelrecio.es/projects/tesolamonja), composition viticole Masseto (https://www.behance.net/gallery/168227819/Wine-Website-Design). Interprétation originale : bordeaux profond, titres amples, vert végétal et tons papier. Aucun asset tiers copié. Les objets cadeaux sont dessinés en CSS.
 
-`outils/verifier-concours-quiz.py --sortie CHEMIN` teste les quatre formats,
-les trois scores/choix, l'arrêt, le rejeu et l'aide ; contrôle aucun envoi,
-stockage ou erreur JS, blocage sans JS et démarrage réel de l'archive.
-`--public` reprend les contrôles sur les fichiers servis.
+Feuillage original généré avec la compétence imagegen et le moteur intégré, fond transparent conservé. Asset servi : assets/feuilles-vigne.png ; prompt et provenance : assets/provenance-feuilles.json. Le bois et les fils sont un SVG natif ; douze rameaux indépendants, six gestes pour découvrir le centre. Le bouton d’essai révèle uniquement une confirmation de geste, jamais un faux lot.
 
-## Références de conception
+## Validation
 
-Le choix de ne pas afficher de highscore est un choix de clarté dans cette
-opération, pas l'affirmation qu'un classement serait interdit. La présentation
-doit rester cohérente avec le mécanisme annoncé. Repère consulté le 27/11/2026 :
-[DGCCRF, loteries publicitaires et loyauté](https://www.economie.gouv.fr/dgccrf/les-fiches-pratiques/loterie-des-pratiques-commerciales-reglementees?language=fr).
-La future collecte devra informer les participants de ses conditions ; aucune
-prospection ne doit être imposée pour jouer :
-[CNIL, organisation de jeux-concours](https://www.cnil.fr/fr/cnil-direct/question/organisation-de-jeux-concours-que-faire),
-[CNIL, parrainage et jeux-concours](https://www.cnil.fr/sites/cnil/files/atoms/files/commerce-donnees_perso_parrainage_jeux_concours.pdf).
-
-Les questions s'appuient sur les repères déjà vérifiés pour le millésime : taille
-et prélèvements IFV, fermentation alcoolique, ouillage OIV, et positionnement de
-Mon Chai sur le site vitrine. Elles n'impliquent aucun geste œnologique à réaliser.
+Syntaxe JS, tests du millésime et cohérence du site dans CI. Recette navigateur : outils/verifier-concours-vigne.py (lecture publique et essai sans attribution par défaut ; parcours local complet via --api loopback). Service : trois tests de barème et exposition, TypeScript, build Vinext, recette HTTP des réservations concurrentes et de l’administration. Aucune donnée de QA injectée dans D1 hébergé.
